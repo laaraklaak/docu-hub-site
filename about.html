@@ -1,84 +1,168 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>About Us - Compliance & Expertise</title>
-    </head>
-<body class="bg-gray-50 text-navy">
-    <header class="bg-navy text-white p-4">
-        <nav class="container mx-auto flex justify-between items-center">
-            <div class="text-xl font-bold">DOCU-HUB</div>
-            <div class="space-x-4">
-               <a href="index.html" class="flex items-center gap-3 group">
-    <img src="images/logo.png" alt="Docu-Hub Logo" class="h-12 w-12 object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300">
-    
-    <div class="flex flex-col">
-        <span class="font-bold text-xl text-slate-900 tracking-wide leading-none">DOCU<span class="text-amber-500">.</span>HUB</span>
-        <span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Operations Services</span>
-    </div>
-</a>
-                <a href="intake_protocol.html" class="btn-primary py-2 px-4 rounded-lg font-semibold">Start Intake</a>
-            </div>
-        </nav>
-    </header>
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --color-navy: #1E293B; /* Primary Color */
-            --color-gold: #E0B841; /* Accent Color */
+    <title>DOCU-HUB | About & Compliance</title>
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: { 
+                            200: '#e2e8f0', /* Light Grey Background */
+                            800: '#1e293b', 
+                            900: '#1a202c' 
+                        },
+                        gold: { 500: '#D4AF37', 600: '#B5952F' }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
         }
-        body { font-family: 'Inter', sans-serif; }
-        .bg-navy { background-color: var(--color-navy); }
-        .text-navy { color: var(--color-navy); }
-        .btn-primary { background-color: var(--color-gold); color: var(--color-navy); }
-        .btn-primary:hover { background-color: #f0c95a; }
-        .border-gold { border-color: var(--color-gold); }
+    </script>
+
+    <style>
+        /* BODY BG: Light Grey */
+        body { font-family: 'Poppins', sans-serif; background-color: #e2e8f0; color: #334155; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+        .btn-vibrant {
+            background: linear-gradient(to right, #F59E0B, #D97706);
+            color: white;
+            font-weight: 600;
+            border-bottom: 3px solid #92400E;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+        }
+        .btn-vibrant:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+            box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.4);
+        }
+
+        /* CARD BG: White */
+        .about-card {
+            background: white;
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
     </style>
-    </head>
+</head>
+<body class="antialiased">
 
-    <main class="container mx-auto p-8 max-w-5xl">
-        <h1 class="text-4xl font-bold text-center mb-10">Our Commitment to Compliance & Integrity</h1>
-
-        <section class="mb-10 bg-white p-8 rounded-lg shadow-xl">
-            <h2 class="text-3xl font-bold mb-4 border-b pb-2">Proprietor Expertise</h2>
-            <p class="text-lg text-gray-700">Docu-Hub Operations Services is led by Laura Clarke, whose background is rooted in strict financial and statutory adherence. Her experience includes:</p>
-            <ul class="list-disc list-inside ml-6 mt-3 text-gray-700">
-                <li>Extensive history in **Banking Sector Compliance (KYC/AML Vetting)**.</li>
-                <li>Long-standing, personal contract experience with statutory data auditing and supervision (OEC body).</li>
-            </ul>
-            <p class="mt-4 font-semibold">This unique blend of financial and statutory compliance expertise guarantees a trusted, accountable service.</p>
-        </section>
-
-        <section class="mb-10 bg-white p-8 rounded-lg shadow-xl">
-            <h2 class="text-3xl font-bold mb-4 border-b pb-2">The Legal Framework & Your Protection</h2>
-            <div class="grid md:grid-cols-3 gap-6 text-center text-sm">
-                <div class="p-4 border rounded-lg">JDPA Compliance: Registered Data Controller and strict adherence to the **30-Day Storage Limitation** policy.</div>
-                <div class="p-4 border rounded-lg">POCA/AML: Mandatory **Customer Due Diligence (KYC)** protocol for all fund handling services.</div>
-                <div class="p-4 border rounded-lg">PII Shield: Active **Professional Indemnity Insurance (PII)** is secured as the ultimate financial defense.</div>
+    <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-slate-200">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="images/logo.png" alt="Docu-Hub Logo" class="h-12 w-12 object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300">
+                
+                <div class="flex flex-col">
+                    <span class="font-bold text-2xl text-slate-900 tracking-wide leading-none">DOCU<span class="text-amber-500">.</span>HUB</span>
+                    <span class="text-xs text-slate-500 uppercase tracking-widest font-bold">Operations Services</span>
+                </div>
+            </a>
+            
+            <div class="flex items-center gap-6">
+                <a href="index.html" class="text-sm font-bold text-amber-600 uppercase tracking-wider flex items-center gap-2 hover:text-amber-700 transition">
+                    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back Home
+                </a>
             </div>
-        </section>
 
-        <div class="border-4 border-red-600 bg-red-50 p-6 rounded-xl shadow-2xl mb-10">
-            <h3 class="text-2xl font-bold text-red-700 mb-3 flex items-center">MANDATORY LEGAL DISCLAIMER: UPL DEFENSE</h3>
-            <p class="text-xl text-red-800">Docu-Hub Operations Services provides **ADMINISTRATIVE ASSISTANCE ONLY**. We are **not** attorneys, legal advisors, or certified tax consultants. We provide clerical guidance on forms and statutory processes.</p>
-            <p class="text-xl text-red-800 mt-3 font-bold">The Client agrees that liability for clerical errors is strictly limited to the professional fee paid.</p>
+        </nav>
+    </header>
+
+    <main class="px-6 py-16 max-w-3xl mx-auto">
+        
+        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-8 text-center">Who We Are</h1>
+
+        <div class="about-card p-8 rounded-2xl mb-12 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+            
+            <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                <i data-lucide="user-check" class="w-6 h-6 text-amber-500"></i> Laura Clarke
+            </h2>
+            <p class="text-lg leading-relaxed text-slate-700 mb-6 font-medium">
+                Docu-Hub is led by Laura Clarke. This isn't just "filling forms"—it's about accuracy and integrity.
+            </p>
+            <p class="text-base text-slate-600 mb-6 leading-relaxed font-medium">
+                With a background in <strong>Banking Sector Compliance (KYC/AML)</strong> and Statutory Data Auditing, Laura understands that in Jamaica, "the small print matters."
+            </p>
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-4 text-sm text-slate-700 italic font-bold rounded-r-lg">
+                "We operate with bank-grade standards for ordinary people. No shortcuts."
+            </div>
+        </div>
+
+        <div class="about-card p-8 rounded-2xl mb-12 text-center border-2 border-red-200 bg-red-50">
+            <h3 class="text-red-700 font-bold uppercase tracking-widest text-xs mb-3 border-b border-red-200 inline-block pb-1">Straight & Straight Disclaimer</h3>
+            <p class="text-slate-900 font-black text-2xl mb-4">Administrative Only.</p>
+            <p class="text-slate-700 text-base leading-relaxed font-medium">
+                We are <strong>NOT</strong> Attorneys or Legal Advisors. We provide clerical assistance and technical guidance. 
+                <br><br>
+                If you need legal advice, hire a lawyer. If you need the form done right, hire us.
+            </p>
+        </div>
+
+        <h3 class="font-bold text-slate-900 mb-6 text-xl text-center">Our Legal Shield</h3>
+        <div class="grid gap-4 mb-16">
+            <div class="about-card p-4 rounded-xl flex items-center justify-between border-l-4 border-blue-500">
+                <div class="flex items-center gap-3">
+                    <i data-lucide="shield" class="w-5 h-5 text-blue-600"></i>
+                    <span class="text-sm text-slate-700 font-bold">Data Protection Act</span>
+                </div>
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Registration Submitted</span>
+            </div>
+            
+            <div class="about-card p-4 rounded-xl flex items-center justify-between border-l-4 border-green-500">
+                <div class="flex items-center gap-3">
+                    <i data-lucide="check-circle" class="w-5 h-5 text-green-600"></i>
+                    <span class="text-sm text-slate-700 font-bold">POCA Compliant</span>
+                </div>
+                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Verified Protocols</span>
+            </div>
+            
+            <div class="about-card p-4 rounded-xl flex items-center justify-between border-l-4 border-green-500">
+                <div class="flex items-center gap-3">
+                    <i data-lucide="lock" class="w-5 h-5 text-green-600"></i>
+                    <span class="text-sm text-slate-700 font-bold">PII Insured</span>
+                </div>
+                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Active Coverage</span>
+            </div>
         </div>
 
         <div class="text-center">
-             <a href="intake_protocol.html" class="btn-primary py-3 px-8 text-xl rounded-full font-bold transition duration-300 shadow-md">Proceed to Compliant Intake</a>
+            <a href="intake_protocol.html" class="btn-vibrant inline-block px-10 py-4 rounded-full font-bold text-lg shadow-xl tracking-wide">
+                Start Your Process
+            </a>
         </div>
+
     </main>
 
-    <footer class="bg-navy text-white p-6 mt-12">
-        <div class="container mx-auto text-center text-sm">
-            &copy; 2025 Docu-Hub Operations Services. | 
-            <a href="legal/terms_of_service.pdf" target="_blank" class="hover:text-gold underline">Terms of Service</a> | 
-            <a href="legal/privacy_policy.pdf" target="_blank" class="hover:text-gold underline">Privacy Policy</a>
+    <footer class="bg-black text-slate-500 py-10 border-t border-slate-900">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center gap-8 mb-6 text-xs uppercase tracking-widest font-bold">
+                <a href="legal/terms_of_service.pdf" target="_blank" class="hover:text-amber-500 transition">Terms</a>
+                <a href="legal/privacy_policy.pdf" target="_blank" class="hover:text-amber-500 transition">Privacy</a>
+            </div>
+            <p class="mb-2">&copy; 2025 Docu-Hub Operations Services.</p>
+            <p class="text-xs text-slate-600">St. Catherine, Jamaica 🇯🇲</p>
         </div>
     </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
