@@ -9,7 +9,7 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -19,7 +19,7 @@
                 extend: {
                     colors: {
                         slate: { 
-                            200: '#e2e8f0', /* New, Darker Grey Background */
+                            200: '#e2e8f0', /* Distinct Light Grey Background */
                             800: '#1e293b', 
                             900: '#1a202c' 
                         },
@@ -35,33 +35,38 @@
     </script>
 
     <style>
-        /* BODY BG: Distinct Light Grey (#e2e8f0) */
+        /* BODY BG: Light Grey */
         body { font-family: 'Poppins', sans-serif; background-color: #e2e8f0; color: #334155; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
-        .btn-vibrant {
+        /* NEW CLIENT BUTTON */
+        .btn-new {
             background: linear-gradient(to right, #F59E0B, #D97706);
             color: white;
             font-weight: 600;
-            border-bottom: 3px solid #92400E;
+            border-bottom: 4px solid #92400E;
             text-shadow: 0 1px 2px rgba(0,0,0,0.2);
             transition: all 0.2s ease;
         }
-        .btn-vibrant:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.1);
-            box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.4);
-        }
-        .btn-vibrant:active {
-            transform: translateY(1px);
-            border-bottom-width: 0px;
-            margin-top: 3px;
-        }
+        .btn-new:hover { transform: translateY(-2px); filter: brightness(1.1); }
+        .btn-new:active { transform: translateY(2px); border-bottom-width: 0px; margin-top: 4px; }
 
-        /* CARD BG: White (High contrast against grey body) */
+        /* RETURNING CLIENT BUTTON */
+        .btn-returning {
+            background: linear-gradient(to right, #3b82f6, #1d4ed8);
+            color: white;
+            font-weight: 600;
+            border-bottom: 4px solid #1e3a8a;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+        }
+        .btn-returning:hover { transform: translateY(-2px); filter: brightness(1.1); }
+        .btn-returning:active { transform: translateY(2px); border-bottom-width: 0px; margin-top: 4px; }
+
+        /* CARD STYLING */
         .intake-card {
             background: white;
-            border: 1px solid #cbd5e1; /* Slightly darker border for definition */
+            border: 1px solid #cbd5e1;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .intake-card:hover {
@@ -70,138 +75,143 @@
         }
     </style>
 </head>
-<body class="antialiased">
-
-    <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-slate-200">
+<body class="antialiased text-lg"> <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-slate-200">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2 group">
-                <img src="favicon.png" alt="Docu-Hub Logo" class="h-10 w-10 object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="favicon.png" alt="Docu-Hub Logo" class="h-12 w-12 object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300">
                 <div class="flex flex-col">
-                    <span class="font-bold text-xl text-slate-900 tracking-wide leading-none">DOCU<span class="text-amber-500">.</span>HUB</span>
-                    <span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Operations Services</span>
+                    <span class="font-bold text-2xl text-slate-900 tracking-wide leading-none">DOCU<span class="text-amber-500">.</span>HUB</span>
+                    <span class="text-xs text-slate-600 uppercase tracking-widest font-bold">Operations Services</span>
                 </div>
             </a>
             
-            <a href="index.html" class="text-xs font-bold text-amber-600 uppercase tracking-wider flex items-center gap-1 hover:text-amber-700 transition">
-                <i data-lucide="arrow-left" class="w-4 h-4"></i> Back Home
+            <a href="index.html" class="text-sm font-bold text-amber-600 uppercase tracking-wider flex items-center gap-2 hover:text-amber-700 transition">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i> Back Home
             </a>
         </nav>
     </header>
 
-    <main class="px-6 py-16 max-w-3xl mx-auto">
+    <main class="px-6 py-12 container mx-auto">
         
         <div class="text-center mb-12">
-            <h1 class="text-3xl md:text-5xl font-bold mb-4 text-slate-900">Compliance Intake</h1>
-            <p class="text-slate-600 text-lg font-medium">To keep everything legitimate and compliant with Jamaican Law (POCA & JDPA), please confirm the following 3 steps.</p>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 text-slate-900">Choose Your Status</h1>
+            <p class="text-slate-700 text-xl font-medium">Select your client type to see your specific intake requirements.</p>
         </div>
 
-        <div class="intake-card p-8 rounded-2xl shadow-sm mb-8 border-l-8 border-red-500 relative">
-            <div class="absolute top-6 right-6 text-red-100">
-                <i data-lucide="file-signature" class="w-16 h-16 opacity-50"></i>
-            </div>
-            
-            <div class="flex items-center gap-3 mb-4">
-                <span class="bg-red-100 text-red-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Step 1</span>
-                <h2 class="font-bold text-2xl text-slate-800">Review Di Contract</h2>
-            </div>
-            
-            <p class="text-slate-700 mb-6 font-medium">
-                "Wi always write it down." You must review our **Master Client Engagement Contract**.
-            </p>
-            
-            <div class="bg-slate-100 p-5 rounded-xl border border-slate-300 mb-6">
-                <ul class="text-sm text-slate-700 space-y-3 font-medium">
-                    <li class="flex items-start gap-2"><i data-lucide="alert-circle" class="w-4 h-4 text-red-500 mt-0.5"></i> We are <strong>Clerical Assistants</strong>, not Lawyers.</li>
-                    <li class="flex items-start gap-2"><i data-lucide="alert-circle" class="w-4 h-4 text-red-500 mt-0.5"></i> Liability is strictly capped at the service fee.</li>
-                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 mt-0.5"></i> <strong>Zero Data Entry Errors</strong> guaranteed.</li>
-                    <li class="flex items-start gap-2"><i data-lucide="trash-2" class="w-4 h-4 text-slate-500 mt-0.5"></i> Data is deleted in <strong>30 days</strong>.</li>
-                </ul>
-            </div>
-            
-            <a href="legal/terms_of_service.pdf" target="_blank" class="text-red-600 font-bold text-sm underline underline-offset-4 hover:text-red-800 flex items-center gap-2">
-                <i data-lucide="file-text" class="w-4 h-4"></i> Preview The Contract PDF
-            </a>
-        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-7xl mx-auto">
 
-      <div class="intake-card p-8 rounded-2xl shadow-md mb-8 border-l-8 border-red-500 relative">
-    
-    <div class="bg-slate-100 p-5 rounded-xl border border-slate-300 mb-6">
-        <ul class="text-sm text-slate-700 space-y-3 font-medium">
-            <li class="flex items-start gap-2"><i data-lucide="alert-circle" class="w-4 h-4 text-red-500 mt-0.5"></i> We are <strong>Clerical Assistants</strong>, not Lawyers.</li>
-            <li class="flex items-start gap-2"><i data-lucide="alert-circle" class="w-4 h-4 text-red-500 mt-0.5"></i> Liability is strictly capped at the service fee.</li>
-            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 mt-0.5"></i> <strong>Zero Data Entry Errors</strong> guaranteed.</li>
-            <li class="flex items-start gap-2"><i data-lucide="trash-2" class="w-4 h-4 text-slate-500 mt-0.5"></i> Data is deleted in <strong>30 days</strong>.</li>
-        </ul>
-    </div>
-    
-    <a href="legal/master_service_agreement.pdf" target="_blank" class="text-red-600 font-bold text-sm underline underline-offset-4 hover:text-red-800 flex items-center gap-2">
-        <i data-lucide="file-text" class="w-4 h-4"></i> Preview The Contract PDF
-    </a>
-</div>
+            <div class="flex flex-col h-full">
+                <div class="bg-slate-800 text-white text-center py-5 rounded-t-2xl font-bold uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg relative z-10 text-xl">
+                    <i data-lucide="user-plus" class="w-6 h-6 text-amber-400"></i> New Client
+                </div>
+                
+                <div class="bg-white p-8 rounded-b-2xl shadow-xl border border-t-0 border-slate-200 flex-grow flex flex-col">
+                    <p class="text-slate-600 mb-8 text-base text-center italic border-b border-slate-100 pb-4 font-medium">
+                        "I have never used Docu-Hub services before."
+                    </p>
 
-            <div class="flex items-center gap-3 mb-4">
-                <span class="bg-amber-100 text-amber-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Step 2</span>
-                <h2 class="font-bold text-2xl text-slate-800">Identity & POCA</h2>
-            </div>
-            
-            <p class="text-slate-700 mb-6 font-medium">
-                For in-person services, walk with your <strong>ORIGINALS</strong>. No copies. We must verify your identity.
-            </p>
-            
-            <div class="grid grid-cols-3 gap-4">
-                <div class="bg-slate-100 p-4 rounded-xl border border-slate-300 text-center hover:border-amber-400 transition">
-                    <i data-lucide="user" class="w-6 h-6 mx-auto mb-2 text-slate-500"></i> 
-                    <span class="text-[10px] font-bold text-slate-700 uppercase">Photo ID</span>
-                </div>
-                <div class="bg-slate-100 p-4 rounded-xl border border-slate-300 text-center hover:border-amber-400 transition">
-                    <i data-lucide="map-pin" class="w-6 h-6 mx-auto mb-2 text-slate-500"></i> 
-                    <span class="text-[10px] font-bold text-slate-700 uppercase">Address</span>
-                </div>
-                <div class="bg-slate-100 p-4 rounded-xl border border-slate-300 text-center hover:border-amber-400 transition">
-                    <i data-lucide="hash" class="w-6 h-6 mx-auto mb-2 text-slate-500"></i> 
-                    <span class="text-[10px] font-bold text-slate-700 uppercase">TRN</span>
+                    <div class="mb-8 bg-slate-50 p-6 rounded-xl border border-slate-200">
+                        <h3 class="font-bold text-slate-900 flex items-center gap-3 mb-3 text-xl">
+                            <span class="bg-amber-100 text-amber-800 text-sm px-3 py-1 rounded">Step 1</span> Review Contract
+                        </h3>
+                        <p class="text-sm text-slate-700 mb-4">You must review our "One-and-Done" Master Agreement.</p>
+                        <a href="legal/master_service_agreement.pdf" target="_blank" class="text-amber-700 font-bold text-base underline flex items-center gap-2 hover:text-amber-900">
+                            <i data-lucide="file-text" class="w-5 h-5"></i> View PDF
+                        </a>
+                    </div>
+
+                    <div class="mb-8 bg-slate-50 p-6 rounded-xl border border-slate-200">
+                        <h3 class="font-bold text-slate-900 flex items-center gap-3 mb-3 text-xl">
+                            <span class="bg-amber-100 text-amber-800 text-sm px-3 py-1 rounded">Step 2</span> Bring Originals
+                        </h3>
+                        <div class="grid grid-cols-3 gap-3 text-center">
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
+                                <i data-lucide="user" class="w-6 h-6 mx-auto text-slate-500 mb-1"></i>
+                                <span class="text-xs font-bold block text-slate-800">ID</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
+                                <i data-lucide="map-pin" class="w-6 h-6 mx-auto text-slate-500 mb-1"></i>
+                                <span class="text-xs font-bold block text-slate-800">Bill</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
+                                <i data-lucide="hash" class="w-6 h-6 mx-auto text-slate-500 mb-1"></i>
+                                <span class="text-xs font-bold block text-slate-800">TRN</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-8 bg-slate-50 p-6 rounded-xl border border-slate-200">
+                        <h3 class="font-bold text-slate-900 flex items-center gap-3 mb-3 text-xl">
+                            <span class="bg-amber-100 text-amber-800 text-sm px-3 py-1 rounded">Step 3</span> Be Ready
+                        </h3>
+                        <ul class="text-sm text-slate-700 space-y-3 font-medium">
+                            <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-green-600"></i> Have funds in bank account.</li>
+                            <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-green-600"></i> Have vehicle docs ready.</li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-auto pt-6">
+                        <a href="https://wa.me/18765612614?text=Hi%20Docu-Hub,%20I%20am%20a%20NEW%20client%20and%20I%20have%20my%20ID,%20TRN,%20and%20Proof%20of%20Address%20ready." target="_blank" class="btn-new block w-full py-5 rounded-xl font-bold text-center text-xl shadow-lg">
+                            Book New Intake
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="intake-card p-8 rounded-2xl shadow-sm mb-12 border-l-8 border-blue-600 relative">
-            <div class="absolute top-6 right-6 text-blue-100">
-                <i data-lucide="wallet" class="w-16 h-16 opacity-50"></i>
+            <div class="flex flex-col h-full">
+                <div class="bg-white border border-b-0 border-slate-200 text-slate-800 text-center py-5 rounded-t-2xl font-bold uppercase tracking-widest flex items-center justify-center gap-2 relative z-10 text-xl">
+                    <i data-lucide="repeat" class="w-6 h-6 text-blue-600"></i> Returning Client
+                </div>
+                
+                <div class="bg-white p-8 rounded-b-2xl shadow-sm border border-t-0 border-slate-200 flex-grow flex flex-col">
+                    <p class="text-slate-600 mb-8 text-base text-center italic border-b border-slate-100 pb-4 font-medium">
+                        "I have a profile and my contract is on file."
+                    </p>
+
+                    <div class="mb-8 bg-green-50 p-6 rounded-xl border border-green-200 text-center shadow-sm">
+                        <h3 class="font-bold text-green-900 mb-2 flex items-center justify-center gap-2 text-xl">
+                            <i data-lucide="zap" class="w-6 h-6 text-green-600"></i> Fast Pass Active
+                        </h3>
+                        <p class="text-base text-green-800 font-medium">
+                            No new contract. No utility bill required.
+                        </p>
+                    </div>
+
+                    <div class="mb-8 bg-slate-50 p-6 rounded-xl border border-slate-200">
+                        <h3 class="font-bold text-slate-900 flex items-center gap-3 mb-4 text-xl">
+                            <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded">Required</span> Job Prep
+                        </h3>
+                        <ul class="text-base text-slate-700 space-y-4 font-medium">
+                            <li class="flex gap-4 items-center">
+                                <div class="bg-white p-2 rounded border border-slate-200"><i data-lucide="credit-card" class="w-6 h-6 text-blue-600"></i></div>
+                                <span><strong>Funds:</strong> Ready for transfer.</span>
+                            </li>
+                            <li class="flex gap-4 items-center">
+                                <div class="bg-white p-2 rounded border border-slate-200"><i data-lucide="file-text" class="w-6 h-6 text-blue-600"></i></div>
+                                <span><strong>Docs:</strong> Vehicle/Asset papers.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-auto pt-6">
+                        <a href="https://wa.me/18765612614?text=Hi%20Docu-Hub,%20I%20am%20a%20RETURNING%20client%20requesting%20a%20service%20slot." target="_blank" class="btn-returning block w-full py-5 rounded-xl font-bold text-center text-xl shadow-lg">
+                            Book Service Slot
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <div class="flex items-center gap-3 mb-4">
-                <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Step 3</span>
-                <h2 class="font-bold text-2xl text-slate-800">Be Ready</h2>
-            </div>
-            
-            <ul class="space-y-4">
-                <li class="flex gap-3 items-start p-3 rounded-lg bg-blue-50/50 border border-blue-100">
-                    <i data-lucide="credit-card" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i>
-                    <span class="text-sm text-slate-700 font-medium"><strong>Payment:</strong> Have your statutory fees ready in your bank account for transfer.</span>
-                </li>
-                <li class="flex gap-3 items-start p-3 rounded-lg bg-blue-50/50 border border-blue-100">
-                    <i data-lucide="file-x" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i>
-                    <span class="text-sm text-slate-700 font-medium"><strong>Documents:</strong> Don't bring us original Birth Documents to keep. We don't hold them.</span>
-                </li>
-            </ul>
-        </div>
-
-        <div class="text-center sticky bottom-6 z-40">
-            <a href="https://wa.me/18765612614?text=Hi%20Docu-Hub,%20I%20have%20reviewed%20the%20Intake%20Protocol%20and%20I%20am%20ready%20to%20schedule." target="_blank" class="btn-vibrant block w-full py-4 rounded-xl font-bold text-lg shadow-2xl tracking-wide">
-                I Confirm. Schedule Meeting.
-            </a>
-            <p class="text-xs text-slate-500 mt-3 font-bold bg-white/90 inline-block px-4 py-2 rounded-full shadow-sm border border-slate-200">By clicking, you confirm you have all 3 items ready.</p>
         </div>
 
     </main>
 
-    <footer class="bg-black text-slate-500 py-10 border-t border-slate-900">
+    <footer class="bg-black text-slate-400 py-12 border-t border-slate-900">
         <div class="container mx-auto px-6 text-center">
-            <div class="flex justify-center gap-8 mb-6 text-xs uppercase tracking-widest font-bold">
+            <div class="flex justify-center gap-10 mb-6 text-sm uppercase tracking-widest font-bold">
                 <a href="legal/terms_of_service.pdf" target="_blank" class="hover:text-amber-500 transition">Terms</a>
                 <a href="legal/privacy_policy.pdf" target="_blank" class="hover:text-amber-500 transition">Privacy</a>
             </div>
-            <p class="mb-2">&copy; 2025 Docu-Hub Operations Services.</p>
+            <p class="mb-2 text-sm">&copy; 2025 Docu-Hub Operations Services.</p>
             <p class="text-xs text-slate-600">Kingston, Jamaica 🇯🇲</p>
         </div>
     </footer>
@@ -211,4 +221,3 @@
     </script>
 </body>
 </html>
-
