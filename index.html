@@ -4,13 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOCU-HUB | Official Administrative Services</title>
-    
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    
+    <link rel="icon" type="image/png" href="favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
@@ -18,10 +14,7 @@
             theme: {
                 extend: {
                     colors: {
-                        slate: { 
-                            800: '#1e293b', 
-                            900: '#1a202c', 
-                        },
+                        slate: { 50: '#f8fafc', 800: '#1e293b', 900: '#1a202c' },
                         gold: { 500: '#D4AF37', 600: '#B5952F' }
                     },
                     fontFamily: {
@@ -34,10 +27,9 @@
     </script>
 
     <style>
-        body { font-family: 'Poppins', sans-serif; background-color: #FFFFFF; color: #334155; }
+        body { font-family: 'Poppins', sans-serif; background-color: #f8fafc; color: #334155; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         
-        /* Vibrant Buttons */
         .btn-vibrant {
             background: linear-gradient(to right, #F59E0B, #D97706);
             color: white;
@@ -46,49 +38,30 @@
             text-shadow: 0 1px 2px rgba(0,0,0,0.2);
             transition: all 0.2s ease;
         }
-        .btn-vibrant:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.1);
-            box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.4);
-        }
-        .btn-vibrant:active {
-            transform: translateY(1px);
-            border-bottom-width: 0px;
-            margin-top: 3px;
-        }
+        .btn-vibrant:hover { transform: translateY(-2px); filter: brightness(1.1); box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.4); }
+        .btn-vibrant:active { transform: translateY(1px); border-bottom-width: 0px; margin-top: 3px; }
 
-        /* Card Hover Effects */
         .service-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background: white;
+            background: #ffffff;
             border: 1px solid #e2e8f0;
         }
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
+        .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        
         .card-gold { border-top: 6px solid #F59E0B; }
         .card-blue { border-top: 6px solid #3B82F6; }
         .card-green { border-top: 6px solid #10B981; }
 
-        /* Dark Slate Hero Background */
-        .hero-bg {
-            background-color: #1a202c; 
-            background-image: linear-gradient(rgba(26, 32, 44, 0.9), rgba(26, 32, 44, 0.9));
-        }
+        .hero-bg { background-color: #1a202c; background-image: linear-gradient(rgba(26, 32, 44, 0.9), rgba(26, 32, 44, 0.9)); }
     </style>
 </head>
 <body class="antialiased">
 
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+    <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-slate-200">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center gap-2 group">
                 <div class="relative">
-                    <svg class="h-10 w-10 text-slate-800 drop-shadow-md" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20 10 H70 Q85 10 85 25 V75 Q85 90 70 90 H20 V10 Z" fill="#1e293b"/>
-                        <path d="M40 25 H55 V42 H70 V58 H55 V75 H40 V58 H25 V42 H40 V25 Z" fill="#FFFFFF"/>
-                        <path d="M58 65 L65 72 L80 57" stroke="#F59E0B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                    </svg>
+                    <img src="favicon.png" alt="Docu-Hub Logo" class="h-10 w-10 object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="flex flex-col">
                     <span class="font-bold text-xl text-slate-900 tracking-wide leading-none">DOCU<span class="text-amber-500">.</span>HUB</span>
@@ -96,16 +69,18 @@
                 </div>
             </a>
             
-            <a href="intake_protocol.html" class="bg-slate-800 text-white font-bold py-2 px-6 rounded-full hover:bg-slate-700 transition duration-300 text-xs uppercase tracking-widest shadow-lg hidden md:block">
-                Start Process
-            </a>
+            <div class="flex items-center gap-6">
+                <a href="about.html" class="text-sm font-bold text-slate-600 hover:text-amber-500 transition">About Us</a>
+                
+                <a href="intake_protocol.html" class="bg-slate-800 text-white font-bold py-2 px-6 rounded-full hover:bg-slate-700 transition duration-300 text-xs uppercase tracking-widest shadow-lg hidden md:block">
+                    Start Process
+                </a>
+            </div>
         </nav>
     </header>
 
     <section class="hero-bg text-white py-24 md:py-32 px-6 relative overflow-hidden">
-        
         <div class="container mx-auto text-center max-w-4xl relative z-10">
-            
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/80 border border-blue-500/50 mb-8 backdrop-blur-sm shadow-xl">
                 <span class="relative flex h-3 w-3">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
@@ -121,7 +96,7 @@
             
             <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
                 We handle the red tape so you don't have to. Secure guidance for PICA, RGD, and Tax Administration. <br>
-                <span class="text-white font-semibold block mt-4 bg-slate-800/50 inline-block px-4 py-1 rounded-lg border border-slate-700">Professional Service. Every Time. 🇯🇲</span>
+                <span class="text-white font-semibold block mt-4 bg-slate-800/50 inline-block px-4 py-1 rounded-lg border border-slate-700">Professional Service. Jamaican Heart. 🇯🇲</span>
             </p>
 
             <div class="flex flex-col sm:flex-row gap-5 justify-center">
@@ -164,7 +139,7 @@
         </div>
     </div>
 
-    <section class="py-24 bg-white" id="services">
+    <section class="py-24" id="services">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold text-slate-900 mb-4">Choose Your Service</h2>
@@ -172,7 +147,6 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
                 <div class="service-card card-gold p-8 rounded-xl shadow-lg">
                     <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mb-6 text-amber-600 shadow-inner">
                         <i data-lucide="monitor" class="w-8 h-8"></i>
@@ -183,7 +157,6 @@
                     </p>
                     <span class="inline-block text-[10px] font-bold bg-amber-100 text-amber-800 px-3 py-1 rounded-full uppercase tracking-wider border border-amber-200">Virtual / Global</span>
                 </div>
-
                 <div class="service-card card-blue p-8 rounded-xl shadow-lg">
                     <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 text-blue-600 shadow-inner">
                         <i data-lucide="file-text" class="w-8 h-8"></i>
@@ -194,7 +167,6 @@
                     </p>
                     <span class="inline-block text-[10px] font-bold bg-blue-100 text-blue-800 px-3 py-1 rounded-full uppercase tracking-wider border border-blue-200">In-Person Only</span>
                 </div>
-
                 <div class="service-card card-green p-8 rounded-xl shadow-lg">
                     <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6 text-emerald-600 shadow-inner">
                         <i data-lucide="car" class="w-8 h-8"></i>
@@ -205,7 +177,6 @@
                     </p>
                     <span class="inline-block text-[10px] font-bold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full uppercase tracking-wider border border-emerald-200">In-Person Only</span>
                 </div>
-
             </div>
         </div>
     </section>
@@ -225,7 +196,7 @@
         </div>
     </section>
 
-    <footer class="bg-black text-slate-500 py-10 border-t border-slate-800">
+    <footer class="bg-black text-slate-500 py-10 border-t border-slate-900">
         <div class="container mx-auto px-6 text-center">
             <div class="flex justify-center gap-8 mb-6 text-xs uppercase tracking-widest font-bold">
                 <a href="legal/terms_of_service.pdf" target="_blank" class="hover:text-amber-500 transition">Terms</a>
