@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOCU-HUB | Official Administrative Services</title>
+    <title>DOCU-HUB | Official Agency Services</title>
+    
     <link rel="icon" type="image/png" href="favicon.png">
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
@@ -14,7 +18,11 @@
             theme: {
                 extend: {
                     colors: {
-                        slate: { 50: '#f8fafc', 800: '#1e293b', 900: '#1a202c' },
+                        slate: { 
+                            50: '#f8fafc',
+                            800: '#1e293b', 
+                            900: '#1a202c', 
+                        },
                         gold: { 500: '#D4AF37', 600: '#B5952F' }
                     },
                     fontFamily: {
@@ -30,6 +38,7 @@
         body { font-family: 'Poppins', sans-serif; background-color: #f8fafc; color: #334155; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         
+        /* Vibrant Buttons */
         .btn-vibrant {
             background: linear-gradient(to right, #F59E0B, #D97706);
             color: white;
@@ -38,40 +47,54 @@
             text-shadow: 0 1px 2px rgba(0,0,0,0.2);
             transition: all 0.2s ease;
         }
-        .btn-vibrant:hover { transform: translateY(-2px); filter: brightness(1.1); box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.4); }
-        .btn-vibrant:active { transform: translateY(1px); border-bottom-width: 0px; margin-top: 3px; }
+        .btn-vibrant:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+            box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.4);
+        }
+        .btn-vibrant:active {
+            transform: translateY(1px);
+            border-bottom-width: 0px;
+            margin-top: 3px;
+        }
 
+        /* Card Hover Effects */
         .service-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background: #ffffff;
+            background: white;
             border: 1px solid #e2e8f0;
         }
-        .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
-        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
         .card-gold { border-top: 6px solid #F59E0B; }
         .card-blue { border-top: 6px solid #3B82F6; }
         .card-green { border-top: 6px solid #10B981; }
 
-        .hero-bg { background-color: #1a202c; background-image: linear-gradient(rgba(26, 32, 44, 0.9), rgba(26, 32, 44, 0.9)); }
+        /* Dark Slate Hero Background */
+        .hero-bg {
+            background-color: #1a202c; 
+            background-image: linear-gradient(rgba(26, 32, 44, 0.9), rgba(26, 32, 44, 0.9));
+        }
     </style>
 </head>
 <body class="antialiased">
 
     <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-slate-200">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-          <a href="index.html" class="flex items-center gap-3 group">
-    <img src="images/logo.png" alt="Docu-Hub Logo" class="h-12 w-12 object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300">
-    
-    <div class="flex flex-col">
-        <span class="font-bold text-xl text-slate-900 tracking-wide leading-none">DOCU<span class="text-amber-500">.</span>HUB</span>
-        <span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Operations Services</span>
-    </div>
-</a>
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="relative">
+                    <img src="images/logo.png" alt="Docu-Hub Logo" class="h-10 w-10 object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-xl text-slate-900 tracking-wide leading-none">DOCU<span class="text-amber-500">.</span>HUB</span>
+                    <span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Operations Services</span>
+                </div>
             </a>
             
             <div class="flex items-center gap-6">
                 <a href="about.html" class="text-sm font-bold text-slate-600 hover:text-amber-500 transition">About Us</a>
-                
                 <a href="intake_protocol.html" class="bg-slate-800 text-white font-bold py-2 px-6 rounded-full hover:bg-slate-700 transition duration-300 text-xs uppercase tracking-widest shadow-lg hidden md:block">
                     Start Process
                 </a>
@@ -80,36 +103,38 @@
     </header>
 
     <section class="hero-bg text-white py-24 md:py-32 px-6 relative overflow-hidden">
+        
         <div class="container mx-auto text-center max-w-4xl relative z-10">
+            
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/80 border border-blue-500/50 mb-8 backdrop-blur-sm shadow-xl">
                 <span class="relative flex h-3 w-3">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
                 </span>
-                <span class="text-[11px] font-bold tracking-wider text-blue-100 uppercase">OIC Registration Submitted</span>
+                <span class="text-[11px] font-bold tracking-wider text-blue-100 uppercase">Now Serving: Linstead & Portmore</span>
             </div>
 
             <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 drop-shadow-2xl">
-                Official Business. <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500">No Runaround.</span>
+                Government Documents <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500">Made Simple.</span>
             </h1>
             
             <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-                We handle the red tape so you don't have to. Secure guidance for PICA, RGD, and Tax Administration. <br>
-                <span class="text-white font-semibold block mt-4 bg-slate-800/50 inline-block px-4 py-1 rounded-lg border border-slate-700">Professional Service. Jamaican Heart. 🇯🇲</span>
+                Official Business. No Runaround. <br>
+                "We process your TRN, RGD, and Tax Documents so you can focus on your life."<br>
+                <span class="text-white font-semibold block mt-4 bg-slate-800/50 inline-block px-4 py-1 rounded-lg border border-slate-700">Zero Data Errors. Fully Compliant. 🇯🇲</span>
             </p>
 
             <div class="flex flex-col sm:flex-row gap-5 justify-center">
                 <a href="intake_protocol.html" class="btn-vibrant py-4 px-12 rounded-full text-lg flex items-center justify-center gap-2">
-                    <i data-lucide="lock" class="w-5 h-5"></i> Secure Yuh Spot
+                    <i data-lucide="briefcase" class="w-5 h-5"></i> Start Agency Intake
                 </a>
                 <a href="about.html" class="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white py-4 px-10 rounded-full font-bold uppercase tracking-wide hover:bg-white hover:text-slate-900 transition duration-300 shadow-lg">
-                    Why Choose Us
+                    See All Services
                 </a>
             </div>
         </div>
     </section>
-
     <div class="bg-white border-b border-slate-200 py-10 shadow-sm relative z-20">
         <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div class="flex flex-col items-center group">
@@ -139,84 +164,98 @@
         </div>
     </div>
 
-    <section class="py-24" id="services">
+    <section class="py-24 bg-white" id="services">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-slate-900 mb-4">Choose Your Service</h2>
-                <p class="text-slate-500 max-w-xl mx-auto text-lg">Focused, compliant support for your most important documents.</p>
+                <h2 class="text-4xl font-bold text-slate-900 mb-4">What We Do For You</h2>
+                <p class="text-slate-500 max-w-xl mx-auto text-lg">Choose a category below. We handle the submission, payment, and pickup.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="service-card card-gold p-8 rounded-xl shadow-lg">
+                
+                <div class="service-card card-gold p-8 rounded-xl shadow-lg flex flex-col">
                     <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mb-6 text-amber-600 shadow-inner">
-                        <i data-lucide="monitor" class="w-8 h-8"></i>
+                        <i data-lucide="fingerprint" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-slate-800 mb-3">Digital Coaching</h3>
-                    <p class="text-slate-600 leading-relaxed mb-6 text-sm">
-                        Struggling with the PICA or RGD website? We guide you step-by-step via Zoom. You control the mouse; we provide the brainpower.
+                    <h3 class="text-2xl font-bold text-slate-800 mb-3">Identity Services</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6 text-sm flex-grow">
+                        Getting a job? We get your numbers sorted fast. We process applications for <strong>TRN and NIS</strong> cards so you can get on the payroll.
                     </p>
-                    <span class="inline-block text-[10px] font-bold bg-amber-100 text-amber-800 px-3 py-1 rounded-full uppercase tracking-wider border border-amber-200">Virtual / Global</span>
+                    <ul class="text-xs text-slate-500 mb-6 space-y-2 font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-500"></i> TRN & NIS Processing</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-500"></i> Police Record Assistance</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-500"></i> "No ID" Declarations</li>
+                    </ul>
+                    <span class="inline-block text-[10px] font-bold bg-amber-100 text-amber-800 px-3 py-1 rounded-full uppercase tracking-wider border border-amber-200 self-start">Job Seekers & Students</span>
                 </div>
-                <div class="service-card card-blue p-8 rounded-xl shadow-lg">
+
+                <div class="service-card card-blue p-8 rounded-xl shadow-lg flex flex-col">
                     <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 text-blue-600 shadow-inner">
-                        <i data-lucide="file-text" class="w-8 h-8"></i>
+                        <i data-lucide="file-badge" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-slate-800 mb-3">Form Preparation</h3>
-                    <p class="text-slate-600 leading-relaxed mb-6 text-sm">
-                        Don't spoil the form. We type it up for you perfectly, creating a submission-ready PDF based on your data.
+                    <h3 class="text-2xl font-bold text-slate-800 mb-3">Vital Records (RGD)</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6 text-sm flex-grow">
+                        Need a certificate for a Visa or Insurance? We manage the application for <strong>Birth, Marriage, and Death Certificates</strong> directly with the RGD.
                     </p>
-                    <span class="inline-block text-[10px] font-bold bg-blue-100 text-blue-800 px-3 py-1 rounded-full uppercase tracking-wider border border-blue-200">In-Person Only</span>
+                    <ul class="text-xs text-slate-500 mb-6 space-y-2 font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-blue-500"></i> Online Application Service</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-blue-500"></i> Error Corrections</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-blue-500"></i> Late Registration</li>
+                    </ul>
+                    <span class="inline-block text-[10px] font-bold bg-blue-100 text-blue-800 px-3 py-1 rounded-full uppercase tracking-wider border border-blue-200 self-start">Global Service</span>
                 </div>
-                <div class="service-card card-green p-8 rounded-xl shadow-lg">
+
+                <div class="service-card card-green p-8 rounded-xl shadow-lg flex flex-col">
                     <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6 text-emerald-600 shadow-inner">
                         <i data-lucide="car" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-slate-800 mb-3">Payment Agency</h3>
-                    <p class="text-slate-600 leading-relaxed mb-6 text-sm">
-                        Vehicle renewal & Property Tax. We pay it at the Collectorate so you don't have to stand in line.
+                    <h3 class="text-2xl font-bold text-slate-800 mb-3">Tax & Transport</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6 text-sm flex-grow">
+                        Don't waste a day in line. We handle <strong>Motor Vehicle & Property Tax</strong> renewals at the Collectorate for you.
                     </p>
-                    <span class="inline-block text-[10px] font-bold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full uppercase tracking-wider border border-emerald-200">In-Person Only</span>
+                    <ul class="text-xs text-slate-500 mb-6 space-y-2 font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-emerald-500"></i> Fitness Fee Payment</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-emerald-500"></i> Registration/Sticker Pickup</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-emerald-500"></i> Property Tax Management</li>
+                    </ul>
+                    <span class="inline-block text-[10px] font-bold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full uppercase tracking-wider border border-emerald-200 self-start">Taxi & Homeowners</span>
                 </div>
+
             </div>
         </div>
     </section>
 
     <section class="bg-slate-800 text-white py-24 border-t-4 border-amber-500" id="contact">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-6">Ready to Begin?</h2>
+            <h2 class="text-4xl font-bold mb-6">Ready to Start?</h2>
             <p class="max-w-xl mx-auto mb-10 text-slate-300 text-lg">
-                Take the first step towards a stress-free application. Send us a message to book your initial consultation.
+                Send us a message to confirm your documents and book a slot. We handle the rest.
             </p>
             
-            <a href="https://wa.me/18765612614?text=Greetings%20Docu-Hub,%20I%20have%20an%20inquiry%20about%20your%20services." target="_blank" class="bg-green-600 text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-green-500 transition duration-300 inline-flex items-center gap-2 shadow-xl border-b-4 border-green-800 active:border-b-0 active:mt-1">
-                <i data-lucide="message-circle" class="w-6 h-6"></i> Message Us on WhatsApp
+            <a href="https://wa.me/18765612614?text=Greetings%20Docu-Hub,%20I%20would%20like%20to%20book%20a%20service.%20What%20is%20the%20next%20step?" target="_blank" class="bg-green-600 text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-green-500 transition duration-300 inline-flex items-center gap-2 shadow-xl border-b-4 border-green-800 active:border-b-0 active:mt-1">
+                <i data-lucide="message-circle" class="w-6 h-6"></i> WhatsApp Us Now
             </a>
             
             <p class="mt-8 text-sm text-slate-400">Or email us at: <a href="mailto:admin@dochubservices.com" class="text-amber-400 hover:text-amber-300 underline underline-offset-4">admin@dochubservices.com</a></p>
         </div>
     </section>
 
-   <footer class="bg-black text-slate-500 py-10 border-t border-slate-900">
-    <div class="container mx-auto px-6 text-center">
-        <div class="flex justify-center gap-8 mb-6 text-xs uppercase tracking-widest font-bold">
-            <a href="legal/terms_of_service.pdf" target="_blank" class="hover:text-amber-500 transition">Terms</a>
-            <a href="legal/privacy_policy.pdf" target="_blank" class="hover:text-amber-500 transition">Privacy</a>
-            
-            <a href="mailto:admin@dochubservices.com?subject=Inquiry%20from%20Docu-Hub%20Website" class="hover:text-amber-500 transition">Email</a>
-            <a href="https://wa.me/18765612614?text=Greetings%20Docu-Hub,%20I%20have%20an%20inquiry." target="_blank" class="hover:text-green-500 transition">WhatsApp</a>
+    <footer class="bg-black text-slate-500 py-10 border-t border-slate-900">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center gap-8 mb-6 text-xs uppercase tracking-widest font-bold">
+                <a href="legal/terms_of_service.pdf" target="_blank" class="hover:text-amber-500 transition">Terms</a>
+                <a href="legal/privacy_policy.pdf" target="_blank" class="hover:text-amber-500 transition">Privacy</a>
+                
+                <a href="mailto:admin@dochubservices.com?subject=Inquiry%20from%20Docu-Hub%20Website" class="hover:text-amber-500 transition">Email</a>
+                <a href="https://wa.me/18765612614?text=Greetings%20Docu-Hub,%20I%20have%20an%20inquiry." target="_blank" class="hover:text-green-500 transition">WhatsApp</a>
+            </div>
+            <p class="mb-2">&copy; 2025 Docu-Hub Operations Services. All Rights Reserved.</p>
+            <p class="text-xs text-slate-600">St. Catherine, Jamaica 🇯🇲</p>
         </div>
-        <p class="mb-2">&copy; 2025 Docu-Hub Operations Services. All Rights Reserved.</p>
-        <p class="text-xs text-slate-600">St. Catherine, Jamaica 🇯🇲</p>
-    </div>
-</footer>
+    </footer>
 
     <script>
         lucide.createIcons();
     </script>
 </body>
 </html>
-
-
-
-
-
