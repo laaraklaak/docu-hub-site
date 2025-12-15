@@ -23,11 +23,12 @@
                             800: '#1e293b', 
                             900: '#1a202c', 
                         },
+                        // Adjusted gold for better text contrast if needed
                         gold: { 500: '#D4AF37', 600: '#B5952F' }
                     },
                     fontFamily: {
                         sans: ['Poppins', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        serif:,
                     }
                 }
             }
@@ -38,365 +39,353 @@
         body { font-family: 'Poppins', sans-serif; background-color: #f8fafc; color: #334155; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         
-        /* Vibrant Buttons */
-        .btn-vibrant {
+        /* Vibrant Buttons - CONTRAST FIX */
+        /* White text on Orange background fails WCAG (2.3:1). 
+           Changed text to Slate-900 (Dark Blue) for 7:1 contrast. */
+       .btn-vibrant {
             background: linear-gradient(to right, #F59E0B, #D97706);
-            color: white;
-            font-weight: 600;
+            color: #1e293b; /* Dark text for accessibility */
+            font-weight: 700;
             border-bottom: 3px solid #92400E;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
             transition: all 0.2s ease;
         }
-        .btn-vibrant:hover {
+       .btn-vibrant:hover {
             transform: translateY(-2px);
             filter: brightness(1.1);
             box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.4);
         }
-        .btn-vibrant:active {
+       .btn-vibrant:active {
             transform: translateY(1px);
             border-bottom-width: 0px;
             margin-top: 3px;
         }
 
         /* Card Hover Effects */
-        .service-card {
+       .service-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             background: white;
             border: 1px solid #e2e8f0;
         }
-        .service-card:hover {
+       .service-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-        .card-gold { border-top: 6px solid #F59E0B; }
-        .card-blue { border-top: 6px solid #3B82F6; }
-        .card-green { border-top: 6px solid #10B981; }
+       .card-gold { border-top: 6px solid #F59E0B; }
+       .card-blue { border-top: 6px solid #3B82F6; }
+       .card-green { border-top: 6px solid #10B981; }
 
         /* Dark Slate Hero Background */
-        .hero-bg {
+       .hero-bg {
             background-color: #1a202c; 
             background-image: linear-gradient(rgba(26, 32, 44, 0.9), rgba(26, 32, 44, 0.9));
         }
+        
+        /* Utility for touch targets */
+       .touch-target {
+            min-height: 44px;
+            min-width: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
-<body class="antialiased">
-
- 
-</div>
+<body class="antialiased flex flex-col min-h-screen">
 
     <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-slate-200">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-2 group">
+            <a href="#" class="flex items-center gap-2 group p-2 -ml-2 rounded-lg hover:bg-slate-50 transition">
                 <div class="relative">
                     <img src="images/logo.png" alt="Docu-Hub Logo" class="h-10 w-10 object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-bold text-xl text-slate-900 tracking-wide leading-none">DOCU<span class="text-amber-500">.</span>HUB</span>
-                    <span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Operations Services</span>
+                    <span class="font-bold text-xl text-slate-900 tracking-wide leading-none">DOCU<span class="text-amber-600">.</span>HUB</span>
+                    <span class="text-xs text-slate-500 uppercase tracking-widest font-bold">Operations Services</span>
                 </div>
             </a>
             
-            <div class="flex items-center gap-6">
-                <a href="about.html" class="text-sm font-bold text-slate-600 hover:text-amber-500 transition">About Us</a>
-                <a href="intake_protocol.html" class="bg-slate-800 text-white font-bold py-2 px-6 rounded-full hover:bg-slate-700 transition duration-300 text-xs uppercase tracking-widest shadow-lg hidden md:block">
+            <div class="flex items-center gap-4">
+                <a href="about.html" class="text-sm font-bold text-slate-600 hover:text-amber-600 transition p-3">About Us</a>
+                
+                <a href="intake_protocol.html" class="bg-slate-800 text-white font-bold py-3 px-6 rounded-full hover:bg-slate-700 transition duration-300 text-xs uppercase tracking-widest shadow-lg hidden md:inline-flex items-center min-h-[44px]">
                     Start Process
                 </a>
             </div>
         </nav>
     </header>
 
-    <section class="hero-bg text-white py-24 md:py-32 px-6 relative overflow-hidden">
-        
-        <div class="container mx-auto text-center max-w-4xl relative z-10">
+    <main class="flex-grow">
+        <section class="hero-bg text-white py-24 md:py-32 px-6 relative overflow-hidden">
             
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/80 border border-blue-500/50 mb-8 backdrop-blur-sm shadow-xl">
-                <span class="relative flex h-3 w-3">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
-                </span>
-               <div class="bg-slate-900 text-slate-300 py-2 text-xs text-center">
-    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2">
-        
-        <p class="font-medium tracking-wide">
-            📍 <span class="text-amber-500">Based in Linstead.</span> Serving Island-wide via Knutsford Express.
-        </p>
-
-        <div class="hidden md:block">
-            <span class="mr-4">🕒 Mon-Fri: 9AM - 2PM</span>
-            <span>📞 (876) 561-2614</span>
-        </div>
-    </div>
-</div>
-            </div>
-
-            <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 drop-shadow-2xl">
-                Government Documents <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500">Made Simple.</span>
-            </h1>
-            
-            <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-                Official Business. No Runaround. <br>
-                "We process your TRN, RGD, and Tax Documents so you can focus on your life."<br>
-                <span class="text-white font-semibold block mt-4 bg-slate-800/50 inline-block px-4 py-1 rounded-lg border border-slate-700">Zero Data Errors. Fully Compliant.</span>
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-5 justify-center">
-                <a href="intake_protocol.html" class="btn-vibrant py-4 px-12 rounded-full text-lg flex items-center justify-center gap-2">
-                    <i data-lucide="briefcase" class="w-5 h-5"></i> Start Agency Intake
-                </a>
-                <a href="services.html" class="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white py-4 px-10 rounded-full font-bold uppercase tracking-wide hover:bg-white hover:text-slate-900 transition duration-300 shadow-lg">
-                    See All Services
-                </a>
-            </div>
-        </div>
-    </section>
-    <div class="bg-white border-b border-slate-200 py-10 shadow-sm relative z-20">
-        <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div class="flex flex-col items-center group">
-                <div class="p-3 bg-blue-50 rounded-full mb-3 group-hover:scale-110 transition duration-300">
-                    <i data-lucide="shield" class="w-8 h-8 text-blue-600"></i>
-                </div>
-                <p class="text-xs text-slate-700 font-bold uppercase tracking-widest">POCA Compliant</p>
-            </div>
-            <div class="flex flex-col items-center group">
-                <div class="p-3 bg-green-50 rounded-full mb-3 group-hover:scale-110 transition duration-300">
-                    <i data-lucide="check-circle-2" class="w-8 h-8 text-green-600"></i>
-                </div>
-                <p class="text-xs text-slate-700 font-bold uppercase tracking-widest">Zero Data Errors</p>
-            </div>
-             <div class="flex flex-col items-center group">
-                <div class="p-3 bg-slate-100 rounded-full mb-3 group-hover:scale-110 transition duration-300">
-                    <i data-lucide="lock" class="w-8 h-8 text-slate-600"></i>
-                </div>
-                <p class="text-xs text-slate-700 font-bold uppercase tracking-widest">Encrypted</p>
-            </div>
-             <div class="flex flex-col items-center group">
-                <div class="p-3 bg-amber-50 rounded-full mb-3 group-hover:scale-110 transition duration-300">
-                    <i data-lucide="thumbs-up" class="w-8 h-8 text-amber-600"></i>
-                </div>
-                <p class="text-xs text-slate-700 font-bold uppercase tracking-widest">Registered</p>
-            </div>
-        </div>
-    </div>
-<section id="featured-service" class="py-12 bg-slate-50 border-y border-slate-200">
-    <div class="container mx-auto px-4">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden border-l-4 border-amber-500 flex flex-col md:flex-row">
-            
-            <div class="p-8 md:p-12 flex-1 flex flex-col justify-center">
-                <div class="mb-4">
-                    <span class="inline-block bg-slate-800 text-amber-400 text-xs font-bold px-3 py-1 rounded uppercase tracking-widest">
-                        ★ Disaster Relief Initiative
-                    </span>
-                </div>
+            <div class="container mx-auto text-center max-w-4xl relative z-10">
                 
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 font-heading">
-                    Western Jamaica <span class="text-amber-600">Job-Ready Bundle</span>
-                </h2>
+                <div class="inline-flex flex-col md:flex-row items-center gap-4 px-6 py-3 rounded-2xl bg-slate-800/80 border border-blue-500/50 mb-8 backdrop-blur-sm shadow-xl">
+                    <div class="flex items-center gap-3">
+                        <span class="relative flex h-3 w-3">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+                        </span>
+                        
+                        <p class="font-medium tracking-wide text-sm">
+                             Based in Linstead. <span class="text-amber-400">Serving Island-wide.</span>
+                        </p>
+                    </div>
+
+                    <div class="hidden md:block w-px h-6 bg-slate-600"></div>
+
+                    <div class="hidden md:flex gap-4 text-xs font-mono text-slate-300">
+                        <span>Mon-Fri: 9AM - 2PM</span>
+                        <span>(876) 561-2614</span>
+                    </div>
+                </div>
+
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 drop-shadow-2xl">
+                    Government Documents <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500">Made Simple.</span>
+                </h1>
                 
-                <p class="text-slate-600 mb-6 text-lg leading-relaxed">
-                    <strong>Saved your ID, but lost your papers?</strong> We rebuild your file so you can get back on the payroll.
-                    <br><br>
-                    We use your current ID to process a replacement <strong>RGD Birth Certificate</strong> (Express) and retrieve your <strong>TRN & NIS Verification Numbers</strong>.
-                    <br>
-                    <span class="block mt-2 text-slate-800 font-medium">
-                        ✅ <strong>Secure Processing:</strong> Valid ID required to start (Passport/DL/Voter ID).<br>
-                        ✅ <strong>Payroll Ready:</strong> We retrieve the official Verification Slips for HR.<br>
-                        🚚 <strong>Delivered:</strong> 10-14 Day Turnaround via Knutsford Express.
-                    </span>
+                <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+                    Official Business. No Runaround. <br>
+                    "We process your TRN, RGD, and Tax Documents so you can focus on your life."<br>
+                    <span class="text-white font-semibold block mt-4 bg-slate-800/50 inline-block px-4 py-1 rounded-lg border border-slate-700">Zero Data Errors. Fully Compliant.</span>
                 </p>
-                
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="https://wa.me/18765612614?text=Greetings%20Docu-Hub,%20I%20have%20my%20ID%20and%20need%20the%20Job-Ready%20Bundle." 
-                       target="_blank"
-                       class="inline-flex justify-center items-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded transition shadow-md">
-                        Start Recovery Process <i data-lucide="life-buoy" class="ml-2 w-5 h-5"></i>
+
+                <div class="flex flex-col sm:flex-row gap-5 justify-center">
+                    <a href="intake_protocol.html" class="btn-vibrant py-4 px-12 rounded-full text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-amber-500/20">
+                        <i data-lucide="briefcase" class="w-5 h-5"></i> Start Agency Intake
+                    </a>
+                    <a href="services.html" class="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white py-4 px-10 rounded-full font-bold uppercase tracking-wide hover:bg-white hover:text-slate-900 transition duration-300 shadow-lg flex items-center justify-center">
+                        See All Services
                     </a>
                 </div>
             </div>
+        </section>
 
-            <div class="bg-slate-800 w-full md:w-1/3 flex items-center justify-center p-10 relative overflow-hidden">
-                <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-                <div class="text-center">
-                    <div class="bg-white/10 rounded-full p-6 inline-block mb-4 backdrop-blur-sm">
-                        <i data-lucide="folder-check" class="w-16 h-16 text-amber-400"></i>
+        <div class="bg-white border-b border-slate-200 py-10 shadow-sm relative z-20">
+            <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="flex flex-col items-center group">
+                    <div class="p-3 bg-blue-50 rounded-full mb-3 group-hover:scale-110 transition duration-300">
+                        <i data-lucide="shield" class="w-8 h-8 text-blue-600" aria-hidden="true"></i>
                     </div>
-                    <p class="text-slate-300 text-sm font-medium uppercase tracking-widest">
-                        RGD + TRN + NIS<br>One Package
-                    </p>
+                    <p class="text-xs text-slate-700 font-bold uppercase tracking-widest">POCA Compliant</p>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <div class="p-3 bg-green-50 rounded-full mb-3 group-hover:scale-110 transition duration-300">
+                        <i data-lucide="check-circle-2" class="w-8 h-8 text-green-600" aria-hidden="true"></i>
+                    </div>
+                    <p class="text-xs text-slate-700 font-bold uppercase tracking-widest">Zero Data Errors</p>
+                </div>
+                 <div class="flex flex-col items-center group">
+                    <div class="p-3 bg-slate-100 rounded-full mb-3 group-hover:scale-110 transition duration-300">
+                        <i data-lucide="lock" class="w-8 h-8 text-slate-600" aria-hidden="true"></i>
+                    </div>
+                    <p class="text-xs text-slate-700 font-bold uppercase tracking-widest">Encrypted</p>
+                </div>
+                 <div class="flex flex-col items-center group">
+                    <div class="p-3 bg-amber-50 rounded-full mb-3 group-hover:scale-110 transition duration-300">
+                        <i data-lucide="thumbs-up" class="w-8 h-8 text-amber-600" aria-hidden="true"></i>
+                    </div>
+                    <p class="text-xs text-slate-700 font-bold uppercase tracking-widest">Registered</p>
                 </div>
             </div>
-
         </div>
-    </div>
-</section>
-    
-  <section id="services" class="py-16 bg-slate-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">
-                    Our Core Services
-                </h2>
-                <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                    Need something else? We handle the <strong>submission, payment, and pickup</strong> for all standard government applications.
-                </p>
+
+        <section id="featured-service" class="py-12 bg-slate-50 border-y border-slate-200">
+            <div class="container mx-auto px-4">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden border-l-4 border-amber-500 flex flex-col md:flex-row">
+                    
+                    <div class="p-8 md:p-12 flex-1 flex flex-col justify-center">
+                        <div class="mb-4">
+                            <span class="inline-block bg-slate-800 text-amber-300 text-xs font-bold px-3 py-1 rounded uppercase tracking-widest">
+                                ★ Disaster Relief Initiative
+                            </span>
+                        </div>
+                        
+                        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 font-heading">
+                            Western Jamaica <span class="text-amber-700">Job-Ready Bundle</span>
+                        </h2>
+                        
+                        <p class="text-slate-600 mb-6 text-lg leading-relaxed max-w-prose">
+                            <strong>Saved your ID, but lost your papers?</strong> We rebuild your file so you can get back on the payroll.
+                            <br><br>
+                            We use your current ID to process a replacement <strong>RGD Birth Certificate</strong> (Express) and retrieve your <strong>TRN & NIS Verification Numbers</strong>.
+                        </p>
+                        
+                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 mb-6">
+                            <ul class="space-y-2 text-sm text-slate-700">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> <span class="font-semibold">Secure Processing:</span> Valid ID required.</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> <span class="font-semibold">Payroll Ready:</span> Verification Slips included.</li>
+                                <li class="flex items-center gap-2"><i data-lucide="truck" class="w-4 h-4 text-slate-600"></i> <span class="font-semibold">Delivered:</span> 10-14 Day Turnaround via Knutsford.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="https://wa.me/18765612614" 
+                               target="_blank"
+                               class="inline-flex justify-center items-center bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold py-3 px-8 rounded transition shadow-md min-h-[44px]">
+                                Start Recovery Process <i data-lucide="life-buoy" class="ml-2 w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800 w-full md:w-1/3 flex items-center justify-center p-10 relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+                        <div class="text-center">
+                            <div class="bg-white/10 rounded-full p-6 inline-block mb-4 backdrop-blur-sm">
+                                <i data-lucide="folder-check" class="w-16 h-16 text-amber-400" aria-hidden="true"></i>
+                            </div>
+                            <p class="text-slate-300 text-sm font-medium uppercase tracking-widest">
+                                RGD + TRN + NIS<br>One Package
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            
-           
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <div class="service-card card-gold p-8 rounded-xl shadow-lg flex flex-col">
-                    <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mb-6 text-amber-600 shadow-inner">
-                        <i data-lucide="fingerprint" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-800 mb-3">Identity Services</h3>
-                    <p class="text-slate-600 leading-relaxed mb-6 text-sm flex-grow">
-                        Getting a job? We get your numbers sorted fast. We process applications for <strong>TRN and NIS</strong> cards so you can get on the payroll.
-                    </p>
-                    <ul class="text-xs text-slate-500 mb-6 space-y-2 font-medium">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-500"></i> TRN & NIS Processing</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-500"></i> Police Record Assistance</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-500"></i> "No ID" Declarations</li>
-                    </ul>
-                    <span class="inline-block text-[10px] font-bold bg-amber-100 text-amber-800 px-3 py-1 rounded-full uppercase tracking-wider border border-amber-200 self-start">Job Seekers & Students</span>
-                </div>
-
-                <div class="service-card card-blue p-8 rounded-xl shadow-lg flex flex-col">
-                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 text-blue-600 shadow-inner">
-                        <i data-lucide="file-badge" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-800 mb-3">Vital Records (RGD)</h3>
-                    <p class="text-slate-600 leading-relaxed mb-6 text-sm flex-grow">
-                        Need a certificate for a Visa or Insurance? We manage the application for <strong>Birth, Marriage, and Death Certificates</strong> directly with the RGD.
-                    </p>
-                    <ul class="text-xs text-slate-500 mb-6 space-y-2 font-medium">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-blue-500"></i> Online Application Service</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-blue-500"></i> Error Corrections</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-blue-500"></i> Late Registration</li>
-                    </ul>
-                    <span class="inline-block text-[10px] font-bold bg-blue-100 text-blue-800 px-3 py-1 rounded-full uppercase tracking-wider border border-blue-200 self-start">Global Service</span>
-                </div>
-
-                <div class="service-card card-green p-8 rounded-xl shadow-lg flex flex-col">
-                    <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6 text-emerald-600 shadow-inner">
-                        <i data-lucide="car" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-800 mb-3">Tax & Transport</h3>
-                    <p class="text-slate-600 leading-relaxed mb-6 text-sm flex-grow">
-                        Don't waste a day in line. We handle <strong>Motor Vehicle & Property Tax</strong> renewals at the Collectorate for you.
-                    </p>
-                    <ul class="text-xs text-slate-500 mb-6 space-y-2 font-medium">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-emerald-500"></i> Fitness Fee Payment</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-emerald-500"></i> Registration/Sticker Pickup</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-emerald-500"></i> Property Tax Management</li>
-                    </ul>
-                    <span class="inline-block text-[10px] font-bold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full uppercase tracking-wider border border-emerald-200 self-start">Taxi & Homeowners</span>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="bg-slate-800 text-white py-24 border-t-4 border-amber-500" id="contact">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-6">Ready to Start?</h2>
-            <p class="max-w-xl mx-auto mb-10 text-slate-300 text-lg">
-                Send us a message to confirm your documents and book a slot. We handle the rest.
-            </p>
-            
-            <a href="https://wa.me/18765612614?text=Greetings%20Docu-Hub,%20I%20would%20like%20to%20book%20a%20service.%20What%20is%20the%20next%20step?" target="_blank" class="bg-green-600 text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-green-500 transition duration-300 inline-flex items-center gap-2 shadow-xl border-b-4 border-green-800 active:border-b-0 active:mt-1">
-                <i data-lucide="message-circle" class="w-6 h-6"></i> WhatsApp Us Now
-            </a>
-            
-            <p class="mt-8 text-sm text-slate-400">Or email us at: <a href="mailto:admin@dochubservices.com" class="text-amber-400 hover:text-amber-300 underline underline-offset-4">admin@dochubservices.com</a></p>
-        </div>
-    </section>
-
-   <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 font-sans">
-    <div class="container mx-auto px-4">
+        </section>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            
-            <div>
-                <div class="flex items-center gap-2 mb-4">
-                    <div class="w-8 h-8 bg-amber-500 rounded flex items-center justify-center text-slate-900 font-bold">
-                        D
+        <section id="services" class="py-16 bg-slate-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4">
+                        Our Core Services
+                    </h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                        Need something else? We handle the <strong>submission, payment, and pickup</strong> for all standard government applications.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <div class="service-card card-gold p-8 rounded-xl shadow-lg flex flex-col">
+                        <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mb-6 text-amber-700 shadow-inner">
+                            <i data-lucide="fingerprint" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-800 mb-3">Identity Services</h3>
+                        <p class="text-slate-600 leading-relaxed mb-6 text-base flex-grow">
+                            Getting a job? We get your numbers sorted fast. We process applications for <strong>TRN and NIS</strong> cards so you can get on the payroll.
+                        </p>
+                        <ul class="text-sm text-slate-600 mb-6 space-y-2 font-medium">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> TRN & NIS Processing</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> Police Record Assistance</li>
+                        </ul>
+                        <span class="inline-block text-xs font-bold bg-amber-100 text-amber-900 px-3 py-1 rounded-full uppercase tracking-wider border border-amber-200 self-start">Job Seekers & Students</span>
                     </div>
-                    <span class="text-white font-bold text-lg tracking-tight">DOCU-HUB OPERATIONS</span>
+
+                    <div class="service-card card-blue p-8 rounded-xl shadow-lg flex flex-col">
+                        <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 text-blue-700 shadow-inner">
+                            <i data-lucide="file-badge" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-800 mb-3">Vital Records (RGD)</h3>
+                        <p class="text-slate-600 leading-relaxed mb-6 text-base flex-grow">
+                            Need a certificate for a Visa or Insurance? We manage the application for <strong>Birth, Marriage, and Death Certificates</strong>.
+                        </p>
+                        <ul class="text-sm text-slate-600 mb-6 space-y-2 font-medium">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Online Application Service</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Error Corrections</li>
+                        </ul>
+                        <span class="inline-block text-xs font-bold bg-blue-100 text-blue-900 px-3 py-1 rounded-full uppercase tracking-wider border border-blue-200 self-start">Global Service</span>
+                    </div>
+
+                    <div class="service-card card-green p-8 rounded-xl shadow-lg flex flex-col">
+                        <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6 text-emerald-700 shadow-inner">
+                            <i data-lucide="car" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-800 mb-3">Tax & Transport</h3>
+                        <p class="text-slate-600 leading-relaxed mb-6 text-base flex-grow">
+                            Don't waste a day in line. We handle <strong>Motor Vehicle & Property Tax</strong> renewals at the Collectorate for you.
+                        </p>
+                        <ul class="text-sm text-slate-600 mb-6 space-y-2 font-medium">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Fitness Fee Payment</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Registration Pickup</li>
+                        </ul>
+                        <span class="inline-block text-xs font-bold bg-emerald-100 text-emerald-900 px-3 py-1 rounded-full uppercase tracking-wider border border-emerald-200 self-start">Taxi & Homeowners</span>
+                    </div>
+
                 </div>
-                <p class="text-sm leading-relaxed mb-4 text-slate-500">
-                    Official Business. No Runaround. <br>
-                    Your trusted administrative agent for government compliance, identity retrieval, and tax logistics.
+            </div>
+        </section>
+
+        <section class="bg-slate-800 text-white py-24 border-t-4 border-amber-500" id="contact">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-6">Ready to Start?</h2>
+                <p class="max-w-xl mx-auto mb-10 text-slate-300 text-lg">
+                    Send us a message to confirm your documents and book a slot. We handle the rest.
                 </p>
-                <div class="flex gap-2">
-                    <span class="bg-slate-800 text-amber-500 text-[10px] font-bold px-2 py-1 rounded border border-slate-700">
-                        REGISTERED DATA CONTROLLER
-                    </span>
-                    <span class="bg-slate-800 text-slate-300 text-[10px] font-bold px-2 py-1 rounded border border-slate-700">
-                        POCA COMPLIANT
-                    </span>
+                
+                <a href="https://wa.me/18765612614" target="_blank" class="bg-green-600 text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-green-500 transition duration-300 inline-flex items-center gap-2 shadow-xl border-b-4 border-green-800 active:border-b-0 active:mt-1 min-h-[44px]">
+                    <i data-lucide="message-circle" class="w-6 h-6"></i> WhatsApp Us Now
+                </a>
+                
+                <p class="mt-8 text-sm text-slate-400">Or email us at: <a href="mailto:admin@dochubservices.com" class="text-amber-400 hover:text-amber-300 underline underline-offset-4 p-2 inline-block">admin@dochubservices.com</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 font-sans">
+        <div class="container mx-auto px-4">
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-amber-500 rounded flex items-center justify-center text-slate-900 font-bold">D</div>
+                        <span class="text-white font-bold text-lg tracking-tight">DOCU-HUB</span>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-4 text-slate-500">
+                        Official Business. No Runaround. <br>
+                        Your trusted administrative agent for government compliance.
+                    </p>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="bg-slate-800 text-amber-500 text-xs font-bold px-2 py-1 rounded border border-slate-700">DATA CONTROLLER</span>
+                        <span class="bg-slate-800 text-slate-300 text-xs font-bold px-2 py-1 rounded border border-slate-700">POCA COMPLIANT</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-bold mb-4 uppercase text-xs tracking-wider">Core Services</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#services" class="hover:text-amber-500 transition p-1 inline-block">Identity Services</a></li>
+                        <li><a href="#featured-service" class="hover:text-amber-500 transition p-1 inline-block">Western Recovery Bundle</a></li>
+                        <li><a href="#services" class="hover:text-amber-500 transition p-1 inline-block">Vital Records (RGD)</a></li>
+                        <li><a href="#services" class="hover:text-amber-500 transition p-1 inline-block">Motor Vehicle & Tax</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-bold mb-4 uppercase text-xs tracking-wider">Contact Us</h3>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5" aria-hidden="true"></i>
+                            <span>361 Charlemont, Linstead,<br>St. Catherine, Jamaica</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-5 h-5 text-amber-500 shrink-0" aria-hidden="true"></i>
+                            <a href="tel:8765612614" class="hover:text-white p-1">(876) 561-2614</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-amber-500 shrink-0" aria-hidden="true"></i>
+                            <a href="mailto:admin@dochubservices.com" class="hover:text-white transition p-1">admin@dochubservices.com</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
-            <div>
-                <h3 class="text-white font-bold mb-4 uppercase text-xs tracking-wider">Core Services</h3>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="#services" class="hover:text-amber-500 transition">Identity Services (TRN/NIS)</a></li>
-                    <li><a href="#featured-service" class="hover:text-amber-500 transition">Western Recovery Bundle</a></li>
-                    <li><a href="#services" class="hover:text-amber-500 transition">Vital Records (RGD)</a></li>
-                    <li><a href="#services" class="hover:text-amber-500 transition">Motor Vehicle & Tax</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h3 class="text-white font-bold mb-4 uppercase text-xs tracking-wider">Contact Us</h3>
-                <ul class="space-y-3 text-sm">
-                    <li class="flex items-start gap-3">
-                        <i data-lucide="map-pin" class="w-5 h-5 text-amber-500 shrink-0"></i>
-                        <span>361 Charlemont, Linstead,<br>St. Catherine, Jamaica</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <i data-lucide="phone" class="w-5 h-5 text-amber-500 shrink-0"></i>
-                        <span>(876) 561-2614</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <i data-lucide="mail" class="w-5 h-5 text-amber-500 shrink-0"></i>
-                        <a href="mailto:admin@dochubservices.com" class="hover:text-white transition">admin@dochubservices.com</a>
-                    </li>
-                </ul>
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+                <div class="text-slate-500">
+                    &copy; 2025 Docu-Hub Operations Services. All Rights Reserved.
+                </div>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="terms.html" class="hover:text-amber-500 transition p-2">Terms of Service</a>
+                    <a href="privacy.html" class="hover:text-amber-500 transition p-2">Privacy Policy</a>
+                    <a href="legal-notice.html" class="hover:text-amber-500 transition font-bold text-slate-300 p-2">Legal Notice</a>
+                </div>
             </div>
         </div>
-
-        <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
-            
-            <div class="text-slate-500">
-                &copy; 2025 Docu-Hub Operations Services. All Rights Reserved.
-            </div>
-
-            <div class="flex flex-wrap justify-center gap-4 md:gap-6">
-                <a href="terms.html" class="hover:text-amber-500 transition">Terms of Service</a>
-                <span class="text-slate-700 hidden md:inline">|</span>
-                <a href="privacy.html" class="hover:text-amber-500 transition">Privacy Policy</a>
-                <span class="text-slate-700 hidden md:inline">|</span>
-                <a href="legal-notice.html" class="hover:text-amber-500 transition font-bold text-slate-300">Legal Notice</a>
-            </div>
-
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <script>
         lucide.createIcons();
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
