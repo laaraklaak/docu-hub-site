@@ -19,7 +19,7 @@
                 extend: {
                     colors: {
                         slate: { 
-                            200: '#e2e8f0', /* Light Grey Background */
+                            200: '#e2e8f0', 
                             800: '#1e293b', 
                             900: '#1a202c' 
                         },
@@ -27,7 +27,7 @@
                     },
                     fontFamily: {
                         sans: ['Poppins', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        serif: ['Playfair Display', 'serif'] /* FIXED: Added correct font family here */
                     }
                 }
             }
@@ -35,16 +35,15 @@
     </script>
 
     <style>
-        /* BODY BG: Light Grey */
         body { font-family: 'Poppins', sans-serif; background-color: #e2e8f0; color: #334155; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
+        /* Button Styling */
         .btn-vibrant {
             background: linear-gradient(to right, #F59E0B, #D97706);
-            color: white;
-            font-weight: 600;
+            color: #1e293b; 
+            font-weight: 700;
             border-bottom: 3px solid #92400E;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
             transition: all 0.2s ease;
         }
         .btn-vibrant:hover {
@@ -52,75 +51,89 @@
             filter: brightness(1.1);
             box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.4);
         }
+        .btn-vibrant:active {
+            transform: translateY(1px);
+            border-bottom-width: 0px;
+            margin-top: 3px;
+        }
 
-        /* CARD BG: White */
         .about-card {
             background: white;
             border: 1px solid #cbd5e1;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
+        
+        /* Utility for touch targets */
+        .touch-target {
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+        }
     </style>
 </head>
-<body class="antialiased">
-    <div class="bg-slate-900 text-slate-300 py-2 text-xs text-center">
-    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2">
-        
-        <p class="font-medium tracking-wide">
-            📍 <span class="text-amber-500">Based in Linstead.</span> Serving Island-wide via Knutsford Express.
-        </p>
-
-        <div class="hidden md:block">
-            <span class="mr-4">🕒 Mon-Fri: 9AM - 5PM</span>
-            <span>📞 (876) 561-2614</span>
+<body class="antialiased flex flex-col min-h-screen">
+    
+    <div class="bg-slate-900 text-slate-300 py-3 text-xs text-center border-b border-slate-800">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2">
+            <p class="font-medium tracking-wide">
+                📍 <span class="text-amber-500">Based in Linstead.</span> Serving Island-wide via Knutsford Express.
+            </p>
+            <div class="hidden md:block">
+                <span class="mr-4">🕒 Mon-Fri: 9AM - 5PM</span>
+                <span>📞 (876) 561-2614</span>
+            </div>
         </div>
     </div>
-</div>
 
     <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-slate-200">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             
-            <a href="index.html" class="flex items-center gap-3 group">
-                <img src="images/logo.png" alt="Docu-Hub Logo" class="h-12 w-12 object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300">
+            <a href="index.html" class="flex items-center gap-3 group touch-target p-2 -ml-2 rounded-lg hover:bg-slate-50 transition">
+                <div class="relative w-10 h-10">
+                    <img src="images/logo.png" alt="Docu-Hub Logo" class="object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300">
+                </div>
                 
                 <div class="flex flex-col">
-                    <span class="font-bold text-2xl text-slate-900 tracking-wide leading-none">DOCU<span class="text-amber-500">.</span>HUB</span>
-                    <span class="text-xs text-slate-500 uppercase tracking-widest font-bold">Operations Services</span>
+                    <span class="font-bold text-2xl text-slate-900 tracking-wide leading-none">DOCU<span class="text-amber-600">.</span>HUB</span>
+                    <span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Operations Services</span>
                 </div>
             </a>
             
             <div class="flex items-center gap-6">
-                <a href="index.html" class="text-sm font-bold text-amber-600 uppercase tracking-wider flex items-center gap-2 hover:text-amber-700 transition">
-                    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back Home
+                <a href="index.html" class="text-sm font-bold text-amber-700 uppercase tracking-wider flex items-center gap-2 hover:text-amber-800 transition p-2 touch-target">
+                    <i data-lucide="arrow-left" class="w-5 h-5" aria-hidden="true"></i> Back Home
                 </a>
             </div>
 
         </nav>
     </header>
 
-    <main class="px-6 py-16 max-w-3xl mx-auto">
+    <main class="px-6 py-16 max-w-3xl mx-auto flex-grow">
         
-        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-8 text-center">Who We Are</h1>
+        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-10 text-center leading-tight">Who We Are</h1>
 
         <div class="about-card p-8 rounded-2xl mb-12 relative overflow-hidden">
             <div class="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-full -translate-y-1/2 translate-x-1/2"></div>
             
-            <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center gap-2">
-                <i data-lucide="user-check" class="w-6 h-6 text-amber-500"></i> Laura Clarke
+            <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center gap-3 relative z-10">
+                <i data-lucide="user-check" class="w-6 h-6 text-amber-700" aria-hidden="true"></i> Laura Clarke
             </h2>
+            
             <p class="text-lg leading-relaxed text-slate-700 mb-6 font-medium">
                 Docu-Hub is led by Laura Clarke. This isn't just "filling forms"—it's about accuracy and integrity.
             </p>
-            <p class="text-base text-slate-600 mb-6 leading-relaxed font-medium">
+            <p class="text-base text-slate-600 mb-6 leading-relaxed">
                 With a background in <strong>Banking Sector Compliance (KYC/AML)</strong> and Statutory Data Auditing, Laura understands that in Jamaica, "the small print matters."
             </p>
-            <div class="bg-amber-50 border-l-4 border-amber-500 p-4 text-sm text-slate-700 italic font-bold rounded-r-lg">
+            
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-4 text-sm text-slate-800 italic font-medium rounded-r-lg">
                 "We operate with bank-grade standards for ordinary people. No shortcuts."
             </div>
         </div>
 
         <div class="about-card p-8 rounded-2xl mb-12 text-center border-2 border-red-200 bg-red-50">
-            <h3 class="text-red-700 font-bold uppercase tracking-widest text-xs mb-3 border-b border-red-200 inline-block pb-1">Straight & Straight Disclaimer</h3>
-            <p class="text-slate-900 font-black text-2xl mb-4">Administrative Only.</p>
+            <h3 class="text-red-800 font-bold uppercase tracking-widest text-xs mb-3 border-b border-red-200 inline-block pb-1">The Straight Talk</h3>
+            <p class="text-slate-900 font-black text-2xl mb-4 font-serif">Administrative Only.</p>
             <p class="text-slate-700 text-base leading-relaxed font-medium">
                 We are <strong>NOT</strong> Attorneys or Legal Advisors. We provide clerical assistance and technical guidance. 
                 <br><br>
@@ -130,64 +143,61 @@
 
         <h3 class="font-bold text-slate-900 mb-6 text-xl text-center">Our Legal Shield</h3>
         <div class="grid gap-4 mb-16">
-            <div class="about-card p-4 rounded-xl flex items-center justify-between border-l-4 border-blue-500">
+            
+            <div class="about-card p-4 rounded-xl flex items-center justify-between border-l-4 border-blue-600">
                 <div class="flex items-center gap-3">
-                    <i data-lucide="shield" class="w-5 h-5 text-blue-600"></i>
+                    <i data-lucide="shield" class="w-5 h-5 text-blue-700" aria-hidden="true"></i>
                     <span class="text-sm text-slate-700 font-bold">Data Protection Act</span>
                 </div>
-                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Registration Submitted</span>
+                <span class="bg-blue-100 text-blue-900 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Processing Active</span>
             </div>
             
-            <div class="about-card p-4 rounded-xl flex items-center justify-between border-l-4 border-green-500">
+            <div class="about-card p-4 rounded-xl flex items-center justify-between border-l-4 border-green-600">
                 <div class="flex items-center gap-3">
-                    <i data-lucide="check-circle" class="w-5 h-5 text-green-600"></i>
+                    <i data-lucide="check-circle" class="w-5 h-5 text-green-700" aria-hidden="true"></i>
                     <span class="text-sm text-slate-700 font-bold">POCA Compliant</span>
                 </div>
-                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Verified Protocols</span>
+                <span class="bg-green-100 text-green-900 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Verified Protocols</span>
             </div>
             
-            <div class="about-card p-4 rounded-xl flex items-center justify-between border-l-4 border-green-500">
+            <div class="about-card p-4 rounded-xl flex items-center justify-between border-l-4 border-green-600">
                 <div class="flex items-center gap-3">
-                    <i data-lucide="lock" class="w-5 h-5 text-green-600"></i>
-                    <span class="text-sm text-slate-700 font-bold">PII Insured</span>
+                    <i data-lucide="lock" class="w-5 h-5 text-green-700" aria-hidden="true"></i>
+                    <span class="text-sm text-slate-700 font-bold">Professional Indemnity</span>
                 </div>
-                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Active Coverage</span>
+                <span class="bg-green-100 text-green-900 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Active Coverage</span>
             </div>
         </div>
 
         <div class="text-center">
-            <a href="intake_protocol.html" class="btn-vibrant inline-block px-10 py-4 rounded-full font-bold text-lg shadow-xl tracking-wide">
+            <a href="intake_protocol.html" class="btn-vibrant inline-flex items-center justify-center px-10 py-4 rounded-full font-bold text-lg shadow-xl tracking-wide min-h-[56px] min-w-[200px]">
                 Start Your Process
             </a>
         </div>
 
     </main>
 
-   <footer class="bg-slate-900 text-slate-400 py-12 text-sm border-t border-slate-800">
-    <div class="container mx-auto px-4">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-            
-            <div class="text-center md:text-left">
-                <p>&copy; 2026 Docu-Hub Operations Services.</p>
-                <p class="text-xs text-slate-600 mt-1">Official Business. No Runaround.</p>
-            </div>
+    <footer class="bg-slate-900 text-slate-400 py-12 text-sm border-t border-slate-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                
+                <div class="text-center md:text-left">
+                    <p class="font-bold text-slate-200">&copy; <script>document.write(new Date().getFullYear())</script> Docu-Hub Operations Services.</p>
+                    <p class="text-xs text-slate-500 mt-1">Official Business. No Runaround.</p>
+                </div>
 
-            <div class="flex items-center gap-4">
-                <a href="privacy.html" class="hover:text-amber-500 transition">Privacy Policy</a>
-                <span class="text-slate-700">|</span>
-                <a href="legal-notice.html" class="hover:text-amber-500 transition">Legal Notice</a>
+                <div class="flex items-center gap-6">
+                    <a href="privacy.html" class="hover:text-amber-500 transition p-2 touch-target">Privacy Policy</a>
+                    <span class="text-slate-700 hidden md:inline">|</span>
+                    <a href="legal-notice.html" class="hover:text-amber-500 transition p-2 touch-target">Legal Notice</a>
+                </div>
+                
             </div>
-            
         </div>
-    </div>
-</footer>
+    </footer>
 
     <script>
         lucide.createIcons();
     </script>
 </body>
 </html>
-
-
-
-
