@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services | Docu-Hub Operations</title>
     <link rel="icon" type="image/png" href="favicon.png">
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -19,194 +21,240 @@
                     },
                     fontFamily: {
                         sans: ['Poppins', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        serif: ['Playfair Display', 'serif']
                     }
                 }
             }
         }
     </script>
     <style>
-        .hero-bg { background-color: #1a202c; background-image: linear-gradient(rgba(26, 32, 44, 0.95), rgba(26, 32, 44, 0.95)); }
-        .price-tag { font-family: 'Playfair Display', serif; }
+       .hero-bg { 
+            background-color: #1a202c; 
+            background-image: linear-gradient(rgba(26, 32, 44, 0.95), rgba(26, 32, 44, 0.95)); 
+        }
+       .touch-target {
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased">
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
 
     <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-slate-200">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 touch-target group">
                 <div class="flex flex-col">
-                    <span class="font-bold text-xl text-slate-900 tracking-wide leading-none">DOCU<span class="text-amber-500">.</span>HUB</span>
+                    <span class="font-bold text-xl text-slate-900 tracking-wide leading-none group-hover:text-slate-700 transition">DOCU<span class="text-amber-600">.</span>HUB</span>
                     <span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Operations Services</span>
                 </div>
             </a>
-            <div class="flex items-center gap-6">
-                <a href="index.html" class="text-sm font-bold text-slate-600 hover:text-amber-500 transition">Home</a>
-                <a href="intake_protocol.html" class="bg-slate-800 text-white font-bold py-2 px-6 rounded-full hover:bg-slate-700 transition duration-300 text-xs uppercase tracking-widest shadow-lg hidden md:block">
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-sm font-bold text-slate-600 hover:text-amber-700 transition p-3 touch-target">Home</a>
+                <a href="intake_protocol.html" class="bg-slate-800 text-white font-bold py-2 px-6 rounded-full hover:bg-slate-700 transition duration-300 text-xs uppercase tracking-widest shadow-lg hidden md:inline-flex items-center min-h-[44px]">
                     Start Process
                 </a>
             </div>
         </nav>
     </header>
 
-    <section class="hero-bg text-white py-16 px-6">
-        <div class="container mx-auto text-center max-w-3xl">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4 font-serif">Our Services</h1>
-            <p class="text-xl text-amber-400 font-medium mb-6">Official Business. No Runaround.</p>
-            <p class="text-slate-300 font-light leading-relaxed">
-                Docu-Hub Operations Services functions as your administrative agency, specializing in the logistical execution of high-volume government document processing. We guarantee legal compliance and zero data errors, allowing you to focus on your employment, business, or personal affairs.
+    <main class="flex-grow">
+        <section class="hero-bg text-white py-16 px-6">
+            <div class="container mx-auto text-center max-w-3xl">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 font-serif">Our Services</h1>
+                <p class="text-xl text-amber-400 font-medium mb-6">Official Business. No Runaround.</p>
+                <p class="text-slate-300 font-light leading-relaxed text-lg">
+                    Docu-Hub Operations Services functions as your administrative agency, specializing in the logistical execution of high-volume government document processing. We guarantee legal compliance and zero data errors.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-20 container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-baseline gap-4 mb-10 border-b border-slate-200 pb-4">
+                <h2 class="text-3xl font-bold text-slate-900 font-serif">Tier 1: Full Agency (We Run)</h2>
+                <span class="bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Most Popular</span>
+            </div>
+            
+            <p class="text-slate-600 mb-10 max-w-3xl text-base leading-relaxed">
+                This tier provides end-to-end service, where Docu-Hub handles the entire lifecycle: Data Entry, Logistics (Road Runs to the Tax Office/NIS/RGD), and Collection. Ideal for clients seeking the fastest path to compliance.
             </p>
-        </div>
-    </section>
 
-    <section class="py-20 container mx-auto px-6">
-        <div class="flex flex-col md:flex-row items-baseline gap-4 mb-10 border-b border-slate-200 pb-4">
-            <h2 class="text-3xl font-bold text-slate-900 font-serif">Tier 1: Full Agency (We Run)</h2>
-            <span class="bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Most Popular</span>
-        </div>
-        <p class="text-slate-600 mb-10 max-w-3xl">
-            This tier provides end-to-end service, where Docu-Hub handles the entire lifecycle: Data Entry, Logistics (Road Runs to the Tax Office/NIS/RGD), and Collection. Ideal for clients seeking the fastest path to compliance.
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            
-            <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-amber-500 hover:shadow-xl transition">
-                <div class="h-12 w-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mb-4">
-                    <i data-lucide="briefcase"></i>
-                </div>
-                <h3 class="font-bold text-lg mb-2">"Job Seeker" Bundle</h3>
-                <p class="text-xs text-slate-500 uppercase tracking-wide mb-4">For BPO / Construction / Students</p>
-                <p class="text-sm text-slate-600 mb-6">TRN & NIS Application. Includes typing, stamp duty, submission, and collection.</p>
-                <div class="mt-auto pt-4 border-t border-slate-100">
-                    <span class="block text-xs text-slate-400">Service Fee</span>
-                    <span class="text-2xl font-bold text-slate-900 price-tag">J$5,000</span>
-                </div>
-            </div>
-
-            <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-emerald-500 hover:shadow-xl transition">
-                <div class="h-12 w-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mb-4">
-                    <i data-lucide="car"></i>
-                </div>
-                <h3 class="font-bold text-lg mb-2">"Road Ready" Bundle</h3>
-                <p class="text-xs text-slate-500 uppercase tracking-wide mb-4">Taxi Operators / Professionals</p>
-                <p class="text-sm text-slate-600 mb-6">Motor Vehicle Renewal. Fitness fee payment, Reg sticker pickup, Insurance cover note org.</p>
-                <div class="mt-auto pt-4 border-t border-slate-100">
-                    <span class="block text-xs text-slate-400">Service Fee</span>
-                    <span class="text-2xl font-bold text-slate-900 price-tag">J$4,000</span>
-                </div>
-            </div>
-
-            <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-blue-500 hover:shadow-xl transition">
-                <div class="h-12 w-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-4">
-                    <i data-lucide="plane"></i>
-                </div>
-                <h3 class="font-bold text-lg mb-2">"Visa & Voyage"</h3>
-                <p class="text-xs text-slate-500 uppercase tracking-wide mb-4">Returning Residents / Visa Apps</p>
-                <p class="text-sm text-slate-600 mb-6">RGD Certificate (Birth/Death/Marriage). Application prep, online payment processing, print/delivery.</p>
-                <div class="mt-auto pt-4 border-t border-slate-100">
-                    <span class="block text-xs text-slate-400">Service Fee</span>
-                    <span class="text-2xl font-bold text-slate-900 price-tag">J$3,500</span>
-                </div>
-            </div>
-
-            <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-purple-500 hover:shadow-xl transition">
-                <div class="h-12 w-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mb-4">
-                    <i data-lucide="home"></i>
-                </div>
-                <h3 class="font-bold text-lg mb-2">"New Homeowner"</h3>
-                <p class="text-xs text-slate-500 uppercase tracking-wide mb-4">SilverSun / Phoenix Park Owners</p>
-                <p class="text-sm text-slate-600 mb-6">Property Tax. Valuation check, arrears calculation, payment processing.</p>
-                <div class="mt-auto pt-4 border-t border-slate-100">
-                    <span class="block text-xs text-slate-400">Service Fee</span>
-                    <span class="text-2xl font-bold text-slate-900 price-tag">J$2,000</span>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="bg-slate-100 py-20 border-y border-slate-200">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row gap-10 items-center">
-                <div class="md:w-1/2">
-                    <div class="flex items-center gap-3 mb-4">
-                         <h2 class="text-3xl font-bold text-slate-900 font-serif">Tier 2: Submission-Ready</h2>
-                         <span class="bg-slate-200 text-slate-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">You Run</span>
-                    </div>
-                   
-                    <p class="text-slate-600 mb-6 leading-relaxed">
-                        Designed for the budget-conscious client. We provide professionally prepared, "Zero Error" paperwork, checklists, and branded envelopes. 
-                    </p>
-                    <div class="bg-white p-4 rounded-lg border border-slate-200 shadow-sm inline-block">
-                        <strong class="block text-slate-900 mb-1">What you get:</strong>
-                        <ul class="text-sm text-slate-600 space-y-1">
-                            <li>• Professional Typing (TRN/NIS/RGD)</li>
-                            <li>• "Ready-to-Go" Checklist</li>
-                            <li>• Official Branded Envelope</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 
-                <div class="md:w-1/2 flex justify-center md:justify-end">
-                    <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-200 text-center w-full max-w-sm">
-                        <span class="text-sm font-bold text-slate-400 uppercase tracking-widest">Service Fee Range</span>
-                        <div class="text-4xl font-bold text-slate-900 price-tag my-2">J$1,500</div>
-                        <span class="text-sm text-slate-500">to J$2,000</span>
-                        <a href="intake_protocol.html" class="block mt-6 w-full py-3 bg-slate-800 text-white font-bold rounded-lg hover:bg-slate-700 transition">Get Started</a>
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-amber-500 hover:shadow-xl transition flex flex-col">
+                    <div class="h-12 w-12 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="briefcase" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900">"Job Seeker" Bundle</h3>
+                    <p class="text-xs text-slate-500 uppercase tracking-wide mb-4 font-bold">For BPO / Construction</p>
+                    <p class="text-sm text-slate-600 mb-6 flex-grow">TRN & NIS Application. Includes typing, stamp duty, submission, and collection.</p>
+                    <div class="mt-auto pt-4 border-t border-slate-100">
+                        <span class="block text-xs text-slate-400 uppercase font-bold">Service Fee</span>
+                        <div class="flex items-baseline justify-between mb-3">
+                            <span class="text-2xl font-bold text-slate-900 font-serif tabular-nums">J$5,000</span>
+                        </div>
+                        <a href="intake_protocol.html?service=job_seeker" class="block w-full text-center bg-amber-50 text-amber-800 font-bold py-2 rounded-lg border border-amber-200 hover:bg-amber-100 transition text-sm">
+                            Select Bundle
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-emerald-500 hover:shadow-xl transition flex flex-col">
+                    <div class="h-12 w-12 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="car" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900">"Road Ready" Bundle</h3>
+                    <p class="text-xs text-slate-500 uppercase tracking-wide mb-4 font-bold">Taxi / Professionals</p>
+                    <p class="text-sm text-slate-600 mb-6 flex-grow">Motor Vehicle Renewal. Fitness fee payment, Reg sticker pickup, Insurance cover note.</p>
+                    <div class="mt-auto pt-4 border-t border-slate-100">
+                        <span class="block text-xs text-slate-400 uppercase font-bold">Service Fee</span>
+                        <div class="flex items-baseline justify-between mb-3">
+                            <span class="text-2xl font-bold text-slate-900 font-serif tabular-nums">J$4,000</span>
+                        </div>
+                        <a href="intake_protocol.html?service=road_ready" class="block w-full text-center bg-emerald-50 text-emerald-800 font-bold py-2 rounded-lg border border-emerald-200 hover:bg-emerald-100 transition text-sm">
+                            Select Bundle
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-blue-500 hover:shadow-xl transition flex flex-col">
+                    <div class="h-12 w-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="plane" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900">"Visa & Voyage"</h3>
+                    <p class="text-xs text-slate-500 uppercase tracking-wide mb-4 font-bold">Returning Residents</p>
+                    <p class="text-sm text-slate-600 mb-6 flex-grow">RGD Certificate (Birth/Death). Application prep, online payment, print/delivery.</p>
+                    <div class="mt-auto pt-4 border-t border-slate-100">
+                        <span class="block text-xs text-slate-400 uppercase font-bold">Service Fee</span>
+                        <div class="flex items-baseline justify-between mb-3">
+                            <span class="text-2xl font-bold text-slate-900 font-serif tabular-nums">J$3,500</span>
+                        </div>
+                        <a href="intake_protocol.html?service=visa_voyage" class="block w-full text-center bg-blue-50 text-blue-800 font-bold py-2 rounded-lg border border-blue-200 hover:bg-blue-100 transition text-sm">
+                            Select Bundle
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-purple-500 hover:shadow-xl transition flex flex-col">
+                    <div class="h-12 w-12 bg-purple-100 text-purple-700 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="home" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900">"New Homeowner"</h3>
+                    <p class="text-xs text-slate-500 uppercase tracking-wide mb-4 font-bold">SilverSun / Phoenix Park</p>
+                    <p class="text-sm text-slate-600 mb-6 flex-grow">Property Tax. Valuation check, arrears calculation, payment processing.</p>
+                    <div class="mt-auto pt-4 border-t border-slate-100">
+                        <span class="block text-xs text-slate-400 uppercase font-bold">Service Fee</span>
+                        <div class="flex items-baseline justify-between mb-3">
+                            <span class="text-2xl font-bold text-slate-900 font-serif tabular-nums">J$2,000</span>
+                        </div>
+                        <a href="intake_protocol.html?service=new_homeowner" class="block w-full text-center bg-purple-50 text-purple-800 font-bold py-2 rounded-lg border border-purple-200 hover:bg-purple-100 transition text-sm">
+                            Select Bundle
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="bg-slate-100 py-20 border-y border-slate-200">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row gap-10 items-center">
+                    <div class="md:w-1/2">
+                        <div class="flex items-center gap-3 mb-4">
+                             <h2 class="text-3xl font-bold text-slate-900 font-serif">Tier 2: Submission-Ready</h2>
+                             <span class="bg-slate-200 text-slate-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">You Run</span>
+                        </div>
+                        <p class="text-slate-600 mb-6 leading-relaxed text-base">
+                            Designed for the budget-conscious client. We provide professionally prepared, "Zero Error" paperwork, checklists, and branded envelopes. 
+                        </p>
+                        <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm inline-block w-full sm:w-auto">
+                            <strong class="block text-slate-900 mb-3 text-lg">What you get:</strong>
+                            <ul class="text-slate-700 space-y-2">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> Professional Typing (TRN/NIS/RGD)</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> "Ready-to-Go" Checklist</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> Official Branded Envelope</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2 flex justify-center md:justify-end w-full">
+                        <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-200 text-center w-full max-w-sm">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Service Fee Range</span>
+                            <div class="text-4xl font-bold text-slate-900 font-serif my-4 tabular-nums">J$1,500</div>
+                            <span class="text-sm text-slate-500 font-medium">to J$2,000</span>
+                            
+                            <a href="intake_protocol.html?service=tier_2_docs" class="block mt-8 w-full py-4 bg-slate-800 text-white font-bold rounded-lg hover:bg-slate-700 transition shadow-md touch-target justify-center">
+                                Get Started
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-   <section class="py-20 container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-slate-900 font-serif mb-6">Tier 3: Corporate Bulk Services (B2B)</h2>
-        <p class="text-slate-600 mb-10 max-w-3xl">
-            Retainer-based or volume-discounted services for Human Resources departments, contractors, and associations. We focus on expedited retrieval for large batches of clients.
-        </p>
+      <section class="py-20 container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-slate-900 font-serif mb-6">Tier 3: Corporate Bulk Services (B2B)</h2>
+            <p class="text-slate-600 mb-10 max-w-3xl text-base leading-relaxed">
+                Retainer-based or volume-discounted services for Human Resources departments, contractors, and associations. We focus on expedited retrieval for large batches of clients.
+            </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <div class="border border-slate-200 p-8 rounded-xl bg-slate-50 flex flex-col md:flex-row gap-6 items-start hover:border-amber-400 transition duration-300">
+                    <div class="bg-white p-4 rounded-full shadow-sm shrink-0">
+                        <i data-lucide="users" class="w-8 h-8 text-slate-700" aria-hidden="true"></i>
+                    </div>
+                    <div class="flex-grow w-full">
+                        <h3 class="text-xl font-bold text-slate-900">"New Hire" Voucher</h3>
+                        <p class="text-xs font-bold text-amber-700 uppercase mb-2">For BPO HR & Construction</p>
+                        <p class="text-sm text-slate-600 mb-4">Expedited TRN/NIS retrieval for batches of 10+ recruits. Get them payroll-ready fast.</p>
+                        
+                        <div class="flex flex-wrap items-center justify-between mt-4 gap-4">
+                            <span class="font-bold text-slate-900 bg-white px-3 py-1 rounded border border-slate-200 text-sm tabular-nums">J$1,500 / head</span>
+                            
+                            <a href="mailto:admin@dochubservices.com?subject=New%20Hire%20Voucher%20Account%20Setup" class="inline-flex items-center p-2 -mr-2 text-sm font-bold text-amber-700 hover:text-amber-800 hover:underline underline-offset-4 touch-target transition">
+                                <i data-lucide="mail" class="w-4 h-4 mr-2"></i> Setup Account &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border border-slate-200 p-8 rounded-xl bg-slate-50 flex flex-col md:flex-row gap-6 items-start hover:border-emerald-400 transition duration-300">
+                    <div class="bg-white p-4 rounded-full shadow-sm shrink-0">
+                        <i data-lucide="truck" class="w-8 h-8 text-slate-700" aria-hidden="true"></i>
+                    </div>
+                    <div class="flex-grow w-full">
+                        <h3 class="text-xl font-bold text-slate-900">Taxi Fleet Mgmt</h3>
+                        <p class="text-xs font-bold text-emerald-700 uppercase mb-2">For Taxi Associations</p>
+                        <p class="text-sm text-slate-600 mb-4">Bulk renewal of Road Licenses for 5+ cars. Keep your fleet on the road.</p>
+                        
+                        <div class="flex flex-wrap items-center justify-between mt-4 gap-4">
+                            <span class="font-bold text-slate-900 bg-white px-3 py-1 rounded border border-slate-200 text-sm tabular-nums">J$2,000 / car</span>
+                            <a href="https://wa.me/18765612614" target="_blank" class="inline-flex items-center p-2 -mr-2 text-sm font-bold text-emerald-700 hover:text-emerald-800 hover:underline underline-offset-4 touch-target transition">
+                                Get Fleet Quote &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            <div class="border border-slate-200 p-8 rounded-xl bg-slate-50 flex flex-col md:flex-row gap-6 items-start hover:border-amber-400 transition duration-300">
-                <div class="bg-white p-4 rounded-full shadow-sm">
-                    <i data-lucide="users" class="w-8 h-8 text-slate-700"></i>
-                </div>
-                <div class="flex-grow">
-                    <h3 class="text-xl font-bold text-slate-900">"New Hire" Voucher</h3>
-                    <p class="text-xs font-bold text-amber-600 uppercase mb-2">For BPO HR & Construction Sites</p>
-                    <p class="text-sm text-slate-600 mb-4">Expedited TRN/NIS retrieval for batches of 10+ recruits. Get them payroll-ready fast.</p>
-                    
-                    <div class="flex items-center justify-between mt-4">
-                        <span class="font-bold text-slate-900 bg-white px-3 py-1 rounded border border-slate-200 text-sm">J$1,500 / head</span>
-                        <a href="https://wa.me/18765612614?text=Greetings%20Docu-Hub,%20I%20am%20interested%20in%20setting%20up%20a%20Corporate%20New%20Hire%20Account." target="_blank" class="text-sm font-bold text-amber-600 hover:text-amber-700 underline underline-offset-4">
-                            Setup Account &rarr;
-                        </a>
-                    </div>
-                </div>
+            <div class="mt-16 text-center">
+                <a href="mailto:admin@dochubservices.com?subject=Corporate%20Partnership%20Inquiry" class="inline-flex items-center gap-2 text-slate-500 text-sm font-medium hover:text-slate-800 transition p-4 border border-transparent hover:border-slate-200 rounded-lg touch-target">
+                    <i data-lucide="file-text" class="w-4 h-4"></i>
+                    <span>Prefer email? Request a Formal Proposal PDF</span>
+                </a>
             </div>
+        </section>
+    </main>
 
-            <div class="border border-slate-200 p-8 rounded-xl bg-slate-50 flex flex-col md:flex-row gap-6 items-start hover:border-emerald-400 transition duration-300">
-                <div class="bg-white p-4 rounded-full shadow-sm">
-                    <i data-lucide="truck" class="w-8 h-8 text-slate-700"></i>
-                </div>
-                <div class="flex-grow">
-                    <h3 class="text-xl font-bold text-slate-900">Taxi Fleet Mgmt</h3>
-                    <p class="text-xs font-bold text-emerald-600 uppercase mb-2">For Taxi Associations</p>
-                    <p class="text-sm text-slate-600 mb-4">Bulk renewal of Road Licenses for 5+ cars. Keep your fleet on the road.</p>
-                    
-                    <div class="flex items-center justify-between mt-4">
-                        <span class="font-bold text-slate-900 bg-white px-3 py-1 rounded border border-slate-200 text-sm">J$2,000 / car</span>
-                        <a href="https://wa.me/18765612614?text=Greetings%20Docu-Hub,%20I%20need%20a%20quote%20for%20a%20Taxi%20Fleet%20Renewal." target="_blank" class="text-sm font-bold text-emerald-600 hover:text-emerald-700 underline underline-offset-4">
-                            Get Fleet Quote &rarr;
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 font-sans">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> Docu-Hub Operations Services.</p>
         </div>
-        
-        <div class="mt-10 text-center">
-            <a href="mailto:admin@dochubservices.com?subject=Corporate%20Partnership%20Inquiry" class="inline-flex items-center gap-2 text-slate-400 text-sm font-medium hover:text-slate-600 transition">
-                <span>Prefer email? Request a Formal Proposal PDF</span>
-            </a>
-        </div>
-    </section>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
