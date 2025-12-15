@@ -33,7 +33,7 @@
         #final-btn { transition: all 0.3s ease-in-out; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased">
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
 
     <header class="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -46,7 +46,7 @@
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12 max-w-4xl">
+    <main class="container mx-auto px-6 py-12 max-w-4xl flex-grow">
         
         <div class="text-center mb-12">
             <span id="service-badge" class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4 inline-block">
@@ -150,6 +150,31 @@
 
     </main>
 
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 font-sans mt-auto">
+        <div class="container mx-auto px-4 text-center">
+            
+            <div class="mb-8">
+                <p class="font-bold text-slate-200 mb-2">&copy; <script>document.write(new Date().getFullYear())</script> Docu-Hub Operations Services.</p>
+                <p class="text-xs text-slate-500">Official Business. No Runaround.</p>
+            </div>
+
+            <div class="flex justify-center gap-3 flex-wrap mb-8">
+                <span class="bg-slate-800 text-slate-400 text-[10px] font-bold px-2 py-1 rounded border border-slate-700 uppercase tracking-wider">
+                    <span class="text-amber-500">OIC</span> REGISTRATION PENDING
+                </span>
+                <span class="bg-slate-800 text-slate-400 text-[10px] font-bold px-2 py-1 rounded border border-slate-700 uppercase tracking-wider">
+                    POCA PROTOCOLS ACTIVE
+                </span>
+            </div>
+
+            <div class="flex justify-center gap-6 text-sm">
+                <a href="privacy.html" class="hover:text-amber-500 transition">Privacy Policy</a>
+                <span class="text-slate-700">|</span>
+                <a href="legal-notice.html" class="hover:text-amber-500 transition">Legal Notice</a>
+            </div>
+        </div>
+    </footer>
+
     <script>
         lucide.createIcons();
 
@@ -202,10 +227,7 @@
             // Text/Icon Update
             btnText.innerText = "I Understand - Book on WhatsApp";
             
-            // Note: In a real app we'd swap the icon via JS, but swapping text is usually enough cue.
-            // If you want to force icon refresh we would need to re-render lucide, 
-            // but for simplicity, we keep the lock or just let the color change signify success.
-            // Ideally, we just update the href.
+            // Link Update
             finalBtn.href = finalUrl;
         });
 
