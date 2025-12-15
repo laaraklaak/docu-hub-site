@@ -9,7 +9,9 @@
         @media print {
             body { background: white; }
             .no-print { display: none; }
-            .print-container { box-shadow: none; border: none; padding: 0; }
+            .print-container { box-shadow: none; border: none; padding: 0; width: 100%; }
+            /* Ensures signature section stays together on one page */
+            .keep-together { page-break-inside: avoid; break-inside: avoid; }
         }
     </style>
 </head>
@@ -109,29 +111,57 @@
             </div>
         </section>
 
-        <section class="mt-12 pt-8 border-t-2 border-slate-800 break-inside-avoid">
+        <section class="mt-12 pt-8 border-t-2 border-slate-800 keep-together">
             <h3 class="text-lg font-bold text-slate-900 mb-6 uppercase">V. Signatures and Acceptance</h3>
             
-            <p class="mb-6 font-medium">I have read, understand, and agree to all terms and conditions outlined in this Master Client Engagement Contract. I agree that my electronic signature or digital acceptance is legally binding.</p>
+            <p class="mb-6 font-medium">I have read, understand, and agree to all terms and conditions outlined in this Master Client Engagement Contract.</p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
                 <div>
                     <div class="border-b border-slate-400 mb-2"></div>
-                    <p class="text-sm font-bold text-slate-600">Client Name (Print)</p>
+                    <p class="text-sm font-bold text-slate-600 uppercase">Client Name (Print)</p>
                 </div>
                 <div>
                     <div class="border-b border-slate-400 mb-2"></div>
-                    <p class="text-sm font-bold text-slate-600">Client Signature</p>
+                    <p class="text-sm font-bold text-slate-600 uppercase">Client Signature</p>
                 </div>
             </div>
 
             <div class="mt-8">
-                <p class="text-sm font-bold text-slate-600">Date: __________________________</p>
+                <p class="text-sm font-bold text-slate-600 uppercase">Date: __________________________</p>
             </div>
 
             <div class="mt-12">
                 <div class="border-b border-slate-400 mb-2 w-1/2"></div>
-                <p class="text-sm font-bold text-slate-600">Agent Signature (Laura Clarke, Proprietor)</p>
+                <p class="text-sm font-bold text-slate-600 uppercase">Agent Signature (Laura Clarke, Proprietor)</p>
+            </div>
+        </section>
+
+        <section class="mt-12 p-6 border-2 border-slate-300 bg-slate-50 rounded-lg keep-together">
+            <h3 class="text-lg font-bold text-slate-900 mb-2 uppercase">VI. Official Witness Verification</h3>
+            <p class="text-xs text-slate-500 mb-6 italic">Required for all virtual/remote clients. Must be completed by a Justice of the Peace (JP) or Notary Public.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-8">
+                    <div>
+                        <div class="border-b border-slate-400 mb-1"></div>
+                        <p class="text-xs font-bold text-slate-500 uppercase">Witness Name (Print)</p>
+                    </div>
+                    <div>
+                        <div class="border-b border-slate-400 mb-1"></div>
+                        <p class="text-xs font-bold text-slate-500 uppercase">Witness Signature</p>
+                    </div>
+                    <div>
+                        <div class="border-b border-slate-400 mb-1"></div>
+                        <p class="text-xs font-bold text-slate-500 uppercase">Date</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-center">
+                    <div class="border-2 border-dashed border-slate-300 w-full h-32 rounded flex items-center justify-center text-slate-400 font-bold uppercase tracking-widest text-sm bg-white">
+                        Official Stamp / Seal Here
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -144,5 +174,4 @@
     </main>
 
 </body>
-
 </html>
