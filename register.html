@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOCU-HUB | Contract & Compliance</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: { 50: '#f8fafc', 800: '#1e293b', 900: '#1a202c' },
+                        gold: { 500: '#D4AF37', 600: '#B5952F' }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .step-circle { width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; border-radius: 9999px; font-weight: bold; flex-shrink: 0; }
+        .touch-target { min-height: 44px; display: inline-flex; align-items: center; }
+        
+        /* Smooth transition for the unlock effect */
+        #final-btn { transition: all 0.3s ease-in-out; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
+
+    <header class="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-xl text-slate-900">DOCU<span class="text-amber-600">.</span>HUB</span>
+            </div>
+            <a href="index.html" class="text-sm font-bold text-slate-600 hover:text-amber-600 transition touch-target">
+                &larr; Back Home
+            </a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 max-w-4xl flex-grow">
+        
+        <div class="text-center mb-12">
+            <span id="service-badge" class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4 inline-block">
+                New Client Application
+            </span>
+            <h1 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6 font-serif">Master Client Contract</h1>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                To comply with Jamaican POCA (Proceeds of Crime Act) regulations, we require a <strong>witnessed signature</strong> before we can handle your government documents.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            
+            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-10"><i data-lucide="download" class="w-16 h-16"></i></div>
+                <div class="step-circle bg-slate-900 text-white mb-4">1</div>
+                <h3 class="font-bold text-lg mb-2">Download & Print</h3>
+                <p class="text-sm text-slate-600 mb-6">
+                    Click below to open the contract in a <strong>new window</strong>. Return here to finish booking.
+                </p>
+                
+                <a id="contract-dl-btn" href="master_agreement.html" target="_blank" class="inline-flex items-center gap-2 text-amber-700 font-bold hover:underline touch-target cursor-pointer">
+                    <i data-lucide="external-link" class="w-4 h-4"></i> Open Contract (New Tab)
+                </a>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-10"><i data-lucide="pen-tool" class="w-16 h-16"></i></div>
+                <div class="step-circle bg-amber-500 text-slate-900 mb-4">2</div>
+                <h3 class="font-bold text-lg mb-2">Sign & Witness</h3>
+                <p class="text-sm text-slate-600 mb-6">You sign. A JP (Justice of the Peace) signs & stamps. See the sample below.</p>
+                <a href="#visual-guide" class="inline-flex items-center gap-2 text-amber-700 font-bold hover:underline touch-target">
+                    <i data-lucide="eye" class="w-4 h-4"></i> View Sample
+                </a>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-10"><i data-lucide="shield-check" class="w-16 h-16"></i></div>
+                <div class="step-circle bg-green-600 text-white mb-4">3</div>
+                <h3 class="font-bold text-lg mb-2">Safe Upload</h3>
+                <p class="text-sm text-slate-600 mb-6">
+                    <strong>Do not upload yet.</strong><br>
+                    Once you message us on WhatsApp to confirm your slot, we will generate a private <strong>Secure Upload Link</strong>.
+                </p>
+                <div class="text-green-700 font-bold text-xs flex items-center gap-1">
+                    <i data-lucide="lock" class="w-3 h-3"></i> 256-Bit Encrypted
+                </div>
+            </div>
+        </div>
+
+        <section id="visual-guide" class="bg-slate-200 rounded-2xl p-8 mb-16 text-center">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 font-serif">Where do I sign?</h2>
+            
+            <div class="bg-white rounded-lg shadow-lg border border-slate-300 max-w-md mx-auto p-4 relative">
+                <div class="border-2 border-dashed border-slate-300 h-64 flex flex-col items-center justify-center relative">
+                    <span class="text-slate-400 text-sm font-bold uppercase mb-4">Contract Page 3</span>
+                    <div class="w-3/4 border-b border-slate-800 mb-8 relative">
+                        <span class="absolute -top-6 left-0 text-xs text-red-600 font-bold flex items-center gap-1">
+                            <i data-lucide="arrow-down" class="w-4 h-4"></i> YOU SIGN HERE
+                        </span>
+                    </div>
+                    <div class="w-3/4 border-b border-slate-800 relative">
+                        <span class="absolute -top-6 right-0 text-xs text-blue-600 font-bold flex items-center gap-1">
+                            JP STAMPS HERE <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                        </span>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-500 mt-2 italic">Show this image to your JP if they are unsure.</p>
+            </div>
+        </section>
+
+        <section class="max-w-2xl mx-auto mb-16">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 text-center font-serif">Common Questions</h2>
+            
+            <div class="space-y-4">
+                <div class="bg-white rounded-lg border border-slate-200 p-4">
+                    <h4 class="font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="help-circle" class="w-5 h-5 text-amber-500"></i> Why can't I just e-sign?
+                    </h4>
+                    <p class="text-sm text-slate-600 mt-2 pl-7">
+                        Government agencies (Tax Office/RGD) require "wet ink" signatures on authorization letters. Digital signatures are often rejected.
+                    </p>
+                </div>
+                <div class="bg-white rounded-lg border border-slate-200 p-4">
+                    <h4 class="font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-amber-500"></i> Where do I find a JP?
+                    </h4>
+                    <p class="text-sm text-slate-600 mt-2 pl-7">
+                        You can find a Justice of the Peace at most police stations, schools (principals), or by checking the <a href="https://moj.gov.jm" target="_blank" class="text-blue-600 underline">Ministry of Justice listing</a>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="text-center sticky bottom-6 z-40 px-4">
+            <a id="final-btn" href="#" class="bg-slate-400 text-slate-100 font-bold py-4 px-8 md:px-12 rounded-full shadow-lg inline-flex items-center gap-2 cursor-not-allowed">
+                <i id="btn-icon" data-lucide="lock" class="w-5 h-5"></i>
+                <span id="btn-text">Open Contract in Step 1 to Unlock</span>
+            </a>
+        </div>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 font-sans mt-auto">
+        <div class="container mx-auto px-4 text-center">
+            
+            <div class="mb-8">
+                <p class="font-bold text-slate-200 mb-2">&copy; <script>document.write(new Date().getFullYear())</script> Docu-Hub Operations Services.</p>
+                <p class="text-xs text-slate-500">Official Business. No Runaround.</p>
+            </div>
+
+            <div class="flex justify-center gap-3 flex-wrap mb-8">
+                <span class="bg-slate-800 text-slate-400 text-[10px] font-bold px-2 py-1 rounded border border-slate-700 uppercase tracking-wider">
+                    <span class="text-amber-500">OIC</span> REGISTRATION PENDING
+                </span>
+                <span class="bg-slate-800 text-slate-400 text-[10px] font-bold px-2 py-1 rounded border border-slate-700 uppercase tracking-wider">
+                    POCA PROTOCOLS ACTIVE
+                </span>
+            </div>
+
+            <div class="flex justify-center gap-6 text-sm">
+                <a href="privacy.html" class="hover:text-amber-500 transition">Privacy Policy</a>
+                <span class="text-slate-700">|</span>
+                <a href="legal-notice.html" class="hover:text-amber-500 transition">Legal Notice</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // 1. WhatsApp Base Logic
+        let whatsappMsg = "Greetings Docu-Hub. I am a NEW CLIENT. I have reviewed the contract instructions and I am ready to facilitate a JP Witnessed Signature.";
+        let finalUrl = "";
+        
+        // 2. State Tracking
+        let isContractOpened = false;
+        
+        // 3. Elements
+        const contractBtn = document.getElementById('contract-dl-btn');
+        const finalBtn = document.getElementById('final-btn');
+        const btnText = document.getElementById('btn-text');
+        const btnIcon = document.getElementById('btn-icon');
+        const badge = document.getElementById('service-badge');
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup Service Parameters
+            const params = new URLSearchParams(window.location.search);
+            const serviceKey = params.get('service');
+            
+            const services = {
+                'job_seeker': 'Job Seeker Bundle',
+                'road_ready': 'Road Ready Bundle',
+                'visa_voyage': 'Visa & Voyage Bundle',
+                'new_homeowner': 'New Homeowner Bundle',
+                'western': 'Western Job-Ready Bundle'
+            };
+
+            if (serviceKey && services[serviceKey]) {
+                const serviceName = services[serviceKey];
+                badge.innerText = `Application for: ${serviceName}`;
+                badge.classList.add('bg-blue-100', 'text-blue-900');
+                whatsappMsg = `Greetings Docu-Hub. I am a NEW CLIENT interested in the *${serviceName}*. I have reviewed the contract requirements and I am ready to book.`;
+            }
+
+            finalUrl = `https://wa.me/18765612614?text=${encodeURIComponent(whatsappMsg)}`;
+        });
+
+        // 4. THE UNLOCK LOGIC
+        contractBtn.addEventListener('click', function() {
+            // This runs when they click "View & Print Contract"
+            isContractOpened = true;
+            
+            // Visual Update: Turn Button Green
+            finalBtn.classList.remove('bg-slate-400', 'text-slate-100', 'cursor-not-allowed');
+            finalBtn.classList.add('bg-green-600', 'text-white', 'hover:bg-green-500', 'hover:scale-105', 'transform', 'border-b-4', 'border-green-800', 'active:border-b-0', 'active:mt-1', 'shadow-2xl');
+            
+            // Text/Icon Update
+            btnText.innerText = "I Understand - Book on WhatsApp";
+            
+            // Link Update
+            finalBtn.href = finalUrl;
+        });
+
+        // 5. Block click if not opened
+        finalBtn.addEventListener('click', function(e) {
+            if (!isContractOpened) {
+                e.preventDefault(); // Stop the link from working
+                alert("Please click 'View & Print Contract' in Step 1 to confirm you have access to the document.");
+                
+                // Optional: Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
