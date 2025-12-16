@@ -60,7 +60,7 @@
                         <i data-lucide="user-check" class="w-8 h-8 text-brand-gold"></i>
                     </div>
                     <h1 class="text-2xl font-bold text-white">Client Portal</h1>
-                    <p class="text-blue-200 text-sm mt-1">Track Applications & Shipments</p>
+                    <p class="text-blue-200 text-sm mt-1">Track Applications & Book Services</p>
                 </div>
             </div>
 
@@ -104,14 +104,14 @@
             <div class="px-8 pb-8 pt-4">
                 <div class="bg-blue-50 rounded-xl p-6 border border-blue-100">
                     <h2 class="text-xs font-bold text-brand-blue uppercase tracking-wider mb-2 flex items-center gap-2">
-                        <i data-lucide="star" class="w-4 h-4"></i> Returning Clients
+                        <i data-lucide="grid" class="w-4 h-4"></i> Option 2: Need something new?
                     </h2>
-                    <p class="text-sm text-slate-600 mb-4">
-                        Skip the registration form. Access your private <strong>VIP Menu</strong> to book a single service.
+                    <p class="text-sm text-slate-600 mb-4 leading-relaxed">
+                        Already in our system? View our <strong>special catalog</strong> for returning clients.
                     </p>
-                    <button type="button" onclick="quickOrder()" class="w-full flex justify-center items-center py-3 px-4 border border-brand-blue rounded-lg shadow-sm text-sm font-bold text-brand-blue bg-white hover:bg-brand-blue hover:text-white transition-colors">
-                        Open VIP Catalog
-                        <i data-lucide="zap" class="ml-2 w-4 h-4"></i>
+                    <button type="button" onclick="requestCatalog()" class="w-full flex justify-center items-center py-3 px-4 border border-brand-blue rounded-lg shadow-sm text-sm font-bold text-brand-blue bg-white hover:bg-brand-blue hover:text-white transition-colors">
+                        Request Catalog via WhatsApp
+                        <i data-lucide="external-link" class="ml-2 w-4 h-4"></i>
                     </button>
                 </div>
             </div>
@@ -130,24 +130,31 @@
         </div>
     </main>
 
-    <script>
+   <script>
         lucide.createIcons();
 
-        // 1. Check Status Function
-        // Uses "STATUS CHECK:" keyword to help you search/filter chats easily
         function checkStatus() {
             const ref = document.getElementById('refNumber').value;
-            const message = `STATUS CHECK: I am checking on my application. \nRef/TRN: ${ref || 'Not Provided'}`;
+            
+            // Validation: Ensure they actually typed something before sending
+            if(!ref) {
+                alert("Please enter a Reference or TRN Number first.");
+                return;
+            }
+
+            const message = `STATUS CHECK: I am checking on my application. \nRef/TRN: ${ref}`;
             const encodedMessage = encodeURIComponent(message);
-            window.location.href = `https://wa.me/18765612614?text=${encodedMessage}`;
+            
+            // UPDATED: Opens in a new tab ('_blank') to keep your portal open
+            window.open(`https://wa.me/18765612614?text=${encodedMessage}`, '_blank');
         }
 
-        // 2. Quick Order Function (Returning Client)
-        // Uses "VIP ACCESS" keyword so you know to send the Catalog Link Quick Reply
-        function quickOrder() {
-            const message = "VIP ACCESS: I am a returning client. Please send me the link to the Returning Client Catalog.";
+        function requestCatalog() {
+            const message = "CATALOG REQUEST: I am a returning client. Please send me the Special Catalog link.";
             const encodedMessage = encodeURIComponent(message);
-            window.location.href = `https://wa.me/18765612614?text=${encodedMessage}`;
+            
+            // UPDATED: Opens in a new tab
+            window.open(`https://wa.me/18765612614?text=${encodedMessage}`, '_blank');
         }
     </script>
 </body>
