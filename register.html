@@ -35,6 +35,9 @@
         
         /* Smooth transition for the unlock effect */
         #final-btn { transition: all 0.3s ease-in-out; }
+        
+        /* Checkbox Styling */
+        .custom-checkbox { width: 1.25rem; height: 1.25rem; border-radius: 0.25rem; cursor: pointer; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
@@ -55,11 +58,11 @@
         
         <div class="text-center mb-12">
             <span id="service-badge" class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4 inline-block">
-                New Client Application
+                Compliance & Contracting
             </span>
             <h1 class="text-3xl md:text-5xl font-bold text-brand-navy mb-6 font-serif">Master Client Contract</h1>
             <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                To comply with Jamaican POCA (Proceeds of Crime Act) regulations, we require a <strong>witnessed signature</strong> before we can handle your government documents.
+                To comply with Jamaican Data Protection & POCA regulations, we require a <strong>witnessed signature</strong> before we can process your documents.
             </p>
         </div>
 
@@ -68,13 +71,13 @@
             <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 relative overflow-hidden">
                 <div class="absolute top-0 right-0 p-4 opacity-10"><i data-lucide="download" class="w-16 h-16"></i></div>
                 <div class="step-circle bg-brand-navy text-white mb-4">1</div>
-                <h3 class="font-bold text-lg mb-2">Download & Print</h3>
+                <h3 class="font-bold text-lg mb-2">Download & Review</h3>
                 <p class="text-sm text-slate-600 mb-6">
-                    Click below to open the contract in a <strong>new window</strong>. Return here to finish booking.
+                    Includes the <strong>Privacy Notice</strong> & <strong>Data Consent</strong> terms. Open in a new window.
                 </p>
                 
                 <a id="contract-dl-btn" href="master-agreement.html" target="_blank" class="inline-flex items-center gap-2 text-amber-700 font-bold hover:underline touch-target cursor-pointer">
-                    <i data-lucide="external-link" class="w-4 h-4"></i> Open Contract (New Tab)
+                    <i data-lucide="file-text" class="w-4 h-4"></i> Open Contract (Required)
                 </a>
             </div>
 
@@ -94,10 +97,10 @@
                 <h3 class="font-bold text-lg mb-2">Safe Upload</h3>
                 <p class="text-sm text-slate-600 mb-6">
                     <strong>Do not upload yet.</strong><br>
-                    Once you message us on WhatsApp to confirm your slot, we will generate a private <strong>Secure Upload Link</strong>.
+                    Once you confirm your digital consent below, we will send you a <strong>Secure Upload Link</strong>.
                 </p>
                 <div class="text-green-700 font-bold text-xs flex items-center gap-1">
-                    <i data-lucide="lock" class="w-3 h-3"></i> 256-Bit Encrypted
+                    <i data-lucide="lock" class="w-3 h-3"></i> Scan & Shred Protocol
                 </div>
             </div>
         </div>
@@ -123,34 +126,34 @@
             </div>
         </section>
 
-        <section class="max-w-2xl mx-auto mb-16">
-            <h2 class="text-2xl font-bold text-slate-900 mb-6 text-center font-serif">Common Questions</h2>
+        <div class="max-w-xl mx-auto mb-8 bg-blue-50 border border-blue-200 p-6 rounded-lg">
+            <h4 class="font-bold text-brand-navy mb-4 flex items-center gap-2">
+                <i data-lucide="check-circle" class="w-5 h-5 text-blue-600"></i> Digital Compliance Declaration
+            </h4>
             
             <div class="space-y-4">
-                <div class="bg-white rounded-lg border border-slate-200 p-4">
-                    <h4 class="font-bold text-slate-900 flex items-center gap-2">
-                        <i data-lucide="help-circle" class="w-5 h-5 text-amber-500"></i> Why can't I just e-sign?
-                    </h4>
-                    <p class="text-sm text-slate-600 mt-2 pl-7">
-                        Government agencies (Tax Office/RGD) require "wet ink" signatures on authorization letters. Digital signatures are often rejected.
-                    </p>
-                </div>
-                <div class="bg-white rounded-lg border border-slate-200 p-4">
-                    <h4 class="font-bold text-slate-900 flex items-center gap-2">
-                        <i data-lucide="map-pin" class="w-5 h-5 text-amber-500"></i> Where do I find a JP?
-                    </h4>
-                    <p class="text-sm text-slate-600 mt-2 pl-7">
-                        You can find a Justice of the Peace at most police stations, schools (principals), or by checking the <a href="https://moj.gov.jm" target="_blank" class="text-blue-600 underline">Ministry of Justice listing</a>.
-                    </p>
-                </div>
+                <label class="flex items-start gap-3 cursor-pointer">
+                    <input type="checkbox" id="term-check" class="custom-checkbox mt-1 accent-blue-600">
+                    <span class="text-sm text-slate-700">
+                        <strong>(Required)</strong> I have read the Master Contract. I explicitly consent to Docu-Hub processing my data and sharing it with relevant government agencies (TAJ/NIS/RGD) for my application.
+                    </span>
+                </label>
+
+                <label class="flex items-start gap-3 cursor-pointer">
+                    <input type="checkbox" id="market-check" class="custom-checkbox mt-1 accent-amber-500">
+                    <span class="text-sm text-slate-700">
+                        <strong>(Optional)</strong> Keep me updated! Send me WhatsApp/Email alerts about job openings, resume tips, and new service discounts.
+                    </span>
+                </label>
             </div>
-        </section>
+        </div>
 
         <div class="text-center sticky bottom-6 z-40 px-4">
-            <a id="final-btn" href="#" class="bg-slate-400 text-slate-100 font-bold py-4 px-8 md:px-12 rounded-full shadow-lg inline-flex items-center gap-2 cursor-not-allowed">
+            <a id="final-btn" href="#" class="bg-slate-400 text-slate-100 font-bold py-4 px-8 md:px-12 rounded-full shadow-lg inline-flex items-center gap-2 pointer-events-none opacity-75">
                 <i id="btn-icon" data-lucide="lock" class="w-5 h-5"></i>
-                <span id="btn-text">Open Contract in Step 1 to Unlock</span>
+                <span id="btn-text">Open Contract & Check Box to Unlock</span>
             </a>
+            <p id="error-msg" class="text-xs text-red-500 font-bold mt-2 hidden">Please open the contract AND check the required box.</p>
         </div>
 
     </main>
@@ -165,7 +168,7 @@
 
             <div class="flex justify-center gap-3 flex-wrap mb-8">
                 <span class="bg-white text-brand-navy text-[10px] font-bold px-2 py-1 rounded border border-slate-200 uppercase tracking-wider">
-                    <span class="text-amber-600">OIC</span> REGISTRATION PENDING
+                    <span class="text-amber-600">JDPA</span> COMPLIANT
                 </span>
                 <span class="bg-white text-brand-navy text-[10px] font-bold px-2 py-1 rounded border border-slate-200 uppercase tracking-wider">
                     POCA PROTOCOLS ACTIVE
@@ -183,9 +186,9 @@
     <script>
         lucide.createIcons();
 
-        // 1. WhatsApp Base Logic
-        let whatsappMsg = "Greetings Docu-Hub. I am a NEW CLIENT. I have reviewed the contract instructions and I am ready to facilitate a JP Witnessed Signature.";
-        let finalUrl = "";
+        // 1. Base Variables
+        let baseMsg = "Greetings Docu-Hub. I am a NEW CLIENT.";
+        let serviceName = "";
         
         // 2. State Tracking
         let isContractOpened = false;
@@ -194,11 +197,15 @@
         const contractBtn = document.getElementById('contract-dl-btn');
         const finalBtn = document.getElementById('final-btn');
         const btnText = document.getElementById('btn-text');
-        const btnIcon = document.getElementById('btn-icon');
         const badge = document.getElementById('service-badge');
+        
+        // Compliance Elements
+        const termCheck = document.getElementById('term-check');
+        const marketCheck = document.getElementById('market-check');
+        const errorMsg = document.getElementById('error-msg');
 
+        // 4. Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            // Setup Service Parameters - ALIGNED WITH INDEX PAGE
             const params = new URLSearchParams(window.location.search);
             const serviceKey = params.get('service');
             
@@ -206,52 +213,73 @@
                 'job_seeker': 'Job Seeker Bundle',
                 'transport': 'Tax & Transport Bundle',
                 'vital_records': 'Vital Records (RGD)',
-                'recovery': 'Hurricane Mellisa Recovery' // Rebranded from Western
+                'recovery': 'Hurricane Mellisa Recovery'
             };
 
             if (serviceKey && services[serviceKey]) {
-                const serviceName = services[serviceKey];
+                serviceName = services[serviceKey];
                 badge.innerText = `Application for: ${serviceName}`;
                 badge.classList.remove('bg-amber-100', 'text-amber-800');
                 badge.classList.add('bg-blue-100', 'text-blue-900');
-                
-                // Detailed message for the specific bundle
-                whatsappMsg = `Greetings Docu-Hub. I am a NEW CLIENT interested in the *${serviceName}*. I have reviewed the contract requirements and I am ready to book.`;
+                baseMsg = `Greetings Docu-Hub. I am a NEW CLIENT interested in the *${serviceName}*.`;
+            } else {
+                baseMsg = "Greetings Docu-Hub. I am a NEW CLIENT.";
             }
-
-            finalUrl = `https://wa.me/18765612614?text=${encodeURIComponent(whatsappMsg)}`;
         });
 
-        // 4. THE UNLOCK LOGIC
-        contractBtn.addEventListener('click', function() {
-            // This runs when they click "View & Print Contract"
-            isContractOpened = true;
+        // 5. Update WhatsApp Link Logic
+        function updateLink() {
+            // Determine Marketing Status
+            const marketingStatus = marketCheck.checked ? "YES" : "NO";
             
-            // Visual Update: Turn Button Green
-            finalBtn.classList.remove('bg-slate-400', 'text-slate-100', 'cursor-not-allowed');
-            finalBtn.classList.add('bg-green-600', 'text-white', 'hover:bg-green-500', 'hover:scale-105', 'transform', 'border-b-4', 'border-green-800', 'active:border-b-0', 'active:mt-1', 'shadow-2xl');
+            // Build the compliant message
+            // "I have reviewed the contract... Marketing Opt-In: YES/NO"
+            const finalMsg = `${baseMsg} I have downloaded the Master Contract and I accept the Data Processing terms. [Marketing Opt-In: ${marketingStatus}]. I am ready to book.`;
             
-            // Text/Icon Update
-            btnText.innerText = "I Understand - Book on WhatsApp";
-            // Change Icon to Message Bubble
-            // Note: Lucide icons can't be easily swapped by class alone in vanilla JS without re-running createIcons, 
-            // so we'll just leave the lock or remove it. For simplicity, we keep the lock but unlock the color.
+            const waUrl = `https://wa.me/18765612614?text=${encodeURIComponent(finalMsg)}`;
             
-            // Link Update
-            finalBtn.href = finalUrl;
-            
-            // SAFE BORDERS: Open WhatsApp in new tab
+            // Apply to button
+            finalBtn.href = waUrl;
             finalBtn.setAttribute('target', '_blank');
+        }
+
+        // 6. The "Unlock" Checker
+        function checkUnlock() {
+            updateLink(); // Ensure link is fresh
+
+            if (isContractOpened && termCheck.checked) {
+                // UNLOCK
+                finalBtn.classList.remove('bg-slate-400', 'text-slate-100', 'pointer-events-none', 'opacity-75');
+                finalBtn.classList.add('bg-green-600', 'text-white', 'hover:bg-green-500', 'hover:scale-105', 'transform', 'border-b-4', 'border-green-800', 'shadow-2xl');
+                btnText.innerText = "I Understand - Book on WhatsApp";
+                errorMsg.classList.add('hidden');
+            } else {
+                // LOCK
+                finalBtn.classList.add('bg-slate-400', 'text-slate-100', 'pointer-events-none', 'opacity-75');
+                finalBtn.classList.remove('bg-green-600', 'text-white', 'hover:bg-green-500', 'hover:scale-105', 'shadow-2xl', 'border-b-4', 'border-green-800');
+                
+                if(isContractOpened && !termCheck.checked) {
+                    btnText.innerText = "Check the 'Required' Box above";
+                } else {
+                    btnText.innerText = "Open Contract & Check Box to Unlock";
+                }
+            }
+        }
+
+        // 7. Event Listeners
+        contractBtn.addEventListener('click', function() {
+            isContractOpened = true;
+            checkUnlock();
         });
 
-        // 5. Block click if not opened
+        termCheck.addEventListener('change', checkUnlock);
+        marketCheck.addEventListener('change', updateLink); // Just updates the text, doesn't unlock
+
+        // 8. Safety Click Block (Double Check)
         finalBtn.addEventListener('click', function(e) {
-            if (!isContractOpened) {
-                e.preventDefault(); // Stop the link from working
-                alert("Please click 'Open Contract (New Tab)' in Step 1 to confirm you have access to the document.");
-                
-                // Optional: Scroll to top
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (!isContractOpened || !termCheck.checked) {
+                e.preventDefault();
+                errorMsg.classList.remove('hidden');
             }
         });
     </script>
