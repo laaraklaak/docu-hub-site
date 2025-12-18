@@ -3,251 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOCU-HUB | Compliance & Logistics Concierge</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Docu-Hub | Business Concierge & Compliance Logistics</title>
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    
+    <!-- Standard Professional Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'], 
-                    },
-                    colors: {
-                        brand: {
-                            navy: '#0b1d35',    // Deep Executive Navy
-                            gold: '#c5a059',    // Muted luxury gold
-                            dark: '#020617',    // Ink Black (High Contrast)
-                        }
-                    },
-                    boxShadow: {
-                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)', 
-                        'float': '0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)',
-                    }
-                }
-            }
-        }
-    </script>
+
     <style>
-        html { scroll-behavior: smooth; }
-        body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-        ::selection { background-color: #c5a059; color: #ffffff; }
-        
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid white; 
-            transition: all 0.3s ease;
+        :root {
+            --color-navy: #1E293B;
+            --color-gold: #E0B841;
+            --color-cream: #F8F9FA;
         }
-        .btn-outline:hover {
-            background-color: white;
-            color: #0b1d35;
+        body { font-family: 'Inter', sans-serif; background-color: var(--color-navy); color: white; }
+        h1 { font-family: 'Playfair Display', serif; }
+        
+        .text-gold { color: var(--color-gold); }
+        .border-gold { border-color: var(--color-gold); }
+        .bg-gold { background-color: var(--color-gold); }
+
+        .construction-box {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(224, 184, 65, 0.2);
+        }
+        
+        .animate-spin-slow {
+            animation: spin 8s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
-<body class="bg-white text-slate-900 font-sans antialiased flex flex-col min-h-screen">
+<body class="min-h-screen flex flex-col justify-between">
 
-    <div class="bg-white text-brand-navy text-xs py-2 border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end items-center space-x-8">
-            <span class="hidden md:inline text-slate-600 font-semibold tracking-wide">Linstead, St. Catherine</span>
-            <a href="tel:8765612614" class="font-bold hover:text-brand-gold transition flex items-center gap-2">
-                <i data-lucide="phone" class="w-3 h-3 text-brand-gold"></i> +1 (876) 561-2614
-            </a>
-            <a href="about.html" class="font-bold hover:text-brand-gold transition uppercase tracking-wider text-[10px]">About Us</a>
-        </div>
-    </div>
-
-    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                
-                <a href="index.html" class="flex items-center gap-2 group">
-                    <span class="text-2xl font-serif font-bold text-brand-navy tracking-tight">
-                        Docu-Hub<span class="text-brand-gold">.</span>
-                    </span>
-                </a>
-
-                <div class="hidden md:flex space-x-12">
-                    <a href="services.html" class="text-brand-navy text-[11px] font-bold tracking-widest uppercase hover:text-brand-gold transition-colors">Identity Services</a>
-                    <a href="services.html" class="text-brand-navy text-[11px] font-bold tracking-widest uppercase hover:text-brand-gold transition-colors">Business Support</a>
-                    <a href="services.html" class="text-brand-navy text-[11px] font-bold tracking-widest uppercase hover:text-brand-gold transition-colors">Recovery</a>
-                </div>
-
-                <div class="hidden md:flex">
-                    <a href="contact.html" class="border-2 border-brand-navy text-brand-navy px-6 py-2 text-[11px] font-bold uppercase tracking-widest hover:bg-brand-navy hover:text-white transition">
-                        Contact Us
-                    </a>
-                </div>
-                
-                <div class="md:hidden flex items-center">
-                    <button class="text-brand-navy p-2">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
-                    </button>
-                </div>
+    <!-- Simple Header -->
+    <header class="p-6">
+        <div class="container mx-auto flex justify-center md:justify-start items-center gap-2">
+            <div class="w-8 h-8 bg-white/10 flex items-center justify-center rounded border border-gold/30">
+                <i data-lucide="shield-check" class="text-gold w-5 h-5"></i>
             </div>
-        </div>
-    </nav>
-
-    <header class="relative w-full py-32 md:py-48 flex items-center justify-center bg-brand-navy bg-[url('images/hero.png')] bg-cover bg-center">
-        <div class="absolute inset-0 bg-brand-navy/70"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/90 to-transparent"></div>
-        
-        <div class="relative z-10 text-center max-w-4xl px-4">
-            <h1 class="text-5xl md:text-7xl font-serif font-medium text-white mb-6 tracking-tight leading-tight">
-                Business Concierge Services
-            </h1>
-            
-            <p class="text-lg md:text-xl text-white mb-10 font-normal max-w-2xl mx-auto leading-relaxed antialiased">
-                Empowering your business to grow further and go beyond with comprehensive administrative support.
-            </p>
-            
-            <div class="flex justify-center">
-                <a href="services.html" class="btn-outline text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.15em]">
-                    Benefit From Our Services
-                </a>
-            </div>
+            <span class="text-xl font-extrabold tracking-tight uppercase italic">DOCU-HUB<span class="text-gold">.</span></span>
         </div>
     </header>
 
-    <section id="solutions" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-16 mb-16">
-                <div>
-                    <h2 class="text-4xl font-serif font-bold text-brand-navy mb-6 tracking-tight">Benefit From Our Services</h2>
-                    <p class="text-slate-800 text-lg font-normal leading-relaxed">
-                        We don't just fill out forms; we manage the entire <strong>Compliance Lifecycle</strong>. From the moment you interview a candidate to the day they receive their first paycheck, we handle the government logistics.
-                    </p>
-                    <p class="text-slate-800 text-lg font-normal leading-relaxed mt-4">
-                        Eliminate the "Two-Visit" nightmare. We ensure your staff are legally compliant, documented, and bank-ready before they step on site.
-                    </p>
-                    <a href="services.html" class="inline-flex items-center gap-2 mt-8 text-brand-gold font-bold text-xs uppercase tracking-widest hover:text-brand-navy transition">
-                        View Full Service List <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
-                </div>
-                
-                <div class="grid sm:grid-cols-2 gap-6">
-                    <div class="border border-slate-200 p-8 hover:shadow-card transition-shadow cursor-default bg-white group">
-                        <i data-lucide="shield-check" class="w-8 h-8 text-brand-navy mb-4 group-hover:text-brand-gold transition-colors"></i>
-                        <h3 class="text-lg font-serif font-bold text-brand-navy mb-2">Pre-Hiring Vetting</h3>
-                        <p class="text-sm text-slate-700 font-medium">Police Record scheduling and ID validity checks to ensure candidates are safe to hire.</p>
-                    </div>
-                    
-                    <div class="border border-slate-200 p-8 hover:shadow-card transition-shadow cursor-default bg-white group">
-                        <i data-lucide="fingerprint" class="w-8 h-8 text-brand-navy mb-4 group-hover:text-brand-gold transition-colors"></i>
-                        <h3 class="text-lg font-serif font-bold text-brand-navy mb-2">Statutory Registration</h3>
-                        <p class="text-sm text-slate-700 font-medium">TRN and NIS card retrieval. We track down lost numbers so payroll is never delayed.</p>
-                    </div>
-                    
-                    <div class="border border-slate-200 p-8 hover:shadow-card transition-shadow cursor-default bg-white group">
-                        <i data-lucide="landmark" class="w-8 h-8 text-brand-navy mb-4 group-hover:text-brand-gold transition-colors"></i>
-                        <h3 class="text-lg font-serif font-bold text-brand-navy mb-2">Banking Logistics</h3>
-                        <p class="text-sm text-slate-700 font-medium">Preparation of KYC documents (Address Proof, References) for seamless account opening.</p>
-                    </div>
-
-                    <div class="border border-slate-200 p-8 hover:shadow-card transition-shadow cursor-default bg-white group">
-                        <i data-lucide="refresh-cw" class="w-8 h-8 text-brand-navy mb-4 group-hover:text-brand-gold transition-colors"></i>
-                        <h3 class="text-lg font-serif font-bold text-brand-navy mb-2">Crisis Recovery</h3>
-                        <p class="text-sm text-slate-700 font-medium">Express replacement of lost RGD Birth Certificates and Tax IDs for disaster recovery.</p>
-                    </div>
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center px-6">
+        <div class="max-w-3xl w-full text-center construction-box p-10 md:p-16 rounded-3xl shadow-2xl">
+            <div class="flex justify-center mb-8">
+                <div class="relative">
+                    <i data-lucide="concierge-bell" class="text-gold w-16 h-16 animate-pulse"></i>
+                    <i data-lucide="settings" class="text-white/20 w-8 h-8 absolute -bottom-2 -right-2 animate-spin-slow"></i>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section class="bg-slate-50 py-24 border-t border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-serif font-bold text-brand-navy mb-12 tracking-tight">Solutions for Every Type of Professional</h2>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Refining Your <br><span class="italic text-gold text-3xl md:text-5xl">Business Concierge.</span></h1>
             
-            <div class="flex flex-col lg:flex-row bg-white shadow-card border border-slate-200">
-                
-                <div class="lg:w-1/2 relative h-64 lg:h-auto overflow-hidden">
-                    <img src="images/workspace.png" alt="Professional Workspace" class="absolute inset-0 w-full h-full object-cover">
-                </div>
-                
-                <div class="lg:w-1/2 p-12 flex flex-col justify-center">
-                    <h3 class="text-2xl font-serif font-bold text-brand-navy mb-4">Business Essentials</h3>
-                    <p class="text-slate-700 mb-8 font-normal leading-relaxed">
-                        Focus on your goals and trust our experience in providing first-class operational services. Everything from company formation, in-depth accounting preparation, and professional translation, to people management.
-                    </p>
-                    <a href="contact.html" class="text-brand-navy font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all tracking-wide group">
-                        Contact Us For A Quote <i data-lucide="chevron-right" class="w-4 h-4 text-brand-gold group-hover:translate-x-1 transition-transform"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+            <p class="text-lg md:text-xl text-gray-400 mb-8 font-light leading-relaxed max-w-xl mx-auto">
+                We are evolving. Docu-Hub is currently finalizing a new suite of high-end operational services designed for the modern professional.
+            </p>
 
-    <section class="relative py-32 bg-brand-navy bg-[url('images/footer.png')] bg-cover bg-center">
-        <div class="absolute inset-0 bg-brand-navy/60"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex items-center">
-            <div class="bg-white p-12 shadow-float max-w-lg border-t-4 border-brand-gold">
-                <h2 class="text-3xl font-serif font-bold text-brand-navy mb-6">Got a question?</h2>
-                <p class="text-slate-800 mb-8 font-normal leading-relaxed">
-                    Enquiries, bookings, collaborations and everything in between – we're here to help.
+            <!-- Linguistic Empathy / Identity Section -->
+            <div class="inline-block py-4 px-8 border-y border-gold/30 bg-gold/5 rounded-lg mb-10">
+                <p class="italic text-gold font-medium">
+                    "Wi a level up di service an' design di new plan dem, so when wi ready, everyting set dynamic an' sharp."
                 </p>
-                <a href="contact.html" class="bg-brand-navy text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-brand-gold transition inline-block">
-                    Contact Us
+            </div>
+
+            <!-- Contact Point -->
+            <div class="flex flex-col items-center gap-4">
+                <p class="text-xs uppercase tracking-[0.3em] text-gray-500 font-bold">Inquiries & Early Access</p>
+                <a href="mailto:admin@dhubservices.com" class="flex items-center gap-2 text-lg font-semibold hover:text-gold transition">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                    admin@dhubservices.com
                 </a>
             </div>
         </div>
-    </section>
+    </main>
 
-    <footer class="bg-brand-navy text-white py-16 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-12 mb-12">
-                
-                <div class="col-span-1 md:col-span-2">
-                    <span class="text-2xl font-serif font-bold tracking-tight text-white">
-                        Docu-Hub<span class="text-brand-gold">.</span>
-                    </span>
-                    <p class="mt-4 text-slate-400 text-sm leading-relaxed max-w-sm">
-                        Docu-Hub Operations Services is a private administrative agency. We facilitate document retrieval and compliance logistics. We are not the issuing government authority for RGD, TAJ, or JCF documents.
-                    </p>
-                </div>
-
-                <div>
-                    <h4 class="text-brand-gold font-bold uppercase tracking-widest text-xs mb-4">Operations</h4>
-                    <ul class="text-sm text-slate-300 space-y-2">
-                        <li>361 Charlemont</li>
-                        <li>Linstead, St. Catherine</li>
-                        <li>Jamaica, W.I.</li>
-                        <li class="pt-2"><a href="tel:8765612614" class="hover:text-white transition">(876) 561-2614</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-brand-gold font-bold uppercase tracking-widest text-xs mb-4">Legal</h4>
-                    <ul class="text-sm text-slate-300 space-y-2">
-                        <li><a href="privacy.html" class="hover:text-white transition">Privacy Policy</a></li>
-                        <li><a href="terms.html" class="hover:text-white transition">Terms of Service</a></li>
-                        <li><a href="contact.html" class="hover:text-white transition">Support</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <div class="text-slate-500 text-xs font-medium">
-                    &copy; <script>document.write(new Date().getFullYear())</script> Docu-Hub Operations Services. BN-1 Registered.
-                </div>
-                <div class="flex gap-6">
-                    <a href="#" class="text-slate-500 hover:text-white transition"><i data-lucide="facebook" class="w-5 h-5"></i></a>
-                    <a href="#" class="text-slate-500 hover:text-white transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-                    <a href="#" class="text-slate-500 hover:text-white transition"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-                </div>
-            </div>
+    <!-- Footer / Legal Firewall -->
+    <footer class="p-8">
+        <div class="container mx-auto text-center">
+            <p class="text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-gray-500 mb-4">
+                Registered Data Controller (OIC) | Administrative Concierge | Clerical Scope Only
+            </p>
+            <p class="text-[10px] text-gray-600">© 2025 Docu-Hub Operations Services. St. Catherine, Jamaica.</p>
         </div>
     </footer>
 
     <script>
+        // Initialize Icons
         lucide.createIcons();
     </script>
 </body>
