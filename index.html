@@ -3,533 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Docu-Hub Operations Services - Your Strategic Business Concierge. We handle government logistics and bureaucracy for busy professionals.">
-    <title>Docu-Hub Operations Services | Business Concierge & Logistics</title>
+    <title>Docu-Hub | Business Concierge & Compliance Logistics</title>
     
-    <!-- Fonts: Playfair Display (Serif) & Montserrat (Sans-Serif) -->
+    <!-- Standard Professional Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     
-    <!-- Icons: FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Custom Tailwind Config -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        navy: {
-                            DEFAULT: '#003366', // Anchor (30%)
-                            light: '#004080',
-                            dark: '#002244',
-                        },
-                        parchment: {
-                            DEFAULT: '#F5F0EC', // Background (60%)
-                            dark: '#EBE5DF',
-                            light: '#FFFCF9'
-                        },
-                        gold: {
-                            DEFAULT: '#D4AF37', // Accent (10%)
-                            hover: '#C5A028',
-                            light: '#E5C048'
-                        }
-                    },
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['"Montserrat"', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        'bank': '0 4px 6px -1px rgba(0, 51, 102, 0.1), 0 2px 4px -1px rgba(0, 51, 102, 0.06)',
-                        'card': '0 10px 25px -5px rgba(0, 51, 102, 0.08)',
-                    },
-                    backgroundImage: {
-                        'hero-pattern': "linear-gradient(to bottom, rgba(0, 51, 102, 0.85), rgba(0, 51, 102, 0.7)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000')", 
-                        // Image: Minimalist architectural close-up (Government/Bank vibe)
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* Base Styles */
-        body {
-            background-color: #F5F0EC;
-            color: #1A202C;
-            -webkit-font-smoothing: antialiased;
+        :root {
+            --color-navy: #1E293B;
+            --color-gold: #E0B841;
+            --color-cream: #F8F9FA;
         }
+        body { font-family: 'Inter', sans-serif; background-color: var(--color-navy); color: white; }
+        h1 { font-family: 'Playfair Display', serif; }
+        
+        .text-gold { color: var(--color-gold); }
+        .border-gold { border-color: var(--color-gold); }
+        .bg-gold { background-color: var(--color-gold); }
 
-        /* Typography Override */
-        h1, h2, h3, h4, h5, h6 {
-            color: #003366;
-        }
-
-        /* Scroll Behavior for Anchor Links */
-        html {
-            scroll-behavior: smooth;
+        .construction-box {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(224, 184, 65, 0.2);
         }
         
-        /* Offset for sticky header */
-        section {
-            scroll-margin-top: 5rem;
+        .animate-spin-slow {
+            animation: spin 8s linear infinite;
         }
-
-        /* Navigation Transitions */
-        .nav-link {
-            position: relative;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #D4AF37;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Mobile Menu */
-        #mobile-menu {
-            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-        }
-        #mobile-menu.active {
-            max-height: 500px;
-            opacity: 1;
-        }
-
-        /* Button Styling */
-        .btn-gold {
-            background-color: #D4AF37;
-            color: #003366;
-            transition: all 0.3s ease;
-        }
-        .btn-gold:hover {
-            background-color: #C5A028;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
-        }
-
-        /* Bento Grid Card Hover */
-        .bento-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .bento-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 30px -5px rgba(0, 51, 102, 0.12);
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
-<body class="font-sans leading-relaxed flex flex-col min-h-screen">
+<body class="min-h-screen flex flex-col justify-between">
 
-    <!-- Navigation -->
-    <nav class="bg-navy text-white sticky top-0 z-50 shadow-bank backdrop-blur-sm bg-opacity-98">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-3">
-                    <i class="fa-solid fa-scale-balanced text-gold text-2xl"></i>
-                    <div>
-                        <a href="#" class="font-serif text-2xl font-bold tracking-wide text-white block leading-none">
-                            Docu-Hub
-                        </a>
-                        <span class="text-[0.65rem] text-gray-300 uppercase tracking-[0.2em]">Operations Services</span>
-                    </div>
-                </div>
+    <!-- Simple Header -->
+    <header class="p-6">
+        <div class="container mx-auto flex justify-center md:justify-start items-center gap-2">
+            <div class="w-8 h-8 bg-white/10 flex items-center justify-center rounded border border-gold/30">
+                <i data-lucide="shield-check" class="text-gold w-5 h-5"></i>
+            </div>
+            <span class="text-xl font-extrabold tracking-tight uppercase italic">DOCU-HUB<span class="text-gold">.</span></span>
+        </div>
+    </header>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#home" class="nav-link text-gray-200 hover:text-gold transition-colors text-sm font-medium uppercase tracking-wider">Home</a>
-                    <a href="#services" class="nav-link text-gray-200 hover:text-gold transition-colors text-sm font-medium uppercase tracking-wider">Services</a>
-                    <a href="#about" class="nav-link text-gray-200 hover:text-gold transition-colors text-sm font-medium uppercase tracking-wider">About</a>
-                    <a href="#contact" class="nav-link text-gray-200 hover:text-gold transition-colors text-sm font-medium uppercase tracking-wider">Contact</a>
-                    
-                    <button onclick="triggerBooking()" class="btn-gold font-bold py-2.5 px-6 rounded shadow-md text-sm tracking-wide">
-                        Schedule Consultation
-                    </button>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-white hover:text-gold focus:outline-none p-2" aria-label="Toggle Menu">
-                        <i class="fa-solid fa-bars fa-xl"></i>
-                    </button>
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center px-6">
+        <div class="max-w-3xl w-full text-center construction-box p-10 md:p-16 rounded-3xl shadow-2xl">
+            <div class="flex justify-center mb-8">
+                <div class="relative">
+                    <i data-lucide="concierge-bell" class="text-gold w-16 h-16 animate-pulse"></i>
+                    <i data-lucide="settings" class="text-white/20 w-8 h-8 absolute -bottom-2 -right-2 animate-spin-slow"></i>
                 </div>
             </div>
-        </div>
 
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="md:hidden bg-navy border-t border-navy-light">
-            <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#home" class="block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-navy-light border-l-4 border-transparent hover:border-gold transition-all">Home</a>
-                <a href="#services" class="block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-navy-light border-l-4 border-transparent hover:border-gold transition-all">Services</a>
-                <a href="#about" class="block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-navy-light border-l-4 border-transparent hover:border-gold transition-all">About</a>
-                <a href="#contact" class="block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-navy-light border-l-4 border-transparent hover:border-gold transition-all">Contact</a>
-                <button onclick="triggerBooking()" class="w-full text-center block px-3 py-4 rounded-md text-base font-bold text-navy bg-gold mt-4 shadow-lg">
-                    Schedule Consultation
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Page Content Wrapper -->
-    <main class="flex-grow">
-
-        <!-- index.html Content: Hero Section -->
-        <section id="home" class="relative bg-hero-pattern bg-cover bg-center bg-no-repeat min-h-[85vh] flex items-center justify-center">
-            <div class="absolute inset-0 bg-navy opacity-40 mix-blend-multiply"></div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Refining Your <br><span class="italic text-gold text-3xl md:text-5xl">Business Concierge.</span></h1>
             
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-                <div class="inline-block mb-6 border border-gold/50 bg-navy/60 backdrop-blur-sm px-4 py-1.5 rounded-full">
-                    <span class="text-gold text-xs font-bold tracking-[0.2em] uppercase">Private & Confidential</span>
-                </div>
-                
-                <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight drop-shadow-lg">
-                    Your Strategic <br>
-                    <span class="text-gold italic">Business Concierge</span>
-                </h1>
-                
-                <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-gray-200 font-light mb-12 leading-relaxed opacity-90">
-                    The strategic bridge between your business and government bureaucracy. We reclaim your executive time by handling logistics, compliance, and administrative red tape with bank-grade precision.
+            <p class="text-lg md:text-xl text-gray-400 mb-8 font-light leading-relaxed max-w-xl mx-auto">
+                We are evolving. Docu-Hub is currently finalizing a new suite of high-end operational services designed for the modern professional.
+            </p>
+
+            <!-- Linguistic Empathy / Identity Section -->
+            <div class="inline-block py-4 px-8 border-y border-gold/30 bg-gold/5 rounded-lg mb-10">
+                <p class="italic text-gold font-medium">
+                    "Wi a level up di service an' design di new plan dem, so when wi ready, everyting set dynamic an' sharp."
                 </p>
-                
-                <div class="flex flex-col sm:flex-row justify-center gap-5">
-                    <button onclick="triggerBooking()" class="btn-gold text-navy font-bold text-lg py-4 px-10 rounded-md shadow-lg flex items-center justify-center gap-3">
-                        <i class="fa-regular fa-calendar-check"></i>
-                        Schedule Strategic Consultation
-                    </button>
-                    
-                    <a href="#services" class="bg-transparent border border-gray-300 text-white font-medium text-lg py-4 px-10 rounded-md hover:bg-white hover:text-navy transition-colors text-center backdrop-blur-sm">
-                        Concierge Services
-                    </a>
-                </div>
             </div>
-            
-            <!-- Scroll Indicator -->
-            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
-                <a href="#services" class="text-white/60 hover:text-gold transition-colors">
-                    <i class="fa-solid fa-chevron-down fa-xl"></i>
+
+            <!-- Contact Point -->
+            <div class="flex flex-col items-center gap-4">
+                <p class="text-xs uppercase tracking-[0.3em] text-gray-500 font-bold">Inquiries & Early Access</p>
+                <a href="mailto:admin@dhubservices.com" class="flex items-center gap-2 text-lg font-semibold hover:text-gold transition">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                    admin@dhubservices.com
                 </a>
             </div>
-        </section>
-
-        <!-- services.html Content: The Bento Grid -->
-        <section id="services" class="py-24 bg-parchment">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <span class="text-navy text-sm font-bold tracking-widest uppercase mb-2 block">For the Modern Enterprise</span>
-                    <h2 class="font-serif text-3xl md:text-5xl font-bold text-navy mb-6">Service Hub</h2>
-                    <div class="w-24 h-1 bg-gold mx-auto"></div>
-                </div>
-
-                <!-- Bento Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(250px,auto)]">
-                    
-                    <!-- Card 1: Operational Efficiency (Large) -->
-                    <div class="bento-card lg:col-span-2 bg-white p-8 rounded-lg shadow-card border-l-4 border-navy flex flex-col justify-between group">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="p-3 bg-navy/5 rounded-lg">
-                                <i class="fa-solid fa-briefcase text-navy text-2xl"></i>
-                            </div>
-                            <span class="text-gray-400 text-xs font-mono">CONCIERGE-01</span>
-                        </div>
-                        <div>
-                            <h3 class="font-serif text-2xl font-bold text-navy mb-3 group-hover:text-gold transition-colors">Operational Efficiency</h3>
-                            <p class="text-gray-600 mb-6 leading-relaxed max-w-lg">
-                                Outsource the red tape. We retrieve TRN, NIS, and compliance documents for you and your staff, ensuring your internal team remains focused on revenue-generating tasks rather than administrative runarounds.
-                            </p>
-                            <ul class="text-sm text-gray-500 space-y-2 mb-6">
-                                <li class="flex items-center"><i class="fa-solid fa-check text-gold mr-2"></i> Employee Document Retrieval</li>
-                                <li class="flex items-center"><i class="fa-solid fa-check text-gold mr-2"></i> Corporate Filing Assistance</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Card 2: Executive Logistics (Tall) -->
-                    <div class="bento-card lg:row-span-2 bg-navy text-white p-8 rounded-lg shadow-card flex flex-col relative overflow-hidden">
-                        <!-- Abstract Background Element -->
-                        <div class="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 bg-gold opacity-10 rounded-full blur-3xl"></div>
-                        
-                        <div class="relative z-10">
-                            <div class="flex justify-between items-start mb-6">
-                                <div class="p-3 bg-white/10 rounded-lg">
-                                    <i class="fa-solid fa-user-tie text-gold text-2xl"></i>
-                                </div>
-                                <span class="text-gray-400 text-xs font-mono">CONCIERGE-02</span>
-                            </div>
-                            <h3 class="font-serif text-2xl font-bold text-white mb-3">Executive Logistics</h3>
-                            <p class="text-gray-300 mb-6 text-sm leading-relaxed">
-                                White-glove management of government appointments. We stand in line so you don't have to.
-                            </p>
-                            <div class="space-y-4 mb-8">
-                                <div class="bg-white/5 p-4 rounded border border-white/10">
-                                    <h4 class="font-bold text-gold text-sm mb-1">JCF Police Records</h4>
-                                    <p class="text-xs text-gray-400">Expedited Scheduling & Prep</p>
-                                </div>
-                                <div class="bg-white/5 p-4 rounded border border-white/10">
-                                    <h4 class="font-bold text-gold text-sm mb-1">PICA Services</h4>
-                                    <p class="text-xs text-gray-400">Passport Renewals & Immigration</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Biometric Notice -->
-                            <div class="mt-auto bg-gold/10 border border-gold/30 p-4 rounded text-xs text-gold">
-                                <i class="fa-solid fa-circle-info mr-1"></i>
-                                <strong>Notice:</strong> We handle all logistics. Clients only attend briefly for mandatory biometric capture.
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 3: Risk Mitigation -->
-                    <div class="bento-card bg-white p-8 rounded-lg shadow-card border-l-4 border-gold flex flex-col justify-between">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="p-3 bg-gold/10 rounded-lg">
-                                <i class="fa-solid fa-file-contract text-navy text-2xl"></i>
-                            </div>
-                            <span class="text-gray-400 text-xs font-mono">CONCIERGE-03</span>
-                        </div>
-                        <div>
-                            <h3 class="font-serif text-2xl font-bold text-navy mb-3">Risk Mitigation</h3>
-                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                                Secure your legal standing. We rectify identity errors and manage sensitive government interactions with absolute discretion.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Card 4: Consultation CTA -->
-                    <div class="bento-card bg-white p-8 rounded-lg shadow-card border border-gray-100 flex flex-col justify-center items-center text-center cursor-pointer hover:bg-parchment-light" onclick="triggerBooking()">
-                        <div class="w-16 h-16 bg-navy text-white rounded-full flex items-center justify-center mb-4">
-                            <i class="fa-solid fa-arrow-right text-2xl transform -rotate-45 group-hover:rotate-0 transition-transform"></i>
-                        </div>
-                        <h3 class="font-serif text-xl font-bold text-navy">Book Strategy Session</h3>
-                        <p class="text-sm text-gray-500 mt-2">15-Minute Virtual Consult</p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- about.html Content: Compliance & Trust -->
-        <section id="about" class="py-24 bg-white border-y border-gray-200">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    <!-- Text Content -->
-                    <div class="order-2 lg:order-1">
-                        <span class="text-gold text-sm font-bold tracking-widest uppercase mb-2 block">Our Philosophy</span>
-                        <h2 class="font-serif text-3xl md:text-5xl font-bold text-navy mb-6">The Concierge Model</h2>
-                        
-                        <div class="prose prose-lg text-gray-600">
-                            <p class="mb-6">
-                                Docu-Hub Operations Services acts as an <strong>external administrative arm</strong> for the modern business community. We understand that for an agile enterprise, time is the ultimate currency.
-                            </p>
-                            
-                            <div class="bg-parchment p-6 rounded-lg border-l-4 border-navy mb-8">
-                                <h4 class="font-serif text-lg font-bold text-navy mb-2">Hybrid-Virtual Efficiency</h4>
-                                <p class="text-sm mb-0">
-                                    We utilize a virtual-first model that maximizes efficiency while strictly adhering to data handling protocols. Whether you are a sole proprietor or managing a team, our logistical support allows you to bypass the bureaucracy.
-                                </p>
-                            </div>
-                            
-                            <div class="flex items-center space-x-4 mb-8">
-                                <div class="flex items-center gap-2 text-sm font-semibold text-navy">
-                                    <i class="fa-solid fa-shield-halved text-gold"></i>
-                                    Data Privacy First
-                                </div>
-                                <div class="flex items-center gap-2 text-sm font-semibold text-navy">
-                                    <i class="fa-solid fa-stopwatch text-gold"></i>
-                                    Time-Optimized
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <a href="#contact" class="text-navy font-bold border-b-2 border-gold pb-1 hover:text-gold transition-colors inline-block">
-                            Review Compliance Protocol
-                        </a>
-                    </div>
-                    
-                    <!-- Trust Image Placeholder -->
-                    <div class="order-1 lg:order-2 relative">
-                        <div class="absolute inset-0 bg-navy transform translate-x-4 translate-y-4 rounded-lg"></div>
-                        <!-- Image: Macro shot of fountain pen and folder -->
-                        <img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&q=80&w=800" 
-                             alt="Professional desk setting with fountain pen and documents" 
-                             class="relative rounded-lg shadow-2xl w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- contact.html Content: Secure Gateway -->
-        <section id="contact" class="py-24 bg-navy relative overflow-hidden">
-             <!-- Background Texture -->
-             <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(#D4AF37 1px, transparent 1px); background-size: 30px 30px;"></div>
-
-            <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
-                <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-6">Secure Gateway</h2>
-                <p class="text-gray-300 mb-10 text-lg">
-                    Ready to professionalize your logistics? Schedule your strategic consultation below.
-                </p>
-                
-                <div class="bg-white p-1 rounded-lg shadow-2xl inline-block w-full max-w-md">
-                    <!-- 
-                        GOOGLE CALENDAR PLACEHOLDER 
-                        Replace the button below with the standard Google Calendar Embed Code 
-                    -->
-                    <div id="calendar-placeholder" class="bg-parchment p-8 rounded border border-gray-200">
-                        <div class="mb-6">
-                            <i class="fa-regular fa-calendar-check text-navy text-4xl"></i>
-                        </div>
-                        <h3 class="font-bold text-navy text-xl mb-2">Schedule Your Strategic Consultation</h3>
-                        <p class="text-gray-500 text-sm mb-6">15 min | Google Meet or Phone</p>
-                        
-                        <button onclick="triggerBooking()" class="w-full btn-gold font-bold py-3 px-6 rounded shadow hover:shadow-lg">
-                            Select a Time
-                        </button>
-                    </div>
-                </div>
-                
-                <p class="mt-8 text-sm text-gray-400">
-                    <i class="fa-solid fa-lock text-gold mr-2"></i> 
-                    Connection secured via SSL. Data processed in accordance with the Data Protection Act (2020).
-                </p>
-            </div>
-        </section>
-
+        </div>
     </main>
 
-    <!-- Footer: Mandatory Compliance Microcopy -->
-    <footer class="bg-navy-dark text-white pt-16 pb-8 border-t border-navy-light/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                
-                <!-- Brand -->
-                <div class="md:col-span-1">
-                    <a href="#" class="font-serif text-xl font-bold tracking-wide text-white block mb-4">
-                        Docu-Hub
-                    </a>
-                    <p class="text-gray-500 text-xs leading-relaxed">
-                        Sole Proprietor: Laura Clarke<br>
-                        Jamaica<br>
-                        Islandwide Virtual Operations
-                    </p>
-                </div>
-
-                <!-- Contact -->
-                <div class="md:col-span-1">
-                    <h4 class="text-gold font-bold uppercase tracking-wider mb-4 text-xs">DPO Contact</h4>
-                    <p class="text-gray-400 text-sm">
-                        <a href="mailto:admin@dochubservices.com" class="hover:text-white transition-colors">admin@dochubservices.com</a>
-                    </p>
-                </div>
-
-                <!-- UPL Firewall Disclaimer (Mandatory) -->
-                <div class="md:col-span-2">
-                    <h4 class="text-gold font-bold uppercase tracking-wider mb-4 text-xs">UPL Disclaimer</h4>
-                    <p class="text-gray-500 text-xs text-justify leading-relaxed">
-                        Docu-Hub Operations Services provides clerical formatting and logistical liaison only. We do not provide legal advice, statutory interpretation, or financial advice. We act as a facilitator between the client and government agencies. Please consult an Attorney-at-Law for legal matters. We guarantee the accurate submission of documents but cannot guarantee the outcome of government decisions.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Copyright -->
-            <div class="border-t border-navy-light/30 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
-                <p>&copy; 2026 Docu-Hub Operations Services. All rights reserved.</p>
-                <p class="mt-2 md:mt-0">Bank-Grade Compliance Architecture.</p>
-            </div>
+    <!-- Footer / Legal Firewall -->
+    <footer class="p-8">
+        <div class="container mx-auto text-center">
+            <p class="text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-gray-500 mb-4">
+                Registered Data Controller (OIC) | Administrative Concierge | Clerical Scope Only
+            </p>
+            <p class="text-[10px] text-gray-600">© 2025 Docu-Hub Operations Services. St. Catherine, Jamaica.</p>
         </div>
     </footer>
 
-    <!-- Booking Modal (Simulation) -->
-    <div id="booking-modal" class="fixed inset-0 bg-black/80 z-[100] hidden items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300 opacity-0">
-        <div class="bg-white rounded-lg shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto relative transform scale-95 transition-transform duration-300" id="modal-content">
-            <button onclick="closeBooking()" class="absolute top-4 right-4 text-gray-400 hover:text-navy z-10 transition-colors">
-                <i class="fa-solid fa-xmark fa-2x"></i>
-            </button>
-            <div class="p-8 text-center">
-                <h3 class="font-serif text-2xl font-bold text-navy mb-4">Strategic Consultation</h3>
-                <p class="text-gray-600 mb-8">Please select a time for your virtual intake session.</p>
-                
-                <!-- Google Calendar Placeholder Area -->
-                <div class="bg-parchment border-2 border-dashed border-navy/20 p-12 rounded text-navy">
-                    <i class="fa-regular fa-calendar-days fa-3x mb-4 text-gold"></i>
-                    <p class="font-medium">Google Calendar Widget Loading...</p>
-                    <p class="text-xs mt-2 text-gray-500 font-mono">
-                        &lt;!-- Operator: Paste Google Calendar Embed Code Here --&gt;
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Interactive Scripts -->
     <script>
-        // Mobile Menu Logic
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('active');
-            // Toggle icon
-            const icon = btn.querySelector('i');
-            if (menu.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
-            } else {
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            }
-        });
-
-        // Close mobile menu when a link is clicked
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.remove('active');
-                btn.querySelector('i').classList.remove('fa-xmark');
-                btn.querySelector('i').classList.add('fa-bars');
-            });
-        });
-
-        // Booking Modal Logic
-        const modal = document.getElementById('booking-modal');
-        const modalContent = document.getElementById('modal-content');
-
-        function triggerBooking() {
-            modal.classList.remove('hidden');
-            // Small delay to allow display:flex to apply before opacity transition
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                modalContent.classList.remove('scale-95');
-                modalContent.classList.add('scale-100');
-            }, 10);
-        }
-
-        function closeBooking() {
-            modal.classList.add('opacity-0');
-            modalContent.classList.remove('scale-100');
-            modalContent.classList.add('scale-95');
-            
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
-        }
-
-        // Close modal on outside click
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeBooking();
-            }
-        });
+        // Initialize Icons
+        lucide.createIcons();
     </script>
 </body>
 </html>
