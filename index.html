@@ -452,14 +452,16 @@
                     </div>
                 </div>
 
-                <!-- RESOURCE VAULT -->
+              <!-- RESOURCE VAULT -->
                 <div class="max-w-5xl mx-auto mt-24 border-t border-navy/10 pt-16 text-left">
                     <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                         <div class="text-left">
                             <span class="text-gold uppercase tracking-[0.3em] text-[10px] font-bold mb-2 block">Action Station</span>
                             <h2 class="text-4xl serif text-navy">Client Resource Vault</h2>
                         </div>
-                        <div class="bg-navy text-white px-6 py-4 rounded-sm flex items-center gap-4 shadow-lg border border-gold/20 cursor-pointer hover:bg-navy/90 transition-colors">
+                        
+                        <!-- Secure Dropbox Terminal Button -->
+                        <div class="bg-navy text-white px-6 py-4 rounded-sm flex items-center gap-4 shadow-lg border border-gold/20 cursor-pointer hover:bg-navy/90 transition-colors" onclick="openDropbox()">
                             <i data-lucide="upload-cloud" class="text-gold w-6 h-6"></i>
                             <div class="text-left">
                                 <p class="text-[10px] uppercase tracking-widest opacity-70 mb-1">Signed & Ready?</p>
@@ -467,15 +469,36 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- PDF Download 1 -->
                         <div class="bg-white border border-gray-100 p-8 shadow-sm group hover:border-gold transition-all text-left">
                             <h3 class="font-bold mb-3 uppercase tracking-wider text-[10px] text-navy">Authorization Letter</h3>
-                            <span class="flex items-center gap-2 text-[10px] font-bold text-gold uppercase tracking-[0.2em] cursor-pointer">Download PDF <i data-lucide="download" class="w-3 h-3"></i></span>
+                            <!-- 
+                                 HOW TO ADD PDF: 
+                                 1. Create a folder named 'docs' in your project.
+                                 2. Save your PDF as 'authorization-letter.pdf' inside that folder.
+                            -->
+                            <a href="docs/authorization-letter.pdf" download class="flex items-center gap-2 text-[10px] font-bold text-gold uppercase tracking-[0.2em] cursor-pointer hover:text-navy transition-colors">
+                                Download PDF <i data-lucide="download" class="w-3 h-3"></i>
+                            </a>
                         </div>
+                        
+                        <!-- PDF Download 2 -->
                         <div class="bg-white border border-gray-100 p-8 shadow-sm group hover:border-gold transition-all text-left">
                             <h3 class="font-bold mb-3 uppercase tracking-wider text-[10px] text-navy">Service Agreement</h3>
-                            <span class="flex items-center gap-2 text-[10px] font-bold text-gold uppercase tracking-[0.2em] cursor-pointer">Download PDF <i data-lucide="download" class="w-3 h-3"></i></span>
+                             <!-- 
+                                 HOW TO ADD PDF: 
+                                 Save your PDF as 'service-agreement.pdf' inside the 'docs' folder.
+                            -->
+                            <a href="docs/service-agreement.pdf" download class="flex items-center gap-2 text-[10px] font-bold text-gold uppercase tracking-[0.2em] cursor-pointer hover:text-navy transition-colors">
+                                Download PDF <i data-lucide="download" class="w-3 h-3"></i>
+                            </a>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
                     </div>
                 </div>
             </div>
@@ -875,7 +898,7 @@
         </div>
     </footer>
 
-    <!-- Logic Script -->
+   <!-- Logic Script -->
     <script>
         // Initialize Icons
         lucide.createIcons();
@@ -885,11 +908,14 @@
         // ==========================================
         
         // 1. WHATSAPP: Format as 1876xxxxxxx (No dashes/spaces)
-        const WHATSAPP_NUMBER = "18765612614"; 
+        const WHATSAPP_NUMBER = "18765555555"; 
         
         // 2. BOOKING: Paste your Google Appointment Schedule Link inside the quotes below
-        // Example: "https://calendar.app.google/tFwoW8VtVwsvXMLD9"
-        const GOOGLE_CALENDAR_URL = "https://calendar.app.google/tFwoW8VtVwsvXMLD9"; 
+        const GOOGLE_CALENDAR_URL = ""; 
+
+        // 3. DROPBOX: Paste your Dropbox File Request Link inside the quotes below
+        // Example: "https://www.dropbox.com/request/AbCdEfGhIjK..."
+        const DROPBOX_LINK = ""; 
 
         let currentService = "";
 
@@ -899,30 +925,20 @@
             const sections = document.querySelectorAll('.section-content');
             sections.forEach(section => {
                 section.classList.remove('active');
-                // Optional: slight delay to allow fade out if you add fade-out CSS
             });
 
             // 2. Show target section
             const target = document.getElementById(pageId);
             if(target) {
                 target.classList.add('active');
-                
-                // 3. Scroll to top
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                
-                // 4. Update Nav Active State
                 updateNavState(pageId);
-
-                // 5. Special Init for Contact page
                 if(pageId === 'contact') initCalendar();
             }
         }
 
         function updateNavState(activePageId) {
-            // Remove active class from all links
             document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-            
-            // Add active class to current link (if it exists in the main nav)
             const activeLink = document.getElementById(`nav-${activePageId}`);
             if(activeLink) activeLink.classList.add('active');
         }
@@ -937,8 +953,6 @@
             if (category === 'personal') {
                 viewPersonal.classList.remove('hidden');
                 viewBusiness.classList.add('hidden');
-                
-                // Button Styles
                 btnPersonal.classList.add('btn-primary');
                 btnPersonal.classList.remove('btn-outline');
                 btnBusiness.classList.add('btn-outline');
@@ -946,8 +960,6 @@
             } else {
                 viewPersonal.classList.add('hidden');
                 viewBusiness.classList.remove('hidden');
-
-                // Button Styles
                 btnBusiness.classList.add('btn-primary');
                 btnBusiness.classList.remove('btn-outline');
                 btnPersonal.classList.add('btn-outline');
@@ -973,20 +985,26 @@
             window.open(`https://wa.me/${WHATSAPP_NUMBER}`, '_blank');
         }
 
+        // DROPBOX OPENER
+        function openDropbox() {
+            if (DROPBOX_LINK && DROPBOX_LINK !== "") {
+                window.open(DROPBOX_LINK, '_blank');
+            } else {
+                alert("The Secure Dropbox Terminal is currently being configured. Please contact admin via WhatsApp.");
+            }
+        }
+
         // CALENDAR LOADER (Lazy Load)
         function initCalendar() {
             const wrapper = document.getElementById('calendar-wrapper');
-            // Only load if not already loaded to prevent flickering
             if (wrapper && !wrapper.querySelector('iframe')) {
-                
-                // Check if the user has added a link
                 if (GOOGLE_CALENDAR_URL && GOOGLE_CALENDAR_URL !== "") {
                     const iframe = document.createElement('iframe');
                     iframe.src = GOOGLE_CALENDAR_URL;
                     iframe.style.width = "100%";
                     iframe.style.height = "100%";
                     iframe.style.border = "0";
-                    wrapper.innerHTML = ""; // Clear the placeholder text
+                    wrapper.innerHTML = ""; 
                     wrapper.appendChild(iframe);
                 }
             }
@@ -995,11 +1013,8 @@
         // MOBILE MENU TOGGLE
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('menu-icon');
-            
             if (menu.classList.contains('hidden')) {
                 menu.classList.remove('hidden');
-                // Optional: Change icon to X
             } else {
                 menu.classList.add('hidden');
             }
@@ -1007,6 +1022,7 @@
     </script>
 </body>
 </html>
+
 
 
 
