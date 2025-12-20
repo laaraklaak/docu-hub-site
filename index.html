@@ -133,6 +133,22 @@
             background: var(--gold);
             border-radius: 50%;
         }
+
+        .legal-text h4 {
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+        }
+
+        .legal-text p {
+            font-size: 0.9rem;
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -142,7 +158,8 @@
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-4 cursor-pointer" onclick="showPage('home')">
                 <div class="w-12 h-12 bg-white/5 border border-gold/30 flex items-center justify-center overflow-hidden">
-                    <i data-lucide="award" class="text-gold w-8 h-8"></i>
+                    <img src="assets/logo.png" alt="Docu-Hub Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <i data-lucide="award" class="text-gold w-8 h-8 hidden"></i>
                 </div>
                 <div>
                     <span class="block text-sm tracking-widest font-semibold uppercase leading-none mb-1">Docu-Hub</span>
@@ -167,7 +184,6 @@
         
         <!-- HOME PAGE -->
         <section id="home" class="section-content active">
-            <!-- Hero Section with Sequential CTAs -->
             <div class="hero-gradient h-[85vh] flex items-center text-white px-6">
                 <div class="max-w-4xl mx-auto text-center">
                     <span class="text-gold uppercase tracking-[0.4em] text-xs font-bold mb-6 block">Precision. Discretion. Logistics.</span>
@@ -180,14 +196,11 @@
                 </div>
             </div>
 
-            <!-- Client Engagement Roadmap: The "Steps to Success" -->
             <div class="max-w-7xl mx-auto px-6 py-24">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
                     <div>
                         <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Onboarding Path</span>
                         <h2 class="text-4xl serif mb-6">How to Initialize Your Engagement</h2>
-                        <p class="text-gray-600 mb-10 leading-relaxed">Engagement with Docu-Hub is structured to ensure absolute compliance with Jamaican POCA mandates while maintaining institutional efficiency.</p>
-                        
                         <div class="space-y-10">
                             <div class="roadmap-step">
                                 <h4 class="font-bold uppercase tracking-widest text-xs text-navy mb-2">Step 01: Portfolio Discovery</h4>
@@ -202,36 +215,20 @@
                                 <p class="text-sm text-gray-500">Download authorizations from our Resource Vault, sign, and securely submit via our encrypted Dropbox terminal.</p>
                             </div>
                         </div>
-
                         <button onclick="showPage('services')" class="mt-12 btn-primary !bg-navy">Begin Discovery Phase</button>
                     </div>
-                    <div class="bg-navy p-12 text-white relative overflow-hidden shadow-2xl">
-                        <i data-lucide="shield-check" class="w-20 h-20 text-gold mb-8 opacity-50"></i>
-                        <h3 class="text-3xl serif italic mb-6">The "Quiet Luxury" Promise</h3>
-                        <p class="opacity-70 text-sm leading-loose mb-8">We handle the friction of queues, regulatory back-and-forth, and agency discrepancies. You receive the results. Absolute discretion, zero physical intervention required on your part.</p>
-                        <ul class="space-y-4 text-xs tracking-widest uppercase font-bold text-gold">
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4"></i> No Government Queues</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4"></i> Secure Courier Handling</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4"></i> 15-Year Banking Pedigree</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bento Grid Section -->
-            <div class="bg-white py-24 border-y border-gray-100">
-                <div class="max-w-7xl mx-auto px-6">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="bento-card md:col-span-2">
-                            <i data-lucide="landmark" class="text-gold mb-4 w-12 h-12"></i>
-                            <h3 class="text-2xl mb-4">Institutional Authority</h3>
-                            <p class="text-gray-600 leading-relaxed">Synthesizing 15 years of banking experience at NCB and OEC compliance supervision into a private administrative practice.</p>
-                        </div>
-                        <div class="bento-card">
-                            <i data-lucide="lock" class="text-gold mb-4 w-12 h-12"></i>
-                            <h3 class="text-2xl mb-4">Secure Purge</h3>
-                            <p class="text-gray-600">Strict adherence to a 30-day transactional digital purge to protect client privacy in alignment with the Data Protection Act.</p>
-                        </div>
+                    <div class="bg-navy p-12 text-white shadow-2xl">
+                         <h3 class="text-3xl serif italic mb-6">The Success Model</h3>
+                         <div class="grid grid-cols-1 gap-6 text-sm opacity-80">
+                            <div class="flex gap-4">
+                                <span class="text-gold font-bold">01</span>
+                                <p><strong>Strategic Intake:</strong> Mapping needs against statutory requirements.</p>
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="text-gold font-bold">02</span>
+                                <p><strong>Compliance Audit:</strong> Full POCA/KYC verification and vetting.</p>
+                            </div>
+                         </div>
                     </div>
                 </div>
             </div>
@@ -243,9 +240,7 @@
                 <div class="max-w-7xl mx-auto px-6">
                     <h2 class="text-4xl mb-2">Strategic Administrative Portfolio</h2>
                     <div class="w-20 h-1 bg-gold mb-12"></div>
-                    
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        <!-- Services Items -->
                         <div class="flex gap-6">
                             <span class="text-4xl text-gray-200 serif font-bold">01</span>
                             <div>
@@ -260,76 +255,33 @@
                                 <p class="text-gray-600">Standardized RGD, TRN, and NIS document retrieval delivered with institutional speed.</p>
                             </div>
                         </div>
-                        <div class="flex gap-6">
-                            <span class="text-4xl text-gray-200 serif font-bold">03</span>
-                            <div>
-                                <h3 class="text-xl font-bold uppercase tracking-wide mb-2">Identity Restoration</h3>
-                                <p class="text-gray-600">Specialized manual search services at RGD to resolve name discrepancies and rebuild broken paper trails.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6">
-                            <span class="text-4xl text-gray-200 serif font-bold">04</span>
-                            <div>
-                                <h3 class="text-xl font-bold uppercase tracking-wide mb-2">Motor Vehicle & Tax Logistics</h3>
-                                <p class="text-gray-600">Physical courier handling for tax payments and vehicle documentation using secured Manager's Cheques.</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Transitional Call to Action: The Bridge -->
-            <div class="bg-navy py-16 text-center text-white">
-                <div class="max-w-2xl mx-auto px-6">
-                    <h3 class="text-2xl serif mb-4 italic">Defined your service path?</h3>
-                    <p class="opacity-70 text-sm mb-8">Before accessing the Resource Vault, a Strategy Session is required to finalize your roadmap and confirm statutory requirements.</p>
-                    <button onclick="showPage('contact')" class="btn-primary">Schedule Your Consultation Now</button>
-                </div>
-            </div>
-
-            <!-- Client Resource Vault -->
             <div class="max-w-7xl mx-auto px-6 py-24">
                 <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
                     <div>
                         <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-2 block">Post-Consultation Phase</span>
                         <h2 class="text-4xl serif">Client Resource Vault</h2>
                     </div>
-                    <div class="bg-navy text-white px-6 py-4 rounded-sm flex items-center gap-4 shadow-lg border border-gold/20">
+                    <div class="bg-navy text-white px-6 py-4 rounded-sm flex items-center gap-4 shadow-lg">
                         <i data-lucide="upload-cloud" class="text-gold w-6 h-6"></i>
-                        <div>
-                            <p class="text-[10px] uppercase tracking-widest opacity-70">Signed & Ready?</p>
-                            <a href="#" class="text-sm font-bold border-b border-gold/50 hover:text-gold transition-colors">Secure Dropbox Terminal</a>
-                        </div>
+                        <a href="#" class="text-sm font-bold border-b border-gold/50 hover:text-gold transition-colors">Secure Dropbox Terminal</a>
                     </div>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 opacity-80 hover:opacity-100 transition-opacity">
-                    <!-- Resource 1 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="bg-white border border-gray-100 p-8 shadow-sm">
-                        <i data-lucide="file-text" class="text-navy w-8 h-8 mb-6"></i>
                         <h3 class="font-bold mb-3 uppercase tracking-wider text-sm">Master Service Agreement</h3>
-                        <p class="text-xs text-gray-500 mb-8 leading-relaxed">Outlining institutional engagement terms and service level guarantees.</p>
-                        <a href="#" class="flex items-center gap-2 text-[10px] font-bold text-gold uppercase tracking-[0.2em]">
-                            Download PDF <i data-lucide="download" class="w-3 h-3"></i>
-                        </a>
+                        <a href="docs/master-agreement.pdf" class="flex items-center gap-2 text-[10px] font-bold text-gold uppercase tracking-[0.2em]">Download PDF <i data-lucide="download" class="w-3 h-3"></i></a>
                     </div>
-                    <!-- Resource 2 -->
                     <div class="bg-white border border-gray-100 p-8 shadow-sm">
-                        <i data-lucide="briefcase" class="text-navy w-8 h-8 mb-6"></i>
                         <h3 class="font-bold mb-3 uppercase tracking-wider text-sm">Bearer's Authorization</h3>
-                        <p class="text-xs text-gray-500 mb-8 leading-relaxed">Formalizes our courier as your administrative representative at government agencies.</p>
-                        <a href="#" class="flex items-center gap-2 text-[10px] font-bold text-gold uppercase tracking-[0.2em]">
-                            Download PDF <i data-lucide="download" class="w-3 h-3"></i>
-                        </a>
+                        <a href="docs/bearers-auth.pdf" class="flex items-center gap-2 text-[10px] font-bold text-gold uppercase tracking-[0.2em]">Download PDF <i data-lucide="download" class="w-3 h-3"></i></a>
                     </div>
-                    <!-- Resource 3 -->
                     <div class="bg-white border border-gray-100 p-8 shadow-sm">
-                        <i data-lucide="shield-check" class="text-navy w-8 h-8 mb-6"></i>
                         <h3 class="font-bold mb-3 uppercase tracking-wider text-sm">Authorization & Consent</h3>
-                        <p class="text-xs text-gray-500 mb-8 leading-relaxed">Mandatory POCA/KYC consent form for processing sensitive administrative data.</p>
-                        <a href="#" class="flex items-center gap-2 text-[10px] font-bold text-gold uppercase tracking-[0.2em]">
-                            Download PDF <i data-lucide="download" class="w-3 h-3"></i>
-                        </a>
+                        <a href="docs/authorization-consent.pdf" class="flex items-center gap-2 text-[10px] font-bold text-gold uppercase tracking-[0.2em]">Download PDF <i data-lucide="download" class="w-3 h-3"></i></a>
                     </div>
                 </div>
             </div>
@@ -343,69 +295,77 @@
                         <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Leadership</span>
                         <h2 class="text-5xl mb-8">Laura Clarke</h2>
                         <div class="prose text-gray-700 space-y-6">
-                            <p>Founded on a 15-year pedigree within the <strong>National Commercial Bank (NCB)</strong> and <strong>OEC (Compliance Supervision)</strong>, Docu-Hub Operations Services was established to bring bank-grade rigour to the administrative sector.</p>
-                            <p>As a seasoned Compliance specialist and Financial Officer with a 2023 Diploma in Bookkeeping, Laura Clarke bridges the gap between bureaucracy and professional efficiency.</p>
+                            <p>Founded on a 15-year pedigree within the <strong>National Commercial Bank (NCB)</strong> and <strong>OEC (Compliance Supervision)</strong>, Docu-Hub Operations Services brings bank-grade rigour to the administrative sector.</p>
                         </div>
                     </div>
                     <div class="relative">
                         <div class="aspect-[4/5] bg-white border border-gray-200 overflow-hidden shadow-2xl relative">
-                             <div class="w-full h-full flex flex-col items-center justify-center p-12 text-center bg-[#fcfcfc]">
+                             <img src="assets/laura.png" alt="Laura Clarke" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                             <div class="absolute inset-0 flex flex-col items-center justify-center p-12 text-center bg-[#fcfcfc]">
                                 <i data-lucide="user" class="w-20 h-20 text-gray-200 mb-4"></i>
-                                <span class="text-[10px] uppercase tracking-[0.4em] text-gray-400">Proprietor Headshot</span>
                              </div>
                              <div class="absolute inset-0 border-[16px] border-white pointer-events-none"></div>
-                        </div>
-                        <div class="absolute -bottom-6 -left-6 bg-gold p-8 text-white hidden md:block shadow-xl">
-                            <p class="text-3xl font-bold italic">15+</p>
-                            <p class="text-[10px] uppercase tracking-widest">Years Institutional<br>Experience</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-32 border-t border-gray-200 pt-16">
-                    <h3 class="text-center text-2xl mb-12 serif">The Compliance Backbone</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="bg-white p-8 border-l-4 border-gold shadow-sm">
-                            <h4 class="font-bold uppercase tracking-widest text-xs mb-4">OIC Data Controller Status</h4>
-                            <p class="text-sm text-gray-600"><strong>Registered Status: Pending.</strong> We are currently aligning operations with the Office of the Information Commissioner (OIC) for total Data Protection Act compliance.</p>
-                        </div>
-                        <div class="bg-white p-8 border-l-4 border-navy shadow-sm">
-                            <h4 class="font-bold uppercase tracking-widest text-xs mb-4">Dual-Clock Privacy Strategy</h4>
-                            <p class="text-sm text-gray-600">We utilize a 30-day transactional purge for all digital copies, followed by a 7-year statutory retention policy for institutional financial records.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CONTACT PAGE (The Gateway) -->
+        <!-- PRIVACY POLICY PAGE -->
+        <section id="privacy" class="section-content">
+            <div class="max-w-4xl mx-auto px-6 py-24">
+                <h2 class="text-4xl serif mb-4">Privacy Policy</h2>
+                <div class="w-20 h-1 bg-gold mb-12"></div>
+                <div class="legal-text">
+                    <p><em>Effective Date: January 1, 2026</em></p>
+                    <h4>1. Data Collection Strategy</h4>
+                    <p>In accordance with the Data Protection Act of Jamaica, Docu-Hub Operations Services collects sensitive personal data (TRN, DOB, Government IDs) solely for the purpose of executing requested administrative logistics.</p>
+                    <h4>2. Dual-Clock Retention Framework</h4>
+                    <p>We operate a strict data lifecycle: Digital identifiers are purged within 30 days of service completion. Statutory financial records are retained for 7 years as required by Jamaican bookkeeping regulations.</p>
+                    <h4>3. Secure Disclosure</h4>
+                    <p>Data is shared exclusively with relevant government agencies (RGD, TAJ, NIS) and is never sold or utilized for marketing purposes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TERMS OF SERVICE PAGE -->
+        <section id="terms" class="section-content">
+            <div class="max-w-4xl mx-auto px-6 py-24">
+                <h2 class="text-4xl serif mb-4">Terms of Service</h2>
+                <div class="w-20 h-1 bg-gold mb-12"></div>
+                <div class="legal-text">
+                    <h4>1. Administrative Nature</h4>
+                    <p>Docu-Hub is a private administrative logistics agency. We are not a law firm and do not provide legal advice or statutory interpretation.</p>
+                    <h4>2. Client Responsibility</h4>
+                    <p>Clients are responsible for providing accurate and truthful information. Any discrepancies caused by inaccurate client data are not the liability of Docu-Hub.</p>
+                    <h4>3. Refund Policy</h4>
+                    <p>Fees are for administrative labor and logistics. Once a courier is dispatched or an agency submission is made, service fees are non-refundable.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LEGAL NOTICE PAGE -->
+        <section id="legal-notice" class="section-content">
+            <div class="max-w-4xl mx-auto px-6 py-24">
+                <h2 class="text-4xl serif mb-4">Legal Notice</h2>
+                <div class="w-20 h-1 bg-gold mb-12"></div>
+                <div class="legal-text">
+                    <h4>POCA Compliance</h4>
+                    <p>All high-value tax logistics handled by Docu-Hub must comply with the Proceeds of Crime Act (POCA). We reserve the right to refuse service for transactions that do not meet KYC (Know Your Customer) requirements.</p>
+                    <h4>Agency Limitations</h4>
+                    <p>We do not guarantee the speed of government agencies. Our commitment is to the accuracy and promptness of the submission and retrieval, not the agency's internal processing time.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT PAGE -->
         <section id="contact" class="section-content">
             <div class="max-w-7xl mx-auto px-6 py-24 text-center">
-                <h2 class="text-4xl mb-4">The Gateway</h2>
-                <p class="text-gray-600 max-w-xl mx-auto mb-12">Initialize your administrative strategy. Select a time for your virtual consultation below.</p>
-                
+                <h2 class="text-4xl mb-4 text-navy">The Gateway</h2>
+                <p class="text-gray-600 max-w-xl mx-auto mb-12">Select a time for your virtual consultation below.</p>
                 <div class="bg-white p-4 md:p-8 shadow-2xl max-w-4xl mx-auto border border-gray-100">
                     <div class="aspect-video w-full flex items-center justify-center bg-gray-50 border-2 border-dashed border-gray-200">
-                        <div class="text-center">
-                            <i data-lucide="calendar" class="w-12 h-12 mb-4 mx-auto text-gray-300"></i>
-                            <p class="text-xs uppercase tracking-widest opacity-60">Google Calendar Integration Placeholder</p>
-                            <p class="text-[10px] mt-4 uppercase tracking-widest text-gold font-bold">Strategy Session Booking Interface</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mt-20 text-left border-t pt-12">
-                    <div>
-                        <h4 class="font-bold uppercase text-[10px] mb-4 tracking-widest opacity-50">Email Correspondence</h4>
-                        <p class="text-navy font-medium">admin@dochubservices.com</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold uppercase text-[10px] mb-4 tracking-widest opacity-50">DPO & Principal</h4>
-                        <p class="text-navy font-medium">Laura Clarke</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold uppercase text-[10px] mb-4 tracking-widest opacity-50">Operating Hours</h4>
-                        <p class="text-navy font-medium">Mon — Fri: 9:00 AM - 4:30 PM</p>
+                        <i data-lucide="calendar" class="w-12 h-12 text-gray-300"></i>
                     </div>
                 </div>
             </div>
@@ -424,65 +384,45 @@
                         </div>
                         <span class="text-xl serif italic tracking-wide">Docu-Hub</span>
                     </div>
-                    <p class="text-[10px] opacity-60 leading-relaxed uppercase tracking-widest">Precision & Discretion.<br>Administrative Logistics.</p>
                 </div>
-                
                 <div>
-                    <h5 class="text-gold uppercase text-[10px] font-bold tracking-[0.3em] mb-6">Quick Links</h5>
-                    <ul class="text-sm space-y-3 opacity-80 font-light">
-                        <li class="cursor-pointer hover:text-gold transition-colors" onclick="showPage('home')">Home</li>
-                        <li class="cursor-pointer hover:text-gold transition-colors" onclick="showPage('about')">About Us</li>
-                        <li class="cursor-pointer hover:text-gold transition-colors" onclick="showPage('services')">Services</li>
-                        <li class="cursor-pointer hover:text-gold transition-colors" onclick="showPage('contact')">Contact</li>
+                    <h5 class="text-gold uppercase text-[10px] font-bold tracking-[0.3em] mb-6 text-left">Quick Links</h5>
+                    <ul class="text-sm space-y-3 opacity-80 font-light text-left">
+                        <li class="cursor-pointer hover:text-gold" onclick="showPage('about')">About Us</li>
+                        <li class="cursor-pointer hover:text-gold" onclick="showPage('services')">Services</li>
+                        <li class="cursor-pointer hover:text-gold" onclick="showPage('contact')">Contact</li>
                     </ul>
                 </div>
-
                 <div>
-                    <h5 class="text-gold uppercase text-[10px] font-bold tracking-[0.3em] mb-6">Legal Notice</h5>
-                    <ul class="text-sm space-y-3 opacity-80 font-light">
-                        <li class="cursor-pointer hover:text-gold transition-colors">Privacy Policy</li>
-                        <li class="cursor-pointer hover:text-gold transition-colors">Terms of Service</li>
-                        <li class="cursor-pointer hover:text-gold transition-colors">Compliance Strategy</li>
+                    <h5 class="text-gold uppercase text-[10px] font-bold tracking-[0.3em] mb-6 text-left">Legal Stuff</h5>
+                    <ul class="text-sm space-y-3 opacity-80 font-light text-left">
+                        <li class="cursor-pointer hover:text-gold" onclick="showPage('privacy')">Privacy Policy</li>
+                        <li class="cursor-pointer hover:text-gold" onclick="showPage('terms')">Terms of Service</li>
+                        <li class="cursor-pointer hover:text-gold" onclick="showPage('legal-notice')">Legal Notice</li>
                     </ul>
                 </div>
-
                 <div>
-                    <h5 class="text-gold uppercase text-[10px] font-bold tracking-[0.3em] mb-6">Connect</h5>
-                    <div class="space-y-4">
-                        <a href="mailto:admin@dochubservices.com" class="text-sm block hover:text-gold transition-colors">admin@dochubservices.com</a>
-                        <span class="text-sm block">Laura Clarke, Principal</span>
-                    </div>
+                    <h5 class="text-gold uppercase text-[10px] font-bold tracking-[0.3em] mb-6 text-left">Connect</h5>
+                    <a href="mailto:admin@dochubservices.com" class="text-sm block hover:text-gold">admin@dochubservices.com</a>
                 </div>
             </div>
-
-            <div class="border-t border-white/10 pt-10 text-[10px] leading-relaxed opacity-50 text-center uppercase tracking-[0.2em]">
-                <p class="mb-4 max-w-2xl mx-auto leading-loose">Disclaimer: Docu-Hub Operations Services is a private administrative agency. We are not a law firm and do not provide legal advice. Consult an Attorney-at-Law for legal matters.</p>
-                <p class="font-bold opacity-100">&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
+            <div class="border-t border-white/10 pt-10 text-[10px] text-center uppercase tracking-[0.2em] opacity-50">
+                <p>&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Initialize Icons
         lucide.createIcons();
-
-        // Sequential Navigation Logic
         function showPage(pageId) {
             const sections = document.querySelectorAll('.section-content');
             sections.forEach(section => section.classList.remove('active'));
-            
             const target = document.getElementById(pageId);
             if(target) {
                 target.classList.add('active');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
-
-        // Mobile Menu Button Logic
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        menuBtn.addEventListener('click', () => {
-            console.log("Mobile menu triggered");
-        });
     </script>
 </body>
 </html>
