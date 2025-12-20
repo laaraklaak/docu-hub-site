@@ -149,6 +149,18 @@
             line-height: 1.8;
             margin-bottom: 1rem;
         }
+
+        .about-grid-card {
+            background: white;
+            padding: 2.5rem;
+            border: 1px solid #eee;
+            transition: transform 0.3s ease;
+        }
+
+        .about-grid-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
     </style>
 </head>
 <body>
@@ -196,26 +208,28 @@
                 </div>
             </div>
 
-            <div class="max-w-7xl mx-auto px-6 py-24">
+            <div class="max-w-7xl mx-auto px-6 py-24 text-navy">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
                     <div>
-                        <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Onboarding Path</span>
-                        <h2 class="text-4xl serif mb-6">How to Initialize Your Engagement</h2>
+                        <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block text-left">Onboarding Path</span>
+                        <h2 class="text-4xl serif mb-6 text-left">How to Initialize Your Engagement</h2>
                         <div class="space-y-10">
-                            <div class="roadmap-step">
+                            <div class="roadmap-step text-left">
                                 <h4 class="font-bold uppercase tracking-widest text-xs text-navy mb-2">Step 01: Portfolio Discovery</h4>
                                 <p class="text-sm text-gray-500">Review our services to identify which administrative logistics meet your current objectives.</p>
                             </div>
-                            <div class="roadmap-step">
+                            <div class="roadmap-step text-left">
                                 <h4 class="font-bold uppercase tracking-widest text-xs text-navy mb-2">Step 02: Strategy Consultation</h4>
                                 <p class="text-sm text-gray-500">Book a strategy session to define your roadmap, verify legal prerequisites, and receive a formal fee quote.</p>
                             </div>
-                            <div class="roadmap-step">
+                            <div class="roadmap-step text-left">
                                 <h4 class="font-bold uppercase tracking-widest text-xs text-navy mb-2">Step 03: Document Execution</h4>
                                 <p class="text-sm text-gray-500">Download authorizations from our Resource Vault, sign, and securely submit via our encrypted Dropbox terminal.</p>
                             </div>
                         </div>
-                        <button onclick="showPage('services')" class="mt-12 btn-primary !bg-navy">Begin Discovery Phase</button>
+                        <div class="text-left">
+                            <button onclick="showPage('services')" class="mt-12 btn-primary !bg-navy">Begin Discovery Phase</button>
+                        </div>
                     </div>
                     <div class="bg-navy p-12 text-white shadow-2xl">
                          <h3 class="text-3xl serif italic mb-6">The Success Model</h3>
@@ -238,9 +252,9 @@
         <section id="services" class="section-content">
             <div class="bg-white py-20 border-b border-gray-100">
                 <div class="max-w-7xl mx-auto px-6">
-                    <h2 class="text-4xl mb-2">Strategic Administrative Portfolio</h2>
+                    <h2 class="text-4xl mb-2 text-navy">Strategic Administrative Portfolio</h2>
                     <div class="w-20 h-1 bg-gold mb-12"></div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-navy">
                         <div class="flex gap-6">
                             <span class="text-4xl text-gray-200 serif font-bold">01</span>
                             <div>
@@ -259,9 +273,9 @@
                 </div>
             </div>
 
-            <div class="max-w-7xl mx-auto px-6 py-24">
+            <div class="max-w-7xl mx-auto px-6 py-24 text-navy">
                 <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
-                    <div>
+                    <div class="text-left">
                         <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-2 block">Post-Consultation Phase</span>
                         <h2 class="text-4xl serif">Client Resource Vault</h2>
                     </div>
@@ -271,15 +285,15 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-white border border-gray-100 p-8 shadow-sm">
+                    <div class="bg-white border border-gray-100 p-8 shadow-sm text-left">
                         <h3 class="font-bold mb-3 uppercase tracking-wider text-sm">Master Service Agreement</h3>
                         <a href="docs/master-agreement.pdf" class="flex items-center gap-2 text-[10px] font-bold text-gold uppercase tracking-[0.2em]">Download PDF <i data-lucide="download" class="w-3 h-3"></i></a>
                     </div>
-                    <div class="bg-white border border-gray-100 p-8 shadow-sm">
+                    <div class="bg-white border border-gray-100 p-8 shadow-sm text-left">
                         <h3 class="font-bold mb-3 uppercase tracking-wider text-sm">Bearer's Authorization</h3>
                         <a href="docs/bearers-auth.pdf" class="flex items-center gap-2 text-[10px] font-bold text-gold uppercase tracking-[0.2em]">Download PDF <i data-lucide="download" class="w-3 h-3"></i></a>
                     </div>
-                    <div class="bg-white border border-gray-100 p-8 shadow-sm">
+                    <div class="bg-white border border-gray-100 p-8 shadow-sm text-left">
                         <h3 class="font-bold mb-3 uppercase tracking-wider text-sm">Authorization & Consent</h3>
                         <a href="docs/authorization-consent.pdf" class="flex items-center gap-2 text-[10px] font-bold text-gold uppercase tracking-[0.2em]">Download PDF <i data-lucide="download" class="w-3 h-3"></i></a>
                     </div>
@@ -287,24 +301,149 @@
             </div>
         </section>
 
-        <!-- ABOUT PAGE -->
+        <!-- ABOUT PAGE: REDESIGNED WITH FULL CONTENT -->
         <section id="about" class="section-content">
-            <div class="max-w-7xl mx-auto px-6 py-24">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-                    <div>
-                        <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Leadership</span>
-                        <h2 class="text-5xl mb-8">Laura Clarke</h2>
-                        <div class="prose text-gray-700 space-y-6">
-                            <p>Founded on a 15-year pedigree within the <strong>National Commercial Bank (NCB)</strong> and <strong>OEC (Compliance Supervision)</strong>, Docu-Hub Operations Services brings bank-grade rigour to the administrative sector.</p>
+            <!-- Pillar 1: Mission & Vision -->
+            <div class="bg-white py-24 border-b border-gray-100">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                        <div class="text-left">
+                            <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Institutional Foundation</span>
+                            <h2 class="text-5xl serif mb-8 text-navy leading-tight">Bureaucracy,<br>Simplified.</h2>
+                            <p class="text-gray-600 mb-6 leading-relaxed">Docu-Hub was established to provide individual citizens and Jamaican MSMEs with a high-accuracy, privacy-first alternative to traditional document handling.</p>
+                            <p class="text-gray-600 mb-8 leading-relaxed italic">We serve as the specialized bridge between the public and Jamaica’s primary administrative bodies, including TAJ, NIS, and the RGD.</p>
+                            <div class="flex gap-8 text-[10px] uppercase font-bold tracking-widest text-gold">
+                                <span>Professional Competence</span>
+                                <span>Data Integrity</span>
+                                <span>Modern Initiative</span>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="aspect-[16/9] bg-navy flex items-center justify-center p-12">
+                                <i data-lucide="link-2" class="text-gold w-24 h-24 opacity-20"></i>
+                                <div class="absolute inset-0 flex items-center justify-center text-center px-12">
+                                    <p class="text-white serif text-xl italic font-light opacity-90">"Strategic Response to Jamaica's Administrative Complexity."</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="relative">
-                        <div class="aspect-[4/5] bg-white border border-gray-200 overflow-hidden shadow-2xl relative">
+                </div>
+            </div>
+
+            <!-- Pillar 2: Leadership (Laura Clarke) -->
+            <div class="max-w-7xl mx-auto px-6 py-24">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
+                    <div class="relative sticky top-32">
+                        <div class="aspect-[4/5] bg-white border border-gray-200 overflow-hidden shadow-2xl relative group">
                              <img src="assets/laura.png" alt="Laura Clarke" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                              <div class="absolute inset-0 flex flex-col items-center justify-center p-12 text-center bg-[#fcfcfc]">
                                 <i data-lucide="user" class="w-20 h-20 text-gray-200 mb-4"></i>
+                                <span class="text-[10px] uppercase tracking-[0.4em] text-gray-400">Laura Clarke, Principal</span>
                              </div>
                              <div class="absolute inset-0 border-[16px] border-white pointer-events-none"></div>
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 bg-gold p-8 text-white hidden md:block shadow-xl z-10">
+                            <p class="text-3xl font-bold italic">15+</p>
+                            <p class="text-[10px] uppercase tracking-widest">Years Compliance<br>Experience</p>
+                        </div>
+                    </div>
+                    <div class="text-left text-navy">
+                        <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Executive Leadership</span>
+                        <h2 class="text-5xl serif mb-10">Laura Clarke</h2>
+                        <div class="space-y-8">
+                            <div>
+                                <h4 class="font-bold uppercase tracking-widest text-xs mb-3 text-gold">Banking Pedigree</h4>
+                                <p class="text-sm text-gray-600 leading-relaxed">With over a decade (1992–2006) as a Departmental Team Leader and Financial Officer at <strong>National Commercial Bank (NCB)</strong>, Laura managed significant financial operations and regulatory balancing to the highest institutional standards.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold uppercase tracking-widest text-xs mb-3 text-gold">Logistical Precision</h4>
+                                <p class="text-sm text-gray-600 leading-relaxed">As a seasonal Examination Supervisor for the <strong>Overseas Examination Commission (OEC)</strong> (2021–2025), she acted as a Primary Compliance Officer, successfully managing sensitive logistics for hundreds of candidates with zero data breaches.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold uppercase tracking-widest text-xs mb-3 text-gold">Technical Credential</h4>
+                                <p class="text-sm text-gray-600 leading-relaxed">Laura holds a <strong>2023 Diploma in Effective Bookkeeping and Payroll</strong>, ensuring all MSME filings meet modern accounting and regulatory standards.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pillar 3: Operational Strategy (Hybrid-Efficiency) -->
+            <div class="bg-navy py-24 text-white">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Our Methodology</span>
+                        <h2 class="text-4xl serif">The "Hybrid-Efficiency" Model</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="about-grid-card !bg-white/5 border-white/10 text-left">
+                            <i data-lucide="monitor" class="text-gold w-10 h-10 mb-6"></i>
+                            <h3 class="font-bold uppercase tracking-widest text-sm mb-4">Virtual-First Intake</h3>
+                            <p class="text-sm opacity-70 leading-relaxed">Engagement begins with a Virtual Strategy Session for a "Pre-Clearance Audit" of your documentation from your home or office.</p>
+                        </div>
+                        <div class="about-grid-card !bg-white/5 border-white/10 text-left">
+                            <i data-lucide="map-pin" class="text-gold w-10 h-10 mb-6"></i>
+                            <h3 class="font-bold uppercase tracking-widest text-sm mb-4">Flexible Physical Liaison</h3>
+                            <p class="text-sm opacity-70 leading-relaxed">We execute physical submissions and collections based on real-time parish-specific needs, ensuring you never spend time in a queue.</p>
+                        </div>
+                        <div class="about-grid-card !bg-white/5 border-white/10 text-left">
+                            <i data-lucide="shield" class="text-gold w-10 h-10 mb-6"></i>
+                            <h3 class="font-bold uppercase tracking-widest text-sm mb-4">Chain of Custody</h3>
+                            <p class="text-sm opacity-70 leading-relaxed">Documents are secured in lockable, tamper-evident travel bags and stored in high-security cabinets when not in transit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pillar 4: The Legal Shield -->
+            <div class="max-w-7xl mx-auto px-6 py-24 text-navy">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div class="md:col-span-1 text-left">
+                        <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Compliance Backbone</span>
+                        <h2 class="text-4xl serif mb-6 leading-tight">Regulatory<br>Oversight</h2>
+                        <div class="bg-gold/10 p-6 border-l-4 border-gold text-xs leading-loose font-medium opacity-80">
+                            Registered Data Controller (Pending) with the Office of the Information Commissioner (OIC) for 2025/2026.
+                        </div>
+                    </div>
+                    <div class="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8 text-left">
+                        <div>
+                            <h4 class="font-bold uppercase tracking-widest text-[10px] mb-4 text-gold">JDPA Standards</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">Operating in strict adherence to the 8 Standards of the Jamaica Data Protection Act, 2020. Laura Clarke serves as appointed Data Protection Officer (DPO).</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold uppercase tracking-widest text-[10px] mb-4 text-gold">DNFBP Supervision</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">Classified as a Designated Non-Financial Business or Profession (DNFBP) under the oversight of the Financial Services Commission (FSC) and FID.</p>
+                        </div>
+                        <div class="sm:col-span-2 bg-parchment p-8 border border-gray-200">
+                            <h4 class="font-bold uppercase tracking-widest text-xs mb-6 text-navy">The "Dual-Clock" Privacy Strategy</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div>
+                                    <span class="block font-bold text-navy text-[10px] uppercase mb-2">Transactional Purge (Cat A)</span>
+                                    <p class="text-xs text-gray-500">Digital scans of vital records and draft forms are permanently deleted within 30 days of document delivery.</p>
+                                </div>
+                                <div>
+                                    <span class="block font-bold text-navy text-[10px] uppercase mb-2">Compliance Vault (Cat B)</span>
+                                    <p class="text-xs text-gray-500">Contracts, KYC records, and receipts are archived for seven (7) years as mandated by POCA.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Essential Legal Notices (Firewall) -->
+                <div class="mt-24 border-t border-gray-100 pt-16">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
+                        <div class="bg-white p-8 border border-gray-100 italic shadow-sm">
+                            <h5 class="font-bold uppercase text-[10px] tracking-widest mb-4 text-navy flex items-center gap-2">
+                                <i data-lucide="shield-alert" class="w-4 h-4 text-gold"></i> UPL Firewall
+                            </h5>
+                            <p class="text-xs text-gray-500 leading-loose">"Docu-Hub Operations Services is a clerical agency and government logistics provider. We are not a law firm and do not provide legal advice, legal opinions, or statutory interpretations. Please consult an Attorney-at-Law for legal determinations."</p>
+                        </div>
+                        <div class="bg-white p-8 border border-gray-100 italic shadow-sm">
+                            <h5 class="font-bold uppercase text-[10px] tracking-widest mb-4 text-navy flex items-center gap-2">
+                                <i data-lucide="fingerprint" class="w-4 h-4 text-gold"></i> Biometric Notice
+                            </h5>
+                            <p class="text-xs text-gray-500 leading-loose">"In accordance with JCF and PICA protocols, our role for Police Records and Passports is strictly administrative (scheduling/payment). Applicants are required by law to appear in person for biometric capture."</p>
                         </div>
                     </div>
                 </div>
@@ -313,10 +452,10 @@
 
         <!-- PRIVACY POLICY PAGE -->
         <section id="privacy" class="section-content">
-            <div class="max-w-4xl mx-auto px-6 py-24">
+            <div class="max-w-4xl mx-auto px-6 py-24 text-navy">
                 <h2 class="text-4xl serif mb-4">Privacy Policy</h2>
                 <div class="w-20 h-1 bg-gold mb-12"></div>
-                <div class="legal-text">
+                <div class="legal-text text-left">
                     <p><em>Effective Date: January 1, 2026</em></p>
                     <h4>1. Data Collection Strategy</h4>
                     <p>In accordance with the Data Protection Act of Jamaica, Docu-Hub Operations Services collects sensitive personal data (TRN, DOB, Government IDs) solely for the purpose of executing requested administrative logistics.</p>
@@ -330,10 +469,10 @@
 
         <!-- TERMS OF SERVICE PAGE -->
         <section id="terms" class="section-content">
-            <div class="max-w-4xl mx-auto px-6 py-24">
+            <div class="max-w-4xl mx-auto px-6 py-24 text-navy">
                 <h2 class="text-4xl serif mb-4">Terms of Service</h2>
                 <div class="w-20 h-1 bg-gold mb-12"></div>
-                <div class="legal-text">
+                <div class="legal-text text-left">
                     <h4>1. Administrative Nature</h4>
                     <p>Docu-Hub is a private administrative logistics agency. We are not a law firm and do not provide legal advice or statutory interpretation.</p>
                     <h4>2. Client Responsibility</h4>
@@ -346,10 +485,10 @@
 
         <!-- LEGAL NOTICE PAGE -->
         <section id="legal-notice" class="section-content">
-            <div class="max-w-4xl mx-auto px-6 py-24">
+            <div class="max-w-4xl mx-auto px-6 py-24 text-navy">
                 <h2 class="text-4xl serif mb-4">Legal Notice</h2>
                 <div class="w-20 h-1 bg-gold mb-12"></div>
-                <div class="legal-text">
+                <div class="legal-text text-left">
                     <h4>POCA Compliance</h4>
                     <p>All high-value tax logistics handled by Docu-Hub must comply with the Proceeds of Crime Act (POCA). We reserve the right to refuse service for transactions that do not meet KYC (Know Your Customer) requirements.</p>
                     <h4>Agency Limitations</h4>
@@ -359,10 +498,10 @@
         </section>
 
         <!-- CONTACT PAGE -->
-        <section id="contact" class="section-content">
+        <section id="contact" class="section-content text-navy">
             <div class="max-w-7xl mx-auto px-6 py-24 text-center">
                 <h2 class="text-4xl mb-4 text-navy">The Gateway</h2>
-                <p class="text-gray-600 max-w-xl mx-auto mb-12">Select a time for your virtual consultation below.</p>
+                <p class="text-gray-600 max-w-xl mx-auto mb-12 text-center">Select a time for your virtual consultation below.</p>
                 <div class="bg-white p-4 md:p-8 shadow-2xl max-w-4xl mx-auto border border-gray-100">
                     <div class="aspect-video w-full flex items-center justify-center bg-gray-50 border-2 border-dashed border-gray-200">
                         <i data-lucide="calendar" class="w-12 h-12 text-gray-300"></i>
