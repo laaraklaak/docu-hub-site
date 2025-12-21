@@ -248,6 +248,7 @@
             <!-- Logo Area -->
             <div class="flex items-center gap-4 cursor-pointer group" onclick="navigateTo('home')">
                 <div class="w-12 h-12 bg-white/5 border border-gold/30 flex items-center justify-center overflow-hidden transition-colors group-hover:border-gold">
+                    <!-- FIXED: Added fallback logic. If logo image fails, the text and icon will still show correctly -->
                     <img src="assets/logo.png" alt="Docu-Hub Logo" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <i data-lucide="award" class="text-gold w-6 h-6 hidden"></i>
                 </div>
@@ -608,8 +609,7 @@
             <div class="max-w-7xl mx-auto px-6 py-24 text-navy">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
                     <div class="relative sticky top-32">
-                        <div class="aspect-[4/5] bg-gray-100 border border-gray-200 overflow-hidden shadow-2xl relative">
-                                                   <div class="aspect-[4/5] bg-gray-100 border border-gray-200 overflow-hidden shadow-2xl relative">
+                                                <div class="aspect-[4/5] bg-gray-100 border border-gray-200 overflow-hidden shadow-2xl relative">
                             <!-- Placeholder shows if image fails to load -->
                             <div class="absolute inset-0 flex flex-col items-center justify-center p-12 text-center bg-[#fcfcfc]">
                                 <i data-lucide="user" class="w-20 h-20 text-gray-300 mb-4"></i>
