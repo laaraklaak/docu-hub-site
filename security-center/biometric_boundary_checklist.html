@@ -3,191 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Biometric Boundary - Responsibilities Checklist</title>
+    <title>Responsibilities Checklist | The Biometric Boundary</title>
+    
+    <!-- TAILWIND CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
+    
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- ICONS -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
         :root {
             --navy: #003366;
             --gold: #D4AF37;
             --parchment: #F5F0EC;
+            --gold-hover: #C5A028;
             --light-navy: #E6EEF5;
         }
         body {
-            font-family: 'Poppins', sans-serif; /* Assumed font */
+            font-family: 'Poppins', sans-serif;
             background-color: var(--parchment);
             color: var(--navy);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
+            line-height: 1.6;
         }
-        .container {
+        h1, h2, h3, .serif-title { 
+            font-family: 'Playfair Display', serif; 
+        }
+        
+        .container-main {
             background-color: white;
             border-top: 8px solid var(--navy);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            max-width: 800px;
-            width: 100%;
-            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
-        .header-section {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        .title {
-            font-family: 'Playfair Display', serif; /* Assumed font */
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--navy);
-            margin-bottom: 0.5rem;
-        }
-        .subtitle {
-            font-size: 1rem;
-            color: #666;
-            font-style: italic;
-        }
-        .split-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-        @media (max-width: 768px) {
-            .split-layout {
-                grid-template-columns: 1fr;
-            }
-        }
+
         .column {
-            padding: 1.5rem;
-            border-radius: 4px;
+            padding: 2rem;
+            border-radius: 2px;
+            height: 100%;
         }
-        .col-admin {
-            background-color: var(--light-navy);
-            border-left: 4px solid var(--navy);
-        }
-        .col-client {
-            background-color: #FFF9E6; /* Light gold tint */
-            border-left: 4px solid var(--gold);
-        }
-        .col-header {
-            font-weight: bold;
+
+        .btn-return {
+            background-color: var(--gold);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 2px;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1.5rem;
-            display: flex;
+            letter-spacing: 1.5px;
+            font-size: 0.75rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 8px;
         }
-        .task-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .btn-return:hover {
+            background-color: var(--gold-hover);
+            transform: translateX(-5px);
         }
-        .task-item {
-            display: flex;
-            align-items: start;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-        .check-icon {
-            flex-shrink: 0;
-            width: 20px;
-            height: 20px;
-        }
-        .footer-note {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #eee;
-            font-size: 0.8rem;
-            text-align: center;
-            color: #888;
+
+        .jamaican-example {
+            font-style: italic;
+            font-size: 0.85rem;
+            color: #666;
+            display: block;
+            margin-top: 0.25rem;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="p-4 md:p-12 flex flex-col items-center min-h-screen">
 
-    <div class="container">
+    <div class="max-w-4xl w-full container-main p-8 md:p-16 relative overflow-hidden">
         
-        <div class="header-section">
-            <h1 class="title">The Biometric Boundary</h1>
-            <p class="subtitle">Understanding the division of labor for secure government applications.</p>
+        <div class="text-center mb-12 relative z-10">
+            <span class="text-[10px] font-bold tracking-[0.3em] text-gold uppercase mb-4 block serif-title">Security Checklist &bull; Protocol #04</span>
+            <h1 class="text-3xl md:text-5xl font-bold text-navy mb-4 italic">The Biometric Boundary</h1>
+            <p class="text-gray-500 font-light italic">Detailed division of responsibilities for secure applications.</p>
         </div>
 
-        <div class="split-layout">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
             
             <!-- Docu-Hub Side -->
-            <div class="column col-admin">
-                <div class="col-header text-navy">
-                    <i data-lucide="briefcase" class="w-5 h-5"></i>
-                    What Docu-Hub Does
-                    <span class="block text-[10px] opacity-60 ml-auto">ADMINISTRATIVE</span>
+            <div class="column bg-[#f8fafc] border-l-4 border-navy shadow-sm">
+                <div class="flex items-center gap-3 mb-8">
+                    <i data-lucide="briefcase" class="text-navy w-6 h-6"></i>
+                    <h3 class="text-xl font-bold uppercase tracking-widest text-navy">Docu-Hub Role</h3>
                 </div>
-                <ul class="task-list">
-                    <li class="task-item">
-                        <i data-lucide="check-circle-2" class="check-icon text-navy"></i>
-                        <span><strong>Form Preparation:</strong> Completing complex government applications with zero errors.</span>
+                
+                <ul class="space-y-6">
+                    <li class="flex gap-4">
+                        <i data-lucide="check-circle-2" class="text-navy w-5 h-5 flex-shrink-0 mt-1"></i>
+                        <div>
+                            <span class="font-semibold block">Administrative Drafting</span>
+                            <span class="jamaican-example">"Wi write out di paper dem clean an' clear."</span>
+                        </div>
                     </li>
-                    <li class="task-item">
-                        <i data-lucide="check-circle-2" class="check-icon text-navy"></i>
-                        <span><strong>Fee Payment:</strong> Handling all statutory fees online or at the cashier window.</span>
+                    <li class="flex gap-4">
+                        <i data-lucide="check-circle-2" class="text-navy w-5 h-5 flex-shrink-0 mt-1"></i>
+                        <div>
+                            <span class="font-semibold block">Statutory Fee Remittance</span>
+                            <span class="jamaican-example">"Wi pay di tax dem an' get di receipt."</span>
+                        </div>
                     </li>
-                    <li class="task-item">
-                        <i data-lucide="check-circle-2" class="check-icon text-navy"></i>
-                        <span><strong>The Queue:</strong> Standing in line for drop-offs and non-biometric submissions.</span>
+                    <li class="flex gap-4">
+                        <i data-lucide="check-circle-2" class="text-navy w-5 h-5 flex-shrink-0 mt-1"></i>
+                        <div>
+                            <span class="font-semibold block">Queue Management</span>
+                            <span class="jamaican-example">"Wi stand up inna di sun an' di line fi yuh."</span>
+                        </div>
                     </li>
-                    <li class="task-item">
-                        <i data-lucide="check-circle-2" class="check-icon text-navy"></i>
-                        <span><strong>Logistics:</strong> Organizing JP certification and secure document transport.</span>
+                    <li class="flex gap-4">
+                        <i data-lucide="check-circle-2" class="text-navy w-5 h-5 flex-shrink-0 mt-1"></i>
+                        <div>
+                            <span class="font-semibold block">Liaison Coordination</span>
+                            <span class="jamaican-example">"Wi link di JP fi sign off pon di document."</span>
+                        </div>
                     </li>
                 </ul>
             </div>
 
             <!-- Client Side -->
-            <div class="column col-client">
-                <div class="col-header text-gold-darker" style="color: #997B1A;"> <!-- Darker gold for readability -->
-                    <i data-lucide="user-check" class="w-5 h-5"></i>
-                    What YOU Must Do
-                    <span class="block text-[10px] opacity-60 ml-auto">IDENTITY</span>
+            <div class="column bg-[#FFF9E6] border-l-4 border-gold shadow-sm">
+                <div class="flex items-center gap-3 mb-8">
+                    <i data-lucide="user-check" class="text-gold w-6 h-6"></i>
+                    <h3 class="text-xl font-bold uppercase tracking-widest text-[#997B1A]">Client Mandate</h3>
                 </div>
-                <ul class="task-list">
-                    <li class="task-item">
-                        <i data-lucide="fingerprint" class="check-icon text-gold" style="color: #D4AF37;"></i>
-                        <span><strong>Fingerprints:</strong> Physically attend JCF appointments for biometric scanning.</span>
+                
+                <ul class="space-y-6">
+                    <li class="flex gap-4">
+                        <i data-lucide="fingerprint" class="text-gold w-5 h-5 flex-shrink-0 mt-1"></i>
+                        <div>
+                            <span class="font-semibold block">Biometric Capture</span>
+                            <span class="jamaican-example">"Yuh haffi press yuh thumb pon di glass fi prove a yuh."</span>
+                        </div>
                     </li>
-                    <li class="task-item">
-                        <i data-lucide="camera" class="check-icon text-gold" style="color: #D4AF37;"></i>
-                        <span><strong>Live Photos:</strong> Be present for official photos at PICA or Immigration.</span>
+                    <li class="flex gap-4">
+                        <i data-lucide="camera" class="text-gold w-5 h-5 flex-shrink-0 mt-1"></i>
+                        <div>
+                            <span class="font-semibold block">Live Identity Photos</span>
+                            <span class="jamaican-example">"Yuh haffi stand up straight fi di camera."</span>
+                        </div>
                     </li>
-                    <li class="task-item">
-                        <i data-lucide="pen-tool" class="check-icon text-gold" style="color: #D4AF37;"></i>
-                        <span><strong>Wet Signature:</strong> Sign the final application form to verify truthfulness.</span>
+                    <li class="flex gap-4">
+                        <i data-lucide="pen-tool" class="text-gold w-5 h-5 flex-shrink-0 mt-1"></i>
+                        <div>
+                            <span class="font-semibold block">Wet Signature (Verification)</span>
+                            <span class="jamaican-example">"Yuh haffi write yuh name inna ink fi verify di truth."</span>
+                        </div>
                     </li>
-                    <li class="task-item">
-                        <i data-lucide="calendar-check" class="check-icon text-gold" style="color: #D4AF37;"></i>
-                        <span><strong>Interviews:</strong> Attend any mandatory consulate or agency interviews.</span>
+                    <li class="flex gap-4">
+                        <i data-lucide="calendar-check" class="text-gold w-5 h-5 flex-shrink-0 mt-1"></i>
+                        <div>
+                            <span class="font-semibold block">Official Interviews</span>
+                            <span class="jamaican-example">"Yuh haffi talk to di agent dem face-to-face."</span>
+                        </div>
                     </li>
                 </ul>
             </div>
 
         </div>
 
-        <div class="footer-note">
-            <p><strong>Why this matters:</strong> This strict separation protects your identity. Any agent promising to handle fingerprints or live photos for you is violating security protocols. Our compliance ensures your documents are legally indisputable.</p>
-            <p class="mt-2 text-[10px] uppercase tracking-widest">Docu-Hub Operations Services &bull; Legal Notice Section 3</p>
+        <div class="mt-12 p-6 bg-parchment/50 border border-navy/5 text-sm text-center italic text-gray-600">
+            <strong>Why this matters:</strong> By law, certain identities cannot be outsourced. Our adherence to this boundary ensures your documents are 100% legal and indisputable.
         </div>
 
-    </div> <div class="mt-12 pt-8 border-t border-gray-100 flex justify-between items-center">
-            <a href="../index.html#security-center" class="btn-primary">Return to Security Center</a>
-            <span class="text-xs text-gray-400">Ref: Legal Notice, Section 3</span>
+        <!-- FIXED RETURN LINK -->
+        <div class="mt-12 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
+            <a href="../index.html#security-center" class="btn-return">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Return to Security Center
+            </a>
+            <span class="text-[10px] uppercase tracking-widest text-navy/40 font-bold serif-title">Docu-Hub &bull; Legal Notice Section 3</span>
         </div>
+
+    </div>
 
     <script>
         lucide.createIcons();
     </script>
 </body>
-
 </html>
