@@ -4,56 +4,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Knowledge Vault: Why Electronic Payment?</title>
+    
+    <!-- TAILWIND CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FONTS: Playfair Display for Serif Elegance, Poppins for clean Sans-Serif body -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- ICONS -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
-        :root { --navy: #003366; --gold: #D4AF37; --parchment: #F5F0EC; }
-        body { font-family: sans-serif; background-color: var(--parchment); color: var(--navy); }
-        .bg-navy { background-color: var(--navy); }
-        .text-gold { color: var(--gold); }
+        :root {
+            --navy: #003366;
+            --gold: #D4AF37;
+            --parchment: #F5F0EC;
+            --gold-hover: #C5A028;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--parchment);
+            color: var(--navy);
+            line-height: 1.7;
+        }
+        /* ENFORCED SERIF FOR ALL TITLES */
+        h1, h2, h3, .serif-title { 
+            font-family: 'Playfair Display', serif; 
+        }
+        
+        .btn-return {
+            background-color: var(--gold);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.75rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .btn-return:hover {
+            background-color: var(--gold-hover);
+            transform: translateX(-5px);
+        }
+
+        .jamaican-box {
+            border-left: 4px solid var(--gold);
+            background-color: rgba(212, 175, 55, 0.05);
+            padding: 1.5rem;
+            font-style: italic;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
     </style>
 </head>
-<body class="p-8">
+<body class="p-4 md:p-12">
 
-    <div class="max-w-3xl mx-auto bg-white p-12 shadow-lg border-t-8 border-navy">
+    <div class="max-w-3xl mx-auto bg-white p-8 md:p-16 shadow-2xl border-t-8 border-navy relative overflow-hidden">
+        <!-- Background Icon decoration -->
+        <i data-lucide="banknote" class="absolute -bottom-10 -right-10 w-64 h-64 text-navy/[0.03] rotate-12"></i>
         
-        <span class="text-xs font-bold tracking-widest text-gray-400 uppercase mb-4 block">Docu-Hub Knowledge Vault &bull; Protocol #02</span>
-        
-        <h1 class="text-4xl font-serif font-bold text-navy mb-6">Why We Don't Accept Bags of Cash.</h1>
-        <p class="text-lg text-gray-600 mb-8 italic">Understanding the "Reimbursement Model" and why electronic transfers protect you.</p>
+        <div class="relative z-10">
+            <span class="text-[10px] font-bold tracking-[0.3em] text-gold uppercase mb-4 block serif-title">Knowledge Vault &bull; Protocol #02</span>
+            
+            <!-- Main Serif Title -->
+            <h1 class="text-3xl md:text-5xl font-bold text-navy mb-6 leading-tight italic text-left">Why We Don't Accept Bags of Cash.</h1>
+            <p class="text-lg text-gray-500 mb-10 font-light">Understanding the "Reimbursement Model" and why electronic transfers protect you.</p>
 
-        <div class="prose text-gray-700 leading-relaxed space-y-6">
-            <p>At Docu-Hub, we occasionally get asked: <em>"Can I just meet you and give you the cash for my Property Tax?"</em></p>
-            <p>The answer is always a polite, firm <strong>No.</strong></p>
-            <p>This isn't because we are difficult. It is because we operate as a <strong>Designated Non-Financial Business (DNFBP)</strong> under Jamaican Law. Here is why our strict electronic payment policy is actually your best protection.</p>
+            <div class="prose text-gray-700 leading-relaxed space-y-6">
+                <p>At Docu-Hub, we occasionally get asked: <em>"Can I just meet you and give you the cash for my Property Tax?"</em></p>
+                <p>The answer is always a polite, firm <strong>No.</strong></p>
+                
+                <div class="jamaican-box">
+                    "Wi nuh tek cash inna envelope or bag, cause wi haffi keep everyting straight an' transparent fi protect yuh identity an' wi business."
+                </div>
 
-            <h3 class="text-xl font-bold text-navy mt-8 border-b border-gold/30 pb-2">1. The Anti-Money Laundering Shield (POCA)</h3>
-            <p>Under the <strong>Proceeds of Crime Act (POCA)</strong>, businesses that handle large transactions are required to verify the <em>source of funds</em>. Accepting untraceable cash puts both the agency and the client at risk of scrutiny. By requiring bank transfers, we create an automatic, bank-verified audit trail that satisfies the Financial Investigations Division (FID).</p>
+                <p>This isn't because we are difficult. It is because we operate as a <strong>Designated Non-Financial Business (DNFBP)</strong> under Jamaican Law. Here is why our strict electronic payment policy is actually your best protection.</p>
 
-            <h3 class="text-xl font-bold text-navy mt-8 border-b border-gold/30 pb-2">2. The "Pass-Through" Protection</h3>
-            <p>When you pay us for a service like a Passport Renewal, your money is split into two buckets (as detailed in our <a href="#terms" class="text-navy font-bold underline">Terms of Service</a>):</p>
-            <ul class="list-disc pl-6 space-y-2">
-                <li><strong>Service Fee:</strong> Our revenue.</li>
-                <li><strong>Statutory Disbursement:</strong> The government's money.</li>
-            </ul>
-            <p>We treat your tax money as "Trust Funds." Electronic payments allow us to clearly separate these funds in our accounting, ensuring that 100% of the money meant for the government actually <em>goes</em> to the government.</p>
+                <h3 class="text-2xl font-bold text-navy mt-12 border-b border-gold/30 pb-2 italic">1. The Anti-Money Laundering Shield (POCA)</h3>
+                <p>Under the <strong>Proceeds of Crime Act (POCA)</strong>, businesses that handle large transactions are required to verify the <em>source of funds</em>. Accepting untraceable cash puts both the agency and the client at risk of scrutiny. By requiring bank transfers, we create an automatic, bank-verified audit trail that satisfies the Financial Investigations Division (FID).</p>
+                
+                <h3 class="text-2xl font-bold text-navy mt-12 border-b border-gold/30 pb-2 italic">2. The "Pass-Through" Protection</h3>
+                <p>When you pay us for a service like a Passport Renewal, your money is split into two distinct buckets:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong>Service Fee:</strong> This is our revenue for clerical time.</li>
+                    <li><strong>Statutory Disbursement:</strong> This is the government's money (TAJ/PICA).</li>
+                </ul>
+                <p>We treat your tax money as "Trust Funds." Electronic payments allow us to clearly separate these funds in our accounting, ensuring that 100% of the money meant for the government actually <em>goes</em> to the government.</p>
 
-            <h3 class="text-xl font-bold text-navy mt-8 border-b border-gold/30 pb-2">3. Your "Bulletproof" Receipt</h3>
-            <p>Cash receipts can be lost or disputed. A bank transfer is permanent proof.</p>
-            <div class="bg-navy/5 p-6 rounded-sm border-l-4 border-navy my-6">
-                <h4 class="font-bold text-navy text-sm uppercase tracking-widest mb-2">The Audit Trail Guarantee</h4>
-                <p class="text-sm">If a government agency ever claims you didn't pay your Fitness Fee, we can pull the exact transaction ID from our bank ledger and prove it within minutes. Cash doesn't offer that security.</p>
+                <div class="jamaican-box">
+                    "Bank transfer a proof seh di money move properly from yuh account to di goviment portal. Nuh mix up nuh deh inna dat."
+                </div>
+
+                <h3 class="text-2xl font-bold text-navy mt-12 border-b border-gold/30 pb-2 italic">3. Your "Bulletproof" Receipt</h3>
+                <p>Cash receipts can be lost or disputed. A bank transfer is permanent, undeniable proof.</p>
+                <div class="bg-navy/5 p-8 rounded-sm border-l-4 border-navy my-8 shadow-sm">
+                    <h4 class="font-bold text-navy text-sm uppercase tracking-widest mb-2 serif-title">The Audit Trail Guarantee</h4>
+                    <p class="text-sm">If a government agency ever claims you didn't pay your Fitness Fee, we can pull the exact Transaction ID from our bank ledger and prove payment within minutes. Cash doesn't offer that level of security.</p>
+                </div>
+
+                <p class="font-bold text-navy">So, while it might take an extra minute to log into your banking app, that minute buys you total security, legal compliance, and peace of mind.</p>
             </div>
 
-            <p class="font-bold">So, while it might take an extra minute to log into your banking app, that minute buys you total security, legal compliance, and peace of mind.</p>
+            <!-- FIXED RETURN LINK -->
+            <div class="mt-16 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
+                <a href="../index.html#security-center" class="btn-return">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i> Return to Security Center
+                </a>
+                <span class="text-[10px] uppercase tracking-widest text-navy/40 font-bold serif-title">Reference: Legal Notice, Section 5</span>
+            </div>
         </div>
-
-         <div class="mt-12 pt-8 border-t border-gray-100 flex justify-between items-center">
-            <a href="../index.html#security-center" class="btn-primary">Return to Security Center</a>
-            <span class="text-xs text-gray-400">Ref: Legal Notice, Section 3</span>
-        </div>
-
     </div>
 
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
-
 </html>
