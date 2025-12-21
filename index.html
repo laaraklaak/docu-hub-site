@@ -4,17 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Docu-Hub Operations Services | Institutional Administrative Logistics</title>
-    
-    <!-- TAILWIND CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- FONTS -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- ICONS -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-
-    <!-- CUSTOM STYLES -->
     <style>
         :root {
             --navy: #003366;
@@ -28,44 +20,29 @@
             background-color: var(--parchment);
             color: var(--navy);
             scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
-            /* UPDATED: Increased base font size for better mobile readability */
-            font-size: 17px; 
-            line-height: 1.7; /* Increased line height for clarity */
         }
 
-        /* Desktop Adjustment - keeps it refined on larger screens */
-        @media (min-width: 768px) {
-            body {
-                font-size: 16px; 
-            }
-        }
-
-        h1, h2, h3, h4, .serif {
+        h1, h2, h3, .serif {
             font-family: 'Playfair Display', serif;
         }
 
-        /* UTILITIES */
         .bg-navy { background-color: var(--navy); }
         .text-navy { color: var(--navy); }
         .bg-gold { background-color: var(--gold); }
         .text-gold { color: var(--gold); }
         .border-gold { border-color: var(--gold); }
 
-        /* BUTTONS */
         .btn-primary {
             background-color: var(--gold);
             color: white;
-            padding: 0.9rem 2.2rem; /* Larger touch target */
+            padding: 0.75rem 2rem;
             border-radius: 2px;
             font-weight: 600;
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             display: inline-block;
-            font-size: 0.85rem; 
-            border: 1px solid var(--gold);
-            cursor: pointer;
+            font-size: 0.75rem;
         }
 
         .btn-primary:hover {
@@ -75,35 +52,63 @@
         }
 
         .btn-outline {
-            background: transparent;
-            border: 1px solid var(--navy);
-            color: var(--navy);
-            padding: 0.9rem 2.2rem; /* Larger touch target */
+            border: 1px solid white;
+            color: white;
+            padding: 0.75rem 2rem;
             border-radius: 2px;
             font-weight: 600;
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             display: inline-block;
-            font-size: 0.85rem;
-            cursor: pointer;
+            font-size: 0.75rem;
         }
 
         .btn-outline:hover {
-            background-color: var(--navy);
-            color: white;
+            background-color: white;
+            color: var(--navy);
         }
 
-        /* PAGE TRANSITIONS */
+        .nav-link {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .bento-card {
+            background: white;
+            border: 1px solid rgba(0,51,102,0.1);
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+
+        .bento-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
         .section-content {
             display: none;
-            opacity: 0;
-            transition: opacity 0.4s ease-in-out;
+            animation: fadeIn 0.5s ease forwards;
         }
 
         .section-content.active {
             display: block;
-            animation: fadeIn 0.6s ease forwards;
         }
 
         @keyframes fadeIn {
@@ -111,70 +116,19 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* HERO */
         .hero-gradient {
-            background: linear-gradient(rgba(0, 51, 102, 0.92), rgba(0, 51, 102, 0.95)), 
+            background: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 51, 102, 0.85)), 
                         url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=2071');
             background-size: cover;
             background-position: center;
         }
 
-        /* CARDS */
-        .choice-card {
-            background: white;
-            border: 1px solid rgba(0,51,102,0.1);
-            padding: 3rem;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            text-align: center;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .choice-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-        }
-
-        /* NAV LINKS */
-        .nav-link {
-            position: relative;
-            padding-bottom: 5px;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--gold);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after, .nav-link.active::after {
-            width: 100%;
-        }
-
-        /* DETAILS / SUMMARY ANIMATION */
-        details summary {
-            list-style: none;
-            cursor: pointer;
-            padding: 2rem;
-            outline: none;
-        }
-        details summary::-webkit-details-marker { display: none; }
-        
-        /* ROADMAP */
         .roadmap-step {
             border-left: 2px solid rgba(212, 175, 55, 0.2);
             padding-left: 2rem;
             position: relative;
-            padding-bottom: 2.5rem; /* More space for larger text */
         }
+
         .roadmap-step::before {
             content: '';
             position: absolute;
@@ -185,686 +139,462 @@
             background: var(--gold);
             border-radius: 50%;
         }
-        .roadmap-step:last-child { border-left: none; }
 
-        /* LEGAL DOCS */
+        .workflow-number {
+            font-size: 5rem;
+            line-height: 1;
+            opacity: 0.1;
+            font-family: 'Playfair Display', serif;
+            position: absolute;
+            top: -1rem;
+            left: -0.5rem;
+            color: var(--navy);
+        }
+
+        /* Legal Document Styles */
         .legal-document-container {
             max-width: 800px;
             margin: 0 auto;
             background: white;
-            padding: 2.5rem;
+            padding: 4rem;
             box-shadow: 0 4px 20px rgba(0,0,0,0.02);
             border: 1px solid #eee;
         }
-        
-        @media (min-width: 768px) {
-            .legal-document-container {
-                padding: 4rem;
-            }
-        }
-        
+
         .legal-document-container h4 {
             font-weight: 700;
             margin-top: 2.5rem;
             margin-bottom: 1rem;
             text-transform: uppercase;
-            font-size: 1.1rem; /* Increased size */
+            font-size: 0.9rem;
             letter-spacing: 0.1em;
             color: var(--navy);
             border-bottom: 1px solid var(--parchment);
             padding-bottom: 0.5rem;
         }
 
-        .meta-info {
+        .legal-document-container p, .legal-document-container li {
+            font-size: 0.95rem;
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+
+        .legal-document-container ul {
+            padding-left: 1.5rem;
+            list-style-type: disc;
+        }
+
+        .legal-document-container .meta-info {
             background: var(--parchment);
             padding: 1.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             border-left: 4px solid var(--gold);
-            font-size: 1rem; /* Increased size */
-            line-height: 1.7;
+            font-size: 0.85rem;
         }
-        
-        .legal-text {
-            font-size: 1.05rem; /* Increased base size for reading */
-            line-height: 1.8;
-            color: #4b5563;
-            margin-bottom: 1.5rem;
-        }
-        
-        .legal-list {
-            list-style-type: disc;
-            padding-left: 1.5rem;
-            font-size: 1.05rem; /* Increased size */
-            color: #4b5563;
-            margin-bottom: 1.5rem;
+
+        .calendar-container {
+            background: white;
+            min-height: 600px;
+            position: relative;
+            border-radius: 4px;
         }
     </style>
 </head>
-<body class="flex flex-col min-h-screen">
+<body>
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-navy text-white z-50 shadow-xl transition-all duration-300" id="navbar">
+    <nav class="fixed top-0 w-full bg-navy text-white z-50 shadow-xl">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Logo Area -->
-            <div class="flex items-center gap-4 cursor-pointer group" onclick="navigateTo('home')">
-                <div class="w-12 h-12 bg-white/5 border border-gold/30 flex items-center justify-center overflow-hidden transition-colors group-hover:border-gold">
-                    <!-- FIXED: Added fallback logic. If logo image fails, the text and icon will still show correctly -->
+            <div class="flex items-center gap-4 cursor-pointer" onclick="showPage('home')">
+                <div class="w-12 h-12 bg-white/5 border border-gold/30 flex items-center justify-center overflow-hidden">
                     <img src="assets/logo.png" alt="Docu-Hub Logo" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <i data-lucide="award" class="text-gold w-6 h-6 hidden"></i>
+                    <i data-lucide="award" class="text-gold w-8 h-8 hidden"></i>
                 </div>
                 <div>
-                    <span class="block text-sm tracking-widest font-semibold uppercase leading-none mb-1 group-hover:text-gold transition-colors">Docu-Hub</span>
-                    <span class="block text-[10px] text-gold/80 uppercase tracking-[0.2em] leading-none">Operations Services</span>
+                    <span class="block text-sm tracking-widest font-semibold uppercase leading-none mb-1">Docu-Hub</span>
+                    <span class="block text-[10px] text-gold uppercase tracking-[0.2em] leading-none">Operations Services</span>
                 </div>
             </div>
             
-            <!-- Desktop Menu -->
             <div class="hidden md:flex gap-8 text-xs font-medium uppercase tracking-widest">
-                <span class="nav-link cursor-pointer active" id="nav-home" onclick="navigateTo('home')">Home</span>
-                <span class="nav-link cursor-pointer" id="nav-services" onclick="navigateTo('services')">Services</span>
-                <span class="nav-link cursor-pointer" id="nav-about" onclick="navigateTo('about')">About</span>
-                <span class="nav-link cursor-pointer" id="nav-contact" onclick="navigateTo('contact')">Contact</span>
+                <span class="nav-link" onclick="showPage('home')">Home</span>
+                <span class="nav-link" onclick="showPage('services')">Services</span>
+                <span class="nav-link" onclick="showPage('about')">About</span>
+                <span class="nav-link" onclick="showPage('contact')">Contact</span>
             </div>
 
-            <!-- Mobile Menu Toggle -->
-            <button class="md:hidden text-gold hover:text-white transition-colors" onclick="toggleMobileMenu()">
-                <i data-lucide="menu" id="menu-icon"></i>
+            <button class="md:hidden text-gold" id="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i data-lucide="menu"></i>
             </button>
         </div>
-
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-navy border-t border-white/10 absolute w-full">
-            <div class="flex flex-col px-6 py-4 space-y-4 text-xs font-medium uppercase tracking-widest">
-                <span class="cursor-pointer py-2 border-b border-white/5 hover:text-gold" onclick="navigateTo('home'); toggleMobileMenu()">Home</span>
-                <span class="cursor-pointer py-2 border-b border-white/5 hover:text-gold" onclick="navigateTo('services'); toggleMobileMenu()">Services</span>
-                <span class="cursor-pointer py-2 border-b border-white/5 hover:text-gold" onclick="navigateTo('about'); toggleMobileMenu()">About</span>
-                <span class="cursor-pointer py-2 hover:text-gold" onclick="navigateTo('contact'); toggleMobileMenu()">Contact</span>
-            </div>
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy border-t border-white/10 px-6 py-8 space-y-6 text-xs uppercase tracking-widest font-medium">
+            <div onclick="showPage('home')" class="block text-gold">Home</div>
+            <div onclick="showPage('services')" class="block text-white">Services</div>
+            <div onclick="showPage('about')" class="block text-white">About</div>
+            <div onclick="showPage('contact')" class="block text-white">Contact</div>
         </div>
     </nav>
 
-    <!-- Main Content Area -->
-    <div id="main-content" class="pt-20 flex-grow">
+    <div id="main-content" class="pt-20">
         
-        <!-- ==================== HOME PAGE ==================== -->
+        <!-- HOME PAGE -->
         <section id="home" class="section-content active">
-            <div class="hero-gradient h-[65vh] flex items-center text-white px-6 text-center">
-                <div class="max-w-4xl mx-auto animate-fade-in-up">
-                    <span class="text-gold uppercase tracking-[0.4em] text-xs font-bold mb-6 block text-center">Precision. Discretion. Logistics.</span>
-                    <h1 class="text-5xl md:text-6xl mb-8 leading-tight italic serif text-center">Precision Administration.</h1>
-                    <!-- Increased font size for hero subtext -->
-                    <p class="text-lg md:text-xl opacity-90 max-w-2xl mx-auto mb-10 text-center font-light leading-relaxed">The specialized bridge between citizens and Jamaica’s administrative bodies. Select your path to initialize engagement.</p>
-                </div>
-            </div>
-
-            <!-- Selection Cards -->
-            <div class="max-w-5xl mx-auto px-6 -mt-20 mb-24 relative z-10">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
-                    <!-- Choice A -->
-                    <div class="choice-card group" onclick="navigateTo('services'); showServiceCategory('personal')">
-                        <div class="w-16 h-16 bg-navy/5 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-gold/10 transition-colors">
-                            <i data-lucide="user" class="text-navy group-hover:text-gold w-8 h-8 transition-colors"></i>
-                        </div>
-                        <h3 class="text-2xl serif mb-4">I am an Individual</h3>
-                        <!-- UPDATED: text-base for better readability -->
-                        <p class="text-base text-gray-600 mb-8 leading-relaxed">Access certified vital records (RGD), passport renewals (PICA), and tax logistics via our approved portals.</p>
-                        <span class="text-xs uppercase font-bold tracking-widest text-gold border-b border-gold/30 pb-1 group-hover:border-gold transition-colors">Browse Personal Catalog &rarr;</span>
-                    </div>
-                    <!-- Choice B -->
-                    <div class="choice-card group" onclick="navigateTo('services'); showServiceCategory('business')">
-                        <div class="w-16 h-16 bg-navy/5 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-gold/10 transition-colors">
-                            <i data-lucide="building-2" class="text-navy group-hover:text-gold w-8 h-8 transition-colors"></i>
-                        </div>
-                        <h3 class="text-2xl serif mb-4">I am a Business</h3>
-                        <!-- UPDATED: text-base for better readability -->
-                        <p class="text-base text-gray-600 mb-8 leading-relaxed">Payroll & Bank-Ready support for corporate entities with 10 or more employees. TRN, NIS & Vetting.</p>
-                        <span class="text-xs uppercase font-bold tracking-widest text-gold border-b border-gold/30 pb-1 group-hover:border-gold transition-colors">View Corporate Offer &rarr;</span>
+            <!-- Hero -->
+            <div class="hero-gradient h-[80vh] flex items-center text-white px-6">
+                <div class="max-w-4xl mx-auto text-center">
+                    <span class="text-gold uppercase tracking-[0.4em] text-xs font-bold mb-6 block">Precision. Discretion. Logistics.</span>
+                    <h1 class="text-4xl md:text-7xl mb-8 leading-tight italic serif">Strategic Partner for Jamaican Government Logistics.</h1>
+                    <p class="text-lg md:text-xl font-light mb-12 opacity-90 max-w-2xl mx-auto">A seamless administrative bridge for corporate entities and discerning individuals.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button onclick="showPage('services')" class="btn-primary">1. Explore Portfolio</button>
+                        <button onclick="showPage('contact')" class="btn-outline">2. Book Strategy Session</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Value Prop -->
-            <div class="max-w-7xl mx-auto px-6 py-24 border-t border-gray-200/60 text-navy">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-                    <div class="text-left">
-                        <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Process Architecture</span>
-                        <h2 class="text-4xl serif mb-8">How We Solve</h2>
-                        <div class="space-y-10">
-                            <div class="roadmap-step">
-                                <h4 class="font-bold uppercase tracking-widest text-sm mb-2">01. Virtual Intake</h4>
-                                <!-- UPDATED: text-base -->
-                                <p class="text-base text-gray-600 leading-relaxed">Engagements begin with a "Pre-Clearance Audit" of your documentation via WhatsApp or Zoom.</p>
-                            </div>
-                            <div class="roadmap-step">
-                                <h4 class="font-bold uppercase tracking-widest text-sm mb-2">02. Liaison Authority</h4>
-                                <!-- UPDATED: text-base -->
-                                <p class="text-base text-gray-600 leading-relaxed">We act as your authorized bearer. We stand in the physical queues with authorized access to RGD, PICA, and TAJ.</p>
-                            </div>
-                            <div class="roadmap-step">
-                                <h4 class="font-bold uppercase tracking-widest text-sm mb-2">03. Secure Remittance</h4>
-                                <!-- UPDATED: text-base -->
-                                <p class="text-base text-gray-600 leading-relaxed">Utilizing approved TAJ eService portals to remit taxes instantly and securely with 100% audit integrity.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-navy p-12 text-white shadow-2xl relative overflow-hidden text-left rounded-sm">
-                        <i data-lucide="shield-check" class="absolute -bottom-10 -right-10 w-48 h-48 opacity-5"></i>
-                        <h3 class="text-3xl serif italic mb-6">Bank-Grade Precision</h3>
-                        <!-- UPDATED: text-base -->
-                        <p class="text-base opacity-90 leading-loose">Leveraging a 15-year pedigree in high-compliance financial institutions to handle your sensitive government logistics with total discretion.</p>
-                        <button onclick="navigateTo('about')" class="mt-8 text-xs uppercase tracking-widest border-b border-gold text-gold pb-1 hover:text-white hover:border-white transition-colors">Read Our Story</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==================== SERVICES PAGE ==================== -->
-        <section id="services" class="section-content">
-            <div class="max-w-7xl mx-auto px-6 py-12 md:py-24 text-left">
-                
-                <!-- Category Toggles -->
-                <div class="flex justify-center mb-16 gap-4">
-                    <button onclick="showServiceCategory('personal')" id="btn-personal" class="btn-primary">Individual Services</button>
-                    <button onclick="showServiceCategory('business')" id="btn-business" class="btn-outline">Corporate Services</button>
-                </div>
-
-                <!-- BUSINESS VIEW (B2B) -->
-                <div id="services-business" class="hidden animate-fade-in">
-                    <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Route: Corporate Strategy</span>
-                    <h2 class="text-5xl serif text-navy mb-12">Payroll & Bank-Ready Support</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-                        <div class="bg-white p-8 border-l-4 border-gold shadow-sm">
-                            <h4 class="font-bold uppercase text-xs tracking-widest mb-6 text-gold underline decoration-parchment">The Deliverables</h4>
-                            <ul class="text-base text-gray-600 space-y-4">
-                                <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-gold flex-shrink-0"></i> <span>Bulk TRN & NIS Application Preparation</span></li>
-                                <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-gold flex-shrink-0"></i> <span>Police Record & Proof of Address Vetting</span></li>
-                                <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-gold flex-shrink-0"></i> <span>"Payroll-Ready" Name-Matching Audits</span></li>
-                            </ul>
-                        </div>
-                        <div class="flex flex-col justify-center">
-                            <p class="text-base text-gray-600 mb-8 leading-relaxed">Designed for MSMEs with 10+ employees. We solve the administrative delay so your team remains operational. Engagement begins with a formal strategy session.</p>
-                            <button onclick="navigateTo('contact')" class="btn-primary w-fit">Book Strategy Session &rarr;</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PERSONAL VIEW (B2C CATALOG) -->
-                <div id="services-personal" class="">
-                    <div class="max-w-4xl mx-auto">
-                        <div class="mb-12 text-left border-b border-gray-200 pb-8">
-                            <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Route: Personal Logistics</span>
-                            <h2 class="text-5xl serif text-navy">Individual Service Catalog</h2>
-                            <p class="text-gray-600 mt-4 text-base">Expand a suite below to view details and initialize engagement.</p>
-                        </div>
-
-                        <div class="space-y-4">
-                            <!-- RGD Suite -->
-                            <div class="catalog-item bg-white border border-gray-100 hover:border-gold transition-colors">
-                                <details class="group">
-                                    <summary class="flex justify-between items-center group">
-                                        <div class="text-left">
-                                            <div class="flex items-center gap-4 mb-2">
-                                                <i data-lucide="file-text" class="text-gold w-6 h-6"></i>
-                                                <span class="text-xl md:text-xl font-medium text-navy">RGD Suite (Vital Records)</span>
-                                            </div>
-                                            <p class="text-sm text-gray-500 pl-10 group-open:hidden">Birth, Marriage, and Death certificates. Manual form searches.</p>
-                                        </div>
-                                        <div class="flex flex-col items-end">
-                                            <span class="text-[10px] uppercase tracking-widest text-gold mb-1 font-bold group-open:hidden hidden md:block">Read Details</span>
-                                            <i data-lucide="plus" class="group-open:rotate-45 transition-transform text-gold"></i>
-                                        </div>
-                                    </summary>
-                                    <div class="px-8 md:px-10 pb-8 pt-0 border-t border-parchment mt-2 text-left">
-                                        <h4 class="font-bold uppercase text-xs tracking-widest text-gold mb-4 pt-6">The Detail Layer</h4>
-                                        <p class="text-base text-gray-600 leading-relaxed mb-6">Certified retrieval via RGD Twickenham Park. We solve complex un-indexed cases through evidence trail construction and direct liaison. We handle the lines; you get the records.</p>
-                                        <p class="font-bold text-navy text-sm mb-6 uppercase tracking-widest bg-parchment inline-block px-3 py-2">Service Fee: <span class="text-gold">$4,500 JMD</span> + Statutory Fees</p>
-                                        <div class="block">
-                                            <button onclick="initializeAgreement('RGD Service')" class="btn-primary !text-xs !py-3">Accept Offer & Initialize</button>
-                                        </div>
-                                    </div>
-                                </details>
-                            </div>
-
-                            <!-- PICA Suite -->
-                            <div class="catalog-item bg-white border border-gray-100 hover:border-gold transition-colors">
-                                <details class="group">
-                                    <summary class="flex justify-between items-center group">
-                                        <div class="text-left">
-                                            <div class="flex items-center gap-4 mb-2">
-                                                <i data-lucide="passport" class="text-gold w-6 h-6"></i>
-                                                <span class="text-xl md:text-xl font-medium text-navy">PICA Suite (Passports)</span>
-                                            </div>
-                                            <p class="text-sm text-gray-500 pl-10 group-open:hidden">Adult Renewals. Administrative form prep & appointment booking.</p>
-                                        </div>
-                                        <i data-lucide="plus" class="group-open:rotate-45 transition-transform text-gold"></i>
-                                    </summary>
-                                    <div class="px-8 md:px-10 pb-8 pt-0 border-t border-parchment mt-2 text-left">
-                                        <h4 class="font-bold uppercase text-xs tracking-widest text-gold mb-4 pt-6">The Detail Layer</h4>
-                                        <p class="text-base text-gray-600 leading-relaxed mb-6">Full form preparation and secured appointment slots. <br><strong class="text-navy">Note:</strong> Role is strictly administrative. Personal attendance is required by law for biometric capture.</p>
-                                        <p class="font-bold text-navy text-sm mb-6 uppercase tracking-widest bg-parchment inline-block px-3 py-2">Service Fee: <span class="text-gold">$3,500 JMD</span> + Statutory Fees</p>
-                                        <div class="block">
-                                            <button onclick="initializeAgreement('Passport Service')" class="btn-primary !text-xs !py-3">Accept Offer & Initialize</button>
-                                        </div>
-                                    </div>
-                                </details>
-                            </div>
-
-                            <!-- TAJ Suite -->
-                            <div class="catalog-item bg-white border border-gray-100 hover:border-gold transition-colors">
-                                <details class="group">
-                                    <summary class="flex justify-between items-center group">
-                                        <div class="text-left">
-                                            <div class="flex items-center gap-4 mb-2">
-                                                <i data-lucide="truck" class="text-gold w-6 h-6"></i>
-                                                <span class="text-xl md:text-xl font-medium text-navy">TAJ Suite (Vehicle & Tax)</span>
-                                            </div>
-                                            <p class="text-sm text-gray-500 pl-10 group-open:hidden">License renewals, Fitness payments, and Property Tax remittance.</p>
-                                        </div>
-                                        <i data-lucide="plus" class="group-open:rotate-45 transition-transform text-gold"></i>
-                                    </summary>
-                                    <div class="px-8 md:px-10 pb-8 pt-0 border-t border-parchment mt-2 text-left">
-                                        <h4 class="font-bold uppercase text-xs tracking-widest text-gold mb-4 pt-6">The Detail Layer</h4>
-                                        <p class="text-base text-gray-600 leading-relaxed mb-6">Immediate secure remittance via the <strong>approved TAJ eService portal</strong>. We provide digital audit trails and physical verification receipts for your compliance records.</p>
-                                        <p class="font-bold text-navy text-sm mb-6 uppercase tracking-widest bg-parchment inline-block px-3 py-2">Service Fee: <span class="text-gold">$2,500 JMD</span> + Statutory Fees</p>
-                                        <div class="block">
-                                            <button onclick="initializeAgreement('TAJ/Tax Service')" class="btn-primary !text-xs !py-3">Accept Offer & Initialize</button>
-                                        </div>
-                                    </div>
-                                </details>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- RESOURCE VAULT -->
-                <div class="max-w-5xl mx-auto mt-24 border-t border-navy/10 pt-16 text-left">
-                    <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                        <div class="text-left">
-                            <span class="text-gold uppercase tracking-[0.3em] text-[10px] font-bold mb-2 block">Action Station</span>
-                            <h2 class="text-4xl serif text-navy">Client Resource Vault</h2>
-                        </div>
-                        
-                        <!-- Secure Upload Portal Button (Vendor Neutral) -->
-                        <div class="bg-navy text-white px-6 py-4 rounded-sm flex items-center gap-4 shadow-lg border border-gold/20 cursor-pointer hover:bg-navy/90 transition-colors" onclick="openUploadPortal()">
-                            <i data-lucide="upload-cloud" class="text-gold w-6 h-6"></i>
-                            <div class="text-left">
-                                <p class="text-[10px] uppercase tracking-widest opacity-70 mb-1">Signed & Ready?</p>
-                                <span class="text-sm font-bold border-b border-gold/50 text-gold">Open Secure Upload Portal</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <!-- PDF Download 1 -->
-                        <div class="bg-white border border-gray-100 p-8 shadow-sm group hover:border-gold transition-all text-left">
-                            <h3 class="font-bold mb-3 uppercase tracking-wider text-xs text-navy">Bearer's Authorization</h3>
-                            <a href="docs/authorization-letter.pdf" download class="flex items-center gap-2 text-xs font-bold text-gold uppercase tracking-[0.2em] cursor-pointer hover:text-navy transition-colors">
-                                Download PDF <i data-lucide="download" class="w-4 h-4"></i>
-                            </a>
-                        </div>
-                        
-                        <!-- PDF Download 2 -->
-                        <div class="bg-white border border-gray-100 p-8 shadow-sm group hover:border-gold transition-all text-left">
-                            <h3 class="font-bold mb-3 uppercase tracking-wider text-xs text-navy">Service Agreement</h3>
-                            <a href="docs/service-agreement.pdf" download class="flex items-center gap-2 text-xs font-bold text-gold uppercase tracking-[0.2em] cursor-pointer hover:text-navy transition-colors">
-                                Download PDF <i data-lucide="download" class="w-4 h-4"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==================== AGREEMENT VIEW (Hidden by default) ==================== -->
-        <section id="agreement" class="section-content">
-            <div class="max-w-7xl mx-auto px-6 py-24">
-                <button onclick="navigateTo('services')" class="mb-8 text-sm font-bold text-gray-500 hover:text-navy flex items-center gap-2">&larr; Back to Catalog</button>
-                <div class="legal-document-container text-left text-navy animate-fade-in">
-                    <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-2 block">Step 02: Execution</span>
-                    <h2 class="text-4xl serif mb-8">Engagement Agreement</h2>
-                    <p class="meta-info">This agreement formalizes your engagement for <strong id="selected-service-name">Selected Service</strong>. Confirmation opens our direct WhatsApp Intake Gateway.</p>
-                    
-                    <h4>1. AGENCY REPRESENTATION</h4>
-                    <p class="text-base text-gray-600 leading-relaxed">Docu-Hub acts as your authorized Bearer. We stand in queues, manage paperwork, and facilitate payments to TAJ, RGD, and PICA on your behalf. We are not a law firm.</p>
-                    
-                    <h4>2. BANK-GRADE PRIVACY</h4>
-                    <p class="text-base text-gray-600 leading-relaxed">We adhere to the Jamaica Data Protection Act (2020). Digital identifiers are permanently purged within 30 days of completion. Physical documents are transported in tamper-evident secured courier bags.</p>
-
-                    <h4>3. FEES & DISBURSEMENTS</h4>
-                    <p class="text-base text-gray-600 leading-relaxed">Service fees cover administrative time and logistics only. All statutory fees (taxes, government charges) are the responsibility of the client and must be remitted prior to processing.</p>
-                    
-                    <div class="mt-12 p-10 border border-navy/10 bg-parchment text-center">
-                        <button onclick="confirmIndividualAgreement()" class="btn-primary flex items-center gap-3 mx-auto justify-center">
-                            <i data-lucide="message-circle" class="w-5 h-5"></i> I Agree - Open WhatsApp Intake
-                        </button>
-                        <p class="text-xs text-gray-400 mt-4 uppercase tracking-widest">You will be redirected to WhatsApp to upload documents.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==================== ABOUT PAGE ==================== -->
-        <section id="about" class="section-content text-left">
-            <div class="bg-white py-24 border-b border-gray-100">
+            <!-- ONBOARDING PATH -->
+            <div class="bg-white py-24 text-navy border-b border-gray-100">
                 <div class="max-w-7xl mx-auto px-6">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                        <div class="text-navy">
-                            <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Your Time is Valuable</span>
-                            <h2 class="text-5xl serif mb-8 leading-tight italic">Our Mission & Core Values</h2>
-                            <p class="text-base text-gray-600 mb-6 leading-relaxed text-left">Docu-Hub was established to provide individual citizens and Jamaican MSMEs with a **high-accuracy, privacy-first alternative** for handling essential government documents.</p>
-                            <div class="bg-parchment p-8 border-l-4 border-gold italic text-sm text-gray-600 leading-loose text-left">
-                                "We are the specialized bridge between you and Jamaica’s primary administrative bodies, ensuring your documents get where they need to go correctly and on time."
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                            <div class="bg-white border border-gray-100 p-6 text-center shadow-sm">
-                                <i data-lucide="award" class="text-gold w-10 h-10 mx-auto mb-4"></i>
-                                <p class="text-xs font-bold uppercase tracking-widest text-navy">Competence</p>
-                            </div>
-                            <div class="bg-white border border-gray-100 p-6 text-center shadow-sm">
-                                <i data-lucide="shield-check" class="text-gold w-10 h-10 mx-auto mb-4"></i>
-                                <p class="text-xs font-bold uppercase tracking-widest text-navy">Integrity</p>
-                            </div>
-                            <div class="bg-white border border-gray-100 p-6 text-center shadow-sm">
-                                <i data-lucide="zap" class="text-gold w-10 h-10 mx-auto mb-4"></i>
-                                <p class="text-xs font-bold uppercase tracking-widest text-navy">Efficiency</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SECURITY SECTION -->
-            <div class="bg-navy py-24 text-white">
-                <div class="max-w-7xl mx-auto px-6">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
                         <div class="text-left">
-                            <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Chain of Custody</span>
-                            <h2 class="text-4xl serif mb-8">Security and Care of Your Records</h2>
-                            <p class="text-base opacity-80 leading-loose mb-10">We treat your documents with bank-grade care. From the moment of intake to the final handover, your records never leave our specialized security protocol.</p>
-                            <div class="space-y-6">
-                                <div class="flex gap-6 items-start">
-                                    <div class="p-3 border border-gold/30"><i data-lucide="lock" class="text-gold w-6 h-6"></i></div>
-                                    <div><h5 class="text-sm font-bold uppercase tracking-widest mb-1">Tamper-Evident Transport</h5><p class="text-sm opacity-60">Physical certificates are transported in lockable, tamper-evident travel bags.</p></div>
+                            <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Institutional Intake</span>
+                            <h2 class="text-4xl serif mb-8">How to Initialize Your Engagement</h2>
+                            <div class="space-y-12">
+                                <div class="roadmap-step">
+                                    <h4 class="font-bold uppercase tracking-widest text-xs text-navy mb-2">Step 01: Portfolio Discovery</h4>
+                                    <p class="text-sm text-gray-500">Review our specialized services to identify which administrative logistics meet your current objectives.</p>
                                 </div>
-                                <div class="flex gap-6 items-start">
-                                    <div class="p-3 border border-gold/30"><i data-lucide="archive" class="text-gold w-6 h-6"></i></div>
-                                    <div><h5 class="text-sm font-bold uppercase tracking-widest mb-1">High-Security Storage</h5><p class="text-sm opacity-60">Custody records are secured in lockable, high-security cabinets.</p></div>
+                                <div class="roadmap-step">
+                                    <h4 class="font-bold uppercase tracking-widest text-xs text-navy mb-2">Step 02: Strategy Consultation</h4>
+                                    <p class="text-sm text-gray-500">Book a virtual session to define your roadmap, verify legal prerequisites, and receive a formal fee quote.</p>
+                                </div>
+                                <div class="roadmap-step">
+                                    <h4 class="font-bold uppercase tracking-widest text-xs text-navy mb-2">Step 03: Document Execution</h4>
+                                    <p class="text-sm text-gray-500">Download authorizations from our Vault, sign, and securely submit via our encrypted Dropbox terminal.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="bg-white/5 p-12 border border-white/10 backdrop-blur-md text-left">
-                            <span class="text-gold uppercase tracking-[0.3em] text-[10px] font-bold mb-6 block">Regulatory Oversight</span>
-                            <h3 class="text-3xl serif italic mb-8">Regulatory Compliance</h3>
-                            <div class="space-y-8">
-                                <div><h4 class="text-xs font-bold uppercase tracking-widest mb-2">JDPA Adherence</h4><p class="text-sm opacity-70 leading-relaxed">Operating in strict adherence to the Jamaica Data Protection Act (2020). Laura Clarke serves as our appointed <strong>DPO</strong>.</p></div>
-                                <div><h4 class="text-xs font-bold uppercase tracking-widest mb-2">DNFBP Supervision</h4><p class="text-sm opacity-70 leading-relaxed">As a DNFBP, we are supervised by the <strong>Financial Services Commission (FSC)</strong> and the <strong>FID</strong>.</p></div>
+                        <div class="bg-navy p-12 text-white shadow-2xl relative overflow-hidden">
+                            <i data-lucide="shield-check" class="absolute -bottom-10 -right-10 w-48 h-48 opacity-5"></i>
+                            <h3 class="text-3xl serif italic mb-6">The Success Model</h3>
+                            <div class="space-y-8 text-sm opacity-80">
+                                <div class="flex gap-4">
+                                    <span class="text-gold font-bold">I.</span>
+                                    <p><strong>Strategic Intake:</strong> Mapping needs against statutory requirements.</p>
+                                </div>
+                                <div class="flex gap-4">
+                                    <span class="text-gold font-bold">II.</span>
+                                    <p><strong>Compliance Audit:</strong> Full POCA/KYC verification and record vetting.</p>
+                                </div>
+                                <div class="flex gap-4">
+                                    <span class="text-gold font-bold">III.</span>
+                                    <p><strong>Secure Execution:</strong> Professional liaison with TAJ, RGD, and NIS.</p>
+                                </div>
                             </div>
+                            <button onclick="showPage('services')" class="mt-12 btn-primary !bg-gold text-navy w-full">Begin Discovery Phase</button>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Leadership Section -->
+
+            <!-- FOUR PHASE LIFECYCLE -->
             <div class="max-w-7xl mx-auto px-6 py-24 text-navy">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
+                <div class="text-center mb-20">
+                    <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Operational Standards</span>
+                    <h2 class="text-4xl serif">The Four-Phase Operational Lifecycle</h2>
+                    <div class="w-24 h-1 bg-gold mx-auto mt-6"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-left">
+                    <div class="relative group"><span class="workflow-number">01</span><div class="pt-8"><h3 class="font-bold uppercase tracking-widest text-sm mb-4">Discovery</h3><p class="text-gray-600 text-sm">Identifying bottlenecks in your current administrative standing.</p></div></div>
+                    <div class="relative group"><span class="workflow-number">02</span><div class="pt-8"><h3 class="font-bold uppercase tracking-widest text-sm mb-4">Audit</h3><p class="text-gray-600 text-sm">Verification of document authenticity in line with JCF/PICA standards.</p></div></div>
+                    <div class="relative group"><span class="workflow-number">03</span><div class="pt-8"><h3 class="font-bold uppercase tracking-widest text-sm mb-4">Liaison</h3><p class="text-gray-600 text-sm">On-the-ground execution by authorized bearers and logistics couriers.</p></div></div>
+                    <div class="relative group"><span class="workflow-number">04</span><div class="pt-8"><h3 class="font-bold uppercase tracking-widest text-sm mb-4">Purge</h3><p class="text-gray-600 text-sm">Executing our mandatory 30-day digital data purge for your privacy.</p></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES PAGE (THE BENTO GRID) -->
+        <section id="services" class="section-content">
+            <div class="bg-white py-24 border-b border-gray-100 text-left">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="mb-16">
+                        <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Specialized Portfolio</span>
+                        <h2 class="text-5xl serif text-navy">Our Specialized Tiers</h2>
+                        <div class="w-20 h-1 bg-gold mt-6"></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 text-navy">
+                        <!-- Card A -->
+                        <div class="bento-card">
+                            <i data-lucide="building-2" class="text-gold w-10 h-10 mb-6"></i>
+                            <h3 class="text-2xl font-bold uppercase tracking-wide mb-4">Corporate Onboarding Fix (B2B)</h3>
+                            <p class="text-gray-500 text-sm mb-4"><strong>Focus:</strong> Bulk TRN/NIS retrieval and "Payroll-Ready" name-matching audits.</p>
+                            <p class="text-gray-600 text-sm italic">Value: Getting new hires on the payroll in 1-2 cycles rather than weeks.</p>
+                        </div>
+                        <!-- Card B -->
+                        <div class="bento-card">
+                            <i data-lucide="clipboard-list" class="text-gold w-10 h-10 mb-6"></i>
+                            <h3 class="text-2xl font-bold uppercase tracking-wide mb-4">The Retrieval Hub (B2C)</h3>
+                            <p class="text-gray-500 text-sm mb-4"><strong>Focus:</strong> Individual TRN/NIS card replacement and certified RGD Vital Records.</p>
+                            <p class="text-gray-600 text-sm italic">Strategy: Sourcing Birth, Marriage, and Death certificates with islandwide access.</p>
+                        </div>
+                        <!-- Card C -->
+                        <div class="bento-card">
+                            <i data-lucide="user-search" class="text-gold w-10 h-10 mb-6"></i>
+                            <h3 class="text-2xl font-bold uppercase tracking-wide mb-4">Identity Restoration (Complex)</h3>
+                            <p class="text-gray-500 text-sm mb-4"><strong>Focus:</strong> Coordination for undocumented citizens (no birth cert/no ID).</p>
+                            <p class="text-gray-600 text-sm italic">Logic: Manual form searches at RGD Twickenham Park and evidence trail construction.</p>
+                        </div>
+                        <!-- Card D (UPDATED: TAJ eService Portal) -->
+                        <div class="bento-card">
+                            <i data-lucide="truck" class="text-gold w-10 h-10 mb-6"></i>
+                            <h3 class="text-2xl font-bold uppercase tracking-wide mb-4">Motor Vehicle & Tax Logistics</h3>
+                            <p class="text-gray-500 text-sm mb-4"><strong>Focus:</strong> Registration/Fitness renewals and secure tax remittance via the approved TAJ eService portal.</p>
+                            <div class="bg-parchment p-3 text-[10px] uppercase font-bold tracking-wider mt-4">
+                                "Liaison and digital payment facilitation only. Biometric capture requires mandatory in-person attendance."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resource Vault -->
+            <div class="max-w-7xl mx-auto px-6 py-24 text-navy">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+                    <div class="text-left">
+                        <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-2 block">Post-Consultation Phase</span>
+                        <h2 class="text-4xl serif">Client Resource Vault</h2>
+                    </div>
+                    <div class="bg-navy text-white px-6 py-4 rounded-sm flex items-center gap-4 shadow-lg border border-gold/20">
+                        <i data-lucide="upload-cloud" class="text-gold w-6 h-6"></i>
+                        <a href="#" target="_blank" class="text-sm font-bold border-b border-gold/50 hover:text-gold transition-colors">Secure Dropbox Terminal</a>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                    <div class="bg-white border border-gray-100 p-8 shadow-sm group hover:border-gold transition-all">
+                        <h3 class="font-bold mb-3 uppercase tracking-wider text-sm">Master Service Agreement</h3>
+                        <a href="docs/master-agreement.pdf" class="flex items-center gap-2 text-[10px] font-bold text-gold uppercase tracking-[0.2em]">Download PDF <i data-lucide="download" class="w-3 h-3"></i></a>
+                    </div>
+                    <div class="bg-white border border-gray-100 p-8 shadow-sm group hover:border-gold transition-all">
+                        <h3 class="font-bold mb-3 uppercase tracking-wider text-sm">Bearer's Authorization</h3>
+                        <a href="docs/bearers-auth.pdf" class="flex items-center gap-2 text-[10px] font-bold text-gold uppercase tracking-[0.2em]">Download PDF <i data-lucide="download" class="w-3 h-3"></i></a>
+                    </div>
+                    <div class="bg-white border border-gray-100 p-8 shadow-sm group hover:border-gold transition-all">
+                        <h3 class="font-bold mb-3 uppercase tracking-wider text-sm">Authorization & Consent</h3>
+                        <a href="docs/authorization-consent.pdf" class="flex items-center gap-2 text-[10px] font-bold text-gold uppercase tracking-[0.2em]">Download PDF <i data-lucide="download" class="w-3 h-3"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT PAGE -->
+        <section id="about" class="section-content">
+            <div class="bg-white py-24 border-b border-gray-100 text-left">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                        <div class="text-navy">
+                            <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Our Mission</span>
+                            <h2 class="text-5xl serif mb-8 leading-tight">Bureaucracy, Simplified.</h2>
+                            <p class="text-gray-600 mb-6 leading-relaxed">Docu-Hub was established to provide individual citizens and Jamaican MSMEs with a high-accuracy, privacy-first alternative to traditional document handling.</p>
+                            <p class="text-gray-600 mb-8 leading-relaxed italic">We serve as the specialized bridge between the public and Jamaica’s primary administrative bodies: TAJ, NIS, and the RGD.</p>
+                            <div class="flex gap-6 text-[10px] uppercase font-bold tracking-[0.2em] text-gold">
+                                <span>Professionalism</span> <span>Integrity</span> <span>Initiative</span>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="aspect-[16/9] bg-navy flex items-center justify-center p-12 text-center">
+                                <i data-lucide="award" class="text-gold w-24 h-24 opacity-20"></i>
+                                <div class="absolute inset-0 flex items-center justify-center px-12 text-white serif text-xl italic font-light opacity-90">
+                                    "Synthesizing Bank-Grade Rigour with Administrative Logistics."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leadership Pillar -->
+            <div class="max-w-7xl mx-auto px-6 py-24 text-left">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-start text-navy">
                     <div class="relative sticky top-32">
-                        <div class="aspect-[4/5] bg-gray-100 border border-gray-200 overflow-hidden shadow-2xl relative">
-                            <!-- Placeholder for Laura Clarke's Image -->
-                            <div class="absolute inset-0 flex flex-col items-center justify-center p-12 text-center bg-[#fcfcfc]">
-                                <i data-lucide="user" class="w-20 h-20 text-gray-200 mb-4"></i>
-                                <span class="text-[10px] uppercase tracking-[0.4em] font-bold text-navy/40">Laura Clarke, Principal</span>
-                           <div class="aspect-[4/5] bg-white border border-gray-200 overflow-hidden shadow-2xl relative group">
+                        <div class="aspect-[4/5] bg-white border border-gray-200 overflow-hidden shadow-2xl relative group">
                              <img src="assets/laura-clarke.jpg" alt="Laura Clarke" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                              <div class="absolute inset-0 hidden flex-col items-center justify-center p-12 text-center bg-[#fcfcfc]">
                                 <i data-lucide="user" class="w-20 h-20 text-gray-200 mb-4"></i>
                                 <span class="text-[10px] uppercase tracking-[0.4em] text-gray-400 font-bold">Laura Clarke, Principal</span>
                              </div>
+                             <div class="absolute inset-0 border-[16px] border-white pointer-events-none"></div>
+                        </div>
+                        <div class="absolute -bottom-6 -left-6 bg-gold p-8 text-white hidden md:block shadow-xl z-10 text-left">
+                            <p class="text-3xl font-bold italic">15+</p>
+                            <p class="text-[10px] uppercase tracking-widest">Years Compliance<br>Experience</p>
+                        </div>
                     </div>
-                    <div class="text-left">
-                        <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Leadership</span>
+                    <div>
+                        <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Executive Vision</span>
                         <h2 class="text-5xl serif mb-10">Laura Clarke</h2>
-                        <p class="text-xs uppercase tracking-widest text-gold font-bold mb-4 italic">Proprietor & Lead Liaison</p>
-                        <p class="text-base text-gray-600 leading-relaxed mb-8">Founded on a 15-year pedigree at <strong>NCB</strong> (National Commercial Bank) and seasonal oversight at the <strong>OEC</strong>, Laura Clarke bridges the gap between banking rigour and administrative logistics.</p>
-                        <div class="bg-parchment p-8 border border-navy/5 text-left">
-                            <h4 class="text-xs font-bold uppercase tracking-widest text-navy mb-4">Essential Notice</h4>
-                            <p class="text-sm text-gray-500 leading-loose italic">"Docu-Hub is a clerical agency and government logistics provider. We are not a law firm and do not provide legal advice or statutory interpretations."</p>
+                        <div class="space-y-8">
+                            <div>
+                                <h4 class="font-bold uppercase tracking-widest text-xs mb-3 text-gold">Banking Pedigree</h4>
+                                <p class="text-sm text-gray-600 leading-relaxed">Departmental Team Leader and Financial Officer at <strong>National Commercial Bank (NCB)</strong> (1992–2006). Managed high-compliance financial operations and regulatory balancing to institutional standards.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold uppercase tracking-widest text-xs mb-3 text-gold">Logistical Precision</h4>
+                                <p class="text-sm text-gray-600 leading-relaxed">As an OEC Examination Supervisor (2021–2025), she successfully managed logistics for hundreds of candidates across multiple regulatory protocols with zero data breaches.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Legal Shield Section -->
+            <div class="bg-navy py-24 text-white text-left">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="mb-16">
+                        <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Regulatory Integrity</span>
+                        <h2 class="text-4xl serif">The Legal Shield</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-white/5 border border-white/10 p-8">
+                            <h4 class="text-gold font-bold uppercase tracking-widest text-xs mb-4">OIC Status</h4>
+                            <p class="text-xs opacity-70 leading-relaxed">Registered Data Controller (Pending) with the Office of the Information Commissioner (OIC) for 2025/2026.</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-8">
+                            <h4 class="text-gold font-bold uppercase tracking-widest text-xs mb-4">JDPA Compliance</h4>
+                            <p class="text-xs opacity-70 leading-relaxed">Strict adherence to the 8 Standards of the Jamaica Data Protection Act. Laura Clarke serves as our appointed DPO.</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-8">
+                            <h4 class="text-gold font-bold uppercase tracking-widest text-xs mb-4">DNFBP Supervision</h4>
+                            <p class="text-xs opacity-70 leading-relaxed">Supervised under the oversight of the Financial Services Commission (FSC) and Financial Investigations Division (FID).</p>
+                        </div>
+                    </div>
+                    <div class="mt-12 bg-parchment/10 p-8 border-l-4 border-gold">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                            <div>
+                                <h5 class="font-bold uppercase text-[10px] tracking-widest text-gold mb-2">UPL Firewall</h5>
+                                <p class="text-xs opacity-80 leading-loose italic">"Docu-Hub is a clerical agency and government logistics provider. We are not a law firm."</p>
+                            </div>
+                            <div>
+                                <h5 class="font-bold uppercase text-[10px] tracking-widest text-gold mb-2">Biometric Exclusion</h5>
+                                <p class="text-xs opacity-80 leading-loose italic">"Role for Police Records and Passports is strictly administrative. Personal appearance is required for biometric capture."</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ==================== LEGAL PAGES (Hidden Sections) ==================== -->
-        
         <!-- PRIVACY POLICY -->
-        <section id="privacy" class="section-content text-left">
+        <section id="privacy" class="section-content">
             <div class="max-w-7xl mx-auto px-6 py-24">
-                <div class="legal-document-container">
-                    <span class="text-gold uppercase tracking-[0.3em] text-[10px] font-bold mb-2 block">Policy 01</span>
-                    <h2 class="text-4xl serif mb-8">Privacy Policy</h2>
+                <div class="legal-document-container text-left">
+                    <h2 class="text-4xl serif mb-2 text-navy">Privacy Policy</h2>
+                    <p class="text-xs uppercase tracking-widest text-gold mb-12">Last Updated: December 19, 2025</p>
+
                     <div class="meta-info">
-                        <strong>Last Updated:</strong> December 19, 2025<br>
-                        <strong>Data Protection Officer (DPO):</strong> Laura Clarke<br>
-                        <strong>Status:</strong> Registration Pending (Office of the Information Commissioner)
+                        <p class="mb-0 font-bold">Entity: Docu-Hub Operations Services</p>
+                        <p class="mb-0">Data Protection Officer (DPO): Laura Clarke</p>
                     </div>
 
                     <h4>1. Our Commitment to Your Privacy</h4>
-                    <p class="legal-text">At Docu-Hub Operations Services, we prioritize the security and confidentiality of your information. This policy describes how we collect, process, and protect your personal data in accordance with the <strong>Jamaica Data Protection Act (2020)</strong>.</p>
-                    
+                    <p>At Docu-Hub Operations Services, we prioritize the security and confidentiality of your information in accordance with the Jamaica Data Protection Act (2020).</p>
+
                     <h4>2. Our Status with the Regulator</h4>
-                    <p class="legal-text">In our pursuit of absolute transparency and compliance, Docu-Hub Operations Services has initiated the formal registration process as a <strong>Data Controller</strong> with the <strong>Office of the Information Commissioner (OIC)</strong>. Our application for the 2025/2026 registration year is currently in "Pending" status as it undergoes verification.</p>
+                    <p>Docu-Hub has initiated registration as a Data Controller with the OIC. Application for 2025/2026 is currently "Pending" verification.</p>
 
                     <h4>3. Lawful Basis for Processing</h4>
-                    <ul class="legal-list">
-                        <li><strong>Explicit Consent:</strong> When you authorize us to act as your agent for document retrieval or statutory filings.</li>
-                        <li><strong>Contractual Necessity:</strong> To fulfill the terms of our service agreement with your business or employer.</li>
-                        <li><strong>Legal Obligation:</strong> To satisfy statutory requirements under the Proceeds of Crime Act (POCA) and Jamaican revenue laws.</li>
+                    <ul>
+                        <li><strong>Explicit Consent:</strong> To act as your agent for retrieval/filings.</li>
+                        <li><strong>Contractual Necessity:</strong> To fulfill service terms.</li>
+                        <li><strong>Legal Obligation:</strong> Under POCA and Jamaican revenue laws.</li>
                     </ul>
 
-                    <h4>4. Categories of Data We Collect</h4>
-                    <p class="legal-text">To facilitate your onboarding and TAJ requirements, we process Identification Data (Full name, TRN, NIS number, date of birth, and copies of government-issued IDs), Administrative Data (Birth/Marriage certificates and contact details), and Business Data (Payroll statutorials and business registration certificates).</p>
-                    <p class="legal-text text-navy font-bold">Note on Biometrics: We do not collect or store biometric data (fingerprints or official biometric photos). Clients must attend JCF or PICA offices in person for these requirements.</p>
-
-                    <h4>5. The "Dual-Clock" Retention Strategy</h4>
-                    <p class="legal-text">We believe in data minimization. Your records are managed under two strict timelines:</p>
-                    <ul class="legal-list">
-                        <li><strong>Category A (Transactional):</strong> Digital scans of vital records and draft forms used for clerical transfer are <strong>permanently purged within 30 days</strong> of the delivery of your final document.</li>
-                        <li><strong>Category B (Compliance):</strong> Signed service contracts, identity verification for business principals (KYC), and transaction receipts are archived for <strong>seven (7) years</strong> to satisfy POCA and audit requirements.</li>
+                    <h4>4. The "Dual-Clock" Retention Strategy</h4>
+                    <ul>
+                        <li><strong>Category A (Transactional):</strong> Digital identifiers purged within 30 days of final document delivery.</li>
+                        <li><strong>Category B (Compliance):</strong> Contracts and KYC receipts archived for 7 years as mandated by POCA.</li>
                     </ul>
 
-                    <h4>6. Security Measures</h4>
-                    <p class="legal-text">We utilize robust technical and organizational measures to safeguard your data:</p>
-                    <ul class="legal-list">
-                        <li><strong>Digital Security:</strong> All digital records are stored in encrypted cloud environments (Google Drive/Dropbox) protected by Multi-Factor Authentication (MFA).</li>
-                        <li><strong>Physical Security:</strong> Original certificates in our temporary custody are transported in lockable, tamper-evident travel bags and stored in lockable cabinets when not in transit.</li>
-                    </ul>
-
-                    <h4>7. Your Rights as a Data Subject</h4>
-                    <p class="legal-text">Under the JDPA, you have the right to request access to your data, correction of inaccuracies, or erasure (subject to legal retention periods). Please contact our DPO, Laura Clarke, at admin@dochubservices.com. We commit to responding to all verified requests within thirty (30) days.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- LEGAL NOTICE -->
-        <section id="legal-notice" class="section-content text-left">
-            <div class="max-w-7xl mx-auto px-6 py-24">
-                <div class="legal-document-container">
-                    <span class="text-gold uppercase tracking-[0.3em] text-[10px] font-bold mb-2 block">Policy 02</span>
-                    <h2 class="text-4xl serif mb-8">Legal Notice</h2>
-                    <div class="meta-info">
-                        <strong>Entity:</strong> Docu-Hub Operations Services<br>
-                        <strong>Principal Office:</strong> St. Catherine, Jamaica<br>
-                        <strong>Status:</strong> Registered Business Name (Registration of Business Names Act)
+                    <div class="mt-20 border-t pt-12 text-center">
+                        <button onclick="showPage('home')" class="text-xs uppercase font-bold tracking-[0.3em] text-gold hover:text-navy transition-colors">Return to Home</button>
                     </div>
-                    
-                    <h4>1. General Information & Scope</h4>
-                    <p class="legal-text">The information contained on this website is for general administrative guidance only. Docu-Hub Operations Services ("the Business") provides strategic clerical and government logistics facilitation. Our operations are designed to provide institutional-grade accuracy for individuals and MSMEs navigating Jamaican administrative frameworks.</p>
-
-                    <h4>2. Unauthorized Practice of Law (UPL) Disclaimer</h4>
-                    <p class="legal-text">Docu-Hub Operations Services is a clerical agency and <strong>is not a law firm</strong>.</p>
-                    <ul class="legal-list">
-                        <li><strong>No Legal Advice:</strong> We do not provide legal opinions, statutory interpretations, or legal advice.</li>
-                        <li><strong>No Attorney-Client Relationship:</strong> Engagement of our services does not create an attorney-client relationship.</li>
-                        <li><strong>Recommendation:</strong> All material provided via this site or through our consultations should be reviewed by an Attorney-at-Law for matters requiring legal determination or court representation.</li>
-                    </ul>
-
-                    <h4>3. Biometric Processing Notice</h4>
-                    <p class="legal-text">In accordance with the security protocols of the Jamaica Constabulary Force (JCF) and the Passport, Immigration and Citizenship Agency (PICA): Docu-Hub facilitates scheduling and payment only. The applicant <strong>must appear in person</strong> for the capture of fingerprints and biometric photographs. We explicitly state that we do not handle, store, or transmit biometric data of any kind.</p>
-
-                    <h4>4. Regulatory & Compliance Disclosures</h4>
-                    <p class="legal-text"><strong>OIC Status:</strong> Docu-Hub is a Data Controller in "Pending" status for the 2025/2026 registration year with the Office of the Information Commissioner (OIC).</p>
-                    <p class="legal-text"><strong>DNFBP Status:</strong> As an administrative and corporate logistics provider, we are classified as a Designated Non-Financial Business or Profession (DNFBP). We operate in strict compliance with the Proceeds of Crime Act (POCA) and the Terrorism Prevention Act (TPA). We are mandated to report suspicious activity to the <strong>Financial Investigations Division (FID)</strong> via the goAML portal.</p>
-
-                    <h4>5. Accuracy & Document Integrity</h4>
-                    <p class="legal-text">The Client assumes all responsibility for the authenticity of original documents provided to the Business for processing. The provision of fraudulent documents to a government agency is a criminal offense under the Laws of Jamaica. Docu-Hub reserves the right to terminate any engagement immediately upon the detection of irregularities.</p>
-
-                    <h4>6. Limitation of Liability</h4>
-                    <p class="legal-text">Docu-Hub Operations Services maintains professional standards comparable to national financial institutions. However, to the extent permitted by law, our total liability is strictly limited to the amount of the professional fee paid for the specific service rendered. We are not liable for delays or rejections originating from government agency systems, backlogs, or policy changes.</p>
-
-                    <h4>7. Intellectual Property</h4>
-                    <p class="legal-text">All content, logic frameworks, and branding elements on this website are the property of Docu-Hub Operations Services. Unauthorized reproduction or distribution of our proprietary SOPs or materials is strictly prohibited.</p>
                 </div>
             </div>
         </section>
 
         <!-- TERMS OF SERVICE -->
-        <section id="terms" class="section-content text-left">
+        <section id="terms" class="section-content">
             <div class="max-w-7xl mx-auto px-6 py-24">
-                <div class="legal-document-container">
-                    <span class="text-gold uppercase tracking-[0.3em] text-[10px] font-bold mb-2 block">Policy 03</span>
-                    <h2 class="text-4xl serif mb-8">Terms of Service</h2>
-                    <div class="meta-info">
-                        <strong>Effective Date:</strong> December 19, 2025<br>
-                        <strong>Jurisdiction:</strong> Laws of Jamaica
-                    </div>
+                <div class="legal-document-container text-left">
+                    <h2 class="text-4xl serif mb-2 text-navy">Terms of Service</h2>
+                    <p class="text-xs uppercase tracking-widest text-gold mb-12">Effective Date: December 19, 2025</p>
 
-                    <h4>1. Acceptance of Terms</h4>
-                    <p class="legal-text">By accessing the website of Docu-Hub Operations Services ("the Business") or engaging our administrative services, you agree to be bound by these Terms of Service. These terms apply to all clients, whether individuals or business entities.</p>
-
-                    <h4>2. Description of Services (Clerical & Logistical)</h4>
-                    <p class="legal-text">Docu-Hub Operations Services is a professional clerical agency and government logistics provider. Our services are limited to:</p>
-                    <ul class="legal-list">
-                        <li><strong>Administrative Facilitation:</strong> Assisting with the completion and formatting of government forms (TRN, NIS, RGD).</li>
-                        <li><strong>Liaison Services:</strong> Acting as an authorized bearer/representative to submit or collect documents from government agencies.</li>
-                        <li><strong>Payment Logistics:</strong> Facilitating the payment of statutory and civic fees (e.g., Property Tax, Fitness Fees) via the TAJ portal.</li>
-                    </ul>
-
-                    <h4>3. Legal Disclaimer (Unauthorized Practice of Law)</h4>
-                    <p class="legal-text">Docu-Hub Operations Services is <strong>not a law firm</strong> and does not employ Attorneys-at-Law in a legal capacity. We do not provide legal advice, legal opinions, or statutory interpretations. All information provided is for administrative guidance only. No attorney-client relationship is formed. Clients are urged to consult an Attorney-at-Law for legal matters.</p>
-
-                    <h4>4. Client Obligations & Accuracy</h4>
-                    <p class="legal-text"><strong>Authenticity:</strong> You warrant that all information and original documents provided to us are authentic and accurate.</p>
-                    <p class="legal-text"><strong>Compliance (KYC):</strong> In accordance with the Proceeds of Crime Act (POCA), all business clients must provide Customer Due Diligence (CDD) documentation, including government-issued ID for beneficial owners, prior to service commencement.</p>
-                    <p class="legal-text"><strong>Refusal of Service:</strong> We reserve the right to cease services immediately if we have reasonable grounds to suspect the provision of fraudulent information or criminal intent.</p>
+                    <h4>2. Description of Services</h4>
+                    <p>Professional clerical and government logistics provider specializing in TRN, NIS, and RGD facilitation.</p>
 
                     <h4>5. Financial Terms & Reimbursement Model</h4>
-                    <p class="legal-text">For services involving payments to Tax Administration Jamaica (TAJ) or other agencies:</p>
-                    <ul class="legal-list">
-                        <li><strong>The Reimbursement Model:</strong> Docu-Hub pays the government fee using our corporate accounts only <strong>after</strong> the client has transferred the full tax amount plus the service fee to our designated business bank account and funds have cleared.</li>
-                        <li><strong>Disbursements:</strong> Government fees are treated as "pure pass-through" costs and are not considered revenue for the Business.</li>
-                        <li><strong>Late Fees:</strong> Docu-Hub is not liable for government-imposed penalties resulting from a client’s failure to transfer funds at least 48 hours prior to a statutory deadline.</li>
-                    </ul>
+                    <p>Docu-Hub remits government fees via our <strong>approved TAJ eService portal</strong> only after cleared funds (Tax + Service Fee) are received from the Client. Government fees are treated as pass-through disbursements.</p>
 
-                    <h4>6. Limitation of Liability</h4>
-                    <ul class="legal-list">
-                        <li><strong>Professional Fee Cap:</strong> To the maximum extent permitted by Jamaican law, our total liability for any error, omission, or negligence is strictly capped at the total professional fee paid for the specific task in question.</li>
-                        <li><strong>Agency Delays:</strong> We are not responsible for delays caused by government system outages, processing backlogs, or delivery failures of third-party couriers.</li>
-                    </ul>
-
-                    <h4>7. Virtual Consultations & Appointments</h4>
-                    <p class="legal-text"><strong>Booking Policy:</strong> All services begin with a virtual Strategy Session booked via our integrated Google Appointment Schedule.</p>
-                    <p class="legal-text"><strong>Cancellations:</strong> Appointments must be rescheduled at least 24 hours in advance. Failure to attend a booked session may result in a forfeiture of the consultation fee.</p>
-
-                    <h4>8. Governing Law</h4>
-                    <p class="legal-text">These terms are governed by and construed in accordance with the Laws of Jamaica. Any disputes shall be subject to the exclusive jurisdiction of the Jamaican courts.</p>
+                    <div class="mt-20 border-t pt-12 text-center">
+                        <button onclick="showPage('home')" class="text-xs uppercase font-bold tracking-[0.3em] text-gold hover:text-navy transition-colors">Return to Home</button>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- ==================== CONTACT PAGE ==================== -->
-        <section id="contact" class="section-content">
+        <!-- LEGAL NOTICE -->
+        <section id="legal-notice" class="section-content">
             <div class="max-w-7xl mx-auto px-6 py-24">
-                <!-- Section Header -->
-                <div class="text-center mb-16">
-                     <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Communication Channels</span>
-                     <h2 class="text-5xl serif text-navy">Connect & Coordinate</h2>
+                <div class="legal-document-container text-left">
+                    <h2 class="text-4xl serif mb-2 text-navy">Legal Notice</h2>
+                    <p class="text-xs uppercase tracking-widest text-gold mb-12">Entity: Docu-Hub Operations Services</p>
+
+                    <div class="meta-info">
+                        <p class="mb-0 font-bold">Approved TAJ eService Provider</p>
+                        <p class="mb-0">Facilitating secure digital remittance for Motor Vehicle and Civic logistics.</p>
+                    </div>
+
+                    <h4>4. Regulatory & Compliance Disclosures</h4>
+                    <p>OIC Status: Pending Data Controller. DNFBP Status: Operating in strict compliance with POCA and the TPA. Mandated FID reporting via goAML portal.</p>
+
+                    <div class="mt-20 border-t pt-12 text-center">
+                        <button onclick="showPage('home')" class="text-xs uppercase font-bold tracking-[0.3em] text-gold hover:text-navy transition-colors">Return to Home</button>
+                    </div>
                 </div>
-        
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-                    <!-- Left Column: Corporate Booking (The "Power" User) -->
-                    <div class="text-left">
-                        <h3 class="text-2xl serif text-navy mb-4">Institutional Strategy</h3>
-                        <p class="text-base text-gray-600 mb-8 leading-relaxed">
-                            Reserved for corporate entities (MSMEs) and complex individual cases requiring a dedicated intake officer. We assess your documentation before fees are applied.
-                        </p>
-                        
-                        <!-- Calendar Container -->
-                        <div class="calendar-container shadow-2xl border border-gray-100 bg-white relative h-[600px] w-full rounded-sm" id="calendar-wrapper">
-                            <div class="absolute inset-0 flex flex-col items-center justify-center bg-gray-50 text-center p-6">
-                                <i data-lucide="calendar-clock" class="w-12 h-12 text-gold mb-4"></i>
-                                <p class="text-[10px] uppercase tracking-[0.3em] text-navy font-bold">Strategy Session Scheduler</p>
-                                <p class="text-xs text-gray-400 mt-2 max-w-xs">Select a time slot to initialize a Zoom or WhatsApp Video intake.</p>
-                                <!-- In production, the iframe goes here -->
-                            </div>
+            </div>
+        </section>
+
+        <!-- CONTACT PAGE -->
+        <section id="contact" class="section-content text-navy">
+            <div class="max-w-7xl mx-auto px-6 py-24 text-left">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl serif mb-4">The Gateway</h2>
+                    <p class="text-gray-600 max-w-xl mx-auto italic">Review requirements and plan your roadmap via our Virtual Intake Session.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+                    <div class="lg:col-span-1 space-y-12">
+                        <div class="bg-white border border-gray-100 p-8 shadow-sm">
+                            <h3 class="text-gold uppercase tracking-[0.2em] text-[10px] font-bold mb-6">Strategy Session Checklist</h3>
+                            <ul class="space-y-4 text-sm text-gray-600">
+                                <li class="flex gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-gold flex-shrink-0"></i><span>Valid ID ready for POCA verification.</span></li>
+                                <li class="flex gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-gold flex-shrink-0"></i><span>Existing reference numbers (TRN/NIS).</span></li>
+                                <li class="flex gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-gold flex-shrink-0"></i><span>Brief objective summary.</span></li>
+                            </ul>
+                        </div>
+                        <div class="space-y-4">
+                            <h4 class="text-[10px] uppercase tracking-widest text-gold font-bold">Direct Correspondence</h4>
+                            <a href="mailto:admin@dochubservices.com" class="text-navy hover:text-gold transition-colors flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> admin@dochubservices.com</a>
                         </div>
                     </div>
-        
-                    <!-- Right Column: General Contact (The "Daily" User) -->
-                    <div class="flex flex-col justify-center">
-                        <div class="bg-navy p-10 text-white shadow-2xl rounded-sm relative overflow-hidden">
-                            <!-- Background decoration -->
-                            <i data-lucide="message-square" class="absolute -top-6 -right-6 w-32 h-32 text-white/5"></i>
-                            
-                            <h3 class="text-2xl serif mb-6 relative z-10">General Inquiries</h3>
-                            <p class="text-base text-white/70 mb-10 leading-relaxed relative z-10">
-                                For status updates, service catalog questions, or general information regarding our protocols.
-                            </p>
-        
-                            <!-- Contact Methods -->
-                            <div class="space-y-8 relative z-10">
-                                <!-- WhatsApp / Phone -->
-                                <div class="flex items-start gap-4 group cursor-pointer" onclick="openWhatsApp()">
-                                    <div class="w-10 h-10 border border-gold/30 flex items-center justify-center rounded-sm bg-white/5 group-hover:bg-gold/20 transition-colors">
-                                        <i data-lucide="message-circle" class="w-5 h-5 text-gold"></i>
-                                    </div>
-                                    <div>
-                                        <span class="text-[10px] uppercase tracking-widest text-gold font-bold block mb-1">Direct Liaison (WhatsApp)</span>
-                                        <span class="text-lg font-serif">1 (876) 5612614</span>
-                                        <span class="text-[10px] block text-white/40 mt-1">Mon-Fri, 9am - 2pm EST</span>
-                                    </div>
-                                </div>
-        
-                                <!-- Email -->
-                                <div class="flex items-start gap-4 group">
-                                     <div class="w-10 h-10 border border-gold/30 flex items-center justify-center rounded-sm bg-white/5">
-                                        <i data-lucide="mail" class="w-5 h-5 text-gold"></i>
-                                    </div>
-                                    <div>
-                                        <span class="text-[10px] uppercase tracking-widest text-gold font-bold block mb-1">Electronic Mail</span>
-                                        <a href="mailto:admin@dochubservices.com" class="text-lg font-serif hover:text-gold transition-colors">admin@dochubservices.com</a>
-                                        <span class="text-[10px] block text-white/40 mt-1">Response within 24 hours</span>
-                                    </div>
-                                </div>
-        
-                                 <!-- Location -->
-                                <div class="flex items-start gap-4 group">
-                                     <div class="w-10 h-10 border border-gold/30 flex items-center justify-center rounded-sm bg-white/5">
-                                        <i data-lucide="map-pin" class="w-5 h-5 text-gold"></i>
-                                    </div>
-                                    <div>
-                                        <span class="text-[10px] uppercase tracking-widest text-gold font-bold block mb-1">Registered Office</span>
-                                        <span class="text-lg font-serif block leading-tight">Linstead, St. Catherine</span>
-                                        <span class="text-[10px] block text-white/40 mt-1">Jamaica, W.I.</span>
-                                    </div>
-                                </div>
-                            </div>
-        
-                            <!-- Quick Action Button -->
-                            <div class="mt-12 relative z-10">
-                                <button onclick="openWhatsApp()" class="w-full bg-gold text-white font-bold text-xs uppercase tracking-widest py-4 hover:bg-white hover:text-navy transition-all duration-300">
-                                    Start Chat Now
-                                </button>
+
+                    <div class="lg:col-span-2">
+                        <div class="calendar-container shadow-2xl border border-gray-100 overflow-hidden" id="calendar-wrapper">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center bg-gray-50/50" id="calendar-loading">
+                                <i data-lucide="calendar" class="w-12 h-12 text-gray-200 mb-4 animate-pulse"></i>
+                                <p class="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold">Initializing Secure Booking</p>
                             </div>
                         </div>
                     </div>
@@ -875,196 +605,90 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-navy text-white pt-20 pb-10 mt-0 text-left border-t border-gold/10">
+    <footer class="bg-navy text-white pt-20 pb-10 mt-20">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-                <!-- Column 1: Brand Info -->
-                <div class="col-span-1">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 text-left">
+                <div class="col-span-1 md:col-span-1 text-left">
                     <div class="flex items-center gap-3 mb-6">
                         <div class="w-10 h-10 border-2 border-gold flex items-center justify-center">
                             <span class="serif text-gold font-bold text-xl uppercase">D</span>
                         </div>
                         <span class="text-xl serif italic tracking-wide">Docu-Hub</span>
                     </div>
-                    <p class="text-xs opacity-60 leading-relaxed">Institutional administrative logistics for the modern Jamaican citizen and enterprise.</p>
                 </div>
-
-                <!-- Column 2: Quick Links -->
                 <div>
                     <h5 class="text-gold uppercase text-[10px] font-bold tracking-[0.3em] mb-6">Quick Links</h5>
                     <ul class="text-sm space-y-3 opacity-80 font-light">
-                        <li class="cursor-pointer hover:text-gold transition-colors" onclick="navigateTo('home')">Home</li>
-                        <li class="cursor-pointer hover:text-gold transition-colors" onclick="navigateTo('about')">About Us</li>
-                        <li class="cursor-pointer hover:text-gold transition-colors" onclick="navigateTo('services')">Services</li>
-                        <li class="cursor-pointer hover:text-gold transition-colors" onclick="navigateTo('contact')">Contact</li>
+                        <li class="cursor-pointer hover:text-gold" onclick="showPage('about')">About Us</li>
+                        <li class="cursor-pointer hover:text-gold" onclick="showPage('services')">Services</li>
+                        <li class="cursor-pointer hover:text-gold" onclick="showPage('contact')">Contact</li>
                     </ul>
                 </div>
-
-                <!-- Column 3: Legal Stuff -->
                 <div>
                     <h5 class="text-gold uppercase text-[10px] font-bold tracking-[0.3em] mb-6">Legal Stuff</h5>
                     <ul class="text-sm space-y-3 opacity-80 font-light">
-                        <li class="cursor-pointer hover:text-gold transition-colors" onclick="navigateTo('privacy')">Privacy Policy</li>
-                        <li class="cursor-pointer hover:text-gold transition-colors" onclick="navigateTo('terms')">Terms of Service</li>
-                        <li class="cursor-pointer hover:text-gold transition-colors" onclick="navigateTo('legal-notice')">Legal Notice</li>
+                        <li class="cursor-pointer hover:text-gold" onclick="showPage('privacy')">Privacy Policy</li>
+                        <li class="cursor-pointer hover:text-gold" onclick="showPage('terms')">Terms of Service</li>
+                        <li class="cursor-pointer hover:text-gold" onclick="showPage('legal-notice')">Legal Notice</li>
                     </ul>
                 </div>
-
-                <!-- Column 4: Security Center -->
                 <div>
-                    <h5 class="text-gold uppercase text-[10px] font-bold tracking-[0.3em] mb-6">Security Center</h5>
-                    <ul class="text-sm space-y-3 opacity-80 font-light">
-                        <li><a href="security-center/cash_policy.html" target="_blank" class="hover:text-gold">Why Electronic Payment?</a></li>
-                        <li><a href="security-center/dual_clock.html" target="_blank" class="hover:text-gold">Data Retention Policy</a></li>
-                        <li><a href="security-center/biometric_boundary.html" target="_blank" class="hover:text-gold">The Biometric Boundary</a></li>
-                        <li><a href="security-center/biometric_boundary_checklist.html" target="_blank" class="hover:text-gold">Biometric Protocols</a></li>
-                    </ul>
+                    <h5 class="text-gold uppercase text-[10px] font-bold tracking-[0.3em] mb-6">Connect</h5>
+                    <a href="mailto:admin@dochubservices.com" class="text-sm block hover:text-gold">admin@dochubservices.com</a>
                 </div>
             </div>
-            
-            <!-- Copyright -->
             <div class="border-t border-white/10 pt-10 text-[10px] text-center uppercase tracking-[0.2em] opacity-50">
                 <p>&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-   <!-- Logic Script -->
     <script>
-        // Initialize Icons
         lucide.createIcons();
 
-        // ==========================================
-        // CONFIGURATION SETTINGS
-        // ==========================================
-        
-        // 1. WHATSAPP: Format as 1876xxxxxxx (No dashes/spaces)
-        const WHATSAPP_NUMBER = "18765612614"; 
-        
-        // 2. BOOKING: Paste your Google Appointment Schedule Link inside the quotes below
-        const GOOGLE_CALENDAR_URL = "https://calendar.app.google/XsqkLViLYtDKsjFB9"; 
+        // CONFIGURATION: Replace with your actual Google Workspace URL
+        const CALENDAR_URL = "https://calendar.app.google/U1KkNX2W7wqY6jDHA";
 
-        // 3. DROPBOX: Paste your Dropbox File Request Link inside the quotes below
-        // Example: "https://www.dropbox.com/request/AbCdEfGhIjK..."
-        const DROPBOX_LINK = "https://www.dropbox.com/request/QoLIR2d2aCBDNguWfl5A"; 
-
-        // 4. SECURE UPLOAD: Same as Dropbox for now, but kept separate for flexibility
-        const SECURE_UPLOAD_LINK = "https://www.dropbox.com/request/QoLIR2d2aCBDNguWfl5A";
-
-        let currentService = "";
-
-        // NAVIGATION LOGIC
-        function navigateTo(pageId) {
-            // 1. Hide all sections
+        function showPage(pageId) {
             const sections = document.querySelectorAll('.section-content');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-
-            // 2. Show target section
+            sections.forEach(section => section.classList.remove('active'));
             const target = document.getElementById(pageId);
             if(target) {
                 target.classList.add('active');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                updateNavState(pageId);
                 if(pageId === 'contact') initCalendar();
+                document.getElementById('mobile-menu').classList.add('hidden');
             }
         }
 
-        function updateNavState(activePageId) {
-            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-            const activeLink = document.getElementById(`nav-${activePageId}`);
-            if(activeLink) activeLink.classList.add('active');
-        }
-
-        // SERVICE TOGGLES
-        function showServiceCategory(category) {
-            const btnPersonal = document.getElementById('btn-personal');
-            const btnBusiness = document.getElementById('btn-business');
-            const viewPersonal = document.getElementById('services-personal');
-            const viewBusiness = document.getElementById('services-business');
-
-            if (category === 'personal') {
-                viewPersonal.classList.remove('hidden');
-                viewBusiness.classList.add('hidden');
-                btnPersonal.classList.add('btn-primary');
-                btnPersonal.classList.remove('btn-outline');
-                btnBusiness.classList.add('btn-outline');
-                btnBusiness.classList.remove('btn-primary');
-            } else {
-                viewPersonal.classList.add('hidden');
-                viewBusiness.classList.remove('hidden');
-                btnBusiness.classList.add('btn-primary');
-                btnBusiness.classList.remove('btn-outline');
-                btnPersonal.classList.add('btn-outline');
-                btnPersonal.classList.remove('btn-primary');
-            }
-        }
-
-        // AGREEMENT LOGIC
-        function initializeAgreement(serviceName) {
-            currentService = serviceName;
-            const el = document.getElementById('selected-service-name');
-            if(el) el.innerText = serviceName;
-            navigateTo('agreement');
-        }
-
-        function confirmIndividualAgreement() {
-            const message = encodeURIComponent(`Hello Laura, I have reviewed the Docu-Hub Agreement for ${currentService} and would like to initialize my intake session.`);
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
-        }
-        
-        // GENERIC WHATSAPP OPENER
-        function openWhatsApp() {
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}`, '_blank');
-        }
-
-        // DROPBOX OPENER
-        function openDropbox() {
-            if (DROPBOX_LINK && DROPBOX_LINK !== "") {
-                window.open(DROPBOX_LINK, '_blank');
-            } else {
-                alert("The Secure Dropbox Terminal is currently being configured. Please contact admin via WhatsApp.");
-            }
-        }
-
-        // SECURE UPLOAD OPENER (Vendor Neutral)
-        function openUploadPortal() {
-            if (SECURE_UPLOAD_LINK && SECURE_UPLOAD_LINK !== "") {
-                window.open(SECURE_UPLOAD_LINK, '_blank');
-            } else {
-                alert("The Secure Upload Portal is currently being configured. Please contact admin via WhatsApp.");
-            }
-        }
-
-        // CALENDAR LOADER (Lazy Load)
         function initCalendar() {
             const wrapper = document.getElementById('calendar-wrapper');
-            if (wrapper && !wrapper.querySelector('iframe')) {
-                if (GOOGLE_CALENDAR_URL && GOOGLE_CALENDAR_URL !== "") {
-                    const iframe = document.createElement('iframe');
-                    iframe.src = GOOGLE_CALENDAR_URL;
-                    iframe.style.width = "100%";
-                    iframe.style.height = "100%";
-                    iframe.style.border = "0";
-                    wrapper.innerHTML = ""; 
-                    wrapper.appendChild(iframe);
-                }
+            const loading = document.getElementById('calendar-loading');
+            
+            const existingIframe = wrapper.querySelector('iframe');
+            if (!existingIframe) {
+                const iframe = document.createElement('iframe');
+                iframe.src = CALENDAR_URL;
+                iframe.style.width = "100%";
+                iframe.style.height = "700px";
+                iframe.style.border = "0";
+                iframe.frameBorder = "0";
+                
+                iframe.onload = () => {
+                    if(loading) {
+                        loading.style.opacity = '0';
+                        setTimeout(() => loading.remove(), 500);
+                    }
+                };
+                wrapper.appendChild(iframe);
             }
         }
 
-        // MOBILE MENU TOGGLE
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-            } else {
-                menu.classList.add('hidden');
-            }
+            menu.classList.toggle('hidden');
         }
     </script>
 </body>
 </html>
-
-
 
