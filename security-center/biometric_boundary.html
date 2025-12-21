@@ -4,70 +4,158 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Knowledge Vault: The Biometric Boundary</title>
+    
+    <!-- TAILWIND CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FONTS: Playfair Display for Serif Elegance, Poppins for clean Sans-Serif body -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- ICONS -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
-        :root { --navy: #003366; --gold: #D4AF37; --parchment: #F5F0EC; }
-        body { font-family: sans-serif; background-color: var(--parchment); color: var(--navy); }
-        .bg-navy { background-color: var(--navy); }
-        .text-gold { color: var(--gold); }
+        :root {
+            --navy: #003366;
+            --gold: #D4AF37;
+            --parchment: #F5F0EC;
+            --gold-hover: #C5A028;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--parchment);
+            color: var(--navy);
+            line-height: 1.7;
+        }
+        /* ENFORCED SERIF FOR ALL TITLES */
+        h1, h2, h3, .serif-title { 
+            font-family: 'Playfair Display', serif; 
+        }
+        
+        .btn-return {
+            background-color: var(--gold);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.75rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .btn-return:hover {
+            background-color: var(--gold-hover);
+            transform: translateX(-5px);
+        }
+
+        .jamaican-example {
+            font-style: italic;
+            font-size: 0.85rem;
+            color: rgba(0, 51, 102, 0.6);
+            display: block;
+            margin-top: 0.25rem;
+            line-height: 1.4;
+        }
+
+        .prose strong { color: var(--navy); }
     </style>
 </head>
-<body class="p-8">
+<body class="p-4 md:p-12">
 
-    <div class="max-w-3xl mx-auto bg-white p-12 shadow-lg border-t-8 border-navy">
+    <div class="max-w-3xl mx-auto bg-white p-8 md:p-16 shadow-2xl border-t-8 border-navy relative overflow-hidden">
+        <!-- Background Icon decoration -->
+        <i data-lucide="fingerprint" class="absolute -bottom-10 -right-10 w-64 h-64 text-navy/[0.03] rotate-12"></i>
         
-        <span class="text-xs font-bold tracking-widest text-gray-400 uppercase mb-4 block">Docu-Hub Knowledge Vault &bull; Protocol #03</span>
-        
-        <h1 class="text-4xl font-serif font-bold text-navy mb-6">We Can Handle Your Paperwork, But Only You Can Handle Your Identity.</h1>
-        <p class="text-lg text-gray-600 mb-8 italic">Understanding the "Biometric Boundary" in government applications.</p>
-
-        <div class="prose text-gray-700 leading-relaxed space-y-6">
-            <p>We specialize in making government logistics invisible. We handle the forms, the lines, and the payments. However, there is one line we cannot cross: <strong>The Biometric Boundary.</strong></p>
-            <p>Modern security protocols at agencies like the Jamaica Constabulary Force (JCF) and PICA require proof of life. This means that for certain steps, your physical presence is mandatory by law.</p>
-
-            <h3 class="text-xl font-bold text-navy mt-8 border-b border-gold/30 pb-2">The Division of Labor</h3>
+        <div class="relative z-10">
+            <span class="text-[10px] font-bold tracking-[0.3em] text-gold uppercase mb-4 block serif-title">Knowledge Vault &bull; Protocol #03</span>
             
-            <div class="overflow-hidden border border-gray-200 rounded-sm my-6">
-                <table class="min-w-full text-sm">
-                    <thead class="bg-navy text-white">
-                        <tr>
-                            <th class="px-6 py-3 text-left uppercase tracking-wider font-bold">What Docu-Hub Does (Admin)</th>
-                            <th class="px-6 py-3 text-left uppercase tracking-wider font-bold">What YOU Do (Biometric)</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                            <td class="px-6 py-4">Fills out the Application Forms</td>
-                            <td class="px-6 py-4">Signs the Form (Signature Verification)</td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4">Pays the Fees Online/Cashier</td>
-                            <td class="px-6 py-4">Provides Fingerprints (JCF)</td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4">Organizes JP Certification</td>
-                            <td class="px-6 py-4">Takes the Live Photo (PICA/JCF)</td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4">Picks up the Final Document</td>
-                            <td class="px-6 py-4">Attends the Interview (Visa/Passport)</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- Main Serif Title -->
+            <h1 class="text-3xl md:text-5xl font-bold text-navy mb-6 leading-tight italic">We Can Handle Your Paperwork, But Only You Can Handle Your Identity.</h1>
+            <p class="text-lg text-gray-500 mb-10 font-light">Understanding the "Biometric Boundary" in Jamaican government applications.</p>
+
+            <div class="prose text-gray-700 leading-relaxed space-y-6">
+                <p>We specialize in making government logistics invisible. We handle the forms, the lines, and the payments. However, there is one line we cannot cross: <strong>The Biometric Boundary.</strong></p>
+                
+                <p>Modern security protocols at agencies like the <strong>Jamaica Constabulary Force (JCF)</strong> and <strong>PICA</strong> require "Proof of Life." This means for certain steps, your physical presence is mandatory by law to prevent identity fraud.</p>
+
+                <h3 class="text-2xl font-bold text-navy mt-12 border-b border-gold/30 pb-2 italic">The Division of Labor</h3>
+                <p class="text-sm text-gray-500 italic mb-4">How we share the work to keep your application legally sound:</p>
+                
+                <div class="overflow-x-auto border border-gray-100 rounded-sm my-8 shadow-sm">
+                    <table class="min-w-full text-sm">
+                        <thead class="bg-navy text-white">
+                            <tr>
+                                <th class="px-6 py-4 text-left uppercase tracking-wider font-bold text-[10px]">Docu-Hub (Administrative)</th>
+                                <th class="px-6 py-4 text-left uppercase tracking-wider font-bold text-[10px]">Client (Biometric)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4">
+                                    <span class="font-medium">Drafts Application Forms</span>
+                                    <span class="jamaican-example">"Wi type up di form dem standard an' clean."</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="font-medium">Signs the Document</span>
+                                    <span class="jamaican-example">"Yuh sign yuh name fi prove a yuh."</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">
+                                    <span class="font-medium">Remits Fees to TAJ/PICA</span>
+                                    <span class="jamaican-example">"Wi pay di tax dem an' get yuh receipt."</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="font-medium">Provides Fingerprints</span>
+                                    <span class="jamaican-example">"Yuh press yuh finger dem pon di scanner."</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">
+                                    <span class="font-medium">Coordinates JP Vetting</span>
+                                    <span class="jamaican-example">"Wi link di JP fi sign off pon di paper."</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="font-medium">Takes the Live Photo</span>
+                                    <span class="jamaican-example">"Yuh stand up straight fi di camera."</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">
+                                    <span class="font-medium">Organizes Delivery Logistics</span>
+                                    <span class="jamaican-example">"Wi handle di runaround fi pick it up."</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="font-medium">Attends Agency Interview</span>
+                                    <span class="jamaican-example">"Yuh talk to di officer face-to-face."</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="text-2xl font-bold text-navy mt-8 border-b border-gold/30 pb-2 italic">Why This Protects You</h3>
+                <p>Be wary of any "agent" who claims they can get you a Police Record or Passport without you ever showing your face. This is often a sign of bypassing legal protocols, which can result in your documents being flagged or revoked later.</p>
+                
+                <p>Our refusal to handle your biometrics is proof of our legitimacy. We prepare everything so your physical visit is fast—often under 15 minutes—but we ensure the final document is legally indisputable because <strong>you</strong> were there to validate it.</p>
             </div>
 
-            <h3 class="text-xl font-bold text-navy mt-8 border-b border-gold/30 pb-2">Why This Protects You</h3>
-            <p>Be wary of any "agent" who claims they can get you a Police Record or Passport without you ever showing your face. This is often a sign of bypassing legal protocols, which can result in your document being revoked later.</p>
-            <p>Our refusal to handle your biometrics is proof of our legitimacy. We prepare everything so your physical visit is fast (often under 15 minutes), but we ensure the final document is legally indisputable because <strong>you</strong> were there to validate it.</p>
+            <!-- FIXED RETURN LINK -->
+            <div class="mt-16 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
+                <a href="../index.html#security-center" class="btn-return">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i> Return to Security Center
+                </a>
+                <span class="text-[10px] uppercase tracking-widest text-navy/40 font-bold serif-title">Reference: Legal Notice, Section 3</span>
+            </div>
         </div>
-
-        <div class="mt-12 pt-8 border-t border-gray-100 flex justify-between items-center">
-            <a href="../index.html#security-center" class="btn-primary">Return to Security Center</a>
-            <span class="text-xs text-gray-400">Ref: Legal Notice, Section 3</span>
-        </div>
-
     </div>
 
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
-
 </html>
