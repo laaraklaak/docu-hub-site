@@ -698,15 +698,25 @@
             currentService = name;
             document.getElementById('selected-service-name').innerText = name;
             navigateTo('agreement');
-        }
+         }
 
+        // UPDATED FUNCTION: Redirects to intake.html instead of WhatsApp
         function confirmIndividualAgreement() {
-            const msg = encodeURIComponent(`Hello Laura, I have reviewed the agreement for ${currentService} and would like to begin my intake session.`);
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+            // Map the display name to the value expected by intake.html dropdown
+            let serviceValue = "";
+            if (currentService.includes("Passport")) serviceValue = "pica_renewal";
+            else if (currentService.includes("RGD")) serviceValue = "rgd_search";
+            else if (currentService.includes("TAJ")) serviceValue = "taj_support";
+            else serviceValue = "general_inquiry";
+
+            // Redirect to intake page with the service pre-selected
+            window.location.href = `intake.html?service=${serviceValue}`;
         }
-
-        function openWhatsApp() { window.open(`https://wa.me/${WHATSAPP_NUMBER}`, '_blank'); }
-
+        
+        // GENERIC WHATSAPP OPENER
+        function openWhatsApp() {
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}`, '_blank');
+        }
         function openUploadPortal() { window.open(DROPBOX_LINK, '_blank'); }
 
         function initCalendar() {
@@ -733,3 +743,4 @@
     </script>
 </body>
 </html>
+
