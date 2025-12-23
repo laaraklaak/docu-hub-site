@@ -661,45 +661,86 @@
             lucide.createIcons();
         }
 
-        const WHATSAPP_NUMBER = "18765612614";
-        const GOOGLE_CALENDAR_URL = "https://calendar.app.google/XsqkLViLYtDKsjFB9";
+        <!-- Logic Script -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // ==========================================
+        // CONFIGURATION SETTINGS
+        // ==========================================
+        
+        // 1. WHATSAPP: Format as 1876xxxxxxx (No dashes/spaces)
+        const WHATSAPP_NUMBER = "18765612614"; 
+        
+        // 2. BOOKING: Paste your Google Appointment Schedule Link inside the quotes below
+        const GOOGLE_CALENDAR_URL = "https://calendar.app.google/XsqkLViLYtDKsjFB9"; 
+
+        // 3. DROPBOX: Paste your Dropbox File Request Link inside the quotes below
         const DROPBOX_LINK = "https://www.dropbox.com/request/QoLIR2d2aCBDNguWfl5A"; 
 
+        // 4. SECURE UPLOAD: Same as Dropbox for now, but kept separate for flexibility
+        const SECURE_UPLOAD_LINK = "https://www.dropbox.com/request/QoLIR2d2aCBDNguWfl5A";
+
+        let currentService = "";
+
+        // NAVIGATION LOGIC
         function navigateTo(pageId) {
-            document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
+            // 1. Hide all sections
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // 2. Show target section
             const target = document.getElementById(pageId);
             if(target) {
                 target.classList.add('active');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                const navItem = document.getElementById(`nav-${pageId}`);
-                if(navItem) navItem.classList.add('active');
+                updateNavState(pageId);
+                if(pageId === 'contact') initCalendar();
             }
         }
 
-        function showServiceCategory(cat) {
-            const viewP = document.getElementById('services-personal');
-            const viewB = document.getElementById('services-business');
-            const btnP = document.getElementById('btn-personal');
-            const btnB = document.getElementById('btn-business');
-            if(cat === 'personal') {
-                viewP.classList.remove('hidden'); viewB.classList.add('hidden');
-                btnP.classList.replace('btn-outline', 'btn-primary');
-                btnB.classList.replace('btn-primary', 'btn-outline');
+        function updateNavState(activePageId) {
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            const activeLink = document.getElementById(`nav-${activePageId}`);
+            if(activeLink) activeLink.classList.add('active');
+        }
+
+        // SERVICE TOGGLES
+        function showServiceCategory(category) {
+            const btnPersonal = document.getElementById('btn-personal');
+            const btnBusiness = document.getElementById('btn-business');
+            const viewPersonal = document.getElementById('services-personal');
+            const viewBusiness = document.getElementById('services-business');
+
+            if (category === 'personal') {
+                viewPersonal.classList.remove('hidden');
+                viewBusiness.classList.add('hidden');
+                btnPersonal.classList.add('btn-primary');
+                btnPersonal.classList.remove('btn-outline');
+                btnBusiness.classList.add('btn-outline');
+                btnBusiness.classList.remove('btn-primary');
             } else {
-                viewP.classList.add('hidden'); viewB.classList.remove('hidden');
-                btnB.classList.replace('btn-outline', 'btn-primary');
-                btnP.classList.replace('btn-primary', 'btn-outline');
+                viewPersonal.classList.add('hidden');
+                viewBusiness.classList.remove('hidden');
+                btnBusiness.classList.add('btn-primary');
+                btnBusiness.classList.remove('btn-outline');
+                btnPersonal.classList.add('btn-outline');
+                btnPersonal.classList.remove('btn-primary');
             }
         }
 
-        function initializeAgreement(name) {
-            currentService = name;
-            document.getElementById('selected-service-name').innerText = name;
+        // AGREEMENT LOGIC
+        function initializeAgreement(serviceName) {
+            currentService = serviceName;
+            const el = document.getElementById('selected-service-name');
+            if(el) el.innerText = serviceName;
             navigateTo('agreement');
         }
 
-       // UPDATED FUNCTION: Redirects to intake.html instead of WhatsApp
+        // UPDATED FUNCTION: Redirects to intake.html instead of WhatsApp
         function confirmIndividualAgreement() {
             // Map the display name to the value expected by intake.html dropdown
             let serviceValue = "";
@@ -717,17 +758,37 @@
             window.open(`https://wa.me/${WHATSAPP_NUMBER}`, '_blank');
         }
 
-       
+        // DROPBOX OPENER
+        function openDropbox() {
+            if (DROPBOX_LINK && DROPBOX_LINK !== "") {
+                window.open(DROPBOX_LINK, '_blank');
+            } else {
+                alert("The Secure Dropbox Terminal is currently being configured. Please contact admin via WhatsApp.");
+            }
         }
 
+        // SECURE UPLOAD OPENER (Vendor Neutral)
+        function openUploadPortal() {
+            window.location.href = 'intake.html';
+        }
+
+        // CALENDAR LOADER (Lazy Load)
         function initCalendar() {
             const wrapper = document.getElementById('calendar-wrapper');
-            const iframe = document.createElement('iframe');
-            iframe.src = GOOGLE_CALENDAR_URL;
-            iframe.style.width = "100%"; iframe.style.height = "500px"; iframe.style.border = "0";
-            wrapper.innerHTML = ""; wrapper.appendChild(iframe);
+            if (wrapper && !wrapper.querySelector('iframe')) {
+                if (GOOGLE_CALENDAR_URL && GOOGLE_CALENDAR_URL !== "") {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = GOOGLE_CALENDAR_URL;
+                    iframe.style.width = "100%";
+                    iframe.style.height = "100%";
+                    iframe.style.border = "0";
+                    wrapper.innerHTML = ""; 
+                    wrapper.appendChild(iframe);
+                }
+            }
         }
 
+        // MOBILE MENU TOGGLE
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             if (menu.classList.contains('hidden')) {
@@ -736,112 +797,9 @@
                 menu.classList.add('hidden');
             }
         }
-
-        window.onload = () => {
-            renderCatalog();
-            lucide.createIcons();
-        };
-    </script>
-
-   <script>
-// --- CONFIGURATION ---
-const BACKEND_URL = "https://script.google.com/macros/s/AKfycbydSBaVXXnRo1GhmJ9SfPDWTwa2N6muR5tWfQRLrtsUVr-XA3P9uXqH7eFrS0anlIO-/exec"; 
-
-// --- 1. UTILITY: Convert File to Base64 ---
-// Google Scripts cannot receive raw files, so we convert them to text strings.
-const fileToBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve({
-      name: file.name,
-      mimeType: file.type,
-      bytes: reader.result.split(',')[1] // We only need the base64 string, not the metadata header
-    });
-    reader.onerror = error => reject(error);
-  });
-};
-
-// --- 2. MAIN FUNCTION: Submit Data ---
-async function submitIntake(serviceType) {
-    // A. Visual Feedback: Change button text so user knows something is happening
-    const btn = document.activeElement;
-    const originalText = btn.innerText;
-    btn.innerText = "Processing...";
-    btn.disabled = true;
-
-    try {
-        // B. Gather Data from your HTML Inputs
-        // Note: You must ensure your HTML inputs have these IDs, or update this section
-        const formData = {
-            action: 'intake_service', // Tells the backend what to do
-            consent: true, // You should link this to a real checkbox: document.getElementById('consent_box').checked
-            service: serviceType,
-            // Example: grabbing values from standard inputs
-            firstName: document.getElementById('fname')? document.getElementById('fname').value : "Unknown",
-            lastName: document.getElementById('lname')? document.getElementById('lname').value : "Client",
-            trn: document.getElementById('trn')? document.getElementById('trn').value : "",
-            location: 'local', // You can make this dynamic based on a dropdown
-            files:
-        };
-
-        // C. Handle File Uploads
-        const fileInput = document.getElementById('file-upload'); // Ensure you have an <input type="file" id="file-upload">
-        if(fileInput && fileInput.files.length > 0) {
-            for(let i=0; i < fileInput.files.length; i++) {
-                const encoded = await fileToBase64(fileInput.files[i]);
-                formData.files.push(encoded);
-            }
-        }
-
-        // D. Send to Google Backend
-        // We use "no-cors" mode's workaround: sending as plain text
-        const response = await fetch(BACKEND_URL, {
-            method: "POST",
-            headers: { "Content-Type": "text/plain" }, 
-            body: JSON.stringify(formData)
-        });
-
-        const result = await response.json();
-
-        // E. Handle Success/Failure
-        if(result.status === 'success') {
-            alert("Success! Your documents have been secured in our Vault.");
-            // Optional: Redirect or clear form here
-        } else {
-            alert("Error: " + result.message);
-        }
-
-    } catch (error) {
-        console.error(error);
-        alert("Connection Failed. Please try again.");
-    } finally {
-        // Reset button
-        btn.innerText = originalText;
-        btn.disabled = false;
-    }
-}
-
-// --- 3. SOP RETRIEVAL ---
-// Call this function when the page loads to populate your "Resources" section
-async function loadSOPs() {
-    try {
-        const response = await fetch(BACKEND_URL); // Default GET request
-        const sops = await response.json();
-        
-        // Example: Render them into a list with ID 'sop-container'
-        const container = document.getElementById('sop-container');
-        if(container) {
-            container.innerHTML = sops.map(doc => 
-                `<div class="sop-item"><a href="${doc.url}" target="_blank">${doc.name}</a></div>`
-            ).join('');
-        }
-    } catch (e) {
-        console.log("Could not load SOPs", e);
-    }
-}
 </script>
 </body>
 </html>
+
 
 
