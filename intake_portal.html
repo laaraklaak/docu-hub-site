@@ -31,6 +31,9 @@
             animation: spin 1s linear infinite;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        /* Disabled Input Style */
+        .disabled-input { background-color: #f3f4f6; color: #9ca3af; cursor: not-allowed; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -71,8 +74,13 @@
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-navy mb-1">TRN (9 Digits)</label>
-                            <input type="text" name="trn" required maxlength="9" pattern="\d{9}" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm text-sm focus:border-gold outline-none" placeholder="e.g. 123456789">
-                            <p class="text-[10px] text-gray-400 mt-1">No dashes or spaces.</p>
+                            <input type="text" id="trnInput" name="trn" required maxlength="9" pattern="\d{9}" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm text-sm focus:border-gold outline-none" placeholder="e.g. 123456789">
+                            
+                            <!-- UPDATED: Checkbox for New Applications -->
+                            <div class="flex items-center gap-2 mt-2">
+                                <input type="checkbox" id="newAppCheck" class="accent-[#D4AF37] w-4 h-4 cursor-pointer">
+                                <label for="newAppCheck" class="text-[10px] font-bold text-gray-500 cursor-pointer uppercase tracking-wider hover:text-navy">I am applying for a TRN (No ID yet)</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -83,12 +91,15 @@
                     
                     <div>
                         <label class="block text-xs font-bold text-navy mb-1">Service Required</label>
-                        <select name="service" required class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm text-sm focus:border-gold outline-none">
+                        <select id="serviceSelect" name="service" required class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm text-sm focus:border-gold outline-none">
                             <option value="" disabled selected>Select Service...</option>
-                            <option value="rgd_search">RGD Vital Record Search</option>
-                            <option value="pica_renewal">PICA Passport Renewal</option>
+                            <option value="rgd_suite">RGD Suite (Vital Records)</option>
+                            <option value="pica_suite">PICA Suite (Passports)</option>
+                            <option value="taj_suite">TAJ Suite (Vehicle & Tax)</option>
+                            <option value="nis_registration">NIS Registration</option>
                             <option value="police_record">Police Record Application</option>
-                            <option value="taj_support">TAJ / Tax Support</option>
+                            <option value="elector_id">Elector ID / Voter Services</option>
+                            <option value="other">Other / General Inquiry</option>
                         </select>
                     </div>
                     
@@ -143,9 +154,35 @@
     <script>
         lucide.createIcons();
 
+        // --- AUTO-FILL SERVICE FROM URL ---
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const params = new URLSearchParams(window.location.search);
+            const service = params.get('service');
+            if (service) {
+                const select = document.getElementById('serviceSelect');
+                if(select) select.value = service;
+            }
+        });
+        
+        // --- NEW TRN TOGGLE LOGIC ---
+        document.getElementById('newAppCheck').addEventListener('change', function(e) {
+            const input = document.getElementById('trnInput');
+            if(this.checked) {
+                input.value = "";
+                input.disabled = true;
+                input.required = false;
+                input.classList.add('disabled-input');
+                input.placeholder = "New Application (Auto-Generated)";
+            } else {
+                input.disabled = false;
+                input.required = true;
+                input.classList.remove('disabled-input');
+                input.placeholder = "e.g. 123456789";
+            }
+        });
+
         // --- CONFIGURATION ---
-        // PASTE YOUR DEPLOYED WEB APP URL INSIDE THE QUOTES BELOW
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz_REPLACE_THIS_WITH_YOUR_ACTUAL_ID/exec"; 
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbydSBaVXXnRo1GhmJ9SfPDWTwa2N6muR5tWfQRLrtsUVr-XA3P9uXqH7eFrS0anlIO-/exec"; 
 
         // File List Preview
         document.getElementById('fileInput').addEventListener('change', function(e) {
@@ -204,6 +241,7 @@
                 // Show Success (Since no-cors doesn't give us the JSON response, we assume success if no error thrown)
                 form.classList.add('hidden');
                 document.getElementById('successMessage').classList.remove('hidden');
+                window.scrollTo(0, 0);
 
             } catch (error) {
                 console.error('Error:', error);
