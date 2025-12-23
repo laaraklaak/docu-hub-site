@@ -730,5 +730,105 @@
             lucide.createIcons();
         };
     </script>
+
+   <script>
+// --- CONFIGURATION ---
+const BACKEND_URL = "https://script.google.com/macros/s/AKfycbydSBaVXXnRo1GhmJ9SfPDWTwa2N6muR5tWfQRLrtsUVr-XA3P9uXqH7eFrS0anlIO-/exec"; 
+
+// --- 1. UTILITY: Convert File to Base64 ---
+// Google Scripts cannot receive raw files, so we convert them to text strings.
+const fileToBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve({
+      name: file.name,
+      mimeType: file.type,
+      bytes: reader.result.split(',')[1] // We only need the base64 string, not the metadata header
+    });
+    reader.onerror = error => reject(error);
+  });
+};
+
+// --- 2. MAIN FUNCTION: Submit Data ---
+async function submitIntake(serviceType) {
+    // A. Visual Feedback: Change button text so user knows something is happening
+    const btn = document.activeElement;
+    const originalText = btn.innerText;
+    btn.innerText = "Processing...";
+    btn.disabled = true;
+
+    try {
+        // B. Gather Data from your HTML Inputs
+        // Note: You must ensure your HTML inputs have these IDs, or update this section
+        const formData = {
+            action: 'intake_service', // Tells the backend what to do
+            consent: true, // You should link this to a real checkbox: document.getElementById('consent_box').checked
+            service: serviceType,
+            // Example: grabbing values from standard inputs
+            firstName: document.getElementById('fname')? document.getElementById('fname').value : "Unknown",
+            lastName: document.getElementById('lname')? document.getElementById('lname').value : "Client",
+            trn: document.getElementById('trn')? document.getElementById('trn').value : "",
+            location: 'local', // You can make this dynamic based on a dropdown
+            files:
+        };
+
+        // C. Handle File Uploads
+        const fileInput = document.getElementById('file-upload'); // Ensure you have an <input type="file" id="file-upload">
+        if(fileInput && fileInput.files.length > 0) {
+            for(let i=0; i < fileInput.files.length; i++) {
+                const encoded = await fileToBase64(fileInput.files[i]);
+                formData.files.push(encoded);
+            }
+        }
+
+        // D. Send to Google Backend
+        // We use "no-cors" mode's workaround: sending as plain text
+        const response = await fetch(BACKEND_URL, {
+            method: "POST",
+            headers: { "Content-Type": "text/plain" }, 
+            body: JSON.stringify(formData)
+        });
+
+        const result = await response.json();
+
+        // E. Handle Success/Failure
+        if(result.status === 'success') {
+            alert("Success! Your documents have been secured in our Vault.");
+            // Optional: Redirect or clear form here
+        } else {
+            alert("Error: " + result.message);
+        }
+
+    } catch (error) {
+        console.error(error);
+        alert("Connection Failed. Please try again.");
+    } finally {
+        // Reset button
+        btn.innerText = originalText;
+        btn.disabled = false;
+    }
+}
+
+// --- 3. SOP RETRIEVAL ---
+// Call this function when the page loads to populate your "Resources" section
+async function loadSOPs() {
+    try {
+        const response = await fetch(BACKEND_URL); // Default GET request
+        const sops = await response.json();
+        
+        // Example: Render them into a list with ID 'sop-container'
+        const container = document.getElementById('sop-container');
+        if(container) {
+            container.innerHTML = sops.map(doc => 
+                `<div class="sop-item"><a href="${doc.url}" target="_blank">${doc.name}</a></div>`
+            ).join('');
+        }
+    } catch (e) {
+        console.log("Could not load SOPs", e);
+    }
+}
+</script>
 </body>
 </html>
+
