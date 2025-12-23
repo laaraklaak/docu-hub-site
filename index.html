@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -661,134 +662,61 @@
             lucide.createIcons();
         }
 
-        <!-- Logic Script -->
-    <script>
-        // Initialize Icons
-        lucide.createIcons();
-
-        // ==========================================
-        // CONFIGURATION SETTINGS
-        // ==========================================
-        
-        // 1. WHATSAPP: Format as 1876xxxxxxx (No dashes/spaces)
-        const WHATSAPP_NUMBER = "18765612614"; 
-        
-        // 2. BOOKING: Paste your Google Appointment Schedule Link inside the quotes below
-        const GOOGLE_CALENDAR_URL = "https://calendar.app.google/XsqkLViLYtDKsjFB9"; 
-
-        // 3. DROPBOX: Paste your Dropbox File Request Link inside the quotes below
+        const WHATSAPP_NUMBER = "18765612614";
+        const GOOGLE_CALENDAR_URL = "https://calendar.app.google/XsqkLViLYtDKsjFB9";
         const DROPBOX_LINK = "https://www.dropbox.com/request/QoLIR2d2aCBDNguWfl5A"; 
 
-        // 4. SECURE UPLOAD: Same as Dropbox for now, but kept separate for flexibility
-        const SECURE_UPLOAD_LINK = "https://www.dropbox.com/request/QoLIR2d2aCBDNguWfl5A";
-
-        let currentService = "";
-
-        // NAVIGATION LOGIC
         function navigateTo(pageId) {
-            // 1. Hide all sections
-            const sections = document.querySelectorAll('.section-content');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-
-            // 2. Show target section
+            document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
             const target = document.getElementById(pageId);
             if(target) {
                 target.classList.add('active');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                updateNavState(pageId);
-                if(pageId === 'contact') initCalendar();
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                const navItem = document.getElementById(`nav-${pageId}`);
+                if(navItem) navItem.classList.add('active');
             }
         }
 
-        function updateNavState(activePageId) {
-            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-            const activeLink = document.getElementById(`nav-${activePageId}`);
-            if(activeLink) activeLink.classList.add('active');
-        }
-
-        // SERVICE TOGGLES
-        function showServiceCategory(category) {
-            const btnPersonal = document.getElementById('btn-personal');
-            const btnBusiness = document.getElementById('btn-business');
-            const viewPersonal = document.getElementById('services-personal');
-            const viewBusiness = document.getElementById('services-business');
-
-            if (category === 'personal') {
-                viewPersonal.classList.remove('hidden');
-                viewBusiness.classList.add('hidden');
-                btnPersonal.classList.add('btn-primary');
-                btnPersonal.classList.remove('btn-outline');
-                btnBusiness.classList.add('btn-outline');
-                btnBusiness.classList.remove('btn-primary');
+        function showServiceCategory(cat) {
+            const viewP = document.getElementById('services-personal');
+            const viewB = document.getElementById('services-business');
+            const btnP = document.getElementById('btn-personal');
+            const btnB = document.getElementById('btn-business');
+            if(cat === 'personal') {
+                viewP.classList.remove('hidden'); viewB.classList.add('hidden');
+                btnP.classList.replace('btn-outline', 'btn-primary');
+                btnB.classList.replace('btn-primary', 'btn-outline');
             } else {
-                viewPersonal.classList.add('hidden');
-                viewBusiness.classList.remove('hidden');
-                btnBusiness.classList.add('btn-primary');
-                btnBusiness.classList.remove('btn-outline');
-                btnPersonal.classList.add('btn-outline');
-                btnPersonal.classList.remove('btn-primary');
+                viewP.classList.add('hidden'); viewB.classList.remove('hidden');
+                btnB.classList.replace('btn-outline', 'btn-primary');
+                btnP.classList.replace('btn-primary', 'btn-outline');
             }
         }
 
-        // AGREEMENT LOGIC
-        function initializeAgreement(serviceName) {
-            currentService = serviceName;
-            const el = document.getElementById('selected-service-name');
-            if(el) el.innerText = serviceName;
+        function initializeAgreement(name) {
+            currentService = name;
+            document.getElementById('selected-service-name').innerText = name;
             navigateTo('agreement');
         }
 
-        // UPDATED FUNCTION: Redirects to intake.html instead of WhatsApp
         function confirmIndividualAgreement() {
-            // Map the display name to the value expected by intake.html dropdown
-            let serviceValue = "";
-            if (currentService.includes("Passport")) serviceValue = "pica_renewal";
-            else if (currentService.includes("RGD")) serviceValue = "rgd_search";
-            else if (currentService.includes("TAJ")) serviceValue = "taj_support";
-            else serviceValue = "general_inquiry";
-
-            // Redirect to intake page with the service pre-selected
-            window.location.href = `intake.html?service=${serviceValue}`;
-        }
-        
-        // GENERIC WHATSAPP OPENER
-        function openWhatsApp() {
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}`, '_blank');
+            const msg = encodeURIComponent(`Hello Laura, I have reviewed the agreement for ${currentService} and would like to begin my intake session.`);
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
         }
 
-        // DROPBOX OPENER
-        function openDropbox() {
-            if (DROPBOX_LINK && DROPBOX_LINK !== "") {
-                window.open(DROPBOX_LINK, '_blank');
-            } else {
-                alert("The Secure Dropbox Terminal is currently being configured. Please contact admin via WhatsApp.");
-            }
-        }
+        function openWhatsApp() { window.open(`https://wa.me/${WHATSAPP_NUMBER}`, '_blank'); }
 
-        // SECURE UPLOAD OPENER (Vendor Neutral)
-        function openUploadPortal() {
-            window.location.href = 'intake.html';
-        }
+        function openUploadPortal() { window.open(DROPBOX_LINK, '_blank'); }
 
-        // CALENDAR LOADER (Lazy Load)
         function initCalendar() {
             const wrapper = document.getElementById('calendar-wrapper');
-            if (wrapper && !wrapper.querySelector('iframe')) {
-                if (GOOGLE_CALENDAR_URL && GOOGLE_CALENDAR_URL !== "") {
-                    const iframe = document.createElement('iframe');
-                    iframe.src = GOOGLE_CALENDAR_URL;
-                    iframe.style.width = "100%";
-                    iframe.style.height = "100%";
-                    iframe.style.border = "0";
-                    wrapper.innerHTML = ""; 
-                    wrapper.appendChild(iframe);
-                }
-            }
+            const iframe = document.createElement('iframe');
+            iframe.src = GOOGLE_CALENDAR_URL;
+            iframe.style.width = "100%"; iframe.style.height = "500px"; iframe.style.border = "0";
+            wrapper.innerHTML = ""; wrapper.appendChild(iframe);
         }
 
-        // MOBILE MENU TOGGLE
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             if (menu.classList.contains('hidden')) {
@@ -797,9 +725,11 @@
                 menu.classList.add('hidden');
             }
         }
-</script>
+
+        window.onload = () => {
+            renderCatalog();
+            lucide.createIcons();
+        };
+    </script>
 </body>
 </html>
-
-
-
