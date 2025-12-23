@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Intake | Docu-Hub Operations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root { --navy: #003366; --parchment: #F5F0EC; --gold: #D4AF37; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--parchment); color: var(--navy); }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        
+        /* CUSTOM COLOR UTILITIES */
+        .bg-navy { background-color: var(--navy); }
+        .text-navy { color: var(--navy); }
+        .border-navy { border-color: var(--navy); }
+        
+        .bg-gold { background-color: var(--gold); }
+        .text-gold { color: var(--gold); }
+        .border-gold { border-color: var(--gold); }
+
+        /* Loading Spinner */
+        .loader {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--gold);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Simple Header -->
+    <nav class="bg-navy text-white p-6 shadow-md">
+        <div class="max-w-3xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <i data-lucide="shield-check" class="text-gold w-6 h-6"></i>
+                <div>
+                    <span class="block text-sm font-bold tracking-widest uppercase">Docu-Hub</span>
+                    <span class="block text-[10px] text-gold uppercase tracking-[0.2em]">Secure Intake Node</span>
+                </div>
+            </div>
+            <a href="index.html" class="text-xs uppercase font-bold text-gray-400 hover:text-white transition">Exit</a>
+        </div>
+    </nav>
+
+    <!-- Main Form Area -->
+    <main class="flex-grow p-6">
+        <div class="max-w-2xl mx-auto bg-white p-8 md:p-12 shadow-2xl border-t-4 border-gold rounded-sm">
+            
+            <div class="text-center mb-10">
+                <h1 class="text-3xl font-bold mb-2">Client Digital Intake</h1>
+                <p class="text-sm text-gray-500">Your documents are encrypted and sent directly to our secure vault.</p>
+            </div>
+
+            <form id="intakeForm" class="space-y-6" onsubmit="handleFormSubmit(event)">
+                
+                <!-- Section 1: Identity -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-bold text-gold uppercase tracking-widest border-b border-gray-100 pb-2">01. Identity Validation</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-navy mb-1">Last Name</label>
+                            <input type="text" name="lastName" required class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm text-sm focus:border-gold outline-none" placeholder="e.g. BROWN">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-navy mb-1">TRN (9 Digits)</label>
+                            <input type="text" name="trn" required maxlength="9" pattern="\d{9}" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm text-sm focus:border-gold outline-none" placeholder="e.g. 123456789">
+                            <p class="text-[10px] text-gray-400 mt-1">No dashes or spaces.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Service Context -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-bold text-gold uppercase tracking-widest border-b border-gray-100 pb-2">02. Service Context</h3>
+                    
+                    <div>
+                        <label class="block text-xs font-bold text-navy mb-1">Service Required</label>
+                        <select name="service" required class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm text-sm focus:border-gold outline-none">
+                            <option value="" disabled selected>Select Service...</option>
+                            <option value="rgd_search">RGD Vital Record Search</option>
+                            <option value="pica_renewal">PICA Passport Renewal</option>
+                            <option value="police_record">Police Record Application</option>
+                            <option value="taj_support">TAJ / Tax Support</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Hidden field for location, defaulting to 'local' for now -->
+                    <input type="hidden" name="location" value="local">
+                </div>
+
+                <!-- Section 3: Document Upload -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-bold text-gold uppercase tracking-widest border-b border-gray-100 pb-2">03. Secure Upload</h3>
+                    
+                    <div class="border-2 border-dashed border-gray-200 bg-gray-50 rounded-lg p-8 text-center hover:border-gold transition-colors relative">
+                        <input type="file" id="fileInput" multiple required class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                        <i data-lucide="upload-cloud" class="w-10 h-10 text-gray-300 mx-auto mb-2"></i>
+                        <p class="text-sm font-bold text-navy">Tap to Select Files</p>
+                        <p class="text-xs text-gray-400">PDF, JPG, or PNG (Max 5MB)</p>
+                        <div id="fileList" class="mt-4 text-xs text-left space-y-1 text-gold font-bold"></div>
+                    </div>
+                </div>
+
+                <!-- Section 4: Compliance Gate -->
+                <div class="bg-navy/5 p-4 rounded border border-navy/10">
+                    <label class="flex items-start gap-3 cursor-pointer">
+                        <input type="checkbox" name="consent" required class="mt-1">
+                        <span class="text-xs text-gray-600 leading-relaxed">
+                            <strong>Compliance Consent:</strong> I authorize Docu-Hub Operations Services to process these documents for the purpose of government liaison. I understand this data will be handled according to the JDPA/POCA protocols defined in the Privacy Policy.
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Submit Area -->
+                <button type="submit" id="submitBtn" class="w-full bg-navy text-white py-4 rounded-sm font-bold uppercase tracking-widest hover:bg-gold hover:text-navy transition-all shadow-lg flex justify-center items-center gap-3">
+                    <span>Initialize Secure Transfer</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+
+            </form>
+
+            <!-- Success Message (Hidden by default) -->
+            <div id="successMessage" class="hidden text-center py-10">
+                <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i data-lucide="check" class="w-8 h-8"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-navy mb-2">Transmission Complete</h2>
+                <p class="text-sm text-gray-500 mb-8">Your documents have been securely logged in our Vault. An intake officer will verify them shortly.</p>
+                <a href="index.html" class="inline-block bg-gold text-white px-8 py-3 rounded-sm text-xs font-bold uppercase tracking-widest">Return Home</a>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        // --- CONFIGURATION ---
+        // PASTE YOUR DEPLOYED WEB APP URL INSIDE THE QUOTES BELOW
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz_REPLACE_THIS_WITH_YOUR_ACTUAL_ID/exec"; 
+
+        // File List Preview
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const list = document.getElementById('fileList');
+            list.innerHTML = '';
+            Array.from(this.files).forEach(file => {
+                list.innerHTML += `<div>• ${file.name}</div>`;
+            });
+        });
+
+        // Form Handler
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            const btn = document.getElementById('submitBtn');
+            const originalBtnContent = btn.innerHTML;
+            
+            // Set Loading State
+            btn.disabled = true;
+            btn.innerHTML = '<div class="loader"></div> Processing Encryption...';
+
+            const form = e.target;
+            const formData = {
+                lastName: form.lastName.value,
+                trn: form.trn.value,
+                service: form.service.value,
+                location: form.location.value,
+                consent: form.consent.checked,
+                files: []
+            };
+
+            // Process Files (Convert to Base64)
+            const fileInput = document.getElementById('fileInput');
+            
+            try {
+                if (fileInput.files.length > 0) {
+                    for (const file of fileInput.files) {
+                        const base64 = await getBase64(file);
+                        formData.files.push({
+                            name: file.name,
+                            mimeType: file.type,
+                            bytes: base64
+                        });
+                    }
+                }
+
+                // Send to Google Script
+                // mode: 'no-cors' is CRITICAL for Apps Script web apps
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(formData),
+                    mode: 'no-cors', 
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                // Show Success (Since no-cors doesn't give us the JSON response, we assume success if no error thrown)
+                form.classList.add('hidden');
+                document.getElementById('successMessage').classList.remove('hidden');
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert("Transmission Error: Please verify your connection and try again.");
+                btn.disabled = false;
+                btn.innerHTML = originalBtnContent;
+            }
+        }
+
+        // Helper: File to Base64
+        function getBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => {
+                    // Remove the Data-URL prefix (e.g. "data:image/png;base64,")
+                    const rawBase64 = reader.result.split(',')[1]; 
+                    resolve(rawBase64);
+                };
+                reader.onerror = error => reject(error);
+            });
+        }
+    </script>
+</body>
+</html>
