@@ -335,19 +335,45 @@
         }
 
         // 3. APPS SCRIPT BRIDGE (VAULT CONNECTION)
-        function submitToVault() {
-            const btn = document.getElementById('btn-initialize');
-            btn.innerText = "https://script.google.com/macros/s/AKfycbx6JN7bZpU0S0BYPZaujrN8FjvX_0ERwwPsWstanIyAeQGDvdwnn_W3_8-w_lAwCkpe/exec";
-            btn.disabled = true;
+async function submitToVault() {
+    const btn = document.getElementById('btn-initialize');
+    
+    // 1. FIX: Show a friendly message, not the URL
+    btn.innerText = "SYNCHRONIZING..."; 
+    btn.disabled = true;
 
-            const payload = {
-                clientName: document.getElementById('client-name').value,
-                trn: document.getElementById('client-trn').value,
-                sopId: state.activeSop.sop,
-                isGhost: false, // Standard intake
-                fileData: state.base64,
-                fileName: state.fileName
-            };
+    const payload = {
+        action: "submit_intake", // Ensure this matches your App Script logic
+        data: {
+            clientName: document.getElementById('client-name').value,
+            trn: document.getElementById('client-trn').value,
+            sopId: state.activeSop ? state.activeSop.sop : "unknown",
+            isGhost: false, 
+            fileData: state.base64 || null,
+            fileName: state.fileName || null
+        }
+    };
+
+    try {
+        // 2. FIX: Use the bridge file variable here
+        await fetch(SYSTEM_CONFIG.VAULT_URL, { 
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "text/plain" },
+            body: JSON.stringify(payload)
+        });
+
+        alert("Success: Record Vaulted.");
+        // Optional: window.location.reload(); 
+
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Connection Failed.");
+    } finally {
+        btn.disabled = false;
+        btn.innerText = "Initialize Intake"; // Reset button text
+    }
+}
 
             // PRODUCTION CONNECTION
             if (typeof google !== 'undefined' && google.script && google.script.run) {
@@ -468,6 +494,7 @@
     </script>
 </body>
 </html>
+
 
 
 
