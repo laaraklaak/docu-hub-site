@@ -21,7 +21,14 @@
         .sidebar-link.active { background: var(--gold); color: var(--navy); opacity: 1; font-weight: 600; border-radius: 4px; }
         .sidebar-header, .sidebar-footer { display: none; }
         .main-content { flex: 1; order: 1; overflow-y: auto; background-color: var(--parchment); color: var(--navy); padding: 16px; position: relative; }
+        
+        /* Cards */
         .dashboard-card { background: white; color: var(--navy); border-radius: 4px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-left: 4px solid var(--navy); }
+        
+        /* SOP Specific Styles */
+        .sop-card { background: white; border-radius: 4px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-left: 4px solid var(--navy); transition: all 0.2s; color: var(--navy); }
+        .sop-card:hover { transform: translateY(-2px); border-left-color: var(--gold); }
+        .agency-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 4px; display: block; text-transform: uppercase; }
 
         /* Table Styles */
         .audit-table { width: 100%; border-collapse: collapse; font-size: 11px; }
@@ -44,6 +51,8 @@
 
         .hidden { display: none !important; }
         input, select { color: var(--navy) !important; background-color: #ffffff !important; border: 2px solid #e5e7eb !important; border-radius: 4px !important; font-size: 16px !important; }
+        .loader { border: 3px solid #f3f3f3; border-top: 3px solid var(--navy); border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; display: inline-block; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -71,12 +80,12 @@
                 <h1 class="serif text-2xl font-bold tracking-widest text-gold">DOCU-HUB</h1>
                 <p class="text-[9px] opacity-50 uppercase tracking-widest mt-1 text-white">Liaison Services</p>
             </div>
-            
             <nav class="sidebar-nav flex">
                 <div class="sidebar-link active" onclick="switchView('dashboard', this)"><i data-lucide="layout-dashboard"></i> <span>Live Audit</span></div>
                 <div class="sidebar-link" onclick="switchView('intake', this)"><i data-lucide="file-plus-2"></i> <span>Walk-In</span></div>
                 
-                <div class="sidebar-link" onclick="window.location.href='sop_library.html'"><i data-lucide="book-open-check"></i> <span>Protocols</span></div>
+                <!-- COMBINED: Now calls switchView instead of window.open -->
+                <div class="sidebar-link" onclick="switchView('protocols', this)"><i data-lucide="book-open-check"></i> <span>Protocols</span></div>
 
                 <div class="sidebar-link" onclick="switchView('settings', this)"><i data-lucide="settings"></i> <span>Admin</span></div>
             </nav>
@@ -97,6 +106,7 @@
                 </div>
             </header>
 
+            <!-- VIEW: LIVE AUDIT DASHBOARD -->
             <div id="view-dashboard" class="view-section space-y-4">
                 <div class="dashboard-card border-t-8 border-navy p-0 overflow-hidden">
                     <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50">
@@ -113,7 +123,10 @@
                                     <th>Date</th>
                                     <th>Service</th>
                                     <th>Client</th>
-                                    <th>Funds</th> <th>Status</th> <th>Evidence</th> </tr>
+                                    <th>Funds</th> <!-- Col F -->
+                                    <th>Status</th> <!-- Col G -->
+                                    <th>Evidence</th> <!-- Col E -->
+                                </tr>
                             </thead>
                             <tbody id="audit-table-body" class="divide-y divide-gray-100">
                                 <tr><td colspan="6" class="p-8 text-center text-gray-400">Connecting to Secure Vault...</td></tr>
@@ -123,17 +136,40 @@
                 </div>
             </div>
 
+            <!-- VIEW: WALK-IN INTAKE -->
             <div id="view-intake" class="view-section hidden">
                 <div class="dashboard-card border-t-8 border-gold max-w-4xl">
                     <h3 class="serif text-xl md:text-2xl font-bold mb-6">Manual Case Enrollment</h3>
                     <p class="text-xs text-gray-400 mb-4">Use this form for walk-ins. Data will be pushed to the Master Sheet.</p>
-                    <form class="space-y-6" id="manual-form">
+                    <form class="space-y-6">
                          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <input type="text" id="manual-name" placeholder="Full Legal Name" class="w-full p-4 outline-none">
-                            <input type="text" id="manual-service" placeholder="Service Type" class="w-full p-4 outline-none">
+                            <input type="text" placeholder="Full Legal Name" class="w-full p-4 outline-none">
+                            <input type="text" placeholder="Service Type" class="w-full p-4 outline-none">
                         </div>
-                        <button type="button" onclick="submitManualIntake()" class="w-full bg-[#003366] text-white py-4 font-bold uppercase text-xs rounded shadow-lg">Commit to Ledger</button>
+                        <button type="button" class="w-full bg-[#003366] text-white py-4 font-bold uppercase text-xs rounded shadow-lg">Commit to Ledger</button>
                     </form>
+                </div>
+            </div>
+
+            <!-- VIEW: PROTOCOLS (SOP Library) -->
+            <div id="view-protocols" class="view-section hidden">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h3 class="serif text-xl font-bold text-navy">Standard Operating Procedures</h3>
+                        <p class="text-xs text-gray-500 uppercase tracking-widest mt-1">Authorized Protocol Library</p>
+                    </div>
+                    <button onclick="loadProtocols()" class="text-xs font-bold text-gold uppercase tracking-widest hover:text-navy flex items-center gap-2">
+                        <i data-lucide="rotate-cw" class="w-4 h-4"></i> Refresh
+                    </button>
+                </div>
+
+                <div id="sop-loading" class="text-center py-20 opacity-50 hidden">
+                    <div class="loader mb-4"></div>
+                    <p class="text-sm font-bold uppercase tracking-widest">Fetching Manuals...</p>
+                </div>
+
+                <div id="sop-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Dynamic SOP Cards will appear here -->
                 </div>
             </div>
 
@@ -148,9 +184,9 @@
         lucide.createIcons();
 
         // --- CONFIGURATION ---
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzX7CSHDzfPCH3SsEeUCrHTE9X7omiskVh8ogPGm5Wvva9Xw0cK_9vaQYKyls10m2Ni/exec"; 
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbydSBaVXXnRo1GhmJ9SfPDWTwa2N6muR5tWfQRLrtsUVr-XA3P9uXqH7eFrS0anlIO-/exec"; 
 
-        // 1. DATA LOADER
+        // 1. DATA LOADER (Dashboard)
         async function loadIntakeData() {
             const tableBody = document.getElementById('audit-table-body');
             const countDisplay = document.getElementById('active-count');
@@ -195,49 +231,67 @@
 
             } catch (error) {
                 console.error(error);
-                tableBody.innerHTML = '<tr><td colspan="6" class="p-8 text-center text-red-500 font-bold">Connection Error: Ensure Script is Deployed as "Anyone".</td></tr>';
+                tableBody.innerHTML = '<tr><td colspan="6" class="p-8 text-center text-red-500 font-bold">Connection Error.</td></tr>';
             }
         }
 
-        // FIX 4: NEW FUNCTION to Handle Manual Submission
-        function submitManualIntake() {
-            const name = document.getElementById('manual-name').value;
-            const service = document.getElementById('manual-service').value;
-            const btn = document.querySelector('button[onclick="submitManualIntake()"]');
+        // 2. PROTOCOL LOADER (SOPs)
+        async function loadProtocols() {
+            const grid = document.getElementById('sop-grid');
+            const loader = document.getElementById('sop-loading');
+            
+            grid.innerHTML = '';
+            loader.classList.remove('hidden');
 
-            if (!name || !service) {
-                alert("Please fill in both Name and Service Type.");
-                return;
+            try {
+                // Fetch from same script, default action gets files
+                const response = await fetch(SCRIPT_URL);
+                const files = await response.json();
+
+                loader.classList.add('hidden');
+
+                if (files.status === 'error') throw new Error(files.message);
+                if (files.length === 0) {
+                    grid.innerHTML = `<div class="col-span-full text-center text-gray-400 italic">No SOP documents found.</div>`;
+                    return;
+                }
+
+                grid.innerHTML = files.map(file => {
+                    let category = "GENERAL PROTOCOL";
+                    let icon = "file-text";
+                    
+                    const name = file.name.toUpperCase();
+                    if (name.includes("PICA")) { category = "PICA / PASSPORT"; icon = "passport"; }
+                    else if (name.includes("RGD")) { category = "RGD / VITAL RECORDS"; icon = "scroll"; }
+                    else if (name.includes("TAJ") || name.includes("TAX")) { category = "TAJ / REVENUE"; icon = "truck"; }
+                    else if (name.includes("JCF") || name.includes("POLICE")) { category = "JCF / SECURITY"; icon = "shield"; }
+                    else if (name.includes("NIS")) { category = "NIS / SOCIAL"; icon = "users"; }
+
+                    return `
+                    <div class="sop-card flex flex-col justify-between h-full">
+                        <div>
+                            <span class="agency-label">${category}</span>
+                            <h3 class="serif font-bold text-lg leading-tight mb-2">${file.name.replace('.pdf', '')}</h3>
+                            <p class="text-[10px] text-gray-400 mb-6 uppercase tracking-wider">PDF Document</p>
+                        </div>
+                        <a href="${file.url}" target="_blank" class="w-full bg-[#f3f4f6] hover:bg-[#003366] hover:text-white text-[#003366] py-3 px-4 rounded text-xs font-bold uppercase tracking-widest transition flex items-center justify-center gap-2 group">
+                            <span>Open Document</span>
+                            <i data-lucide="${icon}" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
+                        </a>
+                    </div>
+                    `;
+                }).join('');
+                
+                lucide.createIcons(); // Refresh icons for new content
+
+            } catch (error) {
+                console.error(error);
+                loader.classList.add('hidden');
+                grid.innerHTML = `<div class="col-span-full p-8 text-red-600 text-center">Error loading protocols. Check network or permissions.</div>`;
             }
-
-            // Visual feedback
-            const originalText = btn.innerText;
-            btn.innerText = "SAVING...";
-            btn.disabled = true;
-
-            // Send Data to Google Sheet
-            // Note: We use 'no-cors' mode which is standard for simple Google Script posts
-            fetch(SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name: name, service: service })
-            }).then(() => {
-                alert("Case Committed to Ledger Successfully.");
-                document.getElementById('manual-name').value = '';
-                document.getElementById('manual-service').value = '';
-                btn.innerText = originalText;
-                btn.disabled = false;
-                // Go back to dashboard to see new entry
-                switchView('dashboard', document.querySelector('.sidebar-link:first-child'));
-            }).catch(err => {
-                alert("Error saving case. Please check internet connection.");
-                btn.innerText = originalText;
-                btn.disabled = false;
-            });
         }
 
-        // 2. AUTHENTICATION LOGIC
+        // 3. AUTHENTICATION LOGIC
         function validateAccess() {
             const input = document.getElementById('staff-pin').value;
             if (input === '120470') {
@@ -259,16 +313,20 @@
 
         document.getElementById('staff-pin').addEventListener('keypress', (e) => { if (e.key === 'Enter') validateAccess(); });
 
-        // 3. VIEW SWITCHER
+        // 4. VIEW SWITCHER
         function switchView(viewName, element) {
             document.querySelectorAll('.view-section').forEach(v => v.classList.add('hidden'));
             document.getElementById(`view-${viewName}`).classList.remove('hidden');
+            
+            const titles = { 'dashboard': 'DASHBOARD', 'intake': 'INTAKE', 'protocols': 'PROTOCOLS', 'settings': 'ADMIN' };
+            document.getElementById('page-title').textContent = titles[viewName];
+            
             document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
             if(element) element.classList.add('active');
             
             if(viewName === 'dashboard') loadIntakeData();
+            if(viewName === 'protocols') loadProtocols(); // Auto-load SOPs when tab is clicked
         }
     </script>
 </body>
 </html>
-
