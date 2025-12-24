@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Docu-Hub | SOP Library</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#003366',
+                        gold: '#D4AF37',
+                        parchment: '#F5F0EC',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #F5F0EC; color: #003366; }
+        .serif { font-family: 'Playfair Display', serif; }
+        .sop-card { 
+            background: white; 
+            border-radius: 8px; 
+            padding: 24px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            border-top: 4px solid #D4AF37; 
+            transition: all 0.3s ease; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .sop-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .agency-label { font-size: 10px; font-weight: 800; letter-spacing: 0.15em; color: #D4AF37; margin-bottom: 8px; display: block; text-transform: uppercase; }
+        .back-btn { 
+            background: #003366; 
+            color: white; 
+            padding: 12px 24px; 
+            border-radius: 6px; 
+            font-weight: 600; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 10px; 
+            text-decoration: none; 
+            font-size: 13px; 
+            text-transform: uppercase; 
+            letter-spacing: 0.1em; 
+            transition: all 0.2s;
+        }
+        .back-btn:hover { background-color: #D4AF37; color: #003366; transform: translateX(-5px); }
+        .section-title { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.2em; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 20px; }
+    </style>
+</head>
+<body class="p-6 md:p-12 pb-32">
+
+    <!-- NAVIGATION HEADER -->
+    <header class="max-w-6xl mx-auto mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div class="space-y-4">
+            <a href="index.html" class="back-btn">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Return to Database
+            </a>
+            <div>
+                <h1 class="serif text-4xl font-bold text-navy">Protocol Library</h1>
+                <p class="text-xs text-gray-500 uppercase tracking-widest mt-2 font-semibold">Regulatory Standards & SOP Framework • v1.0 (2026)</p>
+            </div>
+        </div>
+        <div class="hidden md:block text-right">
+            <div class="text-[10px] font-bold text-navy uppercase opacity-40">Docu-Hub Secure Node</div>
+            <div class="text-[10px] font-bold text-gold uppercase">Restricted Personnel Access</div>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto space-y-16">
+        
+        <!-- CORE GOVERNANCE -->
+        <section>
+            <h2 class="section-title flex items-center gap-2">
+                <i data-lucide="award" size="14"></i> Core Governance
+            </h2>
+            <div class="sop-card border-t-navy bg-navy text-white" style="border-top-color: #003366;">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div class="flex-1">
+                        <span class="agency-label text-gold">Master Resource</span>
+                        <h3 class="serif font-bold text-2xl text-white mb-2">Official Training Manual</h3>
+                        <p class="text-xs text-gray-300 leading-relaxed max-w-2xl">
+                            Comprehensive guidelines covering Jamaican Core Values, JDPA Legal Framework, 
+                            F. Cassidy linguistic standards, and Weekly Logistics Rhythms for field agents.
+                        </p>
+                    </div>
+                    <div class="shrink-0">
+                        <a href="source/official_manual.pdf" class="inline-flex items-center justify-center gap-3 bg-gold text-navy px-8 py-4 rounded font-bold text-xs uppercase tracking-widest hover:bg-white transition-all shadow-xl">
+                            Access Master Manual <i data-lucide="download" size="14"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GRID SECTIONS -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            
+            <!-- VITAL RECORDS -->
+            <section class="space-y-6">
+                <h2 class="section-title flex items-center gap-2">
+                    <i data-lucide="user-check" size="14"></i> Vital Records (PICA / RGD)
+                </h2>
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="sop-card">
+                        <div>
+                            <span class="agency-label">SOP-PICA-001</span>
+                            <h3 class="serif font-bold text-lg mb-2">Adult Passport Renewal</h3>
+                            <p class="text-[11px] text-gray-500 mb-6">Standards for undamaged document verification and photograph compliance.</p>
+                        </div>
+                        <a href="source/SOP_PICA.pdf" class="inline-flex items-center gap-2 text-xs font-bold text-navy hover:text-gold transition-colors">
+                            Open Protocol <i data-lucide="external-link" size="12"></i>
+                        </a>
+                    </div>
+                    <div class="sop-card">
+                        <div>
+                            <span class="agency-label">SOP-RGD-002</span>
+                            <h3 class="serif font-bold text-lg mb-2">Vital Records Retrieval</h3>
+                            <p class="text-[11px] text-gray-500 mb-6">Protocol for Birth, Death, and Marriage certificate application logistics.</p>
+                        </div>
+                        <a href="source/SOP_RGD.pdf" class="inline-flex items-center gap-2 text-xs font-bold text-navy hover:text-gold transition-colors">
+                            Open Protocol <i data-lucide="external-link" size="12"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAX ADMINISTRATION -->
+            <section class="space-y-6">
+                <h2 class="section-title flex items-center gap-2">
+                    <i data-lucide="calculator" size="14"></i> Tax Administration (TAJ)
+                </h2>
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="sop-card">
+                        <div>
+                            <span class="agency-label">SOP-TAJ-003</span>
+                            <h3 class="serif font-bold text-lg mb-2">Motor Vehicle & Property Tax</h3>
+                            <p class="text-[11px] text-gray-500 mb-6">Validation steps for insurance duration and fitness certificate currency.</p>
+                        </div>
+                        <a href="source/SOP_TAJ.pdf" class="inline-flex items-center gap-2 text-xs font-bold text-navy hover:text-gold transition-colors">
+                            Open Protocol <i data-lucide="external-link" size="12"></i>
+                        </a>
+                    </div>
+                    <div class="sop-card">
+                        <div>
+                            <span class="agency-label">SOP-TRN-006</span>
+                            <h3 class="serif font-bold text-lg mb-2">TRN Logistics</h3>
+                            <p class="text-[11px] text-gray-500 mb-6">Standard procedure for first-time TRN issuance and update requests.</p>
+                        </div>
+                        <a href="source/sop_trn.pdf" class="inline-flex items-center gap-2 text-xs font-bold text-navy hover:text-gold transition-colors">
+                            Open Protocol <i data-lucide="external-link" size="12"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- NIS & JCF -->
+            <section class="space-y-6">
+                <h2 class="section-title flex items-center gap-2">
+                    <i data-lucide="shield-check" size="14"></i> NIS & JCF Protocols
+                </h2>
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="sop-card">
+                        <div>
+                            <span class="agency-label">SOP-NIS-005</span>
+                            <h3 class="serif font-bold text-lg mb-2">NIS Registration</h3>
+                            <p class="text-[11px] text-gray-500 mb-6">Submission requirements for social security benefits and card replacement.</p>
+                        </div>
+                        <a href="source/SOP_NIS.pdf" class="inline-flex items-center gap-2 text-xs font-bold text-navy hover:text-gold transition-colors">
+                            Open Protocol <i data-lucide="external-link" size="12"></i>
+                        </a>
+                    </div>
+                    <div class="sop-card">
+                        <div>
+                            <span class="agency-label">SOP-JCF-004</span>
+                            <h3 class="serif font-bold text-lg mb-2">Police Record Logistics</h3>
+                            <p class="text-[11px] text-gray-500 mb-6">Verification of JCF receipting and biometric fingerprint scheduling.</p>
+                        </div>
+                        <a href="source/sop_police_cert.pdf" class="inline-flex items-center gap-2 text-xs font-bold text-navy hover:text-gold transition-colors">
+                            Open Protocol <i data-lucide="external-link" size="12"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ELECTORAL -->
+            <section class="space-y-6">
+                <h2 class="section-title flex items-center gap-2">
+                    <i data-lucide="vote" size="14"></i> Electoral (EOJ)
+                </h2>
+                <div class="sop-card">
+                    <div>
+                        <span class="agency-label">GOV-JAM-EID-001</span>
+                        <h3 class="serif font-bold text-lg mb-2">Elector ID Verification</h3>
+                        <p class="text-[11px] text-gray-500 mb-6">Procedures for Voter ID application tracking and delivery confirmation.</p>
+                    </div>
+                    <a href="#" class="text-xs font-bold text-gray-400 cursor-not-allowed italic">Protocol Pending Update...</a>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- FOOTER ADVISORY -->
+    <footer class="max-w-6xl mx-auto mt-24 border-t pt-10 text-center">
+        <p class="text-[10px] uppercase font-bold text-gray-400 tracking-[0.3em]">Docu-Hub Compliance Division • Kingston, Jamaica</p>
+        <p class="text-[9px] text-gray-400 mt-2 max-w-xl mx-auto">
+            This library is a protected resource. Unauthorized distribution of SOP documentation constitutes a breach of the 
+            Jamaican Data Protection Act (JDPA) and internal security protocols.
+        </p>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
+
