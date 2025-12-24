@@ -692,6 +692,28 @@
         navigateTo('agreement');
     }
 
+    function confirmIndividualAgreement() {
+    // Map the display title (currentService) to the internal value for the intake form dropdown
+    let serviceValue = "general_inquiry"; // Default fallback
+
+    if (currentService.includes("Passport") || currentService.includes("PICA")) {
+        serviceValue = "pica_renewal";
+    } else if (currentService.includes("RGD") || currentService.includes("Vital")) {
+        serviceValue = "rgd_search";
+    } else if (currentService.includes("TAJ") || currentService.includes("Vehicle")) {
+        serviceValue = "taj_support";
+    } else if (currentService.includes("NIS")) {
+        serviceValue = "nis_facilitation";
+    } else if (currentService.includes("Police")) {
+        serviceValue = "police_record";
+    } else if (currentService.includes("Elector")) {
+        serviceValue = "eoj_id";
+    }
+        // Redirect to the intake page with the service pre-selected as a URL parameter
+    // This allows the intake form to automatically set its dropdown value
+    window.location.href = `intake_portal.html?service=${serviceValue}`;
+}
+
     // 3. APPS SCRIPT BRIDGE (VAULT SUBMISSION)
     
     // Helper to strip metadata: splits 'data:image/png;base64,XXXX' and returns 'XXXX'
@@ -775,6 +797,7 @@
 </script>
 </body>
 </html>
+
 
 
 
