@@ -248,252 +248,187 @@
 
     
 <script src="config.js"></script>
-    <script>
-        
-        const SERVICE_REGISTRY = {
-            'A': { sop: 'SOP-PICA-001', name: 'Identity Restoration', checks: ['Original Birth Cert Sighted', 'Passport Undamaged', 'Witness Signature Verified'] },
-            'B': { sop: 'SOP-TAJ-003', name: 'Tax & Vehicle', checks: ['TRN Validated', 'Insurance > 30 Days', 'Fitness Cert Sighted'] },
-            'C': { sop: 'SOP-JCF-004', name: 'Police Records', checks: ['Receipt Attached', 'Fingertip Appointment Set', 'Voter ID Bypass: No'] },
-            'D': { sop: 'SOP-NIS-005', name: 'NIS Logistics', checks: ['NIS Card Found', 'Employer Stamp Verified'] },
-            'E': { sop: 'GOV-JAM-EID-001', name: 'Elector ID', checks: ['EOJ Confirmation Sighted', 'Residence Verified'] }
-        };
-
-        let state = { activeSop: null, base64: null, fileName: null };
-
-        // 1. SECURITY LOGIN
-        function attemptLogin() {
-            const pin = document.getElementById('agent-pin').value;
-            const error = document.getElementById('login-error');
-            
-            if (pin === CONFIG.AGENT_PIN) {
-                document.getElementById('login-shield').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('login-shield').classList.add('hidden');
-                    document.getElementById('app-content').classList.remove('hidden');
-                    setTimeout(() => { 
-                        document.getElementById('app-content').classList.remove('opacity-0'); 
-                        lucide.createIcons(); 
-                    }, 50);
-                }, 500);
-            } else {
-                error.classList.remove('hidden');
-                document.getElementById('agent-pin').value = '';
-            }
-        }
-
-        // 2. FORM INTERACTION
-        function setPath(id) {
-            state.activeSop = SERVICE_REGISTRY[id];
-            
-            // UI Switch
-            document.querySelectorAll('.btn-path').forEach(b => b.classList.remove('active'));
-            document.getElementById(`path-${id}`).classList.add('active');
-            
-            document.getElementById('workspace').classList.remove('hidden');
-            document.getElementById('universal-gates').classList.remove('hidden');
-            
-            document.getElementById('dynamic-form').innerHTML = `
-                <div class="flex justify-between items-center">
-                    <h2 class="text-2xl font-bold text-navy">${state.activeSop.name}</h2>
-                    <span class="text-[10px] font-black bg-navy text-white px-2 py-1 rounded tracking-tighter">${state.activeSop.sop}</span>
-                </div>
-                <p class="text-xs text-gray-500 mt-2 font-medium">Internal protocol initialized. Please complete gates below.</p>
-            `;
-
-            // Checklist Generation
-            const checkHtml = state.activeSop.checks.map(c => `
-                <div class="flex items-center gap-2 p-2 border-b border-gray-100 text-[11px]">
-                    <i data-lucide="check-circle" size="12" class="text-gold"></i>
-                    <span>${c}</span>
-                </div>
-            `).join('');
-            document.getElementById('sidebar-checks').innerHTML = checkHtml;
-            lucide.createIcons();
-            validateForm();
-        }
-
-        function validateForm() {
-            const name = document.getElementById('client-name').value;
-            const trn = document.getElementById('client-trn').value;
-            const jdpa = document.getElementById('check-jdpa').checked;
-            const funds = document.getElementById('check-funds').checked;
-            const btn = document.getElementById('btn-initialize');
-
-            if (name && trn && jdpa && funds && state.activeSop) {
-                btn.disabled = false;
-                btn.classList.replace('bg-gray-300', 'bg-navy');
-                btn.classList.replace('text-gray-500', 'text-white');
-                btn.classList.remove('cursor-not-allowed');
-                btn.classList.add('hover:bg-black');
-            } else {
-                btn.disabled = true;
-                btn.classList.replace('bg-navy', 'bg-gray-300');
-                btn.classList.replace('text-white', 'text-gray-500');
-                btn.classList.add('cursor-not-allowed');
-                btn.classList.remove('hover:bg-black');
-            }
-        }
-
-        // 3. APPS SCRIPT BRIDGE (VAULT CONNECTION)
-async function submitToVault() {
-    const btn = document.getElementById('btn-initialize');
-    
-    // 1. FIX: Show a friendly message, not the URL
-    btn.innerText = "SYNCHRONIZING..."; 
-    btn.disabled = true;
-
-    const payload = {
-        action: "submit_intake", // Ensure this matches your App Script logic
-        data: {
-            clientName: document.getElementById('client-name').value,
-            trn: document.getElementById('client-trn').value,
-            sopId: state.activeSop ? state.activeSop.sop : "unknown",
-            isGhost: false, 
-            fileData: state.base64 || null,
-            fileName: state.fileName || null
-        }
+<script>
+    // --- SETUP ---
+    const SERVICE_REGISTRY = {
+        'A': { sop: 'SOP-PICA-001', name: 'Identity Restoration', checks: ['Original Birth Cert Sighted', 'Passport Undamaged', 'Witness Signature Verified'] },
+        'B': { sop: 'SOP-TAJ-003', name: 'Tax & Vehicle', checks: ['TRN Validated', 'Insurance > 30 Days', 'Fitness Cert Sighted'] },
+        'C': { sop: 'SOP-JCF-004', name: 'Police Records', checks: ['Receipt Attached', 'Fingertip Appointment Set', 'Voter ID Bypass: No'] },
+        'D': { sop: 'SOP-NIS-005', name: 'NIS Logistics', checks: ['NIS Card Found', 'Employer Stamp Verified'] },
+        'E': { sop: 'GOV-JAM-EID-001', name: 'Elector ID', checks: ['EOJ Confirmation Sighted', 'Residence Verified'] }
     };
 
-    try {
-        // 2. FIX: Use the bridge file variable here
-        await fetch(SYSTEM_CONFIG.VAULT_URL, { 
-            method: "POST",
-            mode: "no-cors",
-            headers: { "Content-Type": "text/plain" },
-            body: JSON.stringify(payload)
-        });
+    let state = { activeSop: null, base64: null, fileName: null };
+    let currentUserPin = ""; // Store PIN for authentication
 
-        alert("Success: Record Vaulted.");
-        // Optional: window.location.reload(); 
-
-    } catch (error) {
-        console.error("Error:", error);
-        alert("Connection Failed.");
-    } finally {
-        btn.disabled = false;
-        btn.innerText = "Initialize Intake"; // Reset button text
+    // 1. SECURITY LOGIN
+    function attemptLogin() {
+        const pin = document.getElementById('agent-pin').value;
+        const error = document.getElementById('login-error');
+        
+        // FIX 1: Use SYSTEM_CONFIG (from config.js)
+        if (pin === SYSTEM_CONFIG.AGENT_PIN) {
+            currentUserPin = pin; // Save PIN to use for fetching data later
+            
+            document.getElementById('login-shield').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('login-shield').classList.add('hidden');
+                document.getElementById('app-content').classList.remove('hidden');
+                setTimeout(() => { 
+                    document.getElementById('app-content').classList.remove('opacity-0'); 
+                    if(typeof lucide !== 'undefined') lucide.createIcons();
+                }, 50);
+            }, 500);
+        } else {
+            error.classList.remove('hidden');
+            document.getElementById('agent-pin').value = '';
+        }
     }
-}
 
-            // PRODUCTION CONNECTION
-            if (typeof google !== 'undefined' && google.script && google.script.run) {
-                google.script.run
-                    .withSuccessHandler(() => {
-                        showNotify('✅', 'SYNC COMPLETE', 'The protocol run has been logged to the central vault.');
-                        resetForm();
-                        showSection('dashboard');
-                        btn.innerText = "Initialize SOP Run";
-                    })
-                    .withFailureHandler(err => {
-                        showNotify('❌', 'SYNC ERROR', 'Protocol sync failed. Error: ' + err);
-                        btn.disabled = false;
-                        btn.innerText = "Retry Synchronization";
-                    })
-                    .submitData(payload);
-            } else {
-                showNotify('ℹ️', 'OFFLINE MODE', 'Environment is not connected to a live Vault. Sync halted.');
-                btn.disabled = false;
-                btn.innerText = "Initialize SOP Run";
+    // 2. FORM INTERACTION
+    function setPath(id) {
+        state.activeSop = SERVICE_REGISTRY[id];
+        document.querySelectorAll('.btn-path').forEach(b => b.classList.remove('active'));
+        document.getElementById(`path-${id}`).classList.add('active');
+        document.getElementById('workspace').classList.remove('hidden');
+        document.getElementById('universal-gates').classList.remove('hidden');
+        
+        document.getElementById('dynamic-form').innerHTML = `
+            <div class="flex justify-between items-center">
+                <h2 class="text-2xl font-bold text-navy">${state.activeSop.name}</h2>
+                <span class="text-[10px] font-black bg-navy text-white px-2 py-1 rounded tracking-tighter">${state.activeSop.sop}</span>
+            </div>
+            <p class="text-xs text-gray-500 mt-2 font-medium">Internal protocol initialized.</p>
+        `;
+
+        const checkHtml = state.activeSop.checks.map(c => `
+            <div class="flex items-center gap-2 p-2 border-b border-gray-100 text-[11px]">
+                <i data-lucide="check-circle" size="12" class="text-gold"></i>
+                <span>${c}</span>
+            </div>
+        `).join('');
+        document.getElementById('sidebar-checks').innerHTML = checkHtml;
+        if(typeof lucide !== 'undefined') lucide.createIcons();
+        validateForm();
+    }
+
+    function validateForm() {
+        const name = document.getElementById('client-name').value;
+        const trn = document.getElementById('client-trn').value;
+        const jdpa = document.getElementById('check-jdpa').checked;
+        const funds = document.getElementById('check-funds').checked;
+        const btn = document.getElementById('btn-initialize');
+
+        if (name && trn && jdpa && funds && state.activeSop) {
+            btn.disabled = false;
+            btn.classList.replace('bg-gray-300', 'bg-navy');
+            btn.classList.replace('text-gray-500', 'text-white');
+            btn.classList.remove('cursor-not-allowed');
+        } else {
+            btn.disabled = true;
+            btn.classList.replace('bg-navy', 'bg-gray-300');
+            btn.classList.replace('text-white', 'text-gray-500');
+            btn.classList.add('cursor-not-allowed');
+        }
+    }
+
+    // 3. INTERNAL DASHBOARD (READ DATA)
+    async function refreshDashboard() {
+        const tbody = document.getElementById('dashboard-body');
+        tbody.innerHTML = '<tr><td colspan="5" class="p-10 text-center text-gray-400 italic animate-pulse">Synchronizing records...</td></tr>';
+
+        try {
+            // FIX 2: Use fetch instead of google.script.run
+            // We pass the PIN in the URL to authorize the read
+            const response = await fetch(`${SYSTEM_CONFIG.VAULT_URL}?action=get_dashboard&auth=${currentUserPin}`);
+            const json = await response.json();
+
+            if (json.status === 'error') {
+                tbody.innerHTML = `<tr><td colspan="5" class="p-10 text-center text-red-500">${json.message}</td></tr>`;
+                return;
             }
-        }
 
-        function refreshDashboard() {
-            const tbody = document.getElementById('dashboard-body');
-            tbody.innerHTML = '<tr><td colspan="5" class="p-10 text-center text-gray-400 italic animate-pulse">Synchronizing records...</td></tr>';
-
-            if (typeof google !== 'undefined' && google.script && google.script.run) {
-                google.script.run.withSuccessHandler(data => {
-                    if (!data || data.length === 0) {
-                        tbody.innerHTML = '<tr><td colspan="5" class="p-10 text-center text-gray-400">Vault Registry is empty.</td></tr>';
-                        return;
-                    }
-                    tbody.innerHTML = data.map(row => {
-                        const ts = new Date(row[0]).toLocaleString();
-                        const client = row[1];
-                        const sop = row[3];
-                        const status = row[4];
-                        
-                        let rowClass = "";
-                        if (status === 'Ghost') rowClass = "research-gold";
-                        if (status === 'Mismatch') rowClass = "warning-red";
-
-                        return `
-                            <tr class="${rowClass} hover:bg-gray-50 transition border-b border-gray-100">
-                                <td class="p-4 text-[10px] font-mono text-gray-400">${ts}</td>
-                                <td class="p-4 font-bold text-xs uppercase tracking-tight">${client}</td>
-                                <td class="p-4 text-xs font-semibold text-navy">${sop}</td>
-                                <td class="p-4">
-                                    <span class="px-2 py-0.5 rounded text-[9px] font-black border bg-white/40 uppercase">
-                                        ${status}
-                                    </span>
-                                </td>
-                                <td class="p-4 text-center">
-                                    <button onclick="openCert('${client}', '${sop}', '${ts}')" class="bg-navy text-white px-4 py-1.5 rounded text-[10px] font-bold hover:bg-black uppercase tracking-tighter">
-                                        Verify Registry
-                                    </button>
-                                </td>
-                            </tr>
-                        `;
-                    }).join('');
-                }).getAuditLogs();
-            } else {
-                tbody.innerHTML = '<tr><td colspan="5" class="p-10 text-center text-slate-400 italic">Audit Master requires a Live Vault connection.</td></tr>';
+            const data = json.data;
+            if (!data || data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="p-10 text-center text-gray-400">Vault Registry is empty.</td></tr>';
+                return;
             }
+
+            tbody.innerHTML = data.map(row => {
+                // Adjust keys based on your Apps Script output (Date, Client Name, etc.)
+                // This assumes your API returns keys: Timestamp, CaseID, Client Name, SOP/Details, Status
+                // If keys are different, update them here.
+                const ts = row['Timestamp'] ? new Date(row['Timestamp']).toLocaleDateString() : 'N/A';
+                const client = row['Client Name'] || 'Unknown';
+                const sop = row['Case ID'] || 'N/A';
+                const status = row['Status'] || 'New';
+
+                let rowClass = "";
+                if (status === 'Ghost') rowClass = "research-gold";
+
+                return `
+                    <tr class="${rowClass} hover:bg-gray-50 transition border-b border-gray-100">
+                        <td class="p-4 text-[10px] font-mono text-gray-400">${ts}</td>
+                        <td class="p-4 font-bold text-xs uppercase tracking-tight">${client}</td>
+                        <td class="p-4 text-xs font-semibold text-navy">${sop}</td>
+                        <td class="p-4"><span class="px-2 py-0.5 rounded text-[9px] font-black border bg-white/40 uppercase">${status}</span></td>
+                        <td class="p-4 text-center">
+                           <button class="bg-navy text-white px-4 py-1.5 rounded text-[10px] font-bold uppercase">View</button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+        } catch (error) {
+            console.error(error);
+            tbody.innerHTML = '<tr><td colspan="5" class="p-10 text-center text-red-400">Connection Failed. Check Internet.</td></tr>';
         }
+    }
 
-        // --- HELPERS & MODAL CONTROL ---
-        function handleFile(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-            state.fileName = file.name;
-            const reader = new FileReader();
-            reader.onload = (evt) => { state.base64 = evt.target.result; };
-            reader.readAsDataURL(file);
-        }
+    // 4. SUBMIT INTERNAL RECORD (WRITE DATA)
+    async function submitToVault() {
+        const btn = document.getElementById('btn-initialize');
+        btn.innerText = "SYNCHRONIZING...";
+        btn.disabled = true;
 
-        function resetForm() {
-            document.getElementById('client-name').value = '';
-            document.getElementById('client-trn').value = '';
-            document.getElementById('check-jdpa').checked = false;
-            document.getElementById('check-funds').checked = false;
-            document.getElementById('kyc-file').value = '';
-            state.base64 = null;
-            validateForm();
-        }
+        const payload = {
+            action: "staff_update", // Matches "Staff Update" logic in App Script
+            auth: currentUserPin,   // Send PIN for security
+            data: {
+                // For this example, we are sending a New Intake from Staff side
+                // If you want to use the same logic as public, change action to 'submit_intake'
+                // and remove 'auth'.
+                clientName: document.getElementById('client-name').value,
+                // ... map other fields as needed
+            }
+        };
 
-        function showSection(id) {
-            document.getElementById('section-triage').classList.toggle('hidden', id !== 'triage');
-            document.getElementById('section-dashboard').classList.toggle('hidden', id !== 'dashboard');
-            if (id === 'dashboard') refreshDashboard();
-        }
+        // Note: For now, if you just want to TEST the dashboard, 
+        // focus on refreshDashboard() first.
+        
+        setTimeout(() => {
+             alert("Feature pending: Ensure App Script handles 'staff_intake' action.");
+             btn.disabled = false;
+             btn.innerText = "Initialize SOP Run";
+        }, 1000);
+    }
 
-        function openCert(name, sop, date) {
-            document.getElementById('cert-client-name').innerText = name;
-            document.getElementById('cert-sop-id').innerText = sop;
-            document.getElementById('cert-timestamp').innerText = date;
-            document.getElementById('cert-modal').classList.remove('hidden');
-        }
+    // --- HELPERS ---
+    function showSection(id) {
+        document.getElementById('section-triage').classList.toggle('hidden', id !== 'triage');
+        document.getElementById('section-dashboard').classList.toggle('hidden', id !== 'dashboard');
+        if (id === 'dashboard') refreshDashboard();
+    }
 
-        function closeCert() { document.getElementById('cert-modal').classList.add('hidden'); }
+    document.getElementById('agent-pin').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') attemptLogin();
+    });
 
-        function showNotify(icon, title, msg) {
-            document.getElementById('notify-icon').innerText = icon;
-            document.getElementById('notify-title').innerText = title;
-            document.getElementById('notify-msg').innerText = msg;
-            document.getElementById('notify-modal').classList.remove('hidden');
-        }
-
-        function closeNotify() { document.getElementById('notify-modal').classList.add('hidden'); }
-
-        // ENTER KEY LOGIN
-        document.getElementById('agent-pin').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') attemptLogin();
-        });
-
-        lucide.createIcons();
-    </script>
+    if(typeof lucide !== 'undefined') lucide.createIcons();
+</script>
 </body>
 </html>
+
 
 
 
