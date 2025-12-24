@@ -72,17 +72,15 @@
                 <p class="text-[9px] opacity-50 uppercase tracking-widest mt-1 text-white">Liaison Services</p>
             </div>
             
-            <!-- UPDATED NAVIGATION MENU -->
             <nav class="sidebar-nav flex">
                 <div class="sidebar-link active" onclick="switchView('dashboard', this)"><i data-lucide="layout-dashboard"></i> <span>Live Audit</span></div>
                 <div class="sidebar-link" onclick="switchView('intake', this)"><i data-lucide="file-plus-2"></i> <span>Walk-In</span></div>
                 
-                <!-- This link now correctly points to your SOP Library page -->
-                <div class="sidebar-link" onclick="window.location.href='sop_library.html'"><i data-lucide="book-open-check"></i> <span>Protocols</span></div>
+                <!-- FIXED: Opens SOP Library in a New Tab to prevent errors -->
+                <div class="sidebar-link" onclick="window.open('sop-library.html', '_blank')"><i data-lucide="book-open-check"></i> <span>Protocols</span></div>
 
                 <div class="sidebar-link" onclick="switchView('settings', this)"><i data-lucide="settings"></i> <span>Admin</span></div>
             </nav>
-
         </aside>
 
         <main class="main-content">
@@ -156,7 +154,7 @@
         lucide.createIcons();
 
         // --- CONFIGURATION ---
-        // Your Specific Script URL
+        // UPDATED: This is the URL that was working in your intake.html
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzX7CSHDzfPCH3SsEeUCrHTE9X7omiskVh8ogPGm5Wvva9Xw0cK_9vaQYKyls10m2Ni/exec"; 
 
         // 1. DATA LOADER
@@ -171,7 +169,7 @@
                 const data = await response.json();
 
                 if (!data || data.length === 0) {
-                    tableBody.innerHTML = '<tr><td colspan="6" class="p-8 text-center">No active records found.</td></tr>';
+                    tableBody.innerHTML = '<tr><td colspan="6" class="p-8 text-center">No active records found in the Ledger.</td></tr>';
                     countDisplay.textContent = '0';
                     return;
                 }
@@ -183,12 +181,12 @@
                 // Render Rows
                 tableBody.innerHTML = data.map(row => {
                     const dateObj = new Date(row.timestamp);
-                    const dateStr = dateObj.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: '2-digit' });
+                    const dateStr = !isNaN(dateObj) ? dateObj.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: '2-digit' }) : row.timestamp;
                     
                     // Funds Status Logic (Col F)
                     let fundsClass = 'bg-gray-100 text-gray-500';
-                    if (row.funds.toUpperCase() === 'CLEARED') fundsClass = 'status-CLEARED';
-                    if (row.funds.toUpperCase() === 'PENDING') fundsClass = 'status-PENDING';
+                    if (row.funds && row.funds.toUpperCase() === 'CLEARED') fundsClass = 'status-CLEARED';
+                    if (row.funds && row.funds.toUpperCase() === 'PENDING') fundsClass = 'status-PENDING';
 
                     // Evidence Link Logic (Col E)
                     const linkHtml = row.link ? 
@@ -200,8 +198,8 @@
                             <td class="font-mono text-xs text-gray-500">${dateStr}</td>
                             <td class="font-bold text-navy">${row.service}</td>
                             <td class="text-gray-700">${row.client}</td>
-                            <td><span class="status-badge ${fundsClass}">${row.funds}</span></td>
-                            <td><span class="status-badge bg-gray-100 text-navy">${row.status}</span></td>
+                            <td><span class="status-badge ${fundsClass}">${row.funds || 'PENDING'}</span></td>
+                            <td><span class="status-badge bg-gray-100 text-navy">${row.status || 'New Intake'}</span></td>
                             <td>${linkHtml}</td>
                         </tr>
                     `;
@@ -209,7 +207,7 @@
 
             } catch (error) {
                 console.error(error);
-                tableBody.innerHTML = '<tr><td colspan="6" class="p-8 text-center text-red-500 font-bold">Connection Error: Could not fetch Audit Log.</td></tr>';
+                tableBody.innerHTML = '<tr><td colspan="6" class="p-8 text-center text-red-500 font-bold">Connection Error: Ensure Script is Deployed as "Anyone".</td></tr>';
             }
         }
 
@@ -248,4 +246,3 @@
     </script>
 </body>
 </html>
-
