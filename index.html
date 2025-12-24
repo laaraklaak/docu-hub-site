@@ -580,62 +580,20 @@
    <script>
     // --- SYSTEM CONFIGURATION ---
     const CONFIG = {
-        // Your Secure Vault Endpoint
+        // Your Secure Vault Endpoint (The URL you got from Deploying as Web App)
         VAULT_URL: "https://script.google.com/macros/s/AKfycby5B-B59xAmbHqiOZ9MO0A0QmIbTeDL6R5JbyPC9e_g90qH-8XSaw7H6l0KqEctaLop/exec"
     };
 
     const INDIVIDUAL_SERVICES = [
-        {
-            id: 'rgd',
-            title: 'RGD Suite (Vital Records)',
-            icon: 'file-text',
-            summary: 'Birth, Marriage, and Death certificate procurement.',
-            detail: 'Certified retrieval from RGD Twickenham Park. We manage un-indexed cases through evidence trail reconstruction and direct agency liaison.',
-            fee: '$4,500 JMD'
-        },
-        {
-            id: 'pica',
-            title: 'PICA Suite (Passports)',
-            icon: 'shield-check',
-            summary: 'Adult Renewals & Citizenship Facilitation.',
-            detail: 'Full administrative form preparation and appointment scheduling. We ensure all biographic documentation meets PICA standards.',
-            fee: '$3,500 JMD'
-        },
-        {
-            id: 'taj',
-            title: 'TAJ Suite (Vehicle & Tax)',
-            icon: 'truck',
-            summary: 'Registration Renewals & Property Tax Remittance.',
-            detail: 'Immediate secure remittance via the approved TAJ portals. Digital audit trails and verification receipts are provided for all transactions.',
-            fee: '$2,500 JMD'
-        },
-        {
-            id: 'nis',
-            title: 'NIS Registration & Replacement',
-            icon: 'user-check',
-            summary: 'New social security registration or lost card facilitation.',
-            detail: 'Administrative processing for first-time applicants or replacement of mutilated cards. Essential for legal employment compliance.',
-            fee: '$3,000 JMD'
-        },
-        {
-            id: 'police',
-            title: 'Police Record Logistics',
-            icon: 'fingerprint',
-            summary: 'Criminal background check appointment management.',
-            detail: 'Managing statutory fee payments and securing fingerprinting appointments at the relevant JCF station.',
-            fee: '$3,000 JMD'
-        },
-        {
-            id: 'eoj',
-            title: 'Elector ID (EOJ) Verification',
-            icon: 'credit-card',
-            summary: 'National ID procurement and residency audits.',
-            detail: 'Guidance through residency verification requirements and EOJ portal navigation for new or replacement identification cards.',
-            fee: '$2,500 JMD'
-        }
+        { id: 'rgd', title: 'RGD Suite (Vital Records)', icon: 'file-text', summary: 'Birth, Marriage, and Death certificate procurement.', detail: 'Certified retrieval from RGD Twickenham Park. We manage un-indexed cases through evidence trail reconstruction and direct agency liaison.', fee: '$4,500 JMD' },
+        { id: 'pica', title: 'PICA Suite (Passports)', icon: 'shield-check', summary: 'Adult Renewals & Citizenship Facilitation.', detail: 'Full administrative form preparation and appointment scheduling. We ensure all biographic documentation meets PICA standards.', fee: '$3,500 JMD' },
+        { id: 'taj', title: 'TAJ Suite (Vehicle & Tax)', icon: 'truck', summary: 'Registration Renewals & Property Tax Remittance.', detail: 'Immediate secure remittance via the approved TAJ portals. Digital audit trails and verification receipts are provided for all transactions.', fee: '$2,500 JMD' },
+        { id: 'nis', title: 'NIS Registration & Replacement', icon: 'user-check', summary: 'New social security registration or lost card facilitation.', detail: 'Administrative processing for first-time applicants or replacement of mutilated cards. Essential for legal employment compliance.', fee: '$3,000 JMD' },
+        { id: 'police', title: 'Police Record Logistics', icon: 'fingerprint', summary: 'Criminal background check appointment management.', detail: 'Managing statutory fee payments and securing fingerprinting appointments at the relevant JCF station.', fee: '$3,000 JMD' },
+        { id: 'eoj', title: 'Elector ID (EOJ) Verification', icon: 'credit-card', summary: 'National ID procurement and residency audits.', detail: 'Guidance through residency verification requirements and EOJ portal navigation for new or replacement identification cards.', fee: '$2,500 JMD' }
     ];
 
-    let currentService = ""; // Tracks which service the user clicked
+    let currentService = ""; 
 
     // 1. CATALOG RENDERING
     function renderCatalog() {
@@ -669,7 +627,7 @@
                 </details>
             </div>
         `).join('');
-        lucide.createIcons();
+        if(typeof lucide !== 'undefined') lucide.createIcons();
     }
 
     // 2. NAVIGATION LOGIC
@@ -693,30 +651,18 @@
     }
 
     function confirmIndividualAgreement() {
-    // Map the display title (currentService) to the internal value for the intake form dropdown
-    let serviceValue = "general_inquiry"; // Default fallback
-
-    if (currentService.includes("Passport") || currentService.includes("PICA")) {
-        serviceValue = "pica_renewal";
-    } else if (currentService.includes("RGD") || currentService.includes("Vital")) {
-        serviceValue = "rgd_search";
-    } else if (currentService.includes("TAJ") || currentService.includes("Vehicle")) {
-        serviceValue = "taj_support";
-    } else if (currentService.includes("NIS")) {
-        serviceValue = "nis_facilitation";
-    } else if (currentService.includes("Police")) {
-        serviceValue = "police_record";
-    } else if (currentService.includes("Elector")) {
-        serviceValue = "eoj_id";
+        let serviceValue = "general_inquiry"; 
+        if (currentService.includes("Passport") || currentService.includes("PICA")) serviceValue = "pica_renewal";
+        else if (currentService.includes("RGD") || currentService.includes("Vital")) serviceValue = "rgd_search";
+        else if (currentService.includes("TAJ") || currentService.includes("Vehicle")) serviceValue = "taj_support";
+        else if (currentService.includes("NIS")) serviceValue = "nis_facilitation";
+        else if (currentService.includes("Police")) serviceValue = "police_record";
+        else if (currentService.includes("Elector")) serviceValue = "eoj_id";
+        
+        window.location.href = `intake_portal.html?service=${serviceValue}`;
     }
-        // Redirect to the intake page with the service pre-selected as a URL parameter
-    // This allows the intake form to automatically set its dropdown value
-    window.location.href = `intake_portal.html?service=${serviceValue}`;
-}
 
     // 3. APPS SCRIPT BRIDGE (VAULT SUBMISSION)
-    
-    // Helper to strip metadata: splits 'data:image/png;base64,XXXX' and returns 'XXXX'
     const toBase64 = file => new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
@@ -744,27 +690,29 @@
             }
         }
 
+        // Prepare the payload strictly for the Apps Script
         const payload = {
-            action: "submit",
-            source: "Public Site",
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            details: `Service Requested: ${currentService} | Message: ${document.getElementById('message').value}`,
-            fileData: base64File,
-            fileName: file ? file.name : null,
-            fileType: file ? file.type : null
+            action: "submit_intake", // MATCHES THE APPS SCRIPT CHECK
+            data: {
+                clientName: document.getElementById('name').value,
+                clientEmail: document.getElementById('email').value,
+                issueDetails: `Service Requested: ${currentService} | Message: ${document.getElementById('message').value}`,
+                fileData: base64File,
+                fileName: file ? file.name : null,
+                mimeType: file ? file.type : null
+            }
         };
 
         try {
-            // Using 'no-cors' for GitHub Pages to Google Apps Script compatibility
+            // mode: "no-cors" is REQUIRED for simple public forms to Google Scripts
             await fetch(CONFIG.VAULT_URL, {
                 method: "POST",
-                mode: "no-cors",
+                mode: "no-cors", 
                 headers: { "Content-Type": "text/plain" },
                 body: JSON.stringify(payload)
             });
 
-            // Feedback and Reset
+            // Success Feedback
             alert("Tenkyu! Your information has been logged in the vault. We will contact you shortly.");
             event.target.reset();
             navigateTo('home');
@@ -781,9 +729,8 @@
     // --- UTILITIES ---
     window.onload = () => {
         renderCatalog();
-        lucide.createIcons();
+        if(typeof lucide !== 'undefined') lucide.createIcons();
         
-        // Attach submit listener if form exists
         const intakeForm = document.getElementById('intake-form');
         if(intakeForm) {
             intakeForm.addEventListener('submit', handlePublicSubmit);
@@ -793,74 +740,10 @@
     function openWhatsApp() {
         window.open(`https://wa.me/18765612614`, '_blank');
     }
-
-       function doPost(e) {
-  try {
-    // 1. Check if data actually exists
-    if (!e.postData || !e.postData.contents) {
-      return ContentService.createTextOutput("Error: No data received").setMimeType(ContentService.MimeType.TEXT);
-    }
-
-    const data = JSON.parse(e.postData.contents);
-    const action = data.action;
-
-    // 2. Route the action
-    if (action === "submit") {
-      return handleSubmit(data);
-    } else if (action === "update") {
-      if (data.pin !== CONFIG.ALLOWED_PIN) return createResponse({ error: "Unauthorized" });
-      return handleUpdate(data);
-    }
-
-    return ContentService.createTextOutput("Error: Invalid Action").setMimeType(ContentService.MimeType.TEXT);
-
-  } catch (err) {
-    // This logs errors to the Apps Script Executions log so you can see exactly why it failed
-    console.error("POST Error: " + err.toString());
-    return ContentService.createTextOutput("Error: " + err.toString()).setMimeType(ContentService.MimeType.TEXT);
-  }
-}
-
-function handleSubmit(data) {
-  const ss = SpreadsheetApp.openById(CONFIG.DATABASE_ID);
-  const sheet = ss.getSheetByName(CONFIG.SHEET_NAME);
-  
-  let fileUrl = "No File";
-
-  // Handle optional file upload
-  if (data.fileData && data.fileData.length > 0) {
-    try {
-      const folder = DriveApp.getFolderById(CONFIG.FOLDER_ID);
-      // Ensure we have a filename
-      const name = data.fileName || "Upload_" + new Date().getTime();
-      const type = data.fileType || "application/octet-stream";
-      
-      const blob = Utilities.newBlob(Utilities.base64Decode(data.fileData), type, name);
-      const file = folder.createFile(blob);
-      fileUrl = file.getUrl();
-    } catch (fErr) {
-      fileUrl = "Upload Error: " + fErr.toString();
-    }
-  }
-
-  // Final Data Append - Ensure columns match:
-  // Timestamp, Source, Name, Email, Details, FileLink, Status
-  sheet.appendRow([
-    new Date(),
-    data.source || "Public Site",
-    data.name || "Missing Name",
-    data.email || "Missing Contact",
-    data.details || "No details provided",
-    fileUrl,
-    "Pending"
-  ]);
-
-  return ContentService.createTextOutput("Success").setMimeType(ContentService.MimeType.TEXT);
-}
-
 </script>
 </body>
 </html>
+
 
 
 
