@@ -794,9 +794,74 @@
         window.open(`https://wa.me/18765612614`, '_blank');
     }
 
+       function doPost(e) {
+  try {
+    // 1. Check if data actually exists
+    if (!e.postData || !e.postData.contents) {
+      return ContentService.createTextOutput("Error: No data received").setMimeType(ContentService.MimeType.TEXT);
+    }
+
+    const data = JSON.parse(e.postData.contents);
+    const action = data.action;
+
+    // 2. Route the action
+    if (action === "submit") {
+      return handleSubmit(data);
+    } else if (action === "update") {
+      if (data.pin !== CONFIG.ALLOWED_PIN) return createResponse({ error: "Unauthorized" });
+      return handleUpdate(data);
+    }
+
+    return ContentService.createTextOutput("Error: Invalid Action").setMimeType(ContentService.MimeType.TEXT);
+
+  } catch (err) {
+    // This logs errors to the Apps Script Executions log so you can see exactly why it failed
+    console.error("POST Error: " + err.toString());
+    return ContentService.createTextOutput("Error: " + err.toString()).setMimeType(ContentService.MimeType.TEXT);
+  }
+}
+
+function handleSubmit(data) {
+  const ss = SpreadsheetApp.openById(CONFIG.DATABASE_ID);
+  const sheet = ss.getSheetByName(CONFIG.SHEET_NAME);
+  
+  let fileUrl = "No File";
+
+  // Handle optional file upload
+  if (data.fileData && data.fileData.length > 0) {
+    try {
+      const folder = DriveApp.getFolderById(CONFIG.FOLDER_ID);
+      // Ensure we have a filename
+      const name = data.fileName || "Upload_" + new Date().getTime();
+      const type = data.fileType || "application/octet-stream";
+      
+      const blob = Utilities.newBlob(Utilities.base64Decode(data.fileData), type, name);
+      const file = folder.createFile(blob);
+      fileUrl = file.getUrl();
+    } catch (fErr) {
+      fileUrl = "Upload Error: " + fErr.toString();
+    }
+  }
+
+  // Final Data Append - Ensure columns match:
+  // Timestamp, Source, Name, Email, Details, FileLink, Status
+  sheet.appendRow([
+    new Date(),
+    data.source || "Public Site",
+    data.name || "Missing Name",
+    data.email || "Missing Contact",
+    data.details || "No details provided",
+    fileUrl,
+    "Pending"
+  ]);
+
+  return ContentService.createTextOutput("Success").setMimeType(ContentService.MimeType.TEXT);
+}
+
 </script>
 </body>
 </html>
+
 
 
 
