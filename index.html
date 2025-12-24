@@ -577,210 +577,205 @@
         </div>
     </footer>
 
-    <script>
-        const INDIVIDUAL_SERVICES = [
-            {
-                id: 'rgd',
-                title: 'RGD Suite (Vital Records)',
-                icon: 'file-text',
-                summary: 'Birth, Marriage, and Death certificate procurement.',
-                detail: 'Certified retrieval from RGD Twickenham Park. We manage un-indexed cases through evidence trail reconstruction and direct agency liaison.',
-                fee: '$4,500 JMD'
-            },
-            {
-                id: 'pica',
-                title: 'PICA Suite (Passports)',
-                icon: 'shield-check',
-                summary: 'Adult Renewals & Citizenship Facilitation.',
-                detail: 'Full administrative form preparation and appointment scheduling. We ensure all biographic documentation meets PICA standards.',
-                fee: '$3,500 JMD'
-            },
-            {
-                id: 'taj',
-                title: 'TAJ Suite (Vehicle & Tax)',
-                icon: 'truck',
-                summary: 'Registration Renewals & Property Tax Remittance.',
-                detail: 'Immediate secure remittance via the approved TAJ portals. Digital audit trails and verification receipts are provided for all transactions.',
-                fee: '$2,500 JMD'
-            },
-            {
-                id: 'nis',
-                title: 'NIS Registration & Replacement',
-                icon: 'user-check',
-                summary: 'New social security registration or lost card facilitation.',
-                detail: 'Administrative processing for first-time applicants or replacement of mutilated cards. Essential for legal employment compliance.',
-                fee: '$3,000 JMD'
-            },
-            {
-                id: 'police',
-                title: 'Police Record Logistics',
-                icon: 'fingerprint',
-                summary: 'Criminal background check appointment management.',
-                detail: 'Managing statutory fee payments and securing fingerprinting appointments at the relevant JCF station.',
-                fee: '$3,000 JMD'
-            },
-            {
-                id: 'eoj',
-                title: 'Elector ID (EOJ) Verification',
-                icon: 'credit-card',
-                summary: 'National ID procurement and residency audits.',
-                detail: 'Guidance through residency verification requirements and EOJ portal navigation for new or replacement identification cards.',
-                fee: '$2,500 JMD'
-            }
-        ];
-
-        function renderCatalog() {
-            const container = document.getElementById('catalog-container');
-            container.innerHTML = INDIVIDUAL_SERVICES.map(service => `
-                <div class="catalog-item bg-white border border-gray-100 hover:border-gold transition-colors shadow-sm">
-                    <details class="group">
-                        <summary class="flex justify-between items-center group p-6 md:p-8 cursor-pointer">
-                            <div class="text-left flex items-center gap-6">
-                                <div class="bg-parchment p-3 rounded-sm group-hover:bg-gold/10 transition-all">
-                                    <i data-lucide="${service.icon}" class="text-navy w-5 h-5"></i>
-                                </div>
-                                <div>
-                                    <span class="text-xl font-medium text-navy">${service.title}</span>
-                                    <p class="text-xs text-gray-400 group-open:hidden mt-1">${service.summary}</p>
-                                </div>
-                            </div>
-                            <i data-lucide="chevron-down" class="group-open:rotate-180 transition-transform text-gold"></i>
-                        </summary>
-                        <div class="px-8 md:px-10 pb-8 pt-0 border-t border-parchment mt-2 text-left">
-                            <h4 class="font-bold uppercase text-[10px] tracking-[0.3em] text-gold mb-4 pt-6">Professional Scope</h4>
-                            <p class="text-base text-gray-600 mb-8 leading-relaxed">${service.detail}</p>
-                            <p class="font-bold text-navy text-xs mb-8 uppercase tracking-[0.2em] bg-parchment inline-block px-4 py-2 border border-navy/5">
-                                Professional Fee: <span class="text-gold font-bold">${service.fee}</span>
-                            </p>
-                            <div class="block">
-                                <button onclick="initializeAgreement('${service.title}')" class="btn-primary w-full md:w-fit">Initialize Intake</button>
-                            </div>
-                        </div>
-                    </details>
-                </div>
-            `).join('');
-            lucide.createIcons();
-        }
-
-        const WHATSAPP_NUMBER = "18765612614";
-        const GOOGLE_CALENDAR_URL = "https://calendar.app.google/XsqkLViLYtDKsjFB9";
-        const DROPBOX_LINK = "https://www.dropbox.com/request/QoLIR2d2aCBDNguWfl5A"; 
-
-        function navigateTo(pageId) {
-            document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
-            const target = document.getElementById(pageId);
-            if(target) {
-                target.classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                const navItem = document.getElementById(`nav-${pageId}`);
-                if(navItem) navItem.classList.add('active');
-            }
-        }
-
-        function showServiceCategory(cat) {
-            const viewP = document.getElementById('services-personal');
-            const viewB = document.getElementById('services-business');
-            const btnP = document.getElementById('btn-personal');
-            const btnB = document.getElementById('btn-business');
-            if(cat === 'personal') {
-                viewP.classList.remove('hidden'); viewB.classList.add('hidden');
-                btnP.classList.replace('btn-outline', 'btn-primary');
-                btnB.classList.replace('btn-primary', 'btn-outline');
-            } else {
-                viewP.classList.add('hidden'); viewB.classList.remove('hidden');
-                btnB.classList.replace('btn-outline', 'btn-primary');
-                btnP.classList.replace('btn-primary', 'btn-outline');
-            }
-        }
-
-        function initializeAgreement(name) {
-            currentService = name;
-            document.getElementById('selected-service-name').innerText = name;
-            navigateTo('agreement');
-         }
-
-        // UPDATED FUNCTION: Redirects to intake.html instead of WhatsApp
-        function confirmIndividualAgreement() {
-            // Map the display name to the value expected by intake.html dropdown
-            let serviceValue = "";
-            if (currentService.includes("Passport")) serviceValue = "pica_renewal";
-            else if (currentService.includes("RGD")) serviceValue = "rgd_search";
-            else if (currentService.includes("TAJ")) serviceValue = "taj_support";
-            else serviceValue = "general_inquiry";
-
-            // Redirect to intake page with the service pre-selected
-            window.location.href = `intake_portal.html?service=${serviceValue}`;
-        }
-        
-        // GENERIC WHATSAPP OPENER
-        function openWhatsApp() {
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}`, '_blank');
-        }
-        function openUploadPortal() { window.open(DROPBOX_LINK, '_blank'); }
-
-        function initCalendar() {
-            const wrapper = document.getElementById('calendar-wrapper');
-            const iframe = document.createElement('iframe');
-            iframe.src = GOOGLE_CALENDAR_URL;
-            iframe.style.width = "100%"; iframe.style.height = "500px"; iframe.style.border = "0";
-            wrapper.innerHTML = ""; wrapper.appendChild(iframe);
-        }
-
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-            } else {
-                menu.classList.add('hidden');
-            }
-        }
-
-        window.onload = () => {
-            renderCatalog();
-            lucide.createIcons();
-        };
-
-// Function to convert file to Base64
-const toBase64 = file => new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result.split(',')[1]); // Remove metadata prefix
-    reader.onerror = error => reject(error);
-});
-
-async function handleSubmit(event) {
-    event.preventDefault();
-    const file = document.getElementById('fileInput').files[0];
-    let base64File = file ? await toBase64(file) : null;
-
-    const payload = {
-        action: "submit",
-        source: "Public_Site",
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        details: document.getElementById('message').value,
-        fileData: base64File,
-        fileName: file ? file.name : null,
-        mimeType: file ? file.type : null
+   <script>
+    // --- SYSTEM CONFIGURATION ---
+    const CONFIG = {
+        // Your Secure Vault Endpoint
+        VAULT_URL: "https://script.google.com/macros/s/AKfycbx6JN7bZpU0S0BYPZaujrN8FjvX_0ERwwPsWstanIyAeQGDvdwnn_W3_8-w_lAwCkpe/exec"
     };
 
-    fetch("https://dhubservices.com/", {
-        method: "POST",
-        body: JSON.stringify(payload)
-    }).then(() => alert("Request Submitted."));
-}
+    const INDIVIDUAL_SERVICES = [
+        {
+            id: 'rgd',
+            title: 'RGD Suite (Vital Records)',
+            icon: 'file-text',
+            summary: 'Birth, Marriage, and Death certificate procurement.',
+            detail: 'Certified retrieval from RGD Twickenham Park. We manage un-indexed cases through evidence trail reconstruction and direct agency liaison.',
+            fee: '$4,500 JMD'
+        },
+        {
+            id: 'pica',
+            title: 'PICA Suite (Passports)',
+            icon: 'shield-check',
+            summary: 'Adult Renewals & Citizenship Facilitation.',
+            detail: 'Full administrative form preparation and appointment scheduling. We ensure all biographic documentation meets PICA standards.',
+            fee: '$3,500 JMD'
+        },
+        {
+            id: 'taj',
+            title: 'TAJ Suite (Vehicle & Tax)',
+            icon: 'truck',
+            summary: 'Registration Renewals & Property Tax Remittance.',
+            detail: 'Immediate secure remittance via the approved TAJ portals. Digital audit trails and verification receipts are provided for all transactions.',
+            fee: '$2,500 JMD'
+        },
+        {
+            id: 'nis',
+            title: 'NIS Registration & Replacement',
+            icon: 'user-check',
+            summary: 'New social security registration or lost card facilitation.',
+            detail: 'Administrative processing for first-time applicants or replacement of mutilated cards. Essential for legal employment compliance.',
+            fee: '$3,000 JMD'
+        },
+        {
+            id: 'police',
+            title: 'Police Record Logistics',
+            icon: 'fingerprint',
+            summary: 'Criminal background check appointment management.',
+            detail: 'Managing statutory fee payments and securing fingerprinting appointments at the relevant JCF station.',
+            fee: '$3,000 JMD'
+        },
+        {
+            id: 'eoj',
+            title: 'Elector ID (EOJ) Verification',
+            icon: 'credit-card',
+            summary: 'National ID procurement and residency audits.',
+            detail: 'Guidance through residency verification requirements and EOJ portal navigation for new or replacement identification cards.',
+            fee: '$2,500 JMD'
+        }
+    ];
 
-   // A simple way to hide the URL from basic scrapers
-const partA = "https://script.google.com/macros/s/";
-const partB = "https://script.google.com/macros/s/AKfycbx6JN7bZpU0S0BYPZaujrN8FjvX_0ERwwPsWstanIyAeQGDvdwnn_W3_8-w_lAwCkpe/exec";
-const partC = "/exec";
+    let currentService = ""; // Tracks which service the user clicked
 
-const WEB_APP_URL = partA + partB + partC;     
+    // 1. CATALOG RENDERING
+    function renderCatalog() {
+        const container = document.getElementById('catalog-container');
+        if(!container) return;
+        container.innerHTML = INDIVIDUAL_SERVICES.map(service => `
+            <div class="catalog-item bg-white border border-gray-100 hover:border-gold transition-colors shadow-sm">
+                <details class="group">
+                    <summary class="flex justify-between items-center group p-6 md:p-8 cursor-pointer">
+                        <div class="text-left flex items-center gap-6">
+                            <div class="bg-parchment p-3 rounded-sm group-hover:bg-gold/10 transition-all">
+                                <i data-lucide="${service.icon}" class="text-navy w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <span class="text-xl font-medium text-navy">${service.title}</span>
+                                <p class="text-xs text-gray-400 group-open:hidden mt-1">${service.summary}</p>
+                            </div>
+                        </div>
+                        <i data-lucide="chevron-down" class="group-open:rotate-180 transition-transform text-gold"></i>
+                    </summary>
+                    <div class="px-8 md:px-10 pb-8 pt-0 border-t border-parchment mt-2 text-left">
+                        <h4 class="font-bold uppercase text-[10px] tracking-[0.3em] text-gold mb-4 pt-6">Professional Scope</h4>
+                        <p class="text-base text-gray-600 mb-8 leading-relaxed">${service.detail}</p>
+                        <p class="font-bold text-navy text-xs mb-8 uppercase tracking-[0.2em] bg-parchment inline-block px-4 py-2 border border-navy/5">
+                            Professional Fee: <span class="text-gold font-bold">${service.fee}</span>
+                        </p>
+                        <div class="block">
+                            <button onclick="initializeAgreement('${service.title}')" class="btn-primary w-full md:w-fit">Initialize Intake</button>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        `).join('');
+        lucide.createIcons();
+    }
+
+    // 2. NAVIGATION LOGIC
+    function navigateTo(pageId) {
+        document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
+        const target = document.getElementById(pageId);
+        if(target) {
+            target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            const navItem = document.getElementById(`nav-${pageId}`);
+            if(navItem) navItem.classList.add('active');
+        }
+    }
+
+    function initializeAgreement(name) {
+        currentService = name;
+        const displayEl = document.getElementById('selected-service-name');
+        if(displayEl) displayEl.innerText = name;
+        navigateTo('agreement');
+    }
+
+    // 3. APPS SCRIPT BRIDGE (VAULT SUBMISSION)
+    
+    // Helper to strip metadata: splits 'data:image/png;base64,XXXX' and returns 'XXXX'
+    const toBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result.split(',')[1]); 
+        reader.onerror = error => reject(error);
+    });
+
+    async function handlePublicSubmit(event) {
+        event.preventDefault();
         
-    </script>
+        const btn = document.getElementById('btn-submit') || event.target.querySelector('button[type="submit"]');
+        const originalText = btn.innerText;
+        btn.innerText = "SYNCHRONIZING...";
+        btn.disabled = true;
+
+        const fileInput = document.getElementById('fileInput');
+        const file = (fileInput && fileInput.files) ? fileInput.files[0] : null;
+        let base64File = null;
+
+        if (file) {
+            try {
+                base64File = await toBase64(file);
+            } catch (e) {
+                console.error("File processing failed", e);
+            }
+        }
+
+        const payload = {
+            action: "submit",
+            source: "Public Site",
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            details: `Service Requested: ${currentService} | Message: ${document.getElementById('message').value}`,
+            fileData: base64File,
+            fileName: file ? file.name : null,
+            fileType: file ? file.type : null
+        };
+
+        try {
+            // Using 'no-cors' for GitHub Pages to Google Apps Script compatibility
+            await fetch(CONFIG.VAULT_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "text/plain" },
+                body: JSON.stringify(payload)
+            });
+
+            // Feedback and Reset
+            alert("Tenkyu! Your information has been logged in the vault. We will contact you shortly.");
+            event.target.reset();
+            navigateTo('home');
+            
+        } catch (error) {
+            console.error("Connection Error:", error);
+            alert("Protocol Sync Failed. Please check your internet connection.");
+        } finally {
+            btn.disabled = false;
+            btn.innerText = originalText;
+        }
+    }
+
+    // --- UTILITIES ---
+    window.onload = () => {
+        renderCatalog();
+        lucide.createIcons();
+        
+        // Attach submit listener if form exists
+        const intakeForm = document.getElementById('intake-form');
+        if(intakeForm) {
+            intakeForm.addEventListener('submit', handlePublicSubmit);
+        }
+    };
+
+    function openWhatsApp() {
+        window.open(`https://wa.me/18765612614`, '_blank');
+    }
+
+</script>
 </body>
 </html>
+
 
 
 
