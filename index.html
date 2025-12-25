@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -578,22 +579,22 @@
     </footer>
     
 <script src="config.js"></script>
+   <script>
+  // --- CONFIGURATION ---
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwQf0sYv9pzazZmo2os4-lUP1oVYO2Xz-nBEytCGvtkIOv4hrH9nDwlRT5WnZk_6D2l/exec"; 
 
-<script>
-    // --- CATALOG DATA ---
-    // (Keep your existing services list here)
     const INDIVIDUAL_SERVICES = [
-        { id: 'rgd', title: 'RGD Suite (Vital Records)', icon: 'file-text', summary: 'Birth, Marriage, and Death certificate procurement.', detail: 'Certified retrieval from RGD.', fee: '$4,500 JMD' },
-        { id: 'pica', title: 'PICA Suite (Passports)', icon: 'shield-check', summary: 'Adult Renewals & Citizenship.', detail: 'Full form prep.', fee: '$3,500 JMD' },
-        { id: 'taj', title: 'TAJ Suite (Vehicle & Tax)', icon: 'truck', summary: 'Registration Renewals & Property Tax Remittance.', detail: 'Immediate secure remittance.', fee: '$2,500 JMD' },
-        { id: 'nis', title: 'NIS Registration & Replacement', icon: 'user-check', summary: 'New social security registration.', detail: 'Administrative processing.', fee: '$3,000 JMD' },
-        { id: 'police', title: 'Police Record Logistics', icon: 'fingerprint', summary: 'Criminal background check.', detail: 'Managing statutory fee payments.', fee: '$3,000 JMD' },
-        { id: 'eoj', title: 'Elector ID (EOJ) Verification', icon: 'credit-card', summary: 'National ID procurement.', detail: 'Guidance through residency verification.', fee: '$2,500 JMD' }
+        { id: 'rgd', title: 'RGD Suite (Vital Records)', icon: 'file-text', summary: 'Birth, Marriage, and Death certificate procurement.', detail: 'Certified retrieval from RGD Twickenham Park. We manage un-indexed cases through evidence trail reconstruction and direct agency liaison.', fee: '$4,500 JMD' },
+        { id: 'pica', title: 'PICA Suite (Passports)', icon: 'shield-check', summary: 'Adult Renewals & Citizenship Facilitation.', detail: 'Full administrative form preparation and appointment scheduling. We ensure all biographic documentation meets PICA standards.', fee: '$3,500 JMD' },
+        { id: 'taj', title: 'TAJ Suite (Vehicle & Tax)', icon: 'truck', summary: 'Registration Renewals & Property Tax Remittance.', detail: 'Immediate secure remittance via the approved TAJ portals. Digital audit trails and verification receipts are provided for all transactions.', fee: '$2,500 JMD' },
+        { id: 'nis', title: 'NIS Registration & Replacement', icon: 'user-check', summary: 'New social security registration or lost card facilitation.', detail: 'Administrative processing for first-time applicants or replacement of mutilated cards. Essential for legal employment compliance.', fee: '$3,000 JMD' },
+        { id: 'police', title: 'Police Record Logistics', icon: 'fingerprint', summary: 'Criminal background check appointment management.', detail: 'Managing statutory fee payments and securing fingerprinting appointments at the relevant JCF station.', fee: '$3,000 JMD' },
+        { id: 'eoj', title: 'Elector ID (EOJ) Verification', icon: 'credit-card', summary: 'National ID procurement and residency audits.', detail: 'Guidance through residency verification requirements and EOJ portal navigation for new or replacement identification cards.', fee: '$2,500 JMD' }
     ];
 
     let currentService = ""; 
 
-    // --- CATALOG LOGIC ---
+    // 1. CATALOG RENDERING
     function renderCatalog() {
         const container = document.getElementById('catalog-container');
         if(!container) return;
@@ -613,11 +614,14 @@
                         <i data-lucide="chevron-down" class="group-open:rotate-180 transition-transform text-gold"></i>
                     </summary>
                     <div class="px-8 md:px-10 pb-8 pt-0 border-t border-parchment mt-2 text-left">
+                        <h4 class="font-bold uppercase text-[10px] tracking-[0.3em] text-gold mb-4 pt-6">Professional Scope</h4>
                         <p class="text-base text-gray-600 mb-8 leading-relaxed">${service.detail}</p>
                         <p class="font-bold text-navy text-xs mb-8 uppercase tracking-[0.2em] bg-parchment inline-block px-4 py-2 border border-navy/5">
                             Professional Fee: <span class="text-gold font-bold">${service.fee}</span>
                         </p>
-                        <button onclick="initializeAgreement('${service.title}')" class="btn-primary w-full md:w-fit">Initialize Intake</button>
+                        <div class="block">
+                            <button onclick="initializeAgreement('${service.title}')" class="btn-primary w-full md:w-fit">Initialize Intake</button>
+                        </div>
                     </div>
                 </details>
             </div>
@@ -625,14 +629,13 @@
         if(typeof lucide !== 'undefined') lucide.createIcons();
     }
 
+    // 2. NAVIGATION LOGIC
     function navigateTo(pageId) {
         document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
         const target = document.getElementById(pageId);
         if(target) {
             target.classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            // Handle nav link highlighting if it exists
             document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
             const navItem = document.getElementById(`nav-${pageId}`);
             if(navItem) navItem.classList.add('active');
@@ -647,29 +650,18 @@
     }
 
     function confirmIndividualAgreement() {
-        // Map service name to form value
-        let serviceValue = "general_inquiry";
+        let serviceValue = "general_inquiry"; 
         if (currentService.includes("Passport") || currentService.includes("PICA")) serviceValue = "pica_renewal";
         else if (currentService.includes("RGD") || currentService.includes("Vital")) serviceValue = "rgd_search";
-        else if (currentService.includes("TAJ")) serviceValue = "taj_support";
+        else if (currentService.includes("TAJ") || currentService.includes("Vehicle")) serviceValue = "taj_support";
         else if (currentService.includes("NIS")) serviceValue = "nis_facilitation";
         else if (currentService.includes("Police")) serviceValue = "police_record";
         else if (currentService.includes("Elector")) serviceValue = "eoj_id";
         
-        // Navigate to intake page (or show intake section)
-        // If your intake form is on a separate HTML page:
-        // window.location.href = `intake_portal.html?service=${serviceValue}`;
-        
-        // If your intake form is in a section on the same page:
-        navigateTo('intake'); 
-        // And pre-select the dropdown if possible
-        const select = document.getElementById('service-type');
-        if(select) select.value = serviceValue;
+        window.location.href = `intake_portal.html?service=${serviceValue}`;
     }
 
-    // --- SUBMISSION LOGIC (THE IMPORTANT PART) ---
-    
-    // Helper to convert file to Base64
+    // 3. APPS SCRIPT BRIDGE (VAULT SUBMISSION)
     const toBase64 = file => new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
@@ -697,13 +689,13 @@
             }
         }
 
+        // Prepare the payload strictly for the Apps Script
         const payload = {
-            action: "submit_intake", // MATCHES App Script for Public
+            action: "submit_intake", // MATCHES THE APPS SCRIPT CHECK
             data: {
                 clientName: document.getElementById('name').value,
                 clientEmail: document.getElementById('email').value,
-                // Adjust field IDs below to match your HTML form exactly
-                issueDetails: `Service: ${currentService} | Msg: ${document.getElementById('message').value}`,
+                issueDetails: `Service Requested: ${currentService} | Message: ${document.getElementById('message').value}`,
                 fileData: base64File,
                 fileName: file ? file.name : null,
                 mimeType: file ? file.type : null
@@ -711,28 +703,29 @@
         };
 
         try {
-            // FIX: Uses SYSTEM_CONFIG from config.js
-            await fetch(SYSTEM_CONFIG.VAULT_URL, {
+            // mode: "no-cors" is REQUIRED for simple public forms to Google Scripts
+            await fetch(CONFIG.VAULT_URL, {
                 method: "POST",
                 mode: "no-cors", 
                 headers: { "Content-Type": "text/plain" },
                 body: JSON.stringify(payload)
             });
 
+            // Success Feedback
             alert("Tenkyu! Your information has been logged in the vault. We will contact you shortly.");
             event.target.reset();
             navigateTo('home');
             
         } catch (error) {
             console.error("Connection Error:", error);
-            alert("Sync Failed. Please check internet.");
+            alert("Protocol Sync Failed. Please check your internet connection.");
         } finally {
             btn.disabled = false;
             btn.innerText = originalText;
         }
     }
 
-    // --- INITIALIZATION ---
+    // --- UTILITIES ---
     window.onload = () => {
         renderCatalog();
         if(typeof lucide !== 'undefined') lucide.createIcons();
@@ -742,16 +735,13 @@
             intakeForm.addEventListener('submit', handlePublicSubmit);
         }
     };
-    
+
     function openWhatsApp() {
-        // Uses the number from config.js or falls back to default
-        const number = SYSTEM_CONFIG.CONTACT_WHATSAPP || "18765612614";
-        window.open(`https://wa.me/${number}`, '_blank');
+        window.open(`https://wa.me/18765612614`, '_blank');
     }
 </script>
 </body>
 </html>
-
 
 
 
