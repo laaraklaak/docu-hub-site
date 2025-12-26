@@ -3,803 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docu-Hub | Jamaica Business & Document Concierge</title>
-    
-    <!-- TAILWIND CSS -->
+    <title>Secure Intake | Docu-Hub Operations</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- ICONS -->
     <script src="https://unpkg.com/lucide@latest"></script>
-
-    <!-- CUSTOM STYLES -->
     <style>
-        :root {
-            --navy: #003366;
-            --parchment: #F5F0EC;
-            --gold: #D4AF37;
-            --gold-hover: #C5A028;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--parchment);
-            color: var(--navy);
-            scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
-            font-size: 17px; 
-            line-height: 1.7;
-        }
-
-        @media (min-width: 768px) {
-            body { font-size: 16px; }
-        }
-
-        h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
-
-        /* UTILITIES */
+        :root { --navy: #003366; --parchment: #F5F0EC; --gold: #D4AF37; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--parchment); color: var(--navy); }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        
+        /* CUSTOM COLOR UTILITIES */
         .bg-navy { background-color: var(--navy); }
         .text-navy { color: var(--navy); }
+        .border-navy { border-color: var(--navy); }
+        
         .bg-gold { background-color: var(--gold); }
         .text-gold { color: var(--gold); }
         .border-gold { border-color: var(--gold); }
 
-        /* BUTTONS */
-        .btn-primary {
-            background-color: var(--gold);
-            color: white;
-            padding: 0.9rem 2.2rem;
-            border-radius: 2px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            display: inline-block;
-            font-size: 0.85rem; 
-            border: 1px solid var(--gold);
-            cursor: pointer;
+        /* Loading Spinner */
+        .loader {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--gold);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
         }
-
-        .btn-primary:hover {
-            background-color: var(--gold-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--navy);
-            color: var(--navy);
-            padding: 0.9rem 2.2rem;
-            border-radius: 2px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            display: inline-block;
-            font-size: 0.85rem;
-            cursor: pointer;
-        }
-
-        .btn-outline:hover {
-            background-color: var(--navy);
-            color: white;
-        }
-
-        /* NEW: HIGH CONTRAST NAVY BUTTON (For Catalog) */
-        .btn-navy {
-            background-color: var(--navy);
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 2px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            display: inline-block;
-            font-size: 0.75rem; 
-            border: 1px solid var(--navy);
-            cursor: pointer;
-        }
-        .btn-navy:hover {
-            background-color: var(--gold);
-            border-color: var(--gold);
-            color: var(--navy);
-        }
-
-        /* HERO SPECIFIC BUTTONS */
-        .btn-hero-track {
-            background: transparent;
-            border: 1px solid white;
-            color: white;
-            padding: 0.9rem 2.2rem;
-            border-radius: 2px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .btn-hero-track:hover {
-            background-color: white;
-            color: var(--navy);
-        }
-
-        /* SECTION ANIMATIONS */
-        .section-content {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.4s ease-in-out;
-        }
-
-        .section-content.active {
-            display: block;
-            animation: fadeIn 0.6s ease forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-gradient {
-            background: linear-gradient(rgba(0, 51, 102, 0.92), rgba(0, 51, 102, 0.95)), 
-                        url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=2071');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .choice-card {
-            background: white;
-            border: 1px solid rgba(0,51,102,0.1);
-            padding: 3rem;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            text-align: center;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .choice-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-        }
-
-        .nav-link { position: relative; padding-bottom: 5px; }
-        .nav-link::after {
-            content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0;
-            background-color: var(--gold); transition: width 0.3s ease;
-        }
-        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-
-        details summary { list-style: none; cursor: pointer; outline: none; }
-        details summary::-webkit-details-marker { display: none; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
-        .catalog-item { transition: all 0.3s ease; }
-        .catalog-item:hover { border-color: var(--gold); }
-
-        .roadmap-step {
-            border-left: 2px solid rgba(212, 175, 55, 0.2);
-            padding-left: 2rem;
-            position: relative;
-            padding-bottom: 2.5rem;
-        }
-        .roadmap-step::before {
-            content: ''; position: absolute; left: -5px; top: 0; width: 8px; height: 8px;
-            background: var(--gold); border-radius: 50%;
-        }
-        .roadmap-step:last-child { border-left: none; }
-
-        /* MODAL STYLES */
-        .modal-backdrop {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 51, 102, 0.8);
-            backdrop-filter: blur(4px);
-            z-index: 100;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            opacity: 0; transition: opacity 0.3s ease;
-        }
-        .modal-backdrop.open { display: flex; opacity: 1; }
+        /* Disabled Input Style */
+        .disabled-input { background-color: #f3f4f6; color: #9ca3af; cursor: not-allowed; }
     </style>
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="min-h-screen flex flex-col">
 
-    <!-- STATUS TRACKER MODAL (Hidden by default) -->
-    <div id="statusModal" class="modal-backdrop" onclick="closeStatusModal(event)">
-        <div class="bg-white p-8 max-w-md w-full shadow-2xl border-t-4 border-gold rounded-sm relative transform transition-all scale-95" id="modalContent">
-            <button onclick="closeStatusModal(null, true)" class="absolute top-4 right-4 text-gray-400 hover:text-navy"><i data-lucide="x"></i></button>
-            
-            <div class="text-center mb-6">
-                <span class="text-gold uppercase tracking-[0.2em] text-[10px] font-bold block mb-2">Concierge Desk</span>
-                <h3 class="text-2xl serif text-navy">Track Your Case</h3>
-                <p class="text-sm text-gray-500 mt-2">Enter your Reference ID (Name or TRN) to view real-time status.</p>
-            </div>
-
-            <div class="space-y-4">
-                <input type="text" id="modal-ref-id" placeholder="e.g. BROWN (TRN: 123...)" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm text-sm focus:border-gold outline-none text-center font-bold text-navy">
-                <button onclick="checkStatusInModal()" id="modal-check-btn" class="w-full bg-navy text-white py-3 rounded-sm font-bold uppercase tracking-widest hover:bg-gold hover:text-navy transition-colors">
-                    Check Status
-                </button>
-            </div>
-
-            <!-- Result Area -->
-            <div id="modal-status-result" class="mt-6 hidden bg-parchment p-4 border border-navy/10 text-center">
-                <p class="text-[10px] uppercase font-bold text-gray-500 mb-1">Current Status</p>
-                <h4 id="modal-status-text" class="text-xl font-bold text-navy serif">Processing</h4>
-            </div>
-            
-            <div class="mt-6 pt-6 border-t border-gray-100 text-center">
-                <p class="text-xs text-gray-400">Not a client yet? <a href="#" onclick="closeStatusModal(null, true); navigateTo('services')" class="text-gold hover:underline">Start an Application</a></p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-navy text-white z-50 shadow-xl transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-4 cursor-pointer group" onclick="navigateTo('home')">
-                <div class="w-12 h-12 bg-white/5 border border-gold/30 flex items-center justify-center overflow-hidden transition-colors group-hover:border-gold">
-                    <img src="assets/logo.png" alt="Docu-Hub Logo" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <i data-lucide="shield-check" class="text-gold w-6 h-6 hidden"></i>
-                </div>
+    <!-- Simple Header -->
+    <nav class="bg-navy text-white p-6 shadow-md">
+        <div class="max-w-3xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <i data-lucide="shield-check" class="text-gold w-6 h-6"></i>
                 <div>
-                    <span class="block text-sm tracking-widest font-semibold uppercase leading-none mb-1 group-hover:text-gold transition-colors">Docu-Hub</span>
-                    <span class="block text-[10px] text-gold/80 uppercase tracking-[0.2em] leading-none">Operations Services</span>
+                    <span class="block text-sm font-bold tracking-widest uppercase">Docu-Hub</span>
+                    <span class="block text-[10px] text-gold uppercase tracking-[0.2em]">Secure Intake Node</span>
                 </div>
             </div>
-            
-            <div class="hidden md:flex items-center gap-8 text-xs font-medium uppercase tracking-widest">
-                <span class="nav-link cursor-pointer active" id="nav-home" onclick="navigateTo('home')">Home</span>
-                <span class="nav-link cursor-pointer" id="nav-services" onclick="navigateTo('services')">Services</span>
-                <span class="nav-link cursor-pointer" id="nav-about" onclick="navigateTo('about')">About</span>
-                <span class="nav-link cursor-pointer" id="nav-contact" onclick="navigateTo('contact')">Contact</span>
-                <!-- STATUS BUTTON (NAV) -->
-                <button onclick="openStatusModal()" class="border border-gold text-gold px-4 py-2 hover:bg-gold hover:text-navy transition-colors flex items-center gap-2">
-                    <i data-lucide="search" class="w-3 h-3"></i> Status
-                </button>
-            </div>
-
-            <button class="md:hidden text-gold hover:text-white transition-colors" onclick="toggleMobileMenu()">
-                <i data-lucide="menu" id="menu-icon"></i>
-            </button>
-        </div>
-
-        <div id="mobile-menu" class="hidden md:hidden bg-navy border-t border-white/10 absolute w-full">
-            <div class="flex flex-col px-6 py-4 space-y-4 text-xs font-medium uppercase tracking-widest">
-                <span class="cursor-pointer py-2 border-b border-white/5 hover:text-gold" onclick="navigateTo('home'); toggleMobileMenu()">Home</span>
-                <span class="cursor-pointer py-2 border-b border-white/5 hover:text-gold" onclick="navigateTo('services'); toggleMobileMenu()">Services</span>
-                <span class="cursor-pointer py-2 border-b border-white/5 hover:text-gold" onclick="openStatusModal(); toggleMobileMenu()">Track Status</span>
-                <span class="cursor-pointer py-2 hover:text-gold" onclick="navigateTo('contact'); toggleMobileMenu()">Contact</span>
-            </div>
+            <a href="index.html" class="text-xs uppercase font-bold text-gray-400 hover:text-white transition">Exit</a>
         </div>
     </nav>
 
-    <!-- Main Content Area -->
-    <div id="main-content" class="pt-20 flex-grow">
-        
-        <!-- ==================== HOME PAGE (HERO) ==================== -->
-        <section id="home" class="section-content active">
-            <div class="hero-gradient h-[65vh] flex items-center text-white px-6 text-center">
-                <div class="max-w-4xl mx-auto animate-fade-in-up">
-                    <span class="text-gold uppercase tracking-[0.4em] text-xs font-bold mb-6 block text-center">Precision. Discretion. Logistics.</span>
-                    <h1 class="text-5xl md:text-6xl mb-8 leading-tight italic serif text-center text-white text-shadow-lg">Jamaica Business & Document Concierge.</h1>
-                    
-                    <!-- NEW HERO ACTIONS -->
-                    <div class="flex flex-col md:flex-row gap-6 justify-center mt-10 mb-8">
-                        <!-- CTA 1: NEW CLIENT -->
-                        <button onclick="navigateTo('services')" class="btn-primary">
-                            Start New Application
-                        </button>
-                        <!-- CTA 2: RETURNING CLIENT -->
-                        <button onclick="openStatusModal()" class="btn-hero-track">
-                            Track Existing Case
-                        </button>
-                    </div>
-                    
-                    <p class="text-lg md:text-sm opacity-80 uppercase tracking-widest text-center font-light leading-relaxed text-white">Secure. Compliant. Efficient.</p>
-                </div>
-            </div>
-
-            <!-- Selection Cards -->
-            <div class="max-w-5xl mx-auto px-6 -mt-20 mb-24 relative z-10">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
-                    <div class="choice-card group" onclick="navigateTo('services'); showServiceCategory('personal')">
-                        <div class="w-16 h-16 bg-navy/5 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-gold/10 transition-colors">
-                            <i data-lucide="user" class="text-navy group-hover:text-gold w-8 h-8 transition-colors"></i>
-                        </div>
-                        <h3 class="text-2xl serif mb-4">I am an Individual</h3>
-                        <p class="text-base text-gray-600 mb-8 leading-relaxed text-center">Secure vital records, passport renewals, and statutory tax filings via our vetted logistics pipeline.</p>
-                        <span class="text-xs uppercase font-bold tracking-widest text-gold border-b border-gold/30 pb-1 group-hover:border-gold transition-colors">Individual Catalog &rarr;</span>
-                    </div>
-                    <div class="choice-card group" onclick="navigateTo('services'); showServiceCategory('business')">
-                        <div class="w-16 h-16 bg-navy/5 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-gold/10 transition-colors">
-                            <i data-lucide="building-2" class="text-navy group-hover:text-gold w-8 h-8 transition-colors"></i>
-                        </div>
-                        <h3 class="text-2xl serif mb-4">I am a Business</h3>
-                        <p class="text-base text-gray-600 mb-8 leading-relaxed text-center">Accelerate payroll readiness with bulk TRN/NIS retrieval and compliance vetting for your workforce.</p>
-                        <span class="text-xs uppercase font-bold tracking-widest text-gold border-b border-gold/30 pb-1 group-hover:border-gold transition-colors">Corporate Strategy &rarr;</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- How We Solve -->
-            <div class="max-w-7xl mx-auto px-6 py-24 border-t border-gray-200/60 text-navy text-left">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-                    <div>
-                        <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Process Architecture</span>
-                        <h2 class="text-4xl serif mb-8">How We Solve</h2>
-                        <div class="space-y-10">
-                            <div class="roadmap-step">
-                                <h4 class="font-bold uppercase tracking-widest text-sm mb-2">01. Virtual Intake</h4>
-                                <p class="text-base text-gray-600 leading-relaxed">Engagements begin with a "Pre-Clearance Audit" of your documentation via WhatsApp or Zoom.</p>
-                            </div>
-                            <div class="roadmap-step">
-                                <h4 class="font-bold uppercase tracking-widest text-sm mb-2">02. Liaison Authority</h4>
-                                <p class="text-base text-gray-600 leading-relaxed">We act as your authorized bearer, managing physical queues and authorized agency interactions.</p>
-                            </div>
-                            <div class="roadmap-step">
-                                <h4 class="font-bold uppercase tracking-widest text-sm mb-2">03. Secure Remittance</h4>
-                                <p class="text-base text-gray-600 leading-relaxed">Utilizing approved government portals to remit taxes securely with 100% audit integrity.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-navy p-12 text-white shadow-2xl relative overflow-hidden rounded-sm">
-                        <i data-lucide="shield-check" class="absolute -bottom-10 -right-10 w-48 h-48 opacity-5"></i>
-                        <h3 class="text-3xl serif italic mb-6">Bank-Grade Precision</h3>
-                        <p class="text-base opacity-90 leading-loose">Leveraging a 15-year pedigree in high-compliance financial institutions to handle your sensitive government logistics with total discretion.</p>
-                        <button onclick="navigateTo('about')" class="mt-8 text-xs uppercase tracking-widest border-b border-gold text-gold pb-1 hover:text-white hover:border-white transition-colors">Read Our Story</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==================== SERVICES PAGE ==================== -->
-        <section id="services" class="section-content">
-            <div class="max-w-7xl mx-auto px-6 py-12 md:py-24 text-left">
-                
-                <div class="flex justify-center mb-16 gap-4">
-                    <button onclick="showServiceCategory('personal')" id="btn-personal" class="btn-primary">Individual Catalog</button>
-                    <button onclick="showServiceCategory('business')" id="btn-business" class="btn-outline">Corporate Services</button>
-                </div>
-
-                <!-- BUSINESS VIEW -->
-                <div id="services-business" class="hidden animate-fade-in">
-                    <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Institutional Strategy</span>
-                    <h2 class="text-5xl serif text-navy mb-12 italic">Payroll-Ready Logistics</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        <div class="bg-white p-10 border-l-8 border-gold shadow-2xl">
-                            <h4 class="font-bold uppercase text-xs tracking-widest mb-8 text-gold flex items-center gap-2">
-                                <i data-lucide="list-checks" class="w-4 h-4"></i> Corporate Deliverables
-                            </h4>
-                            <ul class="text-base text-gray-600 space-y-6">
-                                <li class="flex gap-4">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-navy flex-shrink-0 mt-1"></i> 
-                                    <div>
-                                        <span class="font-bold text-navy block">Identity Vetting & Name Matching</span>
-                                        <p class="text-sm mt-1">Cross-referencing employee IDs, Birth Certificates, and Bank requirements for seamless account opening.</p>
-                                    </div>
-                                </li>
-                                <!-- Additional list items can be added here -->
-                            </ul>
-                        </div>
-                        <div class="flex flex-col justify-center bg-navy p-10 text-white shadow-2xl relative overflow-hidden">
-                            <i data-lucide="banknote" class="absolute -bottom-10 -right-10 w-48 h-48 opacity-5"></i>
-                            <h3 class="text-2xl serif italic mb-6 text-gold">Accelerate Onboarding</h3>
-                            <p class="text-base text-white/80 mb-10 leading-loose">
-                                We handle the administrative friction associated with hiring. Our specialized vetting ensures your new staff can be paid and managed within your legal frameworks immediately.
-                            </p>
-                            <button onclick="navigateTo('contact')" class="btn-primary w-full md:w-fit !bg-gold !text-navy hover:!bg-white transition-all">Request Corporate Quote &rarr;</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- INDIVIDUAL VIEW -->
-                <div id="services-personal" class="">
-                    <div class="max-w-4xl mx-auto">
-                        <div class="mb-12 text-left border-b border-gray-200 pb-8">
-                            <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Individual Logistics</span>
-                            <h2 class="text-5xl serif text-navy">Service Catalog</h2>
-                            <p class="text-gray-600 mt-4 text-base">Select a category below to view operational scope and professional fees.</p>
-                        </div>
-                        <div id="catalog-container" class="space-y-4"></div>
-                    </div>
-                </div>
-
-                <!-- RESOURCE VAULT -->
-                <div class="max-w-5xl mx-auto mt-24 border-t border-navy/10 pt-16 text-left">
-                    <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                        <div class="text-left">
-                            <span class="text-gold uppercase tracking-[0.3em] text-[10px] font-bold mb-2 block">Action Station</span>
-                            <h2 class="text-4xl serif text-navy">Client Resource Vault</h2>
-                        </div>
-                        
-                        <div class="bg-navy text-white px-6 py-4 rounded-sm flex items-center gap-4 shadow-lg border border-gold/20 cursor-pointer hover:bg-navy/90 transition-colors" onclick="openUploadPortal()">
-                            <i data-lucide="upload-cloud" class="text-gold w-6 h-6"></i>
-                            <div class="text-left">
-                                <p class="text-[10px] uppercase tracking-widest opacity-70 mb-1">Signed & Ready?</p>
-                                <span class="text-sm font-bold border-b border-gold/50 text-gold">Open Secure Upload Portal</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="bg-white border border-gray-100 p-8 shadow-sm group hover:border-gold transition-all text-left">
-                            <h3 class="font-bold mb-3 uppercase tracking-wider text-xs text-navy">Bearer's Authorization</h3>
-                            <a href="docs/bearers-auth.pdf" download class="flex items-center gap-2 text-xs font-bold text-gold uppercase tracking-[0.2em] cursor-pointer hover:text-navy transition-colors">
-                                Download PDF <i data-lucide="download" class="w-4 h-4"></i>
-                            </a>
-                        </div>
-                        <div class="bg-white border border-gray-100 p-8 shadow-sm group hover:border-gold transition-all text-left">
-                            <h3 class="font-bold mb-3 uppercase tracking-wider text-xs text-navy">Service Agreement</h3>
-                            <a href="docs/master-agreement.pdf" download class="flex items-center gap-2 text-xs font-bold text-gold uppercase tracking-[0.2em] cursor-pointer hover:text-navy transition-colors">
-                                Download PDF <i data-lucide="download" class="w-4 h-4"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==================== AGREEMENT VIEW ==================== -->
-        <section id="agreement" class="section-content">
-            <div class="max-w-7xl mx-auto px-6 py-24 text-left">
-                <button onclick="navigateTo('services')" class="mb-8 text-sm font-bold text-gray-500 hover:text-navy flex items-center gap-2">&larr; Back to Catalog</button>
-                <div class="legal-document-container text-navy bg-white shadow-xl p-8 md:p-16 border-t-8 border-gold">
-                    <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-2 block text-center md:text-left">Step 02: Execution</span>
-                    <h2 class="text-4xl serif mb-4 text-center md:text-left uppercase text-[#003366]">Master Service Agreement</h2>
-                    <p class="text-sm mb-10 text-gray-500 text-center md:text-left font-semibold">Active formalization for <span id="selected-service-name" class="text-navy underline">Selected Service</span>.</p>
-                    
-                    <div class="space-y-10 text-left">
-                        <div>
-                            <h4 class="font-bold uppercase text-[10px] tracking-[0.3em] text-gold mb-3 border-b border-parchment pb-1">1. SCOPE OF ENGAGEMENT</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">The Service Provider agrees to provide administrative logistics and government agency liaison services as defined in the "Strategic Roadmap". This includes document retrieval, tax logistics, and corporate onboarding.</p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold uppercase text-[10px] tracking-[0.3em] text-gold mb-3 border-b border-parchment pb-1">2. INSTITUTIONAL STANDARDS</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">Docu-Hub operates under a "Bank-Grade" precision model. We act as an administrative custodian, ensuring all filings meet the current statutory requirements of the relevant Jamaican Government agencies.</p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold uppercase text-[10px] tracking-[0.3em] text-gold mb-3 border-b border-parchment pb-1">3. FEES AND DISBURSEMENTS</h4>
-                            <ul class="text-sm text-gray-600 space-y-3">
-                                <li>• <strong>Service Fees:</strong> As outlined in the formal quote provided.</li>
-                                <li>• <strong>Disbursements:</strong> All statutory fees are the responsibility of the Client.</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="font-bold uppercase text-[10px] tracking-[0.3em] text-gold mb-3 border-b border-parchment pb-1">4. DATA PROTECTION & PRIVACY</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed mb-4">In compliance with the Data Protection Act (Jamaica):</p>
-                            <ul class="text-sm text-gray-600 space-y-3">
-                                <li>• <strong>30-Day Transactional Purge:</strong> All digital copies of Client Identification are permanently purged 30 days after the final handover.</li>
-                                <li>• <strong>7-Year Statutory Retention:</strong> Financial logs and authorization records are retained for seven years.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-16 p-10 bg-[#f8fafc] border border-navy/5 text-center rounded-sm">
-                        <div class="flex flex-col md:flex-row items-center justify-center gap-6">
-                            <button onclick="confirmIndividualAgreement()" class="btn-primary flex items-center gap-3 w-full md:w-auto justify-center">
-                                <i data-lucide="message-circle" class="w-5 h-5"></i> I Agree & Open Intake Portal
-                            </button>
-                            <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Execution by: Laura Clarke, Principal</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ABOUT PAGE -->
-        <section id="about" class="section-content text-left">
-            <div class="bg-white py-24 border-b border-gray-100">
-                <div class="max-w-7xl mx-auto px-6 text-left">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center text-left">
-                        <div class="text-navy text-left">
-                            <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Compliance Priority</span>
-                            <h2 class="text-5xl serif mb-8 leading-tight italic text-navy">Our Mission & Core Values</h2>
-                            <p class="text-base text-gray-600 mb-6 leading-relaxed">Docu-Hub was established to provide a privacy-first administrative bridge for individuals and MSMEs navigating Jamaican statutory frameworks.</p>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                            <div class="bg-white border border-gray-100 p-6 text-center shadow-sm">
-                                <i data-lucide="award" class="text-gold w-10 h-10 mx-auto mb-4"></i>
-                                <p class="text-xs font-bold uppercase tracking-widest text-navy">Competence</p>
-                            </div>
-                            <div class="bg-white border border-gray-100 p-6 text-center shadow-sm">
-                                <i data-lucide="shield-check" class="text-gold w-10 h-10 mx-auto mb-4"></i>
-                                <p class="text-xs font-bold uppercase tracking-widest text-navy">Integrity</p>
-                            </div>
-                            <div class="bg-white border border-gray-100 p-6 text-center shadow-sm">
-                                <i data-lucide="zap" class="text-gold w-10 h-10 mx-auto mb-4"></i>
-                                <p class="text-xs font-bold uppercase tracking-widest text-navy">Efficiency</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Main Form Area -->
+    <main class="flex-grow p-6">
+        <div class="max-w-2xl mx-auto bg-white p-8 md:p-12 shadow-2xl border-t-4 border-gold rounded-sm">
             
-            <div class="max-w-7xl mx-auto px-6 py-24 text-navy">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
-                    <div class="relative sticky top-32">
-                        <div class="aspect-[4/5] bg-gray-100 border border-gray-200 overflow-hidden shadow-2xl relative">
-                            <div class="absolute inset-0 flex flex-col items-center justify-center p-12 text-center bg-[#fcfcfc]">
-                                <i data-lucide="user" class="w-20 h-20 text-gray-300 mb-4"></i>
-                                <span class="text-[10px] uppercase tracking-[0.4em] font-bold text-navy/40">Laura Clarke, Principal</span>
-                            </div>
-                            <img src="assets/laura-clarke.jpg" alt="Laura Clarke" class="w-full h-full object-cover relative z-10" onerror="this.style.display='none'; this.previousElementSibling.style.display='flex';">
-                        </div>
-                    </div>
-                    <div class="text-left">
-                        <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Leadership</span>
-                        <h2 class="text-5xl serif mb-10 text-[#003366]">Laura Clarke</h2>
-                        <p class="text-xs uppercase tracking-widest text-gold font-bold mb-4 italic">Proprietor & Lead Liaison</p>
-                        <p class="text-base text-gray-600 leading-relaxed mb-8">Founded on a 15-year pedigree at **NCB** and seasonal oversight at the **OEC**, Laura Clarke bridges the gap between banking rigour and administrative logistics.</p>
-                        <div class="bg-parchment p-8 border border-navy/5 text-left">
-                            <h4 class="text-xs font-bold uppercase tracking-widest text-navy mb-4">Essential Notice</h4>
-                            <p class="text-sm text-gray-500 leading-loose italic">"Docu-Hub is a clerical agency and government logistics provider. We are not a law firm and do not provide legal advice or statutory interpretations."</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="text-center mb-10">
+                <h1 class="text-3xl font-bold mb-2">Client Digital Intake</h1>
+                <p class="text-sm text-gray-500">Your documents are encrypted and sent directly to our secure vault.</p>
             </div>
-        </section>
 
-        <!-- CONTACT PAGE -->
-        <section id="contact" class="section-content text-left">
-            <div class="max-w-7xl mx-auto px-6 py-24 text-center">
-                 <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block text-center">Coordination</span>
-                 <h2 class="text-5xl serif text-navy mb-16 text-center text-[#003366]">Connect With Our Team</h2>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-left">
-                    <div class="bg-white border border-gray-100 p-10 shadow-lg" id="calendar-wrapper">
-                        <h3 class="text-2xl serif text-navy mb-4 text-[#003366]">Book Strategy Session</h3>
-                        <p class="text-sm text-gray-500 mb-8">Initialize a 15-minute virtual intake for complex corporate or individual cases.</p>
-                        <button onclick="initCalendar()" class="btn-outline w-full hover:bg-navy hover:text-white transition-all uppercase tracking-widest text-xs font-bold">View Availability</button>
-                    </div>
-                    <div class="bg-navy p-10 text-white shadow-xl flex flex-col justify-center rounded-sm">
-                        <h3 class="text-2xl serif mb-8 italic text-gold">Direct Communication</h3>
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-4 cursor-pointer hover:text-gold transition group" onclick="openWhatsApp()">
-                                <div class="p-3 border border-gold/30 rounded-sm group-hover:bg-gold/10 transition-all">
-                                    <i data-lucide="message-circle" class="text-gold w-6 h-6"></i>
-                                </div>
-                                <div>
-                                    <span class="text-[10px] uppercase font-bold tracking-widest text-gold/60">WhatsApp Liaison</span>
-                                    <span class="text-xl block text-white">1 (876) 561-2614</span>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-4 cursor-pointer hover:text-gold transition group" onclick="window.location.href='mailto:admin@dochubservices.com'">
-                                <div class="p-3 border border-gold/30 rounded-sm group-hover:bg-gold/10 transition-all">
-                                    <i data-lucide="mail" class="text-gold w-6 h-6"></i>
-                                </div>
-                                <div>
-                                    <span class="text-[10px] uppercase font-bold tracking-widest text-gold/60">Professional Email</span>
-                                    <span class="text-xl block text-white">admin@dochubservices.com</span>
-                                </div>
+            <form id="intakeForm" class="space-y-6" onsubmit="handleFormSubmit(event)">
+                
+                <!-- Section 1: Identity -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-bold text-gold uppercase tracking-widest border-b border-gray-100 pb-2">01. Identity Validation</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-navy mb-1">Last Name</label>
+                            <input type="text" name="lastName" required class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm text-sm focus:border-gold outline-none" placeholder="e.g. BROWN">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-navy mb-1">TRN (9 Digits)</label>
+                            <input type="text" id="trnInput" name="trn" required maxlength="9" pattern="\d{9}" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm text-sm focus:border-gold outline-none" placeholder="e.g. 123456789">
+                            
+                            <!-- UPDATED: Checkbox for New Applications -->
+                            <div class="flex items-center gap-2 mt-2">
+                                <input type="checkbox" id="newAppCheck" class="accent-[#D4AF37] w-4 h-4 cursor-pointer">
+                                <label for="newAppCheck" class="text-[10px] font-bold text-gray-500 cursor-pointer uppercase tracking-wider hover:text-navy">I am applying for a TRN (No ID yet)</label>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
 
-    <!-- Footer -->
-    <footer class="bg-navy text-white pt-20 pb-10 border-t border-gold/10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-                <div class="col-span-1 text-left">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 border-2 border-gold flex items-center justify-center">
-                            <span class="serif text-gold font-bold text-xl uppercase">D</span>
-                        </div>
-                        <span class="text-xl serif italic tracking-wide text-white">Docu-Hub</span>
+                <!-- Section 2: Service Context -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-bold text-gold uppercase tracking-widest border-b border-gray-100 pb-2">02. Service Context</h3>
+                    
+                    <div>
+                        <label class="block text-xs font-bold text-navy mb-1">Service Required</label>
+                        <select id="serviceSelect" name="service" required class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm text-sm focus:border-gold outline-none">
+                            <option value="" disabled selected>Select Service...</option>
+                            <option value="rgd_suite">RGD Suite (Vital Records)</option>
+                            <option value="pica_suite">PICA Suite (Passports)</option>
+                            <option value="taj_suite">TAJ Suite (Vehicle & Tax)</option>
+                            <option value="nis_registration">NIS Registration</option>
+                            <option value="police_record">Police Record Application</option>
+                            <option value="elector_id">Elector ID / Voter Services</option>
+                            <option value="other">Other / General Inquiry</option>
+                        </select>
                     </div>
-                    <p class="text-xs opacity-60 leading-relaxed">Institutional administrative logistics for the modern Jamaican citizen and enterprise.</p>
+                    
+                    <!-- Hidden field for location, defaulting to 'local' for now -->
+                    <input type="hidden" name="location" value="local">
                 </div>
-                <div class="text-left text-white">
-                    <h5 class="text-gold uppercase text-[10px] font-bold tracking-[0.3em] mb-6">Quick Links</h5>
-                    <ul class="text-sm space-y-3 opacity-80 font-light">
-                        <li class="cursor-pointer hover:text-gold transition-colors" onclick="navigateTo('home')">Home</li>
-                        <li class="cursor-pointer hover:text-gold transition-colors" onclick="navigateTo('about')">About</li>
-                        <li class="cursor-pointer hover:text-gold transition-colors" onclick="navigateTo('services')">Services</li>
-                        <li class="cursor-pointer hover:text-gold transition-colors" onclick="navigateTo('contact')">Contact</li>
-                    </ul>
+
+                <!-- Section 3: Document Upload -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-bold text-gold uppercase tracking-widest border-b border-gray-100 pb-2">03. Secure Upload</h3>
+                    
+                    <div class="border-2 border-dashed border-gray-200 bg-gray-50 rounded-lg p-8 text-center hover:border-gold transition-colors relative">
+                        <input type="file" id="fileInput" multiple required class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                        <i data-lucide="upload-cloud" class="w-10 h-10 text-gray-300 mx-auto mb-2"></i>
+                        <p class="text-sm font-bold text-navy">Tap to Select Files</p>
+                        <p class="text-xs text-gray-400">PDF, JPG, or PNG (Max 5MB)</p>
+                        <div id="fileList" class="mt-4 text-xs text-left space-y-1 text-gold font-bold"></div>
+                    </div>
                 </div>
-                <div class="text-left text-white">
-                    <h5 class="text-gold uppercase text-[10px] font-bold tracking-[0.3em] mb-6">Legal Stuff</h5>
-                    <ul class="text-sm space-y-3 opacity-80 font-light">
-                        <li class="cursor-pointer hover:text-gold transition-colors" onclick="navigateTo('privacy')">Privacy Policy</li>
-                        <li class="cursor-pointer hover:text-gold transition-colors" onclick="navigateTo('terms')">Terms of Service</li>
-                        <li class="cursor-pointer hover:text-gold transition-colors" onclick="navigateTo('legal-notice')">Legal Notice</li>
-                    </ul>
+
+                <!-- Section 4: Compliance Gate -->
+                <div class="bg-navy/5 p-4 rounded border border-navy/10">
+                    <label class="flex items-start gap-3 cursor-pointer">
+                        <input type="checkbox" name="consent" required class="mt-1">
+                        <span class="text-xs text-gray-600 leading-relaxed">
+                            <strong>Compliance Consent:</strong> I authorize Docu-Hub Operations Services to process these documents for the purpose of government liaison. I understand this data will be handled according to the JDPA/POCA protocols defined in the Privacy Policy.
+                        </span>
+                    </label>
                 </div>
-                <div id="security-center" class="text-left text-white">
-                    <h5 class="text-gold uppercase text-[10px] font-bold tracking-[0.3em] mb-6">Security Center</h5>
-                    <ul class="text-sm space-y-3 opacity-80 font-light">
-                        <li><a href="security-center/cash_policy.html" class="hover:text-gold">Why Electronic Payment?</a></li>
-                        <li><a href="security-center/dual_clock.html" class="hover:text-gold">Data Retention Policy</a></li>
-                        <li><a href="security-center/biometric_boundary.html" class="hover:text-gold">The Biometric Boundary</a></li>
-                        <li><a href="security-center/biometric_boundary_checklist.html" class="hover:text-gold">Biometric Protocols</a></li>
-                    </ul>
+
+                <!-- Submit Area -->
+                <button type="submit" id="submitBtn" class="w-full bg-navy text-white py-4 rounded-sm font-bold uppercase tracking-widest hover:bg-gold hover:text-navy transition-all shadow-lg flex justify-center items-center gap-3">
+                    <span>Initialize Secure Transfer</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+
+            </form>
+
+            <!-- Success Message (Hidden by default) -->
+            <div id="successMessage" class="hidden text-center py-10">
+                <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i data-lucide="check" class="w-8 h-8"></i>
                 </div>
+                <h2 class="text-2xl font-bold text-navy mb-2">Transmission Complete</h2>
+                <p class="text-sm text-gray-500 mb-8">Your documents have been securely logged in our Vault. An intake officer will verify them shortly.</p>
+                <a href="index.html" class="inline-block bg-gold text-white px-8 py-3 rounded-sm text-xs font-bold uppercase tracking-widest">Return Home</a>
             </div>
-            <div class="border-t border-white/10 pt-10 text-[10px] text-center uppercase tracking-[0.2em] opacity-40 font-bold">
-                <p>&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
-            </div>
+
         </div>
-    </footer>
+    </main>
 
     <script>
+        lucide.createIcons();
+
+        // --- AUTO-FILL SERVICE FROM URL ---
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const params = new URLSearchParams(window.location.search);
+            const service = params.get('service');
+            if (service) {
+                const select = document.getElementById('serviceSelect');
+                if(select) select.value = service;
+            }
+        });
+        
+        // --- NEW TRN TOGGLE LOGIC ---
+        document.getElementById('newAppCheck').addEventListener('change', function(e) {
+            const input = document.getElementById('trnInput');
+            if(this.checked) {
+                input.value = "";
+                input.disabled = true;
+                input.required = false;
+                input.classList.add('disabled-input');
+                input.placeholder = "New Application (Auto-Generated)";
+            } else {
+                input.disabled = false;
+                input.required = true;
+                input.classList.remove('disabled-input');
+                input.placeholder = "e.g. 123456789";
+            }
+        });
+
         // --- CONFIGURATION ---
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwQf0sYv9pzazZmo2os4-lUP1oVYO2Xz-nBEytCGvtkIOv4hrH9nDwlRT5WnZk_6D2l/exec"; 
-        const WHATSAPP_NUMBER = "18765612614";
-        const GOOGLE_CALENDAR_URL = "https://calendar.app.google/XsqkLViLYtDKsjFB9";
-        const DROPBOX_LINK = "https://www.dropbox.com/request/QoLIR2d2aCBDNguWfl5A"; 
 
-        const INDIVIDUAL_SERVICES = [
-            { id: 'rgd', title: 'RGD Suite (Vital Records)', icon: 'file-text', summary: 'Birth, Marriage, and Death certificate procurement.', detail: 'Certified retrieval from RGD Twickenham Park. We manage un-indexed cases through evidence trail reconstruction and direct agency liaison.', fee: '$4,500 JMD' },
-            { id: 'pica', title: 'PICA Suite (Passports)', icon: 'shield-check', summary: 'Adult Renewals & Citizenship Facilitation.', detail: 'Full administrative form preparation and appointment scheduling. We ensure all biographic documentation meets PICA standards.', fee: '$3,500 JMD' },
-            { id: 'taj', title: 'TAJ Suite (Vehicle & Tax)', icon: 'truck', summary: 'Registration Renewals & Property Tax Remittance.', detail: 'Immediate secure remittance via the approved TAJ portals. Digital audit trails and verification receipts are provided for all transactions.', fee: '$2,500 JMD' },
-            { id: 'nis', title: 'NIS Registration & Replacement', icon: 'user-check', summary: 'New social security registration or lost card facilitation.', detail: 'Administrative processing for first-time applicants or replacement of mutilated cards. Essential for legal employment compliance.', fee: '$3,000 JMD' },
-            { id: 'police', title: 'Police Record Logistics', icon: 'fingerprint', summary: 'Criminal background check appointment management.', detail: 'Managing statutory fee payments and securing fingerprinting appointments at the relevant JCF station.', fee: '$3,000 JMD' },
-            { id: 'eoj', title: 'Elector ID (EOJ) Verification', icon: 'credit-card', summary: 'National ID procurement and residency audits.', detail: 'Guidance through residency verification requirements and EOJ portal navigation for new or replacement identification cards.', fee: '$2,500 JMD' }
-        ];
+        // File List Preview
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const list = document.getElementById('fileList');
+            list.innerHTML = '';
+            Array.from(this.files).forEach(file => {
+                list.innerHTML += `<div>• ${file.name}</div>`;
+            });
+        });
 
-        function renderCatalog() {
-            const container = document.getElementById('catalog-container');
-            container.innerHTML = INDIVIDUAL_SERVICES.map(service => `
-                <div class="catalog-item bg-white border border-gray-100 hover:border-gold transition-colors shadow-sm">
-                    <details class="group">
-                        <summary class="flex justify-between items-center group p-6 md:p-8 cursor-pointer">
-                            <div class="text-left flex items-center gap-6">
-                                <div class="bg-parchment p-3 rounded-sm group-hover:bg-gold/10 transition-all">
-                                    <i data-lucide="${service.icon}" class="text-navy w-5 h-5"></i>
-                                </div>
-                                <div>
-                                    <span class="text-xl font-medium text-navy">${service.title}</span>
-                                    <p class="text-xs text-gray-400 group-open:hidden mt-1">${service.summary}</p>
-                                </div>
-                            </div>
-                            <i data-lucide="chevron-down" class="group-open:rotate-180 transition-transform text-gold"></i>
-                        </summary>
-                        <div class="px-8 md:px-10 pb-8 pt-0 border-t border-parchment mt-2 text-left">
-                            <h4 class="font-bold uppercase text-[10px] tracking-[0.3em] text-gold mb-4 pt-6">Professional Scope</h4>
-                            <p class="text-base text-gray-600 mb-8 leading-relaxed">${service.detail}</p>
-                            <p class="font-bold text-navy text-xs mb-8 uppercase tracking-[0.2em] bg-parchment inline-block px-4 py-2 border border-navy/5">
-                                Professional Fee: <span class="text-gold font-bold">${service.fee}</span>
-                            </p>
-                            <div class="block">
-                                <!-- UPDATED: High Contrast "Start Application" Button -->
-                                <button onclick="initializeAgreement('${service.title}')" class="btn-navy w-full md:w-fit text-[10px]">Start Application</button>
-                            </div>
-                        </div>
-                    </details>
-                </div>
-            `).join('');
-            lucide.createIcons();
-        }
-
-        function navigateTo(pageId) {
-            document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
-            const target = document.getElementById(pageId);
-            if(target) {
-                target.classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                const navItem = document.getElementById(`nav-${pageId}`);
-                if(navItem) navItem.classList.add('active');
-            }
-        }
-
-        function showServiceCategory(cat) {
-            const viewP = document.getElementById('services-personal');
-            const viewB = document.getElementById('services-business');
-            const btnP = document.getElementById('btn-personal');
-            const btnB = document.getElementById('btn-business');
-            if(cat === 'personal') {
-                viewP.classList.remove('hidden'); viewB.classList.add('hidden');
-                btnP.classList.replace('btn-outline', 'btn-primary');
-                btnB.classList.replace('btn-primary', 'btn-outline');
-            } else {
-                viewP.classList.add('hidden'); viewB.classList.remove('hidden');
-                btnB.classList.replace('btn-outline', 'btn-primary');
-                btnP.classList.replace('btn-primary', 'btn-outline');
-            }
-        }
-
-        function initializeAgreement(name) {
-            currentService = name;
-            document.getElementById('selected-service-name').innerText = name;
-            navigateTo('agreement');
-         }
-
-        function confirmIndividualAgreement() {
-            let serviceValue = "";
-            if (currentService.includes("Passport")) serviceValue = "pica_suite";
-            else if (currentService.includes("RGD")) serviceValue = "rgd_suite";
-            else if (currentService.includes("TAJ")) serviceValue = "taj_suite";
-            else if (currentService.includes("NIS")) serviceValue = "nis_registration";
-            else if (currentService.includes("Police")) serviceValue = "police_record";
-            else serviceValue = "general_inquiry";
-
-            // Redirects to the external intake portal
-            window.location.href = `intake_portal.html?service=${serviceValue}`;
-        }
-        
-        function openWhatsApp() { window.open(`https://wa.me/${WHATSAPP_NUMBER}`, '_blank'); }
-        function openUploadPortal() { window.open(DROPBOX_LINK, '_blank'); }
-
-        function initCalendar() {
-            const wrapper = document.getElementById('calendar-wrapper');
-            const iframe = document.createElement('iframe');
-            iframe.src = GOOGLE_CALENDAR_URL;
-            iframe.style.width = "100%"; iframe.style.height = "500px"; iframe.style.border = "0";
-            wrapper.innerHTML = ""; wrapper.appendChild(iframe);
-        }
-
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-            } else {
-                menu.classList.add('hidden');
-            }
-        }
-
-        // --- STATUS MODAL LOGIC ---
-        function openStatusModal() {
-            document.getElementById('statusModal').classList.add('open');
-            document.getElementById('modalContent').classList.remove('scale-95');
-            document.getElementById('modalContent').classList.add('scale-100');
-        }
-
-        function closeStatusModal(e, force) {
-            if(force || e.target.id === 'statusModal') {
-                document.getElementById('statusModal').classList.remove('open');
-                document.getElementById('modalContent').classList.add('scale-95');
-                document.getElementById('modalContent').classList.remove('scale-100');
-            }
-        }
-
-        function checkStatusInModal() {
-            const refId = document.getElementById('modal-ref-id').value;
-            const btn = document.getElementById('modal-check-btn');
-            const resultDiv = document.getElementById('modal-status-result');
-            const resultText = document.getElementById('modal-status-text');
-
-            if(!refId) return alert("Please enter a Reference ID");
-
-            btn.innerText = "Checking...";
+        // Form Handler
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            const btn = document.getElementById('submitBtn');
+            const originalBtnContent = btn.innerHTML;
+            
+            // Set Loading State
             btn.disabled = true;
+            btn.innerHTML = '<div class="loader"></div> Processing Encryption...';
 
-            fetch(`${SCRIPT_URL}?mode=api&action=check_status&ref_id=${encodeURIComponent(refId)}`)
-                .then(res => res.json())
-                .then(data => {
-                    resultDiv.classList.remove('hidden');
-                    if(data.found) {
-                        resultText.innerText = data.status;
-                        resultText.style.color = "#003366";
-                    } else {
-                        resultText.innerText = "Not Found";
-                        resultText.style.color = "#dc2626";
+            const form = e.target;
+            const formData = {
+                lastName: form.lastName.value,
+                trn: form.trn.value,
+                service: form.service.value,
+                location: form.location.value,
+                consent: form.consent.checked,
+                files: []
+            };
+
+            // Process Files (Convert to Base64)
+            const fileInput = document.getElementById('fileInput');
+            
+            try {
+                if (fileInput.files.length > 0) {
+                    for (const file of fileInput.files) {
+                        const base64 = await getBase64(file);
+                        formData.files.push({
+                            name: file.name,
+                            mimeType: file.type,
+                            bytes: base64
+                        });
                     }
-                    btn.innerText = "Check Status";
-                    btn.disabled = false;
-                })
-                .catch(err => {
-                    console.error(err);
-                    alert("System Offline. Please try again later.");
-                    btn.innerText = "Check Status";
-                    btn.disabled = false;
+                }
+
+                // Send to Google Script
+                // mode: 'no-cors' is CRITICAL for Apps Script web apps
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(formData),
+                    mode: 'no-cors', 
+                    headers: { 'Content-Type': 'application/json' }
                 });
+
+                // Show Success (Since no-cors doesn't give us the JSON response, we assume success if no error thrown)
+                form.classList.add('hidden');
+                document.getElementById('successMessage').classList.remove('hidden');
+                window.scrollTo(0, 0);
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert("Transmission Error: Please verify your connection and try again.");
+                btn.disabled = false;
+                btn.innerHTML = originalBtnContent;
+            }
         }
 
-        window.onload = () => {
-            renderCatalog();
-            lucide.createIcons();
-        };
+        // Helper: File to Base64
+        function getBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => {
+                    // Remove the Data-URL prefix (e.g. "data:image/png;base64,")
+                    const rawBase64 = reader.result.split(',')[1]; 
+                    resolve(rawBase64);
+                };
+                reader.onerror = error => reject(error);
+            });
+        }
     </script>
 </body>
+
 </html>
