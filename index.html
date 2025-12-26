@@ -206,6 +206,54 @@
             opacity: 0; transition: opacity 0.3s ease;
         }
         .modal-backdrop.open { display: flex; opacity: 1; }
+
+        /* 1. UN-FREEZE THE HEAD (Change position from fixed to sticky) */
+        nav#navbar { 
+            position: sticky; 
+            top: 0; 
+            z-index: 50; 
+        }
+
+        /* 2. NEW: HIGH CONTRAST CATALOG BUTTON */
+        .btn-navy {
+            background-color: var(--navy);
+            color: white;
+            padding: 0.9rem 2.2rem;
+            border-radius: 2px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: inline-block;
+            font-size: 0.85rem; 
+            border: 1px solid var(--navy);
+            cursor: pointer;
+        }
+        .btn-navy:hover {
+            background-color: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy);
+        }
+
+        /* 3. NEW: VISIBLE HERO BUTTON */
+        .btn-hero-track {
+            background-color: white; /* Solid White Background */
+            border: 2px solid white;
+            color: var(--navy);      /* Navy Text */
+            padding: 1rem 2.5rem;
+            border-radius: 2px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        .btn-hero-track:hover {
+            background-color: var(--parchment);
+            border-color: var(--parchment);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -842,3 +890,4 @@
     </script>
 </body>
 </html>
+
