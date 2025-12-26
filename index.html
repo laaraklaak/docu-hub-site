@@ -206,54 +206,6 @@
             opacity: 0; transition: opacity 0.3s ease;
         }
         .modal-backdrop.open { display: flex; opacity: 1; }
-
-        /* 1. UN-FREEZE THE HEAD (Change position from fixed to sticky) */
-        nav#navbar { 
-            position: sticky; 
-            top: 0; 
-            z-index: 50; 
-        }
-
-        /* 2. NEW: HIGH CONTRAST CATALOG BUTTON */
-        .btn-navy {
-            background-color: var(--navy);
-            color: white;
-            padding: 0.9rem 2.2rem;
-            border-radius: 2px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            display: inline-block;
-            font-size: 0.85rem; 
-            border: 1px solid var(--navy);
-            cursor: pointer;
-        }
-        .btn-navy:hover {
-            background-color: var(--gold);
-            border-color: var(--gold);
-            color: var(--navy);
-        }
-
-        /* 3. NEW: VISIBLE HERO BUTTON */
-        .btn-hero-track {
-            background-color: white; /* Solid White Background */
-            border: 2px solid white;
-            color: var(--navy);      /* Navy Text */
-            padding: 1rem 2.5rem;
-            border-radius: 2px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            font-size: 0.95rem;
-        }
-        .btn-hero-track:hover {
-            background-color: var(--parchment);
-            border-color: var(--parchment);
-            transform: translateY(-2px);
-        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -339,13 +291,13 @@
                     <h1 class="text-5xl md:text-6xl mb-8 leading-tight italic serif text-center text-white text-shadow-lg">Jamaica Business & Document Concierge.</h1>
                     
                     <!-- NEW HERO ACTIONS -->
-                    <div class="flex flex-col md:flex-row gap-6 justify-center mt-12 mb-10 z-20 relative">
+                    <div class="flex flex-col md:flex-row gap-6 justify-center mt-10 mb-8">
                         <!-- CTA 1: NEW CLIENT -->
-                        <button onclick="navigateTo('services')" class="btn-primary shadow-xl">
+                        <button onclick="navigateTo('services')" class="btn-primary">
                             Start New Application
                         </button>
-                        <!-- CTA 2: RETURNING CLIENT (Solid White for Visibility) -->
-                        <button onclick="openStatusModal()" class="btn-hero-track shadow-xl">
+                        <!-- CTA 2: RETURNING CLIENT -->
+                        <button onclick="openStatusModal()" class="btn-hero-track">
                             Track Existing Case
                         </button>
                     </div>
@@ -730,41 +682,36 @@
             { id: 'eoj', title: 'Elector ID (EOJ) Verification', icon: 'credit-card', summary: 'National ID procurement and residency audits.', detail: 'Guidance through residency verification requirements and EOJ portal navigation for new or replacement identification cards.', fee: '$2,500 JMD' }
         ];
 
-       function renderCatalog() {
+        function renderCatalog() {
             const container = document.getElementById('catalog-container');
             container.innerHTML = INDIVIDUAL_SERVICES.map(service => `
                 <div class="catalog-item bg-white border border-gray-100 hover:border-gold transition-colors shadow-sm">
                     <details class="group">
-                        <summary class="flex flex-col md:flex-row justify-between items-center group p-6 md:p-8 cursor-pointer">
-                            <div class="flex items-center gap-6 w-full md:w-auto">
+                        <summary class="flex justify-between items-center group p-6 md:p-8 cursor-pointer">
+                            <div class="text-left flex items-center gap-6">
                                 <div class="bg-parchment p-3 rounded-sm group-hover:bg-gold/10 transition-all">
                                     <i data-lucide="${service.icon}" class="text-navy w-5 h-5"></i>
                                 </div>
-                                <div class="text-left">
-                                    <span class="text-xl font-medium text-navy block">${service.title}</span>
-                                    <p class="text-sm text-gray-400 group-open:hidden mt-1">${service.summary}</p>
+                                <div>
+                                    <span class="text-xl font-medium text-navy">${service.title}</span>
+                                    <p class="text-xs text-gray-400 group-open:hidden mt-1">${service.summary}</p>
                                 </div>
                             </div>
-                            
-                            <!-- UPGRADE 3 FIX: BUTTON MOVED HERE (VISIBLE AREA) -->
-                            <div class="mt-4 md:mt-0 flex items-center gap-4">
-                                <button onclick="initializeAgreement('${service.title}'); event.preventDefault();" class="btn-navy w-full md:w-auto text-xs whitespace-nowrap">Start Application</button>
-                                <i data-lucide="chevron-down" class="group-open:rotate-180 transition-transform text-gold hidden md:block"></i>
-                            </div>
-                            
+                            <i data-lucide="chevron-down" class="group-open:rotate-180 transition-transform text-gold"></i>
                         </summary>
                         <div class="px-8 md:px-10 pb-8 pt-0 border-t border-parchment mt-2 text-left">
-                            <h4 class="font-bold uppercase text-xs tracking-[0.3em] text-gold mb-4 pt-6">Professional Scope</h4>
+                            <h4 class="font-bold uppercase text-[10px] tracking-[0.3em] text-gold mb-4 pt-6">Professional Scope</h4>
                             <p class="text-base text-gray-600 mb-8 leading-relaxed">${service.detail}</p>
-                            <p class="font-bold text-navy text-sm mb-8 uppercase tracking-[0.2em] bg-parchment inline-block px-4 py-2 border border-navy/5">
+                            <p class="font-bold text-navy text-xs mb-8 uppercase tracking-[0.2em] bg-parchment inline-block px-4 py-2 border border-navy/5">
                                 Professional Fee: <span class="text-gold font-bold">${service.fee}</span>
                             </p>
+                            <div class="block">
+                                <!-- UPDATED: High Contrast "Start Application" Button -->
+                                <button onclick="initializeAgreement('${service.title}')" class="btn-navy w-full md:w-fit text-[10px]">Start Application</button>
+                            </div>
                         </div>
                     </details>
                 </div>
-            `).join('');
-            lucide.createIcons();
-        }
             `).join('');
             lucide.createIcons();
         }
@@ -895,6 +842,3 @@
     </script>
 </body>
 </html>
-
-
-
