@@ -11,28 +11,18 @@
         :root { --navy: #003366; --parchment: #F5F0EC; --gold: #D4AF37; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--parchment); color: var(--navy); }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        
-        /* CUSTOM COLOR UTILITIES */
         .bg-navy { background-color: var(--navy); }
         .text-navy { color: var(--navy); }
-        .border-navy { border-color: var(--navy); }
-        
-        .bg-gold { background-color: var(--gold); }
-        .text-gold { color: var(--gold); }
         .border-gold { border-color: var(--gold); }
-
+        
         /* Loading Spinner */
         .loader {
-            border: 3px solid #f3f3f3;
+            border: 3px solid #f3f3f3; 
             border-top: 3px solid var(--gold);
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            animation: spin 1s linear infinite;
+            border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
-        /* Disabled Input Style */
         .disabled-input { background-color: #f3f4f6; color: #9ca3af; cursor: not-allowed; }
     </style>
 </head>
@@ -75,8 +65,6 @@
                         <div>
                             <label class="block text-xs font-bold text-navy mb-1">TRN (9 Digits)</label>
                             <input type="text" id="trnInput" name="trn" required maxlength="9" pattern="\d{9}" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm text-sm focus:border-gold outline-none" placeholder="e.g. 123456789">
-                            
-                            <!-- UPDATED: Checkbox for New Applications -->
                             <div class="flex items-center gap-2 mt-2">
                                 <input type="checkbox" id="newAppCheck" class="accent-[#D4AF37] w-4 h-4 cursor-pointer">
                                 <label for="newAppCheck" class="text-[10px] font-bold text-gray-500 cursor-pointer uppercase tracking-wider hover:text-navy">I am applying for a TRN (No ID yet)</label>
@@ -98,12 +86,9 @@
                             <option value="taj_suite">TAJ Suite (Vehicle & Tax)</option>
                             <option value="nis_registration">NIS Registration</option>
                             <option value="police_record">Police Record Application</option>
-                            <option value="elector_id">Elector ID / Voter Services</option>
-                            <option value="other">Other / General Inquiry</option>
+                            <option value="general_inquiry">Other / General Inquiry</option>
                         </select>
                     </div>
-                    
-                    <!-- Hidden field for location, defaulting to 'local' for now -->
                     <input type="hidden" name="location" value="local">
                 </div>
 
@@ -125,7 +110,7 @@
                     <label class="flex items-start gap-3 cursor-pointer">
                         <input type="checkbox" name="consent" required class="mt-1">
                         <span class="text-xs text-gray-600 leading-relaxed">
-                            <strong>Compliance Consent:</strong> I authorize Docu-Hub Operations Services to process these documents for the purpose of government liaison. I understand this data will be handled according to the JDPA/POCA protocols defined in the Privacy Policy.
+                            <strong>Compliance Consent:</strong> I authorize Docu-Hub Operations Services to process these documents for the purpose of government liaison. I understand this data will be handled according to the JDPA/POCA protocols.
                         </span>
                     </label>
                 </div>
@@ -138,14 +123,14 @@
 
             </form>
 
-            <!-- Success Message (Hidden by default) -->
+            <!-- Success Message -->
             <div id="successMessage" class="hidden text-center py-10">
                 <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
                     <i data-lucide="check" class="w-8 h-8"></i>
                 </div>
                 <h2 class="text-2xl font-bold text-navy mb-2">Transmission Complete</h2>
                 <p class="text-sm text-gray-500 mb-8">Your documents have been securely logged in our Vault. An intake officer will verify them shortly.</p>
-                <a href="index.html" class="inline-block bg-gold text-white px-8 py-3 rounded-sm text-xs font-bold uppercase tracking-widest">Return Home</a>
+                <a href="index.html" class="inline-block bg-gold text-white px-8 py-3 rounded-sm text-xs font-bold uppercase tracking-widest hover:bg-navy transition-colors">Return Home</a>
             </div>
 
         </div>
@@ -154,7 +139,11 @@
     <script>
         lucide.createIcons();
 
-        // --- AUTO-FILL SERVICE FROM URL ---
+        // --- 1. CONFIGURATION ---
+        // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE
+        const SCRIPT_URL = "REPLACE_WITH_YOUR_DEPLOYED_WEB_APP_URL"; 
+
+        // --- 2. AUTO-FILL SERVICE FROM URL ---
         window.addEventListener('DOMContentLoaded', (event) => {
             const params = new URLSearchParams(window.location.search);
             const service = params.get('service');
@@ -164,43 +153,48 @@
             }
         });
         
-        // --- NEW TRN TOGGLE LOGIC ---
+        // --- 3. NEW TRN TOGGLE LOGIC ---
         document.getElementById('newAppCheck').addEventListener('change', function(e) {
             const input = document.getElementById('trnInput');
             if(this.checked) {
-                input.value = "";
-                input.disabled = true;
+                input.value = ""; 
+                input.disabled = true; 
                 input.required = false;
                 input.classList.add('disabled-input');
                 input.placeholder = "New Application (Auto-Generated)";
             } else {
-                input.disabled = false;
+                input.disabled = false; 
                 input.required = true;
                 input.classList.remove('disabled-input');
                 input.placeholder = "e.g. 123456789";
             }
         });
 
-        // --- CONFIGURATION ---
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwSqGZQ0txw65IS6A-rV7mNG2yIH4S6cCBKzXAOazRBVQxhucIXQhalMHRdfUyy3f-img/exec"; 
-
-        // File List Preview
+        // --- 4. FILE HANDLING ---
         document.getElementById('fileInput').addEventListener('change', function(e) {
             const list = document.getElementById('fileList');
             list.innerHTML = '';
+            const MAX_SIZE = 5 * 1024 * 1024; // 5MB limit
+            
             Array.from(this.files).forEach(file => {
+                if (file.size > MAX_SIZE) {
+                    alert(`File "${file.name}" is too large (Max 5MB). Please compress it.`);
+                    this.value = ""; // Reset input
+                    list.innerHTML = "";
+                    return;
+                }
                 list.innerHTML += `<div>• ${file.name}</div>`;
             });
         });
 
-        // Form Handler
+        // --- 5. FORM SUBMISSION ---
         async function handleFormSubmit(e) {
             e.preventDefault();
             
             const btn = document.getElementById('submitBtn');
             const originalBtnContent = btn.innerHTML;
             
-            // Set Loading State
+            // UI Loading State
             btn.disabled = true;
             btn.innerHTML = '<div class="loader"></div> Processing Encryption...';
 
@@ -214,10 +208,15 @@
                 files: []
             };
 
-            // Process Files (Convert to Base64)
             const fileInput = document.getElementById('fileInput');
             
             try {
+                // Ensure URL is set
+                if (SCRIPT_URL.includes("REPLACE_WITH")) {
+                    throw new Error("System Error: Backend URL not configured.");
+                }
+
+                // Process Files (Convert to Base64)
                 if (fileInput.files.length > 0) {
                     for (const file of fileInput.files) {
                         const base64 = await getBase64(file);
@@ -230,22 +229,21 @@
                 }
 
                 // Send to Google Script
-                // mode: 'no-cors' is CRITICAL for Apps Script web apps
                 await fetch(SCRIPT_URL, {
                     method: 'POST',
                     body: JSON.stringify(formData),
-                    mode: 'no-cors', 
+                    mode: 'no-cors', // Critical for Apps Script
                     headers: { 'Content-Type': 'application/json' }
                 });
 
-                // Show Success (Since no-cors doesn't give us the JSON response, we assume success if no error thrown)
+                // Show Success
                 form.classList.add('hidden');
                 document.getElementById('successMessage').classList.remove('hidden');
                 window.scrollTo(0, 0);
 
             } catch (error) {
                 console.error('Error:', error);
-                alert("Transmission Error: Please verify your connection and try again.");
+                alert("Transmission Error: " + error.message);
                 btn.disabled = false;
                 btn.innerHTML = originalBtnContent;
             }
@@ -266,6 +264,4 @@
         }
     </script>
 </body>
-
 </html>
-
