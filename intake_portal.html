@@ -59,15 +59,19 @@
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-bold text-navy mb-1">Last Name</label>
-                            <input type="text" name="lastName" required class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm text-sm focus:border-gold outline-none" placeholder="e.g. BROWN">
+                            <label class="block text-xs font-bold text-navy mb-1">Full Name</label>
+                            <input type="text" name="lastName" required class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm text-sm focus:border-gold outline-none" placeholder="e.g. John Brown">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-navy mb-1">TRN (9 Digits)</label>
+                            <label class="block text-xs font-bold text-navy mb-1 flex justify-between">
+                                <span>TRN (9 Digits)</span>
+                            </label>
                             <input type="text" id="trnInput" name="trn" required maxlength="9" pattern="\d{9}" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm text-sm focus:border-gold outline-none" placeholder="e.g. 123456789">
+                            
+                            <!-- New Application Toggle -->
                             <div class="flex items-center gap-2 mt-2">
                                 <input type="checkbox" id="newAppCheck" class="accent-[#D4AF37] w-4 h-4 cursor-pointer">
-                                <label for="newAppCheck" class="text-[10px] font-bold text-gray-500 cursor-pointer uppercase tracking-wider hover:text-navy">I am applying for a TRN (No ID yet)</label>
+                                <label for="newAppCheck" class="text-[10px] font-bold text-gray-500 cursor-pointer uppercase tracking-wider hover:text-navy">I am applying for a new TRN</label>
                             </div>
                         </div>
                     </div>
@@ -81,12 +85,12 @@
                         <label class="block text-xs font-bold text-navy mb-1">Service Required</label>
                         <select id="serviceSelect" name="service" required class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm text-sm focus:border-gold outline-none">
                             <option value="" disabled selected>Select Service...</option>
-                            <option value="rgd_suite">RGD Suite (Vital Records)</option>
-                            <option value="pica_suite">PICA Suite (Passports)</option>
-                            <option value="taj_suite">TAJ Suite (Vehicle & Tax)</option>
-                            <option value="nis_registration">NIS Registration</option>
-                            <option value="police_record">Police Record Application</option>
-                            <option value="general_inquiry">Other / General Inquiry</option>
+                            <option value="RGD Suite">RGD Suite (Vital Records)</option>
+                            <option value="PICA Passport">PICA Suite (Passports)</option>
+                            <option value="TAJ Compliance">TAJ Suite (Vehicle & Tax)</option>
+                            <option value="NIS Registration">NIS Registration</option>
+                            <option value="Police Record">Police Record Application</option>
+                            <option value="General Inquiry">Other / General Inquiry</option>
                         </select>
                     </div>
                     <input type="hidden" name="location" value="local">
@@ -140,8 +144,8 @@
         lucide.createIcons();
 
         // --- 1. CONFIGURATION ---
-        // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwSqGZQ0txw65IS6A-rV7mNG2yIH4S6cCBKzXAOazRBVQxhucIXQhalMHRdfUyy3f-img/exec"; 
+        // PASTE YOUR DEPLOYED GOOGLE WEB APP URL HERE
+        const SCRIPT_URL = "REPLACE_WITH_YOUR_WEB_APP_URL"; 
 
         // --- 2. AUTO-FILL SERVICE FROM URL ---
         window.addEventListener('DOMContentLoaded', (event) => {
@@ -149,7 +153,12 @@
             const service = params.get('service');
             if (service) {
                 const select = document.getElementById('serviceSelect');
-                if(select) select.value = service;
+                // Simple mapping to match the option values
+                if (service.includes("pica")) select.value = "PICA Passport";
+                else if (service.includes("rgd")) select.value = "RGD Suite";
+                else if (service.includes("taj")) select.value = "TAJ Compliance";
+                else if (service.includes("nis")) select.value = "NIS Registration";
+                else if (service.includes("police")) select.value = "Police Record";
             }
         });
         
@@ -157,16 +166,17 @@
         document.getElementById('newAppCheck').addEventListener('change', function(e) {
             const input = document.getElementById('trnInput');
             if(this.checked) {
-                input.value = ""; 
+                input.value = "New Application"; 
                 input.disabled = true; 
                 input.required = false;
-                input.classList.add('disabled-input');
-                input.placeholder = "New Application (Auto-Generated)";
+                input.classList.add('disabled-input', 'text-gray-500', 'bg-gray-100');
             } else {
+                input.value = "";
                 input.disabled = false; 
                 input.required = true;
-                input.classList.remove('disabled-input');
+                input.classList.remove('disabled-input', 'text-gray-500', 'bg-gray-100');
                 input.placeholder = "e.g. 123456789";
+                input.focus();
             }
         });
 
@@ -201,7 +211,7 @@
             const form = e.target;
             const formData = {
                 lastName: form.lastName.value,
-                trn: form.trn.value,
+                trn: document.getElementById('newAppCheck').checked ? "New Application" : form.trn.value,
                 service: form.service.value,
                 location: form.location.value,
                 consent: form.consent.checked,
@@ -265,5 +275,3 @@
     </script>
 </body>
 </html>
-
-
