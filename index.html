@@ -109,9 +109,9 @@
         /* Section Visibility Toggle */
         .section-content { display: none; opacity: 0; transition: opacity 0.4s ease-in-out; }
         .section-content.active { display: block; animation: fadeIn 0.6s ease forwards; }
-        .hidden-section { display: none; } /* For nested sections like catalog views */
-        .animate-fade-in { animation: fadeIn 0.5s ease-in; }
         
+        .hidden-section { display: none; }
+        .animate-fade-in { animation: fadeIn 0.5s ease-in; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
@@ -120,7 +120,7 @@
     <!-- NAVIGATION -->
     <nav class="bg-white/95 backdrop-blur-md shadow-md sticky top-0 z-40 border-b-2 border-gold">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('home')">
                 <div class="w-12 h-12 bg-navy flex items-center justify-center text-gold font-serif font-bold text-2xl rounded-sm shadow-lg">D</div>
                 <div>
                     <span class="text-xl font-serif font-bold text-navy block leading-none tracking-wide">Docu-Hub</span>
@@ -129,16 +129,18 @@
             </div>
             
             <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                <a href="#how-it-works" class="hover:text-gold transition uppercase tracking-widest text-xs font-bold" onclick="navigateTo('home')">Process</a>
-                <a href="#services" class="hover:text-gold transition uppercase tracking-widest text-xs font-bold" onclick="navigateTo('services')">Services</a>
+                <a onclick="navigateTo('how-it-works')" class="cursor-pointer hover:text-gold transition uppercase tracking-widest text-xs font-bold">Process</a>
+                <a onclick="navigateTo('services')" class="cursor-pointer hover:text-gold transition uppercase tracking-widest text-xs font-bold">Services</a>
+                <a onclick="navigateTo('about')" class="cursor-pointer hover:text-gold transition uppercase tracking-widest text-xs font-bold">About</a>
+                <a onclick="navigateTo('contact')" class="cursor-pointer hover:text-gold transition uppercase tracking-widest text-xs font-bold">Contact</a>
                 
-                <!-- SUBMIT PAYMENT -->
+                <!-- NEW: SUBMIT PAYMENT BUTTON -->
                 <button onclick="openModal('paymentModal')" class="border-2 border-green-600 text-green-700 px-5 py-2 rounded-sm hover:bg-green-600 hover:text-white transition font-bold uppercase tracking-wider text-xs flex items-center gap-2">
-                    <i data-lucide="upload-cloud" class="w-4 h-4"></i> Submit Payment
+                    <i data-lucide="upload-cloud" class="w-4 h-4"></i> Payment
                 </button>
                 
                 <button onclick="openModal('statusModal')" class="border-2 border-navy text-navy px-6 py-2 rounded-sm hover:bg-navy hover:text-white transition font-bold uppercase tracking-wider text-xs">
-                    Track Status
+                    Status
                 </button>
             </div>
             
@@ -151,7 +153,7 @@
     <!-- MAIN CONTENT WRAPPER -->
     <div id="main-content" class="flex-grow">
 
-        <!-- HOME PAGE (HERO) -->
+        <!-- HERO SECTION (HOME) -->
         <section id="home" class="section-content active">
             <div class="hero-gradient h-[75vh] flex items-center text-white px-6 text-center relative overflow-hidden bg-navy">
                 <div class="absolute inset-0 opacity-10 hero-pattern"></div>
@@ -179,22 +181,16 @@
                     </div>
                     
                     <div class="md:w-1/2 flex justify-center">
-                        <div class="relative w-80 h-[28rem] bg-white rounded-sm shadow-2xl p-8 transform rotate-2 border-t-8 border-gold">
-                            <div class="absolute -top-4 -left-4 w-20 h-20 bg-navy rounded-full flex items-center justify-center border-4 border-parchment shadow-lg z-20">
-                                <i data-lucide="shield-check" class="text-gold w-10 h-10"></i>
-                            </div>
-                            <div class="mt-8 space-y-6 opacity-40">
-                                <div class="h-4 bg-gray-200 rounded w-3/4"></div>
-                                <div class="h-4 bg-gray-200 rounded w-full"></div>
-                                <div class="h-4 bg-gray-200 rounded w-5/6"></div>
-                                <div class="h-32 bg-blue-50 rounded border-2 border-dashed border-blue-200"></div>
-                            </div>
-                            <div class="absolute bottom-8 left-8 right-8">
-                                <div class="flex items-center gap-3 text-navy font-bold border-t border-gray-100 pt-4">
-                                    <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                        <div class="relative w-80 h-[28rem] rounded-sm shadow-2xl transform rotate-2 border-t-8 border-gold overflow-hidden group">
+                            <img src="assets/hero.png" 
+                                 alt="Secure Document Portfolio" 
+                                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-navy to-transparent">
+                                <div class="flex items-center gap-3 text-white font-bold">
+                                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg">
                                         <i data-lucide="check" class="w-4 h-4"></i>
                                     </div>
-                                    <span class="text-sm">Ready for Processing</span>
+                                    <span class="text-sm tracking-widest uppercase">Verified Secure</span>
                                 </div>
                             </div>
                         </div>
@@ -202,7 +198,34 @@
                 </div>
             </div>
 
-            <!-- HOW IT WORKS -->
+            <!-- Selection Cards (Visible on Home) -->
+            <div class="py-24 bg-parchment">
+                <div class="container mx-auto px-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                        <div class="choice-card group" onclick="showServiceCategory('personal')">
+                            <div class="w-16 h-16 bg-navy/5 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-gold/10 transition-colors">
+                                <i data-lucide="user" class="text-navy group-hover:text-gold w-8 h-8 transition-colors"></i>
+                            </div>
+                            <h3 class="text-3xl serif font-bold text-navy mb-4">Individual Services</h3>
+                            <p class="text-base text-gray-600 mb-8 leading-relaxed">Secure vital records, passport renewals, and statutory tax filings.</p>
+                            <span class="btn-navy">View Catalog</span>
+                        </div>
+                        
+                        <div class="choice-card group" onclick="showServiceCategory('business')">
+                            <div class="w-16 h-16 bg-navy/5 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-gold/10 transition-colors">
+                                <i data-lucide="building-2" class="text-navy group-hover:text-gold w-8 h-8 transition-colors"></i>
+                            </div>
+                            <h3 class="text-3xl serif font-bold text-navy mb-4">Corporate Strategy</h3>
+                            <p class="text-base text-gray-600 mb-8 leading-relaxed">Accelerate payroll readiness with bulk TRN/NIS retrieval for workforce.</p>
+                            <span class="btn-navy">View Solutions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS (PROCESS) -->
+        <section id="how-it-works" class="section-content">
             <div class="py-24 bg-white border-b border-gray-200">
                 <div class="container mx-auto px-6">
                     <div class="text-center mb-20">
@@ -216,25 +239,25 @@
 
                         <!-- Step 1 -->
                         <div class="bg-white relative group text-center md:text-left">
-                            <div class="w-20 h-20 bg-navy text-gold flex items-center justify-center text-2xl font-bold rounded-full mb-6 mx-auto md:mx-0 border-8 border-white shadow-xl">01</div>
+                            <div class="w-20 h-20 bg-navy text-gold flex items-center justify-center text-2xl font-bold rounded-full mb-6 mx-auto md:mx-0 border-8 border-white shadow-xl group-hover:scale-110 transition-transform duration-300">01</div>
                             <h3 class="text-xl font-bold text-navy mb-3">Raise Your Hand</h3>
                             <p class="text-sm text-gray-600 leading-relaxed">Click <strong>"Start Application"</strong> and provide basic contact info. No complex forms needed yet.</p>
                         </div>
                         <!-- Step 2 -->
                         <div class="bg-white relative group text-center md:text-left">
-                            <div class="w-20 h-20 bg-white text-navy flex items-center justify-center text-2xl font-bold rounded-full mb-6 mx-auto md:mx-0 border-4 border-navy shadow-xl">02</div>
+                            <div class="w-20 h-20 bg-white text-navy flex items-center justify-center text-2xl font-bold rounded-full mb-6 mx-auto md:mx-0 border-4 border-navy shadow-xl group-hover:bg-gold group-hover:text-white group-hover:border-gold transition-colors duration-300">02</div>
                             <h3 class="text-xl font-bold text-navy mb-3">Expert Intake</h3>
                             <p class="text-sm text-gray-600 leading-relaxed">We contact you to verify ID and collect documents securely.</p>
                         </div>
                         <!-- Step 3 -->
                         <div class="bg-white relative group text-center md:text-left">
-                            <div class="w-20 h-20 bg-white text-navy flex items-center justify-center text-2xl font-bold rounded-full mb-6 mx-auto md:mx-0 border-4 border-navy shadow-xl">03</div>
+                            <div class="w-20 h-20 bg-white text-navy flex items-center justify-center text-2xl font-bold rounded-full mb-6 mx-auto md:mx-0 border-4 border-navy shadow-xl group-hover:bg-gold group-hover:text-white group-hover:border-gold transition-colors duration-300">03</div>
                             <h3 class="text-xl font-bold text-navy mb-3">Agency Liaison</h3>
                             <p class="text-sm text-gray-600 leading-relaxed">We physically visit the agency (PICA, Tax Office, RGD) as your authorized bearer.</p>
                         </div>
                         <!-- Step 4 -->
                         <div class="bg-white relative group text-center md:text-left">
-                            <div class="w-20 h-20 bg-navy text-gold flex items-center justify-center text-2xl font-bold rounded-full mb-6 mx-auto md:mx-0 border-8 border-white shadow-xl"><i data-lucide="check" class="w-8 h-8"></i></div>
+                            <div class="w-20 h-20 bg-navy text-gold flex items-center justify-center text-2xl font-bold rounded-full mb-6 mx-auto md:mx-0 border-8 border-white shadow-xl group-hover:scale-110 transition-transform duration-300"><i data-lucide="check" class="w-8 h-8"></i></div>
                             <h3 class="text-xl font-bold text-navy mb-3">Secure Handover</h3>
                             <p class="text-sm text-gray-600 leading-relaxed">Documents delivered via courier. Data purged after 30 days.</p>
                         </div>
@@ -288,7 +311,7 @@
 
                 <!-- CORPORATE VIEW -->
                 <div id="services-business" class="hidden-section animate-fade-in max-w-5xl mx-auto border-t border-gray-200 pt-12">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                     <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                         <div class="bg-white p-10 border-l-8 border-gold shadow-2xl">
                             <h4 class="font-bold uppercase text-sm tracking-widest mb-8 text-gold flex items-center gap-2">
                                 <i data-lucide="list-checks" class="w-5 h-5"></i> Corporate Deliverables
@@ -317,7 +340,7 @@
             </div>
         </section>
 
-        <!-- AGREEMENT VIEW (RESTORED) -->
+        <!-- AGREEMENT VIEW -->
         <section id="agreement" class="section-content">
             <div class="max-w-7xl mx-auto px-6 py-24 text-left">
                 <button onclick="navigateTo('services')" class="mb-8 text-base font-bold text-gray-500 hover:text-navy flex items-center gap-2">&larr; Back to Catalog</button>
@@ -359,25 +382,123 @@
         </section>
 
         <!-- ABOUT PAGE -->
-        <section id="about" class="section-content">
-            <!-- (Content Preserved) -->
+        <section id="about" class="section-content text-left">
             <div class="bg-white py-24 border-b border-gray-100">
                 <div class="max-w-7xl mx-auto px-6 text-left">
-                    <h2 class="text-4xl serif mb-6 text-navy">About Docu-Hub</h2>
-                    <p class="text-lg text-gray-600">Docu-Hub was established to provide individual citizens and Jamaican MSMEs with a high-accuracy, privacy-first alternative for handling essential government documents.</p>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center text-left">
+                        <div class="text-navy text-left">
+                            <span class="text-gold uppercase tracking-[0.3em] text-sm font-bold mb-4 block">Compliance Priority</span>
+                            <h2 class="text-5xl serif mb-8 leading-tight italic text-navy">Our Mission & Core Values</h2>
+                            <p class="text-lg text-gray-600 mb-6 leading-relaxed">Docu-Hub was established to provide individual citizens and Jamaican MSMEs with a **high-accuracy, privacy-first alternative** for handling essential government documents.</p>
+                            <div class="bg-parchment p-8 border-l-4 border-gold italic text-base text-gray-600 leading-loose text-left">
+                                "We are the specialized bridge between you and Jamaica’s primary administrative bodies, ensuring your documents get where they need to go correctly and on time."
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                            <div class="bg-white border border-gray-100 p-6 text-center shadow-sm">
+                                <i data-lucide="award" class="text-gold w-10 h-10 mx-auto mb-4"></i>
+                                <p class="text-sm font-bold uppercase tracking-widest text-navy">Competence</p>
+                            </div>
+                            <div class="bg-white border border-gray-100 p-6 text-center shadow-sm">
+                                <i data-lucide="shield-check" class="text-gold w-10 h-10 mx-auto mb-4"></i>
+                                <p class="text-sm font-bold uppercase tracking-widest text-navy">Integrity</p>
+                            </div>
+                            <div class="bg-white border border-gray-100 p-6 text-center shadow-sm">
+                                <i data-lucide="zap" class="text-gold w-10 h-10 mx-auto mb-4"></i>
+                                <p class="text-sm font-bold uppercase tracking-widest text-navy">Efficiency</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-navy py-24 text-white">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                        <div class="text-left">
+                            <span class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Chain of Custody</span>
+                            <h2 class="text-4xl serif mb-8">Security and Care of Your Records</h2>
+                            <p class="text-base opacity-80 leading-loose mb-10">We treat your documents with bank-grade care. From the moment of intake to the final handover, your records never leave our specialized security protocol.</p>
+                            <div class="space-y-6">
+                                <div class="flex gap-6 items-start"><div class="p-3 border border-gold/30"><i data-lucide="lock" class="text-gold w-6 h-6"></i></div><div><h5 class="text-sm font-bold uppercase tracking-widest mb-1">Tamper-Evident Transport</h5><p class="text-sm opacity-60">Physical certificates are transported in lockable, tamper-evident travel bags.</p></div></div>
+                                <div class="flex gap-6 items-start"><div class="p-3 border border-gold/30"><i data-lucide="archive" class="text-gold w-6 h-6"></i></div><div><h5 class="text-sm font-bold uppercase tracking-widest mb-1">High-Security Storage</h5><p class="text-sm opacity-60">Custody records are secured in lockable, high-security cabinets.</p></div></div>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 p-12 border border-white/10 backdrop-blur-md text-left">
+                            <span class="text-gold uppercase tracking-[0.3em] text-[10px] font-bold mb-6 block">Regulatory Oversight</span>
+                            <h3 class="text-3xl serif italic mb-8">Regulatory Compliance</h3>
+                            <div class="space-y-8">
+                                <div><h4 class="text-xs font-bold uppercase tracking-widest mb-2">JDPA Adherence</h4><p class="text-sm opacity-70 leading-relaxed">Operating in strict adherence to the Jamaica Data Protection Act (2020). Laura Clarke serves as our appointed <strong>DPO</strong>.</p></div>
+                                <div><h4 class="text-xs font-bold uppercase tracking-widest mb-2">DNFBP Supervision</h4><p class="text-sm opacity-70 leading-relaxed">As a DNFBP, we are supervised by the <strong>Financial Services Commission (FSC)</strong> and the <strong>FID</strong>.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 py-24 text-navy">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
+                    <div class="relative sticky top-32">
+                        <div class="aspect-[4/5] bg-gray-100 border border-gray-200 overflow-hidden shadow-2xl relative">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center p-12 text-center bg-[#fcfcfc]">
+                                <i data-lucide="user" class="w-20 h-20 text-gray-300 mb-4"></i>
+                                <span class="text-[10px] uppercase tracking-[0.4em] font-bold text-navy/40">Laura Clarke, Principal</span>
+                            </div>
+                            <img src="assets/laura-clarke.jpg" alt="Laura Clarke" class="w-full h-full object-cover relative z-10" onerror="this.style.display='none'; this.previousElementSibling.style.display='flex';">
+                        </div>
+                    </div>
+                    <div class="text-left">
+                        <span class="text-gold uppercase tracking-[0.3em] text-sm font-bold mb-4 block">Leadership</span>
+                        <h2 class="text-5xl serif mb-10 text-[#003366]">Laura Clarke</h2>
+                        <p class="text-sm uppercase tracking-widest text-gold font-bold mb-4 italic">Proprietor & Lead Liaison</p>
+                        <p class="text-lg text-gray-600 leading-relaxed mb-8">Founded on a 15-year pedigree at **NCB** and seasonal oversight at the **OEC**, Laura Clarke bridges the gap between banking rigour and administrative logistics.</p>
+                        <div class="bg-parchment p-8 border border-navy/5 text-left">
+                            <h4 class="text-sm font-bold uppercase tracking-widest text-navy mb-4">Essential Notice</h4>
+                            <p class="text-base text-gray-500 leading-loose italic">"Docu-Hub is a clerical agency and government logistics provider. We are not a law firm and do not provide legal advice or statutory interpretations."</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-        
-        <!-- CONTACT PAGE -->
-        <section id="contact" class="section-content">
-             <div class="max-w-7xl mx-auto px-6 py-24 text-center">
-                 <h2 class="text-4xl serif text-navy mb-6">Contact Us</h2>
-                 <p class="text-lg text-gray-600 mb-6">WhatsApp: 1 (876) 561-2614</p>
-             </div>
-        </section>
 
-    </div> <!-- End Main Content -->
+        <!-- CONTACT PAGE -->
+        <section id="contact" class="section-content text-left">
+            <div class="max-w-7xl mx-auto px-6 py-24 text-center">
+                 <span class="text-gold uppercase tracking-[0.3em] text-sm font-bold mb-4 block text-center">Coordination</span>
+                 <h2 class="text-5xl serif text-navy mb-16 text-center text-[#003366]">Connect With Our Team</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-left">
+                    <div class="bg-white border border-gray-100 p-10 shadow-lg" id="calendar-wrapper">
+                        <h3 class="text-3xl serif text-navy mb-4 text-[#003366]">Book Strategy Session</h3>
+                        <p class="text-base text-gray-500 mb-8">Initialize a 15-minute virtual intake for complex corporate or individual cases.</p>
+                        <button onclick="initCalendar()" class="btn-outline w-full hover:bg-navy hover:text-white transition-all uppercase tracking-widest text-sm font-bold">View Availability</button>
+                    </div>
+                    <div class="bg-navy p-10 text-white shadow-xl flex flex-col justify-center rounded-sm">
+                        <h3 class="text-3xl serif mb-8 italic text-gold">Direct Communication</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4 cursor-pointer hover:text-gold transition group" onclick="openWhatsApp()">
+                                <div class="p-3 border border-gold/30 rounded-sm group-hover:bg-gold/10 transition-all">
+                                    <i data-lucide="message-circle" class="text-gold w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs uppercase font-bold tracking-widest text-gold/60">WhatsApp Liaison</span>
+                                    <span class="text-2xl block text-white">1 (876) 561-2614</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 cursor-pointer hover:text-gold transition group" onclick="window.location.href='mailto:admin@dochubservices.com'">
+                                <div class="p-3 border border-gold/30 rounded-sm group-hover:bg-gold/10 transition-all">
+                                    <i data-lucide="mail" class="text-gold w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs uppercase font-bold tracking-widest text-gold/60">Professional Email</span>
+                                    <span class="text-2xl block text-white">admin@dochubservices.com</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <!-- FOOTER -->
     <footer class="bg-navy text-white pt-16 pb-8 border-t border-gold/20">
@@ -400,12 +521,14 @@
                 <ul class="text-sm text-gray-400 space-y-3">
                     <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
                     <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-white transition">Data Retention</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="font-bold mb-6 text-xs uppercase tracking-widest text-gold">Security Center</h4>
                 <ul class="text-sm text-gray-400 space-y-3">
                     <li><a href="#" class="hover:text-white transition">Why Electronic Payment?</a></li>
+                    <li><a href="#" class="hover:text-white transition">The Biometric Boundary</a></li>
                     <li><a href="#" class="hover:text-white transition">Biometric Protocols</a></li>
                 </ul>
             </div>
@@ -454,7 +577,7 @@
                     <!-- COMPLIANCE CHECKBOX -->
                     <div class="mb-6 flex items-start gap-3 bg-blue-50 p-3 rounded border border-blue-100">
                         <input type="checkbox" required class="mt-1 accent-navy cursor-pointer">
-                        <p class="text-xs text-navy/80 leading-relaxed">I consent to Docu-Hub contacting me to verify my documents.</p>
+                        <p class="text-xs text-navy/80 leading-relaxed">I consent to Docu-Hub contacting me to verify my documents and initialize the secure transfer process.</p>
                     </div>
 
                     <button type="submit" id="submitLeadBtn" class="w-full bg-navy text-white font-bold py-4 rounded-sm hover:bg-gold hover:text-navy transition shadow-lg text-sm uppercase tracking-widest">
@@ -529,14 +652,15 @@
         // --- CONFIGURATION ---
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwSqGZQ0txw65IS6A-rV7mNG2yIH4S6cCBKzXAOazRBVQxhucIXQhalMHRdfUyy3f-img/exec'; // CRITICAL: Update this
         const WHATSAPP_NUMBER = "18765612614";
+        const GOOGLE_CALENDAR_URL = "https://calendar.app.google/XsqkLViLYtDKsjFB9";
 
         const INDIVIDUAL_SERVICES = [
-            { id: 'rgd', title: 'RGD Suite (Vital Records)', icon: 'file-text', summary: 'Birth, Marriage, and Death certificate procurement.', detail: 'Certified retrieval from RGD Twickenham Park.', fee: '$4,500 JMD' },
-            { id: 'pica', title: 'PICA Suite (Passports)', icon: 'shield-check', summary: 'Adult Renewals & Citizenship Facilitation.', detail: 'Full administrative form preparation and appointment scheduling.', fee: '$3,500 JMD' },
-            { id: 'taj', title: 'TAJ Suite (Vehicle & Tax)', icon: 'truck', summary: 'Registration Renewals & Property Tax Remittance.', detail: 'Immediate secure remittance via the approved TAJ portals.', fee: '$2,500 JMD' },
-            { id: 'nis', title: 'NIS Registration', icon: 'user-check', summary: 'New social security registration.', detail: 'Administrative processing for first-time applicants.', fee: '$3,000 JMD' },
-            { id: 'police', title: 'Police Record', icon: 'fingerprint', summary: 'Criminal background check.', detail: 'Managing appointments at JCF station.', fee: '$3,000 JMD' },
-            { id: 'eoj', title: 'Elector ID', icon: 'credit-card', summary: 'National ID procurement.', detail: 'Guidance through residency verification requirements.', fee: '$2,500 JMD' }
+            { id: 'rgd', title: 'RGD Suite (Vital Records)', icon: 'file-text', summary: 'Birth, Marriage, and Death certificate procurement.', detail: 'Certified retrieval from RGD Twickenham Park. We manage un-indexed cases through evidence trail reconstruction and direct agency liaison.', fee: '$4,500 JMD' },
+            { id: 'pica', title: 'PICA Suite (Passports)', icon: 'shield-check', summary: 'Adult Renewals & Citizenship Facilitation.', detail: 'Full administrative form preparation and appointment scheduling. We ensure all biographic documentation meets PICA standards.', fee: '$3,500 JMD' },
+            { id: 'taj', title: 'TAJ Suite (Vehicle & Tax)', icon: 'truck', summary: 'Registration Renewals & Property Tax Remittance.', detail: 'Immediate secure remittance via the approved TAJ portals. Digital audit trails and verification receipts are provided for all transactions.', fee: '$2,500 JMD' },
+            { id: 'nis', title: 'NIS Registration & Replacement', icon: 'user-check', summary: 'New social security registration or lost card facilitation.', detail: 'Administrative processing for first-time applicants or replacement of mutilated cards. Essential for legal employment compliance.', fee: '$3,000 JMD' },
+            { id: 'police', title: 'Police Record Logistics', icon: 'fingerprint', summary: 'Criminal background check appointment management.', detail: 'Managing statutory fee payments and securing fingerprinting appointments at the relevant JCF station.', fee: '$3,000 JMD' },
+            { id: 'eoj', title: 'Elector ID (EOJ) Verification', icon: 'credit-card', summary: 'National ID procurement and residency audits.', detail: 'Guidance through residency verification requirements and EOJ portal navigation for new or replacement identification cards.', fee: '$2,500 JMD' }
         ];
 
         // --- RENDER FUNCTIONS ---
@@ -555,16 +679,20 @@
                                     <p class="text-sm text-gray-400 group-open:hidden mt-1">${service.summary}</p>
                                 </div>
                             </div>
+                            
+                            <!-- VISIBLE BUTTON -->
                             <div class="mt-4 md:mt-0 flex items-center gap-4">
-                                <!-- UPDATED: Navigates to Agreement, not Modal directly -->
                                 <button onclick="initializeAgreement('${service.title}'); event.preventDefault();" class="btn-navy w-full md:w-auto text-xs whitespace-nowrap">Start Application</button>
                                 <i data-lucide="chevron-down" class="group-open:rotate-180 transition-transform text-gold hidden md:block"></i>
                             </div>
+                            
                         </summary>
                         <div class="px-8 md:px-10 pb-8 pt-0 border-t border-parchment mt-2 text-left">
                             <h4 class="font-bold uppercase text-xs tracking-[0.3em] text-gold mb-4 pt-6">Professional Scope</h4>
                             <p class="text-base text-gray-600 mb-8 leading-relaxed">${service.detail}</p>
-                            <p class="font-bold text-navy text-sm mb-8 uppercase tracking-[0.2em] bg-parchment inline-block px-4 py-2 border border-navy/5">Professional Fee: <span class="text-gold font-bold">${service.fee}</span></p>
+                            <p class="font-bold text-navy text-sm mb-8 uppercase tracking-[0.2em] bg-parchment inline-block px-4 py-2 border border-navy/5">
+                                Professional Fee: <span class="text-gold font-bold">${service.fee}</span>
+                            </p>
                         </div>
                     </details>
                 </div>
@@ -592,16 +720,24 @@
         function showServiceCategory(cat) {
             const personal = document.getElementById('services-personal');
             const business = document.getElementById('services-business');
+            
+            // FIX: Ensure we navigate to the services section first!
+            navigateTo('services');
+
             if(cat === 'personal') {
                 personal.classList.remove('hidden-section');
                 business.classList.add('hidden-section');
                 renderCatalog();
-                setTimeout(() => { personal.scrollIntoView({behavior: "smooth"}); }, 100);
             } else {
                 personal.classList.add('hidden-section');
                 business.classList.remove('hidden-section');
-                setTimeout(() => { business.scrollIntoView({behavior: "smooth"}); }, 100);
             }
+            
+            // Small delay to allow fade-in before scrolling to the specific list
+            setTimeout(() => {
+                const target = cat === 'personal' ? personal : business;
+                target.scrollIntoView({behavior: "smooth", block: "start"});
+            }, 100);
         }
 
         // --- MODAL FUNCTIONS ---
@@ -627,7 +763,8 @@
         }
 
         // --- BACKEND CONNECTIONS ---
-        // 1. SUBMIT LEAD
+        
+        // 1. SUBMIT LEAD (POST)
         function submitLead(e) {
             e.preventDefault();
             const btn = document.getElementById('submitLeadBtn');
@@ -684,7 +821,7 @@
             };
         }
 
-        // 3. CHECK STATUS
+        // 3. CHECK STATUS (GET)
         function checkStatus() {
             const trn = document.getElementById('trackTrn').value;
             if(!trn) return alert("Please enter Reference ID");
@@ -712,8 +849,16 @@
             document.getElementById('statusResultView').classList.add('hidden');
             document.getElementById('trackTrn').value = '';
         }
-        
+
+        // --- NAVIGATION & INIT ---
+        function openUploadPortal() { openModal('paymentModal'); } 
         function openWhatsApp() { window.open(`https://wa.me/${WHATSAPP_NUMBER}`, '_blank'); }
+
+        // --- CALENDAR INIT ---
+        function initCalendar() {
+             const wrapper = document.getElementById('calendar-wrapper');
+             wrapper.innerHTML = `<iframe src="${GOOGLE_CALENDAR_URL}" style="width:100%;height:500px;border:0;"></iframe>`;
+        }
 
         window.onload = () => {
             renderCatalog();
