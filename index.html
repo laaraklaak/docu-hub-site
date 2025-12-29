@@ -398,15 +398,25 @@
         </div>
     </div>
 
-    <!-- 4. LEGAL VAULT MODAL -->
-    <div id="legalDocModal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-navy/95 backdrop-blur-md">
-        <div class="modal-content bg-white w-full max-w-2xl rounded shadow-2xl overflow-hidden m-4 text-left border-t-8 border-gold">
-            <div class="bg-navy p-6 flex justify-between items-center text-white">
-                <div class="flex items-center gap-3"><i data-lucide="scroll-text" class="text-gold"></i><h3 id="legalDocTitle" class="font-serif text-xl uppercase tracking-widest">Document Registry</h3></div>
-                <button onclick="closeModal('legalDocModal')" class="text-gray-400 hover:text-white transition"><i data-lucide="x"></i></button>
+     <!-- MODAL: PAYMENT UPLOAD -->
+    <div id="paymentModal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-navy/90 backdrop-blur-sm">
+        <div class="modal-content bg-white w-full max-w-md rounded shadow-2xl overflow-hidden m-4">
+            <div class="bg-green-700 p-6 flex justify-between items-center">
+                <div><span class="text-white/80 text-[10px] font-bold uppercase tracking-widest">Finance</span><h3 class="text-white font-serif text-xl">Submit Proof</h3></div>
+                <button onclick="closeModal('paymentModal')" class="text-white hover:text-gold"><i data-lucide="x"></i></button>
             </div>
-            <div id="legalDocBody" class="p-10 max-h-[70vh] overflow-y-auto legal-doc-text"></div>
-        </div>
+            <div class="p-8">
+                <form onsubmit="submitPayment(event)">
+                    <p class="text-sm text-gray-600 mb-4">Please upload a screenshot of your bank transfer receipt.</p>
+                    <div class="mb-4"><label class="block text-xs font-bold text-gray-500 uppercase mb-1">Name / Reference</label><input type="text" name="clientRef" required class="w-full border-b-2 border-gray-200 bg-gray-50 p-3 focus:border-green-600 focus:outline-none transition rounded-t" placeholder="Your Name or TRN"></div>
+                    <div class="border-2 border-dashed border-gray-300 p-6 text-center rounded mb-6 cursor-pointer hover:border-green-600 transition bg-gray-50" onclick="document.getElementById('payFile').click()">
+                        <i data-lucide="upload" class="mx-auto text-gray-400 mb-2 w-8 h-8"></i>
+                        <span class="text-xs text-gray-500 font-bold block" id="fileNameDisplay">Click to Select Receipt Image</span>
+                        <input type="file" id="payFile" name="payFile" class="hidden" required onchange="document.getElementById('fileNameDisplay').innerText = this.files[0].name">
+                    </div>
+                    <button type="submit" id="btnPay" class="w-full bg-green-700 text-white font-bold py-3 rounded hover:bg-green-800 transition shadow-lg uppercase tracking-widest text-xs">UPLOAD RECEIPT</button>
+                </form>
+            </div>
     </div>
 
     <script>
@@ -595,4 +605,5 @@
     </script>
 </body>
 </html>
+
 
