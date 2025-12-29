@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Services Catalog | Docu-Hub Operations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { navy: '#003366', gold: '#D4AF37', 'gold-light': '#F3E5AB', parchment: '#F5F0EC', 'navy-dark': '#002244' },
+                    fontFamily: { serif: ['Playfair Display', 'serif'], sans: ['Poppins', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #F5F0EC; color: #003366; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .modal { transition: opacity 0.3s ease, visibility 0.3s ease; opacity: 0; visibility: hidden; z-index: 100; }
+        .modal.active { opacity: 1; visibility: visible; }
+        .choice-card { background: white; border: 1px solid rgba(0,51,102,0.1); padding: 2rem; transition: all 0.4s ease; cursor: pointer; text-align: center; border-radius: 4px; }
+        .choice-card:hover { border-color: #D4AF37; transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .signature-wrapper { border: 1px solid #e2e8f0; background: #f8fafc; border-radius: 4px; position: relative; }
+        #signature-pad { width: 100%; height: 150px; cursor: crosshair; touch-action: none; }
+        .catalog-item { transition: all 0.3s ease; border-radius: 2px; }
+        .catalog-item:hover { border-color: #D4AF37; }
+        details summary { list-style: none; cursor: pointer; outline: none; }
+        details summary::-webkit-details-marker { display: none; }
+        
+        .brief-box { background: #fafafa; border-left: 3px solid #D4AF37; }
+
+        /* Agreement Slide-down viewer */
+        #agreement-viewer { max-height: 0; overflow: hidden; transition: all 0.3s ease-out; opacity: 0; }
+        #agreement-viewer.open { max-height: 350px; overflow-y: auto; border: 2px solid #003366; margin-top: 10px; padding: 15px; background: white; opacity: 1; }
+
+        /* Form Controls */
+        input:disabled { cursor: not-allowed; opacity: 0.5; }
+        .btn-locked { background-color: #94a3b8 !important; cursor: not-allowed !important; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- NAVIGATION -->
+    <nav class="bg-white/95 backdrop-blur-md shadow-md sticky top-0 z-40 border-b-4 border-gold">
+        <div class="border-b border-gray-100 bg-gray-50/50">
+            <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+                <div class="hidden md:flex items-center space-x-8 text-xs font-bold text-navy uppercase tracking-widest">
+                    <a href="services.html" class="text-gold border-b border-gold">Services</a>
+                    <a href="about.html" class="hover:text-gold transition">About Us</a>
+                    <a href="index.html#insights" class="hover:text-gold transition">Insights</a>
+                    <a href="index.html#contact" class="hover:text-gold transition">Contact</a>
+                </div>
+                <div class="flex items-center gap-4 cursor-pointer" onclick="window.location.href='index.html'">
+                    <div class="w-8 h-8 bg-navy flex items-center justify-center text-gold rounded font-bold">D</div>
+                    <span class="font-bold text-navy uppercase tracking-tighter text-sm hidden sm:inline font-sans">Docu-Hub Portal</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-6 py-12 max-w-5xl flex-grow">
+        
+        <div class="text-center mb-16">
+            <span class="text-gold uppercase tracking-[0.4em] text-[10px] font-bold mb-2 block text-center">Execution Hierarchy</span>
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 italic text-center text-navy">What We Do</h1>
+            <div class="w-16 h-1 bg-gold mx-auto mb-8"></div>
+        </div>
+
+        <!-- Choice Area -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20" id="selection-grid">
+            <div class="choice-card group" onclick="toggleCatalog('personal')">
+                <div class="w-12 h-12 bg-navy/5 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-gold/10 transition-colors"><i data-lucide="user" class="text-navy w-6 h-6"></i></div>
+                <h3 class="text-lg md:text-2xl font-bold text-navy mb-2 uppercase tracking-widest">Individual Logistics</h3>
+                <span class="text-xs font-bold text-gold uppercase tracking-widest">Open Catalog</span>
+            </div>
+            <div class="choice-card group" onclick="toggleCatalog('business')">
+                <div class="w-12 h-12 bg-navy/5 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-gold/10 transition-colors"><i data-lucide="briefcase" class="text-navy w-6 h-6"></i></div>
+                <h3 class="text-lg md:text-2xl font-bold text-navy mb-2 uppercase tracking-widest">Corporate Strategy</h3>
+                <span class="text-xs font-bold text-gold uppercase tracking-widest">HR Solutions</span>
+            </div>
+        </div>
+
+        <!-- Individual Catalog -->
+        <div id="catalog-personal" class="hidden space-y-4">
+            <h2 class="text-2xl font-serif font-bold text-navy mb-8 border-b pb-4 text-left">Professional Service Catalog</h2>
+            <div id="catalog-container" class="space-y-6"></div>
+        </div>
+
+        <!-- Corporate Area -->
+        <div id="catalog-business" class="hidden">
+            <div class="max-w-7xl mx-auto bg-white border border-navy/5 shadow-2xl overflow-hidden rounded-sm text-left font-sans">
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <div class="p-8 md:p-16 flex flex-col justify-center bg-white border-b lg:border-b-0 lg:border-r border-navy/5 text-left">
+                        <div class="w-16 h-1 bg-gold mb-6 text-left"></div>
+                        <span class="text-gold uppercase tracking-[0.4em] text-[10px] font-bold mb-3 block text-left">Executive Liaison</span>
+                        <h3 class="text-3xl md:text-5xl font-serif font-bold text-navy leading-tight mb-6 text-left">Corporate Bulk <br/><span class="italic text-gold font-serif">Processing.</span></h3>
+                        <p class="text-sm md:text-lg text-gray-500 leading-relaxed mb-8 font-light italic text-left">High-volume administrative processing for organizations hiring 5+ staff. We centralize onboarding logistics for Jamaican statutory requirements.</p>
+                        <button onclick="openModal('inquiryModal', 'Corporate Bulk')" class="btn-navy py-5 px-10 bg-navy text-white uppercase text-xs font-bold tracking-widest hover:bg-gold transition-colors">Request Batch Quote</button>
+                    </div>
+                    <div class="bg-navy p-8 md:p-16 flex flex-col justify-center space-y-4 text-white text-left">
+                        <div class="p-6 bg-white/5 border border-white/10 flex items-start gap-4 rounded-sm text-left"><i data-lucide="layers" class="text-gold mt-1"></i><div><h4 class="font-bold text-xs uppercase tracking-widest mb-1">Statutory Batching</h4><p class="text-xs opacity-60">TRN/NIS registration for entire weekly hiring rhythms.</p></div></div>
+                        <div class="p-6 bg-white/5 border border-white/10 flex items-start gap-4 rounded-sm text-left"><i data-lucide="shield-check" class="text-gold mt-1"></i><div><h4 class="font-bold text-xs uppercase tracking-widest mb-1">Compliance Vetting</h4><p class="text-xs opacity-60">Verification of documentation with official biographic trails.</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-dark text-white pt-16 md:pt-20 pb-10 border-t border-gold/20 font-sans">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 mb-16 text-left">
+            <div>
+                <span class="text-2xl font-serif font-bold text-gold uppercase tracking-wider">Docu-Hub</span>
+                <p class="text-gray-400 text-sm mt-4 leading-relaxed font-light text-left">Institutional administrative logistics for individuals and organizations.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-6 text-xs uppercase tracking-widest">Resources</h4>
+                <ul class="text-xs text-gray-400 space-y-3 font-bold">
+                    <li><a href="index.html" class="hover:text-gold transition">Home</a></li>
+                    <li><a href="services.html" class="hover:text-gold transition text-gold">Services Catalog</a></li>
+                    <li><a href="about.html" class="hover:text-gold transition">About Us</a></li>
+                    <li><a href="help_center.html" class="text-gold-light hover:text-gold underline">Help & Navigation Support</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-6 text-xs uppercase tracking-widest">Governance</h4>
+                <ul class="text-xs text-gray-400 space-y-3 font-bold">
+                    <li><a href="privacy.html" class="hover:text-gold transition">Privacy Policy</a></li>
+                    <li><a href="terms.html" class="hover:text-gold transition">Terms of Service</a></li>
+                    <li><a href="legal_notice.html" class="hover:text-gold transition">Legal Notice</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container mx-auto px-6 pt-8 border-t border-white/5 text-center">
+            <p class="text-[10px] text-gray-500 italic mb-4 max-w-3xl mx-auto leading-relaxed">
+                Docu-Hub Operations Services is a clerical agency and government logistics provider. We are not a law firm, and we do not provide legal advice, statutory interpretations, or legal opinions. All data is handled in strict compliance with the Data Protection Act (2020) of Jamaica.
+            </p>
+            <div class="text-[10px] uppercase tracking-widest text-gray-600 font-bold">&copy; 2026 Docu-Hub Operations Services. Kingston, Jamaica.</div>
+        </div>
+    </footer>
+
+    <!-- INTAKE MODAL -->
+    <div id="inquiryModal" class="modal fixed inset-0 flex items-center justify-center bg-navy/90 backdrop-blur-sm">
+        <div class="modal-content bg-white w-full max-w-lg rounded shadow-2xl overflow-hidden m-4 text-left font-sans">
+            <div class="bg-navy p-6 flex justify-between items-center text-white">
+                <div><span class="text-gold text-[10px] font-bold uppercase tracking-widest">Liaison Protocol</span><h3 class="font-serif text-xl uppercase">Start Application</h3></div>
+                <button onclick="closeModal('inquiryModal')" class="text-gray-400 hover:text-white transition"><i data-lucide="x"></i></button>
+            </div>
+            <div class="p-8 max-h-[85vh] overflow-y-auto">
+                <form id="leadForm" onsubmit="submitLead(event)" class="space-y-4">
+                    <div><label class="block text-[10px] font-bold text-gray-500 uppercase mb-1">Legal Name</label><input type="text" name="lastName" required class="w-full border-b-2 border-gray-200 bg-gray-50 p-3 focus:border-gold outline-none text-sm transition font-sans rounded-t"></div>
+                    <div><label class="block text-[10px] font-bold text-gray-500 uppercase mb-1">Contact Number</label><input type="text" name="trn" required class="w-full border-b-2 border-gray-200 bg-gray-50 p-3 focus:border-gold outline-none text-sm transition font-sans rounded-t text-left" placeholder="WhatsApp Preferred"></div>
+                    <div><label class="block text-[10px] font-bold text-gray-500 uppercase mb-1 text-left">Service Required</label><select name="service" id="modalServiceSelect" class="w-full border-b-2 border-gray-200 bg-gray-50 p-3 outline-none text-sm font-bold cursor-pointer transition font-sans rounded-t text-left"><option>PICA Passport</option><option>Tax Compliance / TRN</option><option>RGD Suite</option><option>NIS Registration</option><option>Police Record</option><option>Corporate Bulk</option></select></div>
+                    
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-500 uppercase mb-1 text-left tracking-tighter">Authorization Signature</label>
+                        <div class="signature-wrapper text-left"><canvas id="signature-pad"></canvas><button type="button" onclick="signaturePad.clear()" class="absolute top-2 right-2 text-[9px] font-bold text-navy/40 hover:text-red-500 uppercase font-sans">Clear</button></div>
+                        <input type="hidden" name="signature" id="signatureInput">
+                    </div>
+
+                    <!-- Compliance Gate with Scroll-to-Unlock Logic -->
+                    <div class="mb-6">
+                        <div class="flex items-start gap-3 bg-blue-50 p-4 rounded border border-blue-100">
+                            <input type="checkbox" id="agreement-check" required disabled class="mt-1 accent-navy cursor-pointer w-4 h-4">
+                            <div class="text-[10px] text-navy/80 leading-relaxed text-left font-sans">
+                                I accept the <button type="button" onclick="toggleAgreementViewer()" id="viewer-toggle-btn" class="text-navy font-bold underline hover:text-gold uppercase tracking-tighter">Master Service Agreement</button> and authorize Docu-Hub to act as my bearer.
+                                <p id="scroll-instruction" class="text-red-600 font-bold mt-1 hidden italic">Click above and scroll to the bottom to unlock.</p>
+                                <p id="unlock-success" class="text-green-600 font-bold mt-1 hidden font-sans"><i data-lucide="check-circle" class="inline w-3 h-3"></i> Agreement Unlocked.</p>
+                            </div>
+                        </div>
+
+                        <!-- Hidden Agreement Text Viewer -->
+                        <div id="agreement-viewer" class="rounded-sm font-sans" onscroll="handleAgreementScroll(this)">
+                            <div class="space-y-5 text-left py-2">
+                                <p class="text-[10px] font-bold text-navy/40 uppercase mb-4 tracking-widest text-center">--- SCROLL TO BOTTOM ---</p>
+                                <div>
+                                    <h4 class="text-[10px] font-bold uppercase text-gold mb-1">1. Liaison Authorization</h4>
+                                    <p class="text-[12px] text-gray-600 leading-relaxed">The Client hereby appoints Docu-Hub Operations Services as their authorized administrative bearer. We facilitate clerical logistics, agency submissions, and document retrieval as a specialized intermediary between the Client and Jamaican Government Agencies.</p>
+                                </div>
+                                <div>
+                                    <h4 class="text-[10px] font-bold uppercase text-gold mb-1">2. Regulatory Disclaimer</h4>
+                                    <p class="text-[12px] text-gray-600 leading-relaxed italic">Docu-Hub is an administrative logistics provider, not a law firm. We do not provide legal advice, statutory interpretations, or legal opinions. Our services are strictly clerical based on the biographic data provided by the Client.</p>
+                                </div>
+                                <div>
+                                    <h4 class="text-[10px] font-bold uppercase text-gold mb-1">3. Fees & Disbursements</h4>
+                                    <p class="text-[12px] text-gray-600 leading-relaxed">Service fees cover the logistics of submission and collection and are non-refundable once agency processing has been initiated. All official government statutory fees (disbursements) remain the sole responsibility of the Client.</p>
+                                </div>
+                                <div>
+                                    <h4 class="text-[10px] font-bold uppercase text-gold mb-1">4. Dual-Clock Privacy Policy</h4>
+                                    <p class="text-[12px] text-gray-600 leading-relaxed">In strict compliance with the Data Protection Act (2020): All digital copies of Client Identification (Passports, IDs, Birth Certificates) are permanently purged from our active systems within 30 days of case completion. Financial logs and signed authorizations are archived for 7 years as required by POCA.</p>
+                                </div>
+                                <div class="pt-4 border-t border-gray-100 text-center">
+                                    <p class="text-[10px] font-bold text-green-600 uppercase tracking-widest">End of Agreement reached</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submitLeadBtn" class="w-full bg-navy text-white font-bold py-4 rounded-sm hover:bg-gold transition shadow-lg text-xs uppercase tracking-widest btn-locked font-sans" disabled>Authorize & Submit</button>
+                    <p id="submit-hint" class="text-[9px] text-center text-gray-400 uppercase tracking-widest font-sans">Submit is disabled until agreement is accepted.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwQf0sYv9pzazZmo2os4-lUP1oVYO2Xz-nBEytCGvtkIOv4hrH9nDwlRT5WnZk_6D2l/exec"; 
+
+        const INDIVIDUAL_SERVICES = [
+            { 
+                id: 'rgd', title: 'RGD Vital Records', icon: 'file-text', summary: 'Birth, Marriage, and Death Certificates delivered without the headache.', 
+                process: 'Search: Registry search for entry number.<br>Application: Filing for Blue-Border Electronic Certs.<br>Delivery: Regional office collection.',
+                needs: 'Name, Date of Event, Parish/Place of Event, Entry Number.',
+                timeline: 'Express: 7–10 Days. Standard: 6–8 Weeks.', fee: '$4,500 JMD' 
+            },
+            { 
+                id: 'pica', title: 'PICA Passport Suite', icon: 'shield-check', summary: 'Skip the lines at the passport office. We handle vetting and collection.', 
+                process: 'Vetting: Photo & Form standards review.<br>Submission: Authorized bearer stand-in lines.<br>Collection: Pickup & Delivery to Client.',
+                needs: 'Expired Passport, Birth Cert, 2 Photos (1 JP Certified).',
+                timeline: '7–10 Working Days after submission.', fee: '$3,500 JMD' 
+            },
+            { 
+                id: 'taj', title: 'TAJ Tax Compliance', icon: 'truck', summary: 'Immediate secure remittance for TRNs and Vehicle Documents.', 
+                process: 'Prep: Documentation verification.<br>Submission: Physical Tax Office submission.<br>Handover: Receipt or Slip collection.',
+                needs: 'Valid ID (Passport/License) & Original Birth Certificate.',
+                timeline: 'Same Day or Next Day Service.', fee: '$2,500 JMD' 
+            },
+            { 
+                id: 'nis', title: 'NIS Registration', icon: 'user-check', summary: 'Essential Social Security registration for payroll.', 
+                process: 'Verify: Supporting document check.<br>Submit: Pink Form submission to MLSS.<br>Receipt: Immediate collection of White Slip.',
+                needs: 'Birth Certificate & Valid ID OR JP-Certified Photos.',
+                timeline: 'Immediate (White Slip same-day).', fee: '$3,000 JMD' 
+            },
+            { 
+                id: 'police', title: 'JCF Police Record', icon: 'fingerprint', summary: 'Background check procurement without the logistical hassle.', 
+                process: 'Payment: Tax Office fee payment.<br>Schedule: Calendar slot optimization.<br>Collection: Result retrieval.',
+                needs: 'TRN, Valid ID, 1 Passport-sized photo.',
+                timeline: '14–21 Days after fingerprints.', fee: '$3,000 JMD' 
+            }
+        ];
+
+        function toggleCatalog(type) {
+            const p = document.getElementById('catalog-personal');
+            const b = document.getElementById('catalog-business');
+            const grid = document.getElementById('selection-grid');
+            if(type === 'personal') { p.classList.remove('hidden'); b.classList.add('hidden'); renderCatalog(); }
+            else { p.classList.add('hidden'); b.classList.remove('hidden'); }
+            window.scrollTo({ top: grid.offsetTop + grid.offsetHeight + 20, behavior: 'smooth' });
+        }
+
+        function renderCatalog() {
+            const container = document.getElementById('catalog-container');
+            container.innerHTML = INDIVIDUAL_SERVICES.map(service => `
+                <div class="catalog-item bg-white border border-gray-100 shadow-md overflow-hidden text-left" id="agency-${service.id}">
+                    <details class="group text-left">
+                        <summary class="flex justify-between items-center p-6 md:p-8 cursor-pointer hover:bg-gray-50 transition-colors text-left text-navy">
+                            <div class="flex items-center gap-6 text-left">
+                                <div class="w-12 h-12 bg-parchment rounded-sm flex items-center justify-center text-navy"><i data-lucide="${service.icon}"></i></div>
+                                <div><h3 class="text-xl font-bold uppercase font-serif tracking-tighter">${service.title}</h3><p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">${service.summary}</p></div>
+                            </div>
+                            <div class="flex items-center gap-4 text-left">
+                                <span class="hidden md:inline text-[10px] font-bold text-gold uppercase tracking-[0.2em]">View Brief &rarr;</span>
+                                <i data-lucide="chevron-down" class="group-open:rotate-180 transition-transform text-gold"></i>
+                            </div>
+                        </summary>
+                        <div class="p-6 md:p-10 border-t border-gray-50 bg-white text-left font-sans">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 text-left">
+                                <div class="space-y-4 text-left">
+                                    <div class="text-left"><h4 class="text-[10px] font-bold text-gold uppercase tracking-widest mb-2 flex items-center gap-2 text-left"><i data-lucide="activity" class="w-3 h-3"></i> The Process</h4><p class="text-sm text-gray-600 leading-relaxed text-left">${service.process}</p></div>
+                                    <div class="text-left"><h4 class="text-[10px] font-bold text-gold uppercase tracking-widest mb-2 flex items-center gap-2 text-left"><i data-lucide="clock" class="w-3 h-3"></i> Timeline</h4><p class="text-sm text-gray-600 font-medium text-left">${service.timeline}</p></div>
+                                </div>
+                                <div class="brief-box p-6 rounded-sm text-left">
+                                    <h4 class="text-[10px] font-bold text-navy uppercase tracking-widest mb-3 flex items-center gap-2 text-left"><i data-lucide="check-square" class="w-3 h-3"></i> What You Need</h4>
+                                    <p class="text-sm text-gray-600 leading-relaxed text-left font-sans">${service.needs}</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col md:flex-row justify-between items-center pt-6 border-t border-gray-100 gap-4 text-left">
+                                <div class="text-center md:text-left">
+                                    <span class="text-[10px] text-gray-400 uppercase font-bold tracking-widest block mb-1">Administrative Liaison Fee</span>
+                                    <span class="text-2xl font-bold text-navy">${service.fee}</span>
+                                </div>
+                                <button onclick="openModal('inquiryModal', '${service.title}')" class="w-full md:w-auto bg-navy text-white px-12 py-4 rounded-sm font-bold uppercase tracking-widest text-xs hover:bg-gold hover:text-navy transition-all shadow-xl">Initialize Request</button>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        let signaturePad;
+        function initSignature() {
+            const canvas = document.getElementById('signature-pad');
+            signaturePad = new SignaturePad(canvas, { backgroundColor: 'rgba(255, 255, 255, 0)', penColor: '#003366' });
+            function resizeCanvas() {
+                const ratio = Math.max(window.devicePixelRatio || 1, 1);
+                canvas.width = canvas.offsetWidth * ratio; canvas.height = canvas.offsetHeight * ratio;
+                canvas.getContext("2d").scale(ratio, ratio); signaturePad.clear();
+            }
+            window.addEventListener("resize", resizeCanvas); resizeCanvas();
+        }
+
+        function openModal(id, prefill) {
+            document.getElementById(id).classList.add('active');
+            if(prefill) {
+                const select = document.getElementById('modalServiceSelect');
+                for(let i=0; i<select.options.length; i++){
+                    if(select.options[i].text.includes(prefill) || prefill.includes(select.options[i].text)){
+                        select.selectedIndex = i; break;
+                    }
+                }
+            }
+            if(!signaturePad) initSignature();
+            resetComplianceState();
+        }
+
+        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+
+        function toggleAgreementViewer() {
+            const viewer = document.getElementById('agreement-viewer');
+            const instruction = document.getElementById('scroll-instruction');
+            viewer.classList.toggle('open');
+            if(viewer.classList.contains('open') && document.getElementById('agreement-check').disabled) {
+                instruction.classList.remove('hidden');
+            }
+        }
+
+        function handleAgreementScroll(el) {
+            if (Math.ceil(el.scrollTop + el.clientHeight) >= el.scrollHeight - 5) {
+                unlockAgreement();
+            }
+        }
+
+        function unlockAgreement() {
+            const check = document.getElementById('agreement-check');
+            const instruction = document.getElementById('scroll-instruction');
+            const success = document.getElementById('unlock-success');
+            const btn = document.getElementById('submitLeadBtn');
+            const hint = document.getElementById('submit-hint');
+
+            if (check.disabled) {
+                check.disabled = false;
+                instruction.classList.add('hidden');
+                success.classList.remove('hidden');
+                btn.disabled = false;
+                btn.classList.remove('btn-locked');
+                hint.classList.add('hidden');
+                lucide.createIcons();
+            }
+        }
+
+        function resetComplianceState() {
+            const viewer = document.getElementById('agreement-viewer');
+            const check = document.getElementById('agreement-check');
+            const success = document.getElementById('unlock-success');
+            const instruction = document.getElementById('scroll-instruction');
+            const btn = document.getElementById('submitLeadBtn');
+            const hint = document.getElementById('submit-hint');
+
+            viewer.classList.remove('open');
+            viewer.scrollTop = 0;
+            check.disabled = true;
+            check.checked = false;
+            success.classList.add('hidden');
+            instruction.classList.add('hidden');
+            btn.disabled = true;
+            btn.classList.add('btn-locked');
+            hint.classList.remove('hidden');
+        }
+
+        async function submitLead(e) {
+            e.preventDefault();
+            if(signaturePad.isEmpty()) return alert("Authorization Signature is Required.");
+            const btn = document.getElementById('submitLeadBtn');
+            const original = btn.innerText; btn.innerText = "ENCRYPTING..."; btn.disabled = true;
+            
+            const data = Object.fromEntries(new FormData(e.target).entries());
+            data.signature = signaturePad.toDataURL();
+            data.details = (data.details || "") + " [SERVICE BRIEF REVIEWED & AGREEMENT SCROLLED/ACCEPTED]";
+
+            fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) })
+            .then(() => { alert("Authorization Received! Docu-Hub is now opening your case file."); window.location.reload(); })
+            .catch(() => { alert("Connection Error. Please check your data."); btn.innerText = original; btn.disabled = false; });
+        }
+
+        window.onload = () => {
+            const params = new URLSearchParams(window.location.search);
+            const jump = params.get('jump');
+            if(jump) { 
+                toggleCatalog('personal');
+                setTimeout(() => {
+                    const el = document.getElementById('agency-' + jump.toLowerCase());
+                    if(el) { el.scrollIntoView({behavior: "smooth", block: "center"}); el.querySelector('details').open = true; }
+                }, 500);
+            }
+        };
+    </script>
+</body>
+</html>
