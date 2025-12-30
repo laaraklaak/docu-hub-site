@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Services Catalog | Docu-Hub Compliance v27.0</title>
+    <title>Services Catalog | Docu-Hub Compliance v27.6</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -16,15 +16,15 @@
                         'navy-dark': '#002244' 
                     },
                     fontFamily: { 
-                        // Using a high-readability system-first sans-serif stack
                         sans: ['Inter', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'] 
                     }
                 }
             }
         }
     </script>
-    <!-- Loading Inter for maximum readability -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Restored Lucide for navigation and interaction icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #F5F0EC; color: #003366; -webkit-font-smoothing: antialiased; }
@@ -37,7 +37,7 @@
         .choice-card:hover { border-bottom-color: #D4AF37; transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,51,102,0.08); }
         
         .signature-wrapper { border: 2px solid #e2e8f0; background: #fff; border-radius: 4px; position: relative; }
-        #signature-pad { width: 100%; height: 140px; cursor: crosshair; touch-action: none; }
+        #signature-pad { width: 100%; height: 160px; cursor: crosshair; touch-action: none; }
         
         .catalog-item { transition: all 0.3s ease; scroll-margin-top: 100px; }
         details summary { list-style: none; outline: none; }
@@ -46,21 +46,18 @@
         .sub-btn { transition: all 0.2s ease; border: 1px solid #e2e8f0; }
         .sub-btn.active { background-color: #003366; color: #D4AF37; border-color: #003366; }
 
-        .agreement-box { background: #fdfcfb; border: 1px solid #eee; height: 150px; overflow-y: scroll; font-size: 11px; line-height: 1.6; padding: 16px; color: #334155; font-family: 'Roboto', sans-serif; }
+        .agreement-box { background: #fdfcfb; border: 1px solid #eee; height: 140px; overflow-y: scroll; font-size: 11px; line-height: 1.6; padding: 16px; color: #334155; font-family: 'Roboto', sans-serif; }
         
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }
         .disclaimer-bar { background: #003366; }
-
-        /* Strong contrast for better reading */
-        h1, h2, h3, h4 { letter-spacing: -0.02em; font-weight: 700; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col text-left">
 
     <!-- NAVIGATION -->
     <nav class="bg-white shadow-md sticky top-0 z-50 border-b-4 border-gold">
-        <div class="container mx-auto px-4 md:px-6 h-20 flex justify-between items-center">
+        <div class="container mx-auto px-4 md:px-6 h-20 flex justify-between items-center text-left">
             <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
                 <div class="w-10 h-10 bg-navy flex items-center justify-center rounded text-gold font-bold text-xl shadow-lg">D</div>
                 <div class="leading-none text-left">
@@ -68,11 +65,19 @@
                     <span class="block text-[10px] text-gray-400 uppercase tracking-[0.1em] font-bold">Compliant Liaison</span>
                 </div>
             </div>
-            <a href="index.html" class="text-[11px] font-bold text-navy uppercase tracking-widest border border-navy/20 px-4 py-2 rounded hover:bg-navy hover:text-white transition-all">
-                &#8592; Home
-            </a>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-[11px] font-bold text-navy uppercase tracking-widest border border-navy/20 px-4 py-2 rounded hover:bg-navy hover:text-white transition-all italic">Home</a>
+                <button class="md:hidden text-navy" onclick="toggleMobileMenu()"><i data-lucide="menu"></i></button>
+            </div>
         </div>
     </nav>
+
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu" class="hidden bg-white border-b p-6 space-y-4 font-bold text-navy uppercase tracking-widest text-xs">
+        <a href="index.html" class="block">Home Portal</a>
+        <a href="about.html" class="block">Our Principal</a>
+        <a href="help_center.html" class="block">Help Center</a>
+    </div>
 
     <!-- GLOBAL FEE DISCLAIMER -->
     <div class="disclaimer-bar text-white py-3 px-6 shadow-lg">
@@ -87,27 +92,23 @@
     <main class="container mx-auto px-6 py-12 max-w-5xl flex-grow">
         
         <div class="text-center mb-12">
-            <span class="text-gold uppercase tracking-[0.2em] text-[11px] font-bold mb-2 block text-center">Registry Logistics</span>
-            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-navy uppercase text-center">Service Directory</h1>
-            <p class="text-gray-500 max-w-xl mx-auto text-base font-normal text-center">Select your agency and specific task to view requirements and authorized professional fees.</p>
+            <span class="text-gold uppercase tracking-[0.2em] text-[11px] font-bold mb-2 block">Registry Logistics</span>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-navy uppercase">Liaison Directory</h1>
+            <p class="text-gray-500 max-w-xl mx-auto text-base font-normal">Select an agency desk to view professional fees and registry requirements.</p>
         </div>
 
         <!-- CATEGORY SELECTOR -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16" id="selection-grid">
             <div class="choice-card p-10 rounded shadow-xl text-center group" onclick="toggleCatalog('personal')">
-                <div class="w-14 h-14 bg-parchment rounded flex items-center justify-center mx-auto mb-4 group-hover:bg-navy group-hover:text-white transition-all text-2xl">
-                    &#128100;
-                </div>
+                <div class="text-3xl mb-4">&#128100;</div>
                 <h3 class="text-xl font-bold text-navy uppercase mb-2">Individual Services</h3>
-                <p class="text-sm text-gray-500 mb-4 font-medium">Passports, Certificates, TRN</p>
+                <p class="text-sm text-gray-500 mb-4 font-medium uppercase tracking-tighter">Passports, TRN, Certificates</p>
                 <span class="text-[11px] font-bold text-gold uppercase tracking-widest group-hover:underline">Open Directory &#8594;</span>
             </div>
             <div class="choice-card p-10 rounded shadow-xl text-center group" onclick="toggleCatalog('business')">
-                <div class="w-14 h-14 bg-parchment rounded flex items-center justify-center mx-auto mb-4 group-hover:bg-navy group-hover:text-white transition-all text-2xl">
-                    &#128188;
-                </div>
-                <h3 class="text-xl font-bold text-navy uppercase mb-2">Specialist Strategy</h3>
-                <p class="text-sm text-gray-500 mb-4 font-medium">Hard Cases & Bulk Solutions</p>
+                <div class="text-3xl mb-4">&#128188;</div>
+                <h3 class="text-xl font-bold text-navy uppercase mb-2">Strategy Desk</h3>
+                <p class="text-sm text-gray-500 mb-4 font-medium uppercase tracking-tighter">Hard Cases & Estate Records</p>
                 <span class="text-[11px] font-bold text-gold uppercase tracking-widest group-hover:underline">View Options &#8594;</span>
             </div>
         </div>
@@ -115,9 +116,9 @@
         <!-- INDIVIDUAL CATALOG AREA -->
         <div id="catalog-personal" class="hidden space-y-6">
             <div class="flex items-center justify-between border-b border-navy/10 pb-6 mb-8">
-                <h2 class="text-2xl font-bold text-navy uppercase">Agency Desk Catalog</h2>
+                <h2 class="text-2xl font-bold text-navy uppercase">Agency Catalog</h2>
                 <div class="text-right">
-                    <span class="text-[10px] font-bold text-navy uppercase block">Institutional Standard</span>
+                    <span class="text-[10px] font-bold text-navy uppercase block">Authorized Standard</span>
                     <span class="text-[9px] text-gray-400 uppercase font-medium">Excludes government fees</span>
                 </div>
             </div>
@@ -126,23 +127,21 @@
 
         <!-- STRATEGY AREA -->
         <div id="catalog-business" class="hidden animate-fade-in space-y-8">
-            <div class="bg-navy text-white rounded shadow-2xl overflow-hidden">
-                <div class="grid grid-cols-1 md:grid-cols-2">
-                    <div class="p-10 md:p-16 border-r border-white/5 text-left">
-                        <div class="w-12 h-1.5 bg-gold mb-6"></div>
-                        <h3 class="text-4xl font-bold mb-6 uppercase leading-tight">Hard Cases <br/><span class="text-gold">Made Simple.</span></h3>
-                        <p class="text-base text-blue-100 font-normal leading-relaxed mb-8 text-left">Estate searches, multi-agency hurdles, and lineage record discovery. We provide bespoke strategy sessions and custom pricing for non-standard registry matters.</p>
-                        <button onclick="openModal('inquiryModal', 'Specialist Strategy Session')" class="bg-gold text-navy px-10 py-4 text-xs font-bold uppercase tracking-widest hover:bg-white transition-all shadow-xl">Request Strategy Briefing</button>
+            <div class="bg-navy text-white rounded shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+                <div class="p-10 md:p-16 border-r border-white/5 text-left">
+                    <div class="w-12 h-1.5 bg-gold mb-6"></div>
+                    <h3 class="text-4xl font-bold mb-6 uppercase leading-tight italic">Hard Cases <br/><span class="text-gold">Made Simple.</span></h3>
+                    <p class="text-base text-blue-100 font-normal leading-relaxed mb-8">Estate searches, lineage record discovery, and multi-agency hurdles. We provide bespoke strategy sessions for non-standard registry matters.</p>
+                    <button onclick="openModal('inquiryModal', 'Specialist Strategy Session')" class="bg-gold text-navy px-10 py-4 text-xs font-bold uppercase tracking-widest hover:bg-white transition-all shadow-xl font-bold">Request Strategy Briefing</button>
+                </div>
+                <div class="bg-navy-dark p-10 flex flex-col justify-center space-y-8 text-left">
+                    <div class="flex items-start gap-4">
+                        <span class="text-gold text-2xl">&#128196;</span>
+                        <div><h4 class="text-xs font-bold uppercase tracking-widest text-gold mb-1">Corporate Bulk</h4><p class="text-[11px] text-gray-300 font-medium uppercase tracking-tight">High-volume TRN & Police Record processing for HR teams.</p></div>
                     </div>
-                    <div class="bg-navy-dark p-10 flex flex-col justify-center space-y-8 text-left">
-                        <div class="flex items-start gap-4">
-                            <span class="text-gold text-2xl">&#128196;</span>
-                            <div><h4 class="text-xs font-bold uppercase tracking-widest text-gold mb-1">Corporate Bulk</h4><p class="text-[11px] text-gray-300 font-medium uppercase">High-volume TRN & Police Record processing for HR.</p></div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <span class="text-gold text-2xl">&#128269;</span>
-                            <div><h4 class="text-xs font-bold uppercase tracking-widest text-gold mb-1">Estate Discovery</h4><p class="text-[11px] text-gray-300 font-medium uppercase">Deep historical lineage and land record searches.</p></div>
-                        </div>
+                    <div class="flex items-start gap-4">
+                        <span class="text-gold text-2xl">&#128269;</span>
+                        <div><h4 class="text-xs font-bold uppercase tracking-widest text-gold mb-1 text-left">Estate Audit</h4><p class="text-[11px] text-gray-300 font-medium uppercase tracking-tight text-left">Historical record searches for land and probate verification.</p></div>
                     </div>
                 </div>
             </div>
@@ -150,52 +149,54 @@
 
     </main>
 
-    <!-- INTAKE MODAL (COMPLIANT FORM) -->
+    <!-- INTAKE MODAL -->
     <div id="inquiryModal" class="modal fixed inset-0 flex items-center justify-center bg-navy/95 backdrop-blur-sm p-4">
         <div class="modal-content bg-white w-full max-w-2xl rounded shadow-2xl overflow-hidden flex flex-col max-h-[95vh] text-left">
             <div class="bg-navy p-6 flex justify-between items-center text-white shrink-0">
                 <div class="text-left">
-                    <span class="text-gold text-[10px] font-bold uppercase tracking-widest block mb-1">Application Desk</span>
-                    <h3 id="modalServiceTitle" class="text-xl uppercase font-bold text-white">Authorization Portal</h3>
+                    <span class="text-gold text-[10px] font-bold uppercase tracking-widest block mb-1">Authorization Desk</span>
+                    <h3 id="modalServiceTitle" class="text-xl uppercase font-bold text-white italic">Intake Handshake</h3>
                 </div>
                 <button onclick="closeModal('inquiryModal')" class="text-gray-300 hover:text-white transition font-bold text-xl">&#10005;</button>
             </div>
             <div class="p-8 overflow-y-auto space-y-8">
                 <form id="leadForm" onsubmit="submitLead(event)" class="space-y-8 text-left">
                     
+                    <!-- DATA ENTRY -->
                     <div class="space-y-6">
-                        <div class="font-bold text-navy text-[11px] uppercase tracking-widest flex items-center gap-2">&#128100; Registry Identity Information</div>
+                        <div class="font-bold text-navy text-[11px] uppercase tracking-widest flex items-center gap-2">&#128100; Identity Data</div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-[10px] font-bold text-gray-400 uppercase mb-2">Legal Name</label>
-                                <input type="text" name="lastName" placeholder="AS PER ID" required class="w-full border-b border-gray-200 bg-gray-50 p-4 outline-none focus:border-navy text-sm font-bold uppercase">
+                                <input type="text" name="lastName" placeholder="AS PER ID" required class="w-full border-b border-gray-200 bg-gray-50 p-4 text-sm font-bold uppercase outline-none focus:border-navy transition">
                             </div>
                             <div>
-                                <label class="block text-[10px] font-bold text-gray-400 uppercase mb-2">WhatsApp Number</label>
-                                <input type="text" name="contact" id="contactField" placeholder="1876..." required class="w-full border-b border-gray-200 bg-gray-50 p-4 outline-none focus:border-navy text-sm font-bold uppercase">
+                                <label class="block text-[10px] font-bold text-gray-400 uppercase mb-2">WhatsApp Contact</label>
+                                <input type="text" name="contact" placeholder="1-876-..." required class="w-full border-b border-gray-200 bg-gray-50 p-4 text-sm font-bold uppercase outline-none focus:border-navy transition">
                             </div>
                         </div>
                         <div>
-                            <label class="block text-[10px] font-bold text-gray-400 uppercase mb-2">Government ID #</label>
-                            <input type="text" name="trn" placeholder="TRN / DL / PASSPORT" required class="w-full border-b border-gray-200 bg-gray-50 p-4 outline-none focus:border-navy text-sm font-bold uppercase">
+                            <label class="block text-[10px] font-bold text-gray-400 uppercase mb-2">Government ID # (TRN/DL)</label>
+                            <input type="text" name="trn" placeholder="REF NUMBER" required class="w-full border-b border-gray-200 bg-gray-50 p-4 text-sm font-bold uppercase outline-none focus:border-navy transition">
                         </div>
                         <input type="hidden" name="service" id="modalServiceInput">
                     </div>
 
+                    <!-- COMPLIANCE AGREEMENT -->
                     <div class="space-y-4">
-                        <div class="font-bold text-navy text-[11px] uppercase tracking-widest flex items-center gap-2">&#9881; Liaison Authorization Agreement</div>
+                        <div class="font-bold text-navy text-[11px] uppercase tracking-widest flex items-center gap-2">&#9881; Authorization Agreement</div>
                         <div class="agreement-box rounded shadow-inner">
                             <p class="font-bold text-navy mb-2">1. SCOPE OF REPRESENTATION</p>
-                            <p class="mb-4">I hereby authorize Docu-Hub Operations to act as my designated Liaison at the relevant government registry. This includes physical representation, document submission, and collection of sensitive biographic records.</p>
+                            <p class="mb-4">I hereby authorize Docu-Hub Operations to act as my designated Liaison at the relevant Jamaican government registry. This includes physical representation, document submission, and collection of sensitive biographic records.</p>
                             
                             <p class="font-bold text-navy mb-2">2. FINANCIAL RESPONSIBILITY (POCA)</p>
                             <p class="mb-4">I understand that professional fees quoted are solely for liaison services. All government statutory charges must be cleared as a separate disbursement before filing. Docu-Hub does not advance government fees.</p>
                             
                             <p class="font-bold text-navy mb-2">3. DATA RETENTION (JDPA 2020)</p>
-                            <p class="mb-4">I consent to the digital processing of my ID documentation. All sensitive biographic data and scans will be permanently purged from Docu-Hub servers 30 days after document handover.</p>
+                            <p class="mb-4">I consent to the digital processing of my ID documentation. All biographic data will be permanently purged from Docu-Hub systems 30 days after case completion.</p>
                         </div>
                         
-                        <label class="flex items-start gap-3 cursor-pointer p-3 bg-gray-50 rounded border border-transparent hover:border-gray-200 transition">
+                        <label class="flex items-start gap-3 cursor-pointer p-4 bg-gray-50 rounded border border-transparent hover:border-gray-200 transition">
                             <input type="checkbox" id="complianceCheck" required class="mt-1 w-5 h-5 accent-navy">
                             <span class="text-[11px] font-bold text-navy uppercase leading-tight">
                                 I have read and agree to the Liaison Authorization Agreement and understand the JDPA/POCA data & financial protocols.
@@ -203,6 +204,7 @@
                         </label>
                     </div>
 
+                    <!-- SIGNATURE -->
                     <div class="space-y-4">
                         <div class="font-bold text-navy text-[11px] uppercase tracking-widest flex items-center gap-2">&#9997; Authorization Signature</div>
                         <div class="signature-wrapper shadow-inner overflow-hidden">
@@ -211,14 +213,15 @@
                         </div>
                     </div>
 
-                    <button type="submit" id="submitLeadBtn" class="w-full bg-navy text-gold font-bold py-6 rounded shadow-xl text-xs uppercase tracking-[0.2em] transition-all hover:bg-navy-dark">Authorize Application</button>
+                    <button type="submit" id="submitLeadBtn" class="w-full bg-navy text-gold font-bold py-6 rounded shadow-xl text-xs uppercase tracking-[0.2em] transition-all hover:bg-navy-dark">Transmit & Authorize</button>
                 </form>
             </div>
         </div>
     </div>
 
     <script>
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwGFZRnbUrb4Fq2sVMdtsvqmjqBYH3VrbCkiKMnPaaifYpqMTaVeLslxdtbsScwaR6V/exec";
+        lucide.createIcons();
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwQf0sYv9pzazZmo2os4-lUP1oVYO2Xz-nBEytCGvtkIOv4hrH9nDwlRT5WnZk_6D2l/exec";
 
         const SERVICES = [
             { 
@@ -227,14 +230,14 @@
                 icon: '&#128196;', 
                 summary: 'Birth, Marriage, & Death certificate procurement.',
                 subServices: [
-                    { name: 'Standard Retrieval', path: 'Registry Search & Regular Collection', needs: 'Name, Date, Place of Birth.', time: '6-8 Weeks', fee: '$3,500 JMD' },
-                    { name: 'Express Retrieval', path: 'Rapid Filing & Quick Turnaround', needs: 'Entry Number REQUIRED for speed.', time: '7-10 Days', fee: '$4,500 JMD' },
+                    { name: 'Standard Retrieval', path: 'Registry Search & Regular Collection', needs: 'Birth Name, DOB, Parish.', time: '6-8 Weeks', fee: '$3,500 JMD' },
+                    { name: 'Express Retrieval', path: 'Rapid Twickenham Filing & Retrieval', needs: 'Entry Number REQUIRED for speed.', time: '7-10 Days', fee: '$4,500 JMD' },
                     { name: 'Electronic (Blue Border)', path: 'Digitized Submission for Diaspora', needs: 'High-res scan of ID required.', time: '10-14 Days', fee: '$4,000 JMD' }
                 ]
             },
             { 
                 id: 'pica', 
-                title: 'PICA Passport Suite', 
+                title: 'PICA Passport Desk', 
                 icon: '&#128712;', 
                 summary: 'Adult renewals and Citizenship facilitation.',
                 subServices: [
@@ -245,7 +248,7 @@
                 id: 'taj', 
                 title: 'TAJ Tax & Licensing', 
                 icon: '&#127963;', 
-                summary: 'TRN Registration, Motor Vehicle, and Traffic Tickets.',
+                summary: 'TRN Registration, Vehicle License, and Tickets.',
                 subServices: [
                     { name: 'TRN Registration', path: 'Tax Office Filing & Retrieval', needs: 'Original Birth Cert and ID.', time: '24 Hours', fee: '$2,500 JMD' },
                     { name: 'Vehicle Renewal', path: 'Fee Payment & Disc Collection', needs: 'Insurance & Valid Fitness.', time: 'Same Day', fee: '$2,500 JMD' },
@@ -254,19 +257,43 @@
             }
         ];
 
+        // NEW: JUMP HANDLER FOR HOMEPAGE NAVIGATION
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            const jump = params.get('jump');
+            if (jump) {
+                toggleCatalog('personal');
+                setTimeout(() => {
+                    const agencyEl = document.getElementById(`agency-${jump}`);
+                    if (agencyEl) {
+                        agencyEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        agencyEl.querySelector('details').open = true;
+                    }
+                }, 500);
+            }
+        };
+
+        function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
+
         function toggleCatalog(type) {
             const p = document.getElementById('catalog-personal');
             const b = document.getElementById('catalog-business');
-            const grid = document.getElementById('selection-grid');
-            if(type === 'personal') { p.classList.remove('hidden'); b.classList.add('hidden'); renderCatalog(); }
-            else { p.classList.add('hidden'); b.classList.remove('hidden'); }
-            window.scrollTo({ top: grid.offsetTop + grid.offsetHeight + 20, behavior: 'smooth' });
+            if(type === 'personal') { 
+                p.classList.remove('hidden'); 
+                b.classList.add('hidden'); 
+                renderCatalog(); 
+                p.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else { 
+                p.classList.add('hidden'); 
+                b.classList.remove('hidden'); 
+                b.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
         function renderCatalog() {
             const container = document.getElementById('catalog-container');
             container.innerHTML = SERVICES.map(s => `
-                <div class="catalog-item bg-white border border-gray-100 shadow-md rounded overflow-hidden text-left" id="agency-${s.id}">
+                <div class="bg-white border border-gray-100 shadow-md rounded overflow-hidden text-left" id="agency-${s.id}">
                     <details class="group">
                         <summary class="flex justify-between items-center p-8 md:p-10 cursor-pointer hover:bg-gray-50 transition-all">
                             <div class="flex items-center gap-8">
@@ -274,21 +301,18 @@
                                     ${s.icon}
                                 </div>
                                 <div class="text-left">
-                                    <h3 class="text-2xl font-bold uppercase tracking-tight text-navy">${s.title}</h3>
+                                    <h3 class="text-2xl font-bold uppercase tracking-tight text-navy italic">${s.title}</h3>
                                     <p class="text-[11px] text-gray-400 font-bold uppercase tracking-widest mt-1">${s.summary}</p>
                                 </div>
                             </div>
-                            <div class="flex items-center gap-4">
-                                <span class="hidden sm:inline text-[10px] font-bold text-gold uppercase tracking-widest">View Tasks &#8594;</span>
-                                <span class="group-open:rotate-180 transition-transform text-gold font-bold text-xl">&#9662;</span>
-                            </div>
+                            <span class="group-open:rotate-180 transition-transform text-gold font-bold text-xl">&#9662;</span>
                         </summary>
                         <div class="p-8 md:p-12 border-t border-gray-50 bg-white space-y-10">
                             <div class="text-left">
-                                <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4">Select Task:</h4>
+                                <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4">Select Liaison Task:</h4>
                                 <div class="flex flex-wrap gap-3">
                                     ${s.subServices.map((sub, idx) => `
-                                        <button onclick="selectSubService('${s.id}', ${idx})" id="btn-${s.id}-${idx}" class="sub-btn px-5 py-2 text-[10px] font-bold uppercase tracking-widest rounded ${idx === 0 ? 'active' : ''}">
+                                        <button onclick="selectSub('${s.id}', ${idx})" id="btn-${s.id}-${idx}" class="sub-btn px-5 py-2 text-[10px] font-bold uppercase tracking-widest rounded ${idx === 0 ? 'active' : ''}">
                                             ${sub.name}
                                         </button>
                                     `).join('')}
@@ -296,18 +320,18 @@
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
                                 <div class="space-y-8">
-                                    <div><h4 class="text-[10px] font-bold text-gold uppercase tracking-widest mb-3">&#10024; Protocol</h4><p id="path-${s.id}" class="text-sm text-gray-600 leading-relaxed font-bold uppercase">${s.subServices[0].path}</p></div>
+                                    <div><h4 class="text-[10px] font-bold text-gold uppercase tracking-widest mb-3">&#10024; Protocol</h4><p id="path-${s.id}" class="text-sm text-gray-600 font-bold uppercase">${s.subServices[0].path}</p></div>
                                     <div><h4 class="text-[10px] font-bold text-gold uppercase tracking-widest mb-3">&#128337; Wait Time</h4><p id="time-${s.id}" class="text-sm text-gray-600 font-bold uppercase tracking-tight">${s.subServices[0].time}</p></div>
                                 </div>
                                 <div class="bg-parchment p-8 rounded border-l-4 border-gold shadow-inner flex flex-col justify-between text-left">
-                                    <div><h4 class="text-[10px] font-bold text-navy uppercase tracking-widest mb-4">&#9745; Registry Needs</h4><p id="needs-${s.id}" class="text-[11px] text-gray-500 leading-relaxed uppercase font-bold">${s.subServices[0].needs}</p></div>
+                                    <div><h4 class="text-[10px] font-bold text-navy uppercase tracking-widest mb-4">&#9745; Needs</h4><p id="needs-${s.id}" class="text-[11px] text-gray-500 font-bold uppercase leading-relaxed">${s.subServices[0].needs}</p></div>
                                     <div class="pt-8 border-t border-navy/5 mt-8 flex justify-between items-end">
                                         <div class="text-left leading-none">
                                             <span class="text-[10px] font-bold text-gray-400 uppercase block mb-2">Docu-Hub Fee</span>
-                                            <span id="fee-${s.id}" class="text-2xl font-bold text-navy">${s.subServices[0].fee}</span>
-                                            <span class="block text-[9px] text-red-500 font-bold uppercase tracking-tight mt-2">+ Agency Charges Extra</span>
+                                            <span id="fee-${s.id}" class="text-2xl font-bold text-navy italic">${s.subServices[0].fee}</span>
+                                            <span class="block text-[9px] text-red-500 font-bold uppercase tracking-tight mt-2 italic">+ Plus Statutory Fees</span>
                                         </div>
-                                        <button onclick="prepareIntake('${s.id}')" class="bg-navy text-white px-8 py-4 rounded font-bold uppercase text-[10px] tracking-widest hover:bg-gold hover:text-navy transition-all shadow-xl">Apply</button>
+                                        <button onclick="prepareIntake('${s.id}')" class="bg-navy text-white px-8 py-4 rounded font-bold uppercase text-[10px] tracking-widest hover:bg-gold hover:text-navy transition-all shadow-xl font-bold italic">Apply</button>
                                     </div>
                                 </div>
                             </div>
@@ -317,77 +341,65 @@
             `).join('');
         }
 
-        function selectSubService(agencyId, subIdx) {
-            const agency = SERVICES.find(s => s.id === agencyId);
-            const sub = agency.subServices[subIdx];
-            document.getElementById(`path-${agencyId}`).innerText = sub.path;
-            document.getElementById(`time-${agencyId}`).innerText = sub.time;
-            document.getElementById(`needs-${agencyId}`).innerText = sub.needs;
-            document.getElementById(`fee-${agencyId}`).innerText = sub.fee;
-            document.querySelectorAll(`#agency-${agencyId} .sub-btn`).forEach(b => b.classList.remove('active'));
-            document.getElementById(`btn-${agencyId}-${subIdx}`).classList.add('active');
+        function selectSub(aid, idx) {
+            const s = SERVICES.find(x => x.id === aid).subServices[idx];
+            document.getElementById(`path-${aid}`).innerText = s.path;
+            document.getElementById(`time-${aid}`).innerText = s.time;
+            document.getElementById(`needs-${aid}`).innerText = s.needs;
+            document.getElementById(`fee-${aid}`).innerText = s.fee;
+            document.querySelectorAll(`#agency-${aid} .sub-btn`).forEach(b => b.classList.remove('active'));
+            document.getElementById(`btn-${aid}-${idx}`).classList.add('active');
         }
 
-        function prepareIntake(agencyId) {
-            const activeBtn = document.querySelector(`#agency-${agencyId} .sub-btn.active`);
-            const taskName = activeBtn.innerText;
-            const agencyName = SERVICES.find(s => s.id === agencyId).title;
-            document.getElementById('modalServiceTitle').innerText = agencyName;
-            document.getElementById('modalServiceInput').value = `${agencyName}: ${taskName}`;
+        function prepareIntake(aid) {
+            const task = document.querySelector(`#agency-${aid} .sub-btn.active`).innerText;
+            const agency = SERVICES.find(x => x.id === aid).title;
+            document.getElementById('modalServiceTitle').innerText = agency;
+            document.getElementById('modalServiceInput').value = `${agency}: ${task}`;
             openModal('inquiryModal');
         }
 
         let signaturePad;
-        function initSignature() {
-            const canvas = document.getElementById('signature-pad');
-            signaturePad = new SignaturePad(canvas, { backgroundColor: 'rgb(255, 255, 255)', penColor: '#003366' });
-            function resize() {
-                const ratio = Math.max(window.devicePixelRatio || 1, 1);
-                canvas.width = canvas.offsetWidth * ratio; canvas.height = canvas.offsetHeight * ratio;
-                canvas.getContext("2d").scale(ratio, ratio); signaturePad.clear();
-            }
-            window.onresize = resize; resize();
-        }
-
         function openModal(id, customTitle = null) {
-            if(customTitle) {
-                document.getElementById('modalServiceTitle').innerText = customTitle;
-                document.getElementById('modalServiceInput').value = customTitle;
+            if(customTitle) { 
+                document.getElementById('modalServiceTitle').innerText = customTitle; 
+                document.getElementById('modalServiceInput').value = customTitle; 
             }
             document.getElementById(id).classList.add('active');
-            if(!signaturePad) initSignature();
+            if(!signaturePad) { 
+                const canvas = document.getElementById('signature-pad');
+                signaturePad = new SignaturePad(canvas, { backgroundColor: 'rgb(255, 255, 255)', penColor: '#003366' });
+                const ratio = Math.max(window.devicePixelRatio || 1, 1);
+                canvas.width = canvas.offsetWidth * ratio; canvas.height = canvas.offsetHeight * ratio;
+                canvas.getContext("2d").scale(ratio, ratio);
+            }
             document.body.style.overflow = 'hidden';
         }
 
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
+        function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = 'auto'; }
 
         async function submitLead(e) {
             e.preventDefault();
-            if(signaturePad.isEmpty()) return alert("Error: Digital authorization signature is required.");
-            if(!document.getElementById('complianceCheck').checked) return alert("Error: You must read and agree to the compliance protocols.");
+            if(signaturePad.isEmpty()) return alert("Authorization signature is required.");
+            if(!document.getElementById('complianceCheck').checked) return alert("Compliance checkbox is required.");
             
             const btn = document.getElementById('submitLeadBtn');
-            btn.innerText = "TRANSMITTING..."; btn.disabled = true;
+            btn.innerText = "CAPTURING AUTHORIZATION..."; btn.disabled = true;
             
             const formData = new FormData(e.target);
             const data = Object.fromEntries(formData.entries());
             data.signature = signaturePad.toDataURL();
-            data.status = "Authorized";
 
-            fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) })
+            fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(data) })
             .then(() => { 
-                alert("Success: Authorization Received. A Liaison will contact you via WhatsApp for funds clearance."); 
+                alert("Success: Authorization Received. Your Liaison will contact you via WhatsApp for funds clearance."); 
                 window.location.reload(); 
             })
             .catch(() => { 
-                alert("Institutional Alert: Network failure."); 
-                btn.innerText = "Retry Authorize"; btn.disabled = false; 
+                alert("Institutional Alert: Handshake Failed. Please try again."); 
+                btn.innerText = "Retry Transmit"; btn.disabled = false; 
             });
         }
     </script>
 </body>
 </html>
-
