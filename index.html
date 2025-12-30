@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Docu-Hub | Jamaica Business & Document Concierge</title>
     
-    <!-- 1. TAILWIND CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- 2. TAILWIND CONFIG -->
     <script>
         tailwind.config = {
             theme: {
@@ -16,275 +13,207 @@
                     colors: {
                         navy: '#003366',       
                         gold: '#D4AF37',       
-                        'gold-light': '#F3E5AB',
                         parchment: '#F5F0EC',  
                         'navy-dark': '#002244'
                     },
                     fontFamily: {
                         serif: ['Playfair Display', 'serif'],
                         sans: ['Poppins', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        'xl-gold': '0 20px 25px -5px rgba(212, 175, 55, 0.15), 0 10px 10px -5px rgba(212, 175, 55, 0.1)',
                     }
                 }
             }
         }
     </script>
     
-    <!-- 3. FONTS -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- 4. ICONS -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- 5. CUSTOM STYLES -->
     <style>
-        :root {
-            --navy: #003366;
-            --parchment: #F5F0EC;
-            --gold: #D4AF37;
-        }
         html { scroll-behavior: smooth; }
+        .hero-pattern { background-image: radial-gradient(#D4AF37 1px, transparent 1px); background-size: 30px 30px; }
         
+        /* Modal Logic */
         .modal { transition: opacity 0.3s ease, visibility 0.3s ease; opacity: 0; visibility: hidden; z-index: 100; }
         .modal.active { opacity: 1; visibility: visible; }
         .modal-content { transform: scale(0.95); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
         .modal.active .modal-content { transform: scale(1); }
 
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #F5F0EC; }
-        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
-
-        .hero-pattern { background-image: radial-gradient(#D4AF37 1px, transparent 1px); background-size: 30px 30px; }
-
-        .section-content { display: none; opacity: 0; }
-        .section-content.active { display: block; animation: fadeIn 0.6s ease forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .insight-card { background: white; border-left: 4px solid #D4AF37; padding: 2rem; transition: all 0.3s ease; height: 100%; border-radius: 2px; }
-        .insight-card:hover { transform: translateY(-5px); border-left-color: #003366; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-
-        /* Optimized Agency Scroller */
-        .agency-scroll { display: flex; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-        .agency-scroll::-webkit-scrollbar { display: none; }
-
-        .btn-primary { background-color: #D4AF37; color: #003366; font-weight: 700; padding: 1rem 2.5rem; border-radius: 2px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; transition: all 0.3s; }
-        .btn-primary:hover { background-color: white; color: #003366; box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2); }
+        /* Task Cards */
+        .task-card { background: white; border-bottom: 4px solid transparent; transition: all 0.3s ease; }
+        .task-card:hover { transform: translateY(-5px); border-bottom-color: #D4AF37; box-shadow: 0 20px 40px rgba(0,51,102,0.1); }
+        
+        .btn-return { transition: all 0.2s ease; }
+        .btn-return:hover { background-color: #D4AF37; color: #003366; transform: translateX(-3px); }
     </style>
 </head>
-<body class="bg-parchment font-sans text-gray-800 flex flex-col min-h-screen overflow-x-hidden text-left">
+<body class="bg-parchment font-sans text-gray-800 flex flex-col min-h-screen text-left">
 
-    <!-- INSTITUTIONAL NAVIGATION -->
-    <nav class="bg-white/95 backdrop-blur-md shadow-md sticky top-0 z-40 border-b-4 border-gold">
-        <!-- ROW 1 -->
-        <div class="border-b border-gray-100 bg-gray-50/50 text-left">
-            <div class="container mx-auto px-4 md:px-6 py-3 flex justify-between items-center text-left">
-                <div class="hidden md:flex items-center space-x-8 text-[10px] lg:text-xs font-bold text-navy uppercase tracking-widest text-left">
-                    <a href="services.html" class="hover:text-gold transition">Services</a>
-                    <a href="about.html" class="hover:text-gold transition">About Us</a>
-                    <a onclick="navigateTo('insights')" class="hover:text-gold cursor-pointer transition">Insights</a>
-                    <a onclick="navigateTo('contact')" class="hover:text-gold cursor-pointer transition">Contact</a>
-                </div>
-                <div class="md:hidden">
-                    <button class="text-navy p-2" onclick="toggleMobileMenu()"><i data-lucide="menu" class="w-6 h-6"></i></button>
-                </div>
-                <div class="flex items-center space-x-2 md:space-x-4">
-                    <button onclick="openModal('paymentModal')" class="flex items-center gap-2 text-[9px] md:text-[10px] font-bold text-green-700 uppercase tracking-wider bg-green-50 px-3 py-2 rounded transition border border-green-200">
-                        <i data-lucide="upload-cloud" class="w-3 h-3"></i> Submit Payment
-                    </button>
-                    <button onclick="openModal('statusModal')" class="bg-navy text-white px-4 py-2 rounded hover:bg-gold hover:text-navy transition font-bold uppercase tracking-wider text-[9px] md:text-[10px] shadow-sm">
-                        Check Status
-                    </button>
+    <!-- NAVIGATION -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 border-b-4 border-gold">
+        <div class="container mx-auto px-4 md:px-6 h-20 flex justify-between items-center">
+            <!-- Brand -->
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+                <div class="w-10 h-10 bg-navy flex items-center justify-center rounded text-gold font-serif font-bold text-xl">D</div>
+                <div class="leading-none">
+                    <span class="text-xl md:text-2xl font-serif font-bold text-navy uppercase tracking-tighter">Docu-Hub</span>
+                    <span class="block text-[8px] md:text-[10px] text-gray-400 uppercase tracking-[0.2em] font-bold">Liaison Operations</span>
                 </div>
             </div>
-        </div>
-        <!-- ROW 2 -->
-        <div class="py-4 md:py-6 bg-white relative text-left border-b border-gray-50">
-            <div class="container mx-auto px-4 md:px-6 cursor-pointer group text-left" onclick="window.location.href='index.html'">
-                <div class="flex flex-row items-center justify-start gap-4 text-left">
-                    <div class="w-10 h-10 md:w-12 md:h-12 bg-navy flex items-center justify-center rounded shadow-lg overflow-hidden shrink-0">
-                        <img src="assets/logo.png" alt="Logo" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <span class="hidden text-gold font-serif font-bold text-xl">D</span>
-                    </div>
-                    <div class="flex flex-row items-baseline gap-2 md:gap-3 text-left leading-tight text-left">
-                        <span class="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-navy tracking-tight text-left">Docu-Hub</span>
-                        <span class="text-[9px] md:text-xs lg:text-sm text-gray-400 uppercase tracking-[0.2em] font-semibold text-left">Operations Services</span>
-                    </div>
-                </div>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center space-x-8 text-[10px] font-bold text-navy uppercase tracking-widest">
+                <a href="services.html" class="hover:text-gold transition">Services</a>
+                <a href="about.html" class="hover:text-gold transition">Our Principal</a>
+                <a href="help_center.html" class="bg-gray-100 px-3 py-2 rounded">Help Center</a>
             </div>
-        </div>
-        <!-- ROW 3: ADAPTIVE AGENCY BAR -->
-        <div class="bg-navy text-white py-4 border-t border-white/10 relative z-30">
-            <div class="container mx-auto px-2">
-                <div class="agency-scroll md:justify-center gap-x-6 md:gap-x-12 lg:gap-x-16 px-4">
-                    <a href="services.html?jump=pica" class="hover:text-gold transition flex items-center gap-2.5 md:gap-3 flex-shrink-0 text-xs md:text-sm lg:text-base font-bold uppercase tracking-widest">
-                        <i data-lucide="plane" class="w-4 h-4 md:w-5 md:h-5"></i> PICA
-                    </a>
-                    <a href="services.html?jump=rgd" class="hover:text-gold transition flex items-center gap-2.5 md:gap-3 flex-shrink-0 text-xs md:text-sm lg:text-base font-bold uppercase tracking-widest">
-                        <i data-lucide="file-text" class="w-4 h-4 md:w-5 md:h-5"></i> RGD
-                    </a>
-                    <a href="services.html?jump=taj" class="hover:text-gold transition flex items-center gap-2.5 md:gap-3 flex-shrink-0 text-xs md:text-sm lg:text-base font-bold uppercase tracking-widest">
-                        <i data-lucide="landmark" class="w-4 h-4 md:w-5 md:h-5"></i> TAJ
-                    </a>
-                    <a href="services.html?jump=nis" class="hover:text-gold transition flex items-center gap-2.5 md:gap-3 flex-shrink-0 text-xs md:text-sm lg:text-base font-bold uppercase tracking-widest">
-                        <i data-lucide="users" class="w-4 h-4 md:w-5 md:h-5"></i> NIS
-                    </a>
-                    <a href="services.html?jump=police" class="hover:text-gold transition flex items-center gap-2.5 md:gap-3 flex-shrink-0 text-xs md:text-sm lg:text-base font-bold uppercase tracking-widest">
-                        <i data-lucide="fingerprint" class="w-4 h-4 md:w-5 md:h-5"></i> JCF
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- MOBILE MENU -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-2xl z-50 animate-fade-in font-bold text-left text-navy uppercase tracking-widest text-sm">
-            <a href="services.html" class="px-6 py-4 border-b border-gray-50 block">Services</a>
-            <a href="about.html" class="px-6 py-4 border-b border-gray-50 block">About Us</a>
-            <a onclick="navigateTo('insights'); toggleMobileMenu()" class="px-6 py-4 border-b border-gray-50 block">Insights</a>
-            <a onclick="navigateTo('contact'); toggleMobileMenu()" class="px-6 py-4 block">Contact</a>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-navy" onclick="toggleMobileMenu()"><i data-lucide="menu"></i></button>
         </div>
     </nav>
 
-    <div id="main-content" class="flex-grow text-left">
-        
-        <!-- HOME SECTION -->
-        <section id="home" class="section-content active">
-            <div class="hero-gradient min-h-[70vh] md:min-h-[80vh] lg:min-h-screen flex items-center text-white px-4 md:px-6 text-center relative overflow-hidden bg-navy py-12 md:py-20 lg:py-0">
-                <div class="absolute inset-0 opacity-10 hero-pattern"></div>
-                <div class="container mx-auto relative z-10 flex flex-col items-center">
-                    <div class="w-full text-center max-w-4xl">
-                        <div class="inline-block border border-gold/50 px-4 py-1 rounded-full mb-6 md:mb-8 bg-navy-dark/50 backdrop-blur-sm mx-auto uppercase text-[10px] font-bold tracking-[0.3em] text-gold">Liaison Logistics</div>
-                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight mb-6 uppercase tracking-tight text-center">
-                            Jamaica's Document <br/><span class="text-gold italic">Concierge.</span>
-                        </h1>
-                        <p class="text-gray-300 text-sm md:text-lg lg:text-xl mb-10 md:mb-12 leading-relaxed max-w-2xl mx-auto font-light italic text-center">
-                            Professional administrative liaison services for organizations and individuals. We navigate the agencies while you navigate the future.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-5 justify-center">
-                            <a href="services.html" class="btn-primary flex justify-center items-center gap-3 shadow-2xl">
-                                <span>View Catalog</span>
-                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                            </a>
-                            <button onclick="openModal('statusModal')" class="border-2 border-white/30 text-white font-bold px-10 py-4 rounded-sm hover:bg-white hover:text-navy transition uppercase tracking-widest text-[10px] md:text-xs">
-                                Track Existing Case
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- INSIGHTS SECTION -->
-        <section id="insights" class="section-content">
-             <div class="py-12 md:py-16 lg:py-24 pt-28 md:pt-32 lg:pt-40 bg-white border-t border-gray-200">
-                <div class="container mx-auto px-6 text-center">
-                    <div class="mb-12 md:mb-16">
-                        <span class="text-gold uppercase tracking-[0.3em] text-[10px] font-bold block mb-2">Institutional Intelligence</span>
-                        <h2 class="text-3xl md:text-5xl font-serif font-bold text-navy mt-2 text-center">Security & Compliance</h2>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-                        <div class="insight-card">
-                            <div class="text-gold mb-6"><i data-lucide="credit-card" class="w-10 h-10"></i></div>
-                            <h3 class="text-xl font-bold text-navy mb-4 uppercase tracking-tighter">Electronic Protocols</h3>
-                            <p class="text-sm text-gray-600 leading-relaxed font-sans">To comply with POCA standards, we minimize physical cash handling, creating an immutable digital audit trail for every transaction.</p>
-                        </div>
-                        <div class="insight-card">
-                            <div class="text-gold mb-6"><i data-lucide="clock" class="w-10 h-10"></i></div>
-                            <h3 class="text-xl font-bold text-navy mb-4 uppercase tracking-tighter">Dual-Clock Privacy</h3>
-                            <p class="text-sm text-gray-600 leading-relaxed font-sans">Sensitive identity data is permanently purged within **30 Days** of handover. Financial logs are archived for **7 Years** per statute.</p>
-                        </div>
-                        <div class="insight-card">
-                            <div class="text-gold mb-6"><i data-lucide="shield-check" class="w-10 h-10"></i></div>
-                            <h3 class="text-xl font-bold text-navy mb-4 uppercase tracking-tighter">Bearer Integrity</h3>
-                            <p class="text-sm text-gray-600 leading-relaxed font-sans text-left">Documents in transit are secured in tamper-evident containers and handled strictly by background-vetted liaison officers.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT SECTION -->
-        <section id="contact" class="section-content">
-            <div class="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16 lg:py-24 pt-28 md:pt-32 lg:pt-40 text-center">
-                 <span class="text-gold uppercase tracking-[0.4em] text-[10px] font-bold mb-4 block text-center">Coordination</span>
-                 <h2 class="text-4xl md:text-6xl serif text-navy mb-12 md:mb-16 text-center">Secure Communication</h2>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 text-left">
-                    <div class="bg-white border border-gray-100 p-8 md:p-12 shadow-2xl rounded-sm text-left">
-                        <h3 class="text-2xl md:text-3xl serif text-navy mb-4 uppercase tracking-tight italic">Strategy Sessions</h3>
-                        <p class="text-sm text-gray-500 mb-10 font-medium font-sans">Initialize a 15-minute virtual intake for complex corporate or international cases.</p>
-                        <button onclick="initCalendar()" class="bg-navy text-white w-full py-5 text-xs font-bold uppercase tracking-widest rounded-sm hover:bg-gold hover:text-navy transition-all font-sans shadow-lg" id="calendar-trigger">View Availability</button>
-                        <div id="calendar-wrapper" class="mt-4"></div>
-                    </div>
-                    <div class="bg-navy p-8 md:p-12 text-white shadow-2xl flex flex-col justify-center rounded-sm text-left relative overflow-hidden">
-                        <div class="absolute -right-10 -bottom-10 opacity-5"><i data-lucide="message-circle" class="w-64 h-64"></i></div>
-                        <h3 class="text-2xl md:text-3xl serif mb-10 italic text-gold">Direct Encryption Chat</h3>
-                        <div class="flex items-center gap-6 cursor-pointer hover:text-gold transition group" onclick="openWhatsApp()">
-                            <div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-gold/10 transition-all border border-gold/20">
-                                <i data-lucide="message-circle" class="text-gold w-8 h-8"></i>
-                            </div>
-                            <div>
-                                <span class="text-[10px] uppercase font-bold tracking-[0.3em] text-gold/60 font-sans">WhatsApp Liaison</span>
-                                <span class="text-2xl md:text-3xl block text-white font-serif tracking-tight mt-1">1 (876) 561-2614</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- MOBILE NAVIGATION MENU -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 fixed top-20 w-full z-40 shadow-xl p-6 font-bold text-navy uppercase tracking-widest text-xs space-y-4">
+        <a href="services.html" class="block">Services Catalog</a>
+        <a href="about.html" class="block">About the Agency</a>
+        <a href="help_center.html" class="block">Help & FAQs</a>
     </div>
 
-    <!-- INSTITUTIONAL FOOTER -->
-    <footer class="bg-navy-dark text-white pt-16 md:pt-20 pb-10 border-t border-gold/20 font-sans">
-        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 mb-16 text-left">
-            <div>
-                <span class="text-2xl font-serif font-bold text-gold uppercase tracking-wider">Docu-Hub</span>
-                <p class="text-gray-400 text-sm mt-4 leading-relaxed font-light">Specialized administrative logistics for Jamaican individuals, Diaspora members, and Corporate Entities.</p>
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow">
+        
+        <!-- HERO: THE CONCIERGE WELCOME -->
+        <section class="bg-navy text-white relative overflow-hidden py-20 lg:py-32">
+            <div class="absolute inset-0 opacity-10 hero-pattern"></div>
+            <div class="container mx-auto px-6 relative z-10 text-center">
+                <span class="inline-block border border-gold/40 px-4 py-1 rounded-full mb-6 text-[10px] font-bold tracking-[0.3em] text-gold uppercase bg-navy-dark/50">Institutional Liaison</span>
+                <h1 class="text-4xl md:text-6xl font-serif font-bold mb-6 uppercase leading-tight">
+                    Jamaica's Document <br/><span class="text-gold italic">Concierge Desk.</span>
+                </h1>
+                <p class="text-gray-300 text-sm md:text-lg max-w-2xl mx-auto font-light leading-relaxed mb-10">
+                    We navigate the complexities of Jamaican government agencies so you don't have to. Professional, compliant, and strictly confidential.
+                </p>
             </div>
-            <div>
-                <h4 class="font-bold text-white mb-8 text-xs uppercase tracking-[0.3em]">Institutional Resources</h4>
-                <ul class="text-xs text-gray-400 space-y-4 font-bold uppercase tracking-widest">
-                    <li><a href="index.html" class="hover:text-gold transition">Portal Home</a></li>
-                    <li><a href="services.html" class="hover:text-gold transition">Service Catalog</a></li>
-                    <li><a href="about.html" class="hover:text-gold transition">Principal Profile</a></li>
-                    <li><a href="help_center.html" class="text-gold-light hover:text-gold underline">Help & Navigation Center</a></li>
-                </ul>
+        </section>
+
+        <!-- THE TASK CENTER: SIMPLIFIED NAVIGATION -->
+        <section class="container mx-auto px-6 -mt-12 relative z-20">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Task 1: Start New -->
+                <div class="task-card p-8 rounded-sm shadow-xl cursor-pointer group" onclick="window.location.href='services.html'">
+                    <div class="w-12 h-12 bg-parchment rounded flex items-center justify-center text-navy mb-6 group-hover:bg-navy group-hover:text-white transition-colors">
+                        <i data-lucide="plus-circle"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy uppercase mb-2">New Request</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-6">Browse our catalog for RGD, PICA, TAJ, and NIS liaison services.</p>
+                    <span class="text-[10px] font-bold text-gold uppercase tracking-widest group-hover:underline">Explore Services &rarr;</span>
+                </div>
+
+                <!-- Task 2: Track Existing -->
+                <div class="task-card p-8 rounded-sm shadow-xl cursor-pointer group" onclick="openModal('statusModal')">
+                    <div class="w-12 h-12 bg-parchment rounded flex items-center justify-center text-navy mb-6 group-hover:bg-navy group-hover:text-white transition-colors">
+                        <i data-lucide="search"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy uppercase mb-2">Track Status</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-6">Check the live progress of your existing application via TRN or Ref ID.</p>
+                    <span class="text-[10px] font-bold text-gold uppercase tracking-widest group-hover:underline">Query Node &rarr;</span>
+                </div>
+
+                <!-- Task 3: Submit Payment -->
+                <div class="task-card p-8 rounded-sm shadow-xl cursor-pointer group" onclick="openModal('paymentModal')">
+                    <div class="w-12 h-12 bg-green-50 rounded flex items-center justify-center text-green-700 mb-6 group-hover:bg-green-700 group-hover:text-white transition-colors">
+                        <i data-lucide="upload-cloud"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy uppercase mb-2">Pay & Upload</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-6">Submit your NCB bank transfer receipt to activate your case file.</p>
+                    <span class="text-[10px] font-bold text-green-700 uppercase tracking-widest group-hover:underline">Secure Upload &rarr;</span>
+                </div>
             </div>
-            <div>
-                <h4 class="font-bold text-white mb-8 text-xs uppercase tracking-[0.3em]">Governance & Legal</h4>
-                <ul class="text-xs text-gray-400 space-y-4 font-bold uppercase tracking-widest">
-                    <li><a href="privacy.html" class="hover:text-gold transition">Privacy Policy</a></li>
-                    <li><a href="terms.html" class="hover:text-gold transition">Terms of Service</a></li>
-                    <li><a href="legal-notice.html" class="hover:text-gold transition">Legal Notice</a></li>
-                </ul>
+        </section>
+
+        <!-- DEPARTMENT DIRECTORY -->
+        <section class="py-20 bg-white mt-10">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <span class="text-gold uppercase tracking-[0.3em] text-[10px] font-bold block mb-2">Registry Jumps</span>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy uppercase">Agency Departments</h2>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    <a href="services.html?jump=pica" class="p-6 border border-gray-100 text-center hover:bg-parchment transition rounded flex flex-col items-center gap-3">
+                        <i data-lucide="plane" class="text-navy"></i><span class="text-[10px] font-bold uppercase tracking-widest">PICA</span>
+                    </a>
+                    <a href="services.html?jump=rgd" class="p-6 border border-gray-100 text-center hover:bg-parchment transition rounded flex flex-col items-center gap-3">
+                        <i data-lucide="file-text" class="text-navy"></i><span class="text-[10px] font-bold uppercase tracking-widest">RGD</span>
+                    </a>
+                    <a href="services.html?jump=taj" class="p-6 border border-gray-100 text-center hover:bg-parchment transition rounded flex flex-col items-center gap-3">
+                        <i data-lucide="landmark" class="text-navy"></i><span class="text-[10px] font-bold uppercase tracking-widest">TAJ</span>
+                    </a>
+                    <a href="services.html?jump=nis" class="p-6 border border-gray-100 text-center hover:bg-parchment transition rounded flex flex-col items-center gap-3">
+                        <i data-lucide="users" class="text-navy"></i><span class="text-[10px] font-bold uppercase tracking-widest">NIS</span>
+                    </a>
+                    <a href="services.html?jump=police" class="p-6 border border-gray-100 text-center hover:bg-parchment transition rounded flex flex-col items-center gap-3 col-span-2 md:col-span-1">
+                        <i data-lucide="fingerprint" class="text-navy"></i><span class="text-[10px] font-bold uppercase tracking-widest">JCF</span>
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="container mx-auto px-6 pt-8 border-t border-white/5 text-center">
-            <p class="text-[10px] text-gray-500 italic mb-6 max-w-4xl mx-auto leading-relaxed font-sans text-center">
-                Docu-Hub Operations Services is a clerical agency and government logistics provider. We are not a law firm, and we do not provide legal advice, statutory interpretations, or legal opinions. All biographic data is handled in strict compliance with the Data Protection Act (2020) of Jamaica.
-            </p>
-            <div class="text-[10px] uppercase tracking-[0.4em] text-gray-600 font-bold font-sans text-center">
-                &copy; 2026 Docu-Hub Operations Services. Kingston, Jamaica.
+        </section>
+
+        <!-- TRUST & COMPLIANCE -->
+        <section class="py-20 bg-gray-50 border-t border-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="text-gold uppercase tracking-[0.3em] text-[10px] font-bold block mb-4">Governance</span>
+                        <h2 class="text-3xl font-serif font-bold text-navy uppercase mb-6">Bank-Grade Privacy</h2>
+                        <p class="text-sm text-gray-500 leading-relaxed mb-6">
+                            Docu-Hub operates as a Data Processor under the **Data Protection Act (JDPA) 2020**. We maintain a strict 30-day purge cycle for all biographic data.
+                        </p>
+                        <ul class="space-y-3 text-xs font-bold text-navy uppercase tracking-widest">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="text-gold w-4 h-4"></i> Secure Drive Vault Storage</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="text-gold w-4 h-4"></i> Forensic Audit Trails</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="text-gold w-4 h-4"></i> POCA AML Compliance</li>
+                        </ul>
+                    </div>
+                    <div class="bg-navy p-10 rounded shadow-2xl text-white text-center relative overflow-hidden">
+                        <div class="absolute -right-10 -bottom-10 opacity-10"><i data-lucide="shield" class="w-40 h-40"></i></div>
+                        <h3 class="text-xl font-bold uppercase tracking-widest mb-4">Need Help?</h3>
+                        <p class="text-xs text-blue-200 mb-8 leading-relaxed">Direct WhatsApp coordination for high-volume or diaspora cases.</p>
+                        <button onclick="openWhatsApp()" class="w-full bg-gold text-navy font-bold py-4 rounded-sm uppercase tracking-widest text-xs">Start Live Chat</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-dark text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-[10px] uppercase tracking-[0.4em] text-gray-500 font-bold mb-4">&copy; 2026 Docu-Hub Operations Services. Kingston, Jamaica.</p>
+            <div class="flex justify-center gap-6 text-[9px] font-bold uppercase tracking-widest text-gray-600">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="legal-notice.html">Legal</a>
             </div>
         </div>
     </footer>
 
     <!-- MODAL: CASE TRACKER -->
     <div id="statusModal" class="modal fixed inset-0 flex items-center justify-center bg-navy/95 backdrop-blur-sm">
-        <div class="modal-content bg-white w-full max-w-md rounded shadow-2xl overflow-hidden m-4 text-left font-sans">
-            <div class="bg-navy p-6 flex justify-between items-center border-b border-white/10 text-white">
-                <h3 class="font-serif text-xl uppercase tracking-tighter">Case Tracker</h3>
+        <div class="modal-content bg-white w-full max-w-md rounded shadow-2xl overflow-hidden m-4 text-left">
+            <div class="bg-navy p-6 flex justify-between items-center text-white">
+                <h3 class="font-serif text-xl uppercase font-bold tracking-tight">Case Tracker</h3>
                 <button onclick="closeModal('statusModal')" class="text-gray-400 hover:text-white transition"><i data-lucide="x"></i></button>
             </div>
             <div class="p-8 text-center">
                 <div id="statusInputView">
-                    <p class="text-xs text-gray-400 uppercase font-bold mb-6 tracking-widest">Enter TRN or Reference ID</p>
-                    <input type="text" id="trackTrn" class="w-full border-2 border-navy p-4 mb-6 rounded-sm text-center font-bold text-navy uppercase text-lg outline-none focus:border-gold transition-colors" placeholder="REF NUMBER">
-                    <button onclick="checkStatus()" id="checkStatusBtn" class="w-full bg-gold text-navy font-bold py-4 rounded-sm hover:bg-yellow-500 transition shadow-xl uppercase tracking-widest text-xs">Analyze Record</button>
+                    <p class="text-[10px] text-gray-400 uppercase font-bold mb-6 tracking-widest">Enter TRN or Reference ID</p>
+                    <input type="text" id="trackTrn" class="w-full border-2 border-navy p-4 mb-6 text-center font-bold text-navy uppercase text-lg outline-none focus:border-gold transition-colors" placeholder="REF NUMBER">
+                    <button onclick="checkStatus()" id="checkStatusBtn" class="w-full bg-gold text-navy font-bold py-4 shadow-xl uppercase tracking-widest text-xs">Analyze Record</button>
                 </div>
                 <div id="statusResultView" class="hidden py-4 text-left">
-                    <div class="flex items-center gap-4 mb-8 bg-parchment p-4 rounded-sm border border-navy/5">
+                    <div class="flex items-center gap-4 mb-8 bg-parchment p-4 border border-navy/5">
                         <div class="w-10 h-10 bg-navy text-gold rounded-full flex items-center justify-center"><i data-lucide="activity"></i></div>
-                        <div><span class="text-[10px] text-gray-400 uppercase font-bold block">Current Node Status</span><h4 id="statusTitle" class="font-serif font-bold text-xl text-navy uppercase tracking-tighter">--</h4></div>
+                        <div><span class="text-[10px] text-gray-400 uppercase font-bold block">Current Node Status</span><h4 id="statusTitle" class="font-serif font-bold text-xl text-navy uppercase">--</h4></div>
                     </div>
                     <button onclick="resetStatus()" class="text-[10px] underline text-gray-400 hover:text-navy uppercase font-bold tracking-widest mx-auto block">Check Another Record</button>
                 </div>
@@ -293,23 +222,23 @@
     </div>
 
     <!-- MODAL: PAYMENT PROOF -->
-    <div id="paymentModal" class="modal fixed inset-0 flex items-center justify-center bg-navy/95 backdrop-blur-sm font-sans">
+    <div id="paymentModal" class="modal fixed inset-0 flex items-center justify-center bg-navy/95 backdrop-blur-sm">
         <div class="modal-content bg-white w-full max-w-md rounded shadow-2xl overflow-hidden m-4 text-left">
             <div class="bg-green-800 p-6 flex justify-between items-center text-white">
-                <h3 class="font-serif text-xl uppercase tracking-tight font-bold">Secure Receipt Upload</h3>
+                <h3 class="font-serif text-xl uppercase font-bold tracking-tight">Secure Receipt Upload</h3>
                 <button onclick="closeModal('paymentModal')" class="text-white hover:text-gold transition"><i data-lucide="x"></i></button>
             </div>
             <div class="p-8">
                 <form onsubmit="submitPayment(event)">
-                    <label class="block text-[10px] font-bold text-gray-400 uppercase mb-2">Legal Name / Case Reference</label>
-                    <input type="text" name="clientRef" required class="w-full border-b-2 border-gray-100 bg-gray-50 p-4 mb-6 transition rounded-t focus:border-green-700 outline-none text-sm" placeholder="e.g. John Doe">
+                    <label class="block text-[10px] font-bold text-gray-400 uppercase mb-2 tracking-widest">Legal Name / Case Reference</label>
+                    <input type="text" name="clientRef" required class="w-full border-b-2 border-gray-100 bg-gray-50 p-4 mb-6 focus:border-green-700 outline-none text-sm" placeholder="e.g. John Doe">
                     
-                    <div class="border-2 border-dashed border-gray-200 p-10 text-center rounded-sm mb-8 cursor-pointer hover:border-green-600 transition bg-gray-50" onclick="document.getElementById('payFile').click()">
+                    <div class="border-2 border-dashed border-gray-200 p-10 text-center rounded mb-8 cursor-pointer hover:border-green-600 transition bg-gray-50" onclick="document.getElementById('payFile').click()">
                         <i data-lucide="upload" class="mx-auto text-gray-300 mb-4 w-10 h-10"></i>
-                        <span class="text-[10px] text-gray-400 font-bold block uppercase tracking-widest" id="fileNameDisplay">Select Receipt Image (PNG/JPG)</span>
+                        <span class="text-[10px] text-gray-400 font-bold block uppercase tracking-widest" id="fileNameDisplay">Select Receipt Image</span>
                         <input type="file" id="payFile" name="payFile" class="hidden" required onchange="document.getElementById('fileNameDisplay').innerText = this.files[0].name">
                     </div>
-                    <button type="submit" id="btnPay" class="w-full bg-green-800 text-white font-bold py-5 rounded-sm hover:bg-green-900 transition shadow-2xl text-xs uppercase tracking-[0.2em]">Transmit Proof</button>
+                    <button type="submit" id="btnPay" class="w-full bg-green-800 text-white font-bold py-5 hover:bg-green-900 transition shadow-2xl text-xs uppercase tracking-[0.2em]">Transmit Proof</button>
                 </form>
             </div>
         </div>
@@ -317,41 +246,14 @@
 
     <script>
         lucide.createIcons();
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwQf0sYv9pzazZmo2os4-lUP1oVYO2Xz-nBEytCGvtkIOv4hrH9nDwlRT5WnZk_6D2l/exec"; 
         const WHATSAPP_NUMBER = "18765612614";
-        const GOOGLE_CALENDAR_URL = "https://calendar.app.google/XsqkLViLYtDKsjFB9";
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwGFZRnbUrb4Fq2sVMdtsvqmjqBYH3VrbCkiKMnPaaifYpqMTaVeLslxdtbsScwaR6V/exec";
 
-        function navigateTo(pageId) {
-            document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
-            const target = document.getElementById(pageId);
-            if(target) { target.classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
-        }
         function openModal(id) { document.getElementById(id).classList.add('active'); }
         function closeModal(id) { document.getElementById(id).classList.remove('active'); }
         function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
         function openWhatsApp() { window.open(`https://wa.me/${WHATSAPP_NUMBER}`, '_blank'); }
-        function initCalendar() { 
-            const btn = document.getElementById('calendar-trigger');
-            const wrapper = document.getElementById('calendar-wrapper');
-            btn.style.display = 'none'; 
-            wrapper.innerHTML = `<iframe src="${GOOGLE_CALENDAR_URL}" style="width:100%;height:550px;border:0;border-radius:4px;"></iframe>`; 
-        }
 
-        function submitPayment(e) {
-            e.preventDefault();
-            const btn = document.getElementById('btnPay');
-            const original = btn.innerText;
-            btn.innerText = "TRANSMITTING..."; btn.disabled = true;
-            const file = document.getElementById('payFile').files[0];
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = function() {
-                const payload = { action: 'payment_proof', clientRef: e.target.clientRef.value, fileName: file.name, mimeType: file.type, fileData: reader.result.split(',')[1] };
-                fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) })
-                .then(() => { alert("Transmission Successful!"); closeModal('paymentModal'); e.target.reset(); })
-                .catch(() => alert("Transmission Error.")).finally(() => { btn.innerText = original; btn.disabled = false; });
-            };
-        }
         function checkStatus() {
             const trn = document.getElementById('trackTrn').value;
             if(!trn) return;
@@ -373,4 +275,3 @@
     </script>
 </body>
 </html>
-
