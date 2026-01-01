@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -558,8 +559,10 @@
                     signature: signaturePad.toDataURL()
                 };
 
-                const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwtBExoQPDckqDGKyAKeAVoYRCfd42DOl3oiKlrOjJruXPjTnn8m9UJIjUnp6906MaG/exec";
-        
+                try {
+                    if (GOOGLE_SCRIPT_URL === "YOUR_DEPLOYMENT_URL_HERE") {
+                        throw new Error("Configuration Error: API URL not set.");
+                    }
 
                     await fetch(GOOGLE_SCRIPT_URL, {
                         method: 'POST',
@@ -609,8 +612,6 @@
     </script>
 </body>
 </html>
-
-
 
 
 
