@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Services Catalog | Docu-Hub Compliance v27.9</title>
+    <title>Services Catalog | Docu-Hub Compliance v77.4</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -49,14 +49,27 @@
 
         .sub-btn { transition: all 0.2s ease; border: 1px solid #e2e8f0; }
         .sub-btn.active { background-color: #003366; color: #D4AF37; border-color: #003366; }
+
+        /* Loading & Success States */
+        #statusOverlay { transition: opacity 0.3s ease; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col text-left">
 
+    <!-- STATUS OVERLAY (Replaces alerts) -->
+    <div id="statusOverlay" class="fixed inset-0 bg-navy/90 z-[200] hidden flex items-center justify-center p-6 text-center">
+        <div class="space-y-6">
+            <div id="statusSpinner" class="w-16 h-16 border-4 border-gold border-t-transparent rounded-full animate-spin mx-auto"></div>
+            <div id="statusSuccessIcon" class="hidden text-gold text-6xl mx-auto"><i data-lucide="check-circle-2" class="w-20 h-20 mx-auto"></i></div>
+            <h3 id="statusText" class="text-white text-xl font-bold uppercase tracking-widest italic">Transmitting...</h3>
+            <p id="statusSubText" class="text-blue-200 text-[10px] uppercase font-bold tracking-widest">Do not close this window</p>
+        </div>
+    </div>
+
     <!-- NAVIGATION -->
     <nav class="bg-white shadow-md sticky top-0 z-50 border-b-4 border-gold">
         <div class="container mx-auto px-4 md:px-6 h-20 flex justify-between items-center text-left">
-            <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+            <div class="flex items-center gap-3 cursor-pointer">
                 <div class="w-10 h-10 bg-navy flex items-center justify-center rounded text-gold font-bold text-xl shadow-lg">D</div>
                 <div class="leading-none text-left">
                     <span class="text-xl font-bold text-navy uppercase tracking-tight">Docu-Hub</span>
@@ -64,8 +77,7 @@
                 </div>
             </div>
             <div class="flex items-center gap-4">
-                <a href="index.html" class="text-[11px] font-bold text-navy uppercase tracking-widest border border-navy/20 px-4 py-2 rounded hover:bg-navy hover:text-white transition-all">Portal Home</a>
-                <button class="md:hidden text-navy" onclick="toggleMobileMenu()"><i data-lucide="menu"></i></button>
+                <button onclick="window.location.reload()" class="text-[11px] font-bold text-navy uppercase tracking-widest border border-navy/20 px-4 py-2 rounded hover:bg-navy hover:text-white transition-all">Reset View</button>
             </div>
         </div>
     </nav>
@@ -143,7 +155,6 @@
             <div class="p-8 overflow-y-auto space-y-8">
                 <form id="leadForm" onsubmit="submitLead(event)" class="space-y-8 text-left">
                     
-                    <!-- DATA ENTRY -->
                     <div class="space-y-6">
                         <div class="font-bold text-navy text-[11px] uppercase tracking-widest flex items-center gap-2"><i data-lucide="user"></i> Identity Data</div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
@@ -153,7 +164,7 @@
                             </div>
                             <div>
                                 <label class="block text-[10px] font-bold text-gray-400 uppercase mb-2">WhatsApp Contact</label>
-                                <input type="text" name="contact" placeholder="1-876-..." required class="w-full border-b border-gray-200 bg-gray-50 p-4 text-sm font-bold uppercase outline-none focus:border-navy transition">
+                                <input type="tel" name="contact" placeholder="1-876-..." required class="w-full border-b border-gray-200 bg-gray-50 p-4 text-sm font-bold uppercase outline-none focus:border-navy transition">
                             </div>
                         </div>
                         <div class="text-left">
@@ -163,7 +174,6 @@
                         <input type="hidden" name="service" id="modalServiceInput">
                     </div>
 
-                    <!-- FULFILLMENT PREFERENCE -->
                     <div class="space-y-6 bg-slate-50 p-6 rounded border border-dashed border-gray-200">
                         <div class="font-bold text-navy text-[11px] uppercase tracking-widest flex items-center gap-2">
                             <i data-lucide="truck"></i> Fulfillment Preference
@@ -180,14 +190,13 @@
                         </div>
                     </div>
 
-                    <!-- AGREEMENT -->
                     <div class="space-y-4 text-left">
                         <div class="font-bold text-navy text-[11px] uppercase tracking-widest flex items-center gap-2"><i data-lucide="shield-check"></i> Authorization Agreement</div>
                         <div class="agreement-box rounded shadow-inner text-left">
                             <p class="font-bold text-navy mb-2">1. SCOPE OF REPRESENTATION</p>
-                            <p class="mb-4 text-left">I authorize Docu-Hub to act as my designated Liaison.</p>
+                            <p class="mb-4 text-left">I authorize Docu-Hub to act as my designated Liaison for the requested agency mission.</p>
                             <p class="font-bold text-navy mb-2">2. DATA RETENTION</p>
-                            <p class="mb-4 text-left">Records purged 30 days after completion.</p>
+                            <p class="mb-4 text-left">Identity records and uploaded files are purged 30 days after mission completion.</p>
                         </div>
                         <label class="flex items-start gap-3 cursor-pointer p-4 bg-gray-50 rounded border border-transparent hover:border-gray-200 transition text-left">
                             <input type="checkbox" id="complianceCheck" required class="mt-1 w-5 h-5 accent-navy">
@@ -195,7 +204,6 @@
                         </label>
                     </div>
 
-                    <!-- SIGNATURE -->
                     <div class="space-y-4 text-left">
                         <div class="font-bold text-navy text-[11px] uppercase tracking-widest flex items-center gap-2"><i data-lucide="pen-tool"></i> Authorization Signature</div>
                         <div class="signature-wrapper shadow-inner overflow-hidden">
@@ -257,8 +265,6 @@
             target.classList.add('animate-fade-in');
             
             if(type === 'personal') renderCatalog();
-            
-            // Critical fix: Ensure user is scrolled to the newly opened directory
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
@@ -337,7 +343,7 @@
                 resizeCanvas();
             }
             document.body.style.overflow = 'hidden';
-            lucide.createIcons(); // Refresh icons inside modal
+            lucide.createIcons();
         }
 
         function closeModal(id) { 
@@ -345,35 +351,66 @@
             document.body.style.overflow = 'auto'; 
         }
 
+        /**
+         * HARDENED SUBMISSION HANDSHAKE (v77.4)
+         * Prevents code string display by suppressing event loop and using no-cors mode.
+         */
         async function submitLead(e) {
-            e.preventDefault();
-            if(signaturePad.isEmpty()) return alert("Authorization signature is required.");
-            if(!document.getElementById('complianceCheck').checked) return alert("Compliance checkbox is required.");
+            // 1. STOP NAVIGATION IMMEDIATELY
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            if(signaturePad.isEmpty()) return;
+            if(!document.getElementById('complianceCheck').checked) return;
             
             const btn = document.getElementById('submitLeadBtn');
-            const originalText = btn.innerText;
-            btn.innerText = "CAPTURING AUTHORIZATION..."; btn.disabled = true;
+            const overlay = document.getElementById('statusOverlay');
+            const statusText = document.getElementById('statusText');
+            const statusSub = document.getElementById('statusSubText');
+            const spinner = document.getElementById('statusSpinner');
+            const successIcon = document.getElementById('statusSuccessIcon');
+
+            // 2. UI LOCKDOWN
+            overlay.classList.remove('hidden');
+            btn.disabled = true;
+            btn.classList.add('opacity-50');
             
             const formData = new FormData(e.target);
             const data = Object.fromEntries(formData.entries());
             data.signature = signaturePad.toDataURL();
+            data.source = "Web";
 
-            fetch(SCRIPT_URL, { 
-                method: 'POST', 
-                mode: 'no-cors',
-                body: JSON.stringify(data) 
-            })
-            .then(() => { 
-                alert("Success: Authorization Received. Your Liaison will contact you via WhatsApp for dispatch clearance."); 
-                window.location.reload(); 
-            })
-            .catch((err) => { 
-                alert("Handshake Failed. Please try again."); 
-                btn.innerText = originalText; btn.disabled = false; 
-            });
+            try {
+                // 3. HANDSHAKE (Opaque/No-Cors Mode)
+                await fetch(SCRIPT_URL, { 
+                    method: 'POST', 
+                    mode: 'no-cors',
+                    cache: 'no-cache',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data) 
+                });
+                
+                // 4. SUCCESS FEEDBACK
+                spinner.classList.add('hidden');
+                successIcon.classList.remove('hidden');
+                statusText.innerText = "AUTHORIZATION RECEIVED";
+                statusSub.innerText = "Liaison Officer will contact you via WhatsApp shortly.";
+                lucide.createIcons();
+
+                setTimeout(() => {
+                    window.location.reload(); 
+                }, 3000);
+                
+            } catch (err) { 
+                overlay.classList.add('hidden');
+                btn.disabled = false;
+                btn.classList.remove('opacity-50');
+            }
+            
+            return false; // Final block
         }
-
-        function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
 
         window.onload = function() {
             const params = new URLSearchParams(window.location.search);
