@@ -2,15 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docu-Hub | Institutional Concierge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Docu-Hub | Luxury Concierge & Compliance</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-
     <script>
         tailwind.config = {
             theme: {
@@ -19,7 +14,8 @@
                         navy: '#003366',
                         gold: '#D4AF37',
                         emerald: '#059669',
-                        offwhite: '#F9FAFB',
+                        paper: '#F5F0EC',
+                        glass: 'rgba(255, 255, 255, 0.95)'
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -29,555 +25,471 @@
             }
         }
     </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* Custom Scrollbar for Agreement Panel */
-        .agreement-scroll::-webkit-scrollbar { width: 6px; }
-        .agreement-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
-        .agreement-scroll::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
+        /* LUXURY TACTILE UI */
+        body { background-color: #F5F0EC; color: #003366; -webkit-font-smoothing: antialiased; }
         
-        /* Smooth Transitions */
-        .fade-in { animation: fadeIn 0.4s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .btn-primary {
+            background: #003366; color: white; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #003366; position: relative; overflow: hidden;
+        }
+        .btn-primary:active { transform: scale(0.95); }
+        .btn-primary:hover { background: #D4AF37; border-color: #D4AF37; color: #003366; }
+        .btn-disabled { background: #9ca3af; cursor: not-allowed; opacity: 0.5; transform: none !important; }
 
-        /* Tactile Feedback */
-        .tactile:active { transform: scale(0.98); }
+        .card-interaction {
+            transition: all 0.4s ease; border: 1px solid rgba(0,0,0,0.05);
+        }
+        .card-interaction:hover {
+            transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #D4AF37;
+        }
+        .card-active {
+            border: 2px solid #D4AF37; background: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* SCROLL TRAP STYLING */
+        .scroll-trap {
+            scrollbar-width: thin; scrollbar-color: #D4AF37 #f1f1f1;
+        }
+        .scroll-trap::-webkit-scrollbar { width: 6px; }
+        .scroll-trap::-webkit-scrollbar-track { background: #f1f1f1; }
+        .scroll-trap::-webkit-scrollbar-thumb { background-color: #D4AF37; border-radius: 20px; }
+
+        /* SENSORY OVERLAY */
+        .sensory-overlay {
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+        }
         
-        /* Locked Button State */
-        .btn-locked { background-color: #9CA3AF; cursor: not-allowed; }
-        .btn-active { background-color: #003366; cursor: pointer; }
+        .fade-enter { opacity: 0; transform: translateY(20px); }
+        .fade-enter-active { opacity: 1; transform: translateY(0); transition: opacity 0.5s, transform 0.5s; }
+        
+        canvas { background: #fff; border: 1px dashed #cbd5e1; border-radius: 0.5rem; cursor: crosshair; }
     </style>
 </head>
-<body class="bg-gray-50 text-slate-800 font-sans antialiased min-h-screen pb-20">
+<body class="pb-24">
 
-    <div id="sensoryOverlay" class="fixed inset-0 z-50 flex items-center justify-center bg-navy/80 hidden backdrop-blur-sm fade-in">
-        <div class="bg-white p-8 rounded-lg shadow-2xl max-w-sm w-full text-center border-t-4 border-gold">
-            <div id="sensoryIcon" class="mx-auto mb-4 text-navy"></div>
-            <h3 id="sensoryTitle" class="text-xl font-serif font-bold text-navy mb-2"></h3>
-            <p id="sensoryMessage" class="text-sm text-gray-600 mb-6"></p>
-            <button onclick="closeSensory()" class="w-full py-3 bg-navy text-white font-medium rounded hover:bg-opacity-90 tactile">Acknowledge</button>
-        </div>
-    </div>
-
-    <header class="bg-white shadow-sm sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <nav class="sticky top-0 z-40 bg-navy/95 backdrop-blur text-white border-b border-gold/30">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <i data-lucide="shield-check" class="text-gold w-8 h-8"></i>
+                <i data-lucide="shield-check" class="text-gold" size="24"></i>
                 <div>
-                    <h1 class="font-serif text-2xl text-navy tracking-tight font-bold italic">Docu-Hub</h1>
-                    <p class="text-[10px] uppercase tracking-widest text-gray-500">Concierge & Compliance</p>
+                    <h1 class="font-serif font-bold text-lg tracking-widest uppercase">Docu-Hub</h1>
+                    <p class="text-[9px] uppercase tracking-[0.2em] text-gold">Operations Services</p>
                 </div>
             </div>
-            <div class="hidden md:flex gap-6 text-sm font-medium text-navy">
-                <a href="#" class="hover:text-gold transition">Our Mission</a>
-                <a href="#" class="hover:text-gold transition">Status Check</a>
-                <a href="#help-centre" class="hover:text-gold transition">Compliance</a>
+            <div class="text-[10px] font-mono text-gold border border-gold px-2 py-1 rounded">
+                SECURE: AES-256
             </div>
+        </div>
+    </nav>
+
+    <header class="relative h-[280px] w-full overflow-hidden flex items-center justify-center bg-navy">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1000" class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay">
+        <div class="relative z-10 text-center space-y-4 px-4">
+            <span class="inline-block px-3 py-1 bg-gold/20 text-gold border border-gold rounded-full text-[10px] font-bold uppercase tracking-widest backdrop-blur-sm">
+                Editorial Mission Hub
+            </span>
+            <h2 class="font-serif text-4xl md:text-5xl text-white italic">The Compliance Concierge</h2>
+            <p class="text-white/80 text-sm max-w-md mx-auto font-light">Precision logistics for Jamaica's most demanding protocols.</p>
         </div>
     </header>
 
-    <main id="viewDirectory" class="max-w-7xl mx-auto px-4 py-12 fade-in">
-        <div class="text-center mb-16">
-            <h2 class="font-serif text-4xl text-navy mb-4">The Editorial Mission Directory</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto">Select a pillar below to initiate the secure forensic liaison process.</p>
-        </div>
+    <main class="max-w-3xl mx-auto px-6 -mt-10 relative z-20 space-y-16">
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="pillarsGrid">
+        <section id="leg-1" class="fade-enter-active">
+            <div class="flex items-baseline gap-4 mb-6 border-b border-navy/10 pb-4">
+                <span class="font-serif text-4xl text-navy/20 italic">01</span>
+                <h3 class="text-xl font-bold text-navy uppercase tracking-wide">Select Service Suite</h3>
             </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div id="service-grid" class="contents"></div>
+            </div>
+        </section>
+
+        <section id="leg-2" class="hidden opacity-50 transition-all duration-500">
+            <div class="flex items-baseline gap-4 mb-6 border-b border-navy/10 pb-4">
+                <span class="font-serif text-4xl text-navy/20 italic">02</span>
+                <h3 class="text-xl font-bold text-navy uppercase tracking-wide">Requirements Audit</h3>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-emerald">
+                <div class="flex items-start gap-4 mb-6">
+                    <div class="bg-emerald/10 p-3 rounded-full text-emerald">
+                        <i data-lucide="clipboard-list" size="24"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-navy text-lg">Physical Document Check</h4>
+                        <p class="text-xs text-gray-500 mt-1">Please confirm possession of the following before proceeding.</p>
+                    </div>
+                </div>
+                <div id="checklist-container" class="space-y-3 mb-8"></div>
+                <button onclick="confirmAudit()" class="btn-primary w-full py-4 rounded font-bold uppercase text-xs tracking-widest">
+                    Confirm Possession & Proceed
+                </button>
+            </div>
+        </section>
+
+        <section id="leg-3" class="hidden opacity-50 transition-all duration-500">
+            <div class="flex items-baseline gap-4 mb-6 border-b border-navy/10 pb-4">
+                <span class="font-serif text-4xl text-navy/20 italic">03</span>
+                <h3 class="text-xl font-bold text-navy uppercase tracking-wide">Master Agreement</h3>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                <div class="bg-navy text-white p-4 text-xs font-bold uppercase tracking-widest flex justify-between">
+                    <span>Terms of Engagement</span>
+                    <span>READ TO BOTTOM</span>
+                </div>
+                
+                <div id="terms-scroll" class="scroll-trap h-64 overflow-y-auto p-6 text-xs text-gray-600 space-y-4 leading-relaxed text-justify">
+                    <p class="font-bold text-navy">AGREEMENT BETWEEN CLIENT AND LAURA CLARKE T/A DOCU-HUB OPERATIONS SERVICES.</p>
+                    <p><strong>1. AUTHORITY TO ACT:</strong> By signing this digital instrument, you authorize Docu-Hub to act as your liaison with the selected Government Agency (PICA, TAJ, RGD, JCF).</p>
+                    <p><strong>2. DUAL-CLOCK POLICY (DATA RETENTION):</strong> You acknowledge our strict data lifecycle policy. <strong>Standard ID documents</strong> (Birth Certs, Passports) are purged from our digital systems after <strong>30 days</strong>. <strong>Financial records</strong> (Tax receipts, Business filings) are retained in cold storage for <strong>7 years</strong> as required by Jamaican financial law.</p>
+                    <p><strong>3. LIABILITY LIMITATION:</strong> Docu-Hub is a logistics facilitator. We are not responsible for delays caused by government system outages, strikes, or force majeure events.</p>
+                    <p><strong>4. FEES & REFUNDS:</strong> The Professional Liaison Fee is non-refundable once the service has commenced. Government Agency Fees are passed directly to the institution.</p>
+                    <p><strong>5. PRIVACY (JDPA 2020):</strong> Your data is processed solely for the purpose of this specific mandate. We do not sell or share data with third parties outside the necessary government scope.</p>
+                    <p class="text-red-600 font-bold">*** END OF AGREEMENT ***</p>
+                </div>
+
+                <div class="p-6 bg-gray-50 border-t border-gray-200">
+                    <label class="flex items-center gap-4 cursor-not-allowed opacity-50 transition-opacity duration-300" id="agree-label">
+                        <input type="checkbox" id="check-agree" disabled class="w-5 h-5 accent-navy">
+                        <span class="text-xs font-bold text-navy">I accept the Terms, Dual-Clock Policy, and Liaison Authority.</span>
+                    </label>
+                    <button id="btn-agree" disabled onclick="confirmAgreement()" class="mt-4 btn-primary btn-disabled w-full py-4 rounded font-bold uppercase text-xs tracking-widest transition-all">
+                        Accept & Continue
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="leg-4" class="hidden opacity-50 transition-all duration-500">
+            <div class="flex items-baseline gap-4 mb-6 border-b border-navy/10 pb-4">
+                <span class="font-serif text-4xl text-navy/20 italic">04</span>
+                <h3 class="text-xl font-bold text-navy uppercase tracking-wide">Forensic Intake</h3>
+            </div>
+
+            <form id="intake-form" onsubmit="return false;" class="space-y-6">
+                <div id="dynamic-fields" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                    <label class="block text-[10px] font-bold uppercase text-gray-400 mb-2">Digital Signature</label>
+                    <canvas id="sig-canvas" width="600" height="150" class="w-full"></canvas>
+                    <div class="flex justify-between mt-2">
+                        <button onclick="clearSig()" class="text-[10px] text-red-500 font-bold uppercase hover:underline">Clear</button>
+                        <span class="text-[10px] text-gray-400">Sign above using finger or mouse</span>
+                    </div>
+                </div>
+
+                <button onclick="submitPayload()" class="btn-primary w-full py-5 rounded-lg font-bold uppercase text-sm tracking-widest shadow-xl">
+                    Transmit Securely
+                </button>
+            </form>
+        </section>
+
     </main>
 
-    <section id="missionControl" class="fixed inset-0 bg-gray-50 z-40 hidden overflow-y-auto">
-        <div class="max-w-4xl mx-auto min-h-screen bg-white shadow-2xl border-x border-gray-100 flex flex-col relative">
-            
-            <div class="bg-navy p-6 text-white sticky top-0 z-50 shadow-lg">
-                <div class="flex justify-between items-center mb-4">
-                    <button onclick="exitMission()" class="text-gold hover:text-white flex items-center gap-2 text-sm">
-                        <i data-lucide="arrow-left" class="w-4 h-4"></i> Return to Directory
-                    </button>
-                    <span id="activePillarName" class="font-serif italic text-lg text-gold"></span>
-                </div>
-                <div class="flex items-center justify-between text-xs uppercase tracking-widest text-gray-400">
-                    <span id="step1" class="text-gold font-bold">1. Suite</span>
-                    <span id="step2">2. Audit</span>
-                    <span id="step3">3. Pact</span>
-                    <span id="step4">4. Intake</span>
-                    <span id="step5">5. Transmit</span>
-                </div>
-                <div class="h-1 bg-white/10 mt-2 rounded-full">
-                    <div id="progressBar" class="h-1 bg-gold rounded-full w-[20%] transition-all duration-500"></div>
-                </div>
-            </div>
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-navy/90 backdrop-blur text-white px-6 py-3 rounded-full shadow-2xl z-50 flex items-center gap-6 border border-white/10">
+        <a href="#help" class="text-[10px] font-bold uppercase tracking-widest hover:text-gold transition-colors">Help Centre</a>
+        <div class="h-4 w-px bg-white/20"></div>
+        <a href="#" class="text-[10px] font-bold uppercase tracking-widest hover:text-gold transition-colors">Track Case</a>
+    </div>
 
-            <div id="missionContent" class="flex-1 p-6 md:p-12">
-                </div>
-
-        </div>
-    </section>
-
-    <footer class="bg-navy text-white mt-12 py-12">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-                <h4 class="font-serif italic text-xl text-gold mb-4">Docu-Hub</h4>
-                <p class="text-sm text-gray-400">Trading as Laura Clarke Operations Services.</p>
+    <footer id="help" class="bg-white border-t border-gray-200 mt-24 py-12">
+        <div class="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-xs text-gray-500">
+            <div class="space-y-4">
+                <h4 class="font-bold text-navy uppercase tracking-widest">Docu-Hub Ops</h4>
+                <p>Laura Clarke T/A Docu-Hub.<br>Spanish Town, St. Catherine.</p>
+                <p class="font-mono text-gold">DPA REG: PENDING</p>
             </div>
-            <div>
-                <h5 class="font-bold text-sm uppercase tracking-widest mb-4">Legals</h5>
-                <ul class="text-sm space-y-2 text-gray-400">
-                    <li><a href="privacy.html" class="hover:text-gold">Privacy Policy (JDPA)</a></li>
-                    <li><a href="terms.html" class="hover:text-gold">Terms of Engagement</a></li>
-                    <li><a href="legal-notice.html" class="hover:text-gold">POCA Compliance</a></li>
-                </ul>
+            <div class="space-y-2">
+                <h4 class="font-bold text-navy uppercase tracking-widest">Compliance</h4>
+                <a href="#" class="block hover:text-navy">Privacy Policy (JDPA)</a>
+                <a href="#" class="block hover:text-navy">Dual-Clock Retention</a>
+                <a href="#" class="block hover:text-navy">KYC Protocols</a>
             </div>
-            <div>
-                <h5 class="font-bold text-sm uppercase tracking-widest mb-4">Contact</h5>
-                <ul class="text-sm space-y-2 text-gray-400">
-                    <li class="flex gap-2"><i data-lucide="mail" class="w-4 h-4"></i> admin@dochubservices.com</li>
-                    <li class="flex gap-2"><i data-lucide="phone" class="w-4 h-4"></i> (876) 561-2614</li>
-                </ul>
+            <div class="space-y-2">
+                <h4 class="font-bold text-navy uppercase tracking-widest">Contact</h4>
+                <p>admin@dochubservices.com</p>
+                <p>1 (876) 561-2614</p>
             </div>
-            <div id="help-centre">
-                <div class="bg-white/5 p-4 rounded border border-white/10">
-                    <h5 class="text-gold text-sm font-bold mb-2 flex items-center gap-2">
-                        <i data-lucide="lock" class="w-4 h-4"></i> Compliance Notice
-                    </h5>
-                    <p class="text-xs text-gray-400 leading-relaxed">
-                        We adhere to the Jamaican Data Protection Act (2020). Identification documents are purged after 30 days ("The Purge Clock"). Financial records are retained for 7 years per POCA regulations ("The Audit Clock").
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="text-center text-xs text-gray-500 mt-12 border-t border-white/10 pt-6">
-            &copy; 2024 Docu-Hub Operations. All Rights Reserved.
         </div>
     </footer>
 
-    <div class="fixed bottom-0 inset-x-0 bg-white border-t border-gray-200 p-4 flex justify-between items-center md:hidden z-50 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
-        <button onclick="window.scrollTo(0,0)" class="flex flex-col items-center text-navy text-xs">
-            <i data-lucide="home" class="w-5 h-5 mb-1"></i> Home
-        </button>
-        <button onclick="showSensory('Status Check', 'Please enter your Reference ID in the Intake Portal.', 'search')" class="flex flex-col items-center text-navy text-xs">
-            <i data-lucide="activity" class="w-5 h-5 mb-1"></i> Track Case
-        </button>
-        <button onclick="document.getElementById('help-centre').scrollIntoView()" class="flex flex-col items-center text-navy text-xs">
-            <i data-lucide="help-circle" class="w-5 h-5 mb-1"></i> Help
-        </button>
+    <div id="status-overlay" class="fixed inset-0 z-[100] hidden flex items-center justify-center sensory-overlay bg-navy/40">
+        <div class="bg-white p-8 rounded-2xl shadow-2xl max-w-sm w-full mx-4 text-center transform transition-all scale-100">
+            <div id="status-icon" class="mx-auto mb-4 w-12 h-12 flex items-center justify-center rounded-full bg-navy/10 text-navy">
+                <i data-lucide="loader" class="animate-spin"></i>
+            </div>
+            <h3 id="status-title" class="font-serif text-2xl font-bold text-navy mb-2">Processing</h3>
+            <p id="status-msg" class="text-sm text-gray-600 leading-relaxed mb-6">Securely handshaking with server...</p>
+            <button id="status-btn" onclick="closeOverlay()" class="hidden w-full py-3 rounded border border-navy text-navy font-bold uppercase text-xs hover:bg-navy hover:text-white transition-colors">
+                Close
+            </button>
+        </div>
     </div>
 
     <script>
         // --- CONFIGURATION ---
-        const GOOGLE_SCRIPT_URL = "YOUR_DEPLOYMENT_URL_HERE"; 
-        
-        // --- DATA ARCHITECTURE ---
-        const PILLARS = [
-            {
-                id: 'pica',
-                name: 'PICA Liaison',
-                desc: 'Passport Renewals, Replacements & Immigration Services.',
-                img: 'https://images.unsplash.com/photo-1544299863-1447814b7e88?auto=format&fit=crop&q=80&w=600',
-                fees: { professional: 5000, government: 6500 },
-                requirements: ['Expired Passport', 'Birth Certificate', '2 Passport Photos (Certified)'],
-                specialField: { label: 'Previous Passport Number', id: 'passport_num' }
-            },
-            {
-                id: 'jcf',
-                name: 'JCF Records',
-                desc: 'Police Certificates & Forensic Fingerprinting.',
-                img: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=600',
-                fees: { professional: 4000, government: 3000 },
-                requirements: ['Valid ID (DL/Passport)', 'Fingerprint Receipt', 'Tax Registration Number (TRN)'],
-                specialField: { label: 'Date of Fingerprinting', id: 'fingerprint_date', type: 'date' }
-            },
-            {
-                id: 'rgd',
-                name: 'RGD Registry',
-                desc: 'Birth, Marriage & Death Certificates.',
-                img: 'https://images.unsplash.com/photo-1628157588553-5eeea00af15c?auto=format&fit=crop&q=80&w=600',
-                fees: { professional: 3500, government: 2500 },
-                requirements: ['Application Form (Signed)', 'Copy of Valid ID'],
-                specialField: { label: 'Mother\'s Maiden Name', id: 'mother_name' }
-            },
-            {
-                id: 'taj',
-                name: 'TAJ Services',
-                desc: 'Motor Vehicle Licensing, Fitness & Traffic Tickets.',
-                img: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=600',
-                fees: { professional: 4500, government: 'Variable' },
-                requirements: ['Fitness Certificate', 'Insurance Cover Note', 'Original Registration'],
-                specialField: { label: 'License Plate Number', id: 'plate_num' }
-            },
-            {
-                id: 'corp',
-                name: 'Corporate Bulk',
-                desc: 'Expedited processing for entities (5+ Employees).',
-                img: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=600',
-                fees: { professional: 'Retainer', government: 'At Cost' },
-                requirements: ['Company Letterhead Request', 'Authorized Officer ID'],
-                specialField: { label: 'Company Name', id: 'company_name' }
-            },
-            {
-                id: 'land',
-                name: 'Land & Research',
-                desc: 'Title Searches, Caveats & Hard Case Research.',
-                img: 'https://images.unsplash.com/photo-1450101499121-e53f3556a848?auto=format&fit=crop&q=80&w=600',
-                fees: { professional: 8000, government: 2000 },
-                requirements: ['Volume & Folio Numbers', 'Sales Agreement'],
-                specialField: { label: 'Volume/Folio Number', id: 'vol_folio' }
-            },
-             {
-                id: 'replace',
-                name: 'Lost Documents',
-                desc: 'Recovery of Lost/Stolen Identification.',
-                img: 'https://images.unsplash.com/photo-1579766946654-20a89d714baf?auto=format&fit=crop&q=80&w=600',
-                fees: { professional: 6000, government: 4000 },
-                requirements: ['JCF Police Report', 'Passport Photos', 'JP Declaration'],
-                specialField: { label: 'Police Report Reference ID', id: 'police_ref' }
-            }
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzX7CSHDzfPCH3SsEeUCrHTE9X7omiskVh8ogPGm5Wvva9Xw0cK_9vaQYKyls10m2Ni/exec";
+
+        // --- SERVICE REGISTRY (SOP DATA) ---
+        const SERVICES = [
+            { id: 'pica', name: 'Passport Renewal', fee: '$6,500', liaison: '$3,500', icon: 'passport', fields: [
+                { id: 'old_ppt', label: 'Last Passport Number', type: 'text' },
+                { id: 'expiry', label: 'Expiration Date', type: 'date' }
+            ]},
+            { id: 'jcf', name: 'Police Record', fee: '$3,000', liaison: '$4,000', icon: 'fingerprint', fields: [
+                { id: 'parish', label: 'Parish of Residence', type: 'text' },
+                { id: 'reason', label: 'Reason for Record', type: 'text' }
+            ]},
+            { id: 'rgd', name: 'Vital Records', fee: '$2,500', liaison: '$3,500', icon: 'scroll', fields: [
+                { id: 'mother_name', label: 'Mother\'s Maiden Name', type: 'text' },
+                { id: 'event_parish', label: 'Event Parish', type: 'text' }
+            ]},
+            { id: 'taj', name: 'Tax / Vehicle', fee: '$Var', liaison: '$2,500', icon: 'car', fields: [
+                { id: 'plate_num', label: 'License Plate / TRN', type: 'text' },
+                { id: 'trans_type', label: 'Transaction Type', type: 'text' }
+            ]},
+            { id: 'corp', name: 'Corporate Bulk', fee: 'Custom', liaison: 'Quote', icon: 'building', fields: [
+                { id: 'company_name', label: 'Registered Company Name', type: 'text' },
+                { id: 'staff_count', label: 'Number of Staff', type: 'number' }
+            ]},
+            { id: 'consult', name: 'Consultation', fee: '$5,000', liaison: 'Included', icon: 'search', fields: [
+                { id: 'case_summary', label: 'Brief Case Summary', type: 'text' },
+                { id: 'book_date', label: 'Preferred Date', type: 'date' }
+            ]}
         ];
 
-        let currentPillar = null;
-        let signaturePad = null;
+        let state = { selected: null, sigData: null };
 
-        // --- INITIALIZATION ---
-        document.addEventListener('DOMContentLoaded', () => {
+        // --- INIT ---
+        window.onload = () => {
             lucide.createIcons();
-            renderPillars();
-        });
+            renderServices();
+            initSigPad();
+            initScrollTrap();
+        };
 
         // --- RENDERERS ---
-        function renderPillars() {
-            const grid = document.getElementById('pillarsGrid');
-            grid.innerHTML = PILLARS.map(p => `
-                <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer group" onclick="startMission('${p.id}')">
-                    <div class="h-48 md:h-72 overflow-hidden relative">
-                        <img src="${p.img}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-navy/20 group-hover:bg-navy/10 transition"></div>
+        function renderServices() {
+            const grid = document.getElementById('service-grid');
+            grid.innerHTML = SERVICES.map(s => `
+                <div onclick="selectService('${s.id}')" id="card-${s.id}" class="card-interaction bg-white p-6 rounded-xl cursor-pointer group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i data-lucide="${s.icon}" size="64"></i>
                     </div>
-                    <div class="p-6 border-b-4 border-transparent group-hover:border-gold transition-colors">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-serif text-xl text-navy font-bold">${p.name}</h3>
-                            <i data-lucide="arrow-right" class="text-gold w-5 h-5 opacity-0 group-hover:opacity-100 transition"></i>
-                        </div>
-                        <p class="text-sm text-gray-500">${p.desc}</p>
+                    <h4 class="font-serif font-bold text-lg text-navy mb-1">${s.name}</h4>
+                    <div class="text-[10px] font-mono text-gray-500 space-y-1 mt-4">
+                        <div class="flex justify-between border-b border-dashed pb-1"><span>AGENCY FEE</span> <span class="text-navy font-bold">${s.fee}</span></div>
+                        <div class="flex justify-between pt-1"><span>LIAISON FEE</span> <span class="text-gold font-bold">${s.liaison}</span></div>
                     </div>
                 </div>
             `).join('');
             lucide.createIcons();
         }
 
-        // --- MISSION LOGIC (THE LEGS) ---
-        function startMission(id) {
-            currentPillar = PILLARS.find(p => p.id === id);
-            document.getElementById('activePillarName').innerText = currentPillar.name;
-            document.getElementById('viewDirectory').classList.add('hidden');
-            document.getElementById('missionControl').classList.remove('hidden');
-            loadLeg1();
-        }
-
-        function exitMission() {
-            document.getElementById('missionControl').classList.add('hidden');
-            document.getElementById('viewDirectory').classList.remove('hidden');
-            currentPillar = null;
-        }
-
-        function updateProgress(step) {
-            const width = step * 20;
-            document.getElementById('progressBar').style.width = `${width}%`;
-            // Reset colors
-            [1,2,3,4,5].forEach(i => {
-                const el = document.getElementById(`step${i}`);
-                if (i <= step) {
-                    el.classList.add('text-gold', 'font-bold');
-                    el.classList.remove('text-gray-400');
-                } else {
-                    el.classList.remove('text-gold', 'font-bold');
-                    el.classList.add('text-gray-400');
-                }
-            });
-        }
-
-        // --- LEG 1: SUITE SELECTION ---
-        function loadLeg1() {
-            updateProgress(1);
-            const content = document.getElementById('missionContent');
-            content.innerHTML = `
-                <div class="fade-in max-w-2xl mx-auto text-center">
-                    <h2 class="font-serif text-3xl text-navy mb-8">Service Suite Breakdown</h2>
-                    <div class="bg-navy text-white p-8 rounded-lg shadow-lg mb-8">
-                        <div class="flex justify-between items-center border-b border-white/20 pb-4 mb-4">
-                            <span class="text-gray-300">Liaison Professional Fee</span>
-                            <span class="font-serif text-xl text-gold">$${currentPillar.fees.professional.toLocaleString()} JMD</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-300">Government Agency Fee (Est.)</span>
-                            <span class="font-serif text-xl">$${typeof currentPillar.fees.government === 'number' ? currentPillar.fees.government.toLocaleString() : currentPillar.fees.government} JMD</span>
-                        </div>
-                        <div class="mt-6 text-xs text-gray-400 bg-black/20 p-3 rounded">
-                            *Fees do not include courier delivery or rush processing surcharges.
-                        </div>
-                    </div>
-                    <button onclick="loadLeg2()" class="btn-active w-full md:w-auto px-12 py-4 text-white font-bold tracking-widest uppercase rounded shadow-lg hover:shadow-xl tactile">
-                        Accept & Proceed
-                    </button>
-                </div>
-            `;
-        }
-
-        // --- LEG 2: REQUIREMENTS AUDIT ---
-        function loadLeg2() {
-            updateProgress(2);
-            const content = document.getElementById('missionContent');
-            const reqList = currentPillar.requirements.map(r => `<li class="flex items-center gap-3"><i data-lucide="check-circle" class="text-emerald w-5 h-5"></i> ${r}</li>`).join('');
+        function selectService(id) {
+            state.selected = SERVICES.find(s => s.id === id);
             
-            content.innerHTML = `
-                <div class="fade-in max-w-2xl mx-auto">
-                    <h2 class="font-serif text-3xl text-navy mb-2 text-center">Forensic Audit</h2>
-                    <p class="text-gray-500 text-center mb-8">Please confirm you possess the following original documents.</p>
-                    
-                    <div class="bg-white border border-gray-200 p-8 rounded-lg shadow-sm mb-8">
-                        <h4 class="font-bold text-navy uppercase tracking-widest text-xs mb-6">Required Documentation</h4>
-                        <ul class="space-y-4 text-gray-700">
-                            ${reqList}
-                        </ul>
-                    </div>
+            // Visual Update
+            document.querySelectorAll('.card-interaction').forEach(c => c.classList.remove('card-active'));
+            document.getElementById(`card-${id}`).classList.add('card-active');
 
-                    <div class="bg-blue-50 border-l-4 border-navy p-4 mb-8">
-                        <p class="text-xs text-navy font-medium">
-                            <strong>Note:</strong> You will be required to upload clear scans or photographs of these documents in the subsequent Forensic Intake stage.
-                        </p>
-                    </div>
-
-                    <button onclick="loadLeg3()" class="btn-active w-full py-4 text-white font-bold tracking-widest uppercase rounded shadow-lg hover:shadow-xl tactile">
-                        Confirm Availability
-                    </button>
-                </div>
+            // Render Audit Checklist
+            const checklist = document.getElementById('checklist-container');
+            checklist.innerHTML = `
+                <label class="flex items-center gap-3 p-3 bg-gray-50 rounded border border-gray-200">
+                    <input type="checkbox" class="audit-check accent-emerald">
+                    <span class="text-xs font-bold text-navy">Govt Issued ID (Driver's Lic / Voter ID)</span>
+                </label>
+                <label class="flex items-center gap-3 p-3 bg-gray-50 rounded border border-gray-200">
+                    <input type="checkbox" class="audit-check accent-emerald">
+                    <span class="text-xs font-bold text-navy">TRN Card / Slip</span>
+                </label>
+                <label class="flex items-center gap-3 p-3 bg-gray-50 rounded border border-gray-200">
+                    <input type="checkbox" class="audit-check accent-emerald">
+                    <span class="text-xs font-bold text-navy">Passport Photos (2) - Verified by JP</span>
+                </label>
             `;
-            lucide.createIcons();
+
+            // Reveal Next Leg
+            revealSection('leg-2');
         }
 
-        // --- LEG 3: MASTER AGREEMENT (COMPLIANCE) ---
-        function loadLeg3() {
-            updateProgress(3);
-            const content = document.getElementById('missionContent');
-            content.innerHTML = `
-                <div class="fade-in max-w-2xl mx-auto">
-                    <h2 class="font-serif text-3xl text-navy mb-6 text-center">Master Service Agreement</h2>
-                    
-                    <div id="agreementScroll" class="agreement-scroll bg-gray-50 border border-gray-300 rounded p-6 h-64 overflow-y-scroll mb-6 text-sm text-gray-600 text-justify leading-relaxed">
-                        <p class="mb-4"><strong>PARTIES:</strong> This Agreement is between the Client ("You") and <strong>Laura Clarke, trading as Docu-Hub Operations Services</strong> ("The Liaison").</p>
-                        <p class="mb-4"><strong>SCOPE:</strong> The Liaison acts solely as a facilitator for government applications. We do not guarantee outcomes decided by Government Agencies.</p>
-                        <p class="mb-4"><strong>DUAL-CLOCK DATA POLICY:</strong> <br>
-                        1. <strong>Identity Data:</strong> All uploaded ID documents (Passports, DLs) are subject to a strict 30-Day Purge cycle in compliance with the JDPA. <br>
-                        2. <strong>Financial Data:</strong> Transaction records and this Agreement are retained for 7 Years as mandated by the Proceeds of Crime Act (POCA) and Tax Administration Jamaica.</p>
-                        <p class="mb-4"><strong>FUNDS CLEARANCE:</strong> No applications are submitted until funds are cleared. We strictly prohibit "fronting" fees to comply with Anti-Money Laundering (AML) protocols.</p>
-                        <p><strong>CONSENT:</strong> By digitally signing, you authorize The Liaison to act as your agent for the specific service selected.</p>
-                        <div class="h-8"></div> </div>
+        function revealSection(id) {
+            const el = document.getElementById(id);
+            el.classList.remove('hidden');
+            setTimeout(() => el.classList.remove('opacity-50'), 100);
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
 
-                    <div class="flex items-center gap-3 mb-8">
-                        <input type="checkbox" id="agreeCheck" disabled class="w-5 h-5 text-navy rounded border-gray-300 focus:ring-navy disabled:opacity-50">
-                        <label for="agreeCheck" class="text-sm text-gray-700 select-none">I have read and agree to the Terms of Engagement.</label>
-                    </div>
+        function confirmAudit() {
+            const checks = document.querySelectorAll('.audit-check');
+            const allChecked = Array.from(checks).every(c => c.checked);
+            
+            if(!allChecked) {
+                showStatus('Attention', 'Please confirm you possess all required documents.', 'alert-triangle', 'text-gold');
+                return;
+            }
+            revealSection('leg-3');
+        }
 
-                    <button id="leg3Btn" onclick="loadLeg4()" disabled class="btn-locked w-full py-4 text-white font-bold tracking-widest uppercase rounded shadow-lg transition-all">
-                        Ratify Agreement
-                    </button>
-                </div>
-            `;
+        // --- SCROLL TRAP LOGIC ---
+        function initScrollTrap() {
+            const box = document.getElementById('terms-scroll');
+            const check = document.getElementById('check-agree');
+            const btn = document.getElementById('btn-agree');
+            const label = document.getElementById('agree-label');
 
-            // Scroll Logic
-            const scrollBox = document.getElementById('agreementScroll');
-            const check = document.getElementById('agreeCheck');
-            const btn = document.getElementById('leg3Btn');
-
-            scrollBox.addEventListener('scroll', () => {
-                if (scrollBox.scrollTop + scrollBox.clientHeight >= scrollBox.scrollHeight - 10) {
+            box.addEventListener('scroll', () => {
+                if (Math.abs(box.scrollHeight - box.clientHeight - box.scrollTop) < 5) {
                     check.disabled = false;
+                    label.classList.remove('opacity-50', 'cursor-not-allowed');
                 }
             });
 
             check.addEventListener('change', () => {
                 if(check.checked) {
                     btn.disabled = false;
-                    btn.classList.remove('btn-locked');
-                    btn.classList.add('btn-active', 'tactile');
+                    btn.classList.remove('btn-disabled');
                 } else {
                     btn.disabled = true;
-                    btn.classList.add('btn-locked');
-                    btn.classList.remove('btn-active', 'tactile');
+                    btn.classList.add('btn-disabled');
                 }
             });
         }
 
-        // --- LEG 4: FORENSIC INTAKE ---
-        function loadLeg4() {
-            updateProgress(4);
-            const content = document.getElementById('missionContent');
-            const specificField = currentPillar.specialField ? 
-                `<div>
-                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">${currentPillar.specialField.label}</label>
-                    <input type="${currentPillar.specialField.type || 'text'}" id="specificInput" class="w-full p-3 border border-gray-300 rounded focus:border-navy focus:ring-1 focus:ring-navy outline-none" required>
-                </div>` : '';
+        function confirmAgreement() {
+            renderIntakeForm();
+            revealSection('leg-4');
+        }
 
-            content.innerHTML = `
-                <div class="fade-in max-w-2xl mx-auto">
-                    <h2 class="font-serif text-3xl text-navy mb-6 text-center">Forensic Intake</h2>
-                    
-                    <form id="intakeForm" class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-xs font-bold text-gray-500 uppercase mb-1">First Name</label>
-                                <input type="text" id="fname" class="w-full p-3 border border-gray-300 rounded focus:border-navy focus:ring-1 focus:ring-navy outline-none" required>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Last Name</label>
-                                <input type="text" id="lname" class="w-full p-3 border border-gray-300 rounded focus:border-navy focus:ring-1 focus:ring-navy outline-none" required>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-bold text-gray-500 uppercase mb-1">TRN (Tax Registration Number)</label>
-                            <input type="text" id="trn" placeholder="000-000-000" class="w-full p-3 border border-gray-300 rounded focus:border-navy focus:ring-1 focus:ring-navy outline-none" required>
-                        </div>
-
-                        ${specificField}
-
-                        <div>
-                            <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Upload Document Bundle</label>
-                            <div class="border-2 border-dashed border-gray-300 p-6 text-center rounded bg-gray-50 hover:bg-gray-100 transition cursor-pointer relative">
-                                <input type="file" id="fileUpload" class="absolute inset-0 opacity-0 cursor-pointer" required>
-                                <i data-lucide="upload-cloud" class="mx-auto text-gray-400 mb-2"></i>
-                                <p class="text-sm text-gray-600" id="fileName">Click to Secure Upload (PDF/JPG)</p>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Digital Authorization</label>
-                            <div class="border border-gray-300 rounded bg-white">
-                                <canvas id="signatureCanvas" class="w-full h-32"></canvas>
-                            </div>
-                            <button type="button" onclick="clearSig()" class="text-xs text-red-500 mt-1 underline">Clear Signature</button>
-                        </div>
-
-                        <button type="submit" id="submitBtn" class="btn-active w-full py-4 text-white font-bold tracking-widest uppercase rounded shadow-lg tactile">
-                            Transmit Securely
-                        </button>
-                    </form>
+        // --- INTAKE FORM GENERATOR ---
+        function renderIntakeForm() {
+            const container = document.getElementById('dynamic-fields');
+            // Standard Fields
+            let html = `
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold uppercase text-gray-400">Full Legal Name</label>
+                    <input type="text" id="client_name" class="w-full p-3 border-b-2 border-gray-200 bg-transparent focus:border-navy outline-none transition-colors font-serif text-lg">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold uppercase text-gray-400">Email Address</label>
+                    <input type="email" id="client_email" class="w-full p-3 border-b-2 border-gray-200 bg-transparent focus:border-navy outline-none transition-colors font-sans">
                 </div>
             `;
+            
+            // SOP Specific Fields
+            state.selected.fields.forEach(f => {
+                html += `
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold uppercase text-gray-400">${f.label}</label>
+                        <input type="${f.type}" id="${f.id}" class="w-full p-3 border-b-2 border-gray-200 bg-transparent focus:border-navy outline-none transition-colors font-sans">
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // --- CANVAS SIGNATURE ---
+        let canvas, ctx, drawing = false;
+        function initSigPad() {
+            canvas = document.getElementById('sig-canvas');
+            ctx = canvas.getContext('2d');
+            ctx.strokeStyle = "#003366";
+            ctx.lineWidth = 2;
+
+            // Events
+            canvas.addEventListener('mousedown', startDraw);
+            canvas.addEventListener('mouseup', stopDraw);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('touchstart', (e) => { e.preventDefault(); startDraw(e.touches[0]); });
+            canvas.addEventListener('touchend', stopDraw);
+            canvas.addEventListener('touchmove', (e) => { e.preventDefault(); draw(e.touches[0]); });
+        }
+
+        function getPos(e) {
+            const rect = canvas.getBoundingClientRect();
+            return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+        }
+
+        function startDraw(e) { drawing = true; const pos = getPos(e); ctx.beginPath(); ctx.moveTo(pos.x, pos.y); }
+        function stopDraw() { drawing = false; }
+        function draw(e) { if(!drawing) return; const pos = getPos(e); ctx.lineTo(pos.x, pos.y); ctx.stroke(); }
+        function clearSig() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
+
+        // --- TRANSMISSION ---
+        function submitPayload() {
+            const name = document.getElementById('client_name').value;
+            if(!name) { showStatus('Missing Data', 'Please enter your name.', 'alert-circle', 'text-red-500'); return; }
+
+            // Capture Signature
+            state.sigData = canvas.toDataURL();
+            
+            // Build SOP Data Payload
+            let sopData = {};
+            state.selected.fields.forEach(f => {
+                const val = document.getElementById(f.id).value;
+                sopData[f.label] = val;
+            });
+
+            // Show Processing Overlay
+            showStatus('Authenticating', 'Encrypting payload for transmission...', 'loader', 'text-navy', true);
+
+            // Fetch
+            const payload = {
+                name: name,
+                email: document.getElementById('client_email').value,
+                service: state.selected.name,
+                sopData: sopData,
+                signature: state.sigData
+            };
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain' },
+                body: JSON.stringify(payload)
+            })
+            .then(() => {
+                setTimeout(() => {
+                    showStatus('Success', 'Case initiated. Check your email for the liaison docket.', 'check-circle', 'text-emerald');
+                    document.getElementById('status-btn').classList.remove('hidden');
+                }, 2000);
+            })
+            .catch(err => {
+                showStatus('Transmission Error', 'Secure handshake failed. Please retry.', 'wifi-off', 'text-red-500');
+                document.getElementById('status-btn').classList.remove('hidden');
+            });
+        }
+
+        // --- OVERLAY SYSTEM ---
+        function showStatus(title, msg, icon, colorClass, spin = false) {
+            const ol = document.getElementById('status-overlay');
+            const ti = document.getElementById('status-title');
+            const ms = document.getElementById('status-msg');
+            const ic = document.getElementById('status-icon');
+            
+            ol.classList.remove('hidden');
+            ti.innerText = title;
+            ms.innerText = msg;
+            
+            ic.innerHTML = `<i data-lucide="${icon}" class="${colorClass} ${spin ? 'animate-spin' : ''}" size="32"></i>`;
             lucide.createIcons();
             
-            // File Name Logic
-            document.getElementById('fileUpload').onchange = function() {
-                document.getElementById('fileName').innerText = this.files[0].name;
-            };
-
-            // Signature Logic
-            const canvas = document.getElementById('signatureCanvas');
-            function resizeCanvas() {
-                const ratio =  Math.max(window.devicePixelRatio || 1, 1);
-                canvas.width = canvas.offsetWidth * ratio;
-                canvas.height = canvas.offsetHeight * ratio;
-                canvas.getContext("2d").scale(ratio, ratio);
-            }
-            window.onresize = resizeCanvas;
-            resizeCanvas();
-            signaturePad = new SignaturePad(canvas);
-
-            // Form Submit Logic
-            document.getElementById('intakeForm').onsubmit = (e) => {
-                e.preventDefault();
-                if (signaturePad.isEmpty()) {
-                    showSensory('Validation Error', 'A digital signature is required to proceed.', 'alert-triangle');
-                    return;
-                }
-                processSubmission();
-            };
+            if(!spin) document.getElementById('status-btn').classList.remove('hidden');
+            else document.getElementById('status-btn').classList.add('hidden');
         }
 
-        function clearSig() {
-            signaturePad.clear();
-        }
-
-        // --- LEG 5: TRANSMISSION (LOGIC) ---
-        async function processSubmission() {
-            const btn = document.getElementById('submitBtn');
-            btn.innerHTML = `<i data-lucide="loader-2" class="animate-spin inline mr-2"></i> Encrypting...`;
-            btn.disabled = true;
-
-            const fileInput = document.getElementById('fileUpload');
-            const reader = new FileReader();
-
-            reader.onload = async function(e) {
-                const base64File = e.target.result;
-                
-                const payload = {
-                    timestamp: new Date().toISOString(),
-                    serviceId: currentPillar.id,
-                    firstName: document.getElementById('fname').value,
-                    lastName: document.getElementById('lname').value,
-                    trn: document.getElementById('trn').value,
-                    specificData: document.getElementById('specificInput') ? document.getElementById('specificInput').value : 'N/A',
-                    fileName: fileInput.files[0].name,
-                    fileData: base64File,
-                    signature: signaturePad.toDataURL()
-                };
-
-                try {
-                    // LEG 5: ASYNC FETCH (NO-CORS)
-                    await fetch(// --- CONFIGURATION ---
-                     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwtBExoQPDckqDGKyAKeAVoYRCfd42DOl3oiKlrOjJruXPjTnn8m9UJIjUnp6906MaG/exec";, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    // Success Transition
-                    updateProgress(5);
-                    const content = document.getElementById('missionContent');
-                    content.innerHTML = `
-                        <div class="text-center py-12 fade-in">
-                            <div class="inline-flex items-center justify-center w-24 h-24 bg-emerald-100 rounded-full mb-6">
-                                <i data-lucide="check" class="w-12 h-12 text-emerald-600"></i>
-                            </div>
-                            <h2 class="font-serif text-3xl text-navy mb-4">Transmission Successful</h2>
-                            <p class="text-gray-600 max-w-md mx-auto mb-8">
-                                Your dossier has been securely encrypted and routed to our central intake node. A compliance officer will review your audit within 2 hours.
-                            </p>
-                            <button onclick="exitMission()" class="px-8 py-3 border border-navy text-navy font-bold rounded hover:bg-navy hover:text-white transition tactile">
-                                Return to Directory
-                            </button>
-                        </div>
-                    `;
-                    lucide.createIcons();
-
-                } catch (error) {
-                    showSensory('Transmission Error', 'Network failure. Please verify your connection.', 'wifi-off');
-                    btn.innerHTML = 'Retry Transmission';
-                    btn.disabled = false;
-                }
-            };
-
-            reader.readAsDataURL(fileInput.files[0]);
-        }
-
-        // --- SENSORY STATUS SYSTEM ---
-        function showSensory(title, msg, iconName) {
-            document.getElementById('sensoryTitle').innerText = title;
-            document.getElementById('sensoryMessage').innerText = msg;
-            
-            // Icon Logic
-            const iconContainer = document.getElementById('sensoryIcon');
-            iconContainer.innerHTML = `<i data-lucide="${iconName}" class="w-12 h-12 mx-auto"></i>`;
-            lucide.createIcons();
-
-            document.getElementById('sensoryOverlay').classList.remove('hidden');
-        }
-
-        function closeSensory() {
-            document.getElementById('sensoryOverlay').classList.add('hidden');
+        function closeOverlay() {
+            document.getElementById('status-overlay').classList.add('hidden');
         }
 
     </script>
 </body>
 </html>
-
