@@ -559,17 +559,31 @@
                     signature: signaturePad.toDataURL()
                 };
 
-                try {
-                    if (GOOGLE_SCRIPT_URL === "YOUR_DEPLOYMENT_URL_HERE") {
-                        throw new Error("Configuration Error: API URL not set.");
-                    }
+              // Ensure the URL is valid
+if (GOOGLE_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbwtBExoQPDckqDGKyAKeAVoYRCfd42DOl3oiKlrOjJruXPjTnn8m9UJIjUnp6906MaG/exec") {
+    throw new Error("Docu-Hub Config Error: API URL not set.");
+}
 
-                    await fetch(GOOGLE_SCRIPT_URL, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
+// The corrected fetch block
+await fetch(GOOGLE_SCRIPT_URL, {
+    method: 'POST',
+    redirect: "follow", // Allows the script to send a reply back
+    headers: {
+        "Content-Type": "text/plain;charset=utf-8", // Crucial: Prevents CORS 'Preflight' errors
+    },
+    body: JSON.stringify(payload)
+})
+.then(response => response.json()) // Reads the successful response
+.then(data => {
+    // This runs when the script succeeds
+    console.log("Docu-Hub Success:", data);
+    alert("Success! Information saved to database.");
+})
+.catch(error => {
+    // This runs if there is an internet or script error
+    console.error("Docu-Hub Error:", error);
+    alert("Error: Could not save data. Please check connection.");
+})
 
                     updateProgress(5);
                     const content = document.getElementById('missionContent');
@@ -612,6 +626,7 @@
     </script>
 </body>
 </html>
+
 
 
 
