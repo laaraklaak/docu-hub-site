@@ -559,7 +559,7 @@
                 };
 
                 try {
-                    if (GOOGLE_SCRIPT_URL === "YOUR_DEPLOYMENT_URL_HERE") {
+                    if (GOOGLE_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbwtBExoQPDckqDGKyAKeAVoYRCfd42DOl3oiKlrOjJruXPjTnn8m9UJIjUnp6906MaG/exec") {
                         throw new Error("Configuration Error: API URL not set.");
                     }
 
@@ -608,9 +608,46 @@
         function closeSensory() {
             document.getElementById('sensoryOverlay').classList.add('hidden');
         }
+
+        
+
+/**
+ * SUB-PAGE ROUTER
+ * Links to other HTML files via the ?view= parameter.
+ * Automatically strips .html if accidentally included.
+ * @param {string} viewName - The name of the HTML file
+ */
+function goToView(viewName) {
+    // Sanitize: remove .html extension if user included it
+    const cleanView = viewName.replace('.html', '');
+    
+    // We call the server to get the official App URL, then append the view parameter
+    google.script.run.withSuccessHandler(url => {
+        window.top.location.href = url + '?view=' + cleanView;
+    }).getServiceUrl();
+}
+
+/**
+ * CORE NAVIGATION (SPA Internal)
+ */
+function navigate(step) {
+    const home = document.getElementById('step-home');
+    const container = document.getElementById('leg-container');
+    
+    if (step === 'home') {
+        home.classList.add('active');
+        container.classList.add('hidden');
+        state.leg = 0;
+    } else {
+        home.classList.remove('active');
+        container.classList.remove('hidden');
+        renderLeg(step);
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     </script>
 </body>
 </html>
+
 
 
 
