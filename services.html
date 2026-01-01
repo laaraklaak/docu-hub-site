@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Services Catalog | Docu-Hub Compliance v27.8</title>
+    <title>Services Catalog | Docu-Hub Compliance v27.9</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -31,14 +31,24 @@
         .modal.active { opacity: 1; visibility: visible; }
         .modal-content { transform: scale(0.98); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
         .modal.active .modal-content { transform: scale(1); }
+        
         .choice-card { background: white; border-bottom: 4px solid transparent; transition: all 0.4s ease; cursor: pointer; }
         .choice-card:hover { border-bottom-color: #D4AF37; transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,51,102,0.08); }
+        
         .signature-wrapper { border: 2px solid #e2e8f0; background: #fff; border-radius: 4px; position: relative; }
         #signature-pad { width: 100%; height: 160px; cursor: crosshair; touch-action: none; }
+        
         .agreement-box { background: #fdfcfb; border: 1px solid #eee; height: 140px; overflow-y: scroll; font-size: 11px; line-height: 1.6; padding: 16px; color: #334155; font-family: 'Roboto', sans-serif; }
+        
+        .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }
         .disclaimer-bar { background: #003366; }
+
+        .sub-btn { transition: all 0.2s ease; border: 1px solid #e2e8f0; }
+        .sub-btn.active { background-color: #003366; color: #D4AF37; border-color: #003366; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col text-left">
@@ -94,7 +104,7 @@
         </div>
 
         <!-- INDIVIDUAL CATALOG AREA -->
-        <div id="catalog-personal" class="hidden space-y-6">
+        <div id="catalog-personal" class="hidden space-y-6 catalog-section">
             <div class="flex items-center justify-between border-b border-navy/10 pb-6 mb-8">
                 <h2 class="text-2xl font-bold text-navy uppercase">Agency Catalog</h2>
             </div>
@@ -102,17 +112,18 @@
         </div>
 
         <!-- STRATEGY AREA -->
-        <div id="catalog-business" class="hidden animate-fade-in space-y-8">
-            <div class="bg-navy text-white rounded shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+        <div id="catalog-business" class="hidden space-y-8 catalog-section">
+            <div class="bg-navy text-white rounded shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 animate-fade-in">
                 <div class="p-10 md:p-16 border-r border-white/5 text-left">
                     <div class="w-12 h-1.5 bg-gold mb-6"></div>
                     <h3 class="text-3xl md:text-4xl font-bold mb-6 uppercase leading-tight italic">Hard Cases <br/><span class="text-gold">Made Simple.</span></h3>
-                    <button onclick="openModal('inquiryModal', 'Specialist Strategy Session')" class="bg-gold text-navy px-10 py-4 text-[10px] font-bold uppercase tracking-widest hover:bg-white transition-all shadow-xl font-bold">Request Strategy Briefing</button>
+                    <p class="text-sm md:text-base text-blue-100 font-normal leading-relaxed mb-8">Bespoke strategy sessions for non-standard registry matters, estate searches, and multi-agency hurdles.</p>
+                    <button onclick="openModal('inquiryModal', 'Specialist Strategy Session')" class="bg-gold text-navy px-10 py-4 text-[10px] font-bold uppercase tracking-widest hover:bg-white transition-all shadow-xl">Request Strategy Briefing</button>
                 </div>
                 <div class="bg-navy-dark p-10 flex flex-col justify-center space-y-8 text-left">
                     <div class="flex items-start gap-4">
                         <span class="text-gold text-2xl">&#128196;</span>
-                        <div><h4 class="text-[10px] font-bold uppercase tracking-widest text-gold mb-1">Corporate Bulk</h4><p class="text-[11px] text-gray-300 font-medium uppercase tracking-tight">High-volume TRN processing.</p></div>
+                        <div><h4 class="text-[10px] font-bold uppercase tracking-widest text-gold mb-1">Corporate Bulk</h4><p class="text-[11px] text-gray-300 font-medium uppercase tracking-tight">High-volume TRN processing for HR teams.</p></div>
                     </div>
                 </div>
             </div>
@@ -134,7 +145,7 @@
                     
                     <!-- DATA ENTRY -->
                     <div class="space-y-6">
-                        <div class="font-bold text-navy text-[11px] uppercase tracking-widest flex items-center gap-2">&#128100; Identity Data</div>
+                        <div class="font-bold text-navy text-[11px] uppercase tracking-widest flex items-center gap-2"><i data-lucide="user"></i> Identity Data</div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
                             <div>
                                 <label class="block text-[10px] font-bold text-gray-400 uppercase mb-2">Legal Name</label>
@@ -152,7 +163,7 @@
                         <input type="hidden" name="service" id="modalServiceInput">
                     </div>
 
-                    <!-- NEW: LOGISTICS PREFERENCE (Linking the missing link) -->
+                    <!-- FULFILLMENT PREFERENCE -->
                     <div class="space-y-6 bg-slate-50 p-6 rounded border border-dashed border-gray-200">
                         <div class="font-bold text-navy text-[11px] uppercase tracking-widest flex items-center gap-2">
                             <i data-lucide="truck"></i> Fulfillment Preference
@@ -166,13 +177,12 @@
                                 <option value="LOGISTICS: Zip Mail">Post Office (Zip Mail)</option>
                                 <option value="LOGISTICS: Door Delivery">Private Door Delivery</option>
                             </select>
-                            <p class="text-[9px] text-gray-400 font-bold mt-2 italic uppercase">This pre-sets your exit strategy in the registry.</p>
                         </div>
                     </div>
 
-                    <!-- COMPLIANCE AGREEMENT -->
+                    <!-- AGREEMENT -->
                     <div class="space-y-4 text-left">
-                        <div class="font-bold text-navy text-[11px] uppercase tracking-widest flex items-center gap-2">&#9881; Authorization Agreement</div>
+                        <div class="font-bold text-navy text-[11px] uppercase tracking-widest flex items-center gap-2"><i data-lucide="shield-check"></i> Authorization Agreement</div>
                         <div class="agreement-box rounded shadow-inner text-left">
                             <p class="font-bold text-navy mb-2">1. SCOPE OF REPRESENTATION</p>
                             <p class="mb-4 text-left">I authorize Docu-Hub to act as my designated Liaison.</p>
@@ -187,7 +197,7 @@
 
                     <!-- SIGNATURE -->
                     <div class="space-y-4 text-left">
-                        <div class="font-bold text-navy text-[11px] uppercase tracking-widest flex items-center gap-2">&#9997; Authorization Signature</div>
+                        <div class="font-bold text-navy text-[11px] uppercase tracking-widest flex items-center gap-2"><i data-lucide="pen-tool"></i> Authorization Signature</div>
                         <div class="signature-wrapper shadow-inner overflow-hidden">
                             <canvas id="signature-pad"></canvas>
                             <button type="button" onclick="signaturePad.clear()" class="absolute top-2 right-2 text-[10px] font-bold text-gray-400 hover:text-red-500 uppercase">Clear Pad</button>
@@ -235,20 +245,21 @@
             }
         ];
 
-        window.onload = function() {
-            const params = new URLSearchParams(window.location.search);
-            if (params.get('jump')) {
-                toggleCatalog('personal');
-            }
-        };
-
-        function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
-
         function toggleCatalog(type) {
             const p = document.getElementById('catalog-personal');
             const b = document.getElementById('catalog-business');
-            if(type === 'personal') { p.classList.remove('hidden'); b.classList.add('hidden'); renderCatalog(); }
-            else { p.classList.add('hidden'); b.classList.remove('hidden'); }
+            const target = type === 'personal' ? p : b;
+            
+            p.classList.add('hidden');
+            b.classList.add('hidden');
+            
+            target.classList.remove('hidden');
+            target.classList.add('animate-fade-in');
+            
+            if(type === 'personal') renderCatalog();
+            
+            // Critical fix: Ensure user is scrolled to the newly opened directory
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function renderCatalog() {
@@ -297,7 +308,8 @@
         }
 
         function prepareIntake(aid) {
-            const task = document.querySelector(`#agency-${aid} .sub-btn.active`).innerText;
+            const activeBtn = document.querySelector(`#agency-${aid} .sub-btn.active`);
+            const task = activeBtn ? activeBtn.innerText : "Service";
             const agency = SERVICES.find(x => x.id === aid).title;
             document.getElementById('modalServiceTitle').innerText = agency;
             document.getElementById('modalServiceInput').value = `${agency}: ${task}`;
@@ -314,14 +326,24 @@
             if(!signaturePad) { 
                 const canvas = document.getElementById('signature-pad');
                 signaturePad = new SignaturePad(canvas, { backgroundColor: 'rgb(255, 255, 255)', penColor: '#003366' });
-                const ratio = Math.max(window.devicePixelRatio || 1, 1);
-                canvas.width = canvas.offsetWidth * ratio; canvas.height = canvas.offsetHeight * ratio;
-                canvas.getContext("2d").scale(ratio, ratio);
+                const resizeCanvas = () => {
+                    const ratio = Math.max(window.devicePixelRatio || 1, 1);
+                    canvas.width = canvas.offsetWidth * ratio; 
+                    canvas.height = canvas.offsetHeight * ratio;
+                    canvas.getContext("2d").scale(ratio, ratio);
+                    signaturePad.clear();
+                };
+                window.onresize = resizeCanvas;
+                resizeCanvas();
             }
             document.body.style.overflow = 'hidden';
+            lucide.createIcons(); // Refresh icons inside modal
         }
 
-        function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = 'auto'; }
+        function closeModal(id) { 
+            document.getElementById(id).classList.remove('active'); 
+            document.body.style.overflow = 'auto'; 
+        }
 
         async function submitLead(e) {
             e.preventDefault();
@@ -350,6 +372,13 @@
                 btn.innerText = originalText; btn.disabled = false; 
             });
         }
+
+        function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
+
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('jump')) { toggleCatalog('personal'); }
+        };
     </script>
 </body>
 </html>
