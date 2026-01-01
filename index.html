@@ -557,12 +557,18 @@
                     fileName: fileInput.files[0].name,
                     fileData: base64File,
                     signature: signaturePad.toDataURL()
-                };
+            
+                        try {
+                    if (GOOGLE_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbwtBExoQPDckqDGKyAKeAVoYRCfd42DOl3oiKlrOjJruXPjTnn8m9UJIjUnp6906MaG/exec") {
+                        throw new Error("Configuration Error: API URL not set.");
+                    }
 
-              // Ensure the URL is valid
-if (GOOGLE_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbwtBExoQPDckqDGKyAKeAVoYRCfd42DOl3oiKlrOjJruXPjTnn8m9UJIjUnp6906MaG/exec") {
-    throw new Error("Docu-Hub Config Error: API URL not set.");
-}
+                    await fetch(GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
 
                     updateProgress(5);
                     const content = document.getElementById('missionContent');
@@ -605,6 +611,7 @@ if (GOOGLE_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbwtBExoQPDckq
     </script>
 </body>
 </html>
+
 
 
 
