@@ -564,26 +564,9 @@ if (GOOGLE_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbwtBExoQPDckq
     throw new Error("Docu-Hub Config Error: API URL not set.");
 }
 
-// The corrected fetch block
-await fetch(GOOGLE_SCRIPT_URL, {
-    method: 'POST',
-    redirect: "follow", // Allows the script to send a reply back
-    headers: {
-        "Content-Type": "text/plain;charset=utf-8", // Crucial: Prevents CORS 'Preflight' errors
-    },
-    body: JSON.stringify(payload)
-})
-.then(response => response.json()) // Reads the successful response
-.then(data => {
-    // This runs when the script succeeds
-    console.log("Docu-Hub Success:", data);
-    alert("Success! Information saved to database.");
-})
-.catch(error => {
-    // This runs if there is an internet or script error
-    console.error("Docu-Hub Error:", error);
-    alert("Error: Could not save data. Please check connection.");
-})
+ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwQf0sYv9pzazZmo2os4-lUP1oVYO2Xz-nBEytCGvtkIOv4hrH9nDwlRT5WnZk_6D2l/exec"; 
+        const WHATSAPP_NUMBER = "18765612614";
+        const GOOGLE_CALENDAR_URL = "https://calendar.app.google/XsqkLViLYtDKsjFB9";
 
                     updateProgress(5);
                     const content = document.getElementById('missionContent');
@@ -626,6 +609,7 @@ await fetch(GOOGLE_SCRIPT_URL, {
     </script>
 </body>
 </html>
+
 
 
 
