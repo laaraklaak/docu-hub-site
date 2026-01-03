@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Services Catalog | Docu-Hub Compliance</title>
+    <title>Services Catalog | Docu-Hub Compliance v78.5</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -16,17 +16,17 @@
                         'navy-dark': '#002244' 
                     },
                     fontFamily: { 
-                        sans: ['Inter', 'sans-serif'] 
+                        sans: ['Inter', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'] 
                     }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #F5F0EC; color: #003366; }
+        body { font-family: 'Inter', sans-serif; background-color: #F5F0EC; color: #003366; -webkit-font-smoothing: antialiased; }
         .modal { transition: opacity 0.3s ease, visibility 0.3s ease; opacity: 0; visibility: hidden; z-index: 100; }
         .modal.active { opacity: 1; visibility: visible; }
         .modal-content { transform: scale(0.98); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -38,31 +38,38 @@
         .signature-wrapper { border: 2px solid #e2e8f0; background: #fff; border-radius: 4px; position: relative; }
         #signature-pad { width: 100%; height: 160px; cursor: crosshair; touch-action: none; }
         
-        .agreement-box { background: #fdfcfb; border: 1px solid #eee; height: 140px; overflow-y: scroll; font-size: 11px; line-height: 1.6; padding: 16px; color: #334155; }
+        .agreement-box { background: #fdfcfb; border: 1px solid #eee; height: 140px; overflow-y: scroll; font-size: 11px; line-height: 1.6; padding: 16px; color: #334155; font-family: 'Roboto', sans-serif; }
         
         .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }
+        .disclaimer-bar { background: #003366; }
+
         .sub-btn { transition: all 0.2s ease; border: 1px solid #e2e8f0; }
         .sub-btn.active { background-color: #003366; color: #D4AF37; border-color: #003366; }
 
-        /* --- SMART PRINT STYLES --- */
+        /* Loading & Success States */
+        #statusOverlay { transition: opacity 0.3s ease; }
+
+        /* PRINT STYLES - Hides everything except the receipt */
         @media print {
             body * { visibility: hidden; }
             #receiptArea, #receiptArea * { visibility: visible; }
-            #receiptArea { position: absolute; left: 0; top: 0; width: 100%; margin: 0; padding: 0; border: none; shadow: none; }
+            #receiptArea { position: absolute; left: 0; top: 0; width: 100%; margin: 0; padding: 20px; box-shadow: none; border: none; }
             .no-print { display: none !important; }
-            .modal { background: white; }
         }
     </style>
 </head>
 <body class="min-h-screen flex flex-col text-left">
 
-    <div id="statusOverlay" class="fixed inset-0 bg-navy/90 z-[200] hidden flex items-center justify-center p-6 text-center no-print">
+    <div id="statusOverlay" class="fixed inset-0 bg-navy/90 z-[200] hidden flex items-center justify-center p-6 text-center">
         <div class="space-y-6">
             <div id="statusSpinner" class="w-16 h-16 border-4 border-gold border-t-transparent rounded-full animate-spin mx-auto"></div>
-            <h3 class="text-white text-xl font-bold uppercase tracking-widest italic">Securely Transmitting...</h3>
-            <p class="text-blue-200 text-[10px] uppercase font-bold tracking-widest">Encrypting your data</p>
+            <div id="statusSuccessIcon" class="hidden text-gold text-6xl mx-auto"><i data-lucide="check-circle-2" class="w-20 h-20 mx-auto"></i></div>
+            <h3 id="statusText" class="text-white text-xl font-bold uppercase tracking-widest italic">Transmitting...</h3>
+            <p id="statusSubText" class="text-blue-200 text-[10px] uppercase font-bold tracking-widest">Do not close this window</p>
         </div>
     </div>
 
@@ -76,16 +83,16 @@
                 </div>
             </div>
             <div class="flex items-center gap-4">
-                <button onclick="window.location.reload()" class="text-[11px] font-bold text-navy uppercase tracking-widest border border-navy/20 px-4 py-2 rounded hover:bg-navy hover:text-white transition-all">Reset</button>
+                <button onclick="window.location.reload()" class="text-[11px] font-bold text-navy uppercase tracking-widest border border-navy/20 px-4 py-2 rounded hover:bg-navy hover:text-white transition-all">Reset View</button>
             </div>
         </div>
     </nav>
 
-    <div class="bg-navy text-white py-3 px-6 shadow-lg no-print">
+    <div class="disclaimer-bar text-white py-3 px-6 shadow-lg no-print">
         <div class="container mx-auto flex items-center justify-center gap-3">
             <span class="text-gold font-bold">&#9432;</span>
             <p class="text-[10px] font-semibold uppercase tracking-wide text-center">
-                Protocol: Prices shown are <span class="text-gold">Liaison Fees</span>. Statutory charges calculated at intake.
+                Protocol: Prices shown are <span class="text-gold">Liaison Fees</span>. Government statutory charges are calculated at intake.
             </p>
         </div>
     </div>
@@ -94,10 +101,10 @@
         <div class="text-left md:text-center mb-12">
             <span class="text-gold uppercase tracking-[0.2em] text-[11px] font-bold mb-2 block">Registry Logistics</span>
             <h1 class="text-4xl md:text-5xl font-bold mb-4 text-navy uppercase leading-tight">Liaison Directory</h1>
-            <p class="text-gray-500 max-w-xl md:mx-auto text-base font-normal">Select an agency desk to view professional fees and requirements.</p>
+            <p class="text-gray-500 max-w-xl md:mx-auto text-base font-normal">Select an agency desk to view professional fees and registry requirements.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16" id="selection-grid">
             <div class="choice-card p-10 rounded shadow-xl text-left md:text-center group" onclick="toggleCatalog('personal')">
                 <div class="text-3xl mb-4">&#128100;</div>
                 <h3 class="text-xl font-bold text-navy uppercase mb-2">Individual Services</h3>
@@ -124,8 +131,14 @@
                 <div class="p-10 md:p-16 border-r border-white/5 text-left">
                     <div class="w-12 h-1.5 bg-gold mb-6"></div>
                     <h3 class="text-3xl md:text-4xl font-bold mb-6 uppercase leading-tight italic">Hard Cases <br/><span class="text-gold">Made Simple.</span></h3>
-                    <p class="text-sm md:text-base text-blue-100 font-normal leading-relaxed mb-8">Bespoke strategy sessions for non-standard registry matters.</p>
+                    <p class="text-sm md:text-base text-blue-100 font-normal leading-relaxed mb-8">Bespoke strategy sessions for non-standard registry matters, estate searches, and multi-agency hurdles.</p>
                     <button onclick="openModal('inquiryModal', 'Specialist Strategy Session')" class="bg-gold text-navy px-10 py-4 text-[10px] font-bold uppercase tracking-widest hover:bg-white transition-all shadow-xl">Request Strategy Briefing</button>
+                </div>
+                <div class="bg-navy-dark p-10 flex flex-col justify-center space-y-8 text-left">
+                    <div class="flex items-start gap-4">
+                        <span class="text-gold text-2xl">&#128196;</span>
+                        <div><h4 class="text-[10px] font-bold uppercase tracking-widest text-gold mb-1">Corporate Bulk</h4><p class="text-[11px] text-gray-300 font-medium uppercase tracking-tight">High-volume TRN processing for HR teams.</p></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -148,39 +161,49 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
                             <div>
                                 <label class="block text-[10px] font-bold text-gray-400 uppercase mb-2">Legal Name</label>
-                                <input type="text" name="name" placeholder="FULL LEGAL NAME" required class="w-full border-b border-gray-200 bg-gray-50 p-4 text-sm font-bold uppercase outline-none focus:border-navy transition">
+                                <input type="text" name="name" id="inputName" placeholder="FULL LEGAL NAME" required class="w-full border-b border-gray-200 bg-gray-50 p-4 text-sm font-bold uppercase outline-none focus:border-navy transition">
                             </div>
                             <div>
                                 <label class="block text-[10px] font-bold text-gray-400 uppercase mb-2">WhatsApp Contact</label>
-                                <input type="tel" name="contact" placeholder="1-876-..." required class="w-full border-b border-gray-200 bg-gray-50 p-4 text-sm font-bold uppercase outline-none focus:border-navy transition">
+                                <input type="tel" name="contact" id="inputPhone" placeholder="1-876-..." required class="w-full border-b border-gray-200 bg-gray-50 p-4 text-sm font-bold uppercase outline-none focus:border-navy transition">
                             </div>
                         </div>
                         <div class="text-left">
                             <label class="block text-[10px] font-bold text-gray-400 uppercase mb-2">Government ID # (TRN/DL)</label>
-                            <input type="text" name="trn" placeholder="9 DIGIT TRN" required class="w-full border-b border-gray-200 bg-gray-50 p-4 text-sm font-bold uppercase outline-none focus:border-navy transition">
+                            <input type="text" name="trn" id="inputTRN" placeholder="9 DIGIT TRN" required class="w-full border-b border-gray-200 bg-gray-50 p-4 text-sm font-bold uppercase outline-none focus:border-navy transition">
                         </div>
                         <input type="hidden" name="service" id="modalServiceInput">
-                        <input type="hidden" name="liaisonFee" id="modalLiaisonFee">
+                        <input type="hidden" name="liaisonFee" id="modalLiaisonFee"> 
                         <input type="hidden" name="agencyFee" id="modalAgencyFee">
                     </div>
 
                     <div class="space-y-6 bg-slate-50 p-6 rounded border border-dashed border-gray-200">
                         <div class="font-bold text-navy text-[11px] uppercase tracking-widest flex items-center gap-2">
-                            <i data-lucide="upload-cloud"></i> Supporting Documents
+                            <i data-lucide="truck"></i> Fulfillment Preference
                         </div>
-                        <div class="text-center relative cursor-pointer group">
-                            <input type="file" id="fileUpload" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
-                            <div class="p-6 bg-white border border-gray-200 rounded group-hover:border-gold transition">
-                                <i data-lucide="file-plus" class="mx-auto text-gray-400 mb-2"></i>
-                                <p id="fileNameDisplay" class="text-xs text-gray-500 font-bold uppercase">Click to attach ID or Form (Optional)</p>
-                            </div>
+                        <div class="text-left">
+                            <label class="block text-[10px] font-bold text-gray-400 uppercase mb-2">Preferred Dispatch Method</label>
+                            <select name="message" id="inputDispatch" required class="w-full border-b border-gray-200 bg-white p-4 text-sm font-bold uppercase outline-none focus:border-navy transition">
+                                <option value="">-- SELECT DELIVERY OPTION --</option>
+                                <option value="LOGISTICS: Client Pick-up (Office)">Hold at Base (Pick-up)</option>
+                                <option value="LOGISTICS: Knutsford Express">Knutsford Express (Courier)</option>
+                                <option value="LOGISTICS: Zip Mail">Post Office (Zip Mail)</option>
+                                <option value="LOGISTICS: Door Delivery">Private Door Delivery</option>
+                            </select>
                         </div>
                     </div>
 
                     <div class="space-y-4 text-left">
+                        <div class="font-bold text-navy text-[11px] uppercase tracking-widest flex items-center gap-2"><i data-lucide="shield-check"></i> Authorization Agreement</div>
+                        <div class="agreement-box rounded shadow-inner text-left">
+                            <p class="font-bold text-navy mb-2">1. SCOPE OF REPRESENTATION</p>
+                            <p class="mb-4 text-left">I authorize Docu-Hub to act as my designated Liaison for the requested agency mission.</p>
+                            <p class="font-bold text-navy mb-2">2. DATA RETENTION</p>
+                            <p class="mb-4 text-left">Identity records and uploaded files are purged 30 days after mission completion.</p>
+                        </div>
                         <label class="flex items-start gap-3 cursor-pointer p-4 bg-gray-50 rounded border border-transparent hover:border-gray-200 transition text-left">
                             <input type="checkbox" id="complianceCheck" required class="mt-1 w-5 h-5 accent-navy">
-                            <span class="text-[11px] font-bold text-navy uppercase leading-tight">I authorize Docu-Hub Operations Services to process my documents in accordance with the JDPA (2020).</span>
+                            <span class="text-[11px] font-bold text-navy uppercase leading-tight">I agree to the Liaison Authorization protocols.</span>
                         </label>
                     </div>
 
@@ -204,24 +227,24 @@
                 <div class="w-16 h-16 bg-navy text-gold flex items-center justify-center rounded text-2xl font-bold mx-auto mb-4">D</div>
                 <h2 class="text-2xl font-bold text-navy uppercase tracking-tight">Transmission Receipt</h2>
                 <p class="text-gray-500 text-sm">Docu-Hub Operations Services</p>
-                <p class="text-xs text-gray-400 mt-1">Institutional Concierge & Compliance</p>
             </div>
 
             <div class="bg-parchment p-6 rounded border border-gray-200 mb-8 text-center">
-                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Web Inquiry Reference</p>
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Reference Number</p>
                 <div id="receiptRef" class="text-3xl font-bold text-navy font-mono"></div>
                 <p class="text-[10px] text-green-600 mt-2 font-bold uppercase">● Successfully Logged</p>
             </div>
 
             <div class="space-y-4 text-sm text-gray-700 border-b border-gray-200 pb-8 mb-8">
-                <div class="flex justify-between"><span>Submission Date:</span> <span id="receiptDate" class="font-bold"></span></div>
-                <div class="flex justify-between"><span>Applicant:</span> <span id="receiptName" class="font-bold"></span></div>
-                <div class="flex justify-between"><span>Service Interest:</span> <span id="receiptService" class="font-bold"></span></div>
+                <div class="flex justify-between"><span>Date:</span> <span id="receiptDate" class="font-bold"></span></div>
+                <div class="flex justify-between"><span>Client:</span> <span id="receiptName" class="font-bold"></span></div>
+                <div class="flex justify-between"><span>Service:</span> <span id="receiptService" class="font-bold"></span></div>
+                <div class="flex justify-between"><span>Dispatch:</span> <span id="receiptDispatch" class="font-bold"></span></div>
             </div>
 
             <div class="text-center space-y-4 no-print">
                 <button onclick="window.print()" class="w-full bg-navy text-white font-bold py-4 rounded uppercase tracking-widest text-xs hover:bg-navy-dark transition">
-                    🖨 Print Receipt / Save as PDF
+                    🖨 Print / Save as PDF
                 </button>
                 <button onclick="window.location.reload()" class="w-full text-gray-400 font-bold text-xs uppercase tracking-widest hover:text-navy transition">
                     Close & Return Home
@@ -229,15 +252,14 @@
             </div>
             
             <div class="text-center mt-8 text-[10px] text-gray-400">
-                <p><strong>Note:</strong> This is a submission acknowledgment, not a government receipt.</p>
-                <p>A Liaison Officer will contact you shortly via WhatsApp to finalize logistics.</p>
+                <p>This is an automated acknowledgment. A Liaison Officer will contact you shortly via WhatsApp to finalize logistics.</p>
             </div>
         </div>
     </div>
 
     <script>
         lucide.createIcons();
-        // *** VERIFY URL BEFORE DEPLOYING ***
+        // *** CRITICAL: UPDATE THIS URL WITH YOUR NEW DEPLOYMENT ***
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw2nkmAaHmcEesJq9aXJ197nH0JbvH5Uk4ox8TLk0Ps4hLFpZqbkfVf8r3lIWxFKUyd6A/exec";
 
         const SERVICES = [
@@ -353,24 +375,15 @@
 
         function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = 'auto'; }
 
-        // FILE LISTENER
-        document.getElementById('fileUpload').onchange = function() {
-            if(this.files && this.files[0]) {
-                document.getElementById('fileNameDisplay').innerText = "Attached: " + this.files[0].name;
-                document.getElementById('fileNameDisplay').classList.add('text-green-600');
-            }
-        };
-
-        // SUBMIT LOGIC (With Ref# & Receipt)
         async function submitLead(e) {
             if (e) { e.preventDefault(); e.stopPropagation(); }
             
             if(signaturePad.isEmpty()) return;
             if(!document.getElementById('complianceCheck').checked) return;
             
-            // GENERATE REF# INSTANTLY
+            // 1. GENERATE REF NUMBER
             const timestamp = new Date();
-            const refNum = 'DH-WEB-' + Math.floor(1000 + Math.random() * 9000);
+            const refNum = 'DH-' + timestamp.getFullYear().toString().substr(-2) + '-' + Math.floor(1000 + Math.random() * 9000);
 
             const btn = document.getElementById('submitLeadBtn');
             const overlay = document.getElementById('statusOverlay');
@@ -379,29 +392,15 @@
             btn.classList.add('opacity-50');
             
             const formData = new FormData(e.target);
-            const rawData = Object.fromEntries(formData.entries());
+            const data = Object.fromEntries(formData.entries());
             
-            // PREPARE FILE
-            const fileInput = document.getElementById('fileUpload');
-            let fileData = null;
-            let fileName = null;
-            if (fileInput.files.length > 0) {
-                const file = fileInput.files[0];
-                fileName = file.name;
-                fileData = await new Promise((resolve) => {
-                    const reader = new FileReader();
-                    reader.onload = (e) => resolve(e.target.result);
-                    reader.readAsDataURL(file);
-                });
-            }
-
+            // 2. PREPARE PAYLOAD (Append Ref# to Service for Backend)
             const payload = {
-                name: rawData.name,
-                contact: rawData.contact,
-                service: rawData.service + ' [Ref: ' + refNum + ']', // Embed Ref in Service Title
-                trn: rawData.trn,
-                fileData: fileData,
-                fileName: fileName,
+                name: data.name,
+                contact: data.contact,
+                // Append Ref# so it saves in the 'Service' column
+                service: data.service + ' [Ref: ' + refNum + ']', 
+                trn: data.trn,
                 signature: signaturePad.toDataURL()
             };
 
@@ -414,17 +413,18 @@
                     body: JSON.stringify(payload)
                 });
                 
-                // HIDE SPINNER / CLOSE FORM
-                overlay.classList.add('hidden');
-                closeModal('inquiryModal');
-
-                // POPULATE RECEIPT
+                // 3. SHOW RECEIPT INSTEAD OF RELOADING
+                overlay.classList.add('hidden'); // Hide spinner
+                closeModal('inquiryModal');      // Close form
+                
+                // Populate Receipt Data
                 document.getElementById('receiptRef').innerText = refNum;
                 document.getElementById('receiptDate').innerText = timestamp.toLocaleDateString('en-JM');
-                document.getElementById('receiptName').innerText = rawData.name;
-                document.getElementById('receiptService').innerText = rawData.service.split(':')[0]; // Clean name
+                document.getElementById('receiptName').innerText = data.name;
+                document.getElementById('receiptService').innerText = data.service.split(':')[0]; // Just the main service name
+                document.getElementById('receiptDispatch').innerText = data.message.replace('LOGISTICS: ', '');
                 
-                // SHOW RECEIPT
+                // Show Receipt Modal
                 document.getElementById('receiptModal').classList.remove('hidden');
 
             } catch (err) { 
