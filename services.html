@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Services Catalog | Docu-Hub Compliance v77.4</title>
+    <title>Services Catalog | Docu-Hub Compliance v78.0</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -56,7 +56,6 @@
 </head>
 <body class="min-h-screen flex flex-col text-left">
 
-    <!-- STATUS OVERLAY (Replaces alerts) -->
     <div id="statusOverlay" class="fixed inset-0 bg-navy/90 z-[200] hidden flex items-center justify-center p-6 text-center">
         <div class="space-y-6">
             <div id="statusSpinner" class="w-16 h-16 border-4 border-gold border-t-transparent rounded-full animate-spin mx-auto"></div>
@@ -66,7 +65,6 @@
         </div>
     </div>
 
-    <!-- NAVIGATION -->
     <nav class="bg-white shadow-md sticky top-0 z-50 border-b-4 border-gold">
         <div class="container mx-auto px-4 md:px-6 h-20 flex justify-between items-center text-left">
             <div class="flex items-center gap-3 cursor-pointer">
@@ -82,12 +80,11 @@
         </div>
     </nav>
 
-    <!-- GLOBAL FEE DISCLAIMER -->
     <div class="disclaimer-bar text-white py-3 px-6 shadow-lg">
         <div class="container mx-auto flex items-center justify-center gap-3">
             <span class="text-gold font-bold">&#9432;</span>
             <p class="text-[10px] font-semibold uppercase tracking-wide text-center">
-                Protocol: All prices are <span class="text-gold">Liaison Fees only</span>. Statutory charges are separate.
+                Protocol: Prices shown are <span class="text-gold">Liaison Fees</span>. Government statutory charges are calculated at intake.
             </p>
         </div>
     </div>
@@ -99,7 +96,6 @@
             <p class="text-gray-500 max-w-xl md:mx-auto text-base font-normal">Select an agency desk to view professional fees and registry requirements.</p>
         </div>
 
-        <!-- CATEGORY SELECTOR -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16" id="selection-grid">
             <div class="choice-card p-10 rounded shadow-xl text-left md:text-center group" onclick="toggleCatalog('personal')">
                 <div class="text-3xl mb-4">&#128100;</div>
@@ -115,7 +111,6 @@
             </div>
         </div>
 
-        <!-- INDIVIDUAL CATALOG AREA -->
         <div id="catalog-personal" class="hidden space-y-6 catalog-section">
             <div class="flex items-center justify-between border-b border-navy/10 pb-6 mb-8">
                 <h2 class="text-2xl font-bold text-navy uppercase">Agency Catalog</h2>
@@ -123,7 +118,6 @@
             <div id="catalog-container" class="space-y-6"></div>
         </div>
 
-        <!-- STRATEGY AREA -->
         <div id="catalog-business" class="hidden space-y-8 catalog-section">
             <div class="bg-navy text-white rounded shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 animate-fade-in">
                 <div class="p-10 md:p-16 border-r border-white/5 text-left">
@@ -142,7 +136,6 @@
         </div>
     </main>
 
-    <!-- INTAKE MODAL -->
     <div id="inquiryModal" class="modal fixed inset-0 flex items-center justify-center bg-navy/95 backdrop-blur-sm p-4">
         <div class="modal-content bg-white w-full max-w-2xl rounded shadow-2xl overflow-hidden flex flex-col max-h-[95vh] text-left">
             <div class="bg-navy p-6 flex justify-between items-center text-white shrink-0">
@@ -171,8 +164,9 @@
                             <label class="block text-[10px] font-bold text-gray-400 uppercase mb-2">Government ID # (TRN/DL)</label>
                             <input type="text" name="trn" placeholder="9 DIGIT TRN" required class="w-full border-b border-gray-200 bg-gray-50 p-4 text-sm font-bold uppercase outline-none focus:border-navy transition">
                         </div>
+                        
                         <input type="hidden" name="service" id="modalServiceInput">
-                    </div>
+                        <input type="hidden" name="liaisonFee" id="modalLiaisonFee"> <input type="hidden" name="agencyFee" id="modalAgencyFee">   </div>
 
                     <div class="space-y-6 bg-slate-50 p-6 rounded border border-dashed border-gray-200">
                         <div class="font-bold text-navy text-[11px] uppercase tracking-widest flex items-center gap-2">
@@ -220,8 +214,11 @@
 
     <script>
         lucide.createIcons();
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwtBExoQPDckqDGKyAKeAVoYRCfd42DOl3oiKlrOjJruXPjTnn8m9UJIjUnp6906MaG/exec";
+        
+        // *** CRITICAL: VERIFY THIS IS YOUR CURRENT DEPLOYED WEB APP URL ***
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw2nkmAaHmcEesJq9aXJ197nH0JbvH5Uk4ox8TLk0Ps4hLFpZqbkfVf8r3lIWxFKUyd6A/exec";
 
+        // *** UPDATED DATA STRUCTURE (WITH NUMERIC FEES) ***
         const SERVICES = [
             { 
                 id: 'rgd', 
@@ -229,8 +226,9 @@
                 icon: '&#128196;', 
                 summary: 'Birth, Marriage, & Death certificate procurement.',
                 subServices: [
-                    { name: 'Standard Retrieval', path: 'Registry Search & Regular Collection', needs: 'Birth Name, DOB, Parish.', time: '6-8 Weeks', fee: '$3,500 JMD' },
-                    { name: 'Express Retrieval', path: 'Rapid Twickenham Filing & Retrieval', needs: 'Entry Number REQUIRED.', time: '7-10 Days', fee: '$4,500 JMD' }
+                    // Prices separated for backend math
+                    { name: 'Standard Retrieval', path: 'Registry Search & Regular Collection', needs: 'Birth Name, DOB, Parish.', time: '6-8 Weeks', liaisonFee: 3500, agencyFee: 500 },
+                    { name: 'Express Retrieval', path: 'Rapid Twickenham Filing & Retrieval', needs: 'Entry Number REQUIRED.', time: '7-10 Days', liaisonFee: 4500, agencyFee: 1000 }
                 ]
             },
             { 
@@ -239,7 +237,7 @@
                 icon: '&#128712;', 
                 summary: 'Adult renewals and Citizenship facilitation.',
                 subServices: [
-                    { name: 'Passport Renewal', path: 'Constant Spring Submission & Pickup', needs: 'Expired Passport, 2 Matte Photos.', time: '10 Working Days', fee: '$3,500 JMD' }
+                    { name: 'Passport Renewal', path: 'Constant Spring Submission & Pickup', needs: 'Expired Passport, 2 Matte Photos.', time: '10 Working Days', liaisonFee: 3500, agencyFee: 6500 }
                 ]
             },
             { 
@@ -248,10 +246,13 @@
                 icon: '&#127963;', 
                 summary: 'TRN Registration, Vehicle License, and Tickets.',
                 subServices: [
-                    { name: 'TRN Registration', path: 'Tax Office Filing & Retrieval', needs: 'Original Birth Cert and ID.', time: '24 Hours', fee: '$2,500 JMD' }
+                    { name: 'TRN Registration', path: 'Tax Office Filing & Retrieval', needs: 'Original Birth Cert and ID.', time: '24 Hours', liaisonFee: 2500, agencyFee: 0 }
                 ]
             }
         ];
+
+        // Currency Formatter
+        const fmtMoney = new Intl.NumberFormat('en-JM', { style: 'currency', currency: 'JMD', minimumFractionDigits: 0 });
 
         function toggleCatalog(type) {
             const p = document.getElementById('catalog-personal');
@@ -294,8 +295,8 @@
                             <div class="bg-parchment p-8 rounded border-l-4 border-gold shadow-inner">
                                 <div class="flex justify-between items-end">
                                     <div>
-                                        <span class="text-[10px] font-bold text-gray-400 uppercase block mb-2">Docu-Hub Fee</span>
-                                        <span id="fee-${s.id}" class="text-2xl font-bold text-navy italic">${s.subServices[0].fee}</span>
+                                        <span class="text-[10px] font-bold text-gray-400 uppercase block mb-2">Docu-Hub Liaison Fee</span>
+                                        <span id="fee-${s.id}" class="text-2xl font-bold text-navy italic">${fmtMoney.format(s.subServices[0].liaisonFee)}</span>
                                     </div>
                                     <button onclick="prepareIntake('${s.id}')" class="bg-navy text-white px-8 py-4 rounded font-bold uppercase text-[10px] tracking-widest hover:bg-gold hover:text-navy transition-all italic">Apply</button>
                                 </div>
@@ -308,17 +309,33 @@
 
         function selectSub(aid, idx) {
             const s = SERVICES.find(x => x.id === aid).subServices[idx];
-            document.getElementById(`fee-${aid}`).innerText = s.fee;
+            // Update display with formatted money
+            document.getElementById(`fee-${aid}`).innerText = fmtMoney.format(s.liaisonFee);
+            
             document.querySelectorAll(`#agency-${aid} .sub-btn`).forEach(b => b.classList.remove('active'));
             document.getElementById(`btn-${aid}-${idx}`).classList.add('active');
         }
 
         function prepareIntake(aid) {
             const activeBtn = document.querySelector(`#agency-${aid} .sub-btn.active`);
-            const task = activeBtn ? activeBtn.innerText : "Service";
-            const agency = SERVICES.find(x => x.id === aid).title;
-            document.getElementById('modalServiceTitle').innerText = agency;
-            document.getElementById('modalServiceInput').value = `${agency}: ${task}`;
+            let idx = 0;
+            
+            // Determine active index based on button ID hack or class
+            if (activeBtn) {
+                 const parts = activeBtn.id.split('-');
+                 idx = parseInt(parts[parts.length - 1]);
+            }
+
+            const serviceGroup = SERVICES.find(x => x.id === aid);
+            const serviceData = serviceGroup.subServices[idx];
+
+            document.getElementById('modalServiceTitle').innerText = serviceGroup.title;
+            
+            // Populate HIDDEN Data for Backend
+            document.getElementById('modalServiceInput').value = `${serviceGroup.title}: ${serviceData.name}`;
+            document.getElementById('modalLiaisonFee').value = serviceData.liaisonFee;
+            document.getElementById('modalAgencyFee').value = serviceData.agencyFee;
+
             openModal('inquiryModal');
         }
 
@@ -327,6 +344,9 @@
             if(customTitle) { 
                 document.getElementById('modalServiceTitle').innerText = customTitle; 
                 document.getElementById('modalServiceInput').value = customTitle; 
+                // Default fees for custom strategy
+                document.getElementById('modalLiaisonFee').value = 0;
+                document.getElementById('modalAgencyFee').value = 0;
             }
             document.getElementById(id).classList.add('active');
             if(!signaturePad) { 
@@ -351,12 +371,7 @@
             document.body.style.overflow = 'auto'; 
         }
 
-        /**
-         * HARDENED SUBMISSION HANDSHAKE (v77.4)
-         * Prevents code string display by suppressing event loop and using no-cors mode.
-         */
         async function submitLead(e) {
-            // 1. STOP NAVIGATION IMMEDIATELY
             if (e) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -372,7 +387,6 @@
             const spinner = document.getElementById('statusSpinner');
             const successIcon = document.getElementById('statusSuccessIcon');
 
-            // 2. UI LOCKDOWN
             overlay.classList.remove('hidden');
             btn.disabled = true;
             btn.classList.add('opacity-50');
@@ -383,7 +397,7 @@
             data.source = "Web";
 
             try {
-                // 3. HANDSHAKE (Opaque/No-Cors Mode)
+                // Post Data to Google Script
                 await fetch(SCRIPT_URL, { 
                     method: 'POST', 
                     mode: 'no-cors',
@@ -392,7 +406,6 @@
                     body: JSON.stringify(data) 
                 });
                 
-                // 4. SUCCESS FEEDBACK
                 spinner.classList.add('hidden');
                 successIcon.classList.remove('hidden');
                 statusText.innerText = "AUTHORIZATION RECEIVED";
@@ -407,9 +420,10 @@
                 overlay.classList.add('hidden');
                 btn.disabled = false;
                 btn.classList.remove('opacity-50');
+                alert("Transmission Error. Please try again.");
             }
             
-            return false; // Final block
+            return false;
         }
 
         window.onload = function() {
