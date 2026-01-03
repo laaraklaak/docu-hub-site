@@ -473,7 +473,7 @@
             });
         }
 
-        // --- LEG 4: FORENSIC INTAKE (UPDATED WITH PHONE FIELD) ---
+     // --- LEG 4: FORENSIC INTAKE (Updated with Phone Field) ---
         function loadLeg4() {
             updateProgress(4);
             const content = document.getElementById('missionContent');
@@ -555,10 +555,7 @@
                 processSubmission();
             };
         }
-
-        function clearSig() { if(signaturePad) signaturePad.clear(); }
-
-        // --- LEG 5: TRANSMISSION WITH RECEIPT (Updated to capture Phone) ---
+       // --- LEG 5: TRANSMISSION WITH RECEIPT (Updated to capture Phone) ---
         async function processSubmission() {
             const btn = document.getElementById('submitBtn');
             btn.innerHTML = `<i data-lucide="loader-2" class="animate-spin inline mr-2"></i> Encrypting...`;
@@ -575,8 +572,10 @@
                 const base64File = e.target.result;
                 const payload = {
                     name: document.getElementById('fname').value + ' ' + document.getElementById('lname').value,
-                    // CAPTURING THE PHONE INPUT NOW
+                    
+                    // THIS IS THE CRITICAL UPDATE:
                     contact: document.getElementById('contactNum').value, 
+                    
                     service: currentPillar.name + ' [Ref: ' + refNum + ']',
                     trn: document.getElementById('trn').value,
                     specificData: document.getElementById('specificInput') ? document.getElementById('specificInput').value : 'N/A',
@@ -614,22 +613,10 @@
             };
             reader.readAsDataURL(fileInput.files[0]);
         }
-
-        function showSensory(title, msg, iconName) {
-            document.getElementById('sensoryTitle').innerText = title;
-            document.getElementById('sensoryMessage').innerText = msg;
-            const iconContainer = document.getElementById('sensoryIcon');
-            iconContainer.innerHTML = `<i data-lucide="${iconName}" class="w-12 h-12 mx-auto"></i>`;
-            lucide.createIcons();
-            document.getElementById('sensoryOverlay').classList.remove('hidden');
-        }
-
-        function closeSensory() {
-            document.getElementById('sensoryOverlay').classList.add('hidden');
-        }
     </script>
 </body>
 </html>
+
 
 
 
