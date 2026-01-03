@@ -63,22 +63,36 @@
         </div>
     </div>
 
-    <header class="bg-white shadow-sm sticky top-0 z-40 no-print">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.reload()">
-                <i data-lucide="shield-check" class="text-gold w-8 h-8"></i>
-                <div>
-                    <h1 class="font-serif text-2xl text-navy tracking-tight font-bold italic">Docu-Hub</h1>
-                    <p class="text-[10px] uppercase tracking-widest text-gray-500">Operations Services</p>
-                </div>
-            </div>
-            <div class="hidden md:flex gap-6 text-sm font-medium text-navy">
-                <a href="about.html" class="hover:text-gold transition">Our Mission</a>
-                <a href="?page=tracking" target="_top" class="hover:text-gold transition">Status Check</a>
-                <a href="contact.html" target="_top" class="hover:text-gold transition">Contact</a>
+   <header class="bg-white shadow-sm sticky top-0 z-40 no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.reload()">
+            <i data-lucide="shield-check" class="text-gold w-8 h-8"></i>
+            <div>
+                <h1 class="font-serif text-2xl text-navy font-bold italic leading-none">Docu-Hub</h1>
+                <p class="text-[10px] uppercase tracking-widest text-gray-400 mt-1">Operations Services</p>
             </div>
         </div>
-    </header>
+
+        <div class="hidden md:flex gap-6 text-sm font-medium text-navy">
+            <a href="about.html" class="hover:text-gold transition">Our Mission</a>
+            <a href="?page=tracking" target="_top" class="hover:text-gold transition">Status Check</a>
+            <a href="?page=contact" target="_top" class="hover:text-gold transition">Contact</a>
+        </div>
+
+        <button onclick="toggleMobileMenu()" class="md:hidden text-navy p-2">
+            <i data-lucide="menu" id="menuIcon" class="w-8 h-8"></i>
+        </button>
+    </div>
+
+    <div id="mobileDropdown" class="hidden md:hidden bg-navy text-white w-full absolute top-20 left-0 shadow-xl border-b-4 border-gold z-50 animate-fade-in">
+        <div class="flex flex-col p-6 space-y-6 text-center font-bold tracking-widest uppercase text-xs">
+            <a href="about.html" class="py-2 border-b border-white/10">Our Mission</a>
+            <a href="?page=tracking" target="_top" class="py-2 border-b border-white/10">Status Check</a>
+            <a href="?page=contact" target="_top" class="py-2 border-b border-white/10">Contact Liaison</a>
+            <a href="?page=help_center" target="_top" class="py-2 text-gold">Help Center</a>
+        </div>
+    </div>
+</header>
 
     <section id="viewHero" class="relative w-full h-[650px] flex items-center no-print">
         <div class="absolute inset-0 z-0">
@@ -626,8 +640,23 @@
         function closeSensory() {
             document.getElementById('sensoryOverlay').classList.add('hidden');
         }
+
+        function toggleMobileMenu() {
+    const menu = document.getElementById('mobileDropdown');
+    const icon = document.getElementById('menuIcon');
+    
+    if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+        icon.setAttribute('data-lucide', 'x'); // Change burger to X
+    } else {
+        menu.classList.add('hidden');
+        icon.setAttribute('data-lucide', 'menu'); // Change X back to burger
+    }
+    lucide.createIcons(); // Refresh icons
+}
     </script>
 </body>
 </html>
+
 
 
