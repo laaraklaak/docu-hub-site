@@ -19,13 +19,10 @@
         }
     </script>
      <style>
-        .agreement-scroll::-webkit-scrollbar { width: 6px; }
-        .agreement-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
-        .agreement-scroll::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
         .fade-in { animation: fadeIn 0.5s ease-out forwards; opacity: 0; transform: translateY(10px); }
         @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
         .tactile:active { transform: scale(0.98); }
-        .btn-locked { background-color: #9CA3AF; cursor: not-allowed; }
+        .btn-locked { background-color: #9CA3AF; cursor: not-allowed; opacity: 0.5; }
         @media print {
             body * { visibility: hidden; }
             #receiptArea, #receiptArea * { visibility: visible; }
@@ -54,29 +51,29 @@
             </div>
             <div class="hidden md:flex gap-8 text-sm font-medium text-navy uppercase tracking-widest text-[11px] font-bold">
                 <a href="about.html" class="hover:text-gold transition">Our Mission</a>
-                <a href="?page=tracking" target="_top" class="hover:text-gold transition">Status Check</a>
+                <a href="?page=tracking" target="_top" class="hover:text-gold transition text-gold border-b-2 border-gold pb-1">Status Check</a>
                 <a href="contact.html" target="_top" class="hover:text-gold transition">Contact</a>
             </div>
-            <button onclick="toggleMobileMenu()" class="md:hidden text-navy p-2"><i data-lucide="menu" id="menuIcon" class="w-8 h-8"></i></button>
+            <button onclick="toggleMobileMenu()" class="md:hidden text-navy p-2 focus:outline-none">
+                <i data-lucide="menu" id="menuIcon" class="w-8 h-8"></i>
+            </button>
         </div>
-        <div id="mobileDropdown" class="hidden md:hidden bg-navy text-white w-full absolute top-20 left-0 shadow-xl border-b-4 border-gold z-50 animate-fade-in text-center">
-            <div class="flex flex-col p-6 space-y-6 font-bold tracking-widest uppercase text-xs">
-                <a href="about.html">Our Mission</a>
-                <a href="?page=tracking" target="_top">Status Check</a>
-                <a href="contact.html" target="_top" class="text-gold font-bold">Contact Liaison</a>
-            </div>
+        <div id="mobileDropdown" class="hidden md:hidden bg-navy text-white w-full absolute top-20 left-0 shadow-xl border-b-4 border-gold z-50 animate-fade-in text-center py-10 space-y-8 flex flex-col font-bold uppercase tracking-widest text-xs">
+            <a href="about.html">Our Mission</a>
+            <a href="?page=tracking" target="_top" class="text-gold">Status Check</a>
+            <a href="contact.html" target="_top">Contact Liaison</a>
         </div>
     </header>
 
-    <section id="viewHero" class="relative w-full h-[600px] flex items-center no-print">
+    <section id="viewHero" class="relative w-full h-[600px] flex items-center no-print overflow-hidden">
         <div class="absolute inset-0 z-0">
             <img src="assets/hero.png" class="w-full h-full object-cover object-center" alt="Docu-Hub Hero">
-            <div class="absolute inset-0 bg-navy/20"></div>
+            <div class="absolute inset-0 bg-navy/30"></div>
         </div>
         <div class="relative z-10 container mx-auto px-6 md:px-12">
-            <div class="max-w-lg bg-navy/95 backdrop-blur-md p-10 rounded shadow-2xl border-l-4 border-gold fade-in">
+            <div class="max-w-lg bg-navy/50 backdrop-blur-md p-10 rounded-2xl shadow-2xl border-l-4 border-gold fade-in">
                 <h1 class="font-serif text-4xl md:text-5xl font-bold leading-tight mb-6 text-white text-center md:text-left">Institutional Trust,<br><span class="text-gold italic">Privately Delivered.</span></h1>
-                <p class="text-sm md:text-base text-gray-300 mb-8 leading-relaxed">We are your secure concierge for Jamaican government services. Skip the lines and red tape while we handle your documents safely.</p>
+                <p class="text-sm md:text-base text-gray-100 mb-8 leading-relaxed font-medium">We are your secure concierge for Jamaican government services. Skip the lines and red tape while we handle your documents safely.</p>
                 <div class="flex justify-center md:justify-start">
                     <button onclick="document.getElementById('viewDirectory').scrollIntoView({behavior: 'smooth'})" class="bg-gold text-navy px-10 py-4 rounded font-bold hover:bg-white transition shadow-lg uppercase text-xs tracking-widest">Start Intake</button>
                 </div>
@@ -88,25 +85,25 @@
         <div class="text-center mb-24 fade-in">
             <h2 class="font-serif text-3xl md:text-4xl text-navy mb-4 font-bold">Explore Our Service Catalog</h2>
             <div class="h-1 w-20 bg-gold mx-auto mb-6"></div>
-            <p class="text-gray-500 max-w-2xl mx-auto text-sm">Choose a service category below to start your secure request..</p>
+            <p class="text-gray-500 max-w-2xl mx-auto text-sm uppercase tracking-widest font-bold">Select a specialized pillar to initiate the secure liaison process.</p>
         </div>
         <div class="flex flex-wrap justify-center gap-12 fade-in" id="pillarsGrid">
-            </div>
+             </div>
     </main>
 
     <footer class="bg-navy text-white mt-0 py-24 border-t border-gold/20 no-print px-8">
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-start text-center md:text-left">
             <div><h4 class="font-serif italic text-2xl text-gold mb-2 leading-none">Docu-Hub</h4><p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Institutional Concierge</p></div>
             <div>
-                <h5 class="font-bold text-[10px] uppercase tracking-[0.2em] mb-6 text-white/50">Legals</h5>
+                <h5 class="font-bold text-[10px] uppercase tracking-widest mb-6 text-white/50">Legals</h5>
                 <ul class="text-xs space-y-3 text-gray-400">
                     <li><a href="privacy.html" class="hover:text-gold transition">Privacy Policy (JDPA)</a></li>
                     <li><a href="terms.html" class="hover:text-gold transition">Terms of Engagement</a></li>
-                     <li><a href="legal-notice.html" class="hover:text-gold transition">Legal Notice</a></li>
+                    <li><a href="legal-notice.html" class="hover:text-gold transition">Legal Notice</a></li>
                 </ul>
             </div>
             <div>
-                <h5 class="font-bold text-[10px] uppercase tracking-[0.2em] mb-6 text-white/50">Direct Contact</h5>
+                <h5 class="font-bold text-[10px] uppercase tracking-widest mb-6 text-white/50">Direct Contact</h5>
                 <a href="?page=contact" target="_top" class="inline-flex items-center gap-2 border border-gold text-gold px-8 py-3 rounded-full hover:bg-gold hover:text-navy transition uppercase text-[10px] tracking-widest font-bold">
                     <i data-lucide="message-circle" class="w-4 h-4"></i> Contact Liaison
                 </a>
@@ -120,9 +117,6 @@
                 <div class="flex justify-between items-center mb-4">
                     <button onclick="exitMission()" class="text-gold flex items-center gap-2 text-sm transition"><i data-lucide="arrow-left" class="w-4 h-4"></i> Return</button>
                     <span id="activePillarName" class="font-serif italic text-lg text-gold"></span>
-                </div>
-                <div id="stepLabels" class="flex justify-between text-[8px] uppercase tracking-widest text-gray-400 mb-2">
-                    <span>Suite</span><span>Review</span><span>Agreement</span><span>Intake</span><span>Transmit</span>
                 </div>
                 <div class="h-1 bg-white/10 rounded-full overflow-hidden"><div id="progressBar" class="h-1 bg-gold w-[20%] transition-all duration-500"></div></div>
             </div>
@@ -139,15 +133,9 @@
                 <div class="flex justify-between"><span>Applicant:</span> <span id="receiptName" class="font-bold"></span></div>
                 <div class="flex justify-between"><span>Service:</span> <span id="receiptService" class="font-bold"></span></div>
             </div>
-            <button onclick="window.print()" class="w-full bg-navy text-white font-bold py-4 rounded uppercase tracking-widest text-xs mb-4">Save as PDF</button>
-            <button onclick="window.location.reload()" class="w-full text-gray-400 font-bold text-xs uppercase underline tracking-widest">Return to Portal</button>
+            <button onclick="window.print()" class="w-full bg-navy text-white font-bold py-4 rounded uppercase text-xs mb-4 tracking-widest">Save PDF</button>
+            <button onclick="window.location.reload()" class="w-full text-gray-400 font-bold text-xs uppercase underline">Close Portal</button>
         </div>
-    </div>
-
-    <div class="fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-gray-200 p-3 flex justify-around md:hidden z-40 no-print">
-        <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="flex flex-col items-center text-navy text-[10px] gap-1"><i data-lucide="home" class="w-5 h-5"></i> Home</button>
-        <button onclick="window.open('?page=tracking', '_top')" class="flex flex-col items-center text-navy text-[10px] gap-1"><i data-lucide="activity" class="w-5 h-5"></i> Track</button>
-        <button onclick="window.open('?page=help_center', '_top')" class="flex flex-col items-center text-navy text-[10px] gap-1"><i data-lucide="help-circle" class="w-5 h-5"></i> Help</button>
     </div>
 
     <script>
@@ -156,13 +144,13 @@
 
         const PILLARS = [
             { id: 'pica', name: 'PICA Liaison', desc: 'Passport Renewals, Replacements & Immigration Services.', img: 'assets/pica.png', fees: { pro: 3500, gov: 6500 }, reqs: ['Expired Passport', 'Birth Certificate'] },
-            { id: 'jcf', name: 'JCF Records', desc: 'Police Certificates & Fingerprinting.', img: 'assets/records.png', fees: { pro: 3500, gov: 3000 }, reqs: ['Valid ID', 'TRN'] },
-            { id: 'rgd', name: 'RGD Registry', desc: 'Birth, Marriage & Death Certificates.', img: 'assets/rgd.png', fees: { pro: 3500, gov: 2500 }, reqs: ['Application Form'] },
+            { id: 'jcf', name: 'JCF Records', desc: 'Police Certificates & Forensic Fingerprinting.', img: 'assets/records.png', fees: { pro: 3500, gov: 3000 }, reqs: ['Valid ID', 'TRN'] },
+            { id: 'rgd', name: 'RGD Registry', desc: 'Birth, Marriage & Death Certificates.', img: 'assets/rgd.png', fees: { pro: 3500, gov: 2500 }, reqs: ['Application Detail'] },
             { id: 'taj', name: 'TAJ Services', desc: 'Motor Vehicle Licensing & Traffic Ticket Payments.', img: 'assets/taj.png', fees: { pro: 1500, gov: 'Variable' }, reqs: ['Fitness', 'Insurance'] },
-            { id: 'corp', name: 'Corporate Bulk', desc: 'Expedited processing for entities (5+ Employees).', img: 'assets/corporate.png', fees: { pro: 'Retainer', gov: 'At Cost' }, reqs: ['Letterhead Request'] },
+            { id: 'corp', name: 'Corporate Bulk', desc: 'Expedited processing for entities (5+ Employees).', img: 'assets/corporate.png', fees: { pro: 'Retainer', gov: 'At Cost' }, reqs: ['Company Request'] },
             { id: 'land', name: 'Land & Research', desc: 'Title Searches, Caveats & Hard Case Research.', img: 'assets/consult.png', fees: { pro: 3000, gov: 2000 }, reqs: ['Vol/Folio Numbers'] },
-            { id: 'replace', name: 'Lost Documents', desc: 'ID & Document Recovery.', img: 'assets/replace.png', fees: { pro: 3500, gov: 4000 }, reqs: ['Police Report'] },
-            { id: 'help', name: 'Help Center', desc: 'Guidance & Support.', img: 'assets/help.png', isLink: true, url: '?page=help_center' }
+            { id: 'replace', name: 'Lost Documents', desc: 'Recovery of lost/stolen identification.', img: 'assets/replace.png', fees: { pro: 3500, gov: 4000 }, reqs: ['Police Report Reference'] },
+            { id: 'help', name: 'Help Center', desc: 'Guidance, Support & General Inquiry.', img: 'assets/help.png', isLink: true, url: '?page=help_center' }
         ];
 
         let currentPillar = null;
@@ -171,11 +159,11 @@
         function renderPillars() {
             const grid = document.getElementById('pillarsGrid');
             grid.innerHTML = PILLARS.map(p => `
-                <div class="w-full md:w-[calc(50%-2rem)] lg:w-[calc(33.333%-3rem)] flex flex-col cursor-pointer group bg-white p-2 rounded-2xl" 
+                <div class="w-full md:w-[calc(50%-2rem)] lg:w-[calc(33.333%-3rem)] flex flex-col cursor-pointer group bg-white p-2 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300" 
                      onclick="${p.isLink ? `window.open('${p.url}', '_top')` : `startMission('${p.id}')`}">
-                    <div class="aspect-[16/9] overflow-hidden relative rounded-xl mb-6 shadow-sm">
+                    <div class="aspect-[16/9] overflow-hidden relative rounded-xl mb-6 shadow-sm border border-gray-100">
                         <img src="${p.img}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80'">
-                        <div class="absolute inset-0 bg-navy/5 group-hover:bg-transparent"></div>
+                        <div class="absolute inset-0 bg-navy/5 group-hover:bg-transparent transition-colors"></div>
                     </div>
                     <div class="text-center px-4 pb-4">
                         <h3 class="font-serif text-lg text-navy font-bold mb-2 uppercase tracking-tight">${p.name}</h3>
@@ -186,7 +174,6 @@
             lucide.createIcons();
         }
 
-        // --- FULL INTAKE ENGINE RESTORED ---
         function startMission(id) {
             currentPillar = PILLARS.find(p => p.id === id);
             document.getElementById('activePillarName').innerText = currentPillar.name;
@@ -195,6 +182,8 @@
             document.getElementById('missionControl').classList.remove('hidden');
             loadLeg1();
         }
+
+        function updateProgress(step) { document.getElementById('progressBar').style.width = `${step * 20}%`; }
 
         function loadLeg1() {
             updateProgress(1);
@@ -205,7 +194,7 @@
                         <div class="flex justify-between items-center border-b border-white/10 pb-4 mb-4"><span>Liaison Fee</span><span class="text-gold font-bold">$${currentPillar.fees.pro}</span></div>
                         <div class="flex justify-between items-center"><span>Agency Fee</span><span class="font-bold">$${currentPillar.fees.gov}</span></div>
                     </div>
-                    <button onclick="loadLeg2()" class="w-full bg-navy text-white font-bold py-5 rounded-full uppercase tracking-widest text-xs hover:bg-gold transition">Confirm & Review Docs</button>
+                    <button onclick="loadLeg2()" class="w-full bg-navy text-white font-bold py-5 rounded-full uppercase tracking-widest text-xs hover:bg-gold transition">Proceed to Audit</button>
                 </div>`;
         }
 
@@ -215,140 +204,98 @@
             document.getElementById('missionContent').innerHTML = `
                 <div class="fade-in max-w-2xl mx-auto">
                     <h2 class="font-serif text-3xl text-navy mb-8 font-bold italic text-center">Document Audit</h2>
-                    <div class="bg-white border p-10 rounded-3xl mb-8"><ul class="space-y-4 text-gray-700">${reqs}</ul></div>
-                    <button onclick="loadLeg3()" class="w-full bg-navy text-white font-bold py-5 rounded-full uppercase tracking-widest text-xs hover:bg-gold transition">Assemble & Finalize</button>
+                    <div class="bg-white border p-10 rounded-3xl mb-8"><ul class="space-y-4 text-gray-700 font-medium">${reqs}</ul></div>
+                    <button onclick="loadLeg3()" class="w-full bg-navy text-white font-bold py-5 rounded-full uppercase tracking-widest text-xs hover:bg-gold transition">Continue</button>
                 </div>`;
             lucide.createIcons();
         }
-// --- LEG 3: CONCISE AGREEMENT (No Scroll) ---
+
+        // --- LEG 3: NO SCROLL AGREEMENT ---
         function loadLeg3() {
             updateProgress(3);
             document.getElementById('missionContent').innerHTML = `
                 <div class="fade-in max-w-2xl mx-auto text-center">
                     <h2 class="font-serif text-3xl text-navy mb-8 font-bold italic">Service Agreement</h2>
-                    <div class="bg-white border p-8 rounded-3xl mb-8 text-sm text-gray-600 text-justify leading-relaxed">
-                        <p class="mb-4"><strong>PARTIES:</strong> This agreement is between the Applicant and Docu-Hub Operations Services.</p>
-                        <p class="mb-4"><strong>DATA POLICY:</strong> In compliance with the JDPA, all identification documents are purged after 30 days. Financial records are retained for 7 years per POCA regulations.</p>
-                        <p><strong>FEES:</strong> Professional fees are non-refundable once the application has been submitted to the respective government agency.</p>
+                    <div class="bg-white border p-10 rounded-3xl mb-8 text-sm text-gray-600 text-justify leading-relaxed">
+                        <p class="mb-4"><strong>PARTIES:</strong> This engagement is between the Applicant and Docu-Hub Operations Services.</p>
+                        <p class="mb-4"><strong>DATA PURGE:</strong> In compliance with the JDPA, identity records are destroyed after 30 days. Financial records are retained for 7 years per POCA.</p>
+                        <p><strong>FEES:</strong> Professional fees are non-refundable once agency submission is confirmed.</p>
                     </div>
                     <div class="flex items-center gap-3 mb-8 justify-center">
                         <input type="checkbox" id="agreeCheck" class="w-6 h-6 border-navy rounded">
-                        <label for="agreeCheck" class="text-xs uppercase font-bold tracking-widest text-navy">I Ratify these Terms</label>
+                        <label for="agreeCheck" class="text-xs uppercase font-bold tracking-widest text-navy">I Ratify Terms</label>
                     </div>
-                    <button id="leg3Btn" onclick="loadLeg4()" class="w-full bg-navy text-white font-bold py-5 rounded-full uppercase text-xs tracking-widest hover:bg-gold transition shadow-xl">Authorize Intake</button>
+                    <button id="leg3Btn" onclick="loadLeg4()" disabled class="btn-locked w-full text-navy font-bold py-5 rounded-full uppercase text-xs">Authorize Intake</button>
                 </div>`;
             
-            // Logic to ensure they still must check the box
-            const btn = document.getElementById('leg3Btn');
-            const check = document.getElementById('agreeCheck');
-            btn.disabled = true;
-            btn.classList.add('btn-locked');
-            
-            check.onclick = (e) => {
-                btn.disabled = !e.target.checked;
-                if(e.target.checked) {
-                    btn.classList.remove('btn-locked');
-                } else {
-                    btn.classList.add('btn-locked');
-                }
+            document.getElementById('agreeCheck').onclick = (e) => { 
+                const b = document.getElementById('leg3Btn'); b.disabled = !e.target.checked; 
+                b.className = e.target.checked ? "w-full bg-navy text-white font-bold py-5 rounded-full uppercase text-xs shadow-xl" : "btn-locked w-full text-navy font-bold py-5 rounded-full uppercase text-xs";
             };
         }
 
-        // --- LEG 4: SECURE INTAKE (No Upload) ---
+        // --- LEG 4: NO UPLOAD INTAKE ---
         function loadLeg4() {
             updateProgress(4);
             document.getElementById('missionContent').innerHTML = `
                 <form id="intakeForm" class="fade-in max-w-2xl mx-auto space-y-6">
-                    <h2 class="font-serif text-3xl text-navy mb-8 font-bold text-center italic">Secure Intake</h2>
+                    <h2 class="font-serif text-3xl text-navy mb-8 font-bold italic text-center">Secure Intake</h2>
                     <div class="grid grid-cols-2 gap-4">
                         <input type="text" id="fname" placeholder="First Name" class="p-4 border rounded-xl outline-none focus:ring-1 focus:ring-gold" required>
                         <input type="text" id="lname" placeholder="Last Name" class="p-4 border rounded-xl outline-none focus:ring-1 focus:ring-gold" required>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <input type="text" id="trn" placeholder="TRN" class="p-4 border rounded-xl outline-none focus:ring-1 focus:ring-gold" required>
-                        <input type="tel" id="contactNum" placeholder="WhatsApp Number" class="p-4 border rounded-xl outline-none focus:ring-1 focus:ring-gold" required>
+                        <input type="tel" id="contactNum" placeholder="Phone / WhatsApp" class="p-4 border rounded-xl outline-none focus:ring-1 focus:ring-gold" required>
                     </div>
-                    
-                    <p class="text-[10px] text-center text-gray-400 uppercase tracking-widest">Digital Authorization</p>
-                    <div class="border-2 border-navy/10 rounded-2xl bg-white overflow-hidden shadow-inner">
-                        <canvas id="signatureCanvas" class="w-full h-32 cursor-crosshair"></canvas>
-                    </div>
-                    
-                    <button type="submit" id="submitBtn" class="w-full bg-navy text-white font-bold py-5 rounded-full uppercase text-xs tracking-widest shadow-2xl hover:bg-gold transition">
-                        Transmit Securely
-                    </button>
+                    <p class="text-[10px] text-center text-gray-400 uppercase tracking-widest pt-4">Digital Authorization Required</p>
+                    <div class="border rounded-2xl bg-white overflow-hidden shadow-inner"><canvas id="signatureCanvas" class="w-full h-32 cursor-crosshair"></canvas></div>
+                    <button type="submit" id="submitBtn" class="w-full bg-navy text-white font-bold py-5 rounded-full uppercase text-xs shadow-2xl tracking-widest">Transmit Securely</button>
                     <button type="button" onclick="signaturePad.clear()" class="w-full text-[10px] text-gray-400 uppercase tracking-widest">Clear Signature</button>
                 </form>`;
-            
             lucide.createIcons();
-            const canvas = document.getElementById('signatureCanvas');
-            signaturePad = new SignaturePad(canvas);
+            signaturePad = new SignaturePad(document.getElementById('signatureCanvas'));
             document.getElementById('intakeForm').onsubmit = (e) => { 
                 e.preventDefault(); 
-                if(signaturePad.isEmpty()) return alert("Please provide your digital signature.");
+                if(signaturePad.isEmpty()) return alert("Signature is required for transmission.");
                 processSubmission(); 
             };
         }
 
-        // --- SUBMISSION (Seamless Backend Link) ---
         async function processSubmission() {
-            const btn = document.getElementById('submitBtn');
-            btn.innerHTML = "Encrypting..."; 
-            btn.disabled = true;
-
+            const btn = document.getElementById('submitBtn'); btn.innerHTML = "Encrypting..."; btn.disabled = true;
             const payload = { 
                 name: document.getElementById('fname').value + ' ' + document.getElementById('lname').value,
                 contact: document.getElementById('contactNum').value, 
                 service: currentPillar.name,
                 trn: document.getElementById('trn').value, 
-                fileData: "Physical Handover Protocol", // Placeholder since upload is removed
+                fileData: "Physical Handover/Intake Session Protocol", 
                 signature: signaturePad.toDataURL()
             };
-
-            try {
-                await fetch(SCRIPT_URL, { 
-                    method: 'POST', 
-                    mode: 'no-cors', 
-                    body: JSON.stringify(payload) 
-                });
-                
-                document.getElementById('missionControl').classList.add('hidden');
-                document.getElementById('receiptRef').innerText = 'DH-' + Math.floor(Math.random()*9000 + 1000);
-                document.getElementById('receiptName').innerText = payload.name;
-                document.getElementById('receiptService').innerText = payload.service;
-                document.getElementById('receiptModal').classList.remove('hidden');
-            } catch (err) {
-                alert("Transmission error. Please check your connection.");
-                btn.innerHTML = "Retry Transmission";
-                btn.disabled = false;
-            }
+            await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
+            document.getElementById('missionControl').classList.add('hidden');
+            document.getElementById('receiptRef').innerText = 'DH-' + Math.floor(Math.random()*9000 + 1000);
+            document.getElementById('receiptName').innerText = payload.name;
+            document.getElementById('receiptService').innerText = payload.service;
+            document.getElementById('receiptModal').classList.remove('hidden');
         }
-            try {
-                await fetch(SCRIPT_URL, { 
-                    method: 'POST', 
-                    mode: 'no-cors', 
-                    body: JSON.stringify(payload) 
-                });
-                
-                document.getElementById('missionControl').classList.add('hidden');
-                document.getElementById('receiptRef').innerText = 'DH-' + Math.floor(Math.random()*9000 + 1000);
-                document.getElementById('receiptName').innerText = payload.name;
-                document.getElementById('receiptService').innerText = payload.service;
-                document.getElementById('receiptModal').classList.remove('hidden');
-            } catch (err) {
-                alert("Transmission error. Please check your connection.");
-                btn.innerHTML = "Retry Transmission";
-                btn.disabled = false;
-            }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileDropdown');
+            const icon = document.getElementById('menuIcon');
+            menu.classList.toggle('hidden');
+            icon.setAttribute('data-lucide', menu.classList.contains('hidden') ? 'menu' : 'x');
+            lucide.createIcons();
+        }
+
+        function exitMission() {
+            document.getElementById('missionControl').classList.add('hidden');
+            document.getElementById('viewDirectory').classList.remove('hidden');
+            document.getElementById('viewHero').classList.remove('hidden'); 
+            window.scrollTo(0,0);
         }
 
         window.onload = renderPillars;
     </script>
 </body>
 </html>
-
-
-
-
-
-
