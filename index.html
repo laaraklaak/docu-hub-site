@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Docu-Hub | Institutional Concierge</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -36,30 +36,34 @@
         .agreement-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
         .agreement-scroll::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
         
-        /* Animations & Interactions */
+        /* Animations */
         .fade-in { animation: fadeIn 0.5s ease-out forwards; opacity: 0; transform: translateY(10px); }
         @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
         
-        .hero-zoom { transition: transform 0.5s ease; }
-        .hero-zoom:hover { transform: scale(1.02); }
-
         .tactile:active { transform: scale(0.98); }
         .btn-locked { background-color: #9CA3AF; cursor: not-allowed; }
         .btn-active { background-color: #FFFFFF; cursor: pointer; }
+
+        /* PRINT STYLES */
+        @media print {
+            body * { visibility: hidden; }
+            #receiptArea, #receiptArea * { visibility: visible; }
+            #receiptArea { position: absolute; left: 0; top: 0; width: 100%; margin: 0; padding: 0; border: none; box-shadow: none; }
+            .no-print { display: none !important; }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-slate-800 font-sans antialiased min-h-screen pb-20">
 
-    <div id="sensoryOverlay" class="fixed inset-0 z-50 flex items-center justify-center bg-navy/80 hidden backdrop-blur-sm">
-        <div class="bg-white p-8 rounded-lg shadow-2xl max-w-sm w-full text-center border-t-4 border-gold fade-in">
-            <div id="sensoryIcon" class="mx-auto mb-4 text-navy"></div>
-            <h3 id="sensoryTitle" class="text-xl font-serif font-bold text-navy mb-2"></h3>
-            <p id="sensoryMessage" class="text-sm text-gray-600 mb-6"></p>
-            <button onclick="closeSensory()" class="w-full py-3 bg-navy text-white font-medium rounded hover:bg-opacity-90 tactile">Acknowledge</button>
+    <div id="statusOverlay" class="fixed inset-0 bg-navy/90 z-[300] hidden flex items-center justify-center p-6 text-center no-print">
+        <div class="space-y-6">
+            <div id="statusSpinner" class="w-16 h-16 border-4 border-gold border-t-transparent rounded-full animate-spin mx-auto"></div>
+            <h3 class="text-white text-xl font-bold uppercase tracking-widest italic">Securely Transmitting...</h3>
+            <p class="text-blue-200 text-[10px] uppercase font-bold tracking-widest">Encrypting your data</p>
         </div>
     </div>
 
-    <header class="bg-white shadow-sm sticky top-0 z-40">
+    <header class="bg-white shadow-sm sticky top-0 z-40 no-print">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <i data-lucide="shield-check" class="text-gold w-8 h-8"></i>
@@ -71,53 +75,46 @@
             <div class="hidden md:flex gap-6 text-sm font-medium text-navy">
                 <a href="about.html" class="hover:text-gold transition">Our Mission</a>
                 <a href="#" class="hover:text-gold transition">Status Check</a>
-                <a href="#help-centre" class="hover:text-gold transition">Compliance</a>
+                <a href="help_center.html" class="hover:text-gold transition">Compliance</a>
             </div>
         </div>
     </header>
 
-    <section id="viewHero" class="relative w-full bg-navy overflow-hidden">
-        <div class="grid grid-cols-1 md:grid-cols-2 min-h-[600px]">
-            
-            <div class="relative h-[300px] md:h-auto overflow-hidden group">
-                <img src="http://googleusercontent.com/image_generation_content/0" 
-                     class="absolute inset-0 w-full h-full object-cover hero-zoom" 
-                     alt="Docu-Hub Concierge Service">
-                <div class="absolute inset-0 bg-navy/10 mix-blend-multiply"></div>
-            </div>
+    <section id="viewHero" class="relative w-full h-[650px] flex items-center no-print">
+        <div class="absolute inset-0 z-0">
+            <img src="assets/hero.png" 
+                 class="w-full h-full object-cover object-center" 
+                 alt="Docu-Hub Professional Concierge">
+            <div class="absolute inset-0 bg-navy/20"></div>
+        </div>
 
-            <div class="flex flex-col justify-center px-8 md:px-16 py-12 bg-navy text-white relative">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold to-transparent md:hidden"></div>
-                <div class="absolute left-0 top-10 bottom-10 w-1 bg-gradient-to-b from-gold to-transparent hidden md:block"></div>
-
-                <div class="max-w-lg fade-in" style="animation-delay: 0.1s;">
-                    <span class="inline-block py-1 px-3 border border-gold/50 rounded-full text-xs text-gold uppercase tracking-widest mb-6 bg-white/5 backdrop-blur-sm">
-                        Secure Document Liaison
-                    </span>
-                    <h1 class="font-serif text-4xl md:text-5xl font-bold leading-tight mb-6">
-                        Institutional Trust,<br>
-                        <span class="text-gold italic">Privately Delivered.</span>
-                    </h1>
-                    <p class="text-base text-gray-300 mb-8 leading-relaxed">
-                        Navigating Jamaica's government complexities with forensic precision. We ensure POCA compliance and JDPA security for every file we handle.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <button onclick="document.getElementById('viewDirectory').scrollIntoView({behavior: 'smooth'})" 
-                                class="bg-gold text-navy px-8 py-4 rounded font-bold hover:bg-white transition tactile text-center shadow-lg uppercase text-xs tracking-widest">
-                            Start Intake Process
-                        </button>
-                        <button onclick="document.getElementById('help-centre').scrollIntoView({behavior: 'smooth'})"
-                                class="border border-white/30 text-white px-8 py-4 rounded font-bold hover:bg-white/10 transition tactile text-center uppercase text-xs tracking-widest">
-                            Compliance Standards
-                        </button>
-                    </div>
+        <div class="relative z-10 container mx-auto px-6 md:px-12">
+            <div class="max-w-lg bg-navy/95 backdrop-blur-md p-10 rounded shadow-2xl border-l-4 border-gold fade-in" style="animation-delay: 0.2s;">
+                <span class="inline-block py-1 px-3 border border-gold/50 rounded-full text-[10px] text-gold uppercase tracking-widest mb-6 bg-white/5">
+                    Secure Document Liaison
+                </span>
+                <h1 class="font-serif text-4xl md:text-5xl font-bold leading-tight mb-6 text-white">
+                    Institutional Trust,<br>
+                    <span class="text-gold italic">Privately Delivered.</span>
+                </h1>
+                <p class="text-sm md:text-base text-gray-300 mb-8 leading-relaxed">
+                    Navigating Jamaica's government complexities with forensic precision. We ensure POCA compliance and JDPA security for every file we handle.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button onclick="document.getElementById('viewDirectory').scrollIntoView({behavior: 'smooth'})" 
+                            class="bg-gold text-navy px-8 py-4 rounded font-bold hover:bg-white transition tactile text-center shadow-lg uppercase text-xs tracking-widest">
+                        Start Intake
+                    </button>
+                    <button onclick="document.getElementById('help-centre').scrollIntoView({behavior: 'smooth'})"
+                            class="border border-white/30 text-white px-8 py-4 rounded font-bold hover:bg-white/10 transition tactile text-center uppercase text-xs tracking-widest">
+                        Standards
+                    </button>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <main id="viewDirectory" class="max-w-7xl mx-auto px-4 py-20 bg-gray-50">
+    <main id="viewDirectory" class="max-w-7xl mx-auto px-4 py-20 bg-gray-50 no-print">
         <div class="text-center mb-16 fade-in" style="animation-delay: 0.3s;">
             <h2 class="font-serif text-3xl md:text-4xl text-navy mb-4">The Explore Mission Directory</h2>
             <div class="h-1 w-20 bg-gold mx-auto mb-6"></div>
@@ -132,9 +129,8 @@
         </div>
     </main>
 
-    <section id="missionControl" class="fixed inset-0 bg-black-50 z-50 hidden overflow-y-auto">
+    <section id="missionControl" class="fixed inset-0 bg-black-50 z-50 hidden overflow-y-auto no-print">
         <div class="max-w-4xl mx-auto min-h-screen bg-white shadow-2xl border-x border-gray-100 flex flex-col relative">
-            
             <div class="bg-navy p-6 text-white sticky top-0 z-50 shadow-lg">
                 <div class="flex justify-between items-center mb-4">
                     <button onclick="exitMission()" class="text-gold hover:text-white flex items-center gap-2 text-sm transition">
@@ -153,14 +149,48 @@
                     <div id="progressBar" class="h-1 bg-gold rounded-full w-[20%] transition-all duration-500"></div>
                 </div>
             </div>
-
-            <div id="missionContent" class="flex-1 p-6 md:p-12">
-                </div>
-
+            <div id="missionContent" class="flex-1 p-6 md:p-12"></div>
         </div>
     </section>
 
-    <footer class="bg-navy text-white mt-0 py-16 border-t border-gold/20">
+    <div id="receiptModal" class="fixed inset-0 flex items-center justify-center bg-white z-[300] hidden overflow-y-auto">
+        <div id="receiptArea" class="bg-white max-w-lg w-full p-8 border-t-8 border-navy shadow-2xl relative">
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 bg-navy text-gold flex items-center justify-center rounded text-2xl font-bold mx-auto mb-4">D</div>
+                <h2 class="text-2xl font-bold text-navy uppercase tracking-tight">Transmission Receipt</h2>
+                <p class="text-gray-500 text-sm">Docu-Hub Operations Services</p>
+                <p class="text-xs text-gray-400 mt-1">Institutional Concierge & Compliance</p>
+            </div>
+
+            <div class="bg-parchment p-6 rounded border border-gray-200 mb-8 text-center">
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Web Inquiry Reference</p>
+                <div id="receiptRef" class="text-3xl font-bold text-navy font-mono"></div>
+                <p class="text-[10px] text-green-600 mt-2 font-bold uppercase">● Successfully Logged</p>
+            </div>
+
+            <div class="space-y-4 text-sm text-gray-700 border-b border-gray-200 pb-8 mb-8">
+                <div class="flex justify-between"><span>Submission Date:</span> <span id="receiptDate" class="font-bold"></span></div>
+                <div class="flex justify-between"><span>Applicant:</span> <span id="receiptName" class="font-bold"></span></div>
+                <div class="flex justify-between"><span>Service Interest:</span> <span id="receiptService" class="font-bold"></span></div>
+            </div>
+
+            <div class="text-center space-y-4 no-print">
+                <button onclick="window.print()" class="w-full bg-navy text-white font-bold py-4 rounded uppercase tracking-widest text-xs hover:bg-navy-dark transition">
+                    🖨 Print Receipt / Save as PDF
+                </button>
+                <button onclick="window.location.reload()" class="w-full text-gray-400 font-bold text-xs uppercase tracking-widest hover:text-navy transition">
+                    Close & Return Home
+                </button>
+            </div>
+            
+            <div class="text-center mt-8 text-[10px] text-gray-400">
+                <p><strong>Note:</strong> This is a submission acknowledgment, not a government receipt.</p>
+                <p>A Liaison Officer will contact you shortly via WhatsApp to finalize logistics.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-navy text-white mt-0 py-16 border-t border-gold/20 no-print">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
                 <h4 class="font-serif italic text-2xl text-gold mb-4">Docu-Hub Operations Services</h4>
@@ -197,7 +227,7 @@
         </div>
     </footer>
 
-    <div class="fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-gray-200 p-3 flex justify-around items-center md:hidden z-40 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+    <div class="fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-gray-200 p-3 flex justify-around items-center md:hidden z-40 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] no-print">
         <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="flex flex-col items-center text-navy text-[10px] gap-1">
             <i data-lucide="home" class="w-5 h-5"></i> Home
         </button>
@@ -211,17 +241,18 @@
 
     <script>
         // --- CONFIGURATION ---
-        // IMPORTANT: PASTE YOUR APPS SCRIPT URL HERE
         lucide.createIcons();
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwtBExoQPDckqDGKyAKeAVoYRCfd42DOl3oiKlrOjJruXPjTnn8m9UJIjUnp6906MaG/exec"; 
+        // *** CRITICAL: VERIFY URL BEFORE DEPLOYING ***
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw2nkmAaHmcEesJq9aXJ197nH0JbvH5Uk4ox8TLk0Ps4hLFpZqbkfVf8r3lIWxFKUyd6A/exec"; 
 
         
-        // --- DATA ARCHITECTURE ---
+        // --- DATA ARCHITECTURE (UPDATED WITH REAL IMAGES) ---
         const PILLARS = [
             {
                 id: 'pica',
                 name: 'PICA Liaison',
                 desc: 'Passport Renewals, Replacements & Immigration Services.',
+                // Passport / Travel Image
                 img: 'assets/pica.png',
                 fees: { professional: 3500, government: 6500 },
                 requirements: ['Expired Passport', 'Birth Certificate', '2 Passport Photos (Certified)'],
@@ -231,6 +262,7 @@
                 id: 'jcf',
                 name: 'JCF Records',
                 desc: 'Police Certificates & Forensic Fingerprinting.',
+                // Fingerprint / Security Image
                 img: 'assets/records.png',
                 fees: { professional: 3500, government: 3000 },
                 requirements: ['Valid ID (DL/Passport)', 'Fingerprint Receipt', 'Tax Registration Number (TRN)'],
@@ -240,6 +272,7 @@
                 id: 'rgd',
                 name: 'RGD Registry',
                 desc: 'Birth, Marriage & Death Certificates.',
+                // Family / Records Image
                 img: 'assets/rgd.png',
                 fees: { professional: 3500, government: 2500 },
                 requirements: ['Application Form (Signed)', 'Copy of Valid ID'],
@@ -249,6 +282,7 @@
                 id: 'taj',
                 name: 'TAJ Services',
                 desc: 'Motor Vehicle Licensing, Fitness & Traffic Tickets.',
+                // Driving / Car Image
                 img: 'assets/taj.png',
                 fees: { professional: 1500, government: 'Variable' },
                 requirements: ['Fitness Certificate', 'Insurance Cover Note', 'Original Registration'],
@@ -258,6 +292,7 @@
                 id: 'corp',
                 name: 'Corporate Bulk',
                 desc: 'Expedited processing for entities (5+ Employees).',
+                // Handshake / Business Image
                 img: 'assets/corporate.png',
                 fees: { professional: 'Retainer', government: 'At Cost' },
                 requirements: ['Company Letterhead Request', 'Authorized Officer ID'],
@@ -267,6 +302,7 @@
                 id: 'land',
                 name: 'Land & Research',
                 desc: 'Title Searches, Caveats & Hard Case Research.',
+                // Keys / Real Estate Image
                 img: 'assets/consult.png',
                 fees: { professional: 3000, government: 2000 },
                 requirements: ['Volume & Folio Numbers', 'Sales Agreement'],
@@ -276,6 +312,7 @@
                 id: 'replace',
                 name: 'Lost Documents',
                 desc: 'Recovery of Lost/Stolen Identification.',
+                // Papers / Search Image
                 img: 'assets/replace.png',
                 fees: { professional: 3500, government: 4000 },
                 requirements: ['JCF Police Report', 'Passport Photos', 'JP Declaration'],
@@ -286,17 +323,14 @@
         let currentPillar = null;
         let signaturePad = null;
 
-        // --- INITIALIZATION ---
-        // Ensuring DOM is fully loaded before rendering
         window.addEventListener('load', () => {
             renderPillars();
             lucide.createIcons();
         });
 
-        // --- RENDERERS ---
         function renderPillars() {
             const grid = document.getElementById('pillarsGrid');
-            if(!grid) return; // Guard clause
+            if(!grid) return; 
 
             grid.innerHTML = PILLARS.map(p => `
                 <div class="bg-white rounded-lg shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer group" onclick="startMission('${p.id}')">
@@ -314,11 +348,9 @@
                 </div>
             `).join('');
             
-            // Re-run icons for newly injected HTML
             lucide.createIcons();
         }
 
-        // --- MISSION LOGIC ---
         function startMission(id) {
             currentPillar = PILLARS.find(p => p.id === id);
             document.getElementById('activePillarName').innerText = currentPillar.name;
@@ -383,12 +415,10 @@
             updateProgress(2);
             const content = document.getElementById('missionContent');
             const reqList = currentPillar.requirements.map(r => `<li class="flex items-center gap-3"><i data-lucide="check-circle" class="text-emerald w-5 h-5 flex-shrink-0"></i> ${r}</li>`).join('');
-            
             content.innerHTML = `
                 <div class="fade-in max-w-2xl mx-auto">
                     <h2 class="font-serif text-3xl text-navy mb-2 text-center">Forensic Audit</h2>
                     <p class="text-gray-500 text-center mb-8">Please confirm you possess the following original documents.</p>
-                    
                     <div class="bg-white border border-gray-200 p-8 rounded-lg shadow-sm mb-8">
                         <h4 class="font-bold text-navy uppercase tracking-widest text-xs mb-6">Required Documentation</h4>
                         <ul class="space-y-4 text-gray-700">
@@ -410,7 +440,6 @@
             content.innerHTML = `
                 <div class="fade-in max-w-2xl mx-auto">
                     <h2 class="font-serif text-3xl text-navy mb-6 text-center">Master Service Agreement</h2>
-                    
                     <div id="agreementScroll" class="agreement-scroll bg-gray-50 border border-gray-300 rounded p-6 h-64 overflow-y-scroll mb-6 text-sm text-gray-600 text-justify leading-relaxed">
                         <p class="mb-4"><strong>PARTIES:</strong> This Agreement is between the Client ("You") and <strong>Laura Clarke, trading as Docu-Hub Operations Services</strong> ("The Liaison").</p>
                         <p class="mb-4"><strong>SCOPE:</strong> The Liaison acts solely as a facilitator. We do not guarantee government outcomes.</p>
@@ -421,28 +450,23 @@
                         <p class="mb-4"><strong>SCROLL TO END:</strong> Please read this entire agreement to enable the checkbox below.</p>
                         <div class="h-12"></div>
                     </div>
-
                     <div class="flex items-center gap-3 mb-8">
                         <input type="checkbox" id="agreeCheck" disabled class="w-5 h-5 text-navy rounded border-gray-300 focus:ring-navy disabled:opacity-50">
                         <label for="agreeCheck" class="text-sm text-gray-700 select-none">I have read and agree to the Terms of Engagement.</label>
                     </div>
-
                     <button id="leg3Btn" onclick="loadLeg4()" disabled class="btn-locked w-full py-4 text-navy font-bold tracking-widest uppercase rounded shadow-lg transition-all">
                         Ratify Agreement
                     </button>
                 </div>
             `;
-
             const scrollBox = document.getElementById('agreementScroll');
             const check = document.getElementById('agreeCheck');
             const btn = document.getElementById('leg3Btn');
-
             scrollBox.addEventListener('scroll', () => {
                 if (scrollBox.scrollTop + scrollBox.clientHeight >= scrollBox.scrollHeight - 20) {
                     check.disabled = false;
                 }
             });
-
             check.addEventListener('change', () => {
                 if(check.checked) {
                     btn.disabled = false;
@@ -469,7 +493,6 @@
             content.innerHTML = `
                 <div class="fade-in max-w-2xl mx-auto">
                     <h2 class="font-serif text-3xl text-navy mb-6 text-center">Forensic Intake</h2>
-                    
                     <form id="intakeForm" class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
@@ -481,14 +504,11 @@
                                 <input type="text" id="lname" class="w-full p-3 border border-gray-300 rounded focus:border-navy focus:ring-1 focus:ring-navy outline-none" required>
                             </div>
                         </div>
-
                         <div>
                             <label class="block text-xs font-bold text-gray-500 uppercase mb-1">TRN (Tax Registration Number)</label>
                             <input type="text" id="trn" placeholder="000-000-000" class="w-full p-3 border border-gray-300 rounded focus:border-navy focus:ring-1 focus:ring-navy outline-none" required>
                         </div>
-
                         ${specificField}
-
                         <div>
                             <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Upload Document Bundle</label>
                             <div class="border-2 border-dashed border-gray-300 p-6 text-center rounded bg-gray-50 hover:bg-gray-100 transition cursor-pointer relative">
@@ -497,7 +517,6 @@
                                 <p class="text-sm text-gray-600" id="fileName">Click to Secure Upload (PDF/JPG)</p>
                             </div>
                         </div>
-
                         <div>
                             <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Digital Authorization</label>
                             <div class="border border-gray-300 rounded bg-white">
@@ -505,7 +524,6 @@
                             </div>
                             <button type="button" onclick="clearSig()" class="text-xs text-red-500 mt-1 underline">Clear Signature</button>
                         </div>
-
                         <button type="submit" id="submitBtn" class="btn-active w-full py-4 text-navy font-bold tracking-widest uppercase rounded shadow-lg tactile">
                             Transmit Securely
                         </button>
@@ -513,11 +531,9 @@
                 </div>
             `;
             lucide.createIcons();
-            
             document.getElementById('fileUpload').onchange = function() {
                 document.getElementById('fileName').innerText = this.files[0].name;
             };
-
             const canvas = document.getElementById('signatureCanvas');
             function resizeCanvas() {
                 const ratio = Math.max(window.devicePixelRatio || 1, 1);
@@ -525,12 +541,10 @@
                 canvas.height = canvas.offsetHeight * ratio;
                 canvas.getContext("2d").scale(ratio, ratio);
             }
-            // Delay slight to ensure modal is rendered
             setTimeout(() => {
                 resizeCanvas();
                 signaturePad = new SignaturePad(canvas);
             }, 100);
-            
             document.getElementById('intakeForm').onsubmit = (e) => {
                 e.preventDefault();
                 if (signaturePad.isEmpty()) {
@@ -543,7 +557,7 @@
 
         function clearSig() { if(signaturePad) signaturePad.clear(); }
 
-        // --- LEG 5: TRANSMISSION ---
+        // --- LEG 5: TRANSMISSION WITH RECEIPT ---
         async function processSubmission() {
             const btn = document.getElementById('submitBtn');
             btn.innerHTML = `<i data-lucide="loader-2" class="animate-spin inline mr-2"></i> Encrypting...`;
@@ -552,13 +566,16 @@
             const fileInput = document.getElementById('fileUpload');
             const reader = new FileReader();
 
+            // GENERATE REF#
+            const timestamp = new Date();
+            const refNum = 'DH-WEB-' + Math.floor(1000 + Math.random() * 9000);
+
             reader.onload = async function(e) {
                 const base64File = e.target.result;
                 const payload = {
-                    timestamp: new Date().toISOString(),
-                    serviceId: currentPillar.id,
-                    firstName: document.getElementById('fname').value,
-                    lastName: document.getElementById('lname').value,
+                    name: document.getElementById('fname').value + ' ' + document.getElementById('lname').value,
+                    contact: "Not Provided (Intake)", // Adding placeholder since specific field isn't in Leg 4 but required by backend
+                    service: currentPillar.name + ' [Ref: ' + refNum + ']',
                     trn: document.getElementById('trn').value,
                     specificData: document.getElementById('specificInput') ? document.getElementById('specificInput').value : 'N/A',
                     fileName: fileInput.files[0].name,
@@ -567,36 +584,28 @@
                 };
 
                 try {
-                    if (SCRIPT_URL === "YOUR_DEPLOYMENT_URL_HERE") {
-                        throw new Error("Configuration Error: API URL not set.");
-                    }
-
-                    await fetch(SCRIPT_URL, {
-                        method: 'POST',
+                    await fetch(SCRIPT_URL, { 
+                        method: 'POST', 
                         mode: 'no-cors',
-                        headers: { 'Content-Type': 'application/json' },
+                        headers: { 'Content-Type': 'text/plain' }, 
                         body: JSON.stringify(payload)
                     });
 
-                    updateProgress(5);
-                    const content = document.getElementById('missionContent');
-                    content.innerHTML = `
-                        <div class="text-center py-12 fade-in">
-                            <div class="inline-flex items-center justify-center w-24 h-24 bg-emerald-100 rounded-full mb-6">
-                                <i data-lucide="check" class="w-12 h-12 text-emerald-600"></i>
-                            </div>
-                            <h2 class="font-serif text-3xl text-navy mb-4">Transmission Successful</h2>
-                            <p class="text-gray-600 max-w-md mx-auto mb-8">
-                                Your dossier has been securely encrypted and routed. A compliance officer will review your audit shortly.
-                            </p>
-                            <button onclick="exitMission()" class="px-8 py-3 border border-navy text-navy font-bold rounded hover:bg-navy hover:text-white transition tactile">
-                                Return to Directory
-                            </button>
-                        </div>
-                    `;
+                    // HIDE MISSION CONTROL
+                    document.getElementById('missionControl').classList.add('hidden');
+                    
+                    // POPULATE RECEIPT
+                    document.getElementById('receiptRef').innerText = refNum;
+                    document.getElementById('receiptDate').innerText = timestamp.toLocaleDateString('en-JM');
+                    document.getElementById('receiptName').innerText = payload.name;
+                    document.getElementById('receiptService').innerText = currentPillar.name;
+                    
+                    // SHOW RECEIPT
+                    document.getElementById('receiptModal').classList.remove('hidden');
                     lucide.createIcons();
+
                 } catch (error) {
-                    showSensory('Transmission Error', 'Connection failed. Check configuration.', 'wifi-off');
+                    showSensory('Transmission Error', 'Connection failed.', 'wifi-off');
                     btn.innerHTML = 'Retry Transmission';
                     btn.disabled = false;
                 }
