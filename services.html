@@ -371,18 +371,15 @@
             document.body.style.overflow = 'auto'; 
         }
 
-      async function submitLead(e) {
-            // 1. Stop the browser from reloading
+        async function submitLead(e) {
             if (e) {
                 e.preventDefault();
                 e.stopPropagation();
             }
             
-            // 2. Validate Inputs
             if(signaturePad.isEmpty()) return;
             if(!document.getElementById('complianceCheck').checked) return;
             
-            // 3. Lock UI
             const btn = document.getElementById('submitLeadBtn');
             const overlay = document.getElementById('statusOverlay');
             const statusText = document.getElementById('statusText');
@@ -394,23 +391,21 @@
             btn.disabled = true;
             btn.classList.add('opacity-50');
             
-            // 4. Gather Data
             const formData = new FormData(e.target);
             const data = Object.fromEntries(formData.entries());
             data.signature = signaturePad.toDataURL();
             data.source = "Web";
 
             try {
-                // 5. SEND DATA (The Fix is here)
+                // Post Data to Google Script
                 await fetch(SCRIPT_URL, { 
                     method: 'POST', 
-                    mode: 'no-cors',   // Important for Google
+                    mode: 'no-cors',
                     cache: 'no-cache',
-                    headers: { 'Content-Type': 'text/plain' }, // Use text/plain to avoid CORS blocks
-                    body: JSON.stringify(data) // <--- THIS WAS MISSING
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data) 
                 });
                 
-                // 6. Success Feedback
                 spinner.classList.add('hidden');
                 successIcon.classList.remove('hidden');
                 statusText.innerText = "AUTHORIZATION RECEIVED";
@@ -422,7 +417,6 @@
                 }, 3000);
                 
             } catch (err) { 
-                // 7. Error Handling
                 overlay.classList.add('hidden');
                 btn.disabled = false;
                 btn.classList.remove('opacity-50');
@@ -431,8 +425,11 @@
             
             return false;
         }
+
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('jump')) { toggleCatalog('personal'); }
+        };
     </script>
 </body>
 </html>
-
-
