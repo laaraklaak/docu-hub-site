@@ -220,103 +220,133 @@
                 </div>`;
             lucide.createIcons();
         }
-
+// --- LEG 3: CONCISE AGREEMENT (No Scroll) ---
         function loadLeg3() {
             updateProgress(3);
             document.getElementById('missionContent').innerHTML = `
-                <div class="fade-in max-w-2xl mx-auto">
-                    <h2 class="font-serif text-3xl text-navy mb-8 font-bold italic text-center">Service Agreement</h2>
-                    <div id="agreementScroll" class="agreement-scroll bg-gray-50 border p-8 h-64 overflow-y-scroll mb-6 rounded-2xl text-sm leading-relaxed text-justify">
-                        <p class="mb-4"><strong>PARTIES:</strong> Between You and Laura Clarke (Docu-Hub Liaison).</p>
-                        <p class="mb-4"><strong>PURGE POLICY:</strong> Identification data is permanently destroyed after 30 days per JDPA standards.</p>
-                        <p class="mb-4"><strong>FEES:</strong> Professional fees are non-refundable once agency submission is confirmed.</p>
+                <div class="fade-in max-w-2xl mx-auto text-center">
+                    <h2 class="font-serif text-3xl text-navy mb-8 font-bold italic">Service Agreement</h2>
+                    <div class="bg-white border p-8 rounded-3xl mb-8 text-sm text-gray-600 text-justify leading-relaxed">
+                        <p class="mb-4"><strong>PARTIES:</strong> This agreement is between the Applicant and Docu-Hub Operations Services.</p>
+                        <p class="mb-4"><strong>DATA POLICY:</strong> In compliance with the JDPA, all identification documents are purged after 30 days. Financial records are retained for 7 years per POCA regulations.</p>
+                        <p><strong>FEES:</strong> Professional fees are non-refundable once the application has been submitted to the respective government agency.</p>
                     </div>
-                    <div class="flex items-center gap-3 mb-8"><input type="checkbox" id="agreeCheck" disabled class="w-6 h-6"><label for="agreeCheck" class="text-xs uppercase font-bold tracking-widest">I Ratify Terms</label></div>
-                    <button id="leg3Btn" onclick="loadLeg4()" disabled class="btn-locked w-full text-navy font-bold py-5 rounded-full uppercase text-xs">Authorize Intake</button>
+                    <div class="flex items-center gap-3 mb-8 justify-center">
+                        <input type="checkbox" id="agreeCheck" class="w-6 h-6 border-navy rounded">
+                        <label for="agreeCheck" class="text-xs uppercase font-bold tracking-widest text-navy">I Ratify these Terms</label>
+                    </div>
+                    <button id="leg3Btn" onclick="loadLeg4()" class="w-full bg-navy text-white font-bold py-5 rounded-full uppercase text-xs tracking-widest hover:bg-gold transition shadow-xl">Authorize Intake</button>
                 </div>`;
-            const box = document.getElementById('agreementScroll');
-            box.onscroll = () => { if(box.scrollTop + box.clientHeight >= box.scrollHeight - 20) document.getElementById('agreeCheck').disabled = false; };
-            document.getElementById('agreeCheck').onclick = (e) => { 
-                const b = document.getElementById('leg3Btn'); b.disabled = !e.target.checked; 
-                b.className = e.target.checked ? "w-full bg-navy text-white font-bold py-5 rounded-full uppercase text-xs" : "btn-locked w-full text-navy font-bold py-5 rounded-full uppercase text-xs";
+            
+            // Logic to ensure they still must check the box
+            const btn = document.getElementById('leg3Btn');
+            const check = document.getElementById('agreeCheck');
+            btn.disabled = true;
+            btn.classList.add('btn-locked');
+            
+            check.onclick = (e) => {
+                btn.disabled = !e.target.checked;
+                if(e.target.checked) {
+                    btn.classList.remove('btn-locked');
+                } else {
+                    btn.classList.add('btn-locked');
+                }
             };
         }
 
+        // --- LEG 4: SECURE INTAKE (No Upload) ---
         function loadLeg4() {
             updateProgress(4);
             document.getElementById('missionContent').innerHTML = `
                 <form id="intakeForm" class="fade-in max-w-2xl mx-auto space-y-6">
-                    <h2 class="font-serif text-3xl text-navy mb-8 font-bold italic text-center">Digital Intake</h2>
+                    <h2 class="font-serif text-3xl text-navy mb-8 font-bold text-center italic">Secure Intake</h2>
                     <div class="grid grid-cols-2 gap-4">
-                        <input type="text" id="fname" placeholder="First Name" class="p-4 border rounded-xl" required>
-                        <input type="text" id="lname" placeholder="Last Name" class="p-4 border rounded-xl" required>
+                        <input type="text" id="fname" placeholder="First Name" class="p-4 border rounded-xl outline-none focus:ring-1 focus:ring-gold" required>
+                        <input type="text" id="lname" placeholder="Last Name" class="p-4 border rounded-xl outline-none focus:ring-1 focus:ring-gold" required>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
-                        <input type="text" id="trn" placeholder="TRN" class="p-4 border rounded-xl" required>
-                        <input type="tel" id="contactNum" placeholder="WhatsApp / Phone" class="p-4 border rounded-xl" required>
+                        <input type="text" id="trn" placeholder="TRN" class="p-4 border rounded-xl outline-none focus:ring-1 focus:ring-gold" required>
+                        <input type="tel" id="contactNum" placeholder="WhatsApp Number" class="p-4 border rounded-xl outline-none focus:ring-1 focus:ring-gold" required>
                     </div>
-                    <div class="border-2 border-dashed p-10 text-center rounded-2xl bg-gray-50">
-                        <input type="file" id="fileUpload" class="hidden" required>
-                        <label for="fileUpload" class="cursor-pointer text-navy font-bold text-xs uppercase tracking-widest"><i data-lucide="upload" class="mx-auto mb-2"></i> Click to Upload Bundle</label>
+                    
+                    <p class="text-[10px] text-center text-gray-400 uppercase tracking-widest">Digital Authorization</p>
+                    <div class="border-2 border-navy/10 rounded-2xl bg-white overflow-hidden shadow-inner">
+                        <canvas id="signatureCanvas" class="w-full h-32 cursor-crosshair"></canvas>
                     </div>
-                    <div class="border rounded-2xl bg-white overflow-hidden"><canvas id="signatureCanvas" class="w-full h-32"></canvas></div>
-                    <button type="submit" id="submitBtn" class="w-full bg-navy text-white font-bold py-5 rounded-full uppercase text-xs tracking-widest shadow-xl">Transmit Securely</button>
+                    
+                    <button type="submit" id="submitBtn" class="w-full bg-navy text-white font-bold py-5 rounded-full uppercase text-xs tracking-widest shadow-2xl hover:bg-gold transition">
+                        Transmit Securely
+                    </button>
+                    <button type="button" onclick="signaturePad.clear()" class="w-full text-[10px] text-gray-400 uppercase tracking-widest">Clear Signature</button>
                 </form>`;
+            
             lucide.createIcons();
             const canvas = document.getElementById('signatureCanvas');
             signaturePad = new SignaturePad(canvas);
-            document.getElementById('intakeForm').onsubmit = (e) => { e.preventDefault(); processSubmission(); };
+            document.getElementById('intakeForm').onsubmit = (e) => { 
+                e.preventDefault(); 
+                if(signaturePad.isEmpty()) return alert("Please provide your digital signature.");
+                processSubmission(); 
+            };
         }
 
+        // --- SUBMISSION (Seamless Backend Link) ---
         async function processSubmission() {
             const btn = document.getElementById('submitBtn');
-            btn.innerHTML = "Encrypting..."; btn.disabled = true;
-            const reader = new FileReader();
-            reader.onload = async function(e) {
-                const payload = { 
-                    name: document.getElementById('fname').value + ' ' + document.getElementById('lname').value,
-                    contact: document.getElementById('contactNum').value,
-                    service: currentPillar.name,
-                    trn: document.getElementById('trn').value,
-                    fileData: e.target.result,
-                    signature: signaturePad.toDataURL()
-                };
-                await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
+            btn.innerHTML = "Encrypting..."; 
+            btn.disabled = true;
+
+            const payload = { 
+                name: document.getElementById('fname').value + ' ' + document.getElementById('lname').value,
+                contact: document.getElementById('contactNum').value, 
+                service: currentPillar.name,
+                trn: document.getElementById('trn').value, 
+                fileData: "Physical Handover Protocol", // Placeholder since upload is removed
+                signature: signaturePad.toDataURL()
+            };
+
+            try {
+                await fetch(SCRIPT_URL, { 
+                    method: 'POST', 
+                    mode: 'no-cors', 
+                    body: JSON.stringify(payload) 
+                });
+                
                 document.getElementById('missionControl').classList.add('hidden');
-                document.getElementById('receiptRef').innerText = 'DH-' + Math.floor(Math.random()*9999);
+                document.getElementById('receiptRef').innerText = 'DH-' + Math.floor(Math.random()*9000 + 1000);
                 document.getElementById('receiptName').innerText = payload.name;
                 document.getElementById('receiptService').innerText = payload.service;
                 document.getElementById('receiptModal').classList.remove('hidden');
-            };
-            reader.readAsDataURL(document.getElementById('fileUpload').files[0]);
-        }
-
-        function updateProgress(step) {
-            document.getElementById('progressBar').style.width = `${step * 20}%`;
-        }
-
-        function exitMission() {
-            document.getElementById('missionControl').classList.add('hidden');
-            document.getElementById('viewDirectory').classList.remove('hidden');
-            document.getElementById('viewHero').classList.remove('hidden'); 
-        }
-
-     function toggleMobileMenu() {
-            const menu = document.getElementById('mobileDropdown');
-            const icon = document.getElementById('menuIcon');
-            menu.classList.toggle('hidden');
-            if (menu.classList.contains('hidden')) {
-                icon.setAttribute('data-lucide', 'menu');
-            } else {
-                icon.setAttribute('data-lucide', 'x');
+            } catch (err) {
+                alert("Transmission error. Please check your connection.");
+                btn.innerHTML = "Retry Transmission";
+                btn.disabled = false;
             }
-            lucide.createIcons();
+        }
+            try {
+                await fetch(SCRIPT_URL, { 
+                    method: 'POST', 
+                    mode: 'no-cors', 
+                    body: JSON.stringify(payload) 
+                });
+                
+                document.getElementById('missionControl').classList.add('hidden');
+                document.getElementById('receiptRef').innerText = 'DH-' + Math.floor(Math.random()*9000 + 1000);
+                document.getElementById('receiptName').innerText = payload.name;
+                document.getElementById('receiptService').innerText = payload.service;
+                document.getElementById('receiptModal').classList.remove('hidden');
+            } catch (err) {
+                alert("Transmission error. Please check your connection.");
+                btn.innerHTML = "Retry Transmission";
+                btn.disabled = false;
+            }
         }
 
         window.onload = renderPillars;
     </script>
 </body>
 </html>
+
 
 
 
