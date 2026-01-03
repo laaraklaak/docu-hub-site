@@ -262,13 +262,14 @@
         async function processSubmission() {
             const btn = document.getElementById('submitBtn'); btn.innerHTML = "Encrypting..."; btn.disabled = true;
             document.getElementById('statusOverlay').classList.remove('hidden');
-            const payload = { 
-                name: document.getElementById('fname').value + ' ' + document.getElementById('lname').value,
-                contact: document.getElementById('contactNum').value, 
-                service: currentPillar.name,
-                trn: document.getElementById('trn').value, 
-                fileData: "Delayed Submission: Physical Liaison Required", 
-                signature: signaturePad.toDataURL()
+            // Ensure this is inside your processSubmission function
+const payload = { 
+    name: document.getElementById('fname').value + ' ' + document.getElementById('lname').value,
+    contact: document.getElementById('contactNum').value, 
+    service: currentPillar.name,
+    trn: document.getElementById('trn').value, 
+    fileData: "Physical Handover Required", 
+    signature: signaturePad.toDataURL() // This captures the drawing as a string
             };
             try {
                 await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
@@ -300,3 +301,4 @@
     </script>
 </body>
 </html>
+
