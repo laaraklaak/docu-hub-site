@@ -18,7 +18,7 @@
             }
         }
     </script>
-    <style>
+     <style>
         .agreement-scroll::-webkit-scrollbar { width: 6px; }
         .agreement-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
         .agreement-scroll::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
@@ -26,7 +26,6 @@
         @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
         .tactile:active { transform: scale(0.98); }
         .btn-locked { background-color: #9CA3AF; cursor: not-allowed; }
-        .btn-active { background-color: #FFFFFF; cursor: pointer; }
         @media print {
             body * { visibility: hidden; }
             #receiptArea, #receiptArea * { visibility: visible; }
@@ -302,9 +301,15 @@
             document.getElementById('viewHero').classList.remove('hidden'); 
         }
 
-        function toggleMobileMenu() {
+     function toggleMobileMenu() {
             const menu = document.getElementById('mobileDropdown');
+            const icon = document.getElementById('menuIcon');
             menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.setAttribute('data-lucide', 'menu');
+            } else {
+                icon.setAttribute('data-lucide', 'x');
+            }
             lucide.createIcons();
         }
 
@@ -312,6 +317,7 @@
     </script>
 </body>
 </html>
+
 
 
 
