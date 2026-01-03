@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Liaison | Docu-Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { navy: '#003366', gold: '#D4AF37', offwhite: '#334155' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.open('?page=intake', '_top')">
+                <i data-lucide="shield-check" class="text-gold w-8 h-8"></i>
+                <div>
+                    <h1 class="font-serif text-2xl text-navy font-bold italic">Docu-Hub</h1>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500">Concierge & Compliance</p>
+                </div>
+            </div>
+            <a href="?page=intake" class="text-xs font-bold text-navy border border-navy px-5 py-2 rounded hover:bg-navy hover:text-white transition uppercase tracking-widest">
+                Back to Intake
+            </a>
+        </div>
+    </nav>
+
+    <main class="flex-grow">
+        <section class="bg-navy py-16 text-center text-white">
+            <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
+            <p class="text-gray-300 max-w-lg mx-auto text-sm leading-relaxed">
+                Whether you need a status update or a custom consultation, our liaison officers are ready to assist.
+            </p>
+        </section>
+
+        <section class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-16">
+            
+            <div class="space-y-10">
+                <div>
+                    <h3 class="text-xl font-serif font-bold text-navy mb-6 border-b border-gray-200 pb-2">Direct Channels</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-gold/10 text-gold rounded flex items-center justify-center shrink-0"><i data-lucide="phone" class="w-5 h-5"></i></div>
+                            <div>
+                                <p class="text-xs font-bold uppercase text-gray-400 tracking-widest">Phone / WhatsApp</p>
+                                <a href="tel:8765612614" class="text-lg font-bold text-navy hover:text-gold transition">(876) 561-2614</a>
+                                <p class="text-xs text-gray-500">Mon-Fri, 9am - 5pm EST</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-gold/10 text-gold rounded flex items-center justify-center shrink-0"><i data-lucide="mail" class="w-5 h-5"></i></div>
+                            <div>
+                                <p class="text-xs font-bold uppercase text-gray-400 tracking-widest">Email Desk</p>
+                                <a href="mailto:admin@dochubservices.com" class="text-lg font-bold text-navy hover:text-gold transition">admin@dochubservices.com</a>
+                                <p class="text-xs text-gray-500">24/7 Response Queue</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 shadow-lg border-l-4 border-gold rounded">
+                    <h4 class="font-bold text-navy mb-2 flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-gold"></i> Service Area</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        We operate primarily in the <strong>St. Catherine</strong> Linstead area for physical agency visits. Remote processing is available island-wide via courier.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-lg shadow-xl border border-gray-100">
+                <h3 class="text-xl font-serif font-bold text-navy mb-6">Send a Message</h3>
+                <form id="contactForm" class="space-y-5">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Your Name</label>
+                        <input type="text" id="cName" class="w-full p-3 border border-gray-300 rounded focus:border-navy focus:ring-1 outline-none" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Contact Number</label>
+                        <input type="tel" id="cPhone" class="w-full p-3 border border-gray-300 rounded focus:border-navy focus:ring-1 outline-none" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-1">How can we help?</label>
+                        <textarea id="cMessage" rows="4" class="w-full p-3 border border-gray-300 rounded focus:border-navy focus:ring-1 outline-none" required></textarea>
+                    </div>
+                    <button type="submit" id="submitBtn" class="w-full bg-navy text-white font-bold py-4 rounded uppercase tracking-widest hover:bg-gold transition shadow-lg">
+                        Send Message
+                    </button>
+                </form>
+                <div id="successMsg" class="hidden text-center mt-4 p-4 bg-green-50 text-green-800 text-sm font-bold rounded">
+                    Message Sent! We will contact you shortly.
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="bg-navy text-white py-8 text-center text-xs">
+        <p>&copy; 2025 Docu-Hub Operations Services.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        // PASTE YOUR SCRIPT URL HERE (Same as index.html)
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw2nkmAaHmcEesJq9aXJ197nH0JbvH5Uk4ox8TLk0Ps4hLFpZqbkfVf8r3lIWxFKUyd6A/exec"; 
+
+        document.getElementById('contactForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const msg = document.getElementById('successMsg');
+            
+            btn.innerHTML = "Sending...";
+            btn.disabled = true;
+
+            const payload = {
+                name: document.getElementById('cName').value,
+                contact: document.getElementById('cPhone').value,
+                service: "General Inquiry: " + document.getElementById('cMessage').value, // This puts the message in the Service column
+                trn: "N/A",
+                fileData: null 
+            };
+
+            try {
+                await fetch(SCRIPT_URL, { 
+                    method: 'POST', 
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain' }, 
+                    body: JSON.stringify(payload)
+                });
+                
+                // Success State
+                document.getElementById('contactForm').reset();
+                btn.innerHTML = "Send Message";
+                btn.disabled = false;
+                msg.classList.remove('hidden');
+                setTimeout(() => msg.classList.add('hidden'), 5000);
+
+            } catch (error) {
+                btn.innerHTML = "Error - Try Again";
+                btn.disabled = false;
+                alert("Connection failed. Please call us directly.");
+            }
+        };
+    </script>
+</body>
+</html>
