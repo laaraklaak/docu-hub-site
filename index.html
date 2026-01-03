@@ -75,14 +75,14 @@
             <div class="hidden md:flex gap-6 text-sm font-medium text-navy">
                 <a href="about.html" class="hover:text-gold transition">Our Mission</a>
                 <a href="#" class="hover:text-gold transition">Status Check</a>
-                <a href="help_center.html" class="hover:text-gold transition">Compliance</a>
+                <a href="#help-centre" class="hover:text-gold transition">Compliance</a>
             </div>
         </div>
     </header>
 
     <section id="viewHero" class="relative w-full h-[650px] flex items-center no-print">
         <div class="absolute inset-0 z-0">
-            <img src="assets/hero.png" 
+            <img src="http://googleusercontent.com/image_generation_content/0" 
                  class="w-full h-full object-cover object-center" 
                  alt="Docu-Hub Professional Concierge">
             <div class="absolute inset-0 bg-navy/20"></div>
@@ -246,13 +246,12 @@
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw2nkmAaHmcEesJq9aXJ197nH0JbvH5Uk4ox8TLk0Ps4hLFpZqbkfVf8r3lIWxFKUyd6A/exec"; 
 
         
-        // --- DATA ARCHITECTURE (UPDATED WITH REAL IMAGES) ---
+        // --- DATA ARCHITECTURE ---
         const PILLARS = [
             {
                 id: 'pica',
                 name: 'PICA Liaison',
                 desc: 'Passport Renewals, Replacements & Immigration Services.',
-                // Passport / Travel Image
                 img: 'assets/pica.png',
                 fees: { professional: 3500, government: 6500 },
                 requirements: ['Expired Passport', 'Birth Certificate', '2 Passport Photos (Certified)'],
@@ -262,7 +261,6 @@
                 id: 'jcf',
                 name: 'JCF Records',
                 desc: 'Police Certificates & Forensic Fingerprinting.',
-                // Fingerprint / Security Image
                 img: 'assets/records.png',
                 fees: { professional: 3500, government: 3000 },
                 requirements: ['Valid ID (DL/Passport)', 'Fingerprint Receipt', 'Tax Registration Number (TRN)'],
@@ -272,7 +270,6 @@
                 id: 'rgd',
                 name: 'RGD Registry',
                 desc: 'Birth, Marriage & Death Certificates.',
-                // Family / Records Image
                 img: 'assets/rgd.png',
                 fees: { professional: 3500, government: 2500 },
                 requirements: ['Application Form (Signed)', 'Copy of Valid ID'],
@@ -282,7 +279,6 @@
                 id: 'taj',
                 name: 'TAJ Services',
                 desc: 'Motor Vehicle Licensing, Fitness & Traffic Tickets.',
-                // Driving / Car Image
                 img: 'assets/taj.png',
                 fees: { professional: 1500, government: 'Variable' },
                 requirements: ['Fitness Certificate', 'Insurance Cover Note', 'Original Registration'],
@@ -292,7 +288,6 @@
                 id: 'corp',
                 name: 'Corporate Bulk',
                 desc: 'Expedited processing for entities (5+ Employees).',
-                // Handshake / Business Image
                 img: 'assets/corporate.png',
                 fees: { professional: 'Retainer', government: 'At Cost' },
                 requirements: ['Company Letterhead Request', 'Authorized Officer ID'],
@@ -302,7 +297,6 @@
                 id: 'land',
                 name: 'Land & Research',
                 desc: 'Title Searches, Caveats & Hard Case Research.',
-                // Keys / Real Estate Image
                 img: 'assets/consult.png',
                 fees: { professional: 3000, government: 2000 },
                 requirements: ['Volume & Folio Numbers', 'Sales Agreement'],
@@ -312,7 +306,6 @@
                 id: 'replace',
                 name: 'Lost Documents',
                 desc: 'Recovery of Lost/Stolen Identification.',
-                // Papers / Search Image
                 img: 'assets/replace.png',
                 fees: { professional: 3500, government: 4000 },
                 requirements: ['JCF Police Report', 'Passport Photos', 'JP Declaration'],
@@ -480,7 +473,7 @@
             });
         }
 
-        // --- LEG 4: FORENSIC INTAKE ---
+        // --- LEG 4: FORENSIC INTAKE (UPDATED WITH PHONE FIELD) ---
         function loadLeg4() {
             updateProgress(4);
             const content = document.getElementById('missionContent');
@@ -504,10 +497,18 @@
                                 <input type="text" id="lname" class="w-full p-3 border border-gray-300 rounded focus:border-navy focus:ring-1 focus:ring-navy outline-none" required>
                             </div>
                         </div>
-                        <div>
-                            <label class="block text-xs font-bold text-gray-500 uppercase mb-1">TRN (Tax Registration Number)</label>
-                            <input type="text" id="trn" placeholder="000-000-000" class="w-full p-3 border border-gray-300 rounded focus:border-navy focus:ring-1 focus:ring-navy outline-none" required>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase mb-1">TRN (Tax Registration)</label>
+                                <input type="text" id="trn" placeholder="000-000-000" class="w-full p-3 border border-gray-300 rounded focus:border-navy focus:ring-1 focus:ring-navy outline-none" required>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase mb-1">WhatsApp / Contact #</label>
+                                <input type="tel" id="contactNum" placeholder="(876) 555-0199" class="w-full p-3 border border-gray-300 rounded focus:border-navy focus:ring-1 focus:ring-navy outline-none" required>
+                            </div>
                         </div>
+
                         ${specificField}
                         <div>
                             <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Upload Document Bundle</label>
@@ -557,7 +558,7 @@
 
         function clearSig() { if(signaturePad) signaturePad.clear(); }
 
-        // --- LEG 5: TRANSMISSION WITH RECEIPT ---
+        // --- LEG 5: TRANSMISSION WITH RECEIPT (Updated to capture Phone) ---
         async function processSubmission() {
             const btn = document.getElementById('submitBtn');
             btn.innerHTML = `<i data-lucide="loader-2" class="animate-spin inline mr-2"></i> Encrypting...`;
@@ -574,7 +575,8 @@
                 const base64File = e.target.result;
                 const payload = {
                     name: document.getElementById('fname').value + ' ' + document.getElementById('lname').value,
-                    contact: "Not Provided (Intake)", // Adding placeholder since specific field isn't in Leg 4 but required by backend
+                    // CAPTURING THE PHONE INPUT NOW
+                    contact: document.getElementById('contactNum').value, 
                     service: currentPillar.name + ' [Ref: ' + refNum + ']',
                     trn: document.getElementById('trn').value,
                     specificData: document.getElementById('specificInput') ? document.getElementById('specificInput').value : 'N/A',
