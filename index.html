@@ -187,18 +187,24 @@
 
         function updateProgress(step) { document.getElementById('progressBar').style.width = `${step * 25}%`; }
 
-        function loadLeg1() {
-            updateProgress(1);
-            document.getElementById('missionContent').innerHTML = `
-                <div class="fade-in max-w-2xl mx-auto text-center">
-                    <h2 class="font-serif text-3xl text-navy mb-8 font-bold italic">Service Fees</h2>
-                    <div class="bg-navy text-white p-10 rounded-3xl shadow-lg mb-8 text-left">
-                        <div class="flex justify-between items-center border-b border-white/10 pb-4 mb-4"><span>Liaison Fee</span><span class="text-gold font-bold">$${currentPillar.fees.pro}</span></div>
-                        <div class="flex justify-between items-center"><span>Agency Fee</span><span class="font-bold">$${currentPillar.fees.gov}</span></div>
-                    </div>
-                    <button onclick="loadLeg2()" class="w-full bg-navy text-white font-bold py-5 rounded-full uppercase tracking-widest text-xs hover:bg-gold transition shadow-xl">Confirm Fees</button>
-                </div>`;
-        }
+       function loadLeg1() {
+    updateProgress(1);
+    document.getElementById('missionContent').innerHTML = `
+        <div class="fade-in max-w-2xl mx-auto text-center">
+            <h2 class="font-serif text-3xl text-navy mb-8 font-bold italic text-center">Service Fee breakdown</h2>
+            <div class="bg-navy text-white p-10 rounded-3xl shadow-lg mb-8 text-left">
+                <div class="flex justify-between items-center border-b border-white/10 pb-4 mb-4">
+                    <span class="text-gray-300">Concierge Professional Fee</span>
+                    <span class="text-gold font-bold">$${currentPillar.fees.pro}</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-300">Government Agency Fee (Est.)</span>
+                    <span class="font-bold font-serif italic text-xl">$${currentPillar.fees.gov}</span>
+                </div>
+            </div>
+            <button onclick="loadLeg2()" class="w-full bg-navy text-white font-bold py-5 rounded-full uppercase text-xs hover:bg-gold transition shadow-xl">Confirm & Audit Docs</button>
+        </div>`;
+}
 
         function loadLeg2() {
             updateProgress(2);
@@ -330,6 +336,7 @@ const payload = {
     </script>
 </body>
 </html>
+
 
 
 
