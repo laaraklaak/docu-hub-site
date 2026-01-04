@@ -251,18 +251,13 @@
                     <button type="submit" id="submitBtn" class="w-full bg-navy text-white font-bold py-5 rounded-full uppercase text-xs shadow-2xl tracking-widest hover:bg-gold transition">Transmit Digital Auth</button>
                     <button type="button" onclick="signaturePad.clear()" class="w-full text-[10px] text-gray-400 uppercase underline">Reset Pad</button>
                 </form>`;
-           // STABILITY FIX: Resize function
-function resizeCanvas() {
-    const ratio = Math.max(window.devicePixelRatio || 1, 1);
-    canvas.width = canvas.offsetWidth * ratio;
-    canvas.height = canvas.offsetHeight * ratio;
-    canvas.getContext("2d").scale(ratio, ratio);
-    signaturePad.clear(); // necessary to reset the internal state
-}
-
-// Trigger resize on load and screen rotation
-window.addEventListener("resize", resizeCanvas);
-resizeCanvas();
+            signaturePad = new SignaturePad(document.getElementById('signatureCanvas'));
+            document.getElementById('intakeForm').onsubmit = (e) => { 
+                e.preventDefault(); 
+                if(signaturePad.isEmpty()) return alert("Digital authorization is required.");
+                processSubmission(); 
+            };
+        }
 
         async function processSubmission() {
             const btn = document.getElementById('submitBtn'); btn.innerHTML = "Encrypting..."; btn.disabled = true;
@@ -306,6 +301,4 @@ const payload = {
     </script>
 </body>
 </html>
-
-
 
