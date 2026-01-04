@@ -234,30 +234,57 @@
         }
 
         function loadLeg4() {
-            updateProgress(4);
-            document.getElementById('missionContent').innerHTML = `
-                <form id="intakeForm" class="fade-in max-w-2xl mx-auto space-y-6">
-                    <h2 class="font-serif text-3xl text-navy mb-8 font-bold italic text-center">Final Transmission</h2>
-                    <div class="grid grid-cols-2 gap-4">
-                        <input type="text" id="fname" placeholder="First Name" class="p-4 border rounded-xl outline-none focus:ring-1 focus:ring-gold" required>
-                        <input type="text" id="lname" placeholder="Last Name" class="p-4 border rounded-xl outline-none focus:ring-1 focus:ring-gold" required>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <input type="text" id="trn" placeholder="TRN (Tax Registration)" class="p-4 border rounded-xl outline-none focus:ring-1 focus:ring-gold" required>
-                        <input type="tel" id="contactNum" placeholder="WhatsApp Number" class="p-4 border rounded-xl outline-none focus:ring-1 focus:ring-gold" required>
-                    </div>
-                    <p class="text-[10px] text-center text-gray-400 uppercase tracking-widest pt-4">Sign to authorize.</p>
-                    <div class="border rounded-2xl bg-white overflow-hidden shadow-inner"><canvas id="signatureCanvas" class="w-full h-32 cursor-crosshair"></canvas></div>
-                    <button type="submit" id="submitBtn" class="w-full bg-navy text-white font-bold py-5 rounded-full uppercase text-xs shadow-2xl tracking-widest hover:bg-gold transition">Transmit Digital Auth</button>
-                    <button type="button" onclick="signaturePad.clear()" class="w-full text-[10px] text-gray-400 uppercase underline">Reset Pad</button>
-                </form>`;
-            signaturePad = new SignaturePad(document.getElementById('signatureCanvas'));
-            document.getElementById('intakeForm').onsubmit = (e) => { 
-                e.preventDefault(); 
-                if(signaturePad.isEmpty()) return alert("Digital authorization is required.");
-                processSubmission(); 
-            };
-        }
+    updateProgress(4);
+    document.getElementById('missionContent').innerHTML = `
+        <form id="intakeForm" class="fade-in max-w-2xl mx-auto space-y-6">
+            <h2 class="font-serif text-3xl text-navy mb-8 font-bold italic text-center">Final Transmission</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <input type="text" id="fname" placeholder="First Name" class="p-4 border rounded-xl outline-none focus:ring-1 focus:ring-gold" required>
+                <input type="text" id="lname" placeholder="Last Name" class="p-4 border rounded-xl outline-none focus:ring-1 focus:ring-gold" required>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <input type="text" id="trn" placeholder="TRN (Tax Registration)" class="p-4 border rounded-xl outline-none focus:ring-1 focus:ring-gold" required>
+                <input type="tel" id="contactNum" placeholder="WhatsApp Number" class="p-4 border rounded-xl outline-none focus:ring-1 focus:ring-gold" required>
+            </div>
+            
+            <p class="text-[10px] text-center text-gray-400 uppercase tracking-widest pt-4 italic">Sign within the box below</p>
+            
+            <div class="relative border-2 border-navy/10 rounded-2xl bg-white overflow-hidden shadow-inner h-44">
+                <div class="absolute bottom-10 left-4 right-4 border-b border-dashed border-gray-200 pointer-events-none"></div>
+                <span class="absolute bottom-12 left-4 text-gray-300 font-serif italic pointer-events-none">X</span>
+                <canvas id="signatureCanvas" class="relative w-full h-full cursor-crosshair touch-none"></canvas>
+            </div>
+            
+            <button type="submit" id="submitBtn" class="w-full bg-navy text-white font-bold py-5 rounded-full uppercase text-xs shadow-2xl tracking-widest hover:bg-gold transition">Transmit Digital Auth</button>
+            <button type="button" onclick="signaturePad.clear()" class="w-full text-[10px] text-gray-400 uppercase underline">Reset Pad</button>
+        </form>`;
+
+    const canvas = document.getElementById('signatureCanvas');
+    
+    // Initialize SignaturePad with Navy Pen
+    signaturePad = new SignaturePad(canvas, {
+        penColor: 'rgb(0, 51, 102)',
+        throttle: 0 // Makes it more responsive to fast movements
+    });
+
+    // RETINA/STABILITY FIX: Scales the canvas to look sharp and align with finger
+    function resizeCanvas() {
+        const ratio = Math.max(window.devicePixelRatio || 1, 1);
+        canvas.width = canvas.offsetWidth * ratio;
+        canvas.height = canvas.offsetHeight * ratio;
+        canvas.getContext("2d").scale(ratio, ratio);
+        signaturePad.clear(); // necessary to reset the internal state
+    }
+
+    // Run the resize once the element is painted
+    setTimeout(resizeCanvas, 50);
+
+    document.getElementById('intakeForm').onsubmit = (e) => { 
+        e.preventDefault(); 
+        if(signaturePad.isEmpty()) return alert("Digital authorization is required.");
+        processSubmission(); 
+    };
+}
 
         async function processSubmission() {
             const btn = document.getElementById('submitBtn'); btn.innerHTML = "Encrypting..."; btn.disabled = true;
@@ -301,5 +328,6 @@ const payload = {
     </script>
 </body>
 </html>
+
 
 
