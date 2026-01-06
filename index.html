@@ -131,7 +131,7 @@
             </div>
             <div class="bg-gold/10 p-4 rounded-xl border border-gold/30 mb-8">
                 <p class="text-navy text-xs font-bold uppercase tracking-widest mb-1">Next Step</p>
-              Please have your physical documents ready. Expect a message from our 
+               Please have your physical documents ready. Expect a message from our 
         <span class="text-navy font-bold">Concierge Desk</span> within 2 hours to 
         verify your submission and arrange for document collection.
             </div>
@@ -142,6 +142,7 @@
 
     <script>
         lucide.createIcons();
+        // IMPORTANT: Ensure this URL matches your LATEST Deployment URL from 'Manage Deployments'
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx_KrRuLySSz7_pj5COxawTtcDPAF9gkQcRikMuZCTn5jnxXqkrke36HxFsuqStCOqjuw/exec"; 
 
         const PILLARS = [
@@ -297,22 +298,27 @@
         async function processSubmission() {
             const btn = document.getElementById('submitBtn'); btn.innerHTML = "Encrypting..."; btn.disabled = true;
             document.getElementById('statusOverlay').classList.remove('hidden');
-            // Ensure this is inside your processSubmission function
-const payload = { 
-    name: document.getElementById('fname').value + ' ' + document.getElementById('lname').value,
-    contact: document.getElementById('contactNum').value, 
-    service: currentPillar.name,
-    trn: document.getElementById('trn').value, 
-    fileData: "Physical Handover Required", 
-    signature: signaturePad.toDataURL() // This captures the drawing as a string
+            
+            // --- FIX FOR UNKNOWN NAMES ---
+            // We now send specific keys: firstName, lastName, phone, serviceType
+            // This matches exactly what the Backend is looking for.
+            const payload = { 
+                firstName: document.getElementById('fname').value,
+                lastName: document.getElementById('lname').value,
+                phone: document.getElementById('contactNum').value, 
+                serviceType: currentPillar.name,
+                trn: document.getElementById('trn').value, 
+                fileData: "Physical Handover Required", 
+                signature: signaturePad.toDataURL() 
             };
+            
             try {
                 await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
                 document.getElementById('statusOverlay').classList.add('hidden');
                 document.getElementById('missionControl').classList.add('hidden');
                 document.getElementById('receiptRef').innerText = 'DH-' + Math.floor(Math.random()*9000 + 1000);
-                document.getElementById('receiptName').innerText = payload.name;
-                document.getElementById('receiptService').innerText = payload.service;
+                document.getElementById('receiptName').innerText = payload.firstName + " " + payload.lastName;
+                document.getElementById('receiptService').innerText = payload.serviceType;
                 document.getElementById('receiptModal').classList.remove('hidden');
             } catch (err) { alert("Connectivity Error. Please try again."); btn.disabled = false; }
         }
@@ -336,10 +342,3 @@ const payload = {
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
