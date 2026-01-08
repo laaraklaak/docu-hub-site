@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Compliance Insights | Docu-Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 
+                        navy: '#003366', 
+                        gold: '#D4AF37', 
+                        parchment: '#F9F7F5',
+                        offwhite: '#334155' 
+                    },
+                    fontFamily: { 
+                        sans: ['Inter', 'sans-serif'], 
+                        serif: ['Playfair Display', 'serif'],
+                        read: ['Merriweather', 'serif'] 
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-parchment text-slate-800 font-sans antialiased min-h-screen">
+
+    <nav class="bg-white shadow-sm sticky top-0 z-50 border-b-4 border-gold">
+        <div class="max-w-4xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 bg-navy text-gold rounded flex items-center justify-center group-hover:bg-gold group-hover:text-navy transition shadow-md">
+                    <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h1 class="font-serif text-xl text-navy font-bold italic leading-none">Docu-Hub</h1>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-400 mt-1 font-bold">Return to Portal</p>
+                </div>
+            </a>
+            <div class="hidden md:block text-[10px] font-bold text-navy uppercase tracking-widest bg-navy/5 px-4 py-2 rounded-full">
+                Compliance Journal • Vol. 1
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-navy text-white pt-24 pb-32 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+        <div class="max-w-3xl mx-auto px-6 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 text-gold text-[10px] font-bold uppercase tracking-[0.2em] mb-6 border border-gold/30 px-3 py-1 rounded">
+                <i data-lucide="file-warning" class="w-3 h-3"></i> Case Study #001
+            </div>
+            <h1 class="font-serif text-3xl md:text-5xl font-bold leading-tight mb-8">The "Ghost" Ticket: Why You Need a Clearance Check.</h1>
+            <p class="text-gray-300 text-lg md:text-xl font-read italic leading-relaxed">
+                A client walked into the Tax Office for a routine renewal and walked out with a court summons. Here is how we fixed it.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-6 -mt-20 relative z-20 pb-24">
+        
+        <div class="bg-white p-8 md:p-12 shadow-xl rounded-sm border-t-8 border-gold mb-12">
+            <div class="flex flex-col md:flex-row gap-8 items-start">
+                <div class="flex-1">
+                    <h3 class="text-navy font-bold uppercase tracking-widest text-xs mb-4">The Scenario</h3>
+                    <p class="font-read text-gray-600 leading-loose">
+                        <span class="text-4xl float-left mr-3 mt-[-10px] font-serif text-gold">M</span>r. Campbell (Client Ref: DH-902) attempted to renew his Driver’s License in Spanish Town. The cashier informed him that his record was blocked due to an "Unexecuted Warrant" from 2019. He had no memory of the incident.
+                    </p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded border border-gray-100 w-full md:w-64 shrink-0">
+                    <h4 class="text-navy font-bold text-xs uppercase mb-3 flex items-center gap-2"><i data-lucide="alert-triangle" class="w-4 h-4 text-red-600"></i> Risk Level</h4>
+                    <div class="w-full bg-gray-200 h-2 rounded-full mb-2">
+                        <div class="bg-red-600 h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                    <p class="text-[10px] text-gray-500">High Risk: Arrest possible at traffic stops.</p>
+                </div>
+            </div>
+        </div>
+
+        <article class="font-read text-slate-700 leading-loose space-y-8 text-base md:text-lg">
+            
+            <h2 class="font-sans font-bold text-2xl text-navy pt-4">The Disconnection Problem</h2>
+            <p>
+                Many drivers assume that if they have their receipt, they are safe. However, in Jamaica, the <strong>Tax Administration (TAJ)</strong> database and the <strong>Traffic Court (CMS)</strong> database do not always sync instantly. 
+            </p>
+            <p>
+                Mr. Campbell had paid a ticket in 2019 via a third-party app. The payment cleared at the Tax Office, but the "Settled" status never triggered the removal of the court date. When he didn't show up for court (because he thought he paid), a warrant was automatically issued.
+            </p>
+
+            <div class="my-12 p-8 bg-navy/5 rounded-xl border border-navy/10">
+                <h3 class="font-sans font-bold text-navy text-center mb-8 uppercase tracking-widest text-xs">The Anatomy of the Error</h3>
+                <div class="relative border-l-2 border-navy/20 ml-4 space-y-8">
+                    <div class="relative pl-8">
+                        <div class="absolute -left-[9px] top-1 w-4 h-4 bg-white border-2 border-navy rounded-full"></div>
+                        <p class="text-xs font-bold text-gray-400 uppercase">Feb 2019</p>
+                        <p class="font-sans font-bold text-navy">Ticket Issued</p>
+                        <p class="text-sm text-gray-600">Speeding violation ($5,000).</p>
+                    </div>
+                    <div class="relative pl-8">
+                        <div class="absolute -left-[9px] top-1 w-4 h-4 bg-gold border-2 border-navy rounded-full"></div>
+                        <p class="text-xs font-bold text-gray-400 uppercase">Mar 2019</p>
+                        <p class="font-sans font-bold text-navy">Online Payment Made</p>
+                        <p class="text-sm text-gray-600">Receipt generated, but Court system not notified.</p>
+                    </div>
+                    <div class="relative pl-8">
+                        <div class="absolute -left-[9px] top-1 w-4 h-4 bg-red-600 border-2 border-navy rounded-full"></div>
+                        <p class="text-xs font-bold text-gray-400 uppercase">Apr 2019</p>
+                        <p class="font-sans font-bold text-navy">Warrant Issued</p>
+                        <p class="text-sm text-gray-600">Judge issues Bench Warrant for non-appearance.</p>
+                    </div>
+                    <div class="relative pl-8">
+                        <div class="absolute -left-[9px] top-1 w-4 h-4 bg-emerald-600 border-2 border-navy rounded-full"></div>
+                        <p class="text-xs font-bold text-gray-400 uppercase">Today</p>
+                        <p class="font-sans font-bold text-navy">Docu-Hub Intervention</p>
+                        <p class="text-sm text-gray-600">Reconciliation of records & license renewed.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="font-sans font-bold text-2xl text-navy">The Docu-Hub Solution</h2>
+            <p>
+                Instead of sending Mr. Campbell to court (which requires a lawyer and a day off work), we initiated our <strong>Traffic Ticket Reconciliation Service</strong>.
+            </p>
+            <ul class="list-none space-y-4 bg-white p-6 rounded shadow-sm border border-gray-100 text-sm font-sans">
+                <li class="flex gap-4 items-start">
+                    <i data-lucide="check-circle" class="w-5 h-5 text-gold shrink-0 mt-1"></i>
+                    <span><strong>Step 1:</strong> We retrieved the payment history from the TAJ portal using his TRN.</span>
+                </li>
+                <li class="flex gap-4 items-start">
+                    <i data-lucide="check-circle" class="w-5 h-5 text-gold shrink-0 mt-1"></i>
+                    <span><strong>Step 2:</strong> Our liaison physically took the stamped receipt to the Court Registry office.</span>
+                </li>
+                <li class="flex gap-4 items-start">
+                    <i data-lucide="check-circle" class="w-5 h-5 text-gold shrink-0 mt-1"></i>
+                    <span><strong>Step 3:</strong> The clerk manually updated the CMS database to "Satisfied."</span>
+                </li>
+                <li class="flex gap-4 items-start">
+                    <i data-lucide="check-circle" class="w-5 h-5 text-gold shrink-0 mt-1"></i>
+                    <span><strong>Step 4:</strong> The block was lifted, and we renewed the license the same afternoon.</span>
+                </li>
+            </ul>
+
+            <div class="bg-navy text-white p-8 rounded text-center mt-12">
+                <h3 class="font-serif text-2xl italic mb-4">Don't Get Blindsided.</h3>
+                <p class="text-sm opacity-80 mb-8 max-w-md mx-auto font-sans">
+                    Before you go to the Tax Office, let us run a <strong>Pre-Compliance Check</strong>. We verify your ticket status across both databases.
+                </p>
+                <button onclick="window.location.href='index.html#serviceDeck'" class="bg-gold text-navy font-bold py-3 px-8 rounded hover:bg-white transition uppercase text-xs tracking-widest">
+                    Request Ticket Check
+                </button>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 py-12 text-center no-print">
+        <div class="flex justify-center items-center gap-2 mb-4 opacity-50">
+            <i data-lucide="shield" class="w-5 h-5 text-navy"></i>
+            <span class="text-xs font-bold uppercase tracking-widest text-navy">Docu-Hub Operations</span>
+        </div>
+        <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-8">Knowledge is Compliance.</p>
+        <div class="flex justify-center gap-6">
+            <a href="index.html" class="text-xs font-bold text-navy hover:text-gold transition border-b border-gray-200 pb-1">Back to Home</a>
+            <a href="contact.html" class="text-xs font-bold text-navy hover:text-gold transition border-b border-gray-200 pb-1">Contact Us</a>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
