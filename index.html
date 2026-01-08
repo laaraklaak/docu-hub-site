@@ -117,21 +117,22 @@
     </section>
 
     <section class="bg-navy border-b-4 border-gold relative overflow-hidden no-print">
-    <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, #D4AF37 0, #D4AF37 1px, transparent 0, transparent 50%); background-size: 10px 10px;"></div>
-    
-    <div class="container mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-center gap-4 text-center md:text-left relative z-10">
-        <div class="bg-gold/20 p-3 rounded-full shrink-0 animate-pulse">
-            <i data-lucide="alert-triangle" class="w-6 h-6 text-gold"></i>
+        <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, #D4AF37 0, #D4AF37 1px, transparent 0, transparent 50%); background-size: 10px 10px;"></div>
+        
+        <div class="container mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-center gap-4 text-center md:text-left relative z-10">
+            <div class="bg-gold/20 p-3 rounded-full shrink-0 animate-pulse">
+                <i data-lucide="alert-triangle" class="w-6 h-6 text-gold"></i>
+            </div>
+            <div class="flex-1">
+                <h3 class="text-white font-bold uppercase tracking-widest text-xs md:text-sm">Don't Drive Blind.</h3>
+                <p class="text-gray-300 text-xs md:text-sm">Outstanding tickets can turn into warrants without notice. Check your status now.</p>
+            </div>
+            <button onclick="startMission('taj')" class="bg-gold text-navy px-6 py-3 rounded font-bold uppercase text-[10px] md:text-xs tracking-widest hover:bg-white transition shadow-lg flex items-center gap-2">
+                Run Clearance Check <i data-lucide="search" class="w-4 h-4"></i>
+            </button>
         </div>
-        <div class="flex-1">
-            <h3 class="text-white font-bold uppercase tracking-widest text-xs md:text-sm">Don't Drive Blind.</h3>
-            <p class="text-gray-300 text-xs md:text-sm">Outstanding tickets can turn into warrants without notice. Check your status now.</p>
-        </div>
-        <button onclick="startMission('taj')" class="bg-gold text-navy px-6 py-3 rounded font-bold uppercase text-[10px] md:text-xs tracking-widest hover:bg-white transition shadow-lg flex items-center gap-2">
-            Run Clearance Check <i data-lucide="search" class="w-4 h-4"></i>
-        </button>
-    </div>
-</section>
+    </section>
+
     <section id="serviceDeck" class="py-20 bg-slate-50 no-print overflow-hidden relative">
         <div class="container mx-auto px-6 md:px-12 relative">
             <div class="flex justify-between items-end mb-10">
@@ -315,7 +316,7 @@
         <div class="container mx-auto px-6">
             <div class="flex justify-center items-center gap-2 mb-8 opacity-50">
                 <i data-lucide="shield" class="w-5 h-5"></i>
-                <span class="text-xs md:text-sm font-bold uppercase tracking-widest">Docu-Hub Operations Services</span>
+                <span class="text-xs md:text-sm font-bold uppercase tracking-widest">Docu-Hub Operations</span>
             </div>
             
             <div class="flex flex-wrap justify-center gap-6 md:gap-10 mb-8 text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">
@@ -334,7 +335,7 @@
             <div class="flex flex-col md:flex-row justify-center gap-6 md:gap-12 text-[10px] md:text-xs text-gray-500 uppercase font-bold">
                 <a href="privacy.html" class="hover:text-white transition">Privacy Policy (JDPA)</a>
                 <a href="terms.html" class="hover:text-white transition">Terms of Engagement</a>
-                <a href="legal-notice.html" class="hover:text-white transition">Legal Notice</a>
+                <a href="legal.html" class="hover:text-white transition">Legal Notice</a>
             </div>
             <p class="text-gray-700 text-[10px] uppercase tracking-widest mt-12">&copy; 2026 Docu-Hub. St. Catherine, Jamaica.</p>
         </div>
@@ -386,11 +387,11 @@
             { id: 'pica', name: 'PICA Liaison', desc: 'Passport Renewals & Replacements.', img: 'assets/pica.png', fees: { pro: 3500, gov: 6500 }, reqs: ['Expired Passport', 'Birth Certificate'] },
             { id: 'jcf', name: 'JCF Records', desc: 'Police Certificates & Fingerprinting.', img: 'assets/records.png', fees: { pro: 3500, gov: 3000 }, reqs: ['Valid ID', 'TRN'] },
             { id: 'rgd', name: 'RGD Registry', desc: 'Birth, Marriage & Death Certificates.', img: 'assets/rgd.png', fees: { pro: 3500, gov: 2500 }, reqs: ['Application Detail'] },
-            { id: 'taj', name: 'TAJ Services', desc: 'Motor Vehicle Licensing & Tickets.', img: 'assets/taj.png', fees: { pro: 1500, gov: 'Variable' }, reqs: ['Fitness', 'Insurance'] },
+            { id: 'taj', name: 'Traffic & Licensing', desc: 'Ticket Checks, Warrants & Fitness Fees.', img: 'assets/taj.png', fees: { pro: 1500, gov: 'Variable' }, reqs: ['Fitness', 'Insurance'] },
             { id: 'corp', name: 'Corporate Bulk', desc: 'Expedited processing for entities.', img: 'assets/corporate.png', fees: { pro: 'Retainer', gov: 'At Cost' }, reqs: ['Company Letterhead'] },
             { id: 'land', name: 'Land & Research', desc: 'Title Searches & Case Research.', img: 'assets/consult.png', fees: { pro: 3000, gov: 2000 }, reqs: ['Vol/Folio Numbers'] },
             { id: 'replace', name: 'Lost Documents', desc: 'Recovery of lost identification.', img: 'assets/replace.png', fees: { pro: 3500, gov: 4000 }, reqs: ['Police Report Ref'] },
-            { id: 'help', name: 'Help Center', desc: 'Guidance, Support & Inquiry.', img: 'assets/help.png', isLink: true, url: 'help_center.html' }
+            { id: 'insights', name: 'Insights', desc: 'Guidance, Support & Inquiry.', img: 'assets/help.png', isLink: true, url: 'insights.html' }
         ];
 
         let currentPillar = null;
@@ -590,4 +591,3 @@
     </script>
 </body>
 </html>
-
