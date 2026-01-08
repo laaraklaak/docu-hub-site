@@ -384,23 +384,49 @@
         lucide.createIcons();
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx_KrRuLySSz7_pj5COxawTtcDPAF9gkQcRikMuZCTn5jnxXqkrke36HxFsuqStCOqjuw/exec"; 
 
-        const PILLARS = [
-            { id: 'pica', name: 'PICA Liaison', desc: 'Passport Renewals & Replacements.', img: 'assets/pica.png', fees: { pro: 3500, gov: 6500 }, reqs: ['Expired Passport', 'Birth Certificate'] },
-            { id: 'jcf', name: 'JCF Records', desc: 'Police Certificates & Fingerprinting.', img: 'assets/records.png', fees: { pro: 3500, gov: 3000 }, reqs: ['Valid ID', 'TRN'] },
-            { id: 'rgd', name: 'RGD Registry', desc: 'Birth, Marriage & Death Certificates.', img: 'assets/rgd.png', fees: { pro: 3500, gov: 2500 }, reqs: ['Application Detail'] },
-            { id: 'taj', name: 'Traffic & Licensing', desc: 'Ticket Checks, Warrants & Fitness Fees.', img: 'assets/taj.png', fees: { pro: 1500, gov: 'Variable' }, reqs: ['Fitness', 'Insurance'] },
-            { id: 'corp', name: 'Corporate Bulk', desc: 'Expedited processing for entities.', img: 'assets/corporate.png', fees: { pro: 'Retainer', gov: 'At Cost' }, reqs: ['Company Letterhead'] },
-            { id: 'land', name: 'Land & Research', desc: 'Title Searches & Case Research.', img: 'assets/consult.png', fees: { pro: 3000, gov: 2000 }, reqs: ['Vol/Folio Numbers'] },
-            { id: 'replace', name: 'Lost Documents', desc: 'Recovery of lost identification.', img: 'assets/replace.png', fees: { pro: 3500, gov: 4000 }, reqs: ['Police Report Ref'] },
-            // NEW INSIGHTS IMAGE: Financial Journal / Newspaper
+      const PILLARS = [
+            // STANDARD SERVICES (One Flat Fee)
             { 
-                id: 'insights', 
-                name: 'Insights Journal', 
-                desc: 'Case Studies: Read how we solve complex bureaucratic roadblocks.', 
-                img: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80', 
-                isLink: true, 
-                url: 'insights.html' 
-            }
+                id: 'pica', 
+                name: 'PICA Liaison', 
+                desc: 'Passport Renewals & Replacements.', 
+                img: 'assets/pica.png', 
+                fees: { pro: 3500, gov: 6500 }, // Standard layout
+                reqs: ['Expired Passport', 'Birth Certificate'] 
+            },
+            
+            // SPLIT FEE SERVICES (Check + Run)
+            { 
+                id: 'taj', 
+                name: 'Traffic & Licensing', 
+                desc: 'Ticket Checks, Warrants & Fitness Fees.', 
+                img: 'assets/taj.png', 
+                // NEW: Split fees into Check vs Run
+                fees: { check: 1500, bearer: 2500, gov: 'Variable' }, 
+                reqs: ['TRN', 'Vehicle Plate #'] 
+            },
+            { 
+                id: 'jcf', 
+                name: 'JCF Records', 
+                desc: 'Police Certificates & Fingerprinting.', 
+                img: 'assets/records.png', 
+                fees: { check: 1500, bearer: 2000, gov: 3000 }, 
+                reqs: ['Valid ID', 'TRN'] 
+            },
+            { 
+                id: 'land', 
+                name: 'Land & Research', 
+                desc: 'Title Searches & Case Research.', 
+                img: 'assets/consult.png', 
+                fees: { check: 1500, bearer: 1500, gov: 2000 }, 
+                reqs: ['Vol/Folio Numbers'] 
+            },
+
+            // OTHERS
+            { id: 'rgd', name: 'RGD Registry', desc: 'Birth, Marriage & Death Certificates.', img: 'assets/rgd.png', fees: { pro: 3500, gov: 2500 }, reqs: ['Application Detail'] },
+            { id: 'corp', name: 'Corporate Bulk', desc: 'Expedited processing for entities.', img: 'assets/corporate.png', fees: { pro: 'Retainer', gov: 'At Cost' }, reqs: ['Company Letterhead'] },
+            { id: 'replace', name: 'Lost Documents', desc: 'Recovery of lost identification.', img: 'assets/replace.png', fees: { pro: 3500, gov: 4000 }, reqs: ['Police Report Ref'] },
+            { id: 'insights', name: 'Insights Journal', desc: 'Case Studies: Read how we solve complex bureaucratic roadblocks.', img: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80', isLink: true, url: 'insights.html' }
         ];
 
         let currentPillar = null;
@@ -464,21 +490,57 @@
 
         function loadLeg1() {
             updateProgress(1);
-            document.getElementById('missionContent').innerHTML = `
-                <div class="fade-in max-w-2xl mx-auto text-center pt-12">
-                    <h2 class="font-serif text-3xl md:text-5xl text-navy mb-8 font-bold italic">Service Fee Breakdown</h2>
-                    <div class="bg-navy text-white p-10 md:p-12 rounded-3xl shadow-xl mb-10 text-left relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full blur-2xl -mr-10 -mt-10"></div>
-                        <div class="flex justify-between items-center border-b border-white/10 pb-4 mb-4 relative z-10">
-                            <span class="text-gray-300 text-sm md:text-base uppercase tracking-widest">Bearer Fee</span>
-                            <span class="text-gold font-bold text-xl md:text-2xl">$${currentPillar.fees.pro}</span>
+            
+            // LOGIC: Determine if we show a simple "Pro Fee" or a "Split Fee"
+            let feeRows = '';
+            
+            if (currentPillar.fees.bearer) {
+                // IT HAS A SPLIT (Check + Run)
+                feeRows = `
+                    <div class="flex justify-between items-center border-b border-white/10 pb-2 mb-2">
+                        <span class="text-gray-300 text-sm uppercase tracking-widest">Database Check</span>
+                        <span class="text-white font-bold text-lg">$${currentPillar.fees.check}</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-white/10 pb-4 mb-4">
+                        <div class="flex flex-col text-left">
+                            <span class="text-gray-300 text-sm uppercase tracking-widest">Bearer Run</span>
+                            <span class="text-[10px] text-gray-400 italic">Only if clearance required</span>
                         </div>
-                        <div class="flex justify-between items-center relative z-10">
-                            <span class="text-gray-300 text-sm md:text-base uppercase tracking-widest">Govt. Fee (Est.)</span>
-                            <span class="font-bold font-serif italic text-2xl md:text-3xl">$${currentPillar.fees.gov}</span>
+                        <span class="text-gold font-bold text-lg">$${currentPillar.fees.bearer}</span>
+                    </div>
+                `;
+            } else {
+                // STANDARD (Flat Fee)
+                feeRows = `
+                    <div class="flex justify-between items-center border-b border-white/10 pb-4 mb-4">
+                        <span class="text-gray-300 text-sm uppercase tracking-widest">Bearer Service Fee</span>
+                        <span class="text-gold font-bold text-xl">$${currentPillar.fees.pro}</span>
+                    </div>
+                `;
+            }
+
+            document.getElementById('missionContent').innerHTML = `
+                <div class="fade-in max-w-2xl mx-auto text-center pt-8">
+                    <h2 class="font-serif text-3xl text-navy mb-6 font-bold italic">Service Fee Breakdown</h2>
+                    
+                    <div class="bg-navy text-white p-10 rounded-3xl shadow-xl mb-8 text-left relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full blur-2xl -mr-10 -mt-10"></div>
+                        
+                        <div class="relative z-10">
+                            ${feeRows}
+                            
+                            <div class="flex justify-between items-center pt-2">
+                                <span class="text-gray-300 text-sm uppercase tracking-widest">Govt. Fee (Est.)</span>
+                                <span class="font-bold font-serif italic text-2xl">${typeof currentPillar.fees.gov === 'number' ? '$' + currentPillar.fees.gov : currentPillar.fees.gov}</span>
+                            </div>
                         </div>
                     </div>
-                    <button onclick="loadLeg2()" class="w-full bg-navy text-white font-bold py-5 rounded-xl uppercase text-xs md:text-sm hover:bg-blue-900 transition shadow-lg tracking-widest">Accept & Continue</button>
+                    
+                    <p class="text-xs text-gray-500 mb-6 px-8">
+                        ${currentPillar.fees.bearer ? '* The Database Check fee is non-refundable. The Bearer Run fee is only charged if physical processing is needed.' : '* Bearer fees are non-refundable once the agent is dispatched.'}
+                    </p>
+
+                    <button onclick="loadLeg2()" class="w-full bg-navy text-white font-bold py-5 rounded-xl uppercase text-xs hover:bg-blue-900 transition shadow-lg tracking-widest">Accept & Continue</button>
                 </div>`;
         }
 
@@ -600,3 +662,4 @@
     </script>
 </body>
 </html>
+
