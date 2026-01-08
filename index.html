@@ -54,8 +54,9 @@
         </div>
     </div>
 
-    <header class="bg-white shadow-sm sticky top-0 z-40 no-print transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
+    <header class="bg-white shadow-sm sticky top-0 z-50 no-print transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between relative bg-white z-50">
+            
             <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.reload()">
                 <i data-lucide="shield-check" class="text-gold w-8 h-8 md:w-10 md:h-10"></i>
                 <div>
@@ -63,11 +64,25 @@
                     <p class="text-[10px] md:text-xs uppercase tracking-widest text-gray-400 mt-1">Operations Services</p>
                 </div>
             </div>
+            
             <div class="hidden md:flex gap-8 text-xs md:text-sm font-bold text-navy uppercase tracking-widest items-center">
                 <a href="#serviceDeck" class="hover:text-gold transition py-2">Services</a>
                 <a href="#process" class="hover:text-gold transition py-2">Process</a>
                 <a href="#profile" class="hover:text-gold transition py-2">Profile</a>
                 <a href="contact.html" class="px-5 py-2 border border-navy rounded-full hover:bg-navy hover:text-white transition">Contact</a>
+            </div>
+
+            <button onclick="toggleMobileMenu()" class="md:hidden text-navy p-2 focus:outline-none bg-slate-50 rounded-lg border border-gray-200">
+                <i data-lucide="menu" id="menuIcon" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <div id="mobileDropdown" class="hidden md:hidden absolute top-20 left-0 w-full bg-navy text-white shadow-2xl border-b-4 border-gold z-40 flex flex-col items-center gap-0 transition-all duration-300">
+            <a href="#serviceDeck" onclick="toggleMobileMenu()" class="w-full py-6 text-center border-b border-white/10 hover:bg-white/5 font-bold uppercase tracking-widest text-sm">Services</a>
+            <a href="#process" onclick="toggleMobileMenu()" class="w-full py-6 text-center border-b border-white/10 hover:bg-white/5 font-bold uppercase tracking-widest text-sm">How It Works</a>
+            <a href="#profile" onclick="toggleMobileMenu()" class="w-full py-6 text-center border-b border-white/10 hover:bg-white/5 font-bold uppercase tracking-widest text-sm">Our Profile</a>
+            <div class="w-full py-8 text-center">
+                <a href="contact.html" class="inline-block border border-gold text-gold px-10 py-3 rounded-full hover:bg-gold hover:text-navy transition font-bold uppercase tracking-widest text-xs">Contact Liaison</a>
             </div>
         </div>
     </header>
@@ -101,34 +116,29 @@
         </div>
     </section>
 
-  <section id="serviceDeck" class="py-20 bg-slate-50 no-print overflow-hidden relative">
-    <div class="container mx-auto px-6 md:px-12 relative">
-        <div class="flex justify-between items-end mb-10">
-            <div>
-                <h2 class="font-serif text-3xl md:text-5xl text-navy font-bold">Service Catalog</h2>
-                <p class="text-xs md:text-sm text-gray-400 uppercase tracking-widest mt-3 font-bold">Select your service</p>
+    <section id="serviceDeck" class="py-20 bg-slate-50 no-print overflow-hidden relative">
+        <div class="container mx-auto px-6 md:px-12 relative">
+            <div class="flex justify-between items-end mb-10">
+                <div>
+                    <h2 class="font-serif text-3xl md:text-5xl text-navy font-bold">Service Catalog</h2>
+                    <p class="text-xs md:text-sm text-gray-400 uppercase tracking-widest mt-3 font-bold">Swipe to select your service</p>
+                </div>
+                <div class="hidden md:flex gap-2">
+                    <button onclick="scrollDeck('left')" class="p-3 border border-gray-200 rounded-full hover:bg-navy hover:text-white transition"><i data-lucide="arrow-left" class="w-6 h-6"></i></button>
+                    <button onclick="scrollDeck('right')" class="p-3 border border-gray-200 rounded-full hover:bg-navy hover:text-white transition"><i data-lucide="arrow-right" class="w-6 h-6"></i></button>
+                </div>
             </div>
-            <div class="hidden md:flex gap-2">
-                <button onclick="scrollDeck('left')" class="p-3 border border-gray-200 rounded-full hover:bg-navy hover:text-white transition"><i data-lucide="arrow-left" class="w-6 h-6"></i></button>
-                <button onclick="scrollDeck('right')" class="p-3 border border-gray-200 rounded-full hover:bg-navy hover:text-white transition"><i data-lucide="arrow-right" class="w-6 h-6"></i></button>
-            </div>
-        </div>
-        
-        <div id="deckContainer" class="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-8 pb-10 px-2 no-scrollbar scroll-smooth">
-            </div>
+            
+            <div id="deckContainer" class="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-8 pb-10 px-2 no-scrollbar scroll-smooth">
+                </div>
 
-        <div class="md:hidden absolute right-0 top-1/2 -translate-y-1/2 z-10 pointer-events-none animate-bounce">
-            <div class="bg-white/80 p-2 rounded-l-lg shadow-lg backdrop-blur-sm text-navy">
-                <i data-lucide="chevron-right" class="w-6 h-6"></i>
+            <div class="md:hidden absolute right-0 top-1/2 -translate-y-1/2 z-10 pointer-events-none animate-bounce">
+                <div class="bg-white/80 p-2 rounded-l-lg shadow-lg backdrop-blur-sm text-navy">
+                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                </div>
             </div>
         </div>
-
-        <div class="md:hidden flex justify-center items-center gap-2 text-xs font-bold text-gray-400 uppercase tracking-widest animate-pulse mt-2">
-            <i data-lucide="move-horizontal" class="w-4 h-4 text-gold"></i>
-            <span>Swipe to Explore</span>
-        </div>
-    </div>
-</section>
+    </section>
 
     <section id="process" class="py-20 md:py-32 bg-white no-print">
         <div class="container mx-auto px-6 md:px-12">
@@ -289,7 +299,7 @@
         <div class="container mx-auto px-6">
             <div class="flex justify-center items-center gap-2 mb-8 opacity-50">
                 <i data-lucide="shield" class="w-5 h-5"></i>
-                <span class="text-xs md:text-sm font-bold uppercase tracking-widest">Docu-Hub Operations</span>
+                <span class="text-xs md:text-sm font-bold uppercase tracking-widest">Docu-Hub Operations Services</span>
             </div>
             
             <div class="flex flex-wrap justify-center gap-6 md:gap-10 mb-8 text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">
@@ -370,27 +380,22 @@
         let currentPillar = null;
         let signaturePad = null;
 
-     function renderDeck() {
+        function renderDeck() {
             const container = document.getElementById('deckContainer');
             container.innerHTML = PILLARS.map(p => `
                 <div class="min-w-[80vw] md:min-w-[360px] snap-center bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-300 group flex flex-col relative">
-                    
                     <div class="h-48 md:h-48 overflow-hidden relative bg-navy select-none">
                         <img src="${p.img}" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-700 pointer-events-none" onerror="this.src='https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80'">
                         <div class="absolute inset-0 bg-gradient-to-t from-navy to-transparent"></div>
                     </div>
-                    
                     <div class="p-8 flex-1 flex flex-col justify-between">
                         <div>
                             <h3 class="font-serif text-2xl text-navy font-bold mb-3">${p.name}</h3>
                             <p class="text-sm text-gray-500 leading-relaxed line-clamp-3 select-none">${p.desc}</p>
                         </div>
-                        
                         <button onclick="${p.isLink ? `window.open('${p.url}', '_top')` : `startMission('${p.id}')`}" 
                                 class="pt-6 border-t border-gray-100 flex justify-between items-center mt-4 w-full text-left focus:outline-none hover:bg-slate-50 transition-colors p-2 rounded-b-xl cursor-pointer">
-                            
                             <span class="text-xs font-bold text-gold uppercase tracking-widest group-hover:text-navy transition">${p.isLink ? 'RESOURCE' : 'START INTAKE'}</span>
-                            
                             <div class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center border border-gray-100 group-hover:bg-navy group-hover:text-white transition shadow-sm">
                                 <i data-lucide="arrow-right" class="w-5 h-5"></i>
                             </div>
@@ -400,6 +405,7 @@
             `).join('');
             lucide.createIcons();
         }
+
         function scrollDeck(direction) {
             const deck = document.getElementById('deckContainer');
             const scrollAmount = 340;
@@ -416,6 +422,19 @@
 
         function exitMission() { document.getElementById('missionControl').classList.add('hidden'); }
         function updateProgress(step) { document.getElementById('progressBar').style.width = `${step * 25}%`; }
+
+        // --- MOBILE MENU LOGIC ---
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileDropdown');
+            const icon = document.getElementById('menuIcon');
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')){
+                icon.setAttribute('data-lucide', 'menu');
+            } else {
+                icon.setAttribute('data-lucide', 'x');
+            }
+            lucide.createIcons();
+        }
 
         function loadLeg1() {
             updateProgress(1);
@@ -510,7 +529,6 @@
 
             const canvas = document.getElementById('signatureCanvas');
             signaturePad = new SignaturePad(canvas, { penColor: 'rgb(0, 51, 102)', throttle: 0 });
-            
             lucide.createIcons();
 
             function resizeCanvas() {
@@ -556,6 +574,3 @@
     </script>
 </body>
 </html>
-
-
-
