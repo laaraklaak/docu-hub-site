@@ -35,13 +35,40 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+        /* CLEAN PRINT STYLES (No Ruled Lines) */
         @media print {
             html, body { height: auto !important; overflow: visible !important; background: white !important; }
             body * { visibility: hidden; }
             .no-print { display: none !important; }
-            #receiptModal { display: block !important; position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999; }
-            #receiptArea, #receiptArea * { visibility: visible !important; position: relative !important; margin: 0 !important; border: 2px solid #003366 !important; }
-            #receiptArea button { display: none !important; }
+            
+            #receiptModal { 
+                display: flex !important; 
+                align-items: flex-start !important; 
+                position: absolute !important; 
+                top: 0 !important; 
+                left: 0 !important; 
+                width: 100% !important; 
+                height: auto !important;
+                z-index: 9999; 
+                background: white !important;
+            }
+            
+            #receiptArea { 
+                visibility: visible !important; 
+                position: relative !important; 
+                margin: 0 auto !important; 
+                width: 100% !important;
+                max-width: 600px !important;
+                border: none !important; 
+                box-shadow: none !important;
+            }
+            
+            #receiptArea * { 
+                visibility: visible !important; 
+                border-color: #e5e7eb !important; 
+            }
+            
+            #receiptActions { display: none !important; }
         }
     </style>
 </head>
@@ -55,12 +82,12 @@
     </div>
 
     <header class="bg-white shadow-sm sticky top-0 z-50 no-print transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between relative bg-white z-50">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 h-20 md:h-24 flex items-center justify-between relative bg-white z-50">
             
-            <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.reload()">
-                <i data-lucide="shield-check" class="text-gold w-8 h-8 md:w-10 md:h-10"></i>
+            <div class="flex items-center gap-4 cursor-pointer" onclick="window.location.reload()">
+                <i data-lucide="shield-check" class="text-gold w-10 h-10 md:w-12 md:h-12"></i>
                 <div>
-                    <h1 class="font-serif text-2xl md:text-3xl text-navy font-bold italic leading-none">Docu-Hub</h1>
+                    <h1 class="font-serif text-3xl md:text-5xl text-navy font-bold italic leading-none">Docu-Hub</h1>
                     <p class="text-[10px] md:text-xs uppercase tracking-widest text-gray-400 mt-1">Operations Services</p>
                 </div>
             </div>
@@ -93,22 +120,22 @@
             <div class="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/80 to-navy/30"></div>
         </div>
         <div class="relative z-10 container mx-auto px-6 md:px-12">
-            <div class="max-w-xl md:max-w-3xl fade-in">
+            <div class="max-w-lg fade-in">
                 <div class="inline-block bg-gold/20 text-gold text-[10px] md:text-xs font-bold px-3 py-1 rounded mb-4 border border-gold/30 uppercase tracking-widest">Authorized Compliance Bearer</div>
                 
-                <h1 class="font-serif text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6 text-white">
+                <h1 class="font-serif text-3xl md:text-4xl font-normal leading-tight mb-4 text-white">
                     Institutional Trust,<br><span class="text-gold italic">Privately Delivered.</span>
                 </h1>
                 
-                <p class="text-sm sm:text-base md:text-xl text-gray-200 mb-10 leading-relaxed max-w-lg md:max-w-2xl">
+                <p class="text-sm md:text-base text-gray-200 mb-8 leading-relaxed">
                     We bridge the gap between citizen and state. Skip the government lines while we handle your sensitive applications with forensic precision.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <button onclick="document.getElementById('serviceDeck').scrollIntoView({behavior: 'smooth'})" class="bg-gold text-navy px-10 py-5 rounded font-bold hover:bg-white transition uppercase text-xs md:text-sm tracking-widest shadow-2xl shadow-gold/20 flex items-center justify-center gap-3">
+                    <button onclick="document.getElementById('serviceDeck').scrollIntoView({behavior: 'smooth'})" class="bg-gold text-navy px-8 py-4 rounded font-bold hover:bg-white transition uppercase text-xs tracking-widest shadow-2xl shadow-gold/20 flex items-center justify-center gap-3">
                         Start Application <i data-lucide="arrow-down" class="w-4 h-4"></i>
                     </button>
-                    <button onclick="document.getElementById('process').scrollIntoView({behavior: 'smooth'})" class="bg-transparent border border-white text-white px-10 py-5 rounded font-bold hover:bg-white hover:text-navy transition uppercase text-xs md:text-sm tracking-widest flex items-center justify-center gap-3">
+                    <button onclick="document.getElementById('process').scrollIntoView({behavior: 'smooth'})" class="bg-transparent border border-white text-white px-8 py-4 rounded font-bold hover:bg-white hover:text-navy transition uppercase text-xs tracking-widest flex items-center justify-center gap-3">
                         How It Works <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </button>
                 </div>
@@ -116,39 +143,14 @@
         </div>
     </section>
 
-    <div class="relative z-30 px-4 md:px-12 -mt-12 md:-mt-20 no-print">
-        <div class="max-w-5xl mx-auto bg-white rounded-lg shadow-2xl border-l-4 md:border-l-8 border-gold p-4 md:p-8 flex flex-col md:flex-row items-center gap-3 md:gap-6">
-            
-            <div class="flex items-center gap-4 w-full md:flex-1">
-                <div class="bg-navy/5 p-3 rounded-full shrink-0">
-                    <i data-lucide="alert-triangle" class="w-5 h-5 md:w-8 md:h-8 text-navy"></i>
-                </div>
-                <div class="text-left">
-                    <h3 class="text-navy font-bold uppercase tracking-widest text-xs md:text-base mb-0.5">Don't Drive Blind.</h3>
-                    <p class="text-gray-500 text-[10px] md:text-sm leading-tight">Outstanding tickets turn into warrants. Check your status.</p>
-                </div>
-            </div>
-            
-            <button onclick="startMission('taj')" class="w-full md:w-auto bg-navy text-white px-6 py-3 rounded font-bold uppercase text-[10px] md:text-xs tracking-widest hover:bg-gold hover:text-navy transition shadow-lg flex items-center justify-center gap-2 shrink-0">
-                Run Clearance Check <i data-lucide="search" class="w-3 h-3 md:w-4 md:h-4"></i>
-            </button>
-        </div>
-    </div>
-
     <section id="serviceDeck" class="pt-24 pb-20 bg-slate-50 no-print overflow-hidden relative">
         <div class="container mx-auto px-6 md:px-12 relative">
-            <div class="flex justify-between items-end mb-10">
-                <div>
-                    <h2 class="font-serif text-3xl md:text-5xl text-navy font-bold">Service Catalog</h2>
-                    <p class="text-xs md:text-sm text-gray-400 uppercase tracking-widest mt-3 font-bold">Swipe to select your service</p>
-                </div>
-                <div class="hidden md:flex gap-2">
-                    <button onclick="scrollDeck('left')" class="p-3 border border-gray-200 rounded-full hover:bg-navy hover:text-white transition"><i data-lucide="arrow-left" class="w-6 h-6"></i></button>
-                    <button onclick="scrollDeck('right')" class="p-3 border border-gray-200 rounded-full hover:bg-navy hover:text-white transition"><i data-lucide="arrow-right" class="w-6 h-6"></i></button>
-                </div>
+            <div class="mb-10 text-center md:text-left">
+                <h2 class="font-serif text-3xl md:text-5xl text-navy font-bold">Service Catalog</h2>
+                <p class="text-xs md:text-sm text-gray-400 uppercase tracking-widest mt-3 font-bold">Choose your request below</p>
             </div>
             
-            <div id="deckContainer" class="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-8 pb-10 px-2 no-scrollbar scroll-smooth">
+            <div id="deckContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
                 </div>
         </div>
     </section>
@@ -331,26 +333,55 @@
     </section>
 
     <div id="receiptModal" class="fixed inset-0 flex items-center justify-center bg-white z-[300] hidden overflow-y-auto">
-        <div id="receiptArea" class="bg-white max-w-lg w-full p-8 md:p-12 border-t-8 border-navy shadow-2xl relative text-center">
-            <div class="w-16 h-16 md:w-20 md:h-20 bg-navy text-gold flex items-center justify-center rounded text-2xl md:text-4xl font-bold mx-auto mb-6">D</div>
-            <h2 class="text-2xl md:text-3xl font-bold text-navy uppercase tracking-tight">Transmission Receipt</h2>
-            <div id="receiptRef" class="my-6 text-3xl md:text-5xl font-bold text-navy font-mono"></div>
-            <div class="space-y-4 text-sm md:text-lg text-gray-700 border-b pb-8 mb-8 text-left">
-                <div class="flex justify-between"><span>Applicant:</span> <span id="receiptName" class="font-bold"></span></div>
-                <div class="flex justify-between"><span>Service:</span> <span id="receiptService" class="font-bold"></span></div>
+        <div id="receiptArea" class="bg-white max-w-lg w-full mx-auto p-12 relative text-left">
+            
+            <div class="flex justify-between items-center mb-8 border-b border-gray-100 pb-6">
+                <div class="text-left">
+                    <h1 class="font-serif text-2xl text-navy font-bold italic">Docu-Hub</h1>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-400">Operations Services</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-xs font-bold text-gray-300 uppercase tracking-widest">Receipt</div>
+                    <div id="dateStamp" class="text-xs text-navy font-mono mt-1"></div>
+                </div>
             </div>
-            <div class="bg-gold/10 p-6 rounded-xl border border-gold/30 mb-8">
-                <p class="text-navy text-xs md:text-sm font-bold uppercase tracking-widest mb-2">Next Step</p>
-                <span class="text-sm md:text-base">Please have your physical documents ready. Expect a message from our 
-                <span class="text-navy font-bold">Concierge Desk</span> within 2 hours.</span>
+
+            <div class="text-center py-8">
+                <div class="inline-block px-4 py-1 rounded-full bg-green-50 text-emerald-700 text-xs font-bold uppercase tracking-widest mb-4">Transmission Successful</div>
+                <div id="receiptRef" class="text-4xl font-mono font-bold text-navy mb-2 tracking-tighter"></div>
+                <p class="text-xs text-gray-400 uppercase tracking-widest">Transaction Reference</p>
             </div>
-            <button onclick="window.print()" class="w-full bg-navy text-white font-bold py-4 rounded uppercase text-xs md:text-sm mb-4 tracking-widest">Save Receipt</button>
-            <button onclick="window.location.reload()" class="w-full text-gray-400 font-bold text-xs md:text-sm uppercase underline">Close Portal</button>
+
+            <div class="bg-slate-50 rounded-xl p-6 mb-8">
+                <div class="grid grid-cols-2 gap-y-4 text-sm">
+                    <div class="text-gray-500 text-xs uppercase font-bold">Applicant</div>
+                    <div id="receiptName" class="text-navy font-bold text-right"></div>
+                    
+                    <div class="text-gray-500 text-xs uppercase font-bold">Service Type</div>
+                    <div id="receiptService" class="text-navy font-bold text-right"></div>
+                    
+                    <div class="text-gray-500 text-xs uppercase font-bold">Status</div>
+                    <div class="text-navy font-bold text-right">Pending Bearer</div>
+                </div>
+            </div>
+
+            <div class="text-center border-t border-gray-100 pt-6">
+                <p class="text-xs text-navy font-bold uppercase tracking-widest mb-2">Next Step</p>
+                <p class="text-xs text-gray-500 leading-relaxed">
+                    Please have your physical documents ready.<br>
+                    Our Concierge Desk will contact you within 2 hours.
+                </p>
+            </div>
+
+            <div id="receiptActions" class="mt-8 space-y-3">
+                <button onclick="window.print()" class="w-full bg-navy text-white font-bold py-4 rounded uppercase text-xs md:text-sm tracking-widest hover:bg-gold hover:text-navy transition">Save Receipt</button>
+                <button onclick="window.location.reload()" class="w-full text-gray-400 font-bold text-xs md:text-sm uppercase underline">Close Portal</button>
+            </div>
         </div>
     </div>
-<div id="aboutDossier" class="fixed inset-0 bg-white z-[60] hidden overflow-y-auto no-print">
+
+    <div id="aboutDossier" class="fixed inset-0 bg-white z-[60] hidden overflow-y-auto no-print">
         <div class="max-w-4xl mx-auto min-h-screen bg-white shadow-2xl flex flex-col relative">
-            
             <div class="bg-navy p-6 md:p-8 text-white sticky top-0 z-50 shadow-md flex justify-between items-center">
                 <div class="flex items-center gap-3">
                     <i data-lucide="shield-check" class="text-gold w-6 h-6"></i>
@@ -360,9 +391,7 @@
                     Close File <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
-
             <div class="p-8 md:p-16 space-y-12">
-                
                 <div class="flex flex-col md:flex-row gap-8 items-start border-b border-gray-100 pb-12">
                     <div class="w-32 h-32 md:w-40 md:h-40 bg-gray-200 rounded-full overflow-hidden shrink-0 border-4 border-white shadow-lg">
                          <img src="assets/laura-clarke.jpg" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80';">
@@ -371,16 +400,11 @@
                         <h3 class="font-serif text-3xl text-navy font-bold mb-2">Laura Clarke</h3>
                         <p class="text-xs font-bold text-gold uppercase tracking-widest mb-6">Principal Liaison & Proprietor</p>
                         <div class="prose prose-sm text-gray-600 leading-relaxed space-y-4 font-poppins">
-                            <p>
-                                <strong>Your privacy is my currency.</strong> With over 15 years of experience in high-level financial management (including tenure at NCB), I understand that handling sensitive documents requires more than just a courier service—it requires a fiduciary level of care.
-                            </p>
-                            <p>
-                                I established Docu-Hub to provide professionals and busy citizens with a secure, "white-glove" alternative to the chaos of government lines. My background in banking compliance ensures that your TRNs, Passports, and Titles are handled with strict chain-of-custody protocols from pick-up to return.
-                            </p>
+                            <p><strong>Your privacy is my currency.</strong> With over 15 years of experience in high-level financial management (including tenure at NCB), I understand that handling sensitive documents requires more than just a courier service—it requires a fiduciary level of care.</p>
+                            <p>I established Docu-Hub to provide professionals and busy citizens with a secure, "white-glove" alternative to the chaos of government lines. My background in banking compliance ensures that your TRNs, Passports, and Titles are handled with strict chain-of-custody protocols from pick-up to return.</p>
                         </div>
                     </div>
                 </div>
-
                 <div class="bg-slate-50 p-8 md:p-10 rounded-xl border border-gray-200">
                     <div class="flex items-center gap-3 mb-6">
                         <i data-lucide="check-circle" class="text-navy w-6 h-6"></i>
@@ -389,31 +413,22 @@
                     <div class="grid md:grid-cols-2 gap-8">
                         <div>
                             <h4 class="font-bold text-navy text-sm uppercase mb-2">1. The Forensic Pre-Audit</h4>
-                            <p class="text-xs md:text-sm text-gray-600 leading-relaxed">
-                                Most government rejections happen due to simple errors. We don't just drop off your papers; we <strong>audit</strong> them first. If a signature is missing or a date is wrong, we catch it <em>before</em> we stand in line.
-                            </p>
+                            <p class="text-xs md:text-sm text-gray-600 leading-relaxed">Most government rejections happen due to simple errors. We don't just drop off your papers; we <strong>audit</strong> them first.</p>
                         </div>
                         <div>
                             <h4 class="font-bold text-navy text-sm uppercase mb-2">2. Secure Chain of Custody</h4>
-                            <p class="text-xs md:text-sm text-gray-600 leading-relaxed">
-                                Your documents travel in locked, tamper-evident satchels. Unlike ride-share deliveries, your sensitive data is never passed to third-party contractors. It stays with authorized Docu-Hub personnel.
-                            </p>
+                            <p class="text-xs md:text-sm text-gray-600 leading-relaxed">Your documents travel in locked, tamper-evident satchels. Unlike ride-share deliveries, your sensitive data is never passed to third-party contractors.</p>
                         </div>
                         <div>
                             <h4 class="font-bold text-navy text-sm uppercase mb-2">3. Digital Transparency</h4>
-                            <p class="text-xs md:text-sm text-gray-600 leading-relaxed">
-                                You are never left guessing. You receive digital receipts upon pickup, real-time status updates via WhatsApp during processing, and immediate proof of payment once the transaction is complete.
-                            </p>
+                            <p class="text-xs md:text-sm text-gray-600 leading-relaxed">You receive digital receipts upon pickup, real-time status updates via WhatsApp during processing, and immediate proof of payment.</p>
                         </div>
                         <div>
                             <h4 class="font-bold text-navy text-sm uppercase mb-2">4. Insider Knowledge</h4>
-                            <p class="text-xs md:text-sm text-gray-600 leading-relaxed">
-                                We know the specific requirements of the St. Catherine and Kingston tax offices. We know the peak hours to avoid and the specific officers to speak with to resolve complex issues quickly.
-                            </p>
+                            <p class="text-xs md:text-sm text-gray-600 leading-relaxed">We know the specific requirements of the St. Catherine and Kingston tax offices, the peak hours to avoid, and the protocol to resolve issues quickly.</p>
                         </div>
                     </div>
                 </div>
-
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                     <div class="p-4 border border-gray-100 rounded bg-white shadow-sm">
                         <i data-lucide="lock" class="w-6 h-6 text-gold mx-auto mb-2"></i>
@@ -431,24 +446,60 @@
                         <p class="text-[10px] text-gray-500">Physical Office in Linstead</p>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-              
+
     <script>
         lucide.createIcons();
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx_KrRuLySSz7_pj5COxawTtcDPAF9gkQcRikMuZCTn5jnxXqkrke36HxFsuqStCOqjuw/exec"; 
 
         const PILLARS = [
-            { id: 'pica', name: 'PICA Liaison', desc: 'Passport Renewals & Replacements.', img: 'assets/pica.png', fees: { pro: 3500, gov: 6500 }, reqs: ['Expired Passport', 'Birth Certificate'] },
-            { id: 'jcf', name: 'JCF Records', desc: 'Police Certificates & Fingerprinting.', img: 'assets/records.png', fees: { pro: 3500, gov: 3000 }, reqs: ['Valid ID', 'TRN'] },
-            { id: 'rgd', name: 'RGD Registry', desc: 'Birth, Marriage & Death Certificates.', img: 'assets/rgd.png', fees: { pro: 3500, gov: 2500 }, reqs: ['Application Detail'] },
-            { id: 'taj', name: 'Traffic & Licensing', desc: 'Ticket Checks, Warrants & Fitness Fees.', img: 'assets/taj.png', fees: { check: 1500, bearer: 2500, gov: 'Variable' }, reqs: ['TRN', 'Vehicle Plate #'] },
-            { id: 'corp', name: 'Corporate Bulk', desc: 'Expedited processing for entities.', img: 'assets/corporate.png', fees: { pro: 'Retainer', gov: 'At Cost' }, reqs: ['Company Letterhead'] },
-            { id: 'land', name: 'Land & Research', desc: 'Title Searches & Case Research.', img: 'assets/consult.png', fees: { check: 1500, bearer: 1500, gov: 2000 }, reqs: ['Vol/Folio Numbers'] },
-            { id: 'replace', name: 'Lost Documents', desc: 'Recovery of lost identification.', img: 'assets/replace.png', fees: { pro: 3500, gov: 4000 }, reqs: ['Police Report Ref'] },
-            { id: 'insights', name: 'Insights Journal', desc: 'Case Studies: Read how we solve complex bureaucratic roadblocks.', img: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80', isLink: true, url: 'insights.html' }
+            { 
+                id: 'pica', 
+                name: 'PICA Liaison', 
+                desc: 'Passport Renewals & Replacements.', 
+                img: 'assets/pica.png', 
+                fees: { pro: 3500, gov: 6500 }, 
+                reqs: ['Expired Passport', 'Birth Certificate'],
+                btnText: 'SELECT SERVICE'
+            },
+            { 
+                id: 'jcf', 
+                name: 'JCF Records', 
+                desc: 'Police Records requests.', 
+                img: 'assets/records.png', 
+                fees: { pro: 3500, gov: 3000 }, 
+                reqs: ['Valid ID', 'TRN'],
+                btnText: 'SELECT SERVICE'
+            },
+            { 
+                id: 'rgd', 
+                name: 'RGD Registry', 
+                desc: 'Birth, Marriage & Death Certificates.', 
+                img: 'assets/rgd.png', 
+                fees: { pro: 3500, gov: 2500 }, 
+                reqs: ['Application Detail'],
+                btnText: 'SELECT SERVICE'
+            },
+            { 
+                id: 'taj', 
+                name: 'Traffic & Licensing', 
+                desc: 'Traffic ticket checks and payments, Fitness fees, Motor vehicle lic. renewals.', 
+                img: 'assets/taj.png', 
+                fees: { check: 1500, bearer: 2500, gov: 'Variable' }, 
+                reqs: ['TRN', 'Vehicle Plate #'],
+                btnText: 'SELECT SERVICE'
+            },
+            { 
+                id: 'other', 
+                name: 'Other Services', 
+                desc: 'Searching for something else? Contact us.', 
+                img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80', 
+                isLink: true, 
+                url: 'contact.html',
+                btnText: 'CONTACT US'
+            }
         ];
 
         let currentPillar = null;
@@ -457,19 +508,19 @@
         function renderDeck() {
             const container = document.getElementById('deckContainer');
             container.innerHTML = PILLARS.map(p => `
-                <div class="min-w-[80vw] md:min-w-[360px] snap-center bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-300 group flex flex-col relative">
-                    <div class="h-48 md:h-48 overflow-hidden relative bg-navy select-none">
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-300 group flex flex-col relative hover:-translate-y-1">
+                    <div class="h-48 overflow-hidden relative bg-navy select-none">
                         <img src="${p.img}" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-700 pointer-events-none" onerror="this.src='https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80'">
                         <div class="absolute inset-0 bg-gradient-to-t from-navy to-transparent"></div>
                     </div>
                     <div class="p-8 flex-1 flex flex-col justify-between">
                         <div>
                             <h3 class="font-serif text-2xl text-navy font-bold mb-3">${p.name}</h3>
-                            <p class="text-sm text-gray-500 leading-relaxed line-clamp-3 select-none">${p.desc}</p>
+                            <p class="text-sm text-gray-500 leading-relaxed mb-6">${p.desc}</p>
                         </div>
                         <button onclick="${p.isLink ? `window.open('${p.url}', '_top')` : `startMission('${p.id}')`}" 
-                                class="pt-6 border-t border-gray-100 flex justify-between items-center mt-4 w-full text-left focus:outline-none hover:bg-slate-50 transition-colors p-2 rounded-b-xl cursor-pointer">
-                            <span class="text-xs font-bold text-gold uppercase tracking-widest group-hover:text-navy transition">${p.isLink ? 'RESOURCE' : 'START INTAKE'}</span>
+                                class="pt-6 border-t border-gray-100 flex justify-between items-center w-full text-left focus:outline-none hover:bg-slate-50 transition-colors p-2 rounded-b-xl cursor-pointer">
+                            <span class="text-xs font-bold text-gold uppercase tracking-widest group-hover:text-navy transition">${p.btnText}</span>
                             <div class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center border border-gray-100 group-hover:bg-navy group-hover:text-white transition shadow-sm">
                                 <i data-lucide="arrow-right" class="w-5 h-5"></i>
                             </div>
@@ -478,13 +529,6 @@
                 </div>
             `).join('');
             lucide.createIcons();
-        }
-
-        function scrollDeck(direction) {
-            const deck = document.getElementById('deckContainer');
-            const scrollAmount = 340;
-            if(direction === 'left') deck.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            else deck.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         }
 
         function startMission(id) {
@@ -509,7 +553,6 @@
             lucide.createIcons();
         }
 
-        // NEW: DOSSIER FUNCTIONS
         function openAboutDossier() {
             document.getElementById('aboutDossier').classList.remove('hidden');
             document.body.style.overflow = 'hidden'; 
@@ -521,6 +564,7 @@
             document.body.style.overflow = 'auto';
         }
 
+        // --- INTAKE LEG 1: FEES & DISCLAIMERS ---
         function loadLeg1() {
             updateProgress(1);
             let feeRows = '';
@@ -551,6 +595,7 @@
             document.getElementById('missionContent').innerHTML = `
                 <div class="fade-in max-w-2xl mx-auto text-center pt-8">
                     <h2 class="font-serif text-3xl text-navy mb-6 font-bold italic">Service Fee Breakdown</h2>
+                    
                     <div class="bg-navy text-white p-10 rounded-3xl shadow-xl mb-8 text-left relative overflow-hidden">
                         <div class="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full blur-2xl -mr-10 -mt-10"></div>
                         <div class="relative z-10">
@@ -561,11 +606,22 @@
                             </div>
                         </div>
                     </div>
-                    <p class="text-xs text-gray-500 mb-6 px-8">
-                        ${currentPillar.fees.bearer ? '* The Database Check fee is non-refundable. The Bearer Run fee is only charged if physical processing is needed.' : '* Bearer fees are non-refundable once the agent is dispatched.'}
-                    </p>
+
+                    <div class="bg-blue-50 border-l-4 border-navy p-4 mb-8 mx-auto max-w-xl text-left rounded-r-lg shadow-sm">
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="info" class="text-navy w-5 h-5 mt-0.5 shrink-0"></i>
+                            <div>
+                                <p class="text-xs font-bold text-navy uppercase mb-1 tracking-widest">Financial Notice</p>
+                                <p class="text-xs text-slate-700 leading-relaxed font-medium">
+                                    ${currentPillar.fees.bearer ? 'The Database Check fee is non-refundable. Bearer fees are only charged if physical processing proceeds.' : 'Bearer service fees become non-refundable immediately upon agent dispatch.'}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
                     <button onclick="loadLeg2()" class="w-full bg-navy text-white font-bold py-5 rounded-xl uppercase text-xs hover:bg-blue-900 transition shadow-lg tracking-widest">Accept & Continue</button>
                 </div>`;
+            lucide.createIcons();
         }
 
         function loadLeg2() {
@@ -606,6 +662,7 @@
             };
         }
 
+        // --- INTAKE LEG 4: SIGNATURE & UPLOAD ---
         function loadLeg4() {
             updateProgress(4);
             document.getElementById('missionContent').innerHTML = `
@@ -626,14 +683,22 @@
                         </div>
                         <div><label class="text-[10px] md:text-xs uppercase font-bold text-gray-400 mb-1 block pl-1">WhatsApp #</label><input type="tel" id="contactNum" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:border-gold focus:bg-white transition text-base" required></div>
                     </div>
+                    
                     <div class="pt-4">
-                        <label class="text-[10px] md:text-xs uppercase font-bold text-gray-400 mb-1 block pl-1">Digital Signature</label>
+                        <div class="flex justify-between items-end mb-1">
+                            <label class="text-[10px] md:text-xs uppercase font-bold text-gray-400 block pl-1">Digital Signature</label>
+                            <span class="text-[9px] text-emerald-600 font-bold flex items-center gap-1"><i data-lucide="cloud-upload" class="w-3 h-3"></i> Uploads to Drive</span>
+                        </div>
                         <div class="relative border-2 border-dashed border-gray-300 rounded-xl bg-gray-50 overflow-hidden h-32 md:h-40 hover:border-navy transition">
                             <canvas id="signatureCanvas" class="relative w-full h-full cursor-crosshair touch-none"></canvas>
-                            <div class="absolute bottom-2 right-2 text-[10px] text-gray-300 pointer-events-none">Draw Here</div>
+                            <div class="absolute bottom-2 right-2 text-[10px] text-gray-300 pointer-events-none">Sign Here</div>
                         </div>
-                        <button type="button" onclick="signaturePad.clear()" class="text-[10px] md:text-xs text-gray-400 underline mt-1 ml-1 hover:text-red-500">Clear Signature</button>
+                        <div class="flex justify-between mt-1">
+                            <button type="button" onclick="signaturePad.clear()" class="text-[10px] md:text-xs text-gray-400 underline hover:text-red-500">Clear</button>
+                            <span class="text-[9px] text-gray-400 italic">Signature stored securely for future auth.</span>
+                        </div>
                     </div>
+
                     <button type="submit" id="submitBtn" class="w-full bg-navy text-white font-bold py-5 rounded-xl uppercase text-xs md:text-sm shadow-xl tracking-widest hover:bg-gold hover:text-navy transition mt-4">Transmit Application</button>
                 </form>`;
 
@@ -660,6 +725,7 @@
         async function processSubmission() {
             const btn = document.getElementById('submitBtn'); btn.innerHTML = "Encrypting..."; btn.disabled = true;
             document.getElementById('statusOverlay').classList.remove('hidden');
+            
             const payload = { 
                 firstName: document.getElementById('fname').value,
                 lastName: document.getElementById('lname').value,
@@ -674,6 +740,12 @@
                 document.getElementById('statusOverlay').classList.add('hidden');
                 document.getElementById('missionControl').classList.add('hidden');
                 document.getElementById('receiptRef').innerText = 'DH-' + Math.floor(Math.random()*9000 + 1000);
+                
+                const now = new Date();
+                const dateStr = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+                const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                document.getElementById('dateStamp').innerText = `${dateStr} • ${timeStr}`;
+
                 document.getElementById('receiptName').innerText = payload.firstName + " " + payload.lastName;
                 document.getElementById('receiptService').innerText = payload.serviceType;
                 document.getElementById('receiptModal').classList.remove('hidden');
@@ -684,4 +756,3 @@
     </script>
 </body>
 </html>
-
