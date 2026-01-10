@@ -695,10 +695,70 @@
             };
         }
 
-        async function processSubmission() {
-            const btn = document.getElementById('submitBtn'); btn.innerHTML = "Encrypting..."; btn.disabled = true;
+      async function processSubmission() {
+            const btn = document.getElementById('submitBtn'); 
+            btn.innerHTML = "Encrypting..."; 
+            btn.disabled = true;
             document.getElementById('statusOverlay').classList.remove('hidden');
             
+            // 1. CONSTRUCT THE DATA PACKET
+            const payload = { 
+                name: document.getElementById('fname').value + " " + document.getElementById('lname').value,
+                firstName: document.getElementById('fname').value,
+                lastName: document.getElementById('lname').value,
+                email: document.getElementById('emailContact').value, // ✅ Captures Email
+                phone: document.getElementById('contactNum').value, 
+                service: currentPillar.name, 
+                serviceType: currentPillar.name,
+                trn: document.getElementById('trn').value, 
+                fileData: "Physical Handover Required", 
+                signature: signaturePad.toDataURL() 
+            };
+
+            try {
+                // 2. SEND TO GOOGLE & WAIT FOR REPLY
+                // Note: We removed 'mode: no-cors' so we can read the answer
+                const response = await fetch(SCRIPT_URL, { 
+                    method: 'POST', 
+                    body: JSON.stringify(payload) 
+                });
+
+                // 3. READ THE REAL ID FROM THE SCRIPT
+                const result = await response.json(); 
+
+                // 4. HIDE LOADING SCREENS
+                document.getElementById('statusOverlay').classList.add('hidden');
+                document.getElementById('missionControl').classList.add('hidden');
+
+                // 5. UPDATE RECEIPT WITH REAL ID
+                if (result.status === 'success') {
+                    // This shows "DH-1005" (The real database ID)
+                    document.getElementById('receiptRef').innerText = result.id; 
+                } else {
+                    document.getElementById('receiptRef').innerText = "PENDING";
+                }
+                
+                // 6. FILL IN THE REST OF THE RECEIPT
+                const now = new Date();
+                const dateStr = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+                const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                document.getElementById('dateStamp').innerText = `${dateStr} • ${timeStr}`;
+
+                document.getElementById('receiptName').innerText = payload.firstName + " " + payload.lastName;
+                document.getElementById('receiptService').innerText = payload.serviceType;
+                
+                // SHOW THE RECEIPT
+                document.getElementById('receiptModal').classList.remove('hidden');
+                lucide.createIcons();
+
+            } catch (err) { 
+                console.error(err);
+                alert("Connectivity Error. Please try again."); 
+                btn.disabled = false; 
+                btn.innerHTML = "Transmit Application"; // Reset button text
+                document.getElementById('statusOverlay').classList.add('hidden');
+            }
+        }
             // CONSTRUCT PAYLOAD MATCHING GOOGLE SCRIPT REQUIREMENTS
             const payload = { 
                 name: document.getElementById('fname').value + " " + document.getElementById('lname').value, // Combine for script
@@ -735,5 +795,6 @@
     </script>
 </body>
 </html>
+
 
 
