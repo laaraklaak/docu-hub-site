@@ -695,7 +695,7 @@
             };
         }
 
-      async function processSubmission() {
+        async function processSubmission() {
             const btn = document.getElementById('submitBtn'); 
             btn.innerHTML = "Encrypting..."; 
             btn.disabled = true;
@@ -717,7 +717,6 @@
 
             try {
                 // 2. SEND TO GOOGLE & WAIT FOR REPLY
-                // Note: We removed 'mode: no-cors' so we can read the answer
                 const response = await fetch(SCRIPT_URL, { 
                     method: 'POST', 
                     body: JSON.stringify(payload) 
@@ -759,42 +758,8 @@
                 document.getElementById('statusOverlay').classList.add('hidden');
             }
         }
-            // CONSTRUCT PAYLOAD MATCHING GOOGLE SCRIPT REQUIREMENTS
-            const payload = { 
-                name: document.getElementById('fname').value + " " + document.getElementById('lname').value, // Combine for script
-                firstName: document.getElementById('fname').value, // Keep individual fields just in case
-                lastName: document.getElementById('lname').value,
-                email: document.getElementById('emailContact').value, // NEW EMAIL FIELD
-                phone: document.getElementById('contactNum').value, 
-                service: currentPillar.name, // Map to 'service' for script
-                serviceType: currentPillar.name, // Keep existing key
-                trn: document.getElementById('trn').value, 
-                fileData: "Physical Handover Required", 
-                signature: signaturePad.toDataURL() 
-            };
-
-            try {
-                await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
-                document.getElementById('statusOverlay').classList.add('hidden');
-                document.getElementById('missionControl').classList.add('hidden');
-                document.getElementById('receiptRef').innerText = 'DH-' + Math.floor(Math.random()*9000 + 1000);
-                
-                const now = new Date();
-                const dateStr = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-                const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-                document.getElementById('dateStamp').innerText = `${dateStr} • ${timeStr}`;
-
-                document.getElementById('receiptName').innerText = payload.firstName + " " + payload.lastName;
-                document.getElementById('receiptService').innerText = payload.serviceType;
-                document.getElementById('receiptModal').classList.remove('hidden');
-                lucide.createIcons(); // Refresh icons for the new email alert
-            } catch (err) { alert("Connectivity Error. Please try again."); btn.disabled = false; }
-        }
 
         window.onload = renderDeck;
     </script>
 </body>
 </html>
-
-
-
