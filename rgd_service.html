@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Docu-Hub Concierge | RGD Vital Records</title>
     <style>
-        /* --- CSS STYLING (Matches PICA Style) --- */
+        /* --- CSS STYLING (Mobile Optimized) --- */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f7f6;
@@ -14,76 +14,114 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
+            color: #333;
         }
 
         #regForm {
             background-color: #ffffff;
             margin: 20px auto;
-            padding: 40px;
+            padding: 30px 25px; /* Mobile padding */
             width: 90%;
             max-width: 600px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 16px; /* Softer corners */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
 
-        h1 { color: #2c3e50; text-align: center; }
-        h3 { color: #16a085; margin-bottom: 10px; }
+        h1 { color: #2c3e50; text-align: center; font-size: 28px; margin-bottom: 30px; }
+        h3 { color: #16a085; margin-bottom: 15px; font-size: 20px; }
 
         p.concierge-text {
             color: #555;
-            font-size: 16px;
-            line-height: 1.5;
-            margin-bottom: 25px;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 30px;
             border-left: 4px solid #16a085;
-            padding-left: 15px;
-            background: #f9f9f9;
-            padding: 10px 15px;
-            border-radius: 0 5px 5px 0;
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* --- INPUTS & LABELS --- */
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #34495e;
+            font-size: 14px;
         }
 
         input, select {
-            padding: 12px;
+            padding: 16px; /* Large touch target */
             width: 100%;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
+            font-size: 16px; /* Prevents iOS zoom */
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
             box-sizing: border-box;
-            margin-bottom: 15px;
+            margin-bottom: 24px; /* Breathing room */
+            background-color: #fff;
+            transition: all 0.3s ease;
+            -webkit-appearance: none;
         }
 
-        input.invalid, select.invalid { background-color: #ffdddd; border: 1px solid red; }
+        input:focus, select:focus {
+            border-color: #16a085;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(22, 160, 133, 0.1);
+        }
 
-        .radio-group { margin-bottom: 20px; }
+        input.invalid, select.invalid {
+            background-color: #fff5f5;
+            border-color: #e53e3e;
+        }
+
+        /* --- RADIO CARDS --- */
+        .radio-group { margin-bottom: 30px; }
         .radio-option {
-            background: #f0f0f0;
-            padding: 10px;
-            border-radius: 6px;
-            margin-bottom: 8px;
+            background: #f8fafc;
+            padding: 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 12px;
             cursor: pointer;
-            display: block;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            transition: background 0.2s;
         }
-        .radio-option:hover { background: #e0e0e0; }
+        .radio-option:hover { background: #f1f5f9; border-color: #cbd5e1; }
+        
+        .radio-option input {
+            width: 20px;
+            height: 20px;
+            margin: 0;
+            margin-top: 2px;
+        }
 
         .tab { display: none; }
 
+        /* --- BUTTONS --- */
         .btn-container {
             overflow: auto;
-            margin-top: 20px;
+            margin-top: 30px;
             display: flex;
             justify-content: space-between;
+            gap: 10px;
         }
 
         button {
             background-color: #16a085;
             color: #ffffff;
             border: none;
-            padding: 12px 25px;
+            padding: 16px 30px;
             font-size: 16px;
-            border-radius: 6px;
+            font-weight: bold;
+            border-radius: 50px;
             cursor: pointer;
+            flex: 1;
+            transition: background 0.3s;
         }
         button:hover { background-color: #138a72; }
-        #prevBtn { background-color: #bbbbbb; }
+        #prevBtn { background-color: #fff; color: #64748b; border: 1px solid #cbd5e1; }
 
         /* Tooltips */
         .tooltip-container {
@@ -92,34 +130,32 @@
             margin-left: 5px;
             color: #16a085;
             cursor: help;
-            font-weight: bold;
         }
         .tooltip-text {
             visibility: hidden;
-            width: 250px;
-            background-color: #333;
+            width: 200px;
+            background-color: #334155;
             color: #fff;
-            text-align: left;
+            text-align: center;
             border-radius: 6px;
             padding: 10px;
             position: absolute;
             z-index: 1;
             bottom: 125%;
             left: 50%;
-            margin-left: -125px;
-            font-size: 13px;
-            font-weight: normal;
+            margin-left: -100px;
+            font-size: 12px;
             opacity: 0;
             transition: opacity 0.3s;
         }
         .tooltip-container:hover .tooltip-text { visibility: visible; opacity: 1; }
 
         .step {
-            height: 15px; width: 15px; margin: 0 2px;
-            background-color: #bbbbbb; border: none; border-radius: 50%;
+            height: 10px; width: 10px; margin: 0 4px;
+            background-color: #cbd5e1; border: none; border-radius: 50%;
             display: inline-block; opacity: 0.5;
         }
-        .step.active { opacity: 1; }
+        .step.active { opacity: 1; background-color: #16a085; transform: scale(1.2); }
         .step.finish { background-color: #16a085; }
     </style>
 </head>
@@ -128,7 +164,7 @@
 <form id="regForm">
 
     <h1>Vital Records (RGD)</h1>
-    <div style="text-align:center;margin-bottom:20px;">
+    <div style="text-align:center;margin-bottom:30px;">
         <span class="step"></span>
         <span class="step"></span>
         <span class="step"></span>
@@ -144,11 +180,11 @@
         
         <label class="radio-option">
             <input type="checkbox" required name="consent_data">
-            I authorize Docu-Hub to process my data for RGD Application.
+            <span>I authorize Docu-Hub to process my data for RGD Application.</span>
         </label>
         <label class="radio-option">
             <input type="checkbox" required name="consent_private">
-            I understand that Docu-Hub is a private concierge service.
+            <span>I understand that Docu-Hub is a private concierge service.</span>
         </label>
         
         <label>Your Email Address (For Receipt & Tracking)</label>
@@ -179,7 +215,7 @@
             <option value="No">No, I do not.</option>
         </select>
 
-        <div id="searchWarning" style="display:none; background:#fff3cd; border-left: 4px solid #ffc107; padding:15px; margin-top:10px; font-size:14px; color:#856404;">
+        <div id="searchWarning" style="display:none; background:#fff3cd; border-left: 4px solid #ffc107; padding:15px; margin-top:10px; margin-bottom:20px; font-size:14px; color:#856404; border-radius:8px;">
             <strong>⚠️ Search Application Required</strong><br>
             Without an Entry Number, RGD must manually search their books.
             <ul style="margin-top:5px; padding-left:20px;">
@@ -208,15 +244,15 @@
         <div class="radio-group">
             <label class="radio-option">
                 <input type="radio" name="delivery_method" value="Pickup" required>
-                <strong>Option A: Self-Pickup</strong> <br> (You go to RGD Twickenham Park).
+                <span><strong>Option A: Self-Pickup</strong> <br> (You go to RGD Twickenham Park).</span>
             </label>
             <label class="radio-option">
                 <input type="radio" name="delivery_method" value="Courier" required>
-                <strong>Option B: Courier (ZipMail)</strong> <br> (Delivered to your local post office).
+                <span><strong>Option B: Courier (ZipMail)</strong> <br> (Delivered to your local post office).</span>
             </label>
             <label class="radio-option">
                 <input type="radio" name="delivery_method" value="Bearer" required>
-                <strong>Option C: Docu-Hub Bearer</strong> <br> (We bring it to you).
+                <span><strong>Option C: Docu-Hub Bearer</strong> <br> (We bring it to you).</span>
             </label>
         </div>
     </div>
@@ -227,17 +263,17 @@
             To act on your behalf at the RGD, we need two things:
         </p>
 
-        <div style="background:#f8f9fa; padding:15px; border-radius:8px; border-left:4px solid #16a085; margin-bottom:20px;">
-            <p style="margin:0 0 10px 0; font-weight:bold;">1. Valid Government ID</p>
-            <p style="margin:0; font-size:13px; color:#555;">(Driver's License, Passport, or Elector ID)</p>
+        <div style="background:#f1f5f9; padding:15px; border-radius:8px; margin-bottom:20px;">
+            <p style="font-weight:bold; margin-top:0; color:#334155;">1. Valid Government ID</p>
+            <p style="font-size:13px; color:#64748b; margin-bottom:0;">(Driver's License, Passport, or Elector ID)</p>
         </div>
 
-        <div style="background:#f8f9fa; padding:15px; border-radius:8px; border-left:4px solid #16a085; margin-bottom:20px;">
-            <p style="margin:0 0 10px 0; font-weight:bold;">2. Signed Authorization Letter</p>
-            <p style="margin:0; font-size:13px; color:#555;">(We will email this to you to sign digitally)</p>
+        <div style="background:#f1f5f9; padding:15px; border-radius:8px; margin-bottom:20px;">
+            <p style="font-weight:bold; margin-top:0; color:#334155;">2. Signed Authorization Letter</p>
+            <p style="font-size:13px; color:#64748b; margin-bottom:0;">(We will email this to you to sign digitally)</p>
         </div>
         
-        <label style="margin-top:20px;">
+        <label>
             I understand I must email my ID copy to complete this request:
         </label>
         <select name="docs_agreement" required>
@@ -289,7 +325,7 @@
         <label>Father's Name (Optional)</label>
         <input type="text" placeholder="Full Name" name="father_name">
         
-        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+        <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
         
         <label><strong>Your Contact Info</strong></label>
         <input type="text" placeholder="Your Full Name" name="full_name" required>
@@ -337,6 +373,7 @@
         }
         
         fixStepIndicator(n);
+        window.scrollTo(0, 0); // Scroll to top on step change for mobile
     }
 
     function nextPrev(n) {
@@ -384,8 +421,10 @@
                 }
                 // Check Checkbox
                 if (inputs[i].type === "checkbox" && !inputs[i].checked) {
-                    inputs[i].className += " invalid";
+                    inputs[i].parentElement.style.border = "1px solid red"; // Highlight container
                     valid = false;
+                } else if (inputs[i].type === "checkbox") {
+                    inputs[i].parentElement.style.border = "1px solid #e2e8f0"; // Reset
                 }
                 // Check Radio Group (Robust)
                 if (inputs[i].type === "radio") {
@@ -393,20 +432,7 @@
                     var radios = x[currentTab].querySelectorAll(`input[name="${groupName}"]`);
                     var oneChecked = false;
                     for (var r = 0; r < radios.length; r++) { if (radios[r].checked) oneChecked = true; }
-                    if (!oneChecked) {
-                        valid = false;
-                        // Highlight parent div for visibility
-                        if(inputs[i].closest('.radio-group')) {
-                            inputs[i].closest('.radio-group').style.border = "1px solid red";
-                            inputs[i].closest('.radio-group').style.padding = "10px";
-                            inputs[i].closest('.radio-group').style.borderRadius = "8px";
-                        }
-                    } else {
-                        // Clear highlight
-                        if(inputs[i].closest('.radio-group')) {
-                            inputs[i].closest('.radio-group').style.border = "none";
-                        }
-                    }
+                    if (!oneChecked) valid = false;
                 }
             }
         }
@@ -439,5 +465,4 @@
 </script>
 
 </body>
-
 </html>
