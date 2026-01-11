@@ -35,7 +35,7 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* CLEAN PRINT STYLES (No Ruled Lines) */
+        /* CLEAN PRINT STYLES */
         @media print {
             html, body { height: auto !important; overflow: visible !important; background: white !important; }
             body * { visibility: hidden; }
@@ -94,7 +94,6 @@
             
             <div class="hidden md:flex gap-8 text-xs md:text-sm font-bold text-navy uppercase tracking-widest items-center">
                 <a href="#serviceDeck" class="hover:text-gold transition py-2">Services</a>
-                <a href="#process" class="hover:text-gold transition py-2">Process</a>
                 <a href="#about" class="hover:text-gold transition py-2">About</a>
                 <a href="contact.html" class="px-5 py-2 border border-navy rounded-full hover:bg-navy hover:text-white transition">Contact</a>
             </div>
@@ -106,7 +105,6 @@
 
         <div id="mobileDropdown" class="hidden md:hidden absolute top-20 left-0 w-full bg-navy text-white shadow-2xl border-b-4 border-gold z-40 flex flex-col items-center gap-0 transition-all duration-300">
             <a href="#serviceDeck" onclick="toggleMobileMenu()" class="w-full py-6 text-center border-b border-white/10 hover:bg-white/5 font-bold uppercase tracking-widest text-sm">Services</a>
-            <a href="#process" onclick="toggleMobileMenu()" class="w-full py-6 text-center border-b border-white/10 hover:bg-white/5 font-bold uppercase tracking-widest text-sm">How It Works</a>
             <a href="#about" onclick="toggleMobileMenu()" class="w-full py-6 text-center border-b border-white/10 hover:bg-white/5 font-bold uppercase tracking-widest text-sm">Our Profile</a>
             <div class="w-full py-8 text-center">
                 <a href="contact.html" class="inline-block border border-gold text-gold px-10 py-3 rounded-full hover:bg-gold hover:text-navy transition font-bold uppercase tracking-widest text-xs">Contact Liaison</a>
@@ -133,17 +131,55 @@
                 
                 <div class="flex flex-col sm:flex-row gap-4">
                     <button onclick="document.getElementById('serviceDeck').scrollIntoView({behavior: 'smooth'})" class="bg-gold text-navy px-8 py-4 rounded font-bold hover:bg-white transition uppercase text-xs tracking-widest shadow-2xl shadow-gold/20 flex items-center justify-center gap-3">
-                        Start Application <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                        Service Catalog <i data-lucide="arrow-down" class="w-4 h-4"></i>
                     </button>
-                    <button onclick="document.getElementById('process').scrollIntoView({behavior: 'smooth'})" class="bg-transparent border border-white text-white px-8 py-4 rounded font-bold hover:bg-white hover:text-navy transition uppercase text-xs tracking-widest flex items-center justify-center gap-3">
-                        How It Works <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    <button onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})" class="bg-transparent border border-white text-white px-8 py-4 rounded font-bold hover:bg-white hover:text-navy transition uppercase text-xs tracking-widest flex items-center justify-center gap-3">
+                        Meet The Liaison <i data-lucide="user" class="w-4 h-4"></i>
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="serviceDeck" class="pt-24 pb-20 bg-slate-50 no-print overflow-hidden relative">
+    <section class="relative -mt-20 z-20 pb-16 no-print">
+        <div class="container mx-auto px-4 md:px-12">
+            <div class="bg-white rounded-2xl shadow-2xl border-t-4 border-gold p-8 md:p-12 max-w-5xl mx-auto flex flex-col md:flex-row gap-8 md:gap-16 items-center">
+                
+                <div class="flex-1 text-center md:text-left border-b md:border-b-0 md:border-r border-gray-100 pb-8 md:pb-0 md:pr-8">
+                    <div class="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
+                        <i data-lucide="sprout" class="w-3 h-3"></i> First Time Here?
+                    </div>
+                    <h3 class="font-serif text-2xl md:text-3xl text-navy font-bold mb-3">New Client Onboarding</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed mb-6">
+                        Not sure how this works? We are not the government—we are your private liaison. 
+                        Read our "Client Charter" to understand how we fast-track your documents securely.
+                    </p>
+                    <button onclick="openOnboarding()" class="group inline-flex items-center gap-3 text-navy font-bold text-xs uppercase tracking-widest hover:text-gold transition">
+                        <span class="border-b-2 border-navy group-hover:border-gold pb-1 transition-colors">Start Orientation</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 transform group-hover:translate-x-1 transition"></i>
+                    </button>
+                </div>
+
+                <div class="flex-1 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 bg-blue-50 text-navy px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
+                        <i data-lucide="crown" class="w-3 h-3 text-gold"></i> Member Access
+                    </div>
+                    <h3 class="font-serif text-2xl md:text-3xl text-navy font-bold mb-3">Returning Clients</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed mb-6">
+                        Skip the orientation. Go straight to the Service Catalog below.
+                        <br><br>
+                        <strong>Note:</strong> Please use the same <strong>Email Address</strong> as your previous application so we can automatically sync your files.
+                    </p>
+                    <button onclick="document.getElementById('serviceDeck').scrollIntoView({behavior: 'smooth'})" class="w-full md:w-auto bg-navy text-white px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-widest shadow-lg hover:bg-gold hover:text-navy transition flex items-center justify-center gap-2">
+                        <i data-lucide="zap" class="w-4 h-4"></i> Access Catalog
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="serviceDeck" class="pt-12 pb-20 bg-slate-50 no-print overflow-hidden relative">
         <div class="container mx-auto px-6 md:px-12 relative">
             <div class="mb-10 text-center md:text-left">
                 <h2 class="font-serif text-3xl md:text-5xl text-navy font-bold">Service Catalog</h2>
@@ -152,36 +188,6 @@
             
             <div id="deckContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
                 </div>
-        </div>
-    </section>
-
-    <section id="process" class="py-20 bg-white no-print">
-        <div class="container mx-auto px-6 md:px-12">
-            <h2 class="text-center font-serif text-3xl md:text-5xl text-navy font-bold mb-16">The Concierge Protocol</h2>
-            <div class="grid md:grid-cols-3 gap-12 relative max-w-6xl mx-auto">
-                <div class="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gray-100 -z-10"></div>
-                <div class="text-center group">
-                    <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full border border-gray-100 shadow-xl mx-auto flex items-center justify-center mb-8 group-hover:-translate-y-2 transition duration-500">
-                        <i data-lucide="file-check" class="w-8 h-8 md:w-12 md:h-12 text-navy"></i>
-                    </div>
-                    <h3 class="font-bold text-navy uppercase tracking-widest mb-3 md:text-lg">1. Secure Intake</h3>
-                    <p class="text-sm md:text-base text-gray-500 px-4 leading-relaxed">Submit details via our encrypted portal. We audit your documents for errors *before* submission.</p>
-                </div>
-                <div class="text-center group">
-                    <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full border border-gray-100 shadow-xl mx-auto flex items-center justify-center mb-8 group-hover:-translate-y-2 transition duration-500 relative">
-                        <i data-lucide="building-2" class="w-8 h-8 md:w-12 md:h-12 text-gold"></i>
-                    </div>
-                    <h3 class="font-bold text-navy uppercase tracking-widest mb-3 md:text-lg">2. Agency Liaison</h3>
-                    <p class="text-sm md:text-base text-gray-500 px-4 leading-relaxed">Our bearers handle the lines at Tax Office, PICA, or RGD so you don't have to.</p>
-                </div>
-                <div class="text-center group">
-                    <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full border border-gray-100 shadow-xl mx-auto flex items-center justify-center mb-8 group-hover:-translate-y-2 transition duration-500">
-                        <i data-lucide="package-check" class="w-8 h-8 md:w-12 md:h-12 text-emerald-600"></i>
-                    </div>
-                    <h3 class="font-bold text-navy uppercase tracking-widest mb-3 md:text-lg">3. Secure Return</h3>
-                    <p class="text-sm md:text-base text-gray-500 px-4 leading-relaxed">We deliver the completed documents or official government receipts directly to your hand.</p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -239,7 +245,6 @@
                     <nav class="flex flex-col gap-4 text-gray-400 font-bold uppercase tracking-widest text-xs">
                         <a href="#viewHero" class="hover:text-white transition">Home</a>
                         <a href="#serviceDeck" class="hover:text-white transition">Service Catalog</a>
-                        <a href="#process" class="hover:text-white transition">The Protocol</a>
                         <a href="#about" class="hover:text-white transition">About The Liaison</a>
                         <a href="contact.html" class="hover:text-white transition">Contact Desk</a>
                     </nav>
@@ -332,9 +337,81 @@
         </div>
     </section>
 
+    <div id="onboardingModal" class="fixed inset-0 bg-navy/95 z-[100] hidden overflow-y-auto no-print">
+        <div class="min-h-screen flex items-center justify-center p-4">
+            <div class="bg-white max-w-2xl w-full rounded-2xl shadow-2xl overflow-hidden relative">
+                
+                <div class="bg-parchment p-8 border-b border-gray-200 flex justify-between items-start">
+                    <div>
+                        <h2 class="font-serif text-3xl text-navy font-bold italic">Client Charter</h2>
+                        <p class="text-xs font-bold text-gold uppercase tracking-widest mt-2">New Client Orientation • Read Carefully</p>
+                    </div>
+                    <button onclick="closeOnboarding()" class="text-gray-400 hover:text-navy transition">
+                        <i data-lucide="x-circle" class="w-8 h-8"></i>
+                    </button>
+                </div>
+
+                <div class="p-8 md:p-12 space-y-8">
+                    
+                    <div class="flex gap-6">
+                        <div class="w-12 h-12 rounded-full bg-navy/5 flex items-center justify-center shrink-0">
+                            <span class="font-serif text-xl font-bold text-navy">1</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navy uppercase text-sm tracking-widest mb-2">We Are Your Agents</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Docu-Hub is a <strong>private logistics firm</strong>. We are not PICA, TAJ, or the RGD. 
+                                You hire us to stand in line, verify your forms, and courier your documents so you don't have to take time off work.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-6">
+                        <div class="w-12 h-12 rounded-full bg-navy/5 flex items-center justify-center shrink-0">
+                            <span class="font-serif text-xl font-bold text-navy">2</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navy uppercase text-sm tracking-widest mb-2">Digital First, Physical Second</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                We use secure forms to collect your data first. We review it for errors (saving you money on rejections). 
+                                Only then do we dispatch a bearer.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-6">
+                        <div class="w-12 h-12 rounded-full bg-navy/5 flex items-center justify-center shrink-0">
+                            <span class="font-serif text-xl font-bold text-navy">3</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navy uppercase text-sm tracking-widest mb-2">Master Service Agreement</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                                By proceeding, you agree to our Terms of Engagement and authorize Docu-Hub to act as your "Authorized Bearer" for all future transactions.
+                            </p>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg border border-gray-100 flex items-start gap-3">
+                                <input type="checkbox" id="acceptTerms" class="mt-1 w-5 h-5 accent-navy cursor-pointer">
+                                <label for="acceptTerms" class="text-xs text-gray-500 font-medium cursor-pointer select-none">
+                                    I have read and understood that Docu-Hub is a private service. I accept the <a href="#" class="underline text-navy">Terms of Engagement</a>.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="bg-gray-50 p-6 flex justify-between items-center border-t border-gray-100">
+                    <button onclick="closeOnboarding()" class="text-gray-400 text-xs font-bold uppercase tracking-widest hover:text-navy">Close</button>
+                    <button id="onboardBtn" onclick="finishOnboarding()" disabled class="bg-gray-300 text-white px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-widest transition cursor-not-allowed">
+                        Acknowledge & Start
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="receiptModal" class="fixed inset-0 flex items-center justify-center bg-white z-[300] hidden overflow-y-auto">
         <div id="receiptArea" class="bg-white max-w-lg w-full mx-auto p-12 relative text-left">
-            
             <div class="flex justify-between items-center mb-8 border-b border-gray-100 pb-6">
                 <div class="text-left">
                     <h1 class="font-serif text-2xl text-navy font-bold italic">Docu-Hub</h1>
@@ -345,40 +422,26 @@
                     <div id="dateStamp" class="text-xs text-navy font-mono mt-1"></div>
                 </div>
             </div>
-
             <div class="text-center py-8">
                 <div class="inline-block px-4 py-1 rounded-full bg-green-50 text-emerald-700 text-xs font-bold uppercase tracking-widest mb-4">Transmission Successful</div>
                 <div id="receiptRef" class="text-4xl font-mono font-bold text-navy mb-2 tracking-tighter"></div>
                 <p class="text-xs text-gray-400 uppercase tracking-widest">Transaction Reference</p>
                 
                 <div class="bg-blue-50 text-navy p-3 rounded-lg text-xs font-bold mt-4 border border-blue-100 flex items-center justify-center gap-2">
-                    <i data-lucide="mail" class="w-4 h-4"></i> 
-                    CONFIRMATION EMAIL SENT
+                    <i data-lucide="mail" class="w-4 h-4"></i> CONFIRMATION EMAIL SENT
                 </div>
                 <p class="text-[10px] text-gray-500 mt-2 italic">Please check your inbox immediately to verify spelling.</p>
             </div>
-
             <div class="bg-slate-50 rounded-xl p-6 mb-8">
                 <div class="grid grid-cols-2 gap-y-4 text-sm">
                     <div class="text-gray-500 text-xs uppercase font-bold">Applicant</div>
                     <div id="receiptName" class="text-navy font-bold text-right"></div>
-                    
                     <div class="text-gray-500 text-xs uppercase font-bold">Service Type</div>
                     <div id="receiptService" class="text-navy font-bold text-right"></div>
-                    
                     <div class="text-gray-500 text-xs uppercase font-bold">Status</div>
                     <div class="text-navy font-bold text-right">Pending Bearer</div>
                 </div>
             </div>
-
-            <div class="text-center border-t border-gray-100 pt-6">
-                <p class="text-xs text-navy font-bold uppercase tracking-widest mb-2">Next Step</p>
-                <p class="text-xs text-gray-500 leading-relaxed">
-                    Please have your physical documents ready.<br>
-                    Our Concierge Desk will contact you within 2 hours.
-                </p>
-            </div>
-
             <div id="receiptActions" class="mt-8 space-y-3">
                 <button onclick="window.print()" class="w-full bg-navy text-white font-bold py-4 rounded uppercase text-xs md:text-sm tracking-widest hover:bg-gold hover:text-navy transition">Save Receipt</button>
                 <button onclick="window.location.reload()" class="w-full text-gray-400 font-bold text-xs md:text-sm uppercase underline">Close Portal</button>
@@ -411,7 +474,7 @@
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
         </div>
     </div>
 
@@ -424,47 +487,38 @@
             { 
                 id: 'pica', 
                 name: 'PICA Liaison', 
-                desc: 'Passport Renewals & Replacements.', 
+                desc: 'Adult Passport Renewals (Online Concierge).', 
                 img: 'assets/pica.png', 
-                fees: { pro: 3500, gov: 6500 }, 
-                reqs: ['Expired Passport', 'Birth Certificate'],
-                btnText: 'SELECT SERVICE'
-            },
-            { 
-                id: 'jcf', 
-                name: 'JCF Records', 
-                desc: 'Police Record requests.', 
-                img: 'assets/records.png', 
-                fees: { pro: 3500, gov: 3000 }, 
-                reqs: ['Valid ID', 'TRN'],
-                btnText: 'SELECT SERVICE'
+                isLink: true, 
+                url: 'passport_renewal.html', 
+                btnText: 'START RENEWAL'
             },
             { 
                 id: 'rgd', 
                 name: 'RGD Registry', 
                 desc: 'Birth, Marriage & Death Certificates.', 
                 img: 'assets/rgd.png', 
-                fees: { pro: 3500, gov: 2500 }, 
-                reqs: ['Application Detail'],
-                btnText: 'SELECT SERVICE'
+                isLink: true, 
+                url: 'rgd_service.html', 
+                btnText: 'START SEARCH'
             },
             { 
                 id: 'taj', 
                 name: 'Traffic & Licensing', 
-                desc: 'Traffic Ticket Checks and Payments, Fitness Fees, Motor Vehicle Lic. Renewals.', 
+                desc: 'Traffic Ticket Checks, Property Tax & MV Renewal.', 
                 img: 'assets/taj.png', 
-                fees: { check: 1500, bearer: 2500, gov: 'Variable' }, 
-                reqs: ['TRN', 'Vehicle Plate #'],
-                btnText: 'SELECT SERVICE'
+                isLink: true, 
+                url: 'taj_service.html', 
+                btnText: 'START QUERY'
             },
             { 
                 id: 'other', 
                 name: 'Other Services', 
-                desc: 'Searching for something else? Contact us.', 
+                desc: 'Police Records, Lost Docs & Special Requests.', 
                 img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80', 
                 isLink: true, 
                 url: 'contact.html',
-                btnText: 'CONTACT US'
+                btnText: 'BOOK CONSULTATION'
             }
         ];
 
@@ -496,6 +550,36 @@
             `).join('');
             lucide.createIcons();
         }
+
+        // --- NEW: ONBOARDING LOGIC ---
+        function openOnboarding() {
+            document.getElementById('onboardingModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeOnboarding() {
+            document.getElementById('onboardingModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('acceptTerms').onclick = (e) => {
+            const btn = document.getElementById('onboardBtn');
+            if (e.target.checked) {
+                btn.disabled = false;
+                btn.classList.remove('bg-gray-300', 'cursor-not-allowed');
+                btn.classList.add('bg-navy', 'hover:bg-gold', 'hover:text-navy', 'shadow-lg');
+            } else {
+                btn.disabled = true;
+                btn.classList.add('bg-gray-300', 'cursor-not-allowed');
+                btn.classList.remove('bg-navy', 'hover:bg-gold', 'hover:text-navy', 'shadow-lg');
+            }
+        };
+
+        function finishOnboarding() {
+            closeOnboarding();
+            document.getElementById('serviceDeck').scrollIntoView({behavior: 'smooth'});
+        }
+        // -----------------------------
 
         function startMission(id) {
             currentPillar = PILLARS.find(p => p.id === id);
@@ -530,7 +614,7 @@
             document.body.style.overflow = 'auto';
         }
 
-        // --- INTAKE LEG 1: FEES & DISCLAIMERS ---
+        // --- INTAKE LEG 1 ---
         function loadLeg1() {
             updateProgress(1);
             let feeRows = '';
@@ -561,7 +645,6 @@
             document.getElementById('missionContent').innerHTML = `
                 <div class="fade-in max-w-2xl mx-auto text-center pt-8">
                     <h2 class="font-serif text-3xl text-navy mb-6 font-bold italic">Service Fee Breakdown</h2>
-                    
                     <div class="bg-navy text-white p-10 rounded-3xl shadow-xl mb-8 text-left relative overflow-hidden">
                         <div class="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full blur-2xl -mr-10 -mt-10"></div>
                         <div class="relative z-10">
@@ -572,7 +655,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="bg-blue-50 border-l-4 border-navy p-4 mb-8 mx-auto max-w-xl text-left rounded-r-lg shadow-sm">
                         <div class="flex items-start gap-3">
                             <i data-lucide="info" class="text-navy w-5 h-5 mt-0.5 shrink-0"></i>
@@ -584,7 +666,6 @@
                             </div>
                         </div>
                     </div>
-
                     <button onclick="loadLeg2()" class="w-full bg-navy text-white font-bold py-5 rounded-xl uppercase text-xs hover:bg-blue-900 transition shadow-lg tracking-widest">Accept & Continue</button>
                 </div>`;
             lucide.createIcons();
@@ -628,7 +709,7 @@
             };
         }
 
-        // --- INTAKE LEG 4: SIGNATURE & UPLOAD ---
+        // --- INTAKE LEG 4 ---
         function loadLeg4() {
             updateProgress(4);
             document.getElementById('missionContent').innerHTML = `
@@ -706,7 +787,7 @@
                 name: document.getElementById('fname').value + " " + document.getElementById('lname').value,
                 firstName: document.getElementById('fname').value,
                 lastName: document.getElementById('lname').value,
-                email: document.getElementById('emailContact').value, // ✅ Captures Email
+                email: document.getElementById('emailContact').value, 
                 phone: document.getElementById('contactNum').value, 
                 service: currentPillar.name, 
                 serviceType: currentPillar.name,
