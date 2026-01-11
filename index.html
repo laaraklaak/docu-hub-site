@@ -335,16 +335,26 @@
                         <div class="w-12 h-12 rounded-full bg-navy/5 flex items-center justify-center shrink-0"><span class="font-serif text-xl font-bold text-navy">3</span></div>
                         <div class="w-full">
                             <h4 class="font-bold text-navy uppercase text-sm tracking-widest mb-2">Master Service Agreement</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed mb-4">By proceeding, you authorize Docu-Hub to act as your "Authorized Bearer".</p>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-4">By proceeding, you authorize Docu-Hub to act as your "Authorized Bearer" for all transactions.</p>
                             <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
-                                <div class="flex items-center gap-3">
-                                    <input type="checkbox" id="acceptTerms" class="w-5 h-5 accent-navy cursor-pointer">
-                                    <label for="acceptTerms" class="text-xs text-gray-500 font-medium cursor-pointer select-none">I accept the <button type="button" onclick="toggleTerms()" class="underline text-navy font-bold hover:text-gold">Terms of Engagement</button>.</label>
+                                <div class="flex items-center gap-3 mb-3">
+                                    <input type="checkbox" id="acceptTerms" class="w-6 h-6 accent-navy cursor-pointer shrink-0">
+                                    <label for="acceptTerms" class="text-xs text-gray-500 font-medium cursor-pointer select-none leading-tight">
+                                        I have read and accept the <button type="button" onclick="toggleTerms()" class="underline text-navy font-bold hover:text-gold">Terms of Engagement</button>.
+                                    </label>
                                 </div>
-                                <div id="termsEmbed" class="hidden mt-4 border-t border-gray-200 pt-4 animation-fade-in">
-                                    <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-2">Document Preview:</p>
-                                    <iframe src="terms.html" class="w-full h-64 border border-gray-200 rounded bg-white shadow-inner"></iframe>
-                                    <button onclick="toggleTerms()" class="text-[10px] text-red-500 font-bold uppercase mt-2 hover:underline w-full text-center">Close Document</button>
+                                
+                                <div id="termsEmbed" class="hidden mt-3 border-t border-gray-200 pt-3 animation-fade-in">
+                                    <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-2 font-bold">Terms Summary:</p>
+                                    <div class="h-48 overflow-y-auto bg-white border border-gray-200 p-4 rounded text-[10px] text-gray-500 leading-relaxed space-y-3 shadow-inner">
+                                        <p><strong>1. AUTHORIZATION:</strong> Client hereby appoints Docu-Hub Operations Services as their lawful agent and "Authorized Bearer" to transact business with Tax Administration Jamaica (TAJ), PICA, and RGD on their behalf.</p>
+                                        <p><strong>2. NON-GOVERNMENT ENTITY:</strong> Client acknowledges that Docu-Hub is a private logistics firm and not a government agency. Fees paid to Docu-Hub include service charges above government rates.</p>
+                                        <p><strong>3. NO REFUNDS:</strong> Service fees are non-refundable once the bearer has been dispatched or the application lodged.</p>
+                                        <p><strong>4. DATA PRIVACY:</strong> We respect your data under the JDPA (2020). ID copies are deleted 30 days after transaction closure. Financial records are retained for 7 years as per POCA regulations.</p>
+                                        <p><strong>5. LIABILITY:</strong> Docu-Hub is not liable for delays caused by government system outages, strikes, or rejection of documents due to client error.</p>
+                                        <p class="mt-4 pt-2 border-t border-gray-100 text-center font-bold text-navy">-- END OF SUMMARY --</p>
+                                    </div>
+                                    <button onclick="toggleTerms()" class="w-full text-center text-[10px] text-red-500 font-bold uppercase mt-3 hover:bg-red-50 py-2 rounded transition">Close Document</button>
                                 </div>
                             </div>
                         </div>
@@ -401,7 +411,6 @@
 
     <script>
         lucide.createIcons();
-        // PASTE YOUR GOOGLE SCRIPT URL HERE
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxT804rv7zakuwG5GivIwslqw5Mj39b9U7nKTU8aVyIFEQ209X0NuUujqBhCVh3MICS7w/exec"; 
 
         const PILLARS = [
@@ -441,10 +450,6 @@
             icon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
         }
 
-        // ... [Rest of the standard functions: openOnboarding, closeOnboarding, finishOnboarding, toggleTerms, toggleMobileMenu, openAboutDossier, closeAboutDossier, loadLeg1...4, processSubmission] ...
-        
-        // Re-paste the standard functions here if needed, or keep them from previous version. 
-        // For brevity in this snippet, ensure you include:
         function openOnboarding() { document.getElementById('onboardingModal').classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
         function closeOnboarding() { document.getElementById('onboardingModal').classList.add('hidden'); document.body.style.overflow = 'auto'; }
         document.getElementById('acceptTerms').onclick = (e) => { const btn = document.getElementById('onboardBtn'); if (e.target.checked) { btn.disabled = false; btn.classList.remove('bg-gray-300', 'cursor-not-allowed'); btn.classList.add('bg-navy', 'hover:bg-gold', 'hover:text-navy', 'shadow-lg'); } else { btn.disabled = true; btn.classList.add('bg-gray-300', 'cursor-not-allowed'); btn.classList.remove('bg-navy', 'hover:bg-gold', 'hover:text-navy', 'shadow-lg'); } };
@@ -454,12 +459,63 @@
         function openAboutDossier() { document.getElementById('aboutDossier').classList.remove('hidden'); document.body.style.overflow = 'hidden'; lucide.createIcons(); }
         function closeAboutDossier() { document.getElementById('aboutDossier').classList.add('hidden'); document.body.style.overflow = 'auto'; }
         
-        // Mission Control Functions (Legacy support for manual flow if needed)
         function startMission(id) { currentPillar = PILLARS.find(p => p.id === id); document.getElementById('activePillarName').innerText = currentPillar.name; document.getElementById('missionControl').classList.remove('hidden'); loadLeg1(); }
         function exitMission() { document.getElementById('missionControl').classList.add('hidden'); }
         function updateProgress(step) { document.getElementById('progressBar').style.width = `${step * 25}%`; }
-        function loadLeg1() { updateProgress(1); /* ... (Standard Leg 1 Code) ... */ document.getElementById('missionContent').innerHTML = `<div class="fade-in max-w-2xl mx-auto text-center pt-8">...Content...</div>`; lucide.createIcons(); } 
-        // Note: Full Leg functions (1-4) and processSubmission must be included here as per previous file.
+        
+        function loadLeg1() {
+            updateProgress(1);
+            let feeRows = '';
+            if (currentPillar.fees.bearer) {
+                feeRows = `<div class="flex justify-between items-center border-b border-white/10 pb-2 mb-2"><span class="text-gray-300 text-sm uppercase tracking-widest">Database Check</span><span class="text-white font-bold text-lg">$${currentPillar.fees.check}</span></div><div class="flex justify-between items-center border-b border-white/10 pb-4 mb-4"><div class="flex flex-col text-left"><span class="text-gray-300 text-sm uppercase tracking-widest">Bearer Run</span><span class="text-[10px] text-gray-400 italic">Only if clearance required</span></div><span class="text-gold font-bold text-lg">$${currentPillar.fees.bearer}</span></div>`;
+            } else {
+                feeRows = `<div class="flex justify-between items-center border-b border-white/10 pb-4 mb-4"><span class="text-gray-300 text-sm uppercase tracking-widest">Bearer Service Fee</span><span class="text-gold font-bold text-xl">$${currentPillar.fees.pro}</span></div>`;
+            }
+            document.getElementById('missionContent').innerHTML = `<div class="fade-in max-w-2xl mx-auto text-center pt-8"><h2 class="font-serif text-3xl text-navy mb-6 font-bold italic">Service Fee Breakdown</h2><div class="bg-navy text-white p-10 rounded-3xl shadow-xl mb-8 text-left relative overflow-hidden"><div class="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full blur-2xl -mr-10 -mt-10"></div><div class="relative z-10">${feeRows}<div class="flex justify-between items-center pt-2"><span class="text-gray-300 text-sm uppercase tracking-widest">Govt. Fee (Est.)</span><span class="font-bold font-serif italic text-2xl">${typeof currentPillar.fees.gov === 'number' ? '$' + currentPillar.fees.gov : currentPillar.fees.gov}</span></div></div></div><div class="bg-blue-50 border-l-4 border-navy p-4 mb-8 mx-auto max-w-xl text-left rounded-r-lg shadow-sm"><div class="flex items-start gap-3"><i data-lucide="info" class="text-navy w-5 h-5 mt-0.5 shrink-0"></i><div><p class="text-xs font-bold text-navy uppercase mb-1 tracking-widest">Financial Notice</p><p class="text-xs text-slate-700 leading-relaxed font-medium">${currentPillar.fees.bearer ? 'The Database Check fee is non-refundable. Bearer fees are only charged if physical processing proceeds.' : 'Bearer service fees become non-refundable immediately upon agent dispatch.'}</p></div></div></div><button onclick="loadLeg2()" class="w-full bg-navy text-white font-bold py-5 rounded-xl uppercase text-xs hover:bg-blue-900 transition shadow-lg tracking-widest">Accept & Continue</button></div>`;
+            lucide.createIcons();
+        }
+
+        function loadLeg2() {
+            updateProgress(2);
+            const reqs = currentPillar.reqs.map(r => `<li class="flex items-center gap-3 font-medium text-gray-700 p-3 bg-gray-50 rounded mb-2"><i data-lucide="check-circle" class="text-emerald w-5 h-5"></i> ${r}</li>`).join('');
+            document.getElementById('missionContent').innerHTML = `<div class="fade-in max-w-2xl mx-auto text-center pt-12"><h2 class="font-serif text-3xl md:text-5xl text-navy mb-4 font-bold italic">Requirements Check</h2><p class="text-xs md:text-sm text-gray-400 mb-8 uppercase tracking-widest">Ensure you have these originals ready</p><div class="bg-white border p-6 md:p-8 rounded-3xl mb-10 text-left shadow-sm text-sm md:text-base"><ul class="space-y-2">${reqs}</ul></div><button onclick="loadLeg3()" class="w-full bg-navy text-white font-bold py-5 rounded-xl uppercase tracking-widest text-xs md:text-sm hover:bg-blue-900 transition shadow-lg">I Have Originals</button></div>`;
+            lucide.createIcons();
+        }
+
+        function loadLeg3() {
+            updateProgress(3);
+            document.getElementById('missionContent').innerHTML = `<div class="fade-in max-w-2xl mx-auto text-center pt-12"><h2 class="font-serif text-3xl md:text-5xl text-navy mb-8 font-bold italic">Service Agreement</h2><div class="bg-gray-50 border p-8 md:p-10 rounded-3xl mb-10 text-sm md:text-base text-gray-600 text-justify leading-relaxed shadow-inner"><p class="mb-4"><strong>PARTIES:</strong> Between Applicant and Docu-Hub Operations Services.</p><p class="mb-4"><strong>DATA PURGE:</strong> Identification records are destroyed after 30 days. Financial records retained for 7 years per POCA.</p><p class="mb-4"><strong>FEES:</strong> Bearer fees are non-refundable once the agent is dispatched.</p><p class="p-3 bg-gold/10 border-l-4 border-gold text-navy font-bold text-xs md:text-sm">CONSENT: I authorize Docu-Hub to use my TRN as my unique file identifier for service continuity. I understand my data is processed under JDPA standards.</p></div><div class="flex items-center gap-3 mb-8 justify-center p-4 bg-white border rounded-xl cursor-pointer hover:border-navy transition" onclick="document.getElementById('agreeCheck').click()"><input type="checkbox" id="agreeCheck" class="w-5 h-5 accent-navy cursor-pointer"><label for="agreeCheck" class="text-xs md:text-sm uppercase font-bold tracking-widest text-navy cursor-pointer">I Agree & Consent</label></div><button id="leg3Btn" onclick="loadLeg4()" disabled class="btn-locked w-full text-navy font-bold py-5 rounded-xl uppercase text-xs md:text-sm">Authorize Intake</button></div>`;
+            document.getElementById('agreeCheck').onclick = (e) => { const b = document.getElementById('leg3Btn'); b.disabled = !e.target.checked; b.className = e.target.checked ? "w-full bg-navy text-white font-bold py-5 rounded-xl uppercase text-xs md:text-sm shadow-lg tactile" : "btn-locked w-full text-navy font-bold py-5 rounded-xl uppercase text-xs md:text-sm"; };
+        }
+
+        function loadLeg4() {
+            updateProgress(4);
+            document.getElementById('missionContent').innerHTML = `<form id="intakeForm" class="fade-in max-w-xl mx-auto space-y-6 pt-8"><h2 class="font-serif text-3xl md:text-5xl text-navy mb-2 font-bold italic text-center">Final Transmission</h2><p class="text-center text-gray-400 text-xs md:text-sm uppercase tracking-widest mb-10">Secure 256-bit Encryption Active</p><div class="grid grid-cols-2 gap-4"><div class="group"><label class="text-[10px] md:text-xs uppercase font-bold text-gray-400 mb-1 block pl-1">First Name</label><input type="text" id="fname" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:border-gold focus:bg-white transition text-base" required></div><div class="group"><label class="text-[10px] md:text-xs uppercase font-bold text-gray-400 mb-1 block pl-1">Last Name</label><input type="text" id="lname" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:border-gold focus:bg-white transition text-base" required></div></div><div><label class="text-[10px] md:text-xs uppercase font-bold text-gray-400 mb-1 block pl-1">Email Address</label><input type="email" id="emailContact" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:border-gold focus:bg-white transition text-base" required placeholder="For Receipt & Confirmation"></div><div class="grid grid-cols-2 gap-4"><div class="relative"><label class="text-[10px] md:text-xs uppercase font-bold text-gray-400 mb-1 block pl-1 flex justify-between"><span>TRN (9-Digits)</span> <span class="text-gold text-[9px]"><i data-lucide="lock" class="inline w-3 h-3"></i> Privileged Data</span></label><input type="text" id="trn" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:border-gold focus:bg-white transition text-base" required></div><div><label class="text-[10px] md:text-xs uppercase font-bold text-gray-400 mb-1 block pl-1">WhatsApp #</label><input type="tel" id="contactNum" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:border-gold focus:bg-white transition text-base" required></div></div><div class="pt-4"><div class="flex justify-between items-end mb-1"><label class="text-[10px] md:text-xs uppercase font-bold text-gray-400 block pl-1">Digital Signature</label><span class="text-[9px] text-emerald-600 font-bold flex items-center gap-1"><i data-lucide="cloud-upload" class="w-3 h-3"></i> Uploads to Drive</span></div><div class="relative border-2 border-dashed border-gray-300 rounded-xl bg-gray-50 overflow-hidden h-32 md:h-40 hover:border-navy transition"><canvas id="signatureCanvas" class="relative w-full h-full cursor-crosshair touch-none"></canvas><div class="absolute bottom-2 right-2 text-[10px] text-gray-300 pointer-events-none">Sign Here</div></div><div class="flex justify-between mt-1"><button type="button" onclick="signaturePad.clear()" class="text-[10px] md:text-xs text-gray-400 underline hover:text-red-500">Clear</button><span class="text-[9px] text-gray-400 italic">Signature stored securely for future auth.</span></div></div><button type="submit" id="submitBtn" class="w-full bg-navy text-white font-bold py-5 rounded-xl uppercase text-xs md:text-sm shadow-xl tracking-widest hover:bg-gold hover:text-navy transition mt-4">Transmit Application</button></form>`;
+            const canvas = document.getElementById('signatureCanvas');
+            signaturePad = new SignaturePad(canvas, { penColor: 'rgb(0, 51, 102)', throttle: 0 });
+            lucide.createIcons();
+            function resizeCanvas() { const ratio = Math.max(window.devicePixelRatio || 1, 1); canvas.width = canvas.offsetWidth * ratio; canvas.height = canvas.offsetHeight * ratio; canvas.getContext("2d").scale(ratio, ratio); signaturePad.clear(); }
+            setTimeout(resizeCanvas, 50);
+            document.getElementById('intakeForm').onsubmit = (e) => { e.preventDefault(); if(signaturePad.isEmpty()) return alert("Please sign the digital pad."); processSubmission(); };
+        }
+
+        async function processSubmission() {
+            const btn = document.getElementById('submitBtn'); btn.innerHTML = "Encrypting..."; btn.disabled = true; document.getElementById('statusOverlay').classList.remove('hidden');
+            const payload = { name: document.getElementById('fname').value + " " + document.getElementById('lname').value, firstName: document.getElementById('fname').value, lastName: document.getElementById('lname').value, email: document.getElementById('emailContact').value, phone: document.getElementById('contactNum').value, service: currentPillar.name, serviceType: currentPillar.name, trn: document.getElementById('trn').value, fileData: "Physical Handover Required", signature: signaturePad.toDataURL() };
+            try {
+                const response = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(payload) });
+                const result = await response.json(); 
+                document.getElementById('statusOverlay').classList.add('hidden');
+                document.getElementById('missionControl').classList.add('hidden');
+                if (result.status === 'success') { document.getElementById('receiptRef').innerText = result.id; } else { document.getElementById('receiptRef').innerText = "PENDING"; }
+                const now = new Date();
+                document.getElementById('dateStamp').innerText = `${now.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })} • ${now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`;
+                document.getElementById('receiptName').innerText = payload.firstName + " " + payload.lastName;
+                document.getElementById('receiptService').innerText = payload.serviceType;
+                document.getElementById('receiptModal').classList.remove('hidden');
+                lucide.createIcons();
+            } catch (err) { console.error(err); alert("Connectivity Error. Please try again."); btn.disabled = false; btn.innerHTML = "Transmit Application"; document.getElementById('statusOverlay').classList.add('hidden'); }
+        }
 
         window.onload = renderDeck;
     </script>
