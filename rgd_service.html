@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docu-Hub Concierge | RGD Vital Records</title>
+    <style>
+        /* --- CSS STYLING (Matches PICA Style) --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        #regForm {
+            background-color: #ffffff;
+            margin: 20px auto;
+            padding: 40px;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 { color: #2c3e50; text-align: center; }
+        h3 { color: #16a085; margin-bottom: 10px; }
+
+        p.concierge-text {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            border-left: 4px solid #16a085;
+            padding-left: 15px;
+            background: #f9f9f9;
+            padding: 10px 15px;
+            border-radius: 0 5px 5px 0;
+        }
+
+        input, select {
+            padding: 12px;
+            width: 100%;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+
+        input.invalid, select.invalid { background-color: #ffdddd; border: 1px solid red; }
+
+        .radio-group { margin-bottom: 20px; }
+        .radio-option {
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            display: block;
+        }
+        .radio-option:hover { background: #e0e0e0; }
+
+        .tab { display: none; }
+
+        .btn-container {
+            overflow: auto;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            background-color: #16a085;
+            color: #ffffff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover { background-color: #138a72; }
+        #prevBtn { background-color: #bbbbbb; }
+
+        /* Tooltips */
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+            margin-left: 5px;
+            color: #16a085;
+            cursor: help;
+            font-weight: bold;
+        }
+        .tooltip-text {
+            visibility: hidden;
+            width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -125px;
+            font-size: 13px;
+            font-weight: normal;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tooltip-container:hover .tooltip-text { visibility: visible; opacity: 1; }
+
+        .step {
+            height: 15px; width: 15px; margin: 0 2px;
+            background-color: #bbbbbb; border: none; border-radius: 50%;
+            display: inline-block; opacity: 0.5;
+        }
+        .step.active { opacity: 1; }
+        .step.finish { background-color: #16a085; }
+    </style>
+</head>
+<body>
+
+<form id="regForm">
+
+    <h1>Vital Records (RGD)</h1>
+    <div style="text-align:center;margin-bottom:20px;">
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+    </div>
+
+    <div class="tab">
+        <h3>Step 1: Welcome & Safety</h3>
+        <p class="concierge-text">
+            Welcome to Docu-Hub. We act as your authorized agent to retrieve Birth, Marriage, or Death certificates securely.
+        </p>
+        
+        <label class="radio-option">
+            <input type="checkbox" required name="consent_data">
+            I authorize Docu-Hub to process my data for RGD Application.
+        </label>
+        <label class="radio-option">
+            <input type="checkbox" required name="consent_private">
+            I understand that Docu-Hub is a private concierge service.
+        </label>
+        
+        <label>Your Email Address (For Receipt & Tracking)</label>
+        <input type="email" placeholder="e.g. jane.doe@gmail.com" name="client_email" required>
+    </div>
+
+    <div class="tab">
+        <h3>Step 2: The "Golden Key" Check</h3>
+        <p class="concierge-text">The RGD process speed depends entirely on whether you have an <strong>Entry Number</strong>.</p>
+
+        <label>1. What type of Certificate do you need?</label>
+        <select name="cert_type" required>
+            <option value="">Select...</option>
+            <option value="Birth">Birth Certificate</option>
+            <option value="Marriage">Marriage Certificate</option>
+            <option value="Death">Death Certificate</option>
+        </select>
+
+        <label>
+            2. Do you have the Entry Number?
+            <span class="tooltip-container"> (?)
+                <span class="tooltip-text">Look for a code like 'L12345' or 'K9876' on an old copy or the pink slip.</span>
+            </span>
+        </label>
+        <select name="has_entry_number" onchange="checkEntryNumber(this)" required>
+            <option value="">Select...</option>
+            <option value="Yes">Yes, I have it.</option>
+            <option value="No">No, I do not.</option>
+        </select>
+
+        <div id="searchWarning" style="display:none; background:#fff3cd; border-left: 4px solid #ffc107; padding:15px; margin-top:10px; font-size:14px; color:#856404;">
+            <strong>⚠️ Search Application Required</strong><br>
+            Without an Entry Number, RGD must manually search their books.
+            <ul style="margin-top:5px; padding-left:20px;">
+                <li><strong>Ordinary Timeline:</strong> 6-8 Weeks</li>
+                <li><strong>Requirement:</strong> You must provide accurate dates/locations.</li>
+            </ul>
+        </div>
+
+        <div id="entryNumberField" style="display:none; margin-top:15px;">
+            <label>Great! Please enter it below:</label>
+            <input type="text" name="entry_number" placeholder="e.g. L12345">
+        </div>
+    </div>
+
+    <div class="tab">
+        <h3>Step 3: Speed & Delivery</h3>
+        <p class="concierge-text">How fast do you need it, and how should we get it to you?</p>
+
+        <label>RGD Processing Speed</label>
+        <select name="processing_speed" required>
+            <option value="Ordinary">Ordinary (Standard Time)</option>
+            <option value="Express">Express (7-10 Days - Extra Fee)</option>
+        </select>
+
+        <label>Delivery Method</label>
+        <div class="radio-group">
+            <label class="radio-option">
+                <input type="radio" name="delivery_method" value="Pickup" required>
+                <strong>Option A: Self-Pickup</strong> <br> (You go to RGD Twickenham Park).
+            </label>
+            <label class="radio-option">
+                <input type="radio" name="delivery_method" value="Courier" required>
+                <strong>Option B: Courier (ZipMail)</strong> <br> (Delivered to your local post office).
+            </label>
+            <label class="radio-option">
+                <input type="radio" name="delivery_method" value="Bearer" required>
+                <strong>Option C: Docu-Hub Bearer</strong> <br> (We bring it to you).
+            </label>
+        </div>
+    </div>
+
+    <div class="tab">
+        <h3>Step 4: Authorization</h3>
+        <p class="concierge-text">
+            To act on your behalf at the RGD, we need two things:
+        </p>
+
+        <div style="background:#f8f9fa; padding:15px; border-radius:8px; border-left:4px solid #16a085; margin-bottom:20px;">
+            <p style="margin:0 0 10px 0; font-weight:bold;">1. Valid Government ID</p>
+            <p style="margin:0; font-size:13px; color:#555;">(Driver's License, Passport, or Elector ID)</p>
+        </div>
+
+        <div style="background:#f8f9fa; padding:15px; border-radius:8px; border-left:4px solid #16a085; margin-bottom:20px;">
+            <p style="margin:0 0 10px 0; font-weight:bold;">2. Signed Authorization Letter</p>
+            <p style="margin:0; font-size:13px; color:#555;">(We will email this to you to sign digitally)</p>
+        </div>
+        
+        <label style="margin-top:20px;">
+            I understand I must email my ID copy to complete this request:
+        </label>
+        <select name="docs_agreement" required>
+            <option value="">Select...</option>
+            <option value="Yes">Yes, I will email it.</option>
+        </select>
+    </div>
+
+    <div class="tab">
+        <h3>Step 5: Event Details</h3>
+        <p class="concierge-text">RGD needs specific details to find the record. Accuracy is key!</p>
+
+        <label>Full Name of Person on Certificate</label>
+        <input type="text" placeholder="First Middle Last" name="subject_name" required>
+
+        <label>Date of Event (Birth/Marriage/Death)</label>
+        <input type="date" name="event_date" required>
+
+        <label>
+            Place of Registration
+            <span class="tooltip-container"> (?)
+                <span class="tooltip-text">Be specific. 'Spanish Town' is too vague. Try 'St. Jago' or 'Angels'.</span>
+            </span>
+        </label>
+        <input type="text" placeholder="District / Town" name="place_of_registration" required>
+        
+        <label>Parish of Registration</label>
+        <select name="parish_registration" required>
+            <option value="">Select Parish...</option>
+            <option>Kingston</option>
+            <option>St. Andrew</option>
+            <option>St. Catherine</option>
+            <option>Clarendon</option>
+            <option>Manchester</option>
+            <option>St. Elizabeth</option>
+            <option>Westmoreland</option>
+            <option>Hanover</option>
+            <option>St. James</option>
+            <option>Trelawny</option>
+            <option>St. Ann</option>
+            <option>St. Mary</option>
+            <option>Portland</option>
+            <option>St. Thomas</option>
+        </select>
+
+        <label>Mother's Maiden Name (Crucial!)</label>
+        <input type="text" placeholder="Her name BEFORE marriage" name="mother_maiden_name" required>
+
+        <label>Father's Name (Optional)</label>
+        <input type="text" placeholder="Full Name" name="father_name">
+        
+        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+        
+        <label><strong>Your Contact Info</strong></label>
+        <input type="text" placeholder="Your Full Name" name="full_name" required>
+        <input type="tel" placeholder="Your Phone Number" name="client_phone" pattern="[0-9\-\+\s\(\)]{7,20}" required>
+    </div>
+
+    <div class="tab">
+        <h3>Review & Submit</h3>
+        <p class="concierge-text">
+            Almost done! When you click Submit, our Compliance Team will review your data against RGD standards.
+        </p>
+    </div>
+
+    <div class="btn-container">
+        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next Step</button>
+    </div>
+
+</form>
+
+<script>
+    // --- JAVASCRIPT LOGIC ---
+
+    // PASTE YOUR GOOGLE SCRIPT URL HERE
+    const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_GOES_HERE'; 
+    
+    const form = document.forms['regForm'];
+    var currentTab = 0; 
+    showTab(currentTab); 
+
+    function showTab(n) {
+        var x = document.getElementsByClassName("tab");
+        x[n].style.display = "block";
+        
+        if (n == 0) {
+            document.getElementById("prevBtn").style.display = "none";
+        } else {
+            document.getElementById("prevBtn").style.display = "inline";
+        }
+        
+        if (n == (x.length - 1)) {
+            document.getElementById("nextBtn").innerHTML = "Submit Application";
+        } else {
+            document.getElementById("nextBtn").innerHTML = "Next Step";
+        }
+        
+        fixStepIndicator(n);
+    }
+
+    function nextPrev(n) {
+        var x = document.getElementsByClassName("tab");
+        if (n == 1 && !validateForm()) return false;
+        
+        x[currentTab].style.display = "none";
+        currentTab = currentTab + n;
+        
+        if (currentTab >= x.length) {
+            submitToGoogle();
+            return false;
+        }
+        showTab(currentTab);
+    }
+
+    // --- RGD SPECIFIC LOGIC: ENTRY NUMBER TOGGLE ---
+    function checkEntryNumber(elem) {
+        var warning = document.getElementById("searchWarning");
+        var field = document.getElementById("entryNumberField");
+        
+        if (elem.value === "No") {
+            warning.style.display = "block";
+            field.style.display = "none";
+        } else if (elem.value === "Yes") {
+            warning.style.display = "none";
+            field.style.display = "block";
+        } else {
+            warning.style.display = "none";
+            field.style.display = "none";
+        }
+    }
+
+    function validateForm() {
+        var x, valid = true;
+        x = document.getElementsByClassName("tab");
+        var inputs = x[currentTab].querySelectorAll("input, select");
+
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].hasAttribute('required')) {
+                // Check Text/Dropdown
+                if (inputs[i].type !== "checkbox" && inputs[i].type !== "radio" && inputs[i].value.trim() === "") {
+                    inputs[i].className += " invalid";
+                    valid = false;
+                }
+                // Check Checkbox
+                if (inputs[i].type === "checkbox" && !inputs[i].checked) {
+                    inputs[i].className += " invalid";
+                    valid = false;
+                }
+                // Check Radio Group (Robust)
+                if (inputs[i].type === "radio") {
+                    var groupName = inputs[i].name;
+                    var radios = x[currentTab].querySelectorAll(`input[name="${groupName}"]`);
+                    var oneChecked = false;
+                    for (var r = 0; r < radios.length; r++) { if (radios[r].checked) oneChecked = true; }
+                    if (!oneChecked) {
+                        valid = false;
+                        // Highlight parent div for visibility
+                        if(inputs[i].closest('.radio-group')) {
+                            inputs[i].closest('.radio-group').style.border = "1px solid red";
+                            inputs[i].closest('.radio-group').style.padding = "10px";
+                            inputs[i].closest('.radio-group').style.borderRadius = "8px";
+                        }
+                    } else {
+                        // Clear highlight
+                        if(inputs[i].closest('.radio-group')) {
+                            inputs[i].closest('.radio-group').style.border = "none";
+                        }
+                    }
+                }
+            }
+        }
+
+        if (valid) {
+            document.getElementsByClassName("step")[currentTab].className += " finish";
+        }
+        return valid; 
+    }
+
+    function fixStepIndicator(n) {
+        var i, x = document.getElementsByClassName("step");
+        for (i = 0; i < x.length; i++) {
+            x[i].className = x[i].className.replace(" active", "");
+        }
+        x[n].className += " active";
+    }
+
+    function submitToGoogle() {
+        document.getElementById("nextBtn").innerHTML = "Sending...";
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                document.getElementById("regForm").innerHTML = "<h2>🎉 Success!</h2><p>We have received your RGD Application details. Please check your email for the Authorization Letter and Invoice.</p>";
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert("Something went wrong. Please check your internet connection.");
+            });
+    }
+</script>
+
+</body>
+</html>

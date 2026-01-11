@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docu-Hub Concierge | Passport Renewal</title>
+    <style>
+        /* --- CSS STYLING --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        #regForm {
+            background-color: #ffffff;
+            margin: 20px auto;
+            padding: 40px;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 { color: #2c3e50; text-align: center; }
+        h3 { color: #16a085; margin-bottom: 10px; }
+
+        p.concierge-text {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            border-left: 4px solid #16a085;
+            padding-left: 15px;
+            background: #f9f9f9;
+            padding: 10px 15px;
+            border-radius: 0 5px 5px 0;
+        }
+
+        /* Input Fields */
+        input, select {
+            padding: 12px;
+            width: 100%;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+
+        /* Invalid Field Highlight */
+        input.invalid, select.invalid {
+            background-color: #ffdddd;
+            border: 1px solid red;
+        }
+
+        /* Radio Buttons */
+        .radio-group { margin-bottom: 20px; }
+        .radio-option {
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            display: block;
+        }
+        .radio-option:hover { background: #e0e0e0; }
+
+        .tab { display: none; }
+
+        /* Buttons */
+        .btn-container {
+            overflow: auto;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            background-color: #16a085;
+            color: #ffffff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover { background-color: #138a72; }
+        #prevBtn { background-color: #bbbbbb; }
+
+        /* Tooltips */
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+            margin-left: 5px;
+            color: #16a085;
+            cursor: help;
+            font-weight: bold;
+        }
+        .tooltip-text {
+            visibility: hidden;
+            width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -125px;
+            font-size: 13px;
+            font-weight: normal;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tooltip-container:hover .tooltip-text { visibility: visible; opacity: 1; }
+
+        /* Steps */
+        .step {
+            height: 15px; width: 15px; margin: 0 2px;
+            background-color: #bbbbbb; border: none; border-radius: 50%;
+            display: inline-block; opacity: 0.5;
+        }
+        .step.active { opacity: 1; }
+        .step.finish { background-color: #16a085; }
+    </style>
+</head>
+<body>
+
+<form id="regForm">
+
+    <h1>Passport Renewal</h1>
+    <div style="text-align:center;margin-bottom:20px;">
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+    </div>
+
+    <div class="tab">
+        <h3>Step 1: Welcome & Safety</h3>
+        <p class="concierge-text">
+            Welcome to Docu-Hub. We verify who you are to ensure your data stays safe and goes only to PICA.
+        </p>
+        
+        <label class="radio-option">
+            <input type="checkbox" required name="consent_data">
+            I agree to allow Docu-Hub to process my data for Passport Renewal.
+        </label>
+        <label class="radio-option">
+            <input type="checkbox" required name="consent_private">
+            I understand that Docu-Hub is a private concierge service.
+        </label>
+        
+        <label>Your Email Address (For your receipt)</label>
+        <input type="email" placeholder="e.g. jane.doe@gmail.com" name="client_email" required>
+    </div>
+
+    <div class="tab">
+        <h3>Step 2: Eligibility Check</h3>
+        <p class="concierge-text">Let's ensure you qualify for the "Fast Lane" online renewal.</p>
+
+        <label>1. Are you 18 years or older?</label>
+        <select name="is_adult" onchange="checkEligibility(this)" required>
+            <option value="">Select...</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <label>2. Was your current passport issued AFTER Sept 2001?</label>
+        <select name="is_post2001" onchange="checkEligibility(this)" required>
+            <option value="">Select...</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <label>3. Has your name changed (Marriage/Deed Poll)?</label>
+        <select name="has_name_change" onchange="checkEligibility(this)" required>
+            <option value="">Select...</option>
+            <option value="No">No (Name is the same)</option>
+            <option value="Yes">Yes (Name changed)</option>
+        </select>
+        
+        <div id="eligibilityError" style="color:red; display:none; background:#ffe6e6; padding:10px;">
+            Based on these answers, you require a <strong>Manual Application</strong>. Please contact us directly.
+        </div>
+    </div>
+
+    <div class="tab">
+        <h3>Step 3: Delivery Options</h3>
+        <div class="radio-group">
+            <label class="radio-option">
+                <input type="radio" name="service_level" value="Pickup" required>
+                <strong>Option A: Self-Pickup</strong> <br> (You go to the PICA office).
+            </label>
+            <label class="radio-option">
+                <input type="radio" name="service_level" value="Courier" required>
+                <strong>Option B: Courier (ZipMail)</strong> <br> (Delivered to your local post office. ~$700 JMD).
+            </label>
+            <label class="radio-option">
+                <input type="radio" name="service_level" value="Bearer" required>
+                <strong>Option C: Docu-Hub Bearer</strong> <br> (We pick it up & bring it to you).
+            </label>
+        </div>
+
+        <label>Preferred PICA Location</label>
+        <select name="pica_location" required>
+            <option value="">Select Location...</option>
+            <option value="Kingston">Kingston (HQ)</option>
+            <option value="Montego Bay">Montego Bay</option>
+            <option value="Mandeville">Mandeville</option>
+            <option value="Portmore">Portmore</option>
+            <option value="St. Ann's Bay">St. Ann's Bay</option>
+            <option value="May Pen">May Pen</option>
+        </select>
+    </div>
+
+    <div class="tab">
+        <h3>Step 4: Documents</h3>
+        <p class="concierge-text">
+            To ensure the highest quality and security, we do not accept direct uploads on this form.
+        </p>
+        <label><strong>1. The Old Passport:</strong></label>
+        <p style="font-size:14px; color:#666; margin-top:0;">Please snap a clear picture of the data page and WhatsApp it to us at <strong>[Your Number]</strong> or email it to <strong>[Your Email]</strong>.</p>
+        
+        <label><strong>2. The Studio Photo:</strong></label>
+        <p style="font-size:14px; color:#666; margin-top:0;">Reminder: Have the photographer email the digital file directly to us.</p>
+        
+        <label style="margin-top:20px;">I understand I must send these documents separately:</label>
+        <select name="docs_agreement" required>
+            <option value="">Select...</option>
+            <option value="Yes">Yes, I will send them after submitting.</option>
+        </select>
+    </div>
+
+    <div class="tab">
+        <h3>Step 5: Final Details</h3>
+        <p class="concierge-text">Almost there! PICA requires two contacts for emergencies.</p>
+
+        <label>Your Full Name</label>
+        <input type="text" placeholder="First Middle Last" name="full_name" required>
+
+        <label>
+            Your Current Home Address
+            <span class="tooltip-container"> (?)
+                <span class="tooltip-text">Where do you sleep? Do not use a PO Box here. Example: Lot 45 Mango Walk.</span>
+            </span>
+        </label>
+        <input type="text" placeholder="Line 1: Street Address / Lot Number (Required)" name="address_line1" required>
+        <input type="text" placeholder="Line 2: Apartment / District / Town (Optional)" name="address_line2">
+
+        <label>Your Parish</label>
+        <select name="parish" required>
+            <option value="">Select Parish...</option>
+            <option>Kingston</option>
+            <option>St. Andrew</option>
+            <option>St. Catherine</option>
+            <option>Clarendon</option>
+            <option>Manchester</option>
+            <option>St. Elizabeth</option>
+            <option>Westmoreland</option>
+            <option>Hanover</option>
+            <option>St. James</option>
+            <option>Trelawny</option>
+            <option>St. Ann</option>
+            <option>St. Mary</option>
+            <option>Portland</option>
+            <option>St. Thomas</option>
+        </select>
+        
+        <label>Your Phone Number</label>
+        <input type="tel" placeholder="876-555-1234" name="client_phone" pattern="[0-9\-\+\s\(\)]{7,20}" required>
+
+        <label>Your Occupation</label>
+        <input type="text" placeholder="e.g. Teacher, Nurse, Taxi Driver" name="occupation" required>
+
+        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+
+        <h4>Emergency Contact 1 (Mandatory)</h4>
+        <input type="text" placeholder="Full Name" name="nok1_name" required>
+        <input type="text" placeholder="Relationship (e.g. Mother)" name="nok1_relation" required>
+        <input type="tel" placeholder="Phone Number" name="nok1_phone" pattern="[0-9\-\+\s\(\)]{7,20}" required>
+        
+        <label style="font-size:14px; margin-top:10px;">Contact 1 Address:</label>
+        <input type="text" placeholder="Line 1: Street / Lot (Required)" name="nok1_address1" required>
+        <input type="text" placeholder="Line 2: Town / District (Optional)" name="nok1_address2">
+
+        <h4>Emergency Contact 2 (Mandatory)</h4>
+        <input type="text" placeholder="Full Name" name="nok2_name" required>
+        <input type="text" placeholder="Relationship (e.g. Friend)" name="nok2_relation" required>
+        <input type="tel" placeholder="Phone Number" name="nok2_phone" pattern="[0-9\-\+\s\(\)]{7,20}" required>
+        
+        <label style="font-size:14px; margin-top:10px;">Contact 2 Address:</label>
+        <input type="text" placeholder="Line 1: Street / Lot (Required)" name="nok2_address1" required>
+        <input type="text" placeholder="Line 2: Town / District (Optional)" name="nok2_address2">
+    </div>
+
+    <div class="tab">
+        <h3>Review & Submit</h3>
+        <p class="concierge-text">
+            Almost done! When you click Submit, your data will be securely sent to our Compliance Team.
+        </p>
+    </div>
+
+    <div class="btn-container">
+        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next Step</button>
+    </div>
+
+</form>
+
+<script>
+    // --- JAVASCRIPT LOGIC ---
+
+    // PASTE YOUR GOOGLE SCRIPT URL HERE
+    const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_GOES_HERE'; 
+    
+    const form = document.forms['regForm'];
+    var currentTab = 0; 
+    showTab(currentTab); 
+
+    function showTab(n) {
+        var x = document.getElementsByClassName("tab");
+        x[n].style.display = "block";
+        
+        if (n == 0) {
+            document.getElementById("prevBtn").style.display = "none";
+        } else {
+            document.getElementById("prevBtn").style.display = "inline";
+        }
+        
+        if (n == (x.length - 1)) {
+            document.getElementById("nextBtn").innerHTML = "Submit Application";
+        } else {
+            document.getElementById("nextBtn").innerHTML = "Next Step";
+        }
+        
+        fixStepIndicator(n);
+    }
+
+    function nextPrev(n) {
+        var x = document.getElementsByClassName("tab");
+        // Validation check
+        if (n == 1 && !validateForm()) return false;
+        
+        x[currentTab].style.display = "none";
+        currentTab = currentTab + n;
+        
+        if (currentTab >= x.length) {
+            submitToGoogle();
+            return false;
+        }
+        showTab(currentTab);
+    }
+
+    // --- UPDATED VALIDATION LOGIC (SPAM PROOF + OPTIONAL FIELDS) ---
+    function validateForm() {
+        var x, valid = true;
+        x = document.getElementsByClassName("tab");
+        var inputs = x[currentTab].querySelectorAll("input, select");
+
+        // 1. Define Patterns
+        var phonePattern = /^[0-9\-\+\s\(\)]{7,20}$/; 
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        for (var i = 0; i < inputs.length; i++) {
+            
+            // CHECK A: Is it Required & Empty?
+            if (inputs[i].hasAttribute('required')) {
+                // Handle Text/Dropdowns
+                if (inputs[i].type !== "checkbox" && inputs[i].type !== "radio" && inputs[i].value.trim() === "") {
+                    inputs[i].className += " invalid";
+                    valid = false;
+                }
+                // Handle Checkboxes
+                if (inputs[i].type === "checkbox" && !inputs[i].checked) {
+                    inputs[i].className += " invalid";
+                    valid = false;
+                }
+                // Handle Radios
+                if (inputs[i].type === "radio") {
+                    var groupName = inputs[i].name;
+                    var radios = x[currentTab].querySelectorAll(`input[name="${groupName}"]`);
+                    var oneChecked = false;
+                    for (var r = 0; r < radios.length; r++) {
+                        if (radios[r].checked) oneChecked = true;
+                    }
+                    if (!oneChecked) valid = false;
+                }
+            }
+
+            // CHECK B: Phone Pattern (Anti-Spam)
+            // Note: We check this even if not required, IF they typed something.
+            if (inputs[i].type === "tel" && inputs[i].value !== "") {
+                if (!phonePattern.test(inputs[i].value)) {
+                    inputs[i].className += " invalid";
+                    alert("Please enter a valid phone number (Digits only).");
+                    valid = false;
+                }
+            }
+
+            // CHECK C: Email Pattern (Anti-Spam)
+            if (inputs[i].type === "email" && inputs[i].value !== "") {
+                if (!emailPattern.test(inputs[i].value)) {
+                    inputs[i].className += " invalid";
+                    alert("Please enter a valid email address.");
+                    valid = false;
+                }
+            }
+        }
+
+        // Eligibility Logic Check
+        if (currentTab == 1) {
+            if(document.getElementById("eligibilityError").style.display == "block"){
+                return false; 
+            }
+        }
+
+        if (valid) {
+            document.getElementsByClassName("step")[currentTab].className += " finish";
+        }
+        return valid; 
+    }
+
+    function fixStepIndicator(n) {
+        var i, x = document.getElementsByClassName("step");
+        for (i = 0; i < x.length; i++) {
+            x[i].className = x[i].className.replace(" active", "");
+        }
+        x[n].className += " active";
+    }
+
+    // Eligibility Check
+    function checkEligibility(elem) {
+        var form = document.forms['regForm'];
+        var adult = form["is_adult"].value;
+        var date = form["is_post2001"].value;
+        var nameChange = form["has_name_change"].value;
+        var errorDiv = document.getElementById("eligibilityError");
+        var nextBtn = document.getElementById("nextBtn");
+
+        if ((adult === "No") || (date === "No") || (nameChange === "Yes")) {
+            errorDiv.style.display = "block";
+            nextBtn.style.display = "none"; 
+        } else {
+            errorDiv.style.display = "none";
+            nextBtn.style.display = "inline";
+        }
+    }
+
+    // Send to Google
+    function submitToGoogle() {
+        document.getElementById("nextBtn").innerHTML = "Sending...";
+        
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                document.getElementById("regForm").innerHTML = "<h2>🎉 Success!</h2><p>We have received your details. Please check your email for the Invoice and Photo Instructions.</p>";
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert("Something went wrong. Please check your internet connection.");
+            });
+    }
+</script>
+
+</body>
+</html>
