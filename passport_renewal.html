@@ -20,16 +20,16 @@
         #regForm {
             background-color: #ffffff;
             margin: 20px auto;
-            padding: 30px 25px; 
+            padding: 30px 25px; /* Mobile Padding */
             width: 90%;
             max-width: 600px;
-            border-radius: 16px; 
+            border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
 
         h1 { color: #2c3e50; text-align: center; font-size: 28px; margin-bottom: 30px; }
-        h3 { color: #16a085; margin-bottom: 15px; font-size: 20px; }
-        h4 { color: #2c3e50; margin-top: 30px; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        h3 { color: #16a085; margin-bottom: 20px; font-size: 20px; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; }
+        h4 { color: #2c3e50; margin-top: 30px; margin-bottom: 15px; font-size: 16px; font-weight: 700; }
 
         p.concierge-text {
             color: #555;
@@ -43,18 +43,15 @@
         }
 
         label {
-            display: block; 
-            margin-bottom: 8px; 
+            display: block;
+            margin-bottom: 10px;
             font-weight: 600;
             color: #34495e;
             font-size: 14px;
         }
 
-        /* --- FIXED INPUT STYLING (Excludes Checkboxes) --- */
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        input[type="date"],
+        /* --- TEXT INPUTS ONLY (Excludes Checkboxes) --- */
+        input:not([type="checkbox"]):not([type="radio"]), 
         select {
             padding: 16px; /* Large touch target */
             width: 100%;
@@ -62,16 +59,14 @@
             border: 1px solid #cbd5e1;
             border-radius: 8px;
             box-sizing: border-box;
-            margin-bottom: 24px; 
+            margin-bottom: 24px; /* Clean spacing between questions */
             background-color: #fff;
             transition: all 0.3s ease;
             -webkit-appearance: none; /* Removes default styling for text fields */
         }
 
         /* Focus State */
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="tel"]:focus,
+        input:not([type="checkbox"]):not([type="radio"]):focus, 
         select:focus {
             border-color: #16a085;
             outline: none;
@@ -84,42 +79,42 @@
             border-color: #e53e3e;
         }
 
-        /* --- CHECKBOX & RADIO STYLING (The Fix) --- */
-        input[type="checkbox"], 
-        input[type="radio"] {
+        /* --- CHECKBOX & RADIO CARDS (The Fix) --- */
+        .radio-group { margin-bottom: 30px; }
+        
+        /* The Container Card */
+        .radio-option {
+            background: #f8fafc;
+            padding: 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: flex-start; /* Aligns box with top of text */
+            gap: 15px;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        
+        .radio-option:active { background: #eef2f6; }
+        
+        /* The Actual Box/Circle */
+        .radio-option input {
             width: 24px;
             height: 24px;
             padding: 0;
             margin: 0;
-            margin-top: 2px;
-            accent-color: #16a085; /* Makes the checkmark green */
-            -webkit-appearance: auto; /* Restores the native box look */
+            margin-top: 2px; /* Slight alignment fix */
+            accent-color: #16a085; /* Green Tick */
             cursor: pointer;
+            flex-shrink: 0; /* Prevents box from squishing */
         }
 
-        /* --- CARD STYLING --- */
-        .radio-group { margin-bottom: 30px; }
-        
-        .radio-option {
-            background: #f8fafc;
-            padding: 15px;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            margin-bottom: 12px;
-            cursor: pointer;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            transition: background 0.2s;
-        }
-        
-        .radio-option:hover { background: #f1f5f9; border-color: #cbd5e1; }
-        
-        /* Ensure text inside cards looks good */
+        /* The Text inside the card */
         .radio-option span {
             font-size: 15px;
             line-height: 1.5;
-            flex: 1;
+            color: #334155;
         }
 
         .tab { display: none; }
@@ -127,23 +122,24 @@
         /* --- BUTTONS --- */
         .btn-container {
             overflow: auto;
-            margin-top: 30px;
+            margin-top: 40px;
             display: flex;
             justify-content: space-between;
-            gap: 10px;
+            gap: 15px;
         }
 
         button {
             background-color: #16a085;
             color: #ffffff;
             border: none;
-            padding: 16px 30px;
+            padding: 18px 30px;
             font-size: 16px;
             font-weight: bold;
             border-radius: 50px;
             cursor: pointer;
             flex: 1;
             transition: background 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
         button:hover { background-color: #138a72; }
@@ -152,9 +148,10 @@
             background-color: #fff; 
             color: #64748b; 
             border: 1px solid #cbd5e1; 
+            box-shadow: none;
         }
 
-        /* Steps */
+        /* Steps Indicator */
         .step {
             height: 10px; width: 10px; margin: 0 4px;
             background-color: #cbd5e1; border: none; border-radius: 50%;
@@ -192,12 +189,13 @@
             <input type="checkbox" required name="consent_data">
             <span>I agree to allow Docu-Hub to process my data for Passport Renewal.</span>
         </label>
+        
         <label class="radio-option">
             <input type="checkbox" required name="consent_private">
             <span>I understand that Docu-Hub is a private concierge service.</span>
         </label>
         
-        <label>Your Email Address (For your receipt)</label>
+        <label style="margin-top: 20px;">Your Email Address (For your receipt)</label>
         <input type="email" placeholder="e.g. jane.doe@gmail.com" name="client_email" required>
     </div>
 
@@ -266,12 +264,12 @@
             To ensure the highest quality and security, we do not accept direct uploads on this form.
         </p>
         
-        <div style="background:#f1f5f9; padding:15px; border-radius:8px; margin-bottom:20px;">
+        <div style="background:#f1f5f9; padding:15px; border-radius:8px; margin-bottom:20px; border: 1px solid #e2e8f0;">
             <p style="font-weight:bold; margin-top:0; color:#334155;">1. The Old Passport</p>
             <p style="font-size:13px; color:#64748b; margin-bottom:0;">WhatsApp a clear picture of the data page to us.</p>
         </div>
 
-        <div style="background:#f1f5f9; padding:15px; border-radius:8px; margin-bottom:20px;">
+        <div style="background:#f1f5f9; padding:15px; border-radius:8px; margin-bottom:20px; border: 1px solid #e2e8f0;">
             <p style="font-weight:bold; margin-top:0; color:#334155;">2. The Studio Photo</p>
             <p style="font-size:13px; color:#64748b; margin-bottom:0;">Have the photographer email the file directly to us.</p>
         </div>
