@@ -70,7 +70,7 @@
             box-shadow: 0 0 0 3px rgba(22, 160, 133, 0.1);
         }
 
-        /* --- CHECKBOX & RADIO CARDS (The Fix) --- */
+        /* --- CHECKBOX & RADIO CARDS --- */
         .radio-group { margin-bottom: 30px; }
         
         .radio-option {
@@ -88,7 +88,6 @@
         
         .radio-option:active { background: #eef2f6; }
         
-        /* The Actual Box/Circle */
         .radio-option input {
             width: 24px;
             height: 24px;
@@ -138,6 +137,13 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         button:hover { background-color: #138a72; }
+        
+        button:disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
         #prevBtn { 
             background-color: #fff; 
             color: #64748b; 
@@ -309,7 +315,7 @@
 <script>
     // --- JAVASCRIPT LOGIC ---
 
-    // PASTE YOUR GOOGLE SCRIPT URL HERE
+    // ⚠️ IMPORTANT: Verify this URL is your ACTIVE deployment
     const scriptURL = 'https://script.google.com/macros/s/AKfycbz48A4sa41wU6tt3aOxNNSqwCe9n1b7rjCbq7WFz9nmODFNCFiX6WhOjJpmNgdcNNHtig/exec'; 
     
     const form = document.forms['regForm'];
@@ -413,7 +419,14 @@
     }
 
     function submitToGoogle() {
-        document.getElementById("nextBtn").innerHTML = "Querying...";
+        const btn = document.getElementById("nextBtn");
+        const originalText = btn.innerHTML;
+        
+        // 1. Visual Feedback
+        btn.innerHTML = "Querying...";
+        btn.disabled = true;
+        btn.style.backgroundColor = "#94a3b8"; // Grey out button
+
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => {
                 document.getElementById("regForm").innerHTML = "<h2>🔍 Request Received</h2><p>Our Compliance Team is now reviewing your request. <br><br>Please check your email shortly for the <strong>Official Estimate Screenshot</strong> and document upload instructions.</p>";
@@ -421,11 +434,13 @@
             .catch(error => {
                 console.error('Error!', error.message);
                 alert("Something went wrong. Please check your internet connection.");
+                // Reset button on error
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                btn.style.backgroundColor = "#16a085"; 
             });
     }
 </script>
 
 </body>
 </html>
-
-
