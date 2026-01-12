@@ -378,6 +378,7 @@
     // --- JAVASCRIPT LOGIC ---
 
     // ⚠️ IMPORTANT: PASTE YOUR DEPLOYED WEB APP URL HERE ⚠️
+    // If this is incorrectly set, the button will do nothing or fail silently!
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyr3VlGvCsxsy7RA0pgV7qONVkZrXSNE1a_KKK_Y5Mdisa3O7E4IyfH2Bye2P0Rq4aZzg/exec'; 
     
     const form = document.forms['regForm'];
@@ -423,23 +424,27 @@
         var x, valid = true;
         x = document.getElementsByClassName("tab");
         var inputs = x[currentTab].querySelectorAll("input, select");
+        var firstError = null;
 
         var phonePattern = /^[0-9\-\+\s\(\)]{7,20}$/; 
         var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         for (var i = 0; i < inputs.length; i++) {
             
+            // Required Field Check
             if (inputs[i].hasAttribute('required')) {
                 // Text/Dropdown
                 if (inputs[i].type !== "checkbox" && inputs[i].type !== "radio" && inputs[i].value.trim() === "") {
                     inputs[i].className += " invalid";
                     valid = false;
+                    if(!firstError) firstError = inputs[i];
                 }
                 // Checkbox
                 if (inputs[i].type === "checkbox") {
                     if (!inputs[i].checked) {
                         inputs[i].parentElement.classList.add("invalid-group");
                         valid = false;
+                        if(!firstError) firstError = inputs[i].parentElement;
                     } else {
                         inputs[i].parentElement.classList.remove("invalid-group");
                     }
@@ -452,7 +457,11 @@
                     for (var r = 0; r < radios.length; r++) {
                         if (radios[r].checked) oneChecked = true;
                     }
-                    if (!oneChecked) valid = false;
+                    if (!oneChecked) {
+                        valid = false;
+                        // For radios, highlight the first option's parent usually or handle via group logic
+                        if(!firstError) firstError = radios[0].parentElement;
+                    }
                 }
             }
 
@@ -461,24 +470,33 @@
                 if (!phonePattern.test(inputs[i].value)) {
                     inputs[i].className += " invalid";
                     valid = false;
+                    if(!firstError) firstError = inputs[i];
                 }
             }
             if (inputs[i].type === "email" && inputs[i].value !== "") {
                 if (!emailPattern.test(inputs[i].value)) {
                     inputs[i].className += " invalid";
                     valid = false;
+                    if(!firstError) firstError = inputs[i];
                 }
             }
         }
 
-        // Eligibility Logic Check
+        // Eligibility Logic Check (Tab 2)
         if (currentTab == 1) {
             if(document.getElementById("eligibilityError").style.display == "block"){
                 return false; 
             }
         }
 
-        if (valid) {
+        if (!valid) {
+            // Scroll to the first error so the user sees it!
+            if(firstError) {
+                firstError.scrollIntoView({behavior: "smooth", block: "center"});
+                // Optional: Flash it slightly or alert
+                alert("Please complete the required fields highlighted in red.");
+            }
+        } else {
             document.getElementsByClassName("step")[currentTab].className += " finish";
         }
         return valid; 
@@ -514,15 +532,21 @@
         const btn = document.getElementById("nextBtn");
         const originalText = btn.innerHTML;
         
-        // 1. Visual Feedback (User knows it's working)
+        // 1. URL Check
+        if(scriptURL.includes("INSERT_YOUR")) {
+            alert("SYSTEM ERROR: The Form URL has not been configured. Please contact support.");
+            return;
+        }
+
+        // 2. Visual Feedback
         btn.innerHTML = "Processing...";
         btn.disabled = true;
         btn.style.backgroundColor = "#94a3b8"; 
 
-        // 2. The Fetch
+        // 3. The Fetch
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => {
-                // 3. Success Handling
+                // 4. Success Handling
                 document.getElementById("regForm").innerHTML = `
                     <div style="text-align:center; padding: 40px 20px;">
                         <div style="color:#16a085; font-size: 50px; margin-bottom: 20px;">🎉</div>
@@ -535,7 +559,7 @@
                     </div>`;
             })
             .catch(error => {
-                // 4. Error Handling
+                // 5. Error Handling
                 console.error('Error!', error.message);
                 alert("Connection Error. Please check your internet or try again.");
                 
