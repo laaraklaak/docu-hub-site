@@ -20,10 +20,10 @@
         #regForm {
             background-color: #ffffff;
             margin: 20px auto;
-            padding: 30px 25px; /* Mobile Padding */
+            padding: 30px 25px; 
             width: 90%;
             max-width: 600px;
-            border-radius: 16px;
+            border-radius: 16px; 
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
 
@@ -43,46 +43,37 @@
         }
 
         label {
-            display: block;
-            margin-bottom: 10px;
+            display: block; 
+            margin-bottom: 10px; 
             font-weight: 600;
             color: #34495e;
             font-size: 14px;
         }
 
-        /* --- TEXT INPUTS ONLY (Excludes Checkboxes) --- */
+        /* --- TEXT INPUTS (Wide & Easy to Tap) --- */
         input:not([type="checkbox"]):not([type="radio"]), 
         select {
-            padding: 16px; /* Large touch target */
+            padding: 16px; 
             width: 100%;
             font-size: 16px; /* Prevents iOS zoom */
             border: 1px solid #cbd5e1;
             border-radius: 8px;
             box-sizing: border-box;
-            margin-bottom: 24px; /* Clean spacing between questions */
+            margin-bottom: 24px; 
             background-color: #fff;
             transition: all 0.3s ease;
-            -webkit-appearance: none; /* Removes default styling for text fields */
+            -webkit-appearance: none;
         }
 
-        /* Focus State */
-        input:not([type="checkbox"]):not([type="radio"]):focus, 
-        select:focus {
+        input:focus, select:focus {
             border-color: #16a085;
             outline: none;
             box-shadow: 0 0 0 3px rgba(22, 160, 133, 0.1);
         }
 
-        /* Error State */
-        input.invalid, select.invalid {
-            background-color: #fff5f5;
-            border-color: #e53e3e;
-        }
-
-        /* --- CHECKBOX & RADIO CARDS (The Fix) --- */
+        /* --- CHECKBOX & RADIO CARDS --- */
         .radio-group { margin-bottom: 30px; }
         
-        /* The Container Card */
         .radio-option {
             background: #f8fafc;
             padding: 16px;
@@ -91,30 +82,42 @@
             margin-bottom: 15px;
             cursor: pointer;
             display: flex;
-            align-items: flex-start; /* Aligns box with top of text */
+            align-items: flex-start;
             gap: 15px;
             transition: background 0.2s, border-color 0.2s;
+            position: relative;
         }
         
-        .radio-option:active { background: #eef2f6; }
+        .radio-option:active { background: #eef2f6; border-color: #cbd5e1; }
         
-        /* The Actual Box/Circle */
         .radio-option input {
             width: 24px;
             height: 24px;
             padding: 0;
             margin: 0;
-            margin-top: 2px; /* Slight alignment fix */
-            accent-color: #16a085; /* Green Tick */
+            margin-top: 2px;
+            accent-color: #16a085;
             cursor: pointer;
-            flex-shrink: 0; /* Prevents box from squishing */
+            flex-shrink: 0;
+            pointer-events: auto; 
         }
 
-        /* The Text inside the card */
         .radio-option span {
             font-size: 15px;
             line-height: 1.5;
             color: #334155;
+            pointer-events: none;
+        }
+
+        /* Error States */
+        input.invalid, select.invalid {
+            background-color: #fff5f5;
+            border-color: #e53e3e;
+        }
+        
+        .radio-option.invalid-group {
+            border: 1px solid #e53e3e;
+            background-color: #fff5f5;
         }
 
         .tab { display: none; }
@@ -144,6 +147,12 @@
         
         button:hover { background-color: #138a72; }
         
+        button:disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        
         #prevBtn { 
             background-color: #fff; 
             color: #64748b; 
@@ -151,7 +160,7 @@
             box-shadow: none;
         }
 
-        /* Steps Indicator */
+        /* Steps */
         .step {
             height: 10px; width: 10px; margin: 0 4px;
             background-color: #cbd5e1; border: none; border-radius: 50%;
@@ -195,7 +204,7 @@
             <span>I understand that Docu-Hub is a private concierge service.</span>
         </label>
         
-        <label style="margin-top: 20px;">Your Email Address (For your receipt)</label>
+        <label style="margin-top: 30px;">Your Email Address (For your receipt)</label>
         <input type="email" placeholder="e.g. jane.doe@gmail.com" name="client_email" required>
     </div>
 
@@ -231,6 +240,7 @@
 
     <div class="tab">
         <h3>Step 3: Delivery Options</h3>
+        
         <div class="radio-group">
             <label class="radio-option">
                 <input type="radio" name="service_level" value="Pickup" required>
@@ -274,7 +284,7 @@
             <p style="font-size:13px; color:#64748b; margin-bottom:0;">Have the photographer email the file directly to us.</p>
         </div>
         
-        <label>I understand I must send these separately:</label>
+        <label style="margin-top:30px;">I understand I must send these separately:</label>
         <select name="docs_agreement" required>
             <option value="">Select...</option>
             <option value="Yes">Yes, I will send them after submitting.</option>
@@ -362,9 +372,7 @@
 </form>
 
 <script>
-    // --- JAVASCRIPT LOGIC ---
-
-    // PASTE YOUR GOOGLE SCRIPT URL HERE
+    // ⚠️ IMPORTANT: UPDATE THIS URL TO YOUR OWN DEPLOYMENT URL
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxT804rv7zakuwG5GivIwslqw5Mj39b9U7nKTU8aVyIFEQ209X0NuUujqBhCVh3MICS7w/exec'; 
     
     const form = document.forms['regForm'];
@@ -388,7 +396,7 @@
         }
         
         fixStepIndicator(n);
-        window.scrollTo(0, 0); // Scroll to top on step change for mobile
+        window.scrollTo(0, 0); 
     }
 
     function nextPrev(n) {
@@ -406,7 +414,6 @@
         showTab(currentTab);
     }
 
-    // --- UPDATED VALIDATION LOGIC ---
     function validateForm() {
         var x, valid = true;
         x = document.getElementsByClassName("tab");
@@ -417,21 +424,22 @@
 
         for (var i = 0; i < inputs.length; i++) {
             
-            // CHECK A: Is it Required & Empty?
             if (inputs[i].hasAttribute('required')) {
-                // Handle Text/Dropdowns
+                // Text/Dropdown
                 if (inputs[i].type !== "checkbox" && inputs[i].type !== "radio" && inputs[i].value.trim() === "") {
                     inputs[i].className += " invalid";
                     valid = false;
                 }
-                // Handle Checkboxes
-                if (inputs[i].type === "checkbox" && !inputs[i].checked) {
-                    inputs[i].parentElement.style.border = "1px solid red"; // Highlight the container
-                    valid = false;
-                } else if (inputs[i].type === "checkbox") {
-                    inputs[i].parentElement.style.border = "1px solid #e2e8f0"; // Reset
+                // Checkbox
+                if (inputs[i].type === "checkbox") {
+                    if (!inputs[i].checked) {
+                        inputs[i].parentElement.classList.add("invalid-group");
+                        valid = false;
+                    } else {
+                        inputs[i].parentElement.classList.remove("invalid-group");
+                    }
                 }
-                // Handle Radios
+                // Radio
                 if (inputs[i].type === "radio") {
                     var groupName = inputs[i].name;
                     var radios = x[currentTab].querySelectorAll(`input[name="${groupName}"]`);
@@ -443,15 +451,13 @@
                 }
             }
 
-            // CHECK B: Phone Pattern
+            // Patterns
             if (inputs[i].type === "tel" && inputs[i].value !== "") {
                 if (!phonePattern.test(inputs[i].value)) {
                     inputs[i].className += " invalid";
                     valid = false;
                 }
             }
-
-            // CHECK C: Email Pattern
             if (inputs[i].type === "email" && inputs[i].value !== "") {
                 if (!emailPattern.test(inputs[i].value)) {
                     inputs[i].className += " invalid";
@@ -481,7 +487,6 @@
         x[n].className += " active";
     }
 
-    // Eligibility Check
     function checkEligibility(elem) {
         var form = document.forms['regForm'];
         var adult = form["is_adult"].value;
@@ -499,17 +504,40 @@
         }
     }
 
-    // Send to Google
+    // --- ROBUST SUBMISSION HANDLER ---
     function submitToGoogle() {
-        document.getElementById("nextBtn").innerHTML = "Sending...";
+        const btn = document.getElementById("nextBtn");
+        const originalText = btn.innerHTML;
         
+        // 1. Visual Feedback (User knows it's working)
+        btn.innerHTML = "Processing...";
+        btn.disabled = true;
+        btn.style.backgroundColor = "#94a3b8"; 
+
+        // 2. The Fetch
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => {
-                document.getElementById("regForm").innerHTML = "<h2>🎉 Success!</h2><p>We have received your details. Please check your email for the Invoice and Photo Instructions.</p>";
+                // 3. Success Handling
+                document.getElementById("regForm").innerHTML = `
+                    <div style="text-align:center; padding: 40px 20px;">
+                        <div style="color:#16a085; font-size: 50px; margin-bottom: 20px;">🎉</div>
+                        <h2 style="color:#2c3e50; margin-bottom: 10px;">Application Received</h2>
+                        <p style="color:#555; line-height:1.6;">
+                            Our Compliance Team is reviewing your details.<br>
+                            Please check your email for the Invoice.
+                        </p>
+                        <button onclick="window.location.reload()" style="margin-top:20px; background:#003366;">Start New Application</button>
+                    </div>`;
             })
             .catch(error => {
+                // 4. Error Handling
                 console.error('Error!', error.message);
-                alert("Something went wrong. Please check your internet connection.");
+                alert("Connection Error. Please check your internet or try again.");
+                
+                // Reset Button so they can try again
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                btn.style.backgroundColor = "#16a085"; 
             });
     }
 </script>
