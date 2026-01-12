@@ -137,6 +137,11 @@
         }
         button:hover { background-color: #138a72; }
         
+        button:disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+        }
+
         #prevBtn { 
             background-color: #fff; 
             color: #64748b; 
@@ -369,7 +374,7 @@
 <script>
     // --- JAVASCRIPT LOGIC ---
 
-    // PASTE YOUR GOOGLE SCRIPT URL HERE
+    // ⚠️ IMPORTANT: UPDATE THIS URL TO YOUR OWN DEPLOYMENT URL
     const scriptURL = 'https://script.google.com/macros/s/AKfycbz48A4sa41wU6tt3aOxNNSqwCe9n1b7rjCbq7WFz9nmODFNCFiX6WhOjJpmNgdcNNHtig/exec'; 
     
     const form = document.forms['regForm'];
@@ -393,7 +398,7 @@
         }
         
         fixStepIndicator(n);
-        window.scrollTo(0, 0); // Scroll to top on step change for mobile
+        window.scrollTo(0, 0); 
     }
 
     function nextPrev(n) {
@@ -439,7 +444,7 @@
                     inputs[i].className += " invalid";
                     valid = false;
                 }
-                // Checkbox (Strict)
+                // Checkbox
                 if (inputs[i].type === "checkbox") {
                     if (!inputs[i].checked) {
                         inputs[i].parentElement.style.border = "1px solid red";
@@ -474,7 +479,14 @@
     }
 
     function submitToGoogle() {
-        document.getElementById("nextBtn").innerHTML = "Sending...";
+        const btn = document.getElementById("nextBtn");
+        const originalText = btn.innerHTML;
+        
+        // 1. Visual Feedback
+        btn.innerHTML = "Sending...";
+        btn.disabled = true;
+        btn.style.backgroundColor = "#94a3b8"; // Grey out button
+
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => {
                 document.getElementById("regForm").innerHTML = "<h2>🎉 Success!</h2><p>We have received your RGD Application details. Please check your email for the Authorization Letter and Invoice.</p>";
@@ -482,11 +494,13 @@
             .catch(error => {
                 console.error('Error!', error.message);
                 alert("Something went wrong. Please check your internet connection.");
+                // Reset button on error
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                btn.style.backgroundColor = "#16a085";
             });
     }
 </script>
 
 </body>
 </html>
-
-
