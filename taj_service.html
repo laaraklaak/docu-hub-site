@@ -20,7 +20,7 @@
         #regForm {
             background-color: #ffffff;
             margin: 20px auto;
-            padding: 30px 25px; /* Optimized mobile padding */
+            padding: 30px 25px;
             width: 90%;
             max-width: 600px;
             border-radius: 16px;
@@ -28,7 +28,7 @@
         }
 
         h1 { color: #2c3e50; text-align: center; font-size: 28px; margin-bottom: 30px; }
-        h3 { color: #16a085; margin-bottom: 15px; font-size: 20px; }
+        h3 { color: #16a085; margin-bottom: 20px; font-size: 20px; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; }
 
         p.concierge-text {
             color: #555;
@@ -41,23 +41,24 @@
             border-radius: 0 8px 8px 0;
         }
 
-        /* --- INPUTS & LABELS --- */
         label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-weight: 600;
             color: #34495e;
             font-size: 14px;
         }
 
-        input, select {
-            padding: 16px; /* Large touch target */
+        /* --- TEXT INPUTS ONLY (Excludes Checkboxes) --- */
+        input:not([type="checkbox"]):not([type="radio"]), 
+        select {
+            padding: 16px; 
             width: 100%;
-            font-size: 16px; /* Prevents iOS auto-zoom */
+            font-size: 16px; 
             border: 1px solid #cbd5e1;
             border-radius: 8px;
             box-sizing: border-box;
-            margin-bottom: 24px; /* Increased spacing */
+            margin-bottom: 24px; 
             background-color: #fff;
             transition: all 0.3s ease;
             -webkit-appearance: none;
@@ -69,32 +70,46 @@
             box-shadow: 0 0 0 3px rgba(22, 160, 133, 0.1);
         }
 
-        input.invalid, select.invalid {
-            background-color: #fff5f5;
-            border-color: #e53e3e;
-        }
-
-        /* --- RADIO CARDS --- */
+        /* --- CHECKBOX & RADIO CARDS (The Fix) --- */
         .radio-group { margin-bottom: 30px; }
+        
         .radio-option {
             background: #f8fafc;
-            padding: 15px;
+            padding: 16px;
             border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            margin-bottom: 12px;
+            border-radius: 10px;
+            margin-bottom: 15px;
             cursor: pointer;
             display: flex;
             align-items: flex-start;
-            gap: 12px;
-            transition: background 0.2s;
+            gap: 15px;
+            transition: background 0.2s, border-color 0.2s;
         }
-        .radio-option:hover { background: #f1f5f9; border-color: #cbd5e1; }
         
+        .radio-option:active { background: #eef2f6; }
+        
+        /* The Actual Box/Circle */
         .radio-option input {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
+            padding: 0;
             margin: 0;
             margin-top: 2px;
+            accent-color: #16a085;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .radio-option span {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #334155;
+        }
+
+        /* Error States */
+        input.invalid, select.invalid {
+            background-color: #fff5f5;
+            border-color: #e53e3e;
         }
 
         .tab { display: none; }
@@ -103,26 +118,32 @@
         /* --- BUTTONS --- */
         .btn-container {
             overflow: auto;
-            margin-top: 30px;
+            margin-top: 40px;
             display: flex;
             justify-content: space-between;
-            gap: 10px;
+            gap: 15px;
         }
 
         button {
             background-color: #16a085;
             color: #ffffff;
             border: none;
-            padding: 16px 30px;
+            padding: 18px 30px;
             font-size: 16px;
             font-weight: bold;
             border-radius: 50px;
             cursor: pointer;
             flex: 1;
             transition: background 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         button:hover { background-color: #138a72; }
-        #prevBtn { background-color: #fff; color: #64748b; border: 1px solid #cbd5e1; }
+        #prevBtn { 
+            background-color: #fff; 
+            color: #64748b; 
+            border: 1px solid #cbd5e1; 
+            box-shadow: none;
+        }
 
         /* Steps */
         .step {
@@ -162,7 +183,7 @@
             <span>I understand that Docu-Hub is a private concierge service.</span>
         </label>
         
-        <label>Your Email Address (For Receipts)</label>
+        <label style="margin-top:20px;">Your Email Address (For Receipts)</label>
         <input type="email" placeholder="e.g. jane.doe@gmail.com" name="client_email" required>
     </div>
 
@@ -192,7 +213,7 @@
         </p>
         
         <div id="doc_vehicle" class="dynamic-section">
-            <div style="background:#f1f5f9; padding:15px; border-radius:8px; margin-bottom:20px;">
+            <div style="background:#f1f5f9; padding:15px; border-radius:8px; margin-bottom:20px; border: 1px solid #e2e8f0;">
                 <p style="font-weight:bold; margin-top:0; color:#334155;">Required Documents:</p>
                 <ul style="font-size:13px; color:#64748b; padding-left:20px; margin-bottom:0;">
                     <li>Old Registration Certificate (Pink Slip)</li>
@@ -203,7 +224,7 @@
         </div>
 
         <div id="doc_property" class="dynamic-section">
-            <div style="background:#f1f5f9; padding:15px; border-radius:8px; margin-bottom:20px;">
+            <div style="background:#f1f5f9; padding:15px; border-radius:8px; margin-bottom:20px; border: 1px solid #e2e8f0;">
                 <p style="font-weight:bold; margin-top:0; color:#334155;">Required Documents:</p>
                 <ul style="font-size:13px; color:#64748b; padding-left:20px; margin-bottom:0;">
                     <li>Last Tax Receipt (showing Valuation #)</li>
@@ -213,7 +234,7 @@
         </div>
 
         <div id="doc_ticket" class="dynamic-section">
-            <div style="background:#f1f5f9; padding:15px; border-radius:8px; margin-bottom:20px;">
+            <div style="background:#f1f5f9; padding:15px; border-radius:8px; margin-bottom:20px; border: 1px solid #e2e8f0;">
                 <p style="font-weight:bold; margin-top:0; color:#334155;">Required Documents:</p>
                 <ul style="font-size:13px; color:#64748b; padding-left:20px; margin-bottom:0;">
                     <li>Driver's License (Front & Back)</li>
