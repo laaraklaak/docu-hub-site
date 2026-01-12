@@ -41,7 +41,6 @@
             border-radius: 0 8px 8px 0;
         }
 
-        /* --- INPUTS & LABELS --- */
         label {
             display: block;
             margin-bottom: 8px;
@@ -50,7 +49,9 @@
             font-size: 14px;
         }
 
-        input, select {
+        /* --- TEXT INPUTS ONLY (Excludes Checkboxes/Radios) --- */
+        input:not([type="checkbox"]):not([type="radio"]), 
+        select {
             padding: 16px; /* Large touch target */
             width: 100%;
             font-size: 16px; /* Prevents iOS zoom */
@@ -69,32 +70,46 @@
             box-shadow: 0 0 0 3px rgba(22, 160, 133, 0.1);
         }
 
+        /* Error Styles */
         input.invalid, select.invalid {
             background-color: #fff5f5;
             border-color: #e53e3e;
         }
 
-        /* --- RADIO CARDS --- */
+        /* --- CHECKBOX & RADIO CARDS (The Fix) --- */
         .radio-group { margin-bottom: 30px; }
+        
         .radio-option {
             background: #f8fafc;
-            padding: 15px;
+            padding: 16px;
             border: 1px solid #e2e8f0;
-            border-radius: 8px;
+            border-radius: 10px;
             margin-bottom: 12px;
             cursor: pointer;
             display: flex;
             align-items: flex-start;
             gap: 12px;
-            transition: background 0.2s;
+            transition: background 0.2s, border-color 0.2s;
         }
-        .radio-option:hover { background: #f1f5f9; border-color: #cbd5e1; }
         
+        .radio-option:active { background: #eef2f6; }
+        
+        /* The Actual Box/Circle */
         .radio-option input {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
+            padding: 0;
             margin: 0;
             margin-top: 2px;
+            accent-color: #16a085;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .radio-option span {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #334155;
         }
 
         .tab { display: none; }
@@ -121,7 +136,12 @@
             transition: background 0.3s;
         }
         button:hover { background-color: #138a72; }
-        #prevBtn { background-color: #fff; color: #64748b; border: 1px solid #cbd5e1; }
+        
+        #prevBtn { 
+            background-color: #fff; 
+            color: #64748b; 
+            border: 1px solid #cbd5e1; 
+        }
 
         /* Tooltips */
         .tooltip-container {
@@ -187,7 +207,7 @@
             <span>I understand that Docu-Hub is a private concierge service.</span>
         </label>
         
-        <label>Your Email Address (For Receipt & Tracking)</label>
+        <label style="margin-top:20px;">Your Email Address (For Receipt & Tracking)</label>
         <input type="email" placeholder="e.g. jane.doe@gmail.com" name="client_email" required>
     </div>
 
@@ -414,19 +434,21 @@
 
         for (var i = 0; i < inputs.length; i++) {
             if (inputs[i].hasAttribute('required')) {
-                // Check Text/Dropdown
+                // Text/Dropdown
                 if (inputs[i].type !== "checkbox" && inputs[i].type !== "radio" && inputs[i].value.trim() === "") {
                     inputs[i].className += " invalid";
                     valid = false;
                 }
-                // Check Checkbox
-                if (inputs[i].type === "checkbox" && !inputs[i].checked) {
-                    inputs[i].parentElement.style.border = "1px solid red"; // Highlight container
-                    valid = false;
-                } else if (inputs[i].type === "checkbox") {
-                    inputs[i].parentElement.style.border = "1px solid #e2e8f0"; // Reset
+                // Checkbox (Strict)
+                if (inputs[i].type === "checkbox") {
+                    if (!inputs[i].checked) {
+                        inputs[i].parentElement.style.border = "1px solid red";
+                        valid = false;
+                    } else {
+                        inputs[i].parentElement.style.border = "1px solid #e2e8f0";
+                    }
                 }
-                // Check Radio Group (Robust)
+                // Radio
                 if (inputs[i].type === "radio") {
                     var groupName = inputs[i].name;
                     var radios = x[currentTab].querySelectorAll(`input[name="${groupName}"]`);
