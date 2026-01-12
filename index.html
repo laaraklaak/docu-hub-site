@@ -293,107 +293,179 @@
             </div>
         </div>
     </footer>
-
-    <div class="md:hidden fixed bottom-4 left-4 right-4 z-30 no-print">
-        <button onclick="document.getElementById('serviceDeck').scrollIntoView({behavior: 'smooth'})" class="w-full bg-navy text-white font-bold py-4 rounded-xl shadow-2xl border border-white/10 flex items-center justify-center gap-2 uppercase text-xs tracking-widest">
+<div class="md:hidden fixed bottom-4 left-4 right-4 z-30 no-print">
+        <button onclick="openMissionControl()" class="w-full bg-navy text-white font-bold py-4 rounded-xl shadow-2xl border border-white/10 flex items-center justify-center gap-2 uppercase text-xs tracking-widest">
             <i data-lucide="zap" class="w-4 h-4 text-gold"></i> Start Intake
         </button>
     </div>
 
     <section id="missionControl" class="fixed inset-0 bg-white z-50 hidden overflow-y-auto no-print">
-        <form id="unifiedForm" onsubmit="event.preventDefault(); processSubmission();">
-            <div class="max-w-4xl mx-auto min-h-screen bg-white shadow-2xl flex flex-col relative">
-                <div class="bg-navy p-6 md:p-8 text-white sticky top-0 z-50 shadow-md">
-                    <div class="flex justify-between items-center mb-4">
-                        <button type="button" onclick="exitMission()" class="text-gold flex items-center gap-2 text-sm md:text-base transition font-bold uppercase tracking-widest"><i data-lucide="arrow-left" class="w-4 h-4 md:w-5 md:h-5"></i> Back to Catalog</button>
-                        <span id="activePillarName" class="font-serif italic text-lg md:text-2xl text-white"></span>
-                    </div>
-                    <div class="h-1 bg-white/10 rounded-full overflow-hidden"><div id="progressBar" class="h-1 bg-gold w-[20%] transition-all duration-500"></div></div>
+        <div class="max-w-4xl mx-auto min-h-screen bg-white shadow-2xl flex flex-col relative">
+            
+            <div class="bg-navy p-6 md:p-8 text-white sticky top-0 z-50 shadow-md flex justify-between items-center">
+                <button onclick="exitMission()" class="text-gold flex items-center gap-2 text-sm md:text-base transition font-bold uppercase tracking-widest">
+                    <i data-lucide="arrow-left" class="w-4 h-4 md:w-5 md:h-5"></i> Back to Catalog
+                </button>
+                <div class="text-right">
+                    <span id="activeClientName" class="block font-serif italic text-lg text-white">Guest</span>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-widest">Intake Session</span>
                 </div>
-                <div id="missionContent" class="flex-1 p-6 md:p-12">
-                    </div>
             </div>
-        </form>
+
+            <div id="missionContent" class="flex-1 p-6 md:p-12 bg-slate-50">
+                <form id="intakeForm" onsubmit="event.preventDefault();">
+
+                    <div id="step-identity" class="fade-in max-w-xl mx-auto bg-white p-8 rounded-2xl shadow-lg border-t-4 border-gold">
+                        <div class="text-center mb-8">
+                            <div class="w-16 h-16 bg-navy/5 rounded-full flex items-center justify-center mx-auto mb-4 text-navy"><i data-lucide="user-check" class="w-8 h-8"></i></div>
+                            <h2 class="font-serif text-3xl text-navy font-bold">Client Verification</h2>
+                            <p class="text-gray-500 mt-2 text-sm">Enter your Email or TRN to retrieve your file.</p>
+                        </div>
+                        
+                        <div class="relative mb-6">
+                            <input type="text" id="kycInput" placeholder="jane@example.com  OR  123-456-789" class="w-full p-4 border-2 border-gray-200 rounded-xl text-lg text-center font-bold text-navy focus:border-gold focus:outline-none uppercase">
+                        </div>
+
+                        <button onclick="checkIdentity()" class="w-full bg-navy text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-gold hover:text-navy transition shadow-lg text-sm">
+                            Verify Identity
+                        </button>
+
+                        <div id="newClientFields" class="hidden mt-8 pt-8 border-t border-gray-100 space-y-4 animation-fade-in">
+                            <div class="bg-blue-50 text-navy p-3 rounded-lg text-xs font-bold text-center border border-blue-100">
+                                <i data-lucide="sprout" class="inline w-3 h-3 mr-1"></i> New Client Detected. Create Profile:
+                            </div>
+                            <input type="text" name="kyc_name" id="kyc_name" placeholder="Full Name" class="w-full p-3 border rounded bg-white">
+                            <input type="tel" name="kyc_phone" id="kyc_phone" placeholder="WhatsApp Phone" class="w-full p-3 border rounded bg-white">
+                            <input type="email" name="kyc_email" id="kyc_email" placeholder="Email Address" class="w-full p-3 border rounded bg-white">
+                            <input type="hidden" name="kyc_trn" id="kyc_trn" value="">
+                            <input type="hidden" name="kyc_status" id="kyc_status" value="NEW">
+                            
+                            <button onclick="confirmIdentity()" class="w-full bg-emerald-600 text-white py-4 rounded-xl font-bold uppercase tracking-widest mt-2 shadow-lg text-sm">
+                                Create Profile & Continue
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="step-service" class="hidden fade-in max-w-2xl mx-auto space-y-6">
+                        <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-navy">
+                            <h2 class="font-serif text-2xl text-navy font-bold mb-6 text-center">Select Service</h2>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                                <label class="border p-4 rounded-xl cursor-pointer hover:bg-slate-50 hover:border-navy transition text-center group">
+                                    <input type="radio" name="service_category" value="RGD" onchange="showDetails('RGD')" class="hidden">
+                                    <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:bg-navy group-hover:text-white transition"><i data-lucide="file-text" class="w-6 h-6"></i></div>
+                                    <span class="block font-bold text-navy text-sm">RGD Certs</span>
+                                </label>
+                                <label class="border p-4 rounded-xl cursor-pointer hover:bg-slate-50 hover:border-navy transition text-center group">
+                                    <input type="radio" name="service_category" value="TAJ" onchange="showDetails('TAJ')" class="hidden">
+                                    <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:bg-navy group-hover:text-white transition"><i data-lucide="car" class="w-6 h-6"></i></div>
+                                    <span class="block font-bold text-navy text-sm">Traffic/Tax</span>
+                                </label>
+                                <label class="border p-4 rounded-xl cursor-pointer hover:bg-slate-50 hover:border-navy transition text-center group">
+                                    <input type="radio" name="service_category" value="PICA" onchange="showDetails('PICA')" class="hidden">
+                                    <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:bg-navy group-hover:text-white transition"><i data-lucide="globe" class="w-6 h-6"></i></div>
+                                    <span class="block font-bold text-navy text-sm">Passport</span>
+                                </label>
+                            </div>
+
+                            <div id="details-RGD" class="service-panel hidden space-y-4 border-t border-gray-100 pt-6">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <select name="cert_type" class="w-full p-3 border rounded bg-slate-50"><option value="Birth">Birth Cert</option><option value="Marriage">Marriage Cert</option><option value="Death">Death Cert</option></select>
+                                    <select name="processing_speed" class="w-full p-3 border rounded bg-slate-50"><option value="Ordinary">Ordinary Speed</option><option value="Express">Express Speed</option></select>
+                                </div>
+                                <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                                    <p class="text-xs font-bold text-navy uppercase mb-2">How will you provide details?</p>
+                                    <div class="flex gap-4">
+                                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="doc_proof_method" value="WhatsApp Photo" checked onclick="toggleInputs(false)" class="accent-navy"><span class="text-sm">I'll WhatsApp a Photo (Easier)</span></label>
+                                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="doc_proof_method" value="Manual Entry" onclick="toggleInputs(true)" class="accent-navy"><span class="text-sm">I'll Type It Manually</span></label>
+                                    </div>
+                                </div>
+                                <div id="manual-inputs-RGD" class="hidden space-y-3 p-4 bg-slate-50 rounded border border-gray-200">
+                                    <input type="text" name="subject_name" placeholder="Full Name on Record" class="w-full p-3 border rounded">
+                                    <input type="text" name="event_date" placeholder="Date of Event" class="w-full p-3 border rounded">
+                                    <input type="text" name="place_of_registration" placeholder="Place/Parish" class="w-full p-3 border rounded">
+                                </div>
+                            </div>
+
+                            <div id="details-TAJ" class="service-panel hidden space-y-4 border-t border-gray-100 pt-6">
+                                <select name="taj_service" class="w-full p-3 border rounded bg-slate-50"><option>Motor Vehicle Reg</option><option>Property Tax</option><option>Traffic Ticket</option></select>
+                                <select name="taj_method" class="w-full p-3 border rounded bg-slate-50"><option>Online Processing</option><option>Bearer Service</option></select>
+                                <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                                    <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="doc_proof_method" value="WhatsApp Photo" checked class="accent-navy"><span class="text-sm font-bold">📸 Requirement: WhatsApp us a photo of your documents.</span></label>
+                                </div>
+                            </div>
+
+                            <div id="details-PICA" class="service-panel hidden space-y-4 border-t border-gray-100 pt-6">
+                                <div class="bg-blue-50 p-4 rounded border border-blue-100 text-sm text-navy">
+                                    <strong>Service:</strong> Adult Passport Renewal Assistance (Online).
+                                </div>
+                                <select name="has_photo" class="w-full p-3 border rounded bg-slate-50"><option value="Yes">I have a digital photo</option><option value="No">I need photo guidance</option></select>
+                                <input type="hidden" name="doc_proof_method" value="WhatsApp Photo">
+                            </div>
+
+                            <div id="action-area" class="hidden mt-8 pt-6 border-t border-gray-100">
+                                <label class="text-xs font-bold text-navy uppercase mb-1 block">Delivery Address</label>
+                                <input type="text" name="address" class="w-full p-3 border rounded bg-slate-50 mb-4" placeholder="Your current location">
+                                
+                                <button onclick="submitIntake()" class="w-full bg-gold text-navy py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-navy hover:text-white transition shadow-xl">
+                                    Submit Request
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="step-success" class="hidden fade-in max-w-lg mx-auto bg-white p-10 rounded-2xl shadow-xl text-center border-t-4 border-emerald-500">
+                        <div class="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6 text-emerald-600">
+                            <i data-lucide="check-circle" class="w-10 h-10"></i>
+                        </div>
+                        <h2 class="font-serif text-3xl text-navy font-bold mb-2">We're on it!</h2>
+                        <p class="text-gray-500 mb-6">Ref: <span id="receiptRef" class="font-mono font-bold text-navy"></span></p>
+                        
+                        <div class="bg-slate-50 p-6 rounded-xl border border-gray-200 mb-8 text-left">
+                            <h3 class="font-bold text-navy text-sm uppercase mb-3 border-b pb-2">Final Step: Send Photo</h3>
+                            <p class="text-sm text-gray-600 mb-4">Click below to WhatsApp us a picture of your document/ID.</p>
+                            <a href="https://wa.me/18765612614" class="block w-full bg-[#25D366] text-white text-center py-3 rounded-lg font-bold uppercase shadow-sm hover:opacity-90 transition flex items-center justify-center gap-2">
+                                <i data-lucide="message-circle" class="w-5 h-5"></i> Open WhatsApp
+                            </a>
+                        </div>
+                        
+                        <button onclick="window.location.reload()" class="text-gray-400 font-bold text-xs uppercase underline">Close Window</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
     </section>
 
     <div id="onboardingModal" class="fixed inset-0 bg-navy/95 z-[100] hidden overflow-y-auto no-print">
         <div class="min-h-screen flex items-center justify-center p-4">
-            <div class="bg-white max-w-2xl w-full rounded-2xl shadow-2xl overflow-hidden relative">
-                <div class="bg-parchment p-8 border-b border-gray-200 flex justify-between items-start">
-                    <div>
-                        <h2 class="font-serif text-3xl text-navy font-bold italic">Client Charter</h2>
-                        <p class="text-xs font-bold text-gold uppercase tracking-widest mt-2">New Client Orientation • Read Carefully</p>
-                    </div>
-                    <button onclick="closeOnboarding()" class="text-gray-400 hover:text-navy transition"><i data-lucide="x-circle" class="w-8 h-8"></i></button>
-                </div>
-                <div class="p-8 md:p-12 space-y-8">
-                    <div class="flex gap-6">
-                        <div class="w-12 h-12 rounded-full bg-navy/5 flex items-center justify-center shrink-0"><span class="font-serif text-xl font-bold text-navy">1</span></div>
-                        <div><h4 class="font-bold text-navy uppercase text-sm tracking-widest mb-2">We Are Your Agents</h4><p class="text-sm text-gray-600 leading-relaxed">Docu-Hub is a <strong>private logistics firm</strong>. We are not PICA, TAJ, or the RGD. You hire us to stand in line.</p></div>
-                    </div>
-                    <div class="flex gap-6">
-                        <div class="w-12 h-12 rounded-full bg-navy/5 flex items-center justify-center shrink-0"><span class="font-serif text-xl font-bold text-navy">2</span></div>
-                        <div><h4 class="font-bold text-navy uppercase text-sm tracking-widest mb-2">Digital First</h4><p class="text-sm text-gray-600 leading-relaxed">We use secure forms to collect your data first. We review it for errors before dispatching a bearer.</p></div>
-                    </div>
-                    <div class="flex gap-6">
-                        <div class="w-12 h-12 rounded-full bg-navy/5 flex items-center justify-center shrink-0"><span class="font-serif text-xl font-bold text-navy">3</span></div>
-                        <div class="w-full">
-                            <h4 class="font-bold text-navy uppercase text-sm tracking-widest mb-2">Master Service Agreement</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed mb-4">By proceeding, you authorize Docu-Hub to act as your "Authorized Bearer" for all transactions.</p>
-                            <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
-                                <div class="flex items-center gap-3 mb-3">
-                                    <input type="checkbox" id="acceptTerms" class="w-6 h-6 accent-navy cursor-pointer shrink-0">
-                                    <label for="acceptTerms" class="text-xs text-gray-500 font-medium cursor-pointer select-none leading-tight">
-                                        I have read and accept the <button type="button" onclick="toggleTerms()" class="underline text-navy font-bold hover:text-gold">Terms of Engagement</button>.
-                                    </label>
-                                </div>
-                                
-                                <div id="termsEmbed" class="hidden mt-3 border-t border-gray-200 pt-3 animation-fade-in">
-                                    <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-2 font-bold">Terms Summary:</p>
-                                    <div class="h-48 overflow-y-auto bg-white border border-gray-200 p-4 rounded text-[10px] text-gray-500 leading-relaxed space-y-3 shadow-inner">
-                                        <p><strong>1. AUTHORIZATION:</strong> Client hereby appoints Docu-Hub Operations Services as their lawful agent and "Authorized Bearer" to transact business with Tax Administration Jamaica (TAJ), PICA, and RGD on their behalf.</p>
-                                        <p><strong>2. NON-GOVERNMENT ENTITY:</strong> Client acknowledges that Docu-Hub is a private logistics firm and not a government agency. Fees paid to Docu-Hub include service charges above government rates.</p>
-                                        <p><strong>3. NO REFUNDS:</strong> Service fees are non-refundable once the bearer has been dispatched or the application lodged.</p>
-                                        <p><strong>4. DATA PRIVACY:</strong> We respect your data under the JDPA (2020). ID copies are deleted 30 days after transaction closure. Financial records are retained for 7 years as per POCA regulations.</p>
-                                        <p><strong>5. LIABILITY:</strong> Docu-Hub is not liable for delays caused by government system outages, strikes, or rejection of documents due to client error.</p>
-                                        <p class="mt-4 pt-2 border-t border-gray-100 text-center font-bold text-navy">-- END OF SUMMARY --</p>
-                                    </div>
-                                    <button onclick="toggleTerms()" class="w-full text-center text-[10px] text-red-500 font-bold uppercase mt-3 hover:bg-red-50 py-2 rounded transition">Close Document</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-gray-50 p-6 flex justify-between items-center border-t border-gray-100">
-                    <button onclick="closeOnboarding()" class="text-gray-400 text-xs font-bold uppercase tracking-widest hover:text-navy">Close</button>
-                    <button id="onboardBtn" onclick="finishOnboarding()" disabled class="bg-gray-300 text-white px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-widest transition cursor-not-allowed">Acknowledge & Start</button>
-                </div>
+            <div class="bg-white max-w-2xl w-full rounded-2xl shadow-2xl overflow-hidden relative p-8 text-center">
+                <h2 class="font-serif text-3xl text-navy font-bold italic mb-4">Client Charter</h2>
+                <p class="text-gray-600 mb-8">Please complete the intake form to accept our terms.</p>
+                <button onclick="document.getElementById('onboardingModal').classList.add('hidden')" class="bg-navy text-white px-8 py-3 rounded-full font-bold uppercase text-xs">Close</button>
             </div>
         </div>
     </div>
 
-    <div id="receiptModal" class="fixed inset-0 flex items-center justify-center bg-white z-[300] hidden overflow-y-auto">
-        <div id="receiptArea" class="bg-white max-w-lg w-full mx-auto p-12 relative text-left">
-            <div class="flex justify-between items-center mb-8 border-b border-gray-100 pb-6">
-                <div class="text-left"><h1 class="font-serif text-2xl text-navy font-bold italic">Docu-Hub</h1><p class="text-[10px] uppercase tracking-widest text-gray-400">Operations Services</p></div>
-                <div class="text-right"><div class="text-xs font-bold text-gray-300 uppercase tracking-widest">Receipt</div><div id="dateStamp" class="text-xs text-navy font-mono mt-1"></div></div>
+    <div id="receiptModal" class="hidden"></div> <div id="aboutDossier" class="fixed inset-0 bg-white z-[60] hidden overflow-y-auto no-print">
+        <div class="max-w-4xl mx-auto min-h-screen bg-white shadow-2xl flex flex-col relative">
+            <div class="bg-navy p-6 md:p-8 text-white sticky top-0 z-50 shadow-md flex justify-between items-center">
+                <div class="flex items-center gap-3"><i data-lucide="shield-check" class="text-gold w-6 h-6"></i><span class="font-serif italic text-lg md:text-2xl">Liaison Profile</span></div>
+                <button onclick="closeAboutDossier()" class="text-gold hover:text-white transition font-bold uppercase tracking-widest text-xs md:text-sm flex items-center gap-2">Close File <i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
-            <div class="text-center py-8">
-                <div class="inline-block px-4 py-1 rounded-full bg-green-50 text-emerald-700 text-xs font-bold uppercase tracking-widest mb-4">Transmission Successful</div>
-                <div id="receiptRef" class="text-4xl font-mono font-bold text-navy mb-2 tracking-tighter"></div>
-                <p class="text-xs text-gray-400 uppercase tracking-widest">Transaction Reference</p>
-                <div class="bg-blue-50 text-navy p-3 rounded-lg text-xs font-bold mt-4 border border-blue-100 flex items-center justify-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> CONFIRMATION EMAIL SENT</div>
-            </div>
-            <div class="bg-slate-50 rounded-xl p-6 mb-8">
-                <div class="grid grid-cols-2 gap-y-4 text-sm">
-                    <div class="text-gray-500 text-xs uppercase font-bold">Applicant</div><div id="receiptName" class="text-navy font-bold text-right"></div>
-                    <div class="text-gray-500 text-xs uppercase font-bold">Service Type</div><div id="receiptService" class="text-navy font-bold text-right"></div>
-                    <div class="text-gray-500 text-xs uppercase font-bold">Status</div><div class="text-navy font-bold text-right">Pending Bearer</div>
+            <div class="p-8 md:p-16 space-y-12">
+                <div class="flex flex-col md:flex-row gap-8 items-start border-b border-gray-100 pb-12">
+                    <div class="w-32 h-32 md:w-40 md:h-40 bg-gray-200 rounded-full overflow-hidden shrink-0 border-4 border-white shadow-lg">
+                         <img src="assets/laura-clarke.jpg" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80';">
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-3xl text-navy font-bold mb-2">Laura Clarke</h3>
+                        <p class="text-xs font-bold text-gold uppercase tracking-widest mb-6">Principal Liaison & Proprietor</p>
+                        <div class="prose prose-sm text-gray-600 leading-relaxed space-y-6 font-poppins">
+                            <p><strong>Compliance is my currency.</strong> My career began in the rigorous environment of Jamaica's banking sector (NCB)...</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div id="receiptActions" class="mt-8 space-y-3">
-                <button onclick="window.print()" class="w-full bg-navy text-white font-bold py-4 rounded uppercase text-xs md:text-sm tracking-widest hover:bg-gold hover:text-navy transition">Save Receipt</button>
-                <button onclick="window.location.reload()" class="w-full text-gray-400 font-bold text-xs md:text-sm uppercase underline">Close Portal</button>
             </div>
         </div>
     </div>
@@ -439,12 +511,12 @@
         </div>
     </div>
 
-    <script>
+ <script>
     lucide.createIcons();
-    
-    // ⚠️ ENSURE THIS MATCHES YOUR GOOGLE DEPLOYMENT URL
+    // ⚠️ PASTE YOUR NEW DEPLOYMENT URL HERE
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzCVynZorq7BbSgIF7B5YccXtEMny-n4q6U3R89ojSE7CaD0Wdh4E_6mCP4iToHtNIOnA/exec"; 
 
+    // --- DECK RENDERING (Main Page Buttons) ---
     const PILLARS = [
         { id: 'pica', name: 'PICA Liaison', desc: 'Adult Passport Renewals (Online Concierge).', img: 'assets/pica.png', isLink: false, btnText: 'START RENEWAL' },
         { id: 'rgd', name: 'RGD Registry', desc: 'Birth, Marriage & Death Certificates.', img: 'assets/rgd.png', isLink: false, btnText: 'START SEARCH' },
@@ -452,14 +524,9 @@
         { id: 'other', name: 'Other Services', desc: 'Police Records, Lost Docs & Special Requests.', img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80', isLink: true, url: 'contact.html', btnText: 'BOOK CONSULTATION' }
     ];
 
-    let currentPillar = null;
-    let activeStep = 1;
-    // 🆕 THE MEMORY BANK: Stores answers from previous steps
-    let submissionData = {}; 
-
     function renderDeck() {
         const container = document.getElementById('deckContainer');
-        if(!container) return; // Safety check
+        if(!container) return;
         container.innerHTML = PILLARS.map(p => `
             <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-300 group flex flex-col relative hover:-translate-y-1">
                 <div class="h-48 overflow-hidden relative bg-navy select-none">
@@ -478,305 +545,124 @@
         lucide.createIcons();
     }
 
-    // --- 🆕 DATA COLLECTOR (Saves data before wiping screen) ---
-    function collectStepData() {
-        const form = document.getElementById('unifiedForm');
-        const formData = new FormData(form);
-        // Merge new data into our memory bank
-        for (let [key, value] of formData.entries()) {
-            submissionData[key] = value;
-        }
-        console.log("Current Data Stored:", submissionData); // For debugging
+    // --- MISSION CONTROL LOGIC ---
+    function openMissionControl() {
+        document.getElementById('missionControl').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        goToStep('step-identity'); // Always start with ID check
     }
 
-    // --- NAVIGATION LOGIC ---
+    function startMission(serviceId) {
+        // If user clicks a specific service, we open modal but still force ID check first
+        openMissionControl(); 
+        // Optional: We could save 'serviceId' to auto-select it later, but 
+        // to keep it simple, we let them pick again in Step 2.
+    }
+
+    function exitMission() {
+        document.getElementById('missionControl').classList.add('hidden');
+        document.body.style.overflow = 'auto';
+        document.getElementById('intakeForm').reset();
+    }
+
+    function goToStep(id) {
+        ['step-identity', 'step-service', 'step-success'].forEach(s => document.getElementById(s).classList.add('hidden'));
+        document.getElementById(id).classList.remove('hidden');
+    }
+
+    // --- STEP 1: IDENTITY CHECK ---
+    function checkIdentity() {
+        const input = document.getElementById('kycInput').value.trim();
+        if(!input) return alert("Please enter Email or TRN");
+        
+        toggleLoader(true, "Searching Database...");
+        
+        fetch(`${SCRIPT_URL}?action=checkKYC&q=${encodeURIComponent(input)}`)
+        .then(res => res.json())
+        .then(data => {
+            toggleLoader(false);
+            if(data.found) {
+                // RETURNING CLIENT
+                document.getElementById('kyc_name').value = data.name;
+                document.getElementById('kyc_phone').value = data.phone;
+                document.getElementById('kyc_email').value = data.email;
+                document.getElementById('kyc_trn').value = data.trn;
+                document.getElementById('kyc_status').value = "RETURNING";
+                
+                document.getElementById('activeClientName').innerText = data.name;
+                goToStep('step-service');
+            } else {
+                // NEW CLIENT
+                document.getElementById('newClientFields').classList.remove('hidden');
+                if(input.includes("@")) document.getElementById('kyc_email').value = input;
+                else document.getElementById('kyc_trn').value = input;
+            }
+        })
+        .catch(e => { toggleLoader(false); alert("Network Error. Try again."); });
+    }
+
+    function confirmIdentity() {
+        const name = document.getElementById('kyc_name').value;
+        if(!name) return alert("Name is required");
+        document.getElementById('activeClientName').innerText = name;
+        goToStep('step-service');
+    }
+
+    // --- STEP 2: SERVICE DETAILS ---
+    function showDetails(service) {
+        document.querySelectorAll('.service-panel').forEach(el => el.classList.add('hidden'));
+        document.getElementById(`details-${service}`).classList.remove('hidden');
+        document.getElementById('action-area').classList.remove('hidden');
+    }
+
+    function toggleInputs(show) {
+        const manual = document.getElementById('manual-inputs-RGD');
+        if(show) manual.classList.remove('hidden');
+        else manual.classList.add('hidden');
+    }
+
+    // --- STEP 3: SUBMIT ---
+    function submitIntake() {
+        const addr = document.getElementById('final_address'); // Note: Added ID in HTML
+        if(addr && !addr.value) return alert("Please enter delivery address/location");
+
+        toggleLoader(true, "Submitting Request...");
+        const form = document.getElementById('intakeForm');
+        const formData = new FormData(form);
+        
+        fetch(SCRIPT_URL, { method: 'POST', body: formData })
+        .then(res => res.json())
+        .then(data => {
+            toggleLoader(false);
+            if(data.result === 'success') {
+                document.getElementById('receiptRef').innerText = data.ref;
+                goToStep('step-success');
+            } else {
+                alert("System Error: " + data.error);
+            }
+        })
+        .catch(e => { toggleLoader(false); alert("Connection Failed."); });
+    }
+
+    // --- UTILS ---
+    function toggleLoader(show, text) {
+        const ol = document.getElementById('statusOverlay');
+        if(show) { ol.classList.remove('hidden'); if(text) document.getElementById('statusText').innerText = text; }
+        else ol.classList.add('hidden');
+    }
     function toggleAccordion(id) {
         const content = document.getElementById(id);
         const icon = document.getElementById('icon-' + id);
         content.classList.toggle('open');
         icon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
     }
-
-    function openOnboarding() { document.getElementById('onboardingModal').classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
-    function closeOnboarding() { document.getElementById('onboardingModal').classList.add('hidden'); document.body.style.overflow = 'auto'; }
-    
-    // Safety check for onboarding button
-    const acceptTerms = document.getElementById('acceptTerms');
-    if(acceptTerms) {
-        acceptTerms.onclick = (e) => { 
-            const btn = document.getElementById('onboardBtn'); 
-            if (e.target.checked) { 
-                btn.disabled = false; btn.classList.remove('bg-gray-300', 'cursor-not-allowed'); btn.classList.add('bg-navy', 'hover:bg-gold', 'hover:text-navy', 'shadow-lg'); 
-            } else { 
-                btn.disabled = true; btn.classList.add('bg-gray-300', 'cursor-not-allowed'); btn.classList.remove('bg-navy', 'hover:bg-gold', 'hover:text-navy', 'shadow-lg'); 
-            } 
-        };
-    }
-
-    function finishOnboarding() { closeOnboarding(); document.getElementById('serviceDeck').scrollIntoView({behavior: 'smooth'}); }
-    function toggleTerms() { document.getElementById('termsEmbed').classList.toggle('hidden'); }
-    function toggleMobileMenu() { const menu = document.getElementById('mobileDropdown'); const icon = document.getElementById('menuIcon'); menu.classList.toggle('hidden'); icon.setAttribute('data-lucide', menu.classList.contains('hidden') ? 'menu' : 'x'); lucide.createIcons(); }
     function openAboutDossier() { document.getElementById('aboutDossier').classList.remove('hidden'); document.body.style.overflow = 'hidden'; lucide.createIcons(); }
     function closeAboutDossier() { document.getElementById('aboutDossier').classList.add('hidden'); document.body.style.overflow = 'auto'; }
-    
-    // --- MISSION CONTROL ---
-    function startMission(id) { 
-        currentPillar = PILLARS.find(p => p.id === id); 
-        document.getElementById('activePillarName').innerText = currentPillar.name; 
-        document.getElementById('missionControl').classList.remove('hidden'); 
-        activeStep = 1;
-        submissionData = {}; // Reset data for new mission
-        loadLeg1(); 
-    }
-
-    function exitMission() { document.getElementById('missionControl').classList.add('hidden'); }
-    function updateProgress(step) { document.getElementById('progressBar').style.width = `${step * 25}%`; }
-
-    // --- LEG 1 ---
-    function loadLeg1() { 
-        updateProgress(1);
-        let content = '';
-
-        if (currentPillar.id === 'rgd') {
-            content = `
-                <div class="fade-in max-w-2xl mx-auto space-y-8">
-                    <div class="text-center mb-8"><h2 class="font-serif text-3xl text-navy font-bold">What record do you need?</h2></div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <label class="border p-6 rounded-xl cursor-pointer hover:border-gold transition text-center">
-                            <input type="radio" name="cert_type" value="Birth" class="hidden peer" checked>
-                            <div class="w-12 h-12 bg-gray-100 rounded-full mx-auto mb-4 flex items-center justify-center peer-checked:bg-gold peer-checked:text-white"><i data-lucide="baby" class="w-6 h-6"></i></div>
-                            <span class="font-bold text-navy block peer-checked:text-gold">Birth Cert</span>
-                        </label>
-                        <label class="border p-6 rounded-xl cursor-pointer hover:border-gold transition text-center">
-                            <input type="radio" name="cert_type" value="Marriage" class="hidden peer">
-                            <div class="w-12 h-12 bg-gray-100 rounded-full mx-auto mb-4 flex items-center justify-center peer-checked:bg-gold peer-checked:text-white"><i data-lucide="heart" class="w-6 h-6"></i></div>
-                            <span class="font-bold text-navy block peer-checked:text-gold">Marriage Cert</span>
-                        </label>
-                        <label class="border p-6 rounded-xl cursor-pointer hover:border-gold transition text-center">
-                            <input type="radio" name="cert_type" value="Death" class="hidden peer">
-                            <div class="w-12 h-12 bg-gray-100 rounded-full mx-auto mb-4 flex items-center justify-center peer-checked:bg-gold peer-checked:text-white"><i data-lucide="file-text" class="w-6 h-6"></i></div>
-                            <span class="font-bold text-navy block peer-checked:text-gold">Death Cert</span>
-                        </label>
-                    </div>
-                    <div class="bg-slate-50 p-6 rounded-xl border border-gray-100">
-                        <label class="block font-bold text-navy mb-2 text-sm">Do you have the Entry Number?</label>
-                        <select name="has_entry_number" class="w-full p-3 border rounded mb-4" onchange="document.getElementById('entryNumInput').style.display = this.value === 'Yes' ? 'block' : 'none'">
-                            <option value="No">No, I need a search</option>
-                            <option value="Yes">Yes, I have it (Faster)</option>
-                        </select>
-                        <input type="text" name="entry_number" id="entryNumInput" style="display:none;" placeholder="Enter Number (e.g. L12345)" class="w-full p-3 border rounded border-gold bg-white">
-                    </div>
-                    <div class="bg-slate-50 p-6 rounded-xl border border-gray-100 mt-4">
-                        <label class="block font-bold text-navy mb-2 text-sm">Processing Speed</label>
-                        <select name="processing_speed" class="w-full p-3 border rounded">
-                            <option value="Ordinary">Ordinary (Standard Time)</option>
-                            <option value="Express">Express (7-10 Days - Extra Fee)</option>
-                        </select>
-                    </div>
-                    <div class="text-right">
-                        <button type="button" onclick="nextStep(2)" class="bg-navy text-white px-8 py-3 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-gold hover:text-navy transition">Next Step <i data-lucide="arrow-right" class="inline w-4 h-4 ml-1"></i></button>
-                    </div>
-                </div>`;
-        } else if (currentPillar.id === 'taj') {
-            content = `
-                <div class="fade-in max-w-2xl mx-auto space-y-8">
-                    <div class="text-center mb-8"><h2 class="font-serif text-3xl text-navy font-bold">Traffic & Tax Services</h2></div>
-                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                        <label class="block font-bold text-navy mb-2 text-sm uppercase tracking-wide">Select Service</label>
-                        <select name="taj_service_type" class="w-full p-4 border border-gray-300 rounded-lg text-lg bg-gray-50 focus:border-gold outline-none">
-                            <option value="Motor Vehicle">Motor Vehicle (Reg/Title/Plates)</option>
-                            <option value="Property Tax">Property Tax Payment</option>
-                            <option value="Traffic Ticket">Traffic Ticket Check/Payment</option>
-                            <option value="Driver License">Driver's License Renewal Pickup</option>
-                        </select>
-                    </div>
-                    <div class="bg-slate-50 p-6 rounded-xl border border-gray-100">
-                        <label class="block font-bold text-navy mb-3 text-sm">How should we fulfill this?</label>
-                        <div class="space-y-3">
-                            <label class="flex items-center gap-3 p-3 bg-white border rounded cursor-pointer">
-                                <input type="radio" name="taj_method" value="Online Remittance" checked class="accent-navy">
-                                <div class="text-sm"><strong class="block text-navy">Online Processing</strong>We pay via portal & email receipt.</div>
-                            </label>
-                            <label class="flex items-center gap-3 p-3 bg-white border rounded cursor-pointer">
-                                <input type="radio" name="taj_method" value="Bearer Service" class="accent-navy">
-                                <div class="text-sm"><strong class="block text-navy">Bearer Service</strong>Physical pickup required.</div>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="text-right">
-                        <button type="button" onclick="nextStep(2)" class="bg-navy text-white px-8 py-3 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-gold hover:text-navy transition">Next Step <i data-lucide="arrow-right" class="inline w-4 h-4 ml-1"></i></button>
-                    </div>
-                </div>`;
-        } else if (currentPillar.id === 'pica') {
-             content = `
-                <div class="fade-in max-w-2xl mx-auto space-y-8">
-                    <div class="text-center mb-8"><h2 class="font-serif text-3xl text-navy font-bold">Passport Concierge</h2></div>
-                    <input type="hidden" name="pica_service" value="Passport Renewal">
-                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
-                        <p class="text-xs text-yellow-800 font-bold">Requirement Check: Must be ADULT (18+) & Have Old Passport.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl border border-gray-200">
-                        <label class="block font-bold text-navy mb-2 text-sm">Do you have a digital photo ready?</label>
-                        <select name="has_photo" class="w-full p-3 border rounded mb-4">
-                            <option value="Yes">Yes, I have a compliant digital photo</option>
-                            <option value="No">No, I need guidance on taking one</option>
-                        </select>
-                    </div>
-                    <div class="text-right">
-                        <button type="button" onclick="nextStep(2)" class="bg-navy text-white px-8 py-3 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-gold hover:text-navy transition">Next Step <i data-lucide="arrow-right" class="inline w-4 h-4 ml-1"></i></button>
-                    </div>
-                </div>`;
-        }
-
-        document.getElementById('missionContent').innerHTML = content;
-        lucide.createIcons();
-    }
-
-    // --- 🆕 INTERMEDIARY FUNCTION: SAVES DATA THEN MOVES ON ---
-    function nextStep(targetLeg) {
-        collectStepData(); // SAVE ANSWERS!
-        if (targetLeg === 1) loadLeg1();
-        if (targetLeg === 2) loadLeg2();
-        if (targetLeg === 3) loadLeg3();
-        if (targetLeg === 4) loadFinalLeg();
-    }
-
-    // --- LEG 2 ---
-    function loadLeg2() {
-        if (currentPillar.id !== 'rgd') { nextStep(3); return; } // Skip to Leg 3 for TAJ/PICA
-        updateProgress(2);
-        document.getElementById('missionContent').innerHTML = `
-             <div class="fade-in max-w-2xl mx-auto space-y-6">
-                <div class="text-center mb-6"><h2 class="font-serif text-3xl text-navy font-bold">Event Details</h2></div>
-                <div class="space-y-4">
-                    <div><label class="block font-bold text-navy text-xs uppercase mb-1">Full Name on Record</label><input type="text" name="subject_name" required placeholder="First Middle Last" class="w-full p-4 border rounded bg-gray-50"></div>
-                    <div><label class="block font-bold text-navy text-xs uppercase mb-1">Date of Event</label><input type="date" name="event_date" required class="w-full p-4 border rounded bg-gray-50"></div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div><label class="block font-bold text-navy text-xs uppercase mb-1">Place (Town)</label><input type="text" name="place_of_registration" required class="w-full p-4 border rounded bg-gray-50"></div>
-                        <div><label class="block font-bold text-navy text-xs uppercase mb-1">Parish</label><select name="parish_registration" class="w-full p-4 border rounded bg-gray-50"><option>St. Catherine</option><option>Kingston</option><option>St. Andrew</option><option>Clarendon</option><option>Manchester</option><option>St. Elizabeth</option><option>Westmoreland</option><option>Hanover</option><option>St. James</option><option>Trelawny</option><option>St. Ann</option><option>St. Mary</option><option>Portland</option><option>St. Thomas</option></select></div>
-                    </div>
-                    <div><label class="block font-bold text-navy text-xs uppercase mb-1">Mother's Maiden Name</label><input type="text" name="mother_maiden_name" required class="w-full p-4 border rounded bg-gray-50 border-gold/30"></div>
-                    <div><label class="block font-bold text-navy text-xs uppercase mb-1">Father's Name</label><input type="text" name="father_name" placeholder="Optional" class="w-full p-4 border rounded bg-gray-50"></div>
-                </div>
-                <div class="flex justify-between mt-8">
-                    <button type="button" onclick="nextStep(1)" class="text-gray-400 font-bold text-xs uppercase hover:text-navy">Back</button>
-                    <button type="button" onclick="nextStep(3)" class="bg-navy text-white px-8 py-3 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-gold hover:text-navy transition">Next Step <i data-lucide="arrow-right" class="inline w-4 h-4 ml-1"></i></button>
-                </div>
-            </div>`;
-        lucide.createIcons();
-    }
-
-    // --- LEG 3 ---
-    function loadLeg3() {
-        updateProgress(3);
-        document.getElementById('missionContent').innerHTML = `
-            <div class="fade-in max-w-2xl mx-auto space-y-6">
-                <div class="text-center mb-6"><h2 class="font-serif text-3xl text-navy font-bold">Client Contact</h2></div>
-                <div class="bg-slate-50 p-6 rounded-xl border border-gray-100 space-y-4">
-                    <div><label class="block font-bold text-navy text-xs uppercase mb-1">Your Full Name</label><input type="text" name="full_name" required class="w-full p-4 border rounded bg-white"></div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div><label class="block font-bold text-navy text-xs uppercase mb-1">Email Address</label><input type="email" name="client_email" required placeholder="For receipts" class="w-full p-4 border rounded bg-white"></div>
-                        <div><label class="block font-bold text-navy text-xs uppercase mb-1">WhatsApp Number</label><input type="tel" name="client_phone" required placeholder="876-xxx-xxxx" class="w-full p-4 border rounded bg-white"></div>
-                    </div>
-                    <div><label class="block font-bold text-navy text-xs uppercase mb-1">Current Address</label><input type="text" name="address" required class="w-full p-4 border rounded bg-white"></div>
-                </div>
-                <div class="bg-white p-6 rounded-xl border border-gray-200">
-                    <label class="block font-bold text-navy mb-2 text-sm uppercase tracking-wide">Final Delivery Method</label>
-                    <select name="delivery_method" class="w-full p-3 border rounded bg-gray-50">
-                        <option value="Email Only">Email Only (Online Pay)</option>
-                        <option value="Courier">Courier (ZipMail)</option>
-                        <option value="Docu-Hub Bearer">Docu-Hub Bearer</option>
-                    </select>
-                </div>
-                <div class="flex justify-between mt-8">
-                    <button type="button" onclick="nextStep(2)" class="text-gray-400 font-bold text-xs uppercase hover:text-navy">Back</button>
-                    <button type="button" onclick="nextStep(4)" class="bg-navy text-white px-8 py-3 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-gold hover:text-navy transition">Review & Sign <i data-lucide="arrow-right" class="inline w-4 h-4 ml-1"></i></button>
-                </div>
-            </div>`;
-        lucide.createIcons();
-    }
-
-    // --- LEG 4 (FINAL) ---
-    function loadFinalLeg() {
-        updateProgress(4);
-        document.getElementById('missionContent').innerHTML = `
-            <div class="fade-in max-w-2xl mx-auto space-y-6">
-                <div class="text-center mb-6"><h2 class="font-serif text-3xl text-navy font-bold">Authorization</h2></div>
-                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-gold space-y-4">
-                    <label class="flex items-start gap-3 p-3 bg-gray-50 rounded cursor-pointer">
-                        <input type="checkbox" name="consent_data" required checked class="mt-1 accent-navy">
-                        <div class="text-xs text-gray-600">I authorize Docu-Hub to process my data (JDPA 2020).</div>
-                    </label>
-                    <label class="flex items-start gap-3 p-3 bg-gray-50 rounded cursor-pointer">
-                        <input type="checkbox" name="consent_private" required checked class="mt-1 accent-navy">
-                        <div class="text-xs text-gray-600">I understand Docu-Hub is a private service charging a service fee.</div>
-                    </label>
-                     <label class="flex items-start gap-3 p-3 bg-gray-50 rounded cursor-pointer">
-                        <input type="checkbox" name="docs_agreement" value="WhatsApp" required checked class="mt-1 accent-navy">
-                        <div class="text-xs text-gray-600">I will send IDs/Docs via WhatsApp after submission.</div>
-                    </label>
-                </div>
-                <div class="text-center">
-                    <button type="submit" id="submitBtn" class="w-full md:w-auto bg-gold text-navy px-12 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-navy hover:text-white transition shadow-xl transform hover:-translate-y-1">Submit Application</button>
-                </div>
-                <div class="flex justify-center mt-4">
-                    <button type="button" onclick="nextStep(3)" class="text-gray-400 font-bold text-xs uppercase hover:text-navy">Back</button>
-                </div>
-            </div>`;
-        lucide.createIcons();
-    }
-
-    // --- 🚀 THE FIX: SUBMISSION LOGIC ---
-    function processSubmission() {
-        // 1. Grab data from the FINAL step (checkboxes)
-        collectStepData(); 
-
-        const submitBtn = document.getElementById('submitBtn');
-        const statusOverlay = document.getElementById('statusOverlay');
-        
-        statusOverlay.classList.remove('hidden');
-        submitBtn.disabled = true;
-
-        // 2. CONSTRUCT THE PAYLOAD (Combine Memory Bank + Final Form)
-        // We use 'submissionData' which now holds answers from Steps 1, 2, 3, and 4
-        const formDataPayload = new FormData();
-        for (const key in submissionData) {
-            formDataPayload.append(key, submissionData[key]);
-        }
-
-        fetch(SCRIPT_URL, { method: 'POST', body: formDataPayload })
-            .then(response => response.json())
-            .then(data => {
-                statusOverlay.classList.add('hidden');
-                if(data.result === 'success') {
-                    showReceipt(submissionData, data.sheet); // Pass saved data to receipt
-                } else {
-                    alert("Error: " + data.error);
-                    submitBtn.disabled = false;
-                }
-            })
-            .catch(error => {
-                console.error('Error!', error.message);
-                statusOverlay.classList.add('hidden');
-                alert("Connection failed. Please try again.");
-                submitBtn.disabled = false;
-            });
-    }
-
-    function showReceipt(data, sheetName) {
-        document.getElementById('missionControl').classList.add('hidden');
-        document.getElementById('receiptModal').classList.remove('hidden');
-        
-        const date = new Date();
-        document.getElementById('dateStamp').innerText = date.toLocaleDateString() + " " + date.toLocaleTimeString();
-        document.getElementById('receiptRef').innerText = "DH-" + Math.floor(1000 + Math.random() * 9000);
-        // Use data from memory bank
-        document.getElementById('receiptName').innerText = data.full_name || "Client";
-        document.getElementById('receiptService').innerText = sheetName;
-    }
+    function toggleMobileMenu() { const menu = document.getElementById('mobileDropdown'); const icon = document.getElementById('menuIcon'); menu.classList.toggle('hidden'); icon.setAttribute('data-lucide', menu.classList.contains('hidden') ? 'menu' : 'x'); lucide.createIcons(); }
 
     window.onload = renderDeck;
 </script>
 </body>
 </html>
+
 
