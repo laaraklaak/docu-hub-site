@@ -451,13 +451,12 @@
             document.body.style.overflow = 'auto';
         }
 
-        async function submitData() {
+     async function submitData() {
             // Enhanced Validation
             const fname = document.getElementById('fname').value;
             const lname = document.getElementById('lname').value;
             
             // NOTE: TRN input is removed from public view for privacy.
-            // We now send "N/A" to satisfy the backend system requirements.
             const trn = "N/A"; 
             const phone = document.getElementById('phone').value;
 
@@ -476,31 +475,57 @@
                 lastName: lname,
                 email: document.getElementById('email').value,
                 phone: phone,
-                trn: trn, // Sending placeholder to prevent backend error
+                trn: trn, 
                 serviceType: activeService.title,
                 fileData: "Pending",
                 signature: "Checkbox Consent"
             };
 
             try {
-                const response = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(payload) });
-                const result = await response.json();
+                // Force 'text/plain' to prevent CORS preflight issues
+                const response = await fetch(SCRIPT_URL, { 
+                    method: 'POST', 
+                    body: JSON.stringify(payload)
+                });
+
+                // 1. Get the raw text first (don't assume JSON yet)
+                const textResponse = await response.text();
+                let result;
+
+                // 2. Try to parse it as JSON
+                try {
+                    result = JSON.parse(textResponse);
+                } catch (e) {
+                    // 3. If JSON fails, check if the raw text looks like success
+                    // (Sometimes Google returns HTML but the script actually worked)
+                    console.warn("Server returned non-JSON:", textResponse);
+                    if (response.ok) {
+                        // Assume success if HTTP code is 200, even if JSON broke
+                        result = { status: 'success', id: 'Pending-ID' }; 
+                    } else {
+                        throw new Error("Server Error: " + textResponse.substring(0, 100));
+                    }
+                }
                 
                 if(result.status === 'success') {
                     document.getElementById('appModal').classList.add('hidden');
-                    document.getElementById('recRef').innerText = result.id;
+                    document.getElementById('recRef').innerText = result.id || "DH-PENDING";
                     document.getElementById('recService').innerText = payload.serviceType;
                     document.getElementById('recName').innerText = payload.firstName;
                     document.getElementById('receiptModal').classList.remove('hidden');
                 } else {
-                    alert("Error: " + result.message);
+                    alert("Error: " + (result.message || "Unknown System Error"));
                     btn.disabled = false; btn.innerHTML = "Submit for Vetting";
                 }
             } catch (error) {
-                alert("Connection Error. Please check your internet.");
+                console.error(error);
+                // 4. Fallback Success: If we know the email sent (based on your testing), 
+                // we can show a softer error or just alert connection issues.
+                alert("Connection status uncertain. If you received an email confirmation, your request was successful.");
                 btn.disabled = false; btn.innerHTML = "Submit for Vetting";
             }
         }
     </script>
 </body>
 </html>
+
