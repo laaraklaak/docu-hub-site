@@ -320,11 +320,6 @@
                             <input type="email" id="email" required class="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-lg text-navy font-medium focus:border-navy focus:bg-white focus:ring-1 focus:ring-navy outline-none transition placeholder-gray-300">
                         </div>
 
-                        <div>
-                           
-                            <input type="text" id="trn" required pattern="[0-9]{9}" title="TRN must be exactly 9 digits" maxlength="9" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-lg text-navy font-medium focus:border-navy focus:bg-white focus:ring-1 focus:ring-navy outline-none transition placeholder-gray-300">
-                        </div>
-
                         <div class="pt-4">
                             <label class="flex items-start gap-3 p-4 bg-gray-50 rounded-lg border border-gray-200 cursor-pointer hover:border-navy transition">
                                 <input type="checkbox" id="consent" required class="mt-1 w-5 h-5 accent-navy cursor-pointer">
@@ -460,7 +455,10 @@
             // Enhanced Validation
             const fname = document.getElementById('fname').value;
             const lname = document.getElementById('lname').value;
-            const trn = document.getElementById('trn').value;
+            
+            // NOTE: TRN input is removed from public view for privacy.
+            // We now send "N/A" to satisfy the backend system requirements.
+            const trn = "N/A"; 
             const phone = document.getElementById('phone').value;
 
             // Spam Check: Names cannot have numbers
@@ -468,8 +466,6 @@
                 alert("Please enter a valid name without numbers.");
                 return;
             }
-
-          
 
             const btn = document.getElementById('submitBtn');
             btn.innerHTML = "Sending...";
@@ -480,7 +476,7 @@
                 lastName: lname,
                 email: document.getElementById('email').value,
                 phone: phone,
-                trn: trn,
+                trn: trn, // Sending placeholder to prevent backend error
                 serviceType: activeService.title,
                 fileData: "Pending",
                 signature: "Checkbox Consent"
@@ -508,6 +504,3 @@
     </script>
 </body>
 </html>
-
-
-
