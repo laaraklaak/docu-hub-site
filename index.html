@@ -499,16 +499,23 @@
             // We use 'activeService.title' safely (if null, default to Inquiry)
             const serviceName = (activeService && activeService.title) ? activeService.title : "General Inquiry";
             
-            const payload = {
-                firstName: fname,
-                lastName: lname,
-                email: email,
-                phone: phone,
-                trn: "N/A",
-                serviceType: serviceName,
-                fileData: "Web Intake",
-                signature: "Digital Consent"
-            };
+           // Replace the existing payload construction in your submitData() function with this:
+
+// 2. Build the Payload (CORRECTED KEYS)
+const serviceName = (activeService && activeService.title) ? activeService.title : "General Inquiry";
+
+const payload = {
+    firstName: fname,
+    lastName: lname,
+    email: email,
+    phone: phone,
+    trn: "N/A", 
+    
+    // *** UPDATED KEYS TO MATCH BACKEND ***
+    service: serviceName,                 // Changed from 'serviceType'
+    notes: "Web Intake - " + serviceName, // Changed from 'fileData'
+    source: "Website"                     // Added to track source
+};
 
             try {
                 // 3. The "CORS-Safe" Request
@@ -556,6 +563,7 @@
     </script>
 </body>
 </html>
+
 
 
 
