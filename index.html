@@ -495,20 +495,27 @@
             btn.innerHTML = "Processing...";
             btn.disabled = true;
 
-            // 2. Build the Payload
-            // We use 'activeService.title' safely (if null, default to Inquiry)
+           // 2. Build the Payload
             const serviceName = (activeService && activeService.title) ? activeService.title : "General Inquiry";
             
+            // "Super Payload": sends BOTH the new keys (for v9.15 backend) AND old keys (fallback)
             const payload = {
                 firstName: fname,
                 lastName: lname,
                 email: email,
                 phone: phone,
-                trn: "N/A",
+                trn: "N/A", 
+                
+                // New Keys (v9.15)
+                service: serviceName, 
+                notes: "Web Intake - " + serviceName, 
+                source: "Website",
+
+                // Old Keys (Fallback if backend wasn't redeployed)
                 serviceType: serviceName,
-                fileData: "Web Intake",
-                signature: "Digital Consent"
+                fileData: "Web Intake"
             };
+
 
             try {
                 // 3. The "CORS-Safe" Request
@@ -556,5 +563,6 @@
     </script>
 </body>
 </html>
+
 
 
