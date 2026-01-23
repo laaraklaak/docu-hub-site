@@ -11,16 +11,8 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { 
-                        navy: '#003366', 
-                        gold: '#D4AF37', 
-                        'gold-light': '#FDF8E8'
-                    },
-                    fontFamily: { 
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                        poppins: ['Poppins', 'sans-serif']
-                    },
+                    colors: { navy: '#003366', gold: '#D4AF37', 'gold-light': '#FDF8E8' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'], poppins: ['Poppins', 'sans-serif'] },
                     fontSize: { 'xxs': '0.65rem' }
                 }
             }
@@ -28,7 +20,6 @@
     </script>
     <style>
         .no-print { @media print { display: none; } }
-        /* Hide scrollbar for clean modals */
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
@@ -44,7 +35,6 @@
 
     <header class="bg-white shadow-sm sticky top-0 z-40 no-print transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 md:px-8 h-20 md:h-24 flex items-center justify-between relative bg-white z-50">
-            
             <div class="flex items-center gap-3 md:gap-4 cursor-pointer" onclick="window.location.reload()">
                 <i data-lucide="shield-check" class="text-gold w-8 h-8 md:w-10 md:h-10"></i>
                 <div>
@@ -52,19 +42,16 @@
                     <p class="text-[10px] md:text-xs uppercase tracking-[0.2em] text-gray-400 mt-1 font-semibold">Operations Services</p>
                 </div>
             </div>
-            
             <div class="hidden md:flex gap-8 text-xs font-bold text-navy uppercase tracking-widest items-center">
                 <button onclick="document.getElementById('services').scrollIntoView()" class="hover:text-gold transition py-2">Services</button>
                 <a href="help.html" class="hover:text-gold transition py-2 flex items-center gap-1"><i data-lucide="clipboard-list" class="w-4 h-4"></i> Requirements</a>
                 <button onclick="document.getElementById('about').scrollIntoView()" class="hover:text-gold transition py-2">About</button>
                 <a href="contact.html" class="px-6 py-2 border border-navy rounded-full hover:bg-navy hover:text-white transition">Contact</a>
             </div>
-
             <button onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu" class="md:hidden text-navy p-2 focus:outline-none bg-slate-50 rounded-lg border border-gray-200">
                 <i data-lucide="menu" id="menuIcon" class="w-6 h-6"></i>
             </button>
         </div>
-
         <div id="mobileDropdown" class="hidden md:hidden absolute top-20 left-0 w-full bg-navy text-white shadow-2xl border-b-4 border-gold z-30 flex flex-col items-center gap-0 transition-all duration-300">
             <button onclick="toggleMobileMenu(); document.getElementById('services').scrollIntoView()" class="w-full py-5 text-center border-b border-white/10 hover:bg-white/5 font-bold uppercase tracking-widest text-xs">Services</button>
             <a href="help.html" class="w-full py-5 text-center border-b border-white/10 hover:bg-white/5 font-bold uppercase tracking-widest text-xs">Requirements Check</a>
@@ -80,21 +67,17 @@
             <img src="assets/hero.png" class="w-full h-full object-cover object-center" alt="Corporate Office">
             <div class="absolute inset-0 bg-navy/80 mix-blend-multiply"></div>
         </div>
-
         <div class="relative z-10 container mx-auto px-6 md:px-12">
             <div class="max-w-lg bg-navy/60 backdrop-blur-md p-8 md:p-12 rounded-2xl shadow-2xl border border-white/20 text-left fade-in">
                 <div class="inline-block bg-gold/20 text-gold border border-gold/30 text-[10px] font-bold px-3 py-1 rounded mb-6 uppercase tracking-widest">
                     Professional Liaison
                 </div>
-                
                 <h1 class="font-serif text-2xl md:text-4xl text-white font-bold leading-tight mb-4 shadow-black drop-shadow-md">
                     Skip the Line. <br><span class="text-gold italic">We Handle the Red Tape.</span>
                 </h1>
-                
                 <p class="text-white/90 text-sm leading-relaxed mb-8 font-light tracking-wide">
                     Your trusted partner for Passports and Government Documents. We wait in line so you don't have to.
                 </p>
-                
                 <div class="flex gap-4">
                     <button onclick="document.getElementById('services').scrollIntoView()" class="w-full md:w-auto bg-gold text-navy font-bold px-6 py-3 rounded-lg shadow-lg hover:bg-white transition uppercase text-xs tracking-widest flex items-center justify-center gap-2">
                         Get Help With My Papers <i data-lucide="arrow-down" class="w-4 h-4"></i>
@@ -104,105 +87,90 @@
         </div>
     </section>
 
-    <section id="services" class="py-20 md:py-24 px-6 max-w-6xl mx-auto no-print bg-slate-50">
+    <section id="services" class="py-20 md:py-24 px-6 max-w-7xl mx-auto no-print bg-slate-50">
         <div class="text-center mb-16">
             <h2 class="font-serif text-3xl md:text-4xl font-bold text-navy mb-4">Service Catalog</h2>
-            <p class="text-slate-600 text-sm font-medium uppercase tracking-widest">Select a service to begin</p>
+            <p class="text-slate-600 text-sm font-medium uppercase tracking-widest">Select your application type</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 mb-16">
-            
-            <div class="bg-white rounded-3xl shadow-lg border-2 border-gold/20 p-8 hover:shadow-2xl hover:border-gold hover:-translate-y-2 transition-all duration-300 cursor-pointer group" onclick="openForm('pica')">
-                <div class="flex items-start gap-6 mb-6">
-                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-navy border border-blue-100 group-hover:bg-navy group-hover:text-gold transition-colors shrink-0 shadow-sm">
-                        <i data-lucide="plane" class="w-8 h-8"></i>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div class="bg-white rounded-3xl shadow-lg border-2 border-gold/20 p-8 hover:shadow-2xl hover:border-gold hover:-translate-y-2 transition-all duration-300 cursor-pointer group" onclick="openForm('traffic')">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center text-red-700 group-hover:bg-red-600 group-hover:text-white transition-colors shrink-0">
+                        <i data-lucide="ticket" class="w-7 h-7"></i>
                     </div>
-                    <div>
-                        <h3 class="font-serif font-bold text-2xl text-navy mb-1">Travel Ready</h3>
-                        <p class="text-sm text-slate-500 font-bold uppercase tracking-wide">Passports (Local & Foreign)</p>
-                    </div>
+                    <h3 class="font-serif font-bold text-xl text-navy">Traffic Tickets</h3>
                 </div>
-                <p class="text-base text-slate-700 mb-8 leading-loose font-medium">
-                    Don't let an expired passport stop you. We handle renewals for <strong>Jamaica</strong>, plus <strong>USA, UK, and Canada</strong>.
+                <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+                    Start a Traffic Ticket Audit. We verify your status for Warrants before processing any payments.
                 </p>
-                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-t border-slate-100 pt-6 gap-4 sm:gap-0">
-                    <span class="text-sm font-bold bg-blue-50 text-blue-900 px-4 py-2 rounded-lg border border-blue-100 w-full sm:w-auto text-center sm:text-left">Fee: Varies by Country</span>
-                    <span class="text-gold font-bold flex items-center gap-2 text-sm uppercase tracking-widest group-hover:translate-x-2 transition">Start File <i data-lucide="arrow-right" class="w-5 h-5"></i></span>
+                <span class="text-gold font-bold flex items-center gap-2 text-xs uppercase tracking-widest group-hover:translate-x-2 transition">Start Audit <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-lg border-2 border-gold/20 p-8 hover:shadow-2xl hover:border-gold hover:-translate-y-2 transition-all duration-300 cursor-pointer group" onclick="openForm('mv_renewal')">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-14 h-14 bg-yellow-50 rounded-xl flex items-center justify-center text-yellow-700 group-hover:bg-yellow-500 group-hover:text-white transition-colors shrink-0">
+                        <i data-lucide="car-front" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-navy">MV Renewal</h3>
                 </div>
+                <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+                    Submit your fitness and insurance for verification. We ensure your documents are valid before renewal.
+                </p>
+                <span class="text-gold font-bold flex items-center gap-2 text-xs uppercase tracking-widest group-hover:translate-x-2 transition">Renew Now <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-lg border-2 border-gold/20 p-8 hover:shadow-2xl hover:border-gold hover:-translate-y-2 transition-all duration-300 cursor-pointer group" onclick="openForm('license')">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-700 group-hover:bg-blue-600 group-hover:text-white transition-colors shrink-0">
+                        <i data-lucide="id-card" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-navy">Driver's License</h3>
+                </div>
+                <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+                    Private License Renewal. We calculate arrears and review your eligibility before heading to the Tax Office.
+                </p>
+                <span class="text-gold font-bold flex items-center gap-2 text-xs uppercase tracking-widest group-hover:translate-x-2 transition">Start Renewal <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-lg border-2 border-gold/20 p-8 hover:shadow-2xl hover:border-gold hover:-translate-y-2 transition-all duration-300 cursor-pointer group" onclick="openForm('passport')">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-14 h-14 bg-cyan-50 rounded-xl flex items-center justify-center text-cyan-700 group-hover:bg-cyan-600 group-hover:text-white transition-colors shrink-0">
+                        <i data-lucide="plane" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-navy">Passport Renewal</h3>
+                </div>
+                <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+                    Pre-Vetting Service. Submit your photos and data for review to ensure they meet strict PICA standards.
+                </p>
+                <span class="text-gold font-bold flex items-center gap-2 text-xs uppercase tracking-widest group-hover:translate-x-2 transition">Check Eligibility <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
             </div>
 
             <div class="bg-white rounded-3xl shadow-lg border-2 border-gold/20 p-8 hover:shadow-2xl hover:border-gold hover:-translate-y-2 transition-all duration-300 cursor-pointer group" onclick="openForm('rgd')">
-                <div class="flex items-start gap-6 mb-6">
-                    <div class="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-800 border border-purple-100 group-hover:bg-purple-800 group-hover:text-white transition-colors shrink-0 shadow-sm">
-                        <i data-lucide="scroll" class="w-8 h-8"></i>
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center text-purple-700 group-hover:bg-purple-600 group-hover:text-white transition-colors shrink-0">
+                        <i data-lucide="scroll" class="w-7 h-7"></i>
                     </div>
-                    <div>
-                        <h3 class="font-serif font-bold text-2xl text-navy mb-1">Vital Records</h3>
-                        <p class="text-sm text-slate-500 font-bold uppercase tracking-wide">Birth, Marriage & Death</p>
-                    </div>
+                    <h3 class="font-serif font-bold text-xl text-navy">RGD Certificates</h3>
                 </div>
-                <p class="text-base text-slate-700 mb-8 leading-loose font-medium">
-                    Need an official certificate? We handle the application and pickup at the RGD (Twickenham Park) so you avoid the long lines.
+                <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+                    Certificate Search & Pickup. We verify the Entry Number/Registration before processing the order.
                 </p>
-                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-t border-slate-100 pt-6 gap-4 sm:gap-0">
-                    <span class="text-sm font-bold bg-purple-50 text-purple-900 px-4 py-2 rounded-lg border border-purple-100 w-full sm:w-auto text-center sm:text-left">Est. Fee: $3,500</span>
-                    <span class="text-gold font-bold flex items-center gap-2 text-sm uppercase tracking-widest group-hover:translate-x-2 transition">Start File <i data-lucide="arrow-right" class="w-5 h-5"></i></span>
-                </div>
+                <span class="text-gold font-bold flex items-center gap-2 text-xs uppercase tracking-widest group-hover:translate-x-2 transition">Order Copy <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
             </div>
 
-            <div class="bg-white rounded-3xl shadow-lg border-2 border-gold/20 p-8 hover:shadow-2xl hover:border-gold hover:-translate-y-2 transition-all duration-300 cursor-pointer group" onclick="openForm('taj')">
-                <div class="flex items-start gap-6 mb-6">
-                    <div class="w-16 h-16 bg-yellow-50 rounded-2xl flex items-center justify-center text-yellow-700 border border-yellow-100 group-hover:bg-yellow-500 group-hover:text-white transition-colors shrink-0 shadow-sm">
-                        <i data-lucide="car-front" class="w-8 h-8"></i>
+            <div class="bg-white rounded-3xl shadow-lg border-2 border-gold/20 p-8 hover:shadow-2xl hover:border-gold hover:-translate-y-2 transition-all duration-300 cursor-pointer group" onclick="openForm('trn_nis')">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-700 group-hover:bg-emerald-600 group-hover:text-white transition-colors shrink-0">
+                        <i data-lucide="users" class="w-7 h-7"></i>
                     </div>
-                    <div>
-                        <h3 class="font-serif font-bold text-2xl text-navy mb-1">Driving & Tax Office</h3>
-                        <p class="text-sm text-slate-500 font-bold uppercase tracking-wide">Vehicle, Property & Tickets</p>
-                    </div>
+                    <h3 class="font-serif font-bold text-xl text-navy">TRN & NIS Cards</h3>
                 </div>
-                <p class="text-base text-slate-700 mb-8 leading-loose font-medium">
-                    Skip the lines. We handle Driver’s License renewals, Vehicle Registration, <strong>Property Tax</strong>, and <strong>Traffic Ticket</strong> payments.
+                <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+                    Linstead Concierge. Request a callback to schedule an in-person visit for signatures.
                 </p>
-                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-t border-slate-100 pt-6 gap-4 sm:gap-0">
-                    <span class="text-sm font-bold bg-yellow-50 text-yellow-900 px-4 py-2 rounded-lg border border-yellow-100 w-full sm:w-auto text-center sm:text-left">Fee: Varies by Service</span>
-                    <span class="text-gold font-bold flex items-center gap-2 text-sm uppercase tracking-widest group-hover:translate-x-2 transition">Start File <i data-lucide="arrow-right" class="w-5 h-5"></i></span>
-                </div>
+                <span class="text-gold font-bold flex items-center gap-2 text-xs uppercase tracking-widest group-hover:translate-x-2 transition">Request Visit <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
             </div>
-
-            <div class="bg-white rounded-3xl shadow-lg border-2 border-gold/20 p-8 hover:shadow-2xl hover:border-gold hover:-translate-y-2 transition-all duration-300 cursor-pointer group" onclick="window.open('https://wa.me/18765612614', '_blank')">
-                <div class="flex items-start gap-6 mb-6">
-                    <div class="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-700 border border-emerald-100 group-hover:bg-emerald-700 group-hover:text-white transition-colors shrink-0 shadow-sm">
-                        <i data-lucide="id-card" class="w-8 h-8"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-serif font-bold text-2xl text-navy mb-1">Essential IDs</h3>
-                        <p class="text-sm text-slate-500 font-bold uppercase tracking-wide">TRN, NIS & Police Records</p>
-                    </div>
-                </div>
-                <p class="text-base text-slate-700 mb-8 leading-loose font-medium">
-                    We assist with the critical documents you need for work and identification: <strong>TRN</strong>, <strong>NIS Cards</strong>, and <strong>Police Records</strong>.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-t border-slate-100 pt-6 gap-4 sm:gap-0">
-                    <span class="text-sm font-bold bg-emerald-50 text-emerald-900 px-4 py-2 rounded-lg border border-emerald-100 w-full sm:w-auto text-center sm:text-left">Custom Quote</span>
-                    <span class="text-gold font-bold flex items-center gap-2 text-sm uppercase tracking-widest group-hover:translate-x-2 transition">WhatsApp Us <i data-lucide="message-circle" class="w-5 h-5"></i></span>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="bg-blue-50 py-16 px-4 border-y border-blue-100 no-print">
-        <div class="max-w-4xl mx-auto text-center">
-            <div class="inline-flex items-center justify-center w-12 h-12 bg-white rounded-full mb-6 shadow-sm text-navy">
-                <i data-lucide="clipboard-list" class="w-6 h-6"></i>
-            </div>
-            <h2 class="font-serif text-3xl font-bold text-navy mb-4">Not sure what you need?</h2>
-            <p class="text-gray-600 max-w-xl mx-auto mb-8 text-sm md:text-base leading-relaxed">
-                Before you start, here are some helpful tips for completing various agency applications.
-            </p>
-            <a href="help.html" class="inline-block bg-white text-navy font-bold px-10 py-4 rounded-full border border-navy/10 hover:bg-navy hover:text-white hover:border-transparent transition shadow-md uppercase text-xs tracking-widest">
-                View Requirements Checklist
-            </a>
         </div>
     </section>
 
@@ -276,158 +244,157 @@
                             <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">Est. Service Fee</span>
                             <span class="font-serif font-bold text-lg md:text-xl text-gray-500" id="displayFee">$0.00</span>
                         </div>
-                        <div class="flex justify-between items-center text-sm border-b border-gray-200 pb-3 mb-3 opacity-50">
-                            <span class="text-gray-500 font-medium">Govt Fee (Est.)</span>
-                            <span class="font-bold text-gray-500" id="displayGovt">$0.00</span>
-                        </div>
-                        
                         <div class="bg-blue-50 border-l-4 border-blue-600 p-4 rounded-r-lg">
                             <p class="text-xs text-blue-800 font-bold uppercase tracking-widest mb-1 flex items-center">
-                                <i data-lucide="shield-alert" class="w-4 h-4 inline mr-2"></i> No Payment Due Now
+                                <i data-lucide="shield-alert" class="w-4 h-4 inline mr-2"></i> Eligibility Check First
                             </p>
                             <p class="text-xs text-blue-700 leading-relaxed">
-                                We must check your documents first. Submit this form, and we will WhatsApp you the invoice <strong>after</strong> we verify everything is correct.
+                                <strong>No payment is due now.</strong> We must review your documents first. After submitting this form, <span class="underline font-bold">check your email immediately</span> for a secure link to upload your ID/Documents.
                             </p>
                         </div>
                     </div>
 
                     <form id="submissionForm" onsubmit="event.preventDefault(); submitData();" class="space-y-6">
+                        
+                        <div style="opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1;">
+                            <label>Leave this field empty</label>
+                            <input type="text" id="honey_trap" name="honey_trap" tabindex="-1" autocomplete="off">
+                        </div>
+
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-2 pl-1">First Name</label>
-                                <input type="text" id="fname" required pattern="[A-Za-z\s]+" title="Letters only please" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-lg text-navy font-medium focus:border-navy focus:bg-white focus:ring-1 focus:ring-navy outline-none transition placeholder-gray-300">
+                                <input type="text" id="fname" required pattern="[a-zA-Z\s'-]+" title="Letters only" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-lg text-navy font-medium focus:ring-1 focus:ring-navy outline-none">
                             </div>
                             <div>
                                 <label class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-2 pl-1">Last Name</label>
-                                <input type="text" id="lname" required pattern="[A-Za-z\s]+" title="Letters only please" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-lg text-navy font-medium focus:border-navy focus:bg-white focus:ring-1 focus:ring-navy outline-none transition placeholder-gray-300">
+                                <input type="text" id="lname" required pattern="[a-zA-Z\s'-]+" title="Letters only" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-lg text-navy font-medium focus:ring-1 focus:ring-navy outline-none">
                             </div>
                         </div>
 
                         <div>
                             <label class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-2 pl-1">Phone / WhatsApp</label>
-                            <input type="tel" id="phone" required pattern="[0-9]+" title="Numbers only" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-lg text-navy font-medium focus:border-navy focus:bg-white focus:ring-1 focus:ring-navy outline-none transition placeholder-gray-300">
+                            <input type="tel" id="phone" required pattern="[0-9\s-]{7,15}" title="Valid Phone Number (Digits only)" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-lg text-navy font-medium focus:ring-1 focus:ring-navy outline-none">
                         </div>
                         
                         <div>
-                            <label class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-2 pl-1">Email (For Receipt)</label>
-                            <input type="email" id="email" required class="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-lg text-navy font-medium focus:border-navy focus:bg-white focus:ring-1 focus:ring-navy outline-none transition placeholder-gray-300">
+                            <label class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-2 pl-1">Email Address</label>
+                            <input type="email" id="email" required class="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-lg text-navy font-medium focus:ring-1 focus:ring-navy outline-none">
                         </div>
 
-                        <div class="pt-4">
-                            <label class="flex items-start gap-3 p-4 bg-gray-50 rounded-lg border border-gray-200 cursor-pointer hover:border-navy transition">
-                                <input type="checkbox" id="consent" required class="mt-1 w-5 h-5 accent-navy cursor-pointer">
-                              <span class="text-sm text-gray-600 leading-relaxed font-medium">
-    I agree to let Docu-Hub handle my documents. I accept the <a href="terms.html" target="_blank" rel="noopener noreferrer" class="underline text-navy font-bold">Terms of Service</a>.
-</span>
-                            </label>
+                        <select id="serviceType" class="hidden">
+                            <option value="Jamaican Passport Renewal">Passport</option>
+                            <option value="Traffic Ticket Payment">Traffic Ticket</option>
+                            <option value="Motor Vehicle Renewal">MV Renewal</option>
+                            <option value="Driver's License Renewal">License Renewal</option>
+                            <option value="Birth Certificate">RGD</option>
+                            <option value="TRN_NIS">TRN/NIS</option>
+                        </select>
+
+                        <div id="logic-passport" class="hidden bg-blue-50 p-4 rounded-lg border border-blue-100">
+                            <p class="text-sm font-bold text-navy mb-2">Eligibility Check:</p>
+                            <label class="text-xs text-gray-600 block mb-1">Do you have your old passport? Is it from after 2001?</label>
+                            <select id="passport-check" onchange="killSwitch(this, 'No')" class="w-full p-2 border rounded text-sm bg-white">
+                                <option value="">-- Select --</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No / Lost / Too Old</option>
+                            </select>
                         </div>
 
-                        <button type="submit" id="submitBtn" class="w-full bg-navy text-white font-bold py-5 rounded-xl shadow-lg hover:bg-gold hover:text-navy transition uppercase text-sm tracking-widest mt-2">
-                            Submit for Vetting
-                        </button>
+                        <div id="logic-traffic" class="hidden bg-red-50 p-4 rounded-lg border border-red-100">
+                            <p class="text-sm font-bold text-red-900 mb-2">Warrant Check:</p>
+                            <label class="text-xs text-gray-600 block mb-1">Do you have a Court Summons or Warrant?</label>
+                            <select id="traffic-check" onchange="killSwitch(this, 'Yes')" class="w-full p-2 border rounded text-sm bg-white">
+                                <option value="">-- Select --</option>
+                                <option value="No">No, just a regular ticket</option>
+                                <option value="Yes">Yes, I have a Summons</option>
+                            </select>
+                        </div>
+
+                        <div id="logic-mv" class="hidden bg-yellow-50 p-4 rounded-lg border border-yellow-100">
+                            <p class="text-sm font-bold text-yellow-900 mb-2">Documents Check:</p>
+                            <label class="text-xs text-gray-600 block mb-1">Is your Fitness Valid & Insurance Current?</label>
+                            <select id="mv-check" onchange="killSwitch(this, 'No')" class="w-full p-2 border rounded text-sm bg-white">
+                                <option value="">-- Select --</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No (Stop)</option>
+                            </select>
+                        </div>
+
+                        <div id="logic-license" class="hidden bg-blue-50 p-4 rounded-lg border border-blue-100">
+                            <p class="text-sm font-bold text-blue-900 mb-2">Eligibility Check:</p>
+                            <label class="text-xs text-gray-600 block mb-1">Are you Under 70 with a Private License?</label>
+                            <select id="license-check" onchange="killSwitch(this, 'No')" class="w-full p-2 border rounded text-sm bg-white">
+                                <option value="">-- Select --</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No (Over 70 / General)</option>
+                            </select>
+                        </div>
+
+                        <div id="logic-rgd" class="hidden bg-purple-50 p-4 rounded-lg border border-purple-100">
+                            <p class="text-sm font-bold text-purple-900 mb-2">Registration Check:</p>
+                            <label class="text-xs text-gray-600 block mb-1">Is this event already registered?</label>
+                            <select id="rgd-check" onchange="killSwitch(this, 'No')" class="w-full p-2 border rounded text-sm bg-white">
+                                <option value="">-- Select --</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No / Late Registration</option>
+                            </select>
+                        </div>
+
+                        <div id="logic-trn" class="hidden bg-emerald-50 p-4 rounded-lg border border-emerald-100">
+                            <p class="text-sm font-bold text-emerald-900 mb-2">Location Check:</p>
+                            <label class="text-xs text-gray-600 block mb-1">Are you located in the Linstead / Bog Walk area?</label>
+                            <select id="trn-check" onchange="killSwitch(this, 'No')" class="w-full p-2 border rounded text-sm bg-white">
+                                <option value="">-- Select --</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No (Stop)</option>
+                            </select>
+                            <p class="text-[10px] text-emerald-700 mt-2 italic">
+                                *Our concierge service is currently limited to this zone.
+                            </p>
+                        </div>
+
+                        <button type="submit" id="submitBtn" class="w-full bg-navy text-white font-bold py-5 rounded-xl shadow-lg hover:bg-gold hover:text-navy transition uppercase text-sm tracking-widest mt-2">Submit for Vetting</button>
+                        <p class="text-center text-xs text-gray-400 mt-4">By submitting, you agree to our <a href="terms.html" class="underline hover:text-navy">Terms of Service</a>.</p>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
-  <div id="aboutModal" class="fixed inset-0 bg-white z-[60] hidden overflow-y-auto no-print">
+    <div id="aboutModal" class="fixed inset-0 bg-white z-[60] hidden overflow-y-auto no-print">
         <div class="max-w-3xl mx-auto min-h-screen bg-white relative">
             <button onclick="closeAboutModal()" class="fixed top-6 right-6 bg-gray-100 p-2 rounded-full hover:bg-gray-200 z-50 transition"><i data-lucide="x" class="w-6 h-6 text-navy"></i></button>
-            
             <div class="p-8 md:p-16 pt-24">
-                
                 <span class="text-gold font-bold uppercase tracking-widest text-xs block mb-4">About The Founder</span>
                 <h2 class="text-3xl md:text-5xl font-bold text-navy mb-10 font-serif italic">Why I Started Docu-Hub.</h2>
-                
                 <div class="prose prose-lg text-gray-600 leading-relaxed space-y-6 font-light mb-16">
-                    <p>
-                        Having spent over <strong>15 years working within Jamaica’s corporate banking sector</strong>, I learned one rule above all others: <em>details matter.</em> In that environment, a single missing digit or unchecked box could stop a transaction cold.
-                    </p>
-                    <p>
-                        But outside the bank, I saw a different reality. I saw hardworking professionals losing entire days of pay just to stand in lines, or struggling to navigate confusing online government portals.
-                    </p>
-                    <p class="font-medium text-navy">
-                        I knew there had to be a more efficient way.
-                    </p>
-                    <p>
-                        I created Docu-Hub to bridge the gap between you and the red tape. When you entrust your documents to me, I apply the same <strong>banking-grade security and precision</strong> to your files that I practiced for over a decade.
-                    </p>
-                    <p>
-                        We are a registered business and fully compliant with the <strong>Data Protection Act (JDPA)</strong>. This means your sensitive information isn't just "on a phone"—it is processed securely and protected at all times.
-                    </p>
+                    <p>Having spent over <strong>15 years working within Jamaica’s corporate banking sector</strong>, I learned one rule above all others: <em>details matter.</em> In that environment, a single missing digit or unchecked box could stop a transaction cold.</p>
+                    <p>But outside the bank, I saw a different reality. I saw hardworking professionals losing entire days of pay just to stand in lines, or struggling to navigate confusing online government portals.</p>
+                    <p class="font-medium text-navy">I knew there had to be a more efficient way.</p>
+                    <p>I created Docu-Hub to bridge the gap between you and the red tape. When you entrust your documents to me, I apply the same <strong>banking-grade security and precision</strong> to your files that I practiced for over a decade.</p>
+                    <p>We are a registered business and fully compliant with the <strong>Data Protection Act (JDPA)</strong>. This means your sensitive information isn't just "on a phone"—it is processed securely and protected at all times.</p>
                 </div>
-
-                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100">
-                    <h3 class="font-serif text-2xl font-bold text-navy mb-8">How We Operate</h3>
-                    
-                    <div class="space-y-8">
-                        <div class="flex gap-5">
-                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-navy text-white flex items-center justify-center font-bold font-serif shadow-md">1</div>
-                            <div>
-                                <h4 class="font-bold text-navy text-lg">Digital Intake & Vetting</h4>
-                                <p class="text-sm text-slate-600 leading-relaxed mt-1">
-                                    You submit your details via our secure form. <strong>No payment is taken yet.</strong> I personally review your documents for errors. If something is missing, we fix it before an invoice is sent.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="flex gap-5">
-                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-white border-2 border-navy text-navy flex items-center justify-center font-bold font-serif">2</div>
-                            <div>
-                                <h4 class="font-bold text-navy text-lg">The Processing</h4>
-                                <p class="text-sm text-slate-600 leading-relaxed mt-1">
-                                    We handle the submission. Whether the agency requires an <strong>online upload</strong> (like PICA) or an <strong>in-person visit</strong> (Tax Office), we manage the technical portals and the lines so you don't have to.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="flex gap-5">
-                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gold text-navy flex items-center justify-center font-bold font-serif shadow-md">3</div>
-                            <div>
-                                <h4 class="font-bold text-navy text-lg">Secure Delivery</h4>
-                                <p class="text-sm text-slate-600 leading-relaxed mt-1">
-                                    When your documents are ready, we don't just hold them. You can pick them up in <strong>Linstead</strong>, or we ship islandwide via <strong>Knutsford Express</strong> or <strong>Zipmail</strong>.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="mt-16 pt-12 border-t border-gray-100 text-center">
-                    <button onclick="closeAboutModal(); document.getElementById('services').scrollIntoView();" class="w-full md:w-auto bg-navy text-white px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-gold hover:text-navy transition shadow-lg">
-                        Back to Services
-                    </button>
+                    <button onclick="closeAboutModal(); document.getElementById('services').scrollIntoView();" class="w-full md:w-auto bg-navy text-white px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-gold hover:text-navy transition shadow-lg">Back to Services</button>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div id="receiptModal" class="fixed inset-0 bg-navy/90 z-[70] hidden overflow-y-auto p-4 flex items-center justify-center backdrop-blur-sm">
         <div class="bg-white max-w-sm w-full rounded-2xl p-8 text-center relative shadow-2xl border-4 border-gold">
-            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 text-green-600 animate-bounce">
-                <i data-lucide="check" class="w-10 h-10"></i>
-            </div>
-            <h2 class="text-2xl font-bold text-navy mb-2 font-serif italic">Received!</h2>
+            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 text-green-600 animate-bounce"><i data-lucide="check" class="w-10 h-10"></i></div>
+            <h2 class="text-2xl font-bold text-navy mb-2 font-serif italic">Request Open!</h2>
             <p class="text-gray-600 mb-8 text-sm leading-relaxed">
-                We have your details. <br><strong>Laura will review them and WhatsApp you the invoice shortly.</strong>
+                We have opened your file. <br>
+                <strong>Please check your email inbox (and spam) NOW for the link to upload your required documents.</strong>
             </p>
-            
             <div class="bg-gray-50 p-5 rounded-xl mb-8 text-left text-sm space-y-3 border border-gray-100">
-                <div class="flex justify-between border-b border-gray-200 pb-2">
-                    <span class="text-gray-400 text-xs uppercase font-bold">Status</span> 
-                    <strong id="recRef" class="text-blue-600">Pending Review</strong>
-                </div>
-                <div class="flex justify-between border-b border-gray-200 pb-2">
-                    <span class="text-gray-400 text-xs uppercase font-bold">Service</span> 
-                    <strong id="recService" class="text-navy">...</strong>
-                </div>
-                <div class="flex justify-between">
-                    <span class="text-gray-400 text-xs uppercase font-bold">Name</span> 
-                    <strong id="recName" class="text-navy">...</strong>
-                </div>
+                <div class="flex justify-between border-b border-gray-200 pb-2"><span class="text-gray-400 text-xs uppercase font-bold">Status</span><strong id="recRef" class="text-blue-600">Pending Review</strong></div>
+                <div class="flex justify-between border-b border-gray-200 pb-2"><span class="text-gray-400 text-xs uppercase font-bold">Service</span><strong id="recService" class="text-navy">...</strong></div>
+                <div class="flex justify-between"><span class="text-gray-400 text-xs uppercase font-bold">Name</span><strong id="recName" class="text-navy">...</strong></div>
             </div>
-
             <button onclick="window.location.reload()" class="w-full bg-navy text-white font-bold py-4 rounded-xl mb-4 hover:bg-blue-900 transition uppercase text-xs tracking-widest shadow-lg">Close</button>
             <button onclick="window.print()" class="text-gray-400 text-xs font-bold uppercase tracking-widest hover:text-navy">Save Receipt</button>
         </div>
@@ -438,27 +405,46 @@
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxnolakc2CtzL7j9OQx4kPy_NN_tZ1ZifugNCIq2kIF2NXI8Tvb_fcmpc_i39HvOX6x/exec"; 
 
         const DATA = {
-            pica: { title: "Travel Ready (Passport)", fee: "Varies by Country", govt: "Varies" },
-            rgd: { title: "Vital Records (Certificates)", fee: "$3,500", govt: "$2,500" },
-            taj: { title: "Driving & Tax Services", fee: "Varies by Service", govt: "Variable" }
+            traffic: { title: "Traffic Ticket Settlement", fee: "$2,500 (Audit Fee)", val: "Traffic Ticket Payment" },
+            mv_renewal: { title: "Motor Vehicle Renewal", fee: "$2,500", val: "Motor Vehicle Renewal" },
+            license: { title: "Driver's License Renewal", fee: "$3,000", val: "Driver's License Renewal" },
+            passport: { title: "Passport Renewal (PICA)", fee: "$6,500", val: "Jamaican Passport Renewal" },
+            rgd: { title: "RGD Certificate Service", fee: "$3,500", val: "Birth Certificate" },
+            trn_nis: { title: "TRN / NIS Concierge", fee: "Custom Quote", val: "TRN_NIS" }
         };
 
         let activeService = null;
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileDropdown');
-            const icon = document.getElementById('menuIcon');
             menu.classList.toggle('hidden');
-            if(menu.classList.contains('hidden')) icon.setAttribute('data-lucide', 'menu');
-            else icon.setAttribute('data-lucide', 'x');
-            lucide.createIcons();
+        }
+
+        function killSwitch(el, badValue) {
+            if(el.value === badValue) {
+                alert("⚠️ Based on your selection, we cannot process this application online. Please visit the government office directly.");
+                el.value = ""; 
+            }
         }
 
         function openForm(key) {
             activeService = DATA[key];
             document.getElementById('modalTitle').innerText = activeService.title;
             document.getElementById('displayFee').innerText = activeService.fee;
-            document.getElementById('displayGovt').innerText = activeService.govt;
+            const select = document.getElementById('serviceType');
+            select.value = activeService.val;
+
+            // Hide all logic boxes first
+            document.querySelectorAll('[id^="logic-"]').forEach(el => el.classList.add('hidden'));
+
+            // Show specific logic box based on selection
+            if (key === 'traffic') document.getElementById('logic-traffic').classList.remove('hidden');
+            if (key === 'mv_renewal') document.getElementById('logic-mv').classList.remove('hidden');
+            if (key === 'license') document.getElementById('logic-license').classList.remove('hidden');
+            if (key === 'passport') document.getElementById('logic-passport').classList.remove('hidden');
+            if (key === 'rgd') document.getElementById('logic-rgd').classList.remove('hidden');
+            if (key === 'trn_nis') document.getElementById('logic-trn').classList.remove('hidden');
+
             document.getElementById('appModal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
@@ -468,93 +454,80 @@
             document.body.style.overflow = 'auto';
         }
 
-        function openAboutModal() {
-            document.getElementById('aboutModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
+        function openAboutModal() { document.getElementById('aboutModal').classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+        function closeAboutModal() { document.getElementById('aboutModal').classList.add('hidden'); document.body.style.overflow = 'auto'; }
 
-        function closeAboutModal() {
-            document.getElementById('aboutModal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
+        async function submitData() {
+            const fname = document.getElementById('fname').value.trim();
+            const lname = document.getElementById('lname').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const serviceVal = document.getElementById('serviceType').value; 
+            const honeypot = document.getElementById('honey_trap').value; 
 
-     async function submitData() {
-            const fname = document.getElementById('fname').value;
-            const lname = document.getElementById('lname').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
+            // 1. Security Checks
+            if (honeypot !== "") { console.log("Bot blocked."); return; }
+            
+            if (!fname || !lname || !phone || !email) { alert("Please fill in all required fields."); return; }
+            
+            const nameRegex = /^[a-zA-Z\s'-]+$/;
+            const phoneRegex = /^[0-9\s-]+$/;
+            if (!nameRegex.test(fname) || !nameRegex.test(lname)) { alert("Please enter a valid name (Letters only)."); return; }
+            if (!phoneRegex.test(phone) || phone.length < 7) { alert("Please enter a valid phone number."); return; }
 
-            // 1. Basic Validation
-            if (!fname || !lname || !phone || !email) {
-                alert("Please fill in all required fields.");
-                return;
+            // 2. Vetting Gates (Eligibility Logic)
+            if (serviceVal === "Jamaican Passport Renewal") {
+                if (document.getElementById('passport-check').value !== "Yes") { alert("⚠️ Eligibility Check: You must confirm you have your old passport."); return; }
+            }
+            if (serviceVal === "Traffic Ticket Payment") {
+                if (document.getElementById('traffic-check').value !== "No") { alert("⚠️ Eligibility Check: Please confirm you do NOT have a court summons."); return; }
+            }
+            if (serviceVal === "Motor Vehicle Renewal") {
+                if (document.getElementById('mv-check').value !== "Yes") { alert("⚠️ Documents Check: You must have a valid Fitness & Insurance."); return; }
+            }
+            if (serviceVal === "Driver's License Renewal") {
+                if (document.getElementById('license-check').value !== "Yes") { alert("⚠️ Eligibility Check: We only process Private Licenses for drivers under 70."); return; }
+            }
+            if (serviceVal === "Birth Certificate") {
+                if (document.getElementById('rgd-check').value !== "Yes") { alert("⚠️ Registration Check: We only process already registered certificates."); return; }
+            }
+            if (serviceVal === "TRN_NIS") {
+                if (document.getElementById('trn-check').value !== "Yes") { alert("⚠️ Location Check: Please confirm you are in the Linstead service area."); return; }
             }
 
+            // 3. Submit Data
             const btn = document.getElementById('submitBtn');
             const originalText = btn.innerHTML;
             btn.innerHTML = "Processing...";
             btn.disabled = true;
 
-           // 2. Build the Payload
-            const serviceName = (activeService && activeService.title) ? activeService.title : "General Inquiry";
-            
-            // "Super Payload": sends BOTH the new keys (for v9.15 backend) AND old keys (fallback)
             const payload = {
                 firstName: fname,
                 lastName: lname,
                 email: email,
                 phone: phone,
-                trn: "N/A", 
-                
-                // New Keys (v9.15)
-                service: serviceName, 
-                notes: "Web Intake - " + serviceName, 
-                source: "Website",
-
-                // Old Keys (Fallback if backend wasn't redeployed)
-                serviceType: serviceName,
-                fileData: "Web Intake"
+                service: serviceVal,        
+                serviceType: serviceVal,    
+                source: "Website Intake"
             };
 
-
             try {
-                // 3. The "CORS-Safe" Request
-                // We use 'no-cors' mode as a backup or 'text/plain' to prevent pre-flight checks
-                const response = await fetch(SCRIPT_URL, { 
+                await fetch(SCRIPT_URL, { 
                     method: 'POST',
-                    // IMPORTANT: Google Apps Script prefers this content type to avoid blocking
+                    mode: 'no-cors',
                     headers: { "Content-Type": "text/plain;charset=utf-8" },
                     body: JSON.stringify(payload)
                 });
-
-                // 4. Handle Response
-                const textResponse = await response.text();
-                
-                // If we got here, the signal went through!
-                // Even if the JSON parse fails (common with Google), we assume success
                 document.getElementById('appModal').classList.add('hidden');
-                
-                // Populate the Receipt Modal
-                document.getElementById('recRef').innerText = "WEB-SENT"; 
-                document.getElementById('recService').innerText = serviceName;
-                document.getElementById('recName').innerText = fname;
-                
-                // Reset the form for next time
+                document.getElementById('recRef').innerText = "WEB-" + Math.floor(Math.random() * 10000); 
+                document.getElementById('recService').innerText = serviceVal;
+                document.getElementById('recName').innerText = fname + " " + lname;
                 document.getElementById('submissionForm').reset();
-                
-                // Show Success
                 document.getElementById('receiptModal').classList.remove('hidden');
-
             } catch (error) {
-                console.error("Submission Warning:", error);
-                
-                // 5. Fail-Safe Success
-                // If the fetch worked but the response was blocked by browser privacy (common), 
-                // we still assume it sent.
+                console.error("Error:", error);
+                alert("Request Sent! Check your email.");
                 document.getElementById('appModal').classList.add('hidden');
-                document.getElementById('recRef').innerText = "PENDING-CHECK"; 
-                document.getElementById('receiptModal').classList.remove('hidden');
-                alert("Request Sent! Please check your email for confirmation.");
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = originalText;
@@ -563,7 +536,3 @@
     </script>
 </body>
 </html>
-
-
-
-
