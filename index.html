@@ -2,6 +2,413 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Docu-Hub Operations Services | Premium Concierge</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- 1. VARIABLES & THEME --- */
+        :root {
+            --brand-red: #D32F2F;
+            --navy-deep: #021024;
+            --bg-body: #F8FAFC;
+            --bg-overlay: #E2E8F0;
+            --white: #FFFFFF;
+            --text-main: #1E293B;
+            --text-light: #64748B;
+            --container-width: 1150px; 
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { margin: 0; padding: 0; font-family: 'Roboto', sans-serif; background: var(--bg-body); color: var(--text-main); }
+        
+        /* --- 2. LAYOUT UTILITIES --- */
+        .container { max-width: var(--container-width); margin: 0 auto; padding: 0 20px; width: 100%; }
+        
+        /* --- 3. HEADER --- */
+        .app-header { position: sticky; top: 0; z-index: 1000; background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .header-inner { height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+        .header-logo { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--navy-deep); white-space: nowrap; cursor: pointer; }
+        .header-logo span { color: var(--brand-red); }
+        
+        .search-container { flex: 1; position: relative; max-width: 400px; }
+        .search-input { width: 100%; padding: 10px 15px 10px 40px; border-radius: 50px; border: 1px solid #E2E8F0; background: #F8FAFC; outline: none; transition: 0.3s; }
+        .search-input:focus { background: white; border-color: var(--navy-deep); }
+        .search-icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94A3B8; }
+
+        /* --- 4. HERO SECTION --- */
+        .hero-section {
+            position: relative;
+            background: linear-gradient(to right, var(--navy-deep) 40%, rgba(2, 16, 36, 0.6)), url('asset/hero.png');
+            background-size: cover; background-position: center; color: white;
+            min-height: 400px; display: flex; align-items: center; margin-bottom: 40px;
+        }
+        .hero-content { max-width: 600px; padding: 40px 0; }
+        .hero-title { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; font-weight: 800; margin: 0 0 15px 0; line-height: 1.1; }
+        .hero-sub { font-size: 1.1rem; opacity: 0.9; margin-bottom: 30px; line-height: 1.6; }
+        .hero-cta { display: inline-block; background: var(--brand-red); color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.2s; }
+        .hero-cta:hover { transform: translateY(-2px); }
+
+        /* --- 5. NAVIGATION --- */
+        .tabs-wrapper { margin-bottom: 20px; }
+        .tabs-container { overflow-x: auto; white-space: nowrap; -ms-overflow-style: none; scrollbar-width: none; padding-bottom: 5px; }
+        .tabs-container::-webkit-scrollbar { display: none; }
+        .tab-pill { display: inline-block; padding: 10px 25px; margin-right: 10px; background: white; color: var(--text-light); border-radius: 50px; font-size: 0.9rem; font-weight: 600; border: 1px solid #E2E8F0; transition: 0.2s; cursor: pointer; }
+        .tab-pill.active { background: var(--navy-deep); color: white; border-color: var(--navy-deep); box-shadow: 0 4px 10px rgba(2, 16, 36, 0.2); }
+
+        /* --- 6. CARD GRID --- */
+        .card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-bottom: 60px; }
+        @media (max-width: 1024px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 768px) { .card-grid { grid-template-columns: 1fr 1fr; gap: 15px; } }
+        
+        .service-card { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border: 1px solid #E2E8F0; display: flex; flex-direction: column; transition: all 0.3s ease; cursor: pointer; height: 100%; }
+        .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-color: transparent; }
+        .card-visual { height: 120px; background: #F1F5F9; display: flex; align-items: center; justify-content: center; color: var(--navy-deep); font-size: 2.5rem; }
+        .card-body { padding: 20px; text-align: center; display: flex; flex-direction: column; flex: 1; }
+        .card-title { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--navy-deep); line-height: 1.4; }
+        .card-link { margin-top: auto; font-size: 0.8rem; font-weight: 700; color: var(--brand-red); text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* --- 7. PROCESS STRIP --- */
+        .process-section { background: white; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0; padding: 60px 0; margin-bottom: 60px; }
+        .process-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; text-align: center; }
+        .p-icon-circle { width: 70px; height: 70px; background: #F1F5F9; color: var(--navy-deep); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 15px; }
+        .p-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 5px; color: var(--navy-deep); }
+        .p-desc { font-size: 0.9rem; color: var(--text-light); }
+
+        /* --- 8. FOOTER --- */
+        .main-footer { background: var(--navy-deep); color: #94A3B8; padding: 60px 0 40px; font-size: 0.9rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .footer-col h4 { color: white; margin-bottom: 20px; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+        .footer-link { display: block; color: #94A3B8; text-decoration: none; margin-bottom: 12px; transition: 0.2s; }
+        .footer-link:hover { color: var(--brand-red); padding-left: 5px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 50px; padding-top: 25px; text-align: center; font-size: 0.8rem; }
+
+        /* --- 9. DETAIL PAGE (Double Column Blog Layout) --- */
+        .page-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-overlay); z-index: 2000; transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); overflow-y: auto; }
+        .page-overlay.open { transform: translateX(0); }
+        .page-nav { background: var(--white); border-bottom: 1px solid #E2E8F0; position: sticky; top: 0; z-index: 10; }
+        .page-nav-inner { height: 60px; display: flex; align-items: center; gap: 15px; }
+        .back-btn { font-size: 1.1rem; color: var(--text-main); cursor: pointer; display: flex; align-items: center; gap: 8px; font-weight: 600; }
+
+        .blog-grid { display: grid; grid-template-columns: 1fr 350px; gap: 30px; padding: 40px 0 100px; }
+        @media (max-width: 900px) { .blog-grid { grid-template-columns: 1fr; } }
+
+        .blog-card { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); margin-bottom: 25px; }
+        .bc-title { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 800; color: var(--navy-deep); margin: 0 0 15px 0; line-height: 1.2; }
+        .bc-intro { font-size: 1.1rem; line-height: 1.7; color: var(--text-light); margin-bottom: 30px; }
+        .checklist-item { display: flex; gap: 15px; margin-bottom: 18px; align-items: flex-start; font-size: 1rem; color: var(--text-main); }
+        .checklist-item i { color: #16A34A; font-size: 1.2rem; margin-top: 3px; }
+
+        .sticky-sidebar { position: sticky; top: 90px; }
+        .summary-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 6px solid var(--brand-red); }
+        .sum-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px dashed #E2E8F0; font-size: 0.95rem; }
+        .sum-val { font-weight: 700; color: var(--navy-deep); text-align: right; }
+        .action-btn { background: var(--brand-red); color: white; width: 100%; padding: 18px; border: none; border-radius: 8px; margin-top: 20px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: 0.2s; box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3); }
+        .action-btn:hover { transform: translateY(-2px); }
+
+        .mobile-bar { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 15px 20px; border-top: 1px solid #E2E8F0; box-shadow: 0 -5px 20px rgba(0,0,0,0.05); z-index: 2050; justify-content: space-between; align-items: center; }
+        @media (max-width: 900px) { .mobile-bar { display: flex; } .sticky-sidebar { display: none; } }
+
+        /* --- 10. WIZARD (With Honey Pot) --- */
+        .wizard-overlay { background: white; }
+        .wiz-layout { max-width: 600px; margin: 40px auto; padding: 0 20px; }
+        .wiz-input { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #E2E8F0; border-radius: 8px; background: #F8FAFC; font-size: 1rem; }
+        .hp-field { display: none !important; visibility: hidden; } /* The Trap */
+
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="container header-inner">
+            <div class="header-logo" onclick="location.reload()">Docu-Hub<span> Operations Services</span></div>
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" class="search-input" placeholder="Search services..." onkeyup="searchService(this)">
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Skip the Line.</h1>
+                <p class="hero-sub">Premium concierge for Passport, Traffic & Civil matters. We handle the bureaucracy so you don't have to.</p>
+                <a href="about.html" class="hero-cta">Read Our Story</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="tabs-wrapper">
+            <div class="tabs-container">
+                <div class="tab-pill active" onclick="filterCategory('featured', this)">Featured</div>
+                <div class="tab-pill" onclick="filterCategory('jm-passports', this)">Passports</div>
+                <div class="tab-pill" onclick="filterCategory('foreign-passports', this)">Foreign</div>
+                <div class="tab-pill" onclick="filterCategory('license', this)">Traffic</div>
+                <div class="tab-pill" onclick="filterCategory('rgd', this)">RGD/Civil</div>
+            </div>
+        </div>
+        <div id="service-grid" class="card-grid"></div>
+    </div>
+
+    <div class="process-section">
+        <div class="container">
+            <div class="process-grid">
+                <div><div class="p-icon-circle"><i class="fa-solid fa-file-circle-check"></i></div><div class="p-title">1. We Audit</div><div class="p-desc">Zero-Rejection pre-vetting of all your documents.</div></div>
+                <div><div class="p-icon-circle"><i class="fa-solid fa-building-columns"></i></div><div class="p-title">2. We Process</div><div class="p-desc">We stand in the government lines for you.</div></div>
+                <div><div class="p-icon-circle"><i class="fa-solid fa-truck-fast"></i></div><div class="p-title">3. We Deliver</div><div class="p-desc">Secure delivery to your home or office.</div></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><h4>Concierge</h4><a href="#" class="footer-link">Track Application</a><a href="contact.html" class="footer-link">Support Center</a><a href="about.html" class="footer-link">About Us</a></div>
+                <div class="footer-col"><h4>Compliance</h4><a href="terms.html" class="footer-link">Terms of Service</a><a href="privacy.html" class="footer-link">Privacy Policy</a></div>
+                <div class="footer-col"><h4>Contact</h4><a href="#" class="footer-link"><i class="fa-brands fa-whatsapp"></i> 876-561-2614</a><a href="#" class="footer-link"><i class="fa-regular fa-envelope"></i> admin@docuhub.com</a></div>
+            </div>
+            <div class="footer-bottom">&copy; 2026 Docu-Hub Operations Services. Linstead, St. Catherine. All Rights Reserved.<br><br><a href="#" style="color:#fff; text-decoration:none; font-weight:700;">Back to Top <i class="fa-solid fa-arrow-up"></i></a></div>
+        </div>
+    </footer>
+
+    <div class="page-overlay" id="detail-page">
+        <div class="page-nav">
+            <div class="container page-nav-inner">
+                <div class="back-btn" onclick="closePage()"><i class="fa-solid fa-arrow-left"></i> Back to Services</div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="blog-grid">
+                <div id="detail-content"></div>
+                <div class="sticky-sidebar" id="detail-sidebar"></div>
+            </div>
+        </div>
+        <div class="mobile-bar" id="mobile-bar"></div>
+    </div>
+
+    <div class="page-overlay wizard-overlay" id="wizard-page">
+        <div class="page-nav">
+            <div class="container page-nav-inner">
+                <div class="back-btn" onclick="closeWizard()"><i class="fa-solid fa-xmark"></i> Cancel</div>
+            </div>
+        </div>
+        <div class="wiz-layout">
+            <div class="blog-card">
+                <h2 style="color:var(--navy-deep); margin-top:0;">Your Details</h2>
+                <p style="color:var(--text-light); margin-bottom:25px;">We will contact you to arrange document collection.</p>
+                
+                <form id="intake-form" onsubmit="submitForm(event)">
+                    <div class="hp-field">
+                        <label>Ignore this field</label>
+                        <input type="text" name="_website_verify_" value="">
+                    </div>
+                    
+                    <input type="text" name="first_name" class="wiz-input" placeholder="First Name" required>
+                    <input type="text" name="last_name" class="wiz-input" placeholder="Last Name" required>
+                    <input type="email" name="email" class="wiz-input" placeholder="Email Address" required>
+                    <input type="tel" name="phone" class="wiz-input" placeholder="Phone (876)..." required>
+                    <button type="submit" class="action-btn" id="submit-btn">Send Request</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const serviceData = {
+            'jm-passports': [
+                { 
+                    title: "Adult Renewal", 
+                    desc: "Simplified renewal for expired machine-readable passports.", 
+                    fees: "$10,000", govt_fee: "Inclusive", icon: "fa-passport", time: "7-14 Days", 
+                    intro: "We handle the full digital processing, photo vetting, and tracking so you avoid the 'bounce back' from PICA.",
+                    reqs: ["Old Passport Bio-Page (No glare)", "Digital Studio Photo (Soft Copy)", "2 Emergency Contacts"],
+                    tips: "Do not scan a printed photo. You must ask your photographer for the digital file. If your passport has water damage, select the 'Damaged Passport' service.",
+                    process: ["Intake Audit", "PICA Submission", "Tracking & Updates"]
+                },
+                { title: "New Adult / Name", desc: "First time or marriage change.", fees: "$3,500", govt_fee: "$6,500", icon: "fa-user-pen", time: "6-8 Weeks", intro: "First-time applications require an interview. We prepare your entire legal packet so you walk in ready.", reqs: ["Birth Cert", "Valid ID", "Marriage Cert", "2 Photos"], process: ["Packet Prep", "Interview Booking", "JP Guidance"] },
+                { title: "Child Application", desc: "Minors under 18.", fees: "$3,000", govt_fee: "$4,000", icon: "fa-child", time: "6-8 Weeks", intro: "We navigate the complex parent consent forms for you.", reqs: ["Birth Cert", "Parent ID", "Section C Form"] },
+                { title: "Lost Passport", desc: "Affidavit & Replacement.", fees: "$7,500", govt_fee: "$11,500", icon: "fa-shield-halved", time: "Variable", intro: "Lost your passport? We draft the legal affidavit and manage the police report process.", reqs: ["Police Report", "Birth Cert"] }
+            ],
+            'foreign-passports': [
+                { 
+                    title: "US Passport Renewal", 
+                    desc: "Secure courier service (DS-82).", 
+                    fees: "$6,500", govt_fee: "$130 USD", icon: "fa-flag-usa", time: "3-4 Weeks", 
+                    intro: "Mandatory mail-in program for US citizens in Jamaica. We handle the Pay.gov fees and the two-way DHL courier to the Embassy.",
+                    reqs: ["Physical US Passport (Undamaged)", "2x2 Photo (White BG, No Glasses)", "Social Security Number"],
+                    tips: "CRITICAL: No glasses allowed. If you don't have your SSN, a specific declaration is required.",
+                    process: ["Pay.gov Fee Payment", "DS-82 Form Completion", "Round-Trip Courier Logistics"]
+                },
+                { title: "UK Renewal", desc: "HMPO Digital filing.", fees: "$7,000", govt_fee: "£140 + Courier", icon: "fa-crown", time: "6-10 Weeks", intro: "We handle the digital HMPO filing and international courier.", reqs: ["Old UK Passport", "Digital Photo (Cream/Grey)"], tips: "UK Photos must be Cream/Grey background, NOT White. Also, dual citizens must submit JA Passport details." }
+            ],
+            'license': [
+                { 
+                    title: "Licence Renewal (Local)", desc: "Queue Jumper Service.", fees: "$3,500", govt_fee: "~$7,200", icon: "fa-id-card", time: "Same Day", 
+                    intro: "We act as your proxy at the Tax Office. We vet your file against the Traffic Ticket database first to ensure no 'bounce back' at the cashier.",
+                    reqs: ["Expired Driver's Licence", "2x Photos (1 JP Certified)", "Completed F7 Form"],
+                    tips: "CRITICAL: We run a mandatory check on trafficticketlookup.gov.jm. If a Warrant is found, we cannot proceed—you must visit the Court.",
+                    process: ["Ticket & Warrant Vetting", "Tax Office Queue Proxy", "Payment & Collection"]
+                },
+                { title: "Overseas Renewal", desc: "For clients abroad.", fees: "$8,500", govt_fee: "~$7,200", icon: "fa-plane", time: "5-7 Days", intro: "Living abroad? We process the renewal via proxy and handle the complex authorization.", reqs: ["Notarized F7 Form", "Stamp Duty on Auth Letter", "2x Notarized Photos"], tips: "The Authorization Letter must be stamped by the Stamp Duty Office, not just a JP." },
+                { title: "Traffic Ticket Check", desc: "Clear fines & Find details.", fees: "$1,500", govt_fee: "N/A", icon: "fa-receipt", time: "Instant", intro: "We locate lost ticket numbers and settle fines online to clear warrants.", reqs: ["TRN Number"], tips: "If a Warrant is found, we cannot process payment. We can only advise you to seek legal counsel." },
+                { title: "MV Renewal", desc: "Reg & Fitness sync.", fees: "$3,500", govt_fee: "Variable", icon: "fa-car", time: "Same Day", intro: "We ensure your 'Holy Trinity' (Fitness, Insurance, Reg) matches perfectly on the TAJ Portal.", reqs: ["Fitness Cert", "Insurance Note", "Registration Cert"], tips: "Rule: Insurance must not expire within 30 days of the transaction. If you have Red Plates (PPV), your Road Licence must also be valid." }
+            ],
+            'rgd': [
+                { 
+                    title: "Birth Certificate", 
+                    desc: "Express retrieval for Visa or ID.", 
+                    fees: "$3,000 (Express)", 
+                    govt_fee: "~$2,500", 
+                    icon: "fa-baby", 
+                    time: "7-10 Days", 
+                    intro: "We handle the line at RGD. Whether you have the old 'Pink Slip' or nothing at all, we can retrieve the certified copy.", 
+                    reqs: ["Valid ID", "Mother's Maiden Name", "Signed Auth Letter"],
+                    tips: "If you don't have the Entry Number, a $1,000 Search Fee applies to find the record first."
+                },
+                { 
+                    title: "Marriage Certificate", 
+                    desc: "Official legal copy.", 
+                    fees: "$3,000 (Express)", 
+                    govt_fee: "~$2,500", 
+                    icon: "fa-ring", 
+                    time: "7-10 Days", 
+                    intro: "Need a marriage certificate for a visa application? We ensure the details match the registry perfectly.", 
+                    reqs: ["Valid ID", "Date of Marriage", "Place of Marriage", "Signed Auth Letter"],
+                    tips: "If you don't have the Entry Number, a Search Fee applies."
+                },
+                { 
+                    title: "Death Certificate", 
+                    desc: "For probate & insurance.", 
+                    fees: "$3,000 (Express)", 
+                    govt_fee: "~$2,500", 
+                    icon: "fa-book-open", 
+                    time: "7-10 Days", 
+                    intro: "We handle this sensitive process with speed to help you settle estate or insurance matters.", 
+                    reqs: ["Applicant ID", "Date of Death", "Place of Death", "Burial Order"],
+                    tips: "Accuracy is key. Ensure the Date of Death is exact."
+                }
+            ]
+        };
+
+        let activeService = null;
+
+        function filterCategory(cat, el) {
+            document.querySelectorAll('.tab-pill').forEach(t => t.classList.remove('active'));
+            if(el) el.classList.add('active');
+            const container = document.getElementById('service-grid');
+            container.innerHTML = '';
+            
+            let items = [];
+            if (cat === 'featured') {
+                items.push(serviceData['jm-passports'][0]);
+                items.push(serviceData['foreign-passports'][0]);
+                items.push(serviceData['license'][0]);
+                items.push(serviceData['rgd'][0]);
+            } else { items = serviceData[cat]; }
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'service-card';
+                card.onclick = () => openPage(item);
+                card.innerHTML = `<div class="card-visual"><i class="fa-solid ${item.icon}"></i></div><div class="card-body"><div class="card-title">${item.title}</div><div class="card-link">View Requirements</div></div>`;
+                container.appendChild(card);
+            });
+        }
+
+        function openPage(item) {
+            activeService = item;
+            document.getElementById('detail-page').classList.add('open');
+            document.body.style.overflow = 'hidden';
+
+            document.getElementById('detail-content').innerHTML = `
+                <div class="blog-card">
+                    <h1 class="bc-title">${item.title}</h1>
+                    <div class="bc-intro">${item.intro}</div>
+                    <h3 style="color:var(--navy-deep);">Required Documents</h3>
+                    ${(item.reqs || []).map(r => `<div class="checklist-item"><i class="fa-solid fa-circle-check"></i> <span>${r}</span></div>`).join('')}
+                    ${item.tips ? `<div style="background:#FFF3E0; padding:20px; border-left:4px solid #ED6C02; margin-top:20px; border-radius:4px; font-size:0.95rem;"><strong><i class="fa-solid fa-triangle-exclamation"></i> Important:</strong> ${item.tips}</div>` : ''}
+                </div>
+                <div class="blog-card"><h3 style="color:var(--navy-deep); margin-top:0;">Our Process</h3>
+                    ${(item.process || ["Audit", "Process", "Deliver"]).map((p, i) => `<div class="checklist-item"><span style="font-weight:700; color:#ccc;">0${i+1}</span> <span>${p}</span></div>`).join('')}
+                </div>`;
+
+            const summaryHTML = `
+                <div class="summary-card">
+                    <h3 style="margin-top:0; color:var(--navy-deep);">Summary</h3>
+                    <div class="sum-row"><span style="color:#666;">Concierge Fee</span> <span class="sum-val">${item.fees}</span></div>
+                    <div class="sum-row"><span style="color:#666;">Govt Fee</span> <span class="sum-val">${item.govt_fee}</span></div>
+                    <div class="sum-row"><span style="color:#666;">Timeline</span> <span class="sum-val">${item.time}</span></div>
+                    <button class="action-btn" onclick="openWizard()">Start Application</button>
+                </div>`;
+            document.getElementById('detail-sidebar').innerHTML = summaryHTML;
+
+            document.getElementById('mobile-bar').innerHTML = `
+                <div><span style="font-size:0.8rem; color:#666;">Concierge Fee</span><div style="font-weight:800; color:var(--navy-deep); font-size:1.2rem;">${item.fees}</div></div>
+                <button style="background:var(--brand-red); color:white; padding:12px 25px; border-radius:50px; border:none; font-weight:700;" onclick="openWizard()">Start</button>`;
+        }
+
+        function closePage() { document.getElementById('detail-page').classList.remove('open'); document.body.style.overflow = 'auto'; }
+        function openWizard() { document.getElementById('wizard-page').classList.add('open'); }
+        function closeWizard() { document.getElementById('wizard-page').classList.remove('open'); }
+
+        async function submitForm(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            const formData = new FormData(e.target);
+            
+            // HONEY POT CHECK
+            if(formData.get('_website_verify_') !== "") { return; } 
+
+            btn.innerText = "Processing..."; btn.disabled = true;
+            const data = {
+                firstName: formData.get('first_name'),
+                lastName: formData.get('last_name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                service: activeService.title
+            };
+
+            const GAS_URL = "https://script.google.com/macros/s/AKfycbxnolakc2CtzL7j9OQx4kPy_NN_tZ1ZifugNCIq2kIF2NXI8Tvb_fcmpc_i39HvOX6x/exec"; 
+
+            try {
+                await fetch(GAS_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) });
+                alert("Success! Check your email for the next steps.");
+                location.reload();
+            } catch (err) {
+                alert("Connection Error.");
+                btn.disabled = false;
+            }
+        }
+
+        function searchService(input) {
+            const term = input.value.toLowerCase();
+            const container = document.getElementById('service-grid');
+            container.innerHTML = '';
+            Object.keys(serviceData).forEach(key => {
+                serviceData[key].forEach(item => {
+                    if (item.title.toLowerCase().includes(term)) {
+                        const card = document.createElement('div');
+                        card.className = 'service-card';
+                        card.onclick = () => openPage(item);
+                        card.innerHTML = `<div class="card-visual"><i class="fa-solid ${item.icon}"></i></div><div class="card-body"><div class="card-title">${item.title}</div><div class="card-link">View Requirements</div></div>`;
+                        container.appendChild(card);
+                    }
+                });
+            });
+        }
+
+        window.onload = () => filterCategory('featured', document.querySelector('.tab-pill'));
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Docu-Hub | Premium Concierge</title>
     
@@ -680,6 +1087,7 @@
 </script>
 </body>
 </html>
+
 
 
 
