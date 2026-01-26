@@ -1,540 +1,676 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docu-Hub | Operations Services</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: { navy: '#003366', gold: '#D4AF37', 'gold-light': '#FDF8E8' },
-                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'], poppins: ['Poppins', 'sans-serif'] },
-                    fontSize: { 'xxs': '0.65rem' }
-                }
-            }
-        }
-    </script>
+    <title>Docu-Hub | Premium Concierge</title>
+    
+    <link rel="icon" type="image/png" href="asset/logo.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        .no-print { @media print { display: none; } }
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        /* --- CORE THEME --- */
+        :root {
+            --navy-dark: #021024; --navy-light: #0f233a; --accent-blue: #4a6da7; 
+            --gold-main: #D4AF37; --gold-hover: #b5952f; --bg-off-white: #F8FAFC; 
+            --text-main: #1e293b; --success-green: #10B981;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Lato', sans-serif; background-color: var(--bg-off-white); color: var(--text-main); line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; color: var(--navy-dark); }
+        .hidden { display: none !important; }
+        .fade-in { animation: fadeIn 0.5s; }
+
+        /* --- HEADER & NAV --- */
+        .top-header { background: white; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
+        .logo { font-size: 1.4rem; font-weight: 800; color: var(--navy-dark); text-transform: uppercase; cursor: pointer; }
+        .logo span { color: var(--accent-blue); }
+        
+        .category-nav { background: var(--navy-dark); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .cat-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; flex-wrap: wrap; }
+        .cat-item { padding: 18px 25px; color: white; text-transform: uppercase; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: 0.3s; border-bottom: 4px solid transparent; }
+        .cat-item:hover, .cat-item.active { background: var(--navy-light); border-bottom-color: var(--gold-main); }
+        .cat-item i { margin-right: 8px; color: var(--gold-main); }
+
+        /* --- HERO SECTION --- */
+        .hero-wrapper {
+            background: linear-gradient(to right, rgba(2, 16, 36, 0.95) 20%, rgba(2, 16, 36, 0.6) 100%), url('asset/hero.png');
+            background-size: cover; background-position: center; color: white; padding: 80px 40px 100px; text-align: left; border-radius: 0 0 50% 50% / 30px; margin-bottom: 40px;
+        }
+        .hero-content { max-width: 600px; }
+        .hero-content h1 { color: white; font-size: 1.8rem; margin-bottom: 15px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .hero-content p { font-size: 1rem; color: #e2e8f0; margin-bottom: 25px; max-width: 500px; }
+        .btn-gold { background: var(--gold-main); color: var(--navy-dark); padding: 12px 30px; font-weight: 800; border: none; border-radius: 4px; text-transform: uppercase; font-size: 0.85rem; transition: 0.3s; cursor: pointer; }
+        .btn-gold:hover { background: var(--gold-hover); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3); }
+
+        /* --- SERVICE CARDS (GENERAL) --- */
+        .content-area { max-width: 1200px; margin: 0 auto; padding: 20px; flex: 1; width: 100%; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .service-card { 
+            background: white; border-radius: 6px; border: 1px solid #e2e8f0; 
+            transition: 0.3s; cursor: pointer; display: flex; flex-direction: column; 
+            position: relative; overflow: hidden; height: 100%; /* Ensures equal height */
+        }
+        .service-card:hover { transform: translateY(-5px); border-color: var(--accent-blue); box-shadow: 0 15px 25px -5px rgba(0,0,0,0.1); }
+        
+        .card-tag { position: absolute; top: 12px; right: 12px; background: #f1f5f9; color: var(--navy-dark); font-size: 0.65rem; font-weight: 800; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; }
+        
+        .card-body { padding: 30px; text-align: center; flex: 1; }
+        .card-body i { font-size: 2.2rem; color: var(--accent-blue); margin-bottom: 20px; }
+        .card-body h3 { font-size: 1.1rem; margin-bottom: 10px; }
+        .card-body p { font-size: 0.9rem; color: #64748b; line-height: 1.5; }
+        
+        .card-footer { padding: 15px; background: #f8fafc; text-align: center; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; border-top: 1px solid #f1f5f9; color: var(--navy-dark); }
+
+        /* --- FEATURED GRID (FIXED BALANCING) --- */
+        #featured-grid {
+            display: grid;
+            gap: 30px;
+            grid-template-columns: 1fr; /* Mobile Default */
+        }
+        /* Tablet: Force 2x2 Grid (Symmetrical) */
+        @media (min-width: 600px) {
+            #featured-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        /* Desktop: Force 4x1 Grid (Symmetrical) */
+        @media (min-width: 1100px) {
+            #featured-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        /* --- DETAIL VIEW --- */
+        .detail-header { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; }
+        .pillar-card { background: white; padding: 25px; border-radius: 6px; border-top: 4px solid var(--accent-blue); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .pillar-card h4 { margin-bottom: 15px; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; }
+        .pillar-card ul { list-style: none; }
+        .pillar-card li { font-size: 0.9rem; margin-bottom: 8px; padding-left: 18px; position: relative; color: #475569; }
+        .pillar-card li::before { content: "•"; color: var(--gold-main); position: absolute; left: 0; font-weight: bold; }
+
+        /* --- MODAL --- */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 16, 36, 0.9); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(4px); }
+        .modal-box { background: white; width: 95%; max-width: 500px; border-radius: 8px; max-height: 90vh; overflow-y: auto; position: relative; }
+        .modal-header { padding: 20px 25px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
+        .modal-body { padding: 30px; }
+        
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 0.75rem; font-weight: 700; margin-bottom: 5px; color: var(--navy-dark); }
+        .form-control { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 1rem; }
+        .hp-field { display: none !important; visibility: hidden !important; }
+
+        /* --- FOOTER --- */
+        .main-footer { background: var(--navy-dark); color: white; padding: 60px 20px; margin-top: auto; }
+        .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-col h4 { color: var(--gold-main); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1px; }
+        .footer-link { display: block; color: #94a3b8; font-size: 0.9rem; margin-bottom: 10px; text-decoration: none; transition: 0.2s; }
+        .footer-link:hover { color: var(--gold-main); padding-left: 5px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px; margin-top: 40px; text-align: center; font-size: 0.8rem; color: #64748b; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @media (max-width: 768px) { .cat-container { flex-direction: column; text-align: center; } .hero-content { text-align: center; margin: 0 auto; } .hero-wrapper { text-align: center; } }
+
+        /* --- HEADER CONTACT BUTTON --- */
+        .nav-btn-contact {
+            background-color: var(--navy-dark);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid var(--navy-dark);
+        }
+
+        .nav-btn-contact:hover {
+            background-color: white;
+            color: var(--navy-dark);
+            border-color: var(--navy-dark);
+            box-shadow: 0 5px 15px rgba(2, 16, 36, 0.1);
+        }
+
+        /* --- ABOUT US SECTION --- */
+        .about-wrapper {
+            background: white;
+            padding: 60px 40px;
+            margin-top: 60px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .about-split { display: flex; gap: 50px; align-items: flex-start; }
+        .about-text { flex: 1; }
+        .about-image { flex: 0 0 350px; position: relative; }
+
+        /* Headshot Frame */
+        .headshot-frame {
+            width: 100%; height: 400px;
+            background-image: url('asset/headshot.png'); /* REPLACE WITH YOUR PHOTO */
+            background-size: cover; background-position: center;
+            border-radius: 8px; border: 5px solid white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .headshot-placeholder {
+            width: 100%; height: 100%; background: #e2e8f0; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-weight: bold; border-radius: 8px;
+        }
+
+        .about-subtitle {
+            color: var(--accent-blue); font-weight: 700; font-size: 1.1rem;
+            margin-bottom: 10px; display: block; text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        .trust-badge {
+            margin-top: 30px; padding: 15px; background: #f8fafc;
+            border-left: 4px solid var(--gold-main); color: var(--navy-dark);
+            font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 850px) {
+            .about-split { flex-direction: column-reverse; }
+            .about-image { width: 100%; flex: auto; margin-bottom: 30px; }
+            .headshot-frame { height: 300px; }
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans pb-24 md:pb-0">
+<body>
 
-    <div id="statusOverlay" class="fixed inset-0 bg-navy/95 z-[300] hidden flex items-center justify-center p-6 text-center no-print">
-        <div class="space-y-4">
-            <div class="w-12 h-12 border-4 border-gold border-t-transparent rounded-full animate-spin mx-auto"></div>
-            <h3 class="text-white text-lg font-bold">Securing Transmission...</h3>
+    <header class="top-header">
+        <div class="logo" onclick="renderHome()">Docu-Hub<span>Operations</span></div>
+        <a href="contact.html" target="_blank" class="nav-btn-contact">
+            <i class="fa-regular fa-envelope"></i> Contact Us
+        </a>
+    </header>
+
+    <nav class="category-nav">
+        <div class="cat-container">
+            <div class="cat-item" onclick="renderCategory('jm-passports', this)"><i class="fa-solid fa-passport"></i> JM Passports</div>
+            <div class="cat-item" onclick="renderCategory('foreign-passports', this)"><i class="fa-solid fa-earth-americas"></i> Foreign Passports</div>
+            <div class="cat-item" onclick="renderCategory('license', this)"><i class="fa-solid fa-car"></i> License & Traffic</div>
+            <div class="cat-item" onclick="renderCategory('rgd', this)"><i class="fa-solid fa-scroll"></i> RGD Certificates</div>
+        </div>
+    </nav>
+
+    <main class="content-area">
+
+        <div id="landing-view" class="fade-in">
+            
+            <div class="hero-wrapper">
+                <div class="hero-content">
+                    <h1>PREMIUM DOCUMENT CONCIERGE</h1>
+                    <p>Professional processing for Passports, Visas, and Civil Documents. We handle the bureaucracy so you don't have to.</p>
+                    <button class="btn-gold" onclick="renderCategory('jm-passports', document.querySelector('.cat-item'))">Start Application</button>
+                </div>
+            </div>
+            
+            <div style="border-left: 4px solid var(--gold-main); padding-left: 15px; margin-bottom: 30px;">
+                <h2 style="margin: 0; font-size: 1.5rem;">Featured Services</h2>
+                <p style="margin:0; color: #64748b; font-size: 0.9rem;">Most requested by our clients</p>
+            </div>
+            
+            <div id="featured-grid"></div>
+
+            <div class="about-wrapper">
+                <div class="about-split">
+                    <div class="about-text">
+                        <span class="about-subtitle">We Stand in Line So You Don’t Have To</span>
+                        <h2 style="margin-bottom: 20px; font-size: 2rem;">About Docu-Hub Operations</h2>
+                        
+                        <p style="color: #475569; margin-bottom: 15px;">
+                            Welcome to Docu-Hub Operations. We are St. Catherine’s premier Document Concierge Service, dedicated to one simple mission: <strong>Taking the stress out of your government paperwork.</strong>
+                        </p>
+                        <p style="color: #475569; margin-bottom: 25px;">
+                            We utilize a "Zero-Rejection" pre-vetting process to ensure your documents are perfect before they ever reach the counter.
+                        </p>
+
+                        <a href="about.html" class="btn-gold" style="text-decoration: none; display: inline-block;">
+                            Read Our Story
+                        </a>
+
+                        <div class="trust-badge">
+                            <i class="fa-solid fa-certificate" style="color: var(--gold-main); margin-right: 10px;"></i>
+                            Proudly serving St. Catherine & The Diaspora since 2026.
+                        </div>
+                    </div>
+
+                    <div class="about-image">
+                        <div class="headshot-frame">
+                            <div class="headshot-placeholder">Your Headshot</div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="grid-view" class="hidden">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2 id="cat-title" style="margin-bottom: 10px; font-size: 2rem;"></h2>
+                <p id="cat-desc" style="color: #64748b; max-width: 700px; margin: 0 auto;"></p>
+            </div>
+            <div class="services-grid" id="grid-container"></div>
+        </div>
+
+        <div id="detail-view" class="hidden">
+            <div style="cursor:pointer; color: #64748b; margin-bottom: 20px; display: inline-flex; align-items: center; gap: 8px; font-weight: 600;" onclick="goBackToGrid()">
+                <i class="fa-solid fa-arrow-left"></i> Back to Options
+            </div>
+            
+            <div class="detail-header">
+                <span id="detail-tag" style="background: var(--navy-dark); color: white; padding: 5px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase;">TAG</span>
+                <h2 id="detail-title" style="margin-top: 15px; font-size: 2rem;"></h2>
+                <p id="detail-desc" style="color: #64748b; margin-top: 10px; font-size: 1.1rem; max-width: 800px;"></p>
+            </div>
+
+            <div class="services-grid">
+                <div class="pillar-card">
+                    <h4><i class="fa-solid fa-file-circle-check" style="color:var(--accent-blue)"></i> Required Documents</h4>
+                    <ul id="list-docs"></ul>
+                </div>
+                <div class="pillar-card">
+                    <h4><i class="fa-solid fa-list-check" style="color:var(--accent-blue)"></i> Our Process</h4>
+                    <ul id="list-process"></ul>
+                </div>
+                <div class="pillar-card" style="border-top-color: var(--success-green);">
+                    <h4><i class="fa-solid fa-coins" style="color:var(--success-green)"></i> Investment</h4>
+                    <div id="list-fees" style="font-size: 0.9rem; color: #475569;"></div>
+                </div>
+                <div class="pillar-card">
+                    <h4><i class="fa-regular fa-clock" style="color:var(--accent-blue)"></i> Turnaround</h4>
+                    <ul id="list-time"></ul>
+                </div>
+            </div>
+
+            <div style="background: var(--navy-dark); color: white; padding: 40px; border-radius: 8px; text-align: center; margin-top: 40px;">
+                <h3>Ready to Proceed?</h3>
+                <p style="color: #cbd5e1; margin-bottom: 20px;">Start your secure intake. We vet your application before payment.</p>
+                <button class="btn-gold" onclick="openWizard()">Start Intake Process</button>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal-overlay" id="wizardModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3 id="wizard-step-title">Step 1: Qualification Check</h3>
+                <span style="cursor:pointer; font-size: 1.2rem;" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                
+                <div id="step-1" class="step-content active">
+                    <p style="margin-bottom: 15px; font-size: 0.9rem; color: #64748b;">Please confirm you meet the following requirements:</p>
+                    <div id="qual-checklist"></div>
+                    <button class="btn-gold" style="width:100%; margin-top:20px;" onclick="goToStep2()">I Confirm - Proceed</button>
+                </div>
+
+                <div id="step-2" class="step-content hidden">
+                    <p style="margin-bottom: 15px; font-size: 0.9rem; color: #64748b;">Enter your contact details to open your file.</p>
+                    <form id="intake-form" onsubmit="handleFormSubmit(event)">
+                        <div class="hp-field">
+                            <label>If you are human, leave this blank:</label>
+                            <input type="text" name="_website_verify_" value="">
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="form-group"><label>First Name</label><input type="text" name="first_name" class="form-control" required placeholder="John"></div>
+                            <div class="form-group"><label>Last Name</label><input type="text" name="last_name" class="form-control" required placeholder="Brown"></div>
+                        </div>
+                        <div class="form-group"><label>Email Address</label><input type="email" name="email" class="form-control" required placeholder="john@email.com"></div>
+                        <div class="form-group"><label>Phone Number</label><input type="tel" name="phone" class="form-control" required placeholder="(876) 555-0199"></div>
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem;">
+                                <input type="checkbox" required> 
+                                <span>I agree to the <a href="terms.html" target="_blank" style="color:var(--accent-blue); text-decoration: underline; font-weight: 700;">Terms & Conditions</a></span>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn-gold" style="width:100%;" id="submit-btn">Submit Application</button>
+                    </form>
+                </div>
+
+                <div id="step-3" class="step-content hidden" style="text-align: center; padding: 20px;">
+                    <i class="fa-solid fa-circle-check" style="font-size: 4rem; color: var(--success-green); margin-bottom: 20px;"></i>
+                    <h3 style="margin-bottom: 10px;">Application Received!</h3>
+                    <p style="font-size: 0.95rem; color: #64748b;">We have opened your file. A welcome email with next steps and payment instructions has been sent to you.</p>
+                    <button class="btn-gold" style="margin-top: 30px; background: #e2e8f0; color: var(--navy-dark);" onclick="closeModal()">Close</button>
+                </div>
+            </div>
         </div>
     </div>
 
-    <header class="bg-white shadow-sm sticky top-0 z-40 no-print transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 md:px-8 h-20 md:h-24 flex items-center justify-between relative bg-white z-50">
-            <div class="flex items-center gap-3 md:gap-4 cursor-pointer" onclick="window.location.reload()">
-                <i data-lucide="shield-check" class="text-gold w-8 h-8 md:w-10 md:h-10"></i>
-                <div>
-                    <h1 class="font-serif text-2xl md:text-4xl text-navy font-bold italic leading-none tracking-tight">Docu-Hub</h1>
-                    <p class="text-[10px] md:text-xs uppercase tracking-[0.2em] text-gray-400 mt-1 font-semibold">Operations Services</p>
-                </div>
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="color:white; margin-bottom: 15px;">DOCU-HUB<span>OPS</span></div>
+                <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.6;">
+                    Linstead's premier document concierge service. Simplifying bureaucracy for the diaspora and locals alike.
+                </p>
             </div>
-            <div class="hidden md:flex gap-8 text-xs font-bold text-navy uppercase tracking-widest items-center">
-                <button onclick="document.getElementById('services').scrollIntoView()" class="hover:text-gold transition py-2">Services</button>
-                <a href="help.html" class="hover:text-gold transition py-2 flex items-center gap-1"><i data-lucide="clipboard-list" class="w-4 h-4"></i> Requirements</a>
-                <button onclick="document.getElementById('about').scrollIntoView()" class="hover:text-gold transition py-2">About</button>
-                <a href="contact.html" class="px-6 py-2 border border-navy rounded-full hover:bg-navy hover:text-white transition">Contact</a>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <a href="#" class="footer-link">Track Application</a>
+                <a href="contact.html" target="_blank" class="footer-link">Contact Us</a>
             </div>
-            <button onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu" class="md:hidden text-navy p-2 focus:outline-none bg-slate-50 rounded-lg border border-gray-200">
-                <i data-lucide="menu" id="menuIcon" class="w-6 h-6"></i>
-            </button>
-        </div>
-        <div id="mobileDropdown" class="hidden md:hidden absolute top-20 left-0 w-full bg-navy text-white shadow-2xl border-b-4 border-gold z-30 flex flex-col items-center gap-0 transition-all duration-300">
-            <button onclick="toggleMobileMenu(); document.getElementById('services').scrollIntoView()" class="w-full py-5 text-center border-b border-white/10 hover:bg-white/5 font-bold uppercase tracking-widest text-xs">Services</button>
-            <a href="help.html" class="w-full py-5 text-center border-b border-white/10 hover:bg-white/5 font-bold uppercase tracking-widest text-xs">Requirements Check</a>
-            <button onclick="toggleMobileMenu(); document.getElementById('about').scrollIntoView()" class="w-full py-5 text-center border-b border-white/10 hover:bg-white/5 font-bold uppercase tracking-widest text-xs">About Us</button>
-            <div class="w-full py-6 text-center">
-                <a href="contact.html" class="inline-block border border-gold text-gold px-8 py-3 rounded-full hover:bg-gold hover:text-navy transition font-bold uppercase tracking-widest text-xxs">Contact Liaison</a>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="terms.html" target="_blank" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
             </div>
         </div>
-    </header>
-
-    <section class="relative w-full h-[600px] flex items-center no-print overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="assets/hero.png" class="w-full h-full object-cover object-center" alt="Corporate Office">
-            <div class="absolute inset-0 bg-navy/80 mix-blend-multiply"></div>
-        </div>
-        <div class="relative z-10 container mx-auto px-6 md:px-12">
-            <div class="max-w-lg bg-navy/60 backdrop-blur-md p-8 md:p-12 rounded-2xl shadow-2xl border border-white/20 text-left fade-in">
-                <div class="inline-block bg-gold/20 text-gold border border-gold/30 text-[10px] font-bold px-3 py-1 rounded mb-6 uppercase tracking-widest">
-                    Professional Liaison
-                </div>
-                <h1 class="font-serif text-2xl md:text-4xl text-white font-bold leading-tight mb-4 shadow-black drop-shadow-md">
-                    Skip the Line. <br><span class="text-gold italic">We Handle the Red Tape.</span>
-                </h1>
-                <p class="text-white/90 text-sm leading-relaxed mb-8 font-light tracking-wide">
-                    Your trusted partner for Passports and Government Documents. We wait in line so you don't have to.
-                </p>
-                <div class="flex gap-4">
-                    <button onclick="document.getElementById('services').scrollIntoView()" class="w-full md:w-auto bg-gold text-navy font-bold px-6 py-3 rounded-lg shadow-lg hover:bg-white transition uppercase text-xs tracking-widest flex items-center justify-center gap-2">
-                        Get Help With My Papers <i data-lucide="arrow-down" class="w-4 h-4"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="py-20 md:py-24 px-6 max-w-7xl mx-auto no-print bg-slate-50">
-        <div class="text-center mb-16">
-            <h2 class="font-serif text-3xl md:text-4xl font-bold text-navy mb-4">Service Catalog</h2>
-            <p class="text-slate-600 text-sm font-medium uppercase tracking-widest">Select your application type</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div class="bg-white rounded-3xl shadow-lg border-2 border-gold/20 p-8 hover:shadow-2xl hover:border-gold hover:-translate-y-2 transition-all duration-300 cursor-pointer group" onclick="openForm('traffic')">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center text-red-700 group-hover:bg-red-600 group-hover:text-white transition-colors shrink-0">
-                        <i data-lucide="ticket" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="font-serif font-bold text-xl text-navy">Traffic Tickets</h3>
-                </div>
-                <p class="text-sm text-slate-600 mb-6 leading-relaxed">
-                    Start a Traffic Ticket Audit. We verify your status for Warrants before processing any payments.
-                </p>
-                <span class="text-gold font-bold flex items-center gap-2 text-xs uppercase tracking-widest group-hover:translate-x-2 transition">Start Audit <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
-            </div>
-
-            <div class="bg-white rounded-3xl shadow-lg border-2 border-gold/20 p-8 hover:shadow-2xl hover:border-gold hover:-translate-y-2 transition-all duration-300 cursor-pointer group" onclick="openForm('mv_renewal')">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-14 h-14 bg-yellow-50 rounded-xl flex items-center justify-center text-yellow-700 group-hover:bg-yellow-500 group-hover:text-white transition-colors shrink-0">
-                        <i data-lucide="car-front" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="font-serif font-bold text-xl text-navy">MV Renewal</h3>
-                </div>
-                <p class="text-sm text-slate-600 mb-6 leading-relaxed">
-                    Submit your fitness and insurance for verification. We ensure your documents are valid before renewal.
-                </p>
-                <span class="text-gold font-bold flex items-center gap-2 text-xs uppercase tracking-widest group-hover:translate-x-2 transition">Renew Now <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
-            </div>
-
-            <div class="bg-white rounded-3xl shadow-lg border-2 border-gold/20 p-8 hover:shadow-2xl hover:border-gold hover:-translate-y-2 transition-all duration-300 cursor-pointer group" onclick="openForm('license')">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-700 group-hover:bg-blue-600 group-hover:text-white transition-colors shrink-0">
-                        <i data-lucide="id-card" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="font-serif font-bold text-xl text-navy">Driver's License</h3>
-                </div>
-                <p class="text-sm text-slate-600 mb-6 leading-relaxed">
-                    Private License Renewal. We calculate arrears and review your eligibility before heading to the Tax Office.
-                </p>
-                <span class="text-gold font-bold flex items-center gap-2 text-xs uppercase tracking-widest group-hover:translate-x-2 transition">Start Renewal <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
-            </div>
-
-            <div class="bg-white rounded-3xl shadow-lg border-2 border-gold/20 p-8 hover:shadow-2xl hover:border-gold hover:-translate-y-2 transition-all duration-300 cursor-pointer group" onclick="openForm('passport')">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-14 h-14 bg-cyan-50 rounded-xl flex items-center justify-center text-cyan-700 group-hover:bg-cyan-600 group-hover:text-white transition-colors shrink-0">
-                        <i data-lucide="plane" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="font-serif font-bold text-xl text-navy">Passport Renewal</h3>
-                </div>
-                <p class="text-sm text-slate-600 mb-6 leading-relaxed">
-                    Pre-Vetting Service. Submit your photos and data for review to ensure they meet strict PICA standards.
-                </p>
-                <span class="text-gold font-bold flex items-center gap-2 text-xs uppercase tracking-widest group-hover:translate-x-2 transition">Check Eligibility <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
-            </div>
-
-            <div class="bg-white rounded-3xl shadow-lg border-2 border-gold/20 p-8 hover:shadow-2xl hover:border-gold hover:-translate-y-2 transition-all duration-300 cursor-pointer group" onclick="openForm('rgd')">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center text-purple-700 group-hover:bg-purple-600 group-hover:text-white transition-colors shrink-0">
-                        <i data-lucide="scroll" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="font-serif font-bold text-xl text-navy">RGD Certificates</h3>
-                </div>
-                <p class="text-sm text-slate-600 mb-6 leading-relaxed">
-                    Certificate Search & Pickup. We verify the Entry Number/Registration before processing the order.
-                </p>
-                <span class="text-gold font-bold flex items-center gap-2 text-xs uppercase tracking-widest group-hover:translate-x-2 transition">Order Copy <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
-            </div>
-
-            <div class="bg-white rounded-3xl shadow-lg border-2 border-gold/20 p-8 hover:shadow-2xl hover:border-gold hover:-translate-y-2 transition-all duration-300 cursor-pointer group" onclick="openForm('trn_nis')">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-700 group-hover:bg-emerald-600 group-hover:text-white transition-colors shrink-0">
-                        <i data-lucide="users" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="font-serif font-bold text-xl text-navy">TRN & NIS Cards</h3>
-                </div>
-                <p class="text-sm text-slate-600 mb-6 leading-relaxed">
-                    Linstead Concierge. Request a callback to schedule an in-person visit for signatures.
-                </p>
-                <span class="text-gold font-bold flex items-center gap-2 text-xs uppercase tracking-widest group-hover:translate-x-2 transition">Request Visit <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="bg-gold-light py-20 px-4 border-t border-gold/10 no-print">
-        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
-            <div class="w-40 h-40 md:w-56 md:h-56 rounded-full border-8 border-white shadow-xl overflow-hidden shrink-0">
-                <img src="assets/laura-clarke.jpg" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Laura+Clarke&background=003366&color=fff&size=256'">
-            </div>
-            <div class="text-center md:text-left flex-1">
-                <div class="inline-block bg-white px-4 py-1 rounded-full text-[10px] font-bold text-navy border border-gray-200 mb-4 uppercase tracking-widest shadow-sm">
-                    Principal Liaison
-                </div>
-                <h3 class="font-serif text-3xl md:text-4xl font-bold text-navy mb-5">Hi, I'm Laura.</h3>
-                <p class="text-sm md:text-lg text-gray-700 leading-relaxed mb-8 font-light">
-                    I spent over <strong>15 years in the corporate banking sector</strong>, so I know how to handle paperwork securely. My job is to make sure your documents are correct before we submit them to the government.
-                </p>
-                <button onclick="openAboutModal()" class="inline-flex items-center gap-2 text-navy font-bold text-xs uppercase tracking-widest border-b-2 border-gold pb-1 hover:text-gold transition">Read my full story <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-navy text-white py-16 text-sm no-print">
-        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div>
-                <h4 class="text-gold font-bold uppercase tracking-widest text-xs mb-6">Contact Us</h4>
-                <p class="text-gray-300 text-xs leading-relaxed mb-4 font-light">
-                    <strong>Docu-Hub Operations</strong><br>
-                    Linstead, St. Catherine<br>
-                    Jamaica, W.I.
-                </p>
-                <p class="text-gray-300 text-xs font-light">
-                    <strong>Hours:</strong> Mon-Fri (9am - 2pm)<br>
-                    <strong>WhatsApp:</strong> 876-561-2614
-                </p>
-            </div>
-            <div>
-                <h4 class="text-gold font-bold uppercase tracking-widest text-xs mb-6">Legal & Privacy</h4>
-                <ul class="space-y-3 text-xs text-gray-300 font-light">
-                    <li><a href="privacy.html" class="hover:text-white transition flex items-center gap-2"><i data-lucide="lock" class="w-3 h-3 text-gray-500"></i> Privacy Policy (JDPA)</a></li>
-                    <li><a href="terms.html" class="hover:text-white transition">Terms of Service</a></li>
-                    <li><a href="contact.html" class="hover:text-white transition">Contact / Office Map</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-gold font-bold uppercase tracking-widest text-xs mb-6">Important Notice</h4>
-                <p class="text-gray-400 text-[10px] leading-relaxed font-light">
-                    Docu-Hub is a private administrative agency. We are <strong>not</strong> the government (PICA/TAJ/RGD). You pay us a service fee to represent you. We securely delete your ID documents 30 days after your job is finished to protect your identity.
-                </p>
-            </div>
-        </div>
-        <div class="text-center mt-12 pt-8 border-t border-white/10 text-[10px] text-gray-500 uppercase tracking-widest font-bold">
-            © 2026 Docu-Hub Operations Services. All Rights Reserved.
+        <div class="footer-bottom">
+            &copy; 2026 DOCU-HUB OPERATIONS. ALL RIGHTS RESERVED. LINSTEAD, ST. CATHERINE.
         </div>
     </footer>
 
-    <div id="appModal" class="fixed inset-0 bg-navy/80 z-50 hidden overflow-y-auto no-print backdrop-blur-sm">
-        <div class="min-h-screen flex items-center justify-center p-4">
-            <div class="bg-white max-w-lg w-full rounded-2xl shadow-2xl overflow-hidden relative">
-                
-                <div class="bg-navy p-6 text-white flex justify-between items-center">
-                    <div>
-                        <h3 class="font-serif italic font-bold text-xl" id="modalTitle">Application</h3>
-                        <p class="text-xs text-gray-300 uppercase tracking-wide font-bold">Secure Intake Form</p>
-                    </div>
-                    <button onclick="closeForm()" class="bg-white/10 hover:bg-white/20 p-2 rounded-full transition"><i data-lucide="x" class="w-5 h-5"></i></button>
-                </div>
-
-                <div class="p-8">
-                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 mb-8">
-                        <div class="flex justify-between items-center mb-3 opacity-50">
-                            <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">Est. Service Fee</span>
-                            <span class="font-serif font-bold text-lg md:text-xl text-gray-500" id="displayFee">$0.00</span>
-                        </div>
-                        <div class="bg-blue-50 border-l-4 border-blue-600 p-4 rounded-r-lg">
-                            <p class="text-xs text-blue-800 font-bold uppercase tracking-widest mb-1 flex items-center">
-                                <i data-lucide="shield-alert" class="w-4 h-4 inline mr-2"></i> Eligibility Check First
-                            </p>
-                            <p class="text-xs text-blue-700 leading-relaxed">
-                                <strong>No payment is due now.</strong> We must review your documents first. After submitting this form, <span class="underline font-bold">check your email immediately</span> for a secure link to upload your ID/Documents.
-                            </p>
-                        </div>
-                    </div>
-
-                    <form id="submissionForm" onsubmit="event.preventDefault(); submitData();" class="space-y-6">
-                        
-                        <div style="opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1;">
-                            <label>Leave this field empty</label>
-                            <input type="text" id="honey_trap" name="honey_trap" tabindex="-1" autocomplete="off">
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-2 pl-1">First Name</label>
-                                <input type="text" id="fname" required pattern="[a-zA-Z\s'-]+" title="Letters only" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-lg text-navy font-medium focus:ring-1 focus:ring-navy outline-none">
-                            </div>
-                            <div>
-                                <label class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-2 pl-1">Last Name</label>
-                                <input type="text" id="lname" required pattern="[a-zA-Z\s'-]+" title="Letters only" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-lg text-navy font-medium focus:ring-1 focus:ring-navy outline-none">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-2 pl-1">Phone / WhatsApp</label>
-                            <input type="tel" id="phone" required pattern="[0-9\s-]{7,15}" title="Valid Phone Number (Digits only)" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-lg text-navy font-medium focus:ring-1 focus:ring-navy outline-none">
-                        </div>
-                        
-                        <div>
-                            <label class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-2 pl-1">Email Address</label>
-                            <input type="email" id="email" required class="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-lg text-navy font-medium focus:ring-1 focus:ring-navy outline-none">
-                        </div>
-
-                        <select id="serviceType" class="hidden">
-                            <option value="Jamaican Passport Renewal">Passport</option>
-                            <option value="Traffic Ticket Payment">Traffic Ticket</option>
-                            <option value="Motor Vehicle Renewal">MV Renewal</option>
-                            <option value="Driver's License Renewal">License Renewal</option>
-                            <option value="Birth Certificate">RGD</option>
-                            <option value="TRN_NIS">TRN/NIS</option>
-                        </select>
-
-                        <div id="logic-passport" class="hidden bg-blue-50 p-4 rounded-lg border border-blue-100">
-                            <p class="text-sm font-bold text-navy mb-2">Eligibility Check:</p>
-                            <label class="text-xs text-gray-600 block mb-1">Do you have your old passport? Is it from after 2001?</label>
-                            <select id="passport-check" onchange="killSwitch(this, 'No')" class="w-full p-2 border rounded text-sm bg-white">
-                                <option value="">-- Select --</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No / Lost / Too Old</option>
-                            </select>
-                        </div>
-
-                        <div id="logic-traffic" class="hidden bg-red-50 p-4 rounded-lg border border-red-100">
-                            <p class="text-sm font-bold text-red-900 mb-2">Warrant Check:</p>
-                            <label class="text-xs text-gray-600 block mb-1">Do you have a Court Summons or Warrant?</label>
-                            <select id="traffic-check" onchange="killSwitch(this, 'Yes')" class="w-full p-2 border rounded text-sm bg-white">
-                                <option value="">-- Select --</option>
-                                <option value="No">No, just a regular ticket</option>
-                                <option value="Yes">Yes, I have a Summons</option>
-                            </select>
-                        </div>
-
-                        <div id="logic-mv" class="hidden bg-yellow-50 p-4 rounded-lg border border-yellow-100">
-                            <p class="text-sm font-bold text-yellow-900 mb-2">Documents Check:</p>
-                            <label class="text-xs text-gray-600 block mb-1">Is your Fitness Valid & Insurance Current?</label>
-                            <select id="mv-check" onchange="killSwitch(this, 'No')" class="w-full p-2 border rounded text-sm bg-white">
-                                <option value="">-- Select --</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No (Stop)</option>
-                            </select>
-                        </div>
-
-                        <div id="logic-license" class="hidden bg-blue-50 p-4 rounded-lg border border-blue-100">
-                            <p class="text-sm font-bold text-blue-900 mb-2">Eligibility Check:</p>
-                            <label class="text-xs text-gray-600 block mb-1">Are you Under 70 with a Private License?</label>
-                            <select id="license-check" onchange="killSwitch(this, 'No')" class="w-full p-2 border rounded text-sm bg-white">
-                                <option value="">-- Select --</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No (Over 70 / General)</option>
-                            </select>
-                        </div>
-
-                        <div id="logic-rgd" class="hidden bg-purple-50 p-4 rounded-lg border border-purple-100">
-                            <p class="text-sm font-bold text-purple-900 mb-2">Registration Check:</p>
-                            <label class="text-xs text-gray-600 block mb-1">Is this event already registered?</label>
-                            <select id="rgd-check" onchange="killSwitch(this, 'No')" class="w-full p-2 border rounded text-sm bg-white">
-                                <option value="">-- Select --</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No / Late Registration</option>
-                            </select>
-                        </div>
-
-                        <div id="logic-trn" class="hidden bg-emerald-50 p-4 rounded-lg border border-emerald-100">
-                            <p class="text-sm font-bold text-emerald-900 mb-2">Location Check:</p>
-                            <label class="text-xs text-gray-600 block mb-1">Are you located in the Linstead / Bog Walk area?</label>
-                            <select id="trn-check" onchange="killSwitch(this, 'No')" class="w-full p-2 border rounded text-sm bg-white">
-                                <option value="">-- Select --</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No (Stop)</option>
-                            </select>
-                            <p class="text-[10px] text-emerald-700 mt-2 italic">
-                                *Our concierge service is currently limited to this zone.
-                            </p>
-                        </div>
-
-                        <button type="submit" id="submitBtn" class="w-full bg-navy text-white font-bold py-5 rounded-xl shadow-lg hover:bg-gold hover:text-navy transition uppercase text-sm tracking-widest mt-2">Submit for Vetting</button>
-                        <p class="text-center text-xs text-gray-400 mt-4">By submitting, you agree to our <a href="terms.html" class="underline hover:text-navy">Terms of Service</a>.</p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="aboutModal" class="fixed inset-0 bg-white z-[60] hidden overflow-y-auto no-print">
-        <div class="max-w-3xl mx-auto min-h-screen bg-white relative">
-            <button onclick="closeAboutModal()" class="fixed top-6 right-6 bg-gray-100 p-2 rounded-full hover:bg-gray-200 z-50 transition"><i data-lucide="x" class="w-6 h-6 text-navy"></i></button>
-            <div class="p-8 md:p-16 pt-24">
-                <span class="text-gold font-bold uppercase tracking-widest text-xs block mb-4">About The Founder</span>
-                <h2 class="text-3xl md:text-5xl font-bold text-navy mb-10 font-serif italic">Why I Started Docu-Hub.</h2>
-                <div class="prose prose-lg text-gray-600 leading-relaxed space-y-6 font-light mb-16">
-                    <p>Having spent over <strong>15 years working within Jamaica’s corporate banking sector</strong>, I learned one rule above all others: <em>details matter.</em> In that environment, a single missing digit or unchecked box could stop a transaction cold.</p>
-                    <p>But outside the bank, I saw a different reality. I saw hardworking professionals losing entire days of pay just to stand in lines, or struggling to navigate confusing online government portals.</p>
-                    <p class="font-medium text-navy">I knew there had to be a more efficient way.</p>
-                    <p>I created Docu-Hub to bridge the gap between you and the red tape. When you entrust your documents to me, I apply the same <strong>banking-grade security and precision</strong> to your files that I practiced for over a decade.</p>
-                    <p>We are a registered business and fully compliant with the <strong>Data Protection Act (JDPA)</strong>. This means your sensitive information isn't just "on a phone"—it is processed securely and protected at all times.</p>
-                </div>
-                <div class="mt-16 pt-12 border-t border-gray-100 text-center">
-                    <button onclick="closeAboutModal(); document.getElementById('services').scrollIntoView();" class="w-full md:w-auto bg-navy text-white px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-gold hover:text-navy transition shadow-lg">Back to Services</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="receiptModal" class="fixed inset-0 bg-navy/90 z-[70] hidden overflow-y-auto p-4 flex items-center justify-center backdrop-blur-sm">
-        <div class="bg-white max-w-sm w-full rounded-2xl p-8 text-center relative shadow-2xl border-4 border-gold">
-            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 text-green-600 animate-bounce"><i data-lucide="check" class="w-10 h-10"></i></div>
-            <h2 class="text-2xl font-bold text-navy mb-2 font-serif italic">Request Open!</h2>
-            <p class="text-gray-600 mb-8 text-sm leading-relaxed">
-                We have opened your file. <br>
-                <strong>Please check your email inbox (and spam) NOW for the link to upload your required documents.</strong>
-            </p>
-            <div class="bg-gray-50 p-5 rounded-xl mb-8 text-left text-sm space-y-3 border border-gray-100">
-                <div class="flex justify-between border-b border-gray-200 pb-2"><span class="text-gray-400 text-xs uppercase font-bold">Status</span><strong id="recRef" class="text-blue-600">Pending Review</strong></div>
-                <div class="flex justify-between border-b border-gray-200 pb-2"><span class="text-gray-400 text-xs uppercase font-bold">Service</span><strong id="recService" class="text-navy">...</strong></div>
-                <div class="flex justify-between"><span class="text-gray-400 text-xs uppercase font-bold">Name</span><strong id="recName" class="text-navy">...</strong></div>
-            </div>
-            <button onclick="window.location.reload()" class="w-full bg-navy text-white font-bold py-4 rounded-xl mb-4 hover:bg-blue-900 transition uppercase text-xs tracking-widest shadow-lg">Close</button>
-            <button onclick="window.print()" class="text-gray-400 text-xs font-bold uppercase tracking-widest hover:text-navy">Save Receipt</button>
-        </div>
-    </div>
-
     <script>
-        lucide.createIcons();
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxnolakc2CtzL7j9OQx4kPy_NN_tZ1ZifugNCIq2kIF2NXI8Tvb_fcmpc_i39HvOX6x/exec"; 
-
-        const DATA = {
-            traffic: { title: "Traffic Ticket Settlement", fee: "$2,500 (Audit Fee)", val: "Traffic Ticket Payment" },
-            mv_renewal: { title: "Motor Vehicle Renewal", fee: "$2,500", val: "Motor Vehicle Renewal" },
-            license: { title: "Driver's License Renewal", fee: "$3,000", val: "Driver's License Renewal" },
-            passport: { title: "Passport Renewal (PICA)", fee: "$6,500", val: "Jamaican Passport Renewal" },
-            rgd: { title: "RGD Certificate Service", fee: "$3,500", val: "Birth Certificate" },
-            trn_nis: { title: "TRN / NIS Concierge", fee: "Custom Quote", val: "TRN_NIS" }
+        // --- MASTER DATA DATABASE (WITH FEES) ---
+        const serviceData = {
+            'jm-passports': {
+                title: "Jamaican Passport Services",
+                desc: "Full service processing for PICA applications.",
+                items: [
+                    { 
+                        title: "Adult Renewal (Simplified)", tag: "Most Common", icon: "fa-passport",
+                        desc: "For machine-readable passports expired or soon-to-expire. We handle the application online, agency fee payment, and the pick up.",
+                        docs: ["Passport issued after Sept 2001", "Name is unchanged", "Passport is undamaged"],
+                        process: ["Digital Audit & Verification", "Photo Code/Upload & Biometric Check", "Agency Fee Payment", "Concierge Pickup"],
+                        fees: { agency: "$5,000 JMD", govt: "$6,500 JMD", note: "Includes fees & pickup" },
+                        time: ["Standard: 7-14 Business Days"],
+                        reqs: ["Passport issued after Sept 2001", "Name is unchanged", "Passport is undamaged"]
+                    },
+                    { 
+                        title: "New Adult & Name Change", tag: "Appointment Service", icon: "fa-user-pen",
+                        desc: "For first-time applicants or identity updates. We verify your documents, prepare the physical packet, and book your priority appointment.",
+                        docs: ["Original Birth Certificate", "Marriage Cert / Divorce Decree (if applicable)", "Valid Gov ID (Voters/DL)", "2 Certified Photos"],
+                        process: ["Packet Prep (Form A & Section G)", "Legal Trail Audit", "Interview Booking", "Handover of Sealed Packet"],
+                        fees: { agency: "$3,500 JMD", govt: "Paid at PICA", note: "Includes Packet Prep" },
+                        time: ["Standard: 14-21 Business Days"],
+                        reqs: ["Have original legal certificates", "Can attend appointment", "Have 2 Guarantors"]
+                    },
+                    { 
+                        title: "Child Applications", tag: "Parent Support", icon: "fa-child",
+                        desc: "We manage the complex consent requirements. Includes full packet preparation and appointment booking.",
+                        docs: ["Child's Birth Certificate", "Parent's Valid ID", "School/Doctor Certification", "Consent Form"],
+                        process: ["Consent Verification (Section C)", "Photo Certification", "Booking Submission", "Concierge Pickup"],
+                        fees: { agency: "$3,000 JMD", govt: "$4,000 JMD", note: "Includes JP Services" },
+                        time: ["Standard: 7-14 Business Days"],
+                        reqs: ["Parent on Birth Cert is applying", "Parent has Valid ID"]
+                    },
+                    { 
+                        title: "Lost/Stolen Passport", tag: "Investigation", icon: "fa-triangle-exclamation",
+                        desc: "Recovery of lost documents. We draft the Affidavit, guide your Police Report process, and monitor the investigation.",
+                        docs: ["Birth Certificate", "Valid Gov ID (Voters/DL)", "Police Report (We assist)", "2 Certified Photos"],
+                        process: ["Police Report Guidance", "Affidavit Drafting", "Packet Prep ", "Monitoring & Pickup"],
+                        fees: { agency: "$5,500 JMD", govt: "fee varies", note: "Includes Affidavit" },
+                        time: ["Variable (Investigation Dependent)"],
+                        reqs: ["I have a valid Gov ID (to prove identity)", "I have my Birth Certificate"]
+                    }
+                ]
+            },
+            'foreign-passports': {
+                title: "Foreign Passport Concierge",
+                desc: "Secure courier for international documents.",
+                items: [
+                    { 
+                        title: "US Passport Renewal", tag: "Courier Service", icon: "fa-flag-usa",
+                        desc: "Secure processing to the US Embassy. We handle the strict photo vetting, online fee payment, and courier logistics.",
+                        docs: ["Current US Passport", "2x2 US Photos (Vetted)", "DS-82 Form Data"],
+                        process: ["Photo Vetting", "Online Payment (Pay.gov)", "Secure Courier to Kingston", "Return Tracking"],
+                        fees: { agency: "$8,000 JMD", govt: "$130 USD", note: "Includes Courier" },
+                        time: ["Approx 3-4 Weeks"],
+                        reqs: ["Passport issued after age 16", "Issued < 15 years ago", "Undamaged"]
+                    },
+                    { 
+                        title: "British Passport", tag: "HMPO Direct", icon: "fa-crown",
+                        desc: "Assistance with the digital HMPO application and secure international shipping of your old documents.",
+                        docs: ["Old British Passport", "Digital Photo Code/File"],
+                        process: ["Photo Code Check", "Online Filing (gov.uk)", "International Shipping to UK"],
+                        fees: { agency: "$6,000 JMD", govt: "£ Variable", note: "Includes Shipping" },
+                        time: ["4-6 Weeks"],
+                        reqs: ["Have old British Passport", "Access to digital photo"]
+                    }
+                ]
+            },
+            'license': {
+                title: "License & Traffic Services",
+                desc: "Skip the Tax Office lines.",
+                items: [
+                    { 
+                        title: "Driver’s Licence Renewal", tag: "Full Proxy Service", icon: "fa-id-card",
+                        desc: "We stand in the lines so you don't have to. Full renewal service for General and Private licences.",
+                        docs: ["Original Expired Licence", "JP-Signed Photo", "Front/Back Copy of Licence"],
+                        process: ["Authorization Letter Drafting", "Tax Office Processing", "Delivery to Client"],
+                        fees: { agency: "$3,500 JMD", govt: "$7,200 JMD", note: "All inclusive" },
+                        time: ["Same Day / Next Day"],
+                        reqs: ["Licence not expired > 1 year", "No outstanding warrants"]
+                    },
+                    { 
+                        title: "Lost Licence Replacement", tag: "Packet Prep", icon: "fa-file-shield",
+                        desc: "Professional assistance for lost or stolen licences. We organize your legal documents and forms so your in-person submission is seamless.",
+                        docs: ["Valid ID (Passport/Voters)", "Police Record (if stolen)", "Passport Photos"],
+                        process: ["Police Record Assist", "Form Completion", "Submission (In-Person for Interim Receipt)"],
+                        fees: { agency: "$3,000 JMD", govt: "Paid at Office", note: "Includes Packet Prep" },
+                        time: ["Immediate upon submission"],
+                        reqs: ["Have alternate ID", "Can attend Tax Office"]
+                    },
+                    { 
+                        title: "Motor Vehicle (M/V) Renewal", tag: "Online Processing", icon: "fa-car",
+                        desc: "Fast, paperless registration renewal. We manage the online filing and fee payment, delivering your official electronic receipt.",
+                        docs: ["Insurance Certificate (Digital)", "Fitness Certificate (Active)", "Owner's ID"],
+                        process: ["Digital Audit", "Online Filing", "Agency Payment", "Instant Receipt Email"],
+                        fees: { agency: "$3,500 JMD", govt: "Variable", note: "Depends on CC rating" },
+                        time: ["Same Day"],
+                        reqs: ["Valid Insurance", "Valid Fitness in System"]
+                    },
+                    { 
+                        title: "Traffic Ticket Payments", tag: "Instant Digital Clearance", icon: "fa-receipt",
+                        desc: "We use the official Government Traffic Ticket Lookup to verify your fines. We settle the payments instantly via the portal.",
+                        docs: ["TRN", "Front AND Back of Driver's Licence", "Ticket Numbers (Optional)"],
+                        process: ["Search & Audit (Using Control #)", "Digital Settlement", "Immediate Receipt Forwarding"],
+                        fees: { agency: "$1,500 JMD", govt: "Ticket Value", note: "Service fee per transaction" },
+                        time: ["Instant"],
+                        reqs: ["Valid TRN", "Clear photo of Card Back (Control #)"]
+                    }
+                ]
+            },
+            'rgd': {
+                title: "RGD Certificates",
+                desc: "Civil registry document retrieval.",
+                items: [
+                    { 
+                        title: "Birth Certificate", tag: "Vital Records", icon: "fa-baby",
+                        desc: "Retrieval of computerized birth certificates. We handle the RGD filing, tracking, and secure delivery to your door.",
+                        docs: ["Full Name", "Date of Birth", "Mother's Maiden Name"],
+                        process: ["Data Audit (Prevent No-Record)", "RGD Filing", "Collection & Delivery"],
+                        fees: { agency: "$3,000 JMD", govt: "$4,500 JMD", note: "Courier extra" },
+                        time: ["Express: 7 Days", "Regular: 6 Weeks"],
+                        reqs: ["Know correct spelling", "Know Date of Birth"]
+                    },
+                    { 
+                        title: "Marriage Certificate", tag: "Legal Copy", icon: "fa-ring",
+                        desc: "Retrieval of official marriage records for visa, insurance, or legal purposes.",
+                        docs: ["Date of Marriage", "Spouse Names", "Parish of Marriage"],
+                        process: ["Search Support", "Application Filing", "International Courier Support"],
+                        fees: { agency: "$3,000 JMD", govt: "$4,500 JMD", note: "Courier extra" },
+                        time: ["7-10 Days"],
+                        reqs: ["Marriage registered in Jamaica"]
+                    },
+                    { 
+                        title: "Death Certificate", tag: "Probate Support", icon: "fa-book-open",
+                        desc: "Official retrieval of death records for estate, insurance, or probate requirements.",
+                        docs: ["Deceased Name", "Date of Death", "Burial Order Copy"],
+                        process: ["Registration Verification", "Application Filing", "Collection & Delivery"],
+                        fees: { agency: "$3,000 JMD", govt: "$4,500 JMD", note: "Courier extra" },
+                        time: ["Variable"],
+                        reqs: ["Death registered in Jamaica"]
+                    }
+                ]
+            }
         };
 
-        let activeService = null;
+        let currentCat = ''; let currentIdx = 0;
 
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileDropdown');
-            menu.classList.toggle('hidden');
-        }
-
-        function killSwitch(el, badValue) {
-            if(el.value === badValue) {
-                alert("⚠️ Based on your selection, we cannot process this application online. Please visit the government office directly.");
-                el.value = ""; 
-            }
-        }
-
-        function openForm(key) {
-            activeService = DATA[key];
-            document.getElementById('modalTitle').innerText = activeService.title;
-            document.getElementById('displayFee').innerText = activeService.fee;
-            const select = document.getElementById('serviceType');
-            select.value = activeService.val;
-
-            // Hide all logic boxes first
-            document.querySelectorAll('[id^="logic-"]').forEach(el => el.classList.add('hidden'));
-
-            // Show specific logic box based on selection
-            if (key === 'traffic') document.getElementById('logic-traffic').classList.remove('hidden');
-            if (key === 'mv_renewal') document.getElementById('logic-mv').classList.remove('hidden');
-            if (key === 'license') document.getElementById('logic-license').classList.remove('hidden');
-            if (key === 'passport') document.getElementById('logic-passport').classList.remove('hidden');
-            if (key === 'rgd') document.getElementById('logic-rgd').classList.remove('hidden');
-            if (key === 'trn_nis') document.getElementById('logic-trn').classList.remove('hidden');
-
-            document.getElementById('appModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeForm() {
-            document.getElementById('appModal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        function openAboutModal() { document.getElementById('aboutModal').classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
-        function closeAboutModal() { document.getElementById('aboutModal').classList.add('hidden'); document.body.style.overflow = 'auto'; }
-
-        async function submitData() {
-            const fname = document.getElementById('fname').value.trim();
-            const lname = document.getElementById('lname').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const serviceVal = document.getElementById('serviceType').value; 
-            const honeypot = document.getElementById('honey_trap').value; 
-
-            // 1. Security Checks
-            if (honeypot !== "") { console.log("Bot blocked."); return; }
+        // --- NAVIGATION LOGIC ---
+        function renderHome() {
+            document.getElementById('landing-view').classList.remove('hidden');
+            document.getElementById('grid-view').classList.add('hidden');
+            document.getElementById('detail-view').classList.add('hidden');
+            document.querySelectorAll('.cat-item').forEach(i => i.classList.remove('active'));
             
-            if (!fname || !lname || !phone || !email) { alert("Please fill in all required fields."); return; }
+            // Populate Featured Grid
+            const featured = document.getElementById('featured-grid');
+            featured.innerHTML = '';
+            // Feature: JM Adult Renewal
+            featured.innerHTML += createCardHTML(serviceData['jm-passports'].items[0], 'jm-passports', 0);
+            // Feature: US Passport
+            featured.innerHTML += createCardHTML(serviceData['foreign-passports'].items[0], 'foreign-passports', 0);
+            // Feature: Traffic Tickets
+            featured.innerHTML += createCardHTML(serviceData['license'].items[3], 'license', 3);
+            // Feature: Birth Cert
+            featured.innerHTML += createCardHTML(serviceData['rgd'].items[0], 'rgd', 0);
+        }
+
+        function renderCategory(key, el) {
+            currentCat = key;
+            document.querySelectorAll('.cat-item').forEach(i => i.classList.remove('active'));
+            if(el) el.classList.add('active');
             
-            const nameRegex = /^[a-zA-Z\s'-]+$/;
-            const phoneRegex = /^[0-9\s-]+$/;
-            if (!nameRegex.test(fname) || !nameRegex.test(lname)) { alert("Please enter a valid name (Letters only)."); return; }
-            if (!phoneRegex.test(phone) || phone.length < 7) { alert("Please enter a valid phone number."); return; }
+            document.getElementById('landing-view').classList.add('hidden');
+            document.getElementById('grid-view').classList.remove('hidden');
+            document.getElementById('detail-view').classList.add('hidden');
+            
+            const data = serviceData[key];
+            document.getElementById('cat-title').innerText = data.title;
+            document.getElementById('cat-desc').innerText = data.desc;
+            
+            const container = document.getElementById('grid-container');
+            container.innerHTML = '';
+            data.items.forEach((item, idx) => {
+                container.innerHTML += createCardHTML(item, key, idx);
+            });
+            window.scrollTo(0,0);
+        }
 
-            // 2. Vetting Gates (Eligibility Logic)
-            if (serviceVal === "Jamaican Passport Renewal") {
-                if (document.getElementById('passport-check').value !== "Yes") { alert("⚠️ Eligibility Check: You must confirm you have your old passport."); return; }
-            }
-            if (serviceVal === "Traffic Ticket Payment") {
-                if (document.getElementById('traffic-check').value !== "No") { alert("⚠️ Eligibility Check: Please confirm you do NOT have a court summons."); return; }
-            }
-            if (serviceVal === "Motor Vehicle Renewal") {
-                if (document.getElementById('mv-check').value !== "Yes") { alert("⚠️ Documents Check: You must have a valid Fitness & Insurance."); return; }
-            }
-            if (serviceVal === "Driver's License Renewal") {
-                if (document.getElementById('license-check').value !== "Yes") { alert("⚠️ Eligibility Check: We only process Private Licenses for drivers under 70."); return; }
-            }
-            if (serviceVal === "Birth Certificate") {
-                if (document.getElementById('rgd-check').value !== "Yes") { alert("⚠️ Registration Check: We only process already registered certificates."); return; }
-            }
-            if (serviceVal === "TRN_NIS") {
-                if (document.getElementById('trn-check').value !== "Yes") { alert("⚠️ Location Check: Please confirm you are in the Linstead service area."); return; }
-            }
+        function createCardHTML(item, cat, idx) {
+            return `<div class="service-card" onclick="openDetail('${cat}', ${idx})">
+                        <span class="card-tag">${item.tag}</span>
+                        <div class="card-body">
+                            <i class="fa-solid ${item.icon}"></i>
+                            <h3>${item.title}</h3>
+                            <p>${item.desc}</p>
+                        </div>
+                        <div class="card-footer">View Requirements</div>
+                    </div>`;
+        }
 
-            // 3. Submit Data
-            const btn = document.getElementById('submitBtn');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = "Processing...";
-            btn.disabled = true;
+        function openDetail(cat, idx) {
+            currentCat = cat; currentIdx = idx;
+            const item = serviceData[cat].items[idx];
+            
+            document.getElementById('grid-view').classList.add('hidden');
+            document.getElementById('landing-view').classList.add('hidden');
+            document.getElementById('detail-view').classList.remove('hidden');
+            
+            document.getElementById('detail-title').innerText = item.title;
+            document.getElementById('detail-tag').innerText = item.tag;
+            document.getElementById('detail-desc').innerText = item.desc;
+            
+            // RENDER PILLARS
+            document.getElementById('list-docs').innerHTML = item.docs.map(i => `<li>${i}</li>`).join('');
+            document.getElementById('list-process').innerHTML = item.process.map(i => `<li>${i}</li>`).join('');
+            document.getElementById('list-time').innerHTML = item.time.map(i => `<li>${i}</li>`).join('');
 
-           // 3. Submit Data
-            const payload = {
-                firstName: fname,
-                lastName: lname,
-                email: email,
-                phone: phone,
-                service: serviceVal, // This MUST match the Sheet name exactly
-                source: "Website Intake",
-                category: "Travel Ready" // Or whatever category this form is for
+            // RENDER FEES
+            const feeHTML = `
+                <div style="display:flex; justify-content:space-between; margin-bottom:8px; border-bottom:1px dashed #e2e8f0; padding-bottom:5px;">
+                    <span>Agency Fee:</span> <strong style="color:var(--navy-dark)">${item.fees.agency}</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:8px; border-bottom:1px dashed #e2e8f0; padding-bottom:5px;">
+                    <span>Govt Fee:</span> <strong style="color:var(--navy-dark)">${item.fees.govt}</strong>
+                </div>
+                <div style="font-size:0.8rem; color:#64748b; margin-top:10px; font-style:italic;">
+                    * ${item.fees.note}
+                </div>
+            `;
+            document.getElementById('list-fees').innerHTML = feeHTML;
+
+            window.scrollTo(0,0);
+        }
+
+        function goBackToGrid() { renderCategory(currentCat, document.querySelector(`.cat-item[onclick*="${currentCat}"]`)); }
+
+        // --- WIZARD LOGIC ---
+        function openWizard() {
+            document.getElementById('wizardModal').style.display = 'flex';
+            document.getElementById('step-1').classList.remove('hidden');
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-3').classList.add('hidden');
+            document.getElementById('wizard-step-title').innerText = "Step 1: Qualification";
+            
+            const item = serviceData[currentCat].items[currentIdx];
+            document.getElementById('qual-checklist').innerHTML = item.reqs.map(r => 
+                `<label style="display:flex; gap:10px; margin-bottom:12px; font-size:0.9rem; align-items:flex-start; cursor:pointer;">
+                    <input type="checkbox" required style="margin-top:4px;"> ${r}
+                </label>`
+            ).join('');
+        }
+
+        function goToStep2() {
+            const checks = document.querySelectorAll('#qual-checklist input');
+            let all = true; checks.forEach(c => { if(!c.checked) all = false; });
+            if(!all) { alert("Please confirm all requirements first."); return; }
+            
+            document.getElementById('step-1').classList.add('hidden');
+            document.getElementById('step-2').classList.remove('hidden');
+            document.getElementById('wizard-step-title').innerText = "Step 2: Intake Form";
+        }
+
+        function closeModal() { document.getElementById('wizardModal').style.display = 'none'; }
+
+        // --- SUBMISSION LOGIC ---
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            const formData = new FormData(e.target);
+            
+            // 1. HONEYPOT CHECK
+            if(formData.get('_website_verify_') !== "") { return; } // Bot detected
+
+            btn.disabled = true; btn.innerText = "Processing...";
+
+            // Payload
+            const data = {
+                firstName: formData.get('first_name'),
+                lastName: formData.get('last_name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                service: serviceData[currentCat].items[currentIdx].title,
+                timestamp: new Date().toISOString()
             };
 
+            // 2. CONNECT TO GOOGLE APPS SCRIPT
             try {
-                await fetch(SCRIPT_URL, { 
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { "Content-Type": "text/plain;charset=utf-8" },
-                    body: JSON.stringify(payload)
-                });
-                document.getElementById('appModal').classList.add('hidden');
-                document.getElementById('recRef').innerText = "WEB-" + Math.floor(Math.random() * 10000); 
-                document.getElementById('recService').innerText = serviceVal;
-                document.getElementById('recName').innerText = fname + " " + lname;
-                document.getElementById('submissionForm').reset();
-                document.getElementById('receiptModal').classList.remove('hidden');
-            } catch (error) {
-                console.error("Error:", error);
-                alert("Request Sent! Check your email.");
-                document.getElementById('appModal').classList.add('hidden');
-            } finally {
-                btn.disabled = false;
-                btn.innerHTML = originalText;
+                // REPLACE WITH YOUR DEPLOYED GAS URL
+                const GAS_URL = "https://script.google.com/macros/s/AKfycbxnolakc2CtzL7j9OQx4kPy_NN_tZ1ZifugNCIq2kIF2NXI8Tvb_fcmpc_i39HvOX6x/exec"; 
+                
+                // await fetch(GAS_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) });
+
+                setTimeout(() => {
+                    document.getElementById('step-2').classList.add('hidden');
+                    document.getElementById('step-3').classList.remove('hidden');
+                    document.getElementById('wizard-step-title').innerText = "Complete";
+                }, 1500);
+            } catch (err) {
+                alert("Connection Error. Please check internet.");
+                btn.disabled = false; btn.innerText = "Submit Application";
             }
         }
+
+        window.onload = renderHome;
     </script>
 </body>
 </html>
-
