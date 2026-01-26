@@ -100,13 +100,47 @@
             .mobile-bar { display: flex !important; }
         }
         
-        .service-card { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border: 1px solid #E2E8F0; display: flex; flex-direction: column; transition: all 0.3s ease; cursor: pointer; height: 100%; min-height: 220px; }
-        .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-color: transparent; }
+       /* --- UPDATED CARD STYLING (THE "POP" LOOK) --- */
+        .service-card { 
+            background: var(--white); 
+            border-radius: 12px; 
+            overflow: hidden; 
+            
+            /* 1. THE LIFT: Stronger shadow to separate from white background */
+            
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            
+            /* 2. THE POWER BAR: Thick Navy top border */
+            border-top: 5px solid var(--navy-deep); 
+            
+            /* Remove the grey border so it looks cleaner */
+            border-left: 1px solid transparent;
+            border-right: 1px solid transparent;
+            border-bottom: 1px solid transparent;
+
+            display: flex; 
+            flex-direction: column; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            cursor: pointer; 
+            height: 100%; 
+            min-height: 220px; 
+        }
+
+        .service-card:hover { 
+            transform: translateY(-8px); 
+            
+            /* 3. THE INTERACTION: Bar turns RED on hover */
+            border-top-color: var(--brand-red);
+            
+            /* Shadow gets deeper to simulate lifting up */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.1); 
+        }
+
+        /* --- KEEP THESE AS THEY ARE (No changes needed below) --- */
         .card-visual { height: 120px; background: #F1F5F9; display: flex; align-items: center; justify-content: center; color: var(--navy-deep); font-size: 2.5rem; }
         .card-body { padding: 20px; text-align: center; display: flex; flex-direction: column; flex: 1; }
         .card-title { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--navy-deep); line-height: 1.4; }
         .card-link { margin-top: auto; font-size: 0.8rem; font-weight: 700; color: var(--brand-red); text-transform: uppercase; letter-spacing: 0.5px; }
-
         /* --- 7. PROCESS STRIP --- */
         .process-section { background: white; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0; padding: 60px 0; margin-bottom: 60px; }
         .process-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; text-align: center; }
@@ -419,3 +453,4 @@
     </script>
 </body>
 </html>
+
