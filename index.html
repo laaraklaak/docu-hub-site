@@ -35,15 +35,20 @@
         .header-logo span { color: var(--brand-red); }
         
         .search-container { flex: 1; position: relative; max-width: 400px; }
-        .search-input { width: 100%; padding: 12px 15px 12px 40px; border-radius: 50px; border: 1px solid #E2E8F0; background: #F8FAFC; outline: none; transition: 0.3s; font-size: 16px; /* Prevents zoom on iOS */ }
+        .search-input { width: 100%; padding: 12px 15px 12px 40px; border-radius: 50px; border: 1px solid #E2E8F0; background: #F8FAFC; outline: none; transition: 0.3s; font-size: 16px; }
         .search-input:focus { background: white; border-color: var(--navy-deep); }
         .search-icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94A3B8; }
 
         /* --- 4. HERO SECTION --- */
         .hero-section {
             position: relative;
-            background: linear-gradient(to right, var(--navy-deep) 40%, rgba(2, 16, 36, 0.6)), url('asset/hero.png');
-            background-size: cover; background-position: center; color: white;
+            /* FIXED: Changed 'asset' to 'assets' to match your logo folder */
+            background: linear-gradient(to right, var(--navy-deep) 40%, rgba(2, 16, 36, 0.6)), url('assets/hero.png');
+            /* Fallback color if image fails */
+            background-color: var(--navy-deep); 
+            background-size: cover; 
+            background-position: center; 
+            color: white;
             min-height: 400px; display: flex; align-items: center; margin-bottom: 40px;
         }
         .hero-content { max-width: 600px; padding: 40px 0; }
@@ -60,7 +65,7 @@
             -ms-overflow-style: none; 
             scrollbar-width: none; 
             padding-bottom: 5px; 
-            -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+            -webkit-overflow-scrolling: touch; 
         }
         .tabs-container::-webkit-scrollbar { display: none; }
         .tab-pill { display: inline-block; padding: 10px 25px; margin-right: 10px; background: white; color: var(--text-light); border-radius: 50px; font-size: 0.9rem; font-weight: 600; border: 1px solid #E2E8F0; transition: 0.2s; cursor: pointer; }
@@ -68,13 +73,9 @@
 
         /* --- 6. CARD GRID (Responsive) --- */
         .card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-bottom: 60px; }
+        @media (max-width: 1024px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
         
-        /* Tablet Breakpoint */
-        @media (max-width: 1024px) { 
-            .card-grid { grid-template-columns: repeat(3, 1fr); } 
-        }
-        
-        /* Mobile Breakpoint - Stacked Cards */
+        /* Mobile Stack */
         @media (max-width: 768px) { 
             .card-grid { grid-template-columns: 1fr; gap: 20px; } 
             .hero-section { min-height: 350px; text-align: left; }
@@ -82,7 +83,7 @@
             .process-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
             .footer-grid { grid-template-columns: 1fr !important; text-align: center; }
             .blog-grid { grid-template-columns: 1fr !important; }
-            .sticky-sidebar { display: none; } /* Hide sidebar on mobile, use bottom bar */
+            .sticky-sidebar { display: none; } 
             .mobile-bar { display: flex !important; }
         }
         
@@ -108,7 +109,7 @@
         .footer-link:hover { color: var(--brand-red); padding-left: 5px; }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 50px; padding-top: 25px; text-align: center; font-size: 0.8rem; }
 
-        /* --- 9. DETAIL PAGE (Double Column Blog Layout) --- */
+        /* --- 9. DETAIL PAGE --- */
         .page-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-overlay); z-index: 2000; transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); overflow-y: auto; }
         .page-overlay.open { transform: translateX(0); }
         .page-nav { background: var(--white); border-bottom: 1px solid #E2E8F0; position: sticky; top: 0; z-index: 10; }
@@ -132,11 +133,11 @@
 
         .mobile-bar { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 15px 20px; border-top: 1px solid #E2E8F0; box-shadow: 0 -5px 20px rgba(0,0,0,0.05); z-index: 2050; justify-content: space-between; align-items: center; }
 
-        /* --- 10. WIZARD (With Honey Pot) --- */
+        /* --- 10. WIZARD --- */
         .wizard-overlay { background: white; }
         .wiz-layout { max-width: 600px; margin: 40px auto; padding: 0 20px; }
         .wiz-input { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #E2E8F0; border-radius: 8px; background: #F8FAFC; font-size: 1rem; }
-        .hp-field { display: none !important; visibility: hidden; } /* The Trap */
+        .hp-field { display: none !important; visibility: hidden; }
 
     </style>
 </head>
@@ -175,7 +176,7 @@
         <div id="service-grid" class="card-grid"></div>
     </div>
 
-    <div class="process-section">
+    <div class="process-section" id="process-strip">
         <div class="container">
             <div class="process-grid">
                 <div><div class="p-icon-circle"><i class="fa-solid fa-file-circle-check"></i></div><div class="p-title">1. We Audit</div><div class="p-desc">Zero-Rejection pre-vetting of all your documents.</div></div>
@@ -250,8 +251,8 @@
                     tips: "Do not scan a printed photo. You must ask your photographer for the digital file. If your passport has water damage, select the 'Damaged Passport' service.",
                     process: ["Intake Audit", "PICA Submission", "Tracking & Updates"]
                 },
-                { title: "New Adult / Name", desc: "First time or marriage change.", fees: "$3,500", govt_fee: "$6,500", icon: "fa-user-pen", time: "7-14 Days", intro: "First-time applications require an interview. We prepare your entire legal packet so you walk in ready.", reqs: ["Birth Cert", "Valid ID", "Marriage Cert", "2 Photos"], process: ["Packet Prep", "Interview Booking", "JP Guidance"] },
-                { title: "Child Application", desc: "Minors under 18.", fees: "$3,000", govt_fee: "$4,000", icon: "fa-child", time: "7-14 Days", intro: "We navigate the complex parent consent forms for you.", reqs: ["Birth Cert", "Parent ID", "Section C Form"] },
+                { title: "New Adult / Name", desc: "First time or marriage change.", fees: "$3,500", govt_fee: "$6,500", icon: "fa-user-pen", time: "6-8 Weeks", intro: "First-time applications require an interview. We prepare your entire legal packet so you walk in ready.", reqs: ["Birth Cert", "Valid ID", "Marriage Cert", "2 Photos"], process: ["Packet Prep", "Interview Booking", "JP Guidance"] },
+                { title: "Child Application", desc: "Minors under 18.", fees: "$3,000", govt_fee: "$4,000", icon: "fa-child", time: "6-8 Weeks", intro: "We navigate the complex parent consent forms for you.", reqs: ["Birth Cert", "Parent ID", "Section C Form"] },
                 { title: "Lost Passport", desc: "Affidavit & Replacement.", fees: "$7,500", govt_fee: "$11,500", icon: "fa-shield-halved", time: "Variable", intro: "Lost your passport? We draft the legal affidavit and manage the police report process.", reqs: ["Police Report", "Birth Cert"] }
             ],
             'foreign-passports': [
@@ -290,6 +291,15 @@
         function filterCategory(cat, el) {
             document.querySelectorAll('.tab-pill').forEach(t => t.classList.remove('active'));
             if(el) el.classList.add('active');
+            
+            // TOGGLE PROCESS STRIP: Only show on 'featured'
+            const processStrip = document.getElementById('process-strip');
+            if (cat === 'featured') {
+                processStrip.style.display = 'block';
+            } else {
+                processStrip.style.display = 'none';
+            }
+
             const container = document.getElementById('service-grid');
             container.innerHTML = '';
             
@@ -351,7 +361,9 @@
             const btn = document.getElementById('submit-btn');
             const formData = new FormData(e.target);
             
-            // HONEY POT CHECK
+            // ⚠️ PASTE YOUR NEW WEB APP URL HERE
+            const GAS_URL = "https://script.google.com/macros/s/AKfycbzxgherEq6xJo7tdcBdaDNt6MfCaeAORKPkx8vhOo7x7VRF4aFIfQiYebXuslPo2bQZZA/exec"; 
+
             if(formData.get('_website_verify_') !== "") { return; } 
 
             btn.innerText = "Processing..."; btn.disabled = true;
@@ -362,8 +374,6 @@
                 phone: formData.get('phone'),
                 service: activeService.title
             };
-
-            const GAS_URL = "https://script.google.com/macros/s/AKfycbzxgherEq6xJo7tdcBdaDNt6MfCaeAORKPkx8vhOo7x7VRF4aFIfQiYebXuslPo2bQZZA/exec"; 
 
             try {
                 await fetch(GAS_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) });
