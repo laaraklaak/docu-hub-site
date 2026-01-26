@@ -11,7 +11,7 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
+   <style>
         /* --- CORE THEME --- */
         :root {
             --navy-dark: #021024; --navy-light: #0f233a; --accent-blue: #4a6da7; 
@@ -30,7 +30,6 @@
         .logo { font-size: 1.4rem; font-weight: 800; color: var(--navy-dark); text-transform: uppercase; cursor: pointer; }
         .logo span { color: var(--accent-blue); }
         
-        /* Contact Button */
         .nav-btn-contact {
             background-color: var(--navy-dark); color: white; padding: 10px 25px; border-radius: 4px;
             text-decoration: none; font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
@@ -38,33 +37,32 @@
         }
         .nav-btn-contact:hover { background-color: white; color: var(--navy-dark); border-color: var(--navy-dark); box-shadow: 0 5px 15px rgba(2, 16, 36, 0.1); }
 
-        /* --- NAVIGATION --- */
+        /* --- NAVIGATION (Desktop) --- */
         .category-nav { background: var(--navy-dark); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .cat-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; flex-wrap: wrap; }
         .cat-item { padding: 18px 25px; color: white; text-transform: uppercase; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: 0.3s; border-bottom: 4px solid transparent; }
         .cat-item:hover, .cat-item.active { background: var(--navy-light); border-bottom-color: var(--gold-main); }
         .cat-item i { margin-right: 8px; color: var(--gold-main); }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO --- */
         .hero-wrapper {
-            background: linear-gradient(to right, rgba(2, 16, 36, 0.95) 20%, rgba(2, 16, 36, 0.6) 100%), url('asset/hero.png');
+            background: linear-gradient(to right, rgba(2, 16, 36, 0.95) 20%, rgba(2, 16, 36, 0.6) 100%), url('assets/hero.png');
             background-size: cover; background-position: center; color: white; padding: 80px 40px 100px; text-align: left; border-radius: 0 0 50% 50% / 30px; margin-bottom: 40px;
         }
         .hero-content { max-width: 600px; }
         .hero-content h1 { color: white; font-size: 1.8rem; margin-bottom: 15px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
         .hero-content p { font-size: 1rem; color: #e2e8f0; margin-bottom: 25px; max-width: 500px; }
         .btn-gold { background: var(--gold-main); color: var(--navy-dark); padding: 12px 30px; font-weight: 800; border: none; border-radius: 4px; text-transform: uppercase; font-size: 0.85rem; transition: 0.3s; cursor: pointer; }
-        .btn-gold:hover { background: var(--gold-hover); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3); }
-
-        /* --- CARDS & GRIDS --- */
+        
+        /* --- GRIDS & CARDS --- */
         .content-area { max-width: 1200px; margin: 0 auto; padding: 20px; flex: 1; width: 100%; }
         
+        /* Desktop Grids */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        #featured-grid { display: grid; gap: 30px; grid-template-columns: repeat(4, 1fr); }
         
-        /* Balanced Featured Grid */
-        #featured-grid { display: grid; gap: 30px; grid-template-columns: 1fr; }
-        @media (min-width: 600px) { #featured-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (min-width: 1100px) { #featured-grid { grid-template-columns: repeat(4, 1fr); } }
+        /* Tablet Adjustments */
+        @media (max-width: 1100px) { #featured-grid { grid-template-columns: repeat(2, 1fr); } }
 
         .service-card { background: white; border-radius: 6px; border: 1px solid #e2e8f0; transition: 0.3s; cursor: pointer; display: flex; flex-direction: column; position: relative; overflow: hidden; height: 100%; }
         .service-card:hover { transform: translateY(-5px); border-color: var(--accent-blue); box-shadow: 0 15px 25px -5px rgba(0,0,0,0.1); }
@@ -80,7 +78,7 @@
         .about-split { display: flex; gap: 50px; align-items: flex-start; }
         .about-text { flex: 1; }
         .about-image { flex: 0 0 350px; position: relative; }
-        .headshot-frame { width: 100%; height: 400px; background-image: url('asset/headshot.png'); background-size: cover; background-position: center; border-radius: 8px; border: 5px solid white; box-shadow: 0 10px 25px rgba(0,0,0,0.15); background-color: #e2e8f0; }
+        .headshot-frame { width: 100%; height: 400px; background-image: url('assets/laura-clarke.jpg'); background-size: cover; background-position: center; border-radius: 8px; border: 5px solid white; box-shadow: 0 10px 25px rgba(0,0,0,0.15); background-color: #e2e8f0; }
         .about-subtitle { color: var(--accent-blue); font-weight: 700; font-size: 1.1rem; margin-bottom: 10px; display: block; text-transform: uppercase; letter-spacing: 1px; }
         .trust-badge { margin-top: 30px; padding: 15px; background: #f8fafc; border-left: 4px solid var(--gold-main); color: var(--navy-dark); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; }
 
@@ -110,104 +108,116 @@
         .footer-link:hover { color: var(--gold-main); padding-left: 5px; }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px; margin-top: 40px; text-align: center; font-size: 0.8rem; color: #64748b; }
 
-        /* ============================
-           MOBILE OPTIMIZATION ENGINE
-           ============================ */
+        /* =========================================
+           MOBILE APP MODE (The Rescue Block)
+           ========================================= */
         @media (max-width: 768px) {
-            /* Fix Header */
+            
+            /* 1. HEADER: Fix padding */
             .top-header { padding: 15px 20px; }
             .logo { font-size: 1.1rem; }
             .nav-btn-contact { padding: 8px 15px; font-size: 0.75rem; }
+
+            /* 2. NAVIGATION: The "2x2 Dashboard" Fix */
+            .cat-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr; /* Force 2 columns */
+                gap: 10px;
+                padding: 10px;
+            }
+            .cat-item {
+                font-size: 0.7rem;
+                padding: 15px;
+                text-align: center;
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 6px;
+                background: rgba(255,255,255,0.05); /* Slight tint for buttons */
+                display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+            }
+            .cat-item i { margin: 0; font-size: 1.2rem; }
+
+            /* 3. HERO: Taller & Centered */
+            .hero-wrapper { padding: 50px 20px; text-align: center; border-radius: 0 0 30px 30px; }
+            .hero-content h1 { font-size: 1.6rem; }
+
+            /* 4. SERVICE LISTINGS: Transform Cards into "Lists" */
+            .services-grid, #featured-grid {
+                grid-template-columns: 1fr !important; /* Force 1 column */
+                gap: 15px;
+            }
             
-            /* Fix Navigation (Swipeable) */
-            .cat-container { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; padding-bottom: 10px; gap: 10px; -webkit-overflow-scrolling: touch; }
-            .cat-item { flex: 0 0 auto; font-size: 0.7rem; padding: 12px 15px; }
-            .cat-container::-webkit-scrollbar { display: none; }
+            /* This transforms the boxy card into a sleek list item */
+            .service-card {
+                display: grid;
+                grid-template-columns: 50px 1fr; /* Icon | Text */
+                align-items: center;
+                padding: 15px;
+                min-height: auto;
+                text-align: left;
+            }
+            .card-body {
+                grid-column: 2;
+                padding: 0;
+                text-align: left;
+            }
+            .card-body h3 { font-size: 1rem; margin-bottom: 4px; }
+            .card-body p { font-size: 0.8rem; margin: 0; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; } /* Limit text lines */
+            .card-body i {
+                grid-column: 1; grid-row: 1 / 3; /* Move icon to left */
+                font-size: 1.5rem; margin: 0;
+                display: flex; align-items: center; justify-content: center;
+            }
+            .card-tag { display: none; } /* Hide tag on mobile list for cleanliness */
+            .card-footer { display: none; } /* Hide footer, the whole row is clickable */
 
-            /* Fix Grids (1 Column) */
-            .services-grid, #featured-grid { grid-template-columns: 1fr !important; gap: 20px; }
-            
-            /* Fix Hero */
-            .hero-wrapper { padding: 60px 20px 80px; text-align: center; border-radius: 0 0 30px 30px; }
-            .hero-content h1 { font-size: 1.5rem; }
+            /* 5. ABOUT SECTION: Stack Vertical */
+            .about-wrapper { padding: 30px 20px; margin-top: 40px; }
+            .about-split { flex-direction: column-reverse; gap: 20px; }
+            .about-image, .headshot-frame { width: 100%; height: 300px; flex: auto; }
 
-            /* Fix About Section */
-            .about-split { flex-direction: column-reverse; gap: 30px; }
-            .about-image, .headshot-frame { width: 100%; height: 350px; flex: auto; }
-            .about-wrapper { padding: 40px 20px; margin-top: 40px; }
-
-            /* Fix Footer */
+            /* 6. FOOTER */
             .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
         }
     </style>
 </head>
 <body>
 
-    <header class="top-header">
-        <div class="logo" onclick="renderHome()">Docu-Hub<span>Operations</span></div>
-        <a href="contact.html" target="_blank" class="nav-btn-contact">
-            <i class="fa-regular fa-envelope"></i> Contact Us
-        </a>
-    </header>
+   <header class="top-header">
+    <div class="logo" onclick="renderHome()">Docu-Hub<span>Operations</span></div>
+    
+    <a href="contact.html" target="_blank" class="nav-btn-contact">
+        <i class="fa-regular fa-envelope"></i> Contact Us
+    </a>
+</header>
 
-    <nav class="category-nav">
-        <div class="cat-container">
-            <div class="cat-item" onclick="renderCategory('jm-passports', this)"><i class="fa-solid fa-passport"></i> JM Passports</div>
-            <div class="cat-item" onclick="renderCategory('foreign-passports', this)"><i class="fa-solid fa-earth-americas"></i> Foreign Passports</div>
-            <div class="cat-item" onclick="renderCategory('license', this)"><i class="fa-solid fa-car"></i> License & Traffic</div>
-            <div class="cat-item" onclick="renderCategory('rgd', this)"><i class="fa-solid fa-scroll"></i> RGD Certificates</div>
-        </div>
-    </nav>
-
-    <main class="content-area">
-
-        <div id="landing-view" class="fade-in">
+<div class="about-wrapper">
+    <div class="about-split">
+        <div class="about-text">
+            <span class="about-subtitle">We Stand in Line So You Don’t Have To</span>
+            <h2 style="margin-bottom: 20px; font-size: 2rem;">About Docu-Hub Operations</h2>
             
-            <div class="hero-wrapper">
-                <div class="hero-content">
-                    <h1>PREMIUM DOCUMENT CONCIERGE</h1>
-                    <p>Professional processing for Passports, Visas, and Civil Documents. We handle the bureaucracy so you don't have to.</p>
-                    <button class="btn-gold" onclick="renderCategory('jm-passports', document.querySelector('.cat-item'))">Start Application</button>
-                </div>
-            </div>
-            
-            <div style="border-left: 4px solid var(--gold-main); padding-left: 15px; margin-bottom: 30px;">
-                <h2 style="margin: 0; font-size: 1.5rem;">Featured Services</h2>
-                <p style="margin:0; color: #64748b; font-size: 0.9rem;">Most requested by our clients</p>
-            </div>
-            <div id="featured-grid"></div>
+            <p style="color: #475569; margin-bottom: 15px;">
+                Welcome to Docu-Hub Operations. We are St. Catherine’s premier Document Concierge Service...
+            </p>
+            <p style="color: #475569; margin-bottom: 25px;">
+                We utilize a "Zero-Rejection" pre-vetting process...
+            </p>
 
-            <div class="about-wrapper">
-                <div class="about-split">
-                    <div class="about-text">
-                        <span class="about-subtitle">We Stand in Line So You Don’t Have To</span>
-                        <h2 style="margin-bottom: 20px; font-size: 2rem;">About Docu-Hub Operations</h2>
-                        
-                        <p style="color: #475569; margin-bottom: 15px;">
-                            Welcome to Docu-Hub Operations. We are St. Catherine’s premier Document Concierge Service, dedicated to one simple mission: <strong>Taking the stress out of your government paperwork.</strong>
-                        </p>
-                        <p style="color: #475569; margin-bottom: 25px;">
-                            We utilize a "Zero-Rejection" pre-vetting process to ensure your documents are perfect before they ever reach the counter.
-                        </p>
+            <a href="about.html" class="btn-gold" style="text-decoration: none; display: inline-block;">
+                Read Our Story
+            </a>
 
-                        <a href="about.html" class="btn-gold" style="text-decoration: none; display: inline-block;">
-                            Read Our Story
-                        </a>
-
-                        <div class="trust-badge">
-                            <i class="fa-solid fa-certificate" style="color: var(--gold-main); margin-right: 10px;"></i>
-                            Proudly serving St. Catherine & The Diaspora since 2026.
-                        </div>
-                    </div>
-
-                    <div class="about-image">
-                        <div class="headshot-frame">
-                            </div>
-                    </div>
-                </div>
+            <div class="trust-badge">
+                <i class="fa-solid fa-certificate" style="color: var(--gold-main); margin-right: 10px;"></i>
+                Proudly serving St. Catherine & The Diaspora since 2026.
             </div>
         </div>
 
+        <div class="about-image">
+            <div class="headshot-frame"></div> 
+        </div>
+    </div>
+</div>
         <div id="grid-view" class="hidden">
             <div style="text-align: center; margin-bottom: 40px;">
                 <h2 id="cat-title" style="margin-bottom: 10px; font-size: 2rem;"></h2>
@@ -633,3 +643,4 @@
     </script>
 </body>
 </html>
+
