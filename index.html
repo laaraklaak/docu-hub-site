@@ -42,10 +42,8 @@
         /* --- 4. HERO SECTION --- */
         .hero-section {
             position: relative;
-            /* FIXED: Changed 'asset' to 'assets' to match your logo folder */
             background: linear-gradient(to right, var(--navy-deep) 40%, rgba(2, 16, 36, 0.6)), url('assets/hero.png');
-            /* Fallback color if image fails */
-            background-color: var(--navy-deep); 
+            background-color: var(--navy-deep); /* Fallback */
             background-size: cover; 
             background-position: center; 
             color: white;
@@ -57,21 +55,36 @@
         .hero-cta { display: inline-block; background: var(--brand-red); color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.2s; }
         .hero-cta:hover { transform: translateY(-2px); }
 
-        /* --- 5. NAVIGATION (Mobile Scrollable) --- */
+        /* --- 5. NAVIGATION (Updated for Scroll Indicator) --- */
         .tabs-wrapper { margin-bottom: 20px; }
+        
         .tabs-container { 
             overflow-x: auto; 
             white-space: nowrap; 
-            -ms-overflow-style: none; 
-            scrollbar-width: none; 
-            padding-bottom: 5px; 
+            padding-bottom: 8px; /* Extra padding for the scrollbar */
             -webkit-overflow-scrolling: touch; 
+            /* Firefox Scrollbar */
+            scrollbar-color: #CBD5E1 transparent;
+            scrollbar-width: thin;
         }
-        .tabs-container::-webkit-scrollbar { display: none; }
+
+        /* CHROME/SAFARI SCROLLBAR STYLING (The "Line Indicator") */
+        .tabs-container::-webkit-scrollbar {
+            height: 4px; /* Thickness of the line */
+            display: block;
+        }
+        .tabs-container::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        .tabs-container::-webkit-scrollbar-thumb {
+            background: #CBD5E1; /* The grey indicator color */
+            border-radius: 10px;
+        }
+
         .tab-pill { display: inline-block; padding: 10px 25px; margin-right: 10px; background: white; color: var(--text-light); border-radius: 50px; font-size: 0.9rem; font-weight: 600; border: 1px solid #E2E8F0; transition: 0.2s; cursor: pointer; }
         .tab-pill.active { background: var(--navy-deep); color: white; border-color: var(--navy-deep); box-shadow: 0 4px 10px rgba(2, 16, 36, 0.2); }
 
-        /* --- 6. CARD GRID (Responsive) --- */
+        /* --- 6. CARD GRID --- */
         .card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-bottom: 60px; }
         @media (max-width: 1024px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
         
@@ -245,7 +258,7 @@
                 { 
                     title: "Adult Renewal", 
                     desc: "Simplified renewal for expired machine-readable passports.", 
-                    fees: "$10,000", govt_fee: "Inclusive", icon: "fa-passport", time: "7-14 Days", 
+                    fees: "$10,000", govt_fee: "Inclusive", icon: "fa-passport", time: "4-6 Weeks", 
                     intro: "We handle the full digital processing, photo vetting, and tracking so you avoid the 'bounce back' from PICA.",
                     reqs: ["Old Passport Bio-Page (No glare)", "Digital Studio Photo (Soft Copy)", "2 Emergency Contacts"],
                     tips: "Do not scan a printed photo. You must ask your photographer for the digital file. If your passport has water damage, select the 'Damaged Passport' service.",
@@ -292,7 +305,7 @@
             document.querySelectorAll('.tab-pill').forEach(t => t.classList.remove('active'));
             if(el) el.classList.add('active');
             
-            // TOGGLE PROCESS STRIP: Only show on 'featured'
+            // LOGIC TO HIDE/SHOW PROCESS STRIP
             const processStrip = document.getElementById('process-strip');
             if (cat === 'featured') {
                 processStrip.style.display = 'block';
