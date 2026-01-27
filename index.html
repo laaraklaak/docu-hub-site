@@ -166,12 +166,67 @@
         .card-body { padding: 20px; text-align: center; display: flex; flex-direction: column; flex: 1; }
         .card-title { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--navy-deep); line-height: 1.4; }
         .card-link { margin-top: auto; font-size: 0.8rem; font-weight: 700; color: var(--brand-red); text-transform: uppercase; letter-spacing: 0.5px; }
-        /* --- 7. PROCESS STRIP --- */
-        .process-section { background: white; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0; padding: 60px 0; margin-bottom: 60px; }
-        .process-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; text-align: center; }
-        .p-icon-circle { width: 70px; height: 70px; background: #F1F5F9; color: var(--navy-deep); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 15px; }
-        .p-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 5px; color: var(--navy-deep); }
-        .p-desc { font-size: 0.9rem; color: var(--text-light); }
+        
+     /* --- 7. PROCESS STRIP (UPDATED: Platinum/Silver Look) --- */
+        .process-section { 
+            /* Light Silver Background to separate from White Cards AND Navy Footer */
+            background: #F1F5F9; 
+            padding: 70px 0; 
+            
+            /* Sharp borders to define the edges */
+            border-top: 1px solid #E2E8F0; 
+            
+            /* A thick RED line at the bottom to introduce the footer */
+            border-bottom: 5px solid var(--brand-red); 
+        }
+
+        .process-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr 1fr; 
+            gap: 40px; 
+            text-align: center; 
+        }
+
+        .p-icon-circle { 
+            width: 80px; 
+            height: 80px; 
+            /* White circle makes it POP off the silver background */
+            background: white; 
+            color: var(--brand-red); /* Red Icon */
+            
+            border-radius: 50%; 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 2rem; 
+            margin-bottom: 20px;
+            
+            /* A strong shadow to make it look 3D */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05), 0 10px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* Hover: Icon circle lifts up */
+        .process-section:hover .p-icon-circle {
+            transform: translateY(-5px);
+            color: var(--navy-deep); /* Icon turns Navy on hover */
+        }
+
+        .p-title { 
+            font-weight: 800; 
+            font-size: 1.2rem; 
+            margin-bottom: 10px; 
+            color: var(--navy-deep); /* Dark Navy Text for contrast */
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .p-desc { 
+            font-size: 0.95rem; 
+            color: #64748B; /* Medium Grey for text */
+            line-height: 1.6;
+            max-width: 260px;
+            margin: 0 auto;
+        }
 
         /* --- 8. FOOTER --- */
         .main-footer { background: var(--navy-deep); color: #94A3B8; padding: 60px 0 40px; font-size: 0.9rem; }
@@ -495,6 +550,7 @@
     </script>
 </body>
 </html>
+
 
 
 
