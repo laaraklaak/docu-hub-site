@@ -288,23 +288,43 @@
                 notes: combinedNotes
             };
 
-            google.script.run
-                .withSuccessHandler(() => {
-                    btn.innerText = "Success!";
-                    setTimeout(() => {
-                        alert("RGD Request Received! Check your email.");
+            // --- NEW REPLACEMENT CODE ---
+            
+            // Send data to Google Sheets
+            fetch(SCRIPT_URL, {
+                method: "POST",
+                mode: "no-cors", // Crucial for Google Scripts
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData)
+            })
+            .then(data => {
+                // SUCCESS!
+                btn.innerText = "✅ Success!";
+                setTimeout(() => {
+                    alert("Application Received! We will contact you shortly.");
+                    
+                    // Note: Ensure this function name matches what you have defined above 
+                    // (e.g. closeIntake() or closePublicIntake())
+                    if(typeof closePublicIntake === 'function') { 
+                        closePublicIntake(); 
+                    } else if(typeof closeIntake === 'function') {
                         closeIntake();
-                        form.reset();
-                        btn.innerText = originalText; btn.disabled = false;
-                    }, 500);
-                })
-                .withFailureHandler(err => {
-                    alert("Error: " + err.message);
-                    btn.innerText = originalText; btn.disabled = false;
-                })
-                .processIntake(formData, "WEBSITE");
-        }
+                    }
+                    
+                    form.reset(); 
+                    btn.innerText = originalText; 
+                    btn.disabled = false;
+                }, 500);
+            })
+            .catch(error => {
+                // ERROR
+                console.error("Error:", error);
+                alert("Connection Error. Please message us on WhatsApp.");
+                btn.innerText = originalText; 
+                btn.disabled = false;
+            });
     </script>
 </body>
 
 </html>
+
