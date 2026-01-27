@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGD Registry Services | Docu-Hub Operations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- GLOBAL VARIABLES --- */
+        :root {
+            --teal: #0D9488; --navy: #0F172A; --slate: #475569;
+            --light-bg: #F0FDFA; --red: #D32F2F; --white: #FFFFFF;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08); --radius: 12px;
+        }
+        body { margin: 0; font-family: 'Inter', sans-serif; color: var(--navy); background-color: var(--white); line-height: 1.6; }
+
+        /* HERO */
+        .hub-hero {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover; background-position: center;
+            height: 350px; display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        /* 1. SERVICE CARDS */
+        .selector-section { transform: translateY(-50px); }
+        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        
+        .service-card {
+            background: white; padding: 30px 20px; border-radius: var(--radius);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); text-align: center;
+            cursor: pointer; transition: 0.3s; border-bottom: 4px solid transparent;
+        }
+        .service-card:hover { transform: translateY(-10px); border-bottom-color: var(--teal); }
+        .card-icon { font-size: 2rem; color: var(--teal); margin-bottom: 15px; }
+        .card-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 10px; }
+
+        /* 2. THE FULL HUNDRED (General Info) */
+        .general-section { padding: 40px 0 80px 0; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        
+        .detail-box { 
+            background: var(--light-bg); padding: 30px; border-radius: var(--radius); 
+            border-left: 5px solid var(--teal); 
+        }
+        
+        .price-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .price-table td { padding: 12px 0; border-bottom: 1px solid #CCFBF1; color: var(--slate); font-size: 0.95rem; }
+        .price-table tr:last-child td { border-bottom: none; }
+        .price-val { font-weight: 700; text-align: right; color: var(--navy); }
+
+        .warning-box {
+            margin-top: 40px; background: #FEF2F2; padding: 20px; 
+            border-radius: 8px; border: 1px solid #FECACA; text-align: center;
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(5px);
+            display: none; justify-content: center; align-items: center; z-index: 2000;
+        }
+        .detail-modal {
+            background: white; width: 500px; max-width: 95%; max-height: 90vh;
+            border-radius: 16px; overflow-y: auto; animation: slideUp 0.3s;
+        }
+        .modal-header { background: var(--teal); color: white; padding: 25px; position: relative; }
+        .modal-body { padding: 30px; }
+        .close-btn { position: absolute; top: 20px; right: 20px; cursor: pointer; font-size: 1.5rem; }
+        
+        .action-btn {
+            background: var(--teal); color: white; width: 100%; padding: 15px;
+            border: none; border-radius: 8px; font-weight: 700; font-size: 1rem;
+            cursor: pointer; margin-top: 20px; transition: 0.2s;
+        }
+        .action-btn:hover { background: #0F766E; }
+
+        /* FORM STYLES */
+        .form-label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 5px; color: var(--slate); }
+        .form-input { width: 100%; padding: 10px; border: 1px solid #CBD5E1; border-radius: 6px; box-sizing: border-box; font-size: 1rem; }
+        .hp-field { opacity: 0; position: absolute; z-index: -1; }
+
+        @media(max-width: 768px) { .info-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <div class="hub-hero">
+        <div class="container">
+            <h1 style="font-size:2.5rem; margin-bottom:10px;">RGD Registry Services</h1>
+            <p style="font-size:1.1rem; opacity:0.9;">Birth. Marriage. Death. Secured & Delivered.</p>
+        </div>
+    </div>
+
+    <div class="selector-section">
+        <div class="container">
+            <div class="grid-4">
+                <div class="service-card" onclick="openIntake('Birth Certificate')">
+                    <div class="card-icon"><i class="fa-solid fa-baby"></i></div>
+                    <div class="card-title">Birth Certificate</div>
+                    <div style="font-size:0.9rem; color:#64748B;">For Passports & ID</div>
+                </div>
+                <div class="service-card" onclick="openIntake('Marriage Certificate')">
+                    <div class="card-icon"><i class="fa-solid fa-rings-wedding"></i></div>
+                    <div class="card-title">Marriage Certificate</div>
+                    <div style="font-size:0.9rem; color:#64748B;">For Visas & Name Change</div>
+                </div>
+                <div class="service-card" onclick="openIntake('Death Certificate')">
+                    <div class="card-icon"><i class="fa-solid fa-ribbon"></i></div>
+                    <div class="card-title">Death Certificate</div>
+                    <div style="font-size:0.9rem; color:#64748B;">For Insurance & Probate</div>
+                </div>
+                <div class="service-card" onclick="openIntake('Record Update')">
+                    <div class="card-icon"><i class="fa-solid fa-pen-to-square"></i></div>
+                    <div class="card-title">Record Updating</div>
+                    <div style="font-size:0.9rem; color:#64748B;">Late Entry & Corrections</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="general-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Universal Standards</h2>
+                <p style="color:var(--slate);">Everything you need to know about timelines, costs, and search rules.</p>
+            </div>
+            
+            <div class="info-grid">
+                <div class="detail-box">
+                    <h3 style="margin-top:0;"><i class="fa-solid fa-wallet"></i> Fees & Timelines</h3>
+                    <table class="price-table">
+                        <tr>
+                            <td><strong>Regular Service</strong> (6-8 Weeks)</td>
+                            <td class="price-val">$3,500 JMD</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Express Service</strong> (7-10 Days)</td>
+                            <td class="price-val">$5,000 JMD</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Search Fee</strong> (Non-Refundable)</td>
+                            <td class="price-val">Included</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Islandwide Courier</strong></td>
+                            <td class="price-val">+$1,500 JMD</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="detail-box" style="border-left-color:var(--navy);">
+                    <h3 style="margin-top:0;"><i class="fa-solid fa-magnifying-glass"></i> Search Requirements</h3>
+                    <p style="font-size:0.9rem; color:var(--slate); margin-bottom:15px;">
+                        To successfully find a record, the RGD database requires exact matches. Please have the following ready:
+                    </p>
+                    <ul style="padding-left:20px; color:var(--slate); font-size:0.9rem; line-height:1.8;">
+                        <li><strong>Correct Spelling:</strong> Names must match the original register.</li>
+                        <li><strong>Parish of Event:</strong> Where the birth/death physically occurred.</li>
+                        <li><strong>Date of Event:</strong> Year is critical for the search index.</li>
+                        <li><strong>Entry Number:</strong> (Optional) Helps speed up the process.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="warning-box">
+                <h4 style="margin:0 0 10px 0; color:#991B1B;"><i class="fa-solid fa-triangle-exclamation"></i> Critical Policy</h4>
+                <p style="margin:0; color:#7F1D1D; font-size:0.95rem;">
+                    RGD Search Fees are <strong>non-refundable</strong>. If a record cannot be found due to incorrect information provided (e.g., wrong parish or year), the search fee is retained by the agency. Please double-check your dates.
+                </p>
+            </div>
+            
+            <div style="text-align:center; margin-top:40px;">
+                <button onclick="openIntake('Birth Certificate')" class="action-btn" style="width:auto; padding:15px 40px; background:var(--navy);">
+                    Start Application Now <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="intakeModal">
+        <div class="detail-modal">
+            <div class="modal-header">
+                <span class="close-btn" onclick="closeIntake()">&times;</span>
+                <h3 style="margin:0;">RGD Application Form</h3>
+            </div>
+            <div class="modal-body">
+                <form id="publicForm" onsubmit="submitToBackend(event)">
+                    
+                    <input type="text" name="website_url" id="hp-check" class="hp-field">
+
+                    <div style="margin-bottom:20px;">
+                        <label class="form-label">SERVICE TYPE</label>
+                        <select id="service-select" name="service" class="form-input" style="background:#F0FDFA; font-weight:700; color:#0F766E;">
+                            <option value="Birth Certificate">Birth Certificate</option>
+                            <option value="Marriage Certificate">Marriage Certificate</option>
+                            <option value="Death Certificate">Death Certificate</option>
+                            <option value="Record Update">Record Updating / Correction</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-bottom:20px;">
+                        <label class="form-label">TIMELINE & FEE</label>
+                        <select name="timeline" class="form-input" style="font-weight:600;">
+                            <option value="Regular ($3,500)">Regular Service - $3,500 JMD (6-8 Weeks)</option>
+                            <option value="Express ($5,000)">Express Service - $5,000 JMD (7-10 Days)</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-bottom:15px;">
+                        <label class="form-label">FULL NAME</label>
+                        <input type="text" name="full_name" class="form-input" required>
+                    </div>
+                    
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom:15px;">
+                        <div>
+                            <label class="form-label">PHONE</label>
+                            <input type="tel" name="phone" class="form-input" required>
+                        </div>
+                        <div>
+                            <label class="form-label">EMAIL</label>
+                            <input type="email" name="email" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom:15px;">
+                        <label class="form-label">NOTES / KNOWN DETAILS</label>
+                        <textarea name="notes" class="form-input" rows="3" placeholder="E.g. Date of birth: Jan 1 1990, Parish: St. Catherine..."></textarea>
+                    </div>
+
+                    <button type="submit" id="btn-submit" class="action-btn">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // OPEN MODAL WITH PRE-SELECTION
+        function openIntake(preSelectedService) {
+            const select = document.getElementById('service-select');
+            
+            // Loop through options to find the match and select it
+            for(let i = 0; i < select.options.length; i++) {
+                if(select.options[i].value === preSelectedService) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+            document.getElementById('intakeModal').style.display = 'flex';
+        }
+
+        function closeIntake() {
+            document.getElementById('intakeModal').style.display = 'none';
+        }
+
+        function submitToBackend(e) {
+            e.preventDefault();
+            
+            // HONEYPOT CHECK
+            if(document.getElementById('hp-check').value !== "") return;
+
+            const btn = document.getElementById('btn-submit');
+            const form = document.getElementById('publicForm');
+            const originalText = btn.innerText;
+            btn.innerText = "Processing..."; btn.disabled = true;
+
+            const fullName = form.full_name.value.split(" ");
+            const fName = fullName[0];
+            const lName = fullName.slice(1).join(" ") || ".";
+
+            // CAPTURE TIMELINE CHOICE
+            const timelineChoice = form.timeline.value;
+
+            // COMBINE TIMELINE INTO NOTES
+            const combinedNotes = `[${timelineChoice}] ` + (form.notes.value || "RGD Web Request");
+
+            const formData = {
+                firstName: fName,
+                lastName: lName,
+                phone: form.phone.value,
+                email: form.email.value,
+                service: form.service.value, // Taken from Dropdown
+                notes: combinedNotes
+            };
+
+            google.script.run
+                .withSuccessHandler(() => {
+                    btn.innerText = "Success!";
+                    setTimeout(() => {
+                        alert("RGD Request Received! Check your email.");
+                        closeIntake();
+                        form.reset();
+                        btn.innerText = originalText; btn.disabled = false;
+                    }, 500);
+                })
+                .withFailureHandler(err => {
+                    alert("Error: " + err.message);
+                    btn.innerText = originalText; btn.disabled = false;
+                })
+                .processIntake(formData, "WEBSITE");
+        }
+    </script>
+</body>
+</html>

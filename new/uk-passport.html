@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UK Passport Renewal | Docu-Hub Operations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- GLOBAL VARIABLES --- */
+        :root {
+            --navy: #0F172A; --slate: #475569; --light-bg: #F8FAFC;
+            --red: #D32F2F; --white: #FFFFFF;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08); --radius: 12px;
+        }
+
+        body { margin: 0; font-family: 'Inter', sans-serif; color: var(--navy); background-color: var(--white); line-height: 1.6; }
+
+        /* HERO - UK SPECIFIC IMAGE */
+        .service-hero {
+            width: 100%; height: 400px; 
+            background-image: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.4)), url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80'); 
+            background-size: cover; background-position: center;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* INTRO */
+        .intro-section { padding: 80px 0; text-align: center; max-width: 800px; margin: 0 auto; }
+        .service-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; color: var(--navy); }
+        .service-desc { font-size: 1.1rem; color: var(--slate); margin-bottom: 40px; }
+        
+        .cta-btn {
+            background-color: var(--red); color: white; padding: 16px 32px;
+            font-size: 1rem; font-weight: 600; border-radius: 50px; border: none;
+            cursor: pointer; transition: transform 0.2s; display: inline-block;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+        }
+        .cta-btn:hover { transform: translateY(-3px); }
+
+        /* PROCESS CARDS */
+        .process-section { background-color: var(--light-bg); padding: 80px 0; }
+        .section-heading { text-align: center; font-size: 1.8rem; font-weight: 700; margin-bottom: 50px; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .process-card {
+            background: var(--white); padding: 40px 30px; border-radius: var(--radius);
+            box-shadow: var(--shadow); text-align: center; transition: transform 0.3s;
+        }
+        .process-card:hover { transform: translateY(-5px); }
+        
+        .icon-box {
+            width: 60px; height: 60px; background-color: #E2E8F0; color: var(--navy);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; margin: 0 auto 20px auto;
+        }
+
+        /* REQUIREMENTS */
+        .req-section { padding: 80px 0; }
+        .req-container { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+        .req-list { list-style: none; padding: 0; margin: 0; }
+        .req-list li {
+            padding: 15px 0; border-bottom: 1px solid #E2E8F0;
+            display: flex; align-items: flex-start; gap: 15px; color: var(--slate);
+        }
+        .req-list li i { color: var(--red); margin-top: 5px; }
+
+        /* FEES */
+        .fees-section { background-color: var(--navy); color: white; padding: 80px 0; }
+        .fee-card {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px; border-radius: var(--radius); max-width: 800px; margin: 0 auto;
+        }
+        .fee-row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .fee-row:last-child { border-bottom: none; }
+        .fee-label { font-weight: 400; color: #CBD5E1; }
+        .fee-val { font-weight: 700; font-size: 1.1rem; }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(4px);
+            display: none; justify-content: center; align-items: center; z-index: 1000;
+        }
+        .modal-box {
+            background: white; width: 450px; max-width: 90%; padding: 40px;
+            border-radius: 16px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            position: relative; animation: slideUp 0.3s ease-out;
+        }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #94A3B8; }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; font-size: 0.85rem; font-weight: 700; color: #475569; margin-bottom: 8px; text-transform: uppercase; }
+        .form-input { width: 100%; padding: 12px; border: 1px solid #E2E8F0; border-radius: 8px; font-size: 1rem; box-sizing: border-box; }
+        .submit-btn {
+            width: 100%; background-color: #0F172A; color: white; padding: 15px;
+            border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer;
+        }
+        .hp-field { opacity: 0; position: absolute; z-index: -1; }
+
+        @media (max-width: 768px) {
+            .req-container { grid-template-columns: 1fr; }
+            .service-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="service-hero"></div>
+
+    <div class="intro-section">
+        <div class="container">
+            <h1 class="service-title">UK Adult Passport Renewal</h1>
+            <p class="service-desc">
+                Renewing your British passport from Jamaica shouldn't be a gamble. 
+                We handle the complex HMPO digital requirements, photo compliance, 
+                and secure courier logistics so you can travel without fear of rejection.
+            </p>
+            <button onclick="openPublicIntake('UK Adult Passport Renewal')" class="cta-btn">Start My Renewal</button>
+        </div>
+    </div>
+
+    <div class="process-section">
+        <div class="container">
+            <h2 class="section-heading">How We Handle It</h2>
+            <div class="cards-grid">
+                <div class="process-card">
+                    <div class="icon-box"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <h3>1. Pre-Check</h3>
+                    <p>We review your old passport and documents to identify any name changes or damage issues before we begin.</p>
+                </div>
+                <div class="process-card">
+                    <div class="icon-box"><i class="fa-solid fa-camera"></i></div>
+                    <h3>2. Digital Compliance</h3>
+                    <p>We take and validate your photo against HMPO biometric standards and secure your countersignatory if required.</p>
+                </div>
+                <div class="process-card">
+                    <div class="icon-box"><i class="fa-solid fa-plane-departure"></i></div>
+                    <h3>3. Secure Logistics</h3>
+                    <p>We ship your originals via tracked courier and monitor the application until the new passport lands in your hand.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="req-section">
+        <div class="container">
+            <h2 class="section-heading">Requirements for Success</h2>
+            <div class="req-container">
+                <div>
+                    <h3 style="margin-bottom:20px;">Primary Documents</h3>
+                    <ul class="req-list">
+                        <li><i class="fa-solid fa-check"></i> <strong>Current UK Passport:</strong> Must be the original booklet.</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Digital Photo Code:</strong> We generate this in-office.</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Other Passports:</strong> Any uncancelled Jamaican passports.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="margin-bottom:20px;">Support & Eligibility</h3>
+                    <ul class="req-list">
+                        <li><i class="fa-solid fa-check"></i> <strong>Marriage Certificate:</strong> Required if name changed.</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Proof of Address:</strong> Recent utility bill.</li>
+                        <li><i class="fa-solid fa-shirt"></i> <strong>Color of Shirt:</strong> Plain grey or dark shirt only.</li>
+                        <li><i class="fa-solid fa-glasses"></i> <strong>No Glasses:</strong> Must be removed for photo.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fees-section">
+        <div class="container">
+            <h2 class="section-heading" style="color:white;">Investment & Timelines</h2>
+            <div class="fee-card">
+                <div class="fee-row"><span class="fee-label">Processing Time</span><span class="fee-val">4 - 6 Weeks</span></div>
+                <div class="fee-row"><span class="fee-label">HMPO Government Fee</span><span class="fee-val">£105.86</span></div>
+                <div class="fee-row"><span class="fee-label">Docu-Hub Agency Fee</span><span class="fee-val">$6,500 JMD</span></div>
+                <div class="fee-row"><span class="fee-label">Secure Courier Return</span><span class="fee-val">Included</span></div>
+                <div style="margin-top:30px; text-align:center;">
+                    <button onclick="openPublicIntake('UK Adult Passport Renewal')" class="cta-btn" style="background:white; color:var(--navy);">Book Appointment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="publicIntakeModal">
+        <div class="modal-box">
+            <span class="close-modal" onclick="closePublicIntake()">&times;</span>
+            <h2 style="margin-top:0; color:#0F172A;">Start Application</h2>
+            <p style="color:#64748B; font-size:0.9rem; margin-bottom:25px;">
+                Service: <strong id="display-service-name" style="color:#D32F2F;">Service Name</strong>
+            </p>
+            <form id="publicForm" onsubmit="submitToBackend(event)">
+                <input type="hidden" id="p-service" name="service">
+                <input type="text" name="website_url" id="hp-check" class="hp-field" tabindex="-1" autocomplete="off">
+                <div class="form-group">
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                        <div><label class="form-label">First Name</label><input type="text" name="first_name" class="form-input" required></div>
+                        <div><label class="form-label">Last Name</label><input type="text" name="last_name" class="form-input" required></div>
+                    </div>
+                </div>
+                <div class="form-group"><label class="form-label">Phone (WhatsApp)</label><input type="tel" name="phone" class="form-input" placeholder="876-..." required></div>
+                <div class="form-group"><label class="form-label">Email Address</label><input type="email" name="email" class="form-input" placeholder="you@email.com" required></div>
+                <button type="submit" id="btn-submit-public" class="submit-btn">Submit Application</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function openPublicIntake(serviceName) {
+            document.getElementById('publicIntakeModal').style.display = 'flex';
+            document.getElementById('display-service-name').innerText = serviceName;
+            document.getElementById('p-service').value = serviceName;
+        }
+        function closePublicIntake() { document.getElementById('publicIntakeModal').style.display = 'none'; }
+        function submitToBackend(e) {
+            e.preventDefault(); 
+            const honeyPotValue = document.getElementById('hp-check').value;
+            if (honeyPotValue !== "") { closePublicIntake(); return; }
+            const btn = document.getElementById('btn-submit-public');
+            const form = document.getElementById('publicForm');
+            const originalText = btn.innerText;
+            btn.innerText = "Processing..."; btn.disabled = true;
+            const formData = {
+                firstName: form.first_name.value, lastName: form.last_name.value,
+                phone: form.phone.value, email: form.email.value,
+                service: form.service.value, notes: "Submitted via Website Service Page"
+            };
+            google.script.run
+                .withSuccessHandler(function(response) {
+                    btn.innerText = "✅ Success!";
+                    setTimeout(() => {
+                        alert("Application Received! Check your email for confirmation.");
+                        closePublicIntake(); form.reset(); btn.innerText = originalText; btn.disabled = false;
+                    }, 500);
+                })
+                .withFailureHandler(function(error) {
+                    alert("Error: " + error.message);
+                    btn.innerText = originalText; btn.disabled = false;
+                })
+                .processIntake(formData, "WEBSITE");
+        }
+    </script>
+</body>
+</html>

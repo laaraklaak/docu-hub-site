@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jamaican Passport Services | Docu-Hub Operations Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- GLOBAL VARIABLES --- */
+        :root {
+            --navy: #0F172A; --slate: #475569; --light-bg: #F8FAFC;
+            --red: #D32F2F; --white: #FFFFFF; --gold: #F59E0B;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08); --radius: 12px;
+        }
+        body { margin: 0; font-family: 'Inter', sans-serif; color: var(--navy); background-color: var(--white); line-height: 1.6; }
+
+        /* HERO SECTION */
+        .hub-hero {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1548625361-98774ba9dc75?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover; background-position: center;
+            height: 350px; display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        /* 1. SERVICE SELECTOR CARDS */
+        .selector-section { transform: translateY(-50px); }
+        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        
+        .service-card {
+            background: white; padding: 30px 20px; border-radius: var(--radius);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); text-align: center;
+            cursor: pointer; transition: 0.3s; border-bottom: 4px solid transparent;
+        }
+        .service-card:hover { transform: translateY(-10px); border-bottom-color: var(--gold); }
+        
+        .card-icon { font-size: 2rem; color: var(--navy); margin-bottom: 15px; }
+        .card-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 10px; }
+        .card-sub { font-size: 0.9rem; color: var(--slate); }
+
+        /* 2. GENERAL INFO SECTION (Commonalities) */
+        .general-section { padding: 40px 0 80px 0; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 2rem; margin-bottom: 10px; }
+        
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .info-box { background: var(--light-bg); padding: 30px; border-radius: var(--radius); }
+        .info-list { list-style: none; padding: 0; }
+        .info-list li { margin-bottom: 15px; display: flex; gap: 10px; color: var(--slate); }
+        .info-list i { color: var(--red); margin-top: 5px; }
+
+        /* MODAL (Specifics) */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(5px);
+            display: none; justify-content: center; align-items: center; z-index: 2000;
+        }
+        .detail-modal {
+            background: white; width: 600px; max-width: 95%; max-height: 90vh;
+            border-radius: 16px; overflow-y: auto; animation: slideUp 0.3s;
+        }
+        .modal-header { background: var(--navy); color: white; padding: 25px; position: relative; }
+        .modal-body { padding: 30px; }
+        .close-btn { position: absolute; top: 20px; right: 20px; cursor: pointer; font-size: 1.5rem; }
+        
+        .req-tag { background: #FEF3C7; color: #92400E; padding: 5px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-bottom: 15px; display: inline-block; }
+        
+        .action-btn {
+            background: var(--red); color: white; width: 100%; padding: 15px;
+            border: none; border-radius: 8px; font-weight: 700; font-size: 1rem;
+            cursor: pointer; margin-top: 20px;
+        }
+
+        /* HONEYPOT */
+        .hp-field { opacity: 0; position: absolute; z-index: -1; }
+
+        @media(max-width: 768px) { .info-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <div class="hub-hero">
+        <div class="container">
+            <h1 style="font-size:2.5rem; margin-bottom:10px;">Jamaican Passport Services</h1>
+            <p style="font-size:1.1rem; opacity:0.9;">PICA Compliant. Secure Processing. Linstead Office.</p>
+        </div>
+    </div>
+
+    <div class="selector-section">
+        <div class="container">
+            <div class="grid-4">
+                <div class="service-card" onclick="openDetail('adult')">
+                    <div class="card-icon"><i class="fa-solid fa-user"></i></div>
+                    <div class="card-title">New Adult / Renewal</div>
+                    <div class="card-sub">First time applicants or standard renewals.</div>
+                </div>
+                <div class="service-card" onclick="openDetail('child')">
+                    <div class="card-icon"><i class="fa-solid fa-child-reaching"></i></div>
+                    <div class="card-title">Child Passport</div>
+                    <div class="card-sub">Minors under 18. Requires parent data.</div>
+                </div>
+                <div class="service-card" onclick="openDetail('lost')">
+                    <div class="card-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <div class="card-title">Lost / Stolen</div>
+                    <div class="card-sub">Includes affidavits & police reports.</div>
+                </div>
+                <div class="service-card" onclick="openDetail('name')">
+                    <div class="card-icon"><i class="fa-solid fa-ring"></i></div>
+                    <div class="card-title">Name Change</div>
+                    <div class="card-sub">Marriage, Divorce, or Deed Poll updates.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="general-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Universal Standards</h2>
+                <p style="color:var(--slate);">Information applicable to all PICA applications handled by Docu-Hub.</p>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3 style="margin-top:0;"><i class="fa-solid fa-camera"></i> Photo Standards</h3>
+                    <p style="font-size:0.9rem; margin-bottom:20px;">We take compliant photos in-house. If bringing your own:</p>
+                    <ul class="info-list">
+                        <li><i class="fa-solid fa-check"></i> <strong>Clothing:</strong> Dark or bold colors. No white/patterns.</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Appearance:</strong> No glasses. Ears must be visible.</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Jewelry:</strong> Minimal to none. No large hoops.</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h3 style="margin-top:0;"><i class="fa-solid fa-clock"></i> Timelines & Logistics</h3>
+                    <ul class="info-list">
+                        <li><i class="fa-solid fa-check"></i> <strong>Expedited (Kingston):</strong> 7-10 Working Days.</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Regular Service:</strong> 4-6 Weeks.</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Pickup:</strong> All documents returned to our Linstead office for secure collection.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="detailModal">
+        <div class="detail-modal">
+            <div class="modal-header">
+                <span class="close-btn" onclick="closeDetail()">&times;</span>
+                <h2 id="m-title" style="margin:0;">Service Title</h2>
+            </div>
+            <div class="modal-body">
+                <div id="m-tag" class="req-tag">REQUIREMENTS</div>
+                <div id="m-desc" style="margin-bottom:20px; color:#475569;">Description goes here...</div>
+                
+                <h4 style="margin-bottom:10px; color:var(--navy);">Checklist:</h4>
+                <ul id="m-list" class="info-list" style="margin-bottom:30px;">
+                    </ul>
+
+                <div style="background:#F1F5F9; padding:15px; border-radius:8px;">
+                    <strong>Estimated Total:</strong> <span id="m-fee" style="float:right; font-weight:700;">$0.00</span>
+                </div>
+
+                <button class="action-btn" onclick="triggerIntake()">Start This Application</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="intakeModal">
+        <div class="detail-modal" style="width:450px;">
+            <div class="modal-header">
+                <span class="close-btn" onclick="closeIntake()">&times;</span>
+                <h3 style="margin:0;">Client Details</h3>
+            </div>
+            <div class="modal-body">
+                <form id="publicForm" onsubmit="submitToBackend(event)">
+                    <input type="hidden" id="p-service" name="service">
+                    <input type="text" name="website_url" id="hp-check" class="hp-field"> <div style="margin-bottom:15px;">
+                        <label style="display:block; font-size:0.8rem; font-weight:700; margin-bottom:5px;">FULL NAME</label>
+                        <input type="text" name="full_name" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px;" required>
+                    </div>
+                    <div style="margin-bottom:15px;">
+                        <label style="display:block; font-size:0.8rem; font-weight:700; margin-bottom:5px;">PHONE</label>
+                        <input type="tel" name="phone" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px;" required>
+                    </div>
+                    <div style="margin-bottom:15px;">
+                        <label style="display:block; font-size:0.8rem; font-weight:700; margin-bottom:5px;">EMAIL</label>
+                        <input type="email" name="email" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px;" required>
+                    </div>
+
+                    <button type="submit" id="btn-submit" class="action-btn">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+       // --- DATA STORE (Updated: Birth Cert is Mandatory for All) ---
+        const serviceData = {
+            'adult': {
+                title: "New Adult / Renewal",
+                desc: "For adults (18+) applying for their first passport or renewing an expired one.",
+                reqs: [
+                    "Original Birth Certificate", // <--- Confirmed
+                    "Valid Government ID (Voters/License)",
+                    "Two (2) Passport Photos (Done in-office)", 
+                    "Completed PICA Form (We assist)"
+                ],
+                fee: "$6,500 JMD (Agency) + PICA Fees"
+            },
+            'child': {
+                title: "Child Passport (Under 18)",
+                desc: "Applications for minors. Parent/Guardian must be present.",
+                reqs: [
+                    "Child's Original Birth Certificate", // <--- Confirmed
+                    "Parent's Valid ID",
+                    "Marriage Certificate (if applicable)",
+                    "Two (2) Photos (Done in-office)"
+                ],
+                fee: "$5,500 JMD (Agency) + PICA Fees"
+            },
+            'lost': {
+                title: "Lost or Stolen Passport",
+                desc: "Recovering your travel documents requires additional security clearance.",
+                reqs: [
+                    "Original Birth Certificate", // <--- Confirmed
+                    "Police Report (Original)", 
+                    "PICA Affidavit (We provide)", 
+                    "Valid ID (Voters/License)", 
+                    "Two (2) Photos"
+                ],
+                fee: "$8,500 JMD (Agency) + PICA Fees"
+            },
+            'name': {
+                title: "Passport Name Change",
+                desc: "Updating your passport to match your new legal status.",
+                reqs: [
+                    "Original Birth Certificate", // <--- Added here
+                    "Original Marriage Certificate", 
+                    "OR Deed Poll/Divorce Decree", 
+                    "Old Passport", 
+                    "Valid ID in New Name"
+                ],
+                fee: "$7,000 JMD (Agency) + PICA Fees"
+            }
+        };
+
+        // --- OPEN DETAILS ---
+        function openDetail(key) {
+            const data = serviceData[key];
+            currentService = data.title; // Save for the form
+            
+            document.getElementById('m-title').innerText = data.title;
+            document.getElementById('m-desc').innerText = data.desc;
+            document.getElementById('m-fee').innerText = data.fee;
+            
+            // Build the checklist
+            const list = document.getElementById('m-list');
+            list.innerHTML = ""; // Clear old
+            data.reqs.forEach(item => {
+                list.innerHTML += `<li><i class="fa-solid fa-check"></i> ${item}</li>`;
+            });
+
+            document.getElementById('detailModal').style.display = 'flex';
+        }
+
+        function closeDetail() {
+            document.getElementById('detailModal').style.display = 'none';
+        }
+
+        // --- INTAKE FLOW ---
+        function triggerIntake() {
+            closeDetail(); // Close detail modal
+            document.getElementById('p-service').value = currentService; // Set hidden input
+            document.getElementById('intakeModal').style.display = 'flex'; // Open form
+        }
+
+        function closeIntake() {
+            document.getElementById('intakeModal').style.display = 'none';
+        }
+
+        // --- SUBMISSION (Backend) ---
+        function submitToBackend(e) {
+            e.preventDefault();
+            
+            // HONEYPOT
+            if(document.getElementById('hp-check').value !== "") return;
+
+            const btn = document.getElementById('btn-submit');
+            const form = document.getElementById('publicForm');
+            const originalText = btn.innerText;
+            btn.innerText = "Sending..."; btn.disabled = true;
+
+            // Split name for backend compatibility
+            const fullName = form.full_name.value.split(" ");
+            const fName = fullName[0];
+            const lName = fullName.slice(1).join(" ") || ".";
+
+            const formData = {
+                firstName: fName,
+                lastName: lName,
+                phone: form.phone.value,
+                email: form.email.value,
+                service: form.service.value,
+                notes: "Submitted via Passport Hub"
+            };
+
+            google.script.run
+                .withSuccessHandler(() => {
+                    btn.innerText = "Success!";
+                    setTimeout(() => {
+                        alert("Request Received. We will contact you shortly.");
+                        closeIntake();
+                        form.reset();
+                        btn.innerText = originalText; btn.disabled = false;
+                    }, 500);
+                })
+                .withFailureHandler(err => {
+                    alert("Error: " + err.message);
+                    btn.innerText = originalText; btn.disabled = false;
+                })
+                .processIntake(formData, "WEBSITE");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US Passport Renewal | Docu-Hub Operations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- GLOBAL VARIABLES --- */
+        :root {
+            --navy: #0F172A; --slate: #475569; --light-bg: #F8FAFC;
+            --red: #B91C1C; /* US Flag Red matches the theme perfectly */
+            --white: #FFFFFF;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08); --radius: 12px;
+        }
+
+        body { margin: 0; font-family: 'Inter', sans-serif; color: var(--navy); background-color: var(--white); line-height: 1.6; }
+
+        /* HERO - US SPECIFIC IMAGE */
+        .service-hero {
+            width: 100%; height: 400px; 
+            background-image: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.4)), url('https://images.unsplash.com/photo-1548567117-023e9569b767?auto=format&fit=crop&w=1200&q=80'); 
+            background-size: cover; background-position: center;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* INTRO */
+        .intro-section { padding: 80px 0; text-align: center; max-width: 800px; margin: 0 auto; }
+        .service-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; color: var(--navy); }
+        .service-desc { font-size: 1.1rem; color: var(--slate); margin-bottom: 40px; }
+        
+        .cta-btn {
+            background-color: var(--navy); /* Navy for US feels authoritative */
+            color: white; padding: 16px 32px;
+            font-size: 1rem; font-weight: 600; border-radius: 50px; border: none;
+            cursor: pointer; transition: transform 0.2s; display: inline-block;
+            box-shadow: 0 4px 15px rgba(15, 23, 42, 0.3);
+        }
+        .cta-btn:hover { transform: translateY(-3px); }
+
+        /* PROCESS CARDS */
+        .process-section { background-color: var(--light-bg); padding: 80px 0; }
+        .section-heading { text-align: center; font-size: 1.8rem; font-weight: 700; margin-bottom: 50px; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .process-card {
+            background: var(--white); padding: 40px 30px; border-radius: var(--radius);
+            box-shadow: var(--shadow); text-align: center; transition: transform 0.3s;
+        }
+        .process-card:hover { transform: translateY(-5px); }
+        
+        .icon-box {
+            width: 60px; height: 60px; background-color: #E2E8F0; color: var(--navy);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; margin: 0 auto 20px auto;
+        }
+
+        /* REQUIREMENTS */
+        .req-section { padding: 80px 0; }
+        .req-container { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+        .req-list { list-style: none; padding: 0; margin: 0; }
+        .req-list li {
+            padding: 15px 0; border-bottom: 1px solid #E2E8F0;
+            display: flex; align-items: flex-start; gap: 15px; color: var(--slate);
+        }
+        .req-list li i { color: var(--red); margin-top: 5px; }
+
+        /* FEES */
+        .fees-section { background-color: var(--navy); color: white; padding: 80px 0; }
+        .fee-card {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px; border-radius: var(--radius); max-width: 800px; margin: 0 auto;
+        }
+        .fee-row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .fee-row:last-child { border-bottom: none; }
+        .fee-label { font-weight: 400; color: #CBD5E1; }
+        .fee-val { font-weight: 700; font-size: 1.1rem; }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(4px);
+            display: none; justify-content: center; align-items: center; z-index: 1000;
+        }
+        .modal-box {
+            background: white; width: 450px; max-width: 90%; padding: 40px;
+            border-radius: 16px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            position: relative; animation: slideUp 0.3s ease-out;
+        }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #94A3B8; }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; font-size: 0.85rem; font-weight: 700; color: #475569; margin-bottom: 8px; text-transform: uppercase; }
+        .form-input { width: 100%; padding: 12px; border: 1px solid #E2E8F0; border-radius: 8px; font-size: 1rem; box-sizing: border-box; }
+        .submit-btn {
+            width: 100%; background-color: #0F172A; color: white; padding: 15px;
+            border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer;
+        }
+        .hp-field { opacity: 0; position: absolute; z-index: -1; }
+
+        @media (max-width: 768px) {
+            .req-container { grid-template-columns: 1fr; }
+            .service-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="service-hero"></div>
+
+    <div class="intro-section">
+        <div class="container">
+            <h1 class="service-title">US Adult Passport Renewal</h1>
+            <p class="service-desc">
+                Renew your US Passport without the hassle of bank drafts or complicated forms. 
+                We handle the Pay.gov online payment, DS-82 form prep, photo compliance, 
+                and DHL logistics directly to the Embassy.
+            </p>
+            <button onclick="openPublicIntake('US Adult Passport Renewal')" class="cta-btn">Start My Renewal</button>
+        </div>
+    </div>
+
+    <div class="process-section">
+        <div class="container">
+            <h2 class="section-heading">How We Handle It</h2>
+            <div class="cards-grid">
+                <div class="process-card">
+                    <div class="icon-box"><i class="fa-solid fa-list-check"></i></div>
+                    <h3>1. Eligibility</h3>
+                    <p>We confirm your passport was issued less than 15 years ago and is not damaged (Standard DS-82 Renewal).</p>
+                </div>
+                <div class="process-card">
+                    <div class="icon-box"><i class="fa-solid fa-credit-card"></i></div>
+                    <h3>2. Secure Payment</h3>
+                    <p>We process the $130 USD government fee securely via Pay.gov so you don't need a bank draft.</p>
+                </div>
+                <div class="process-card">
+                    <div class="icon-box"><i class="fa-solid fa-truck-fast"></i></div>
+                    <h3>3. Embassy Courier</h3>
+                    <p>We handle the DHL waybills to ship your application to the US Embassy in Kingston and track its return.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="req-section">
+        <div class="container">
+            <h2 class="section-heading">Requirements for Success</h2>
+            <div class="req-container">
+                <div>
+                    <h3 style="margin-bottom:20px;">Primary Documents</h3>
+                    <ul class="req-list">
+                        <li><i class="fa-solid fa-check"></i> <strong>Current US Passport:</strong> Must be submitted (returned to you).</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Social Security #:</strong> Number only (Card not required).</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Name Change Info:</strong> Marriage Cert (if applicable).</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="margin-bottom:20px;">Photo Compliance</h3>
+                    <ul class="req-list">
+                        <li><i class="fa-solid fa-ruler-combined"></i> <strong>Size:</strong> 2x2 Inches (US Standard).</li>
+                        <li><i class="fa-solid fa-image"></i> <strong>Background:</strong> Plain White only.</li>
+                        <li><i class="fa-solid fa-shirt"></i> <strong>Attire:</strong> No uniforms or camouflage.</li>
+                        <li><i class="fa-solid fa-glasses"></i> <strong>No Glasses:</strong> Must be removed.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fees-section">
+        <div class="container">
+            <h2 class="section-heading" style="color:white;">Investment & Timelines</h2>
+            <div class="fee-card">
+                <div class="fee-row"><span class="fee-label">Processing Time</span><span class="fee-val">4 - 6 Weeks</span></div>
+                <div class="fee-row"><span class="fee-label">US Govt Fee (Online)</span><span class="fee-val">$130 USD</span></div>
+                <div class="fee-row"><span class="fee-label">Docu-Hub Agency Fee</span><span class="fee-val">$6,500 JMD</span></div>
+                <div class="fee-row"><span class="fee-label">DHL Courier Service</span><span class="fee-val">~ $3,000 JMD</span></div>
+                <div style="margin-top:30px; text-align:center;">
+                    <button onclick="openPublicIntake('US Adult Passport Renewal')" class="cta-btn" style="background:white; color:var(--navy);">Book Appointment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="publicIntakeModal">
+        <div class="modal-box">
+            <span class="close-modal" onclick="closePublicIntake()">&times;</span>
+            <h2 style="margin-top:0; color:#0F172A;">Start Application</h2>
+            <p style="color:#64748B; font-size:0.9rem; margin-bottom:25px;">
+                Service: <strong id="display-service-name" style="color:#D32F2F;">Service Name</strong>
+            </p>
+            <form id="publicForm" onsubmit="submitToBackend(event)">
+                <input type="hidden" id="p-service" name="service">
+                <input type="text" name="website_url" id="hp-check" class="hp-field" tabindex="-1" autocomplete="off">
+                <div class="form-group">
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                        <div><label class="form-label">First Name</label><input type="text" name="first_name" class="form-input" required></div>
+                        <div><label class="form-label">Last Name</label><input type="text" name="last_name" class="form-input" required></div>
+                    </div>
+                </div>
+                <div class="form-group"><label class="form-label">Phone (WhatsApp)</label><input type="tel" name="phone" class="form-input" placeholder="876-..." required></div>
+                <div class="form-group"><label class="form-label">Email Address</label><input type="email" name="email" class="form-input" placeholder="you@email.com" required></div>
+                
+                <div style="background:#EFF6FF; border:1px solid #DBEAFE; padding:12px; border-radius:6px; margin-bottom:20px; font-size:0.8rem; color:#1E40AF;">
+                    <strong>Note:</strong> We will email you an invoice. We do not accept cash for the $130 USD Government Fee (POCA Compliance).
+                </div>
+
+                <button type="submit" id="btn-submit-public" class="submit-btn">Submit Application</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function openPublicIntake(serviceName) {
+            document.getElementById('publicIntakeModal').style.display = 'flex';
+            document.getElementById('display-service-name').innerText = serviceName;
+            document.getElementById('p-service').value = serviceName;
+        }
+        function closePublicIntake() { document.getElementById('publicIntakeModal').style.display = 'none'; }
+        function submitToBackend(e) {
+            e.preventDefault(); 
+            const honeyPotValue = document.getElementById('hp-check').value;
+            if (honeyPotValue !== "") { closePublicIntake(); return; }
+            const btn = document.getElementById('btn-submit-public');
+            const form = document.getElementById('publicForm');
+            const originalText = btn.innerText;
+            btn.innerText = "Processing..."; btn.disabled = true;
+            const formData = {
+                firstName: form.first_name.value, lastName: form.last_name.value,
+                phone: form.phone.value, email: form.email.value,
+                service: form.service.value, notes: "US Passport Request - Check Invoice Status"
+            };
+            google.script.run
+                .withSuccessHandler(function(response) {
+                    btn.innerText = "✅ Success!";
+                    setTimeout(() => {
+                        alert("Application Received! Check your email for the Invoice.");
+                        closePublicIntake(); form.reset(); btn.innerText = originalText; btn.disabled = false;
+                    }, 500);
+                })
+                .withFailureHandler(function(error) {
+                    alert("Error: " + error.message);
+                    btn.innerText = originalText; btn.disabled = false;
+                })
+                .processIntake(formData, "WEBSITE");
+        }
+    </script>
+</body>
+</html>
