@@ -146,6 +146,21 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.1); 
         }
 
+     /* --- FEATURED CARD "POP" STYLING --- */
+        .service-card.featured-item {
+            background: #EFF6FF; /* Ice Blue */
+            border-color: #DBEAFE;
+        }
+        .service-card.featured-item .card-visual {
+            background: #FFFFFF; /* White Icon Box */
+            color: var(--brand-red); /* Red Icon */
+        }
+
+        /* Make the icon box WHITE on featured cards so it stands out against the blue */
+        .service-card.featured-item .card-visual {
+            background: #FFFFFF;
+            color: var(--brand-red); /* Switch icon to Red for featured items */
+        }
         /* --- KEEP THESE AS THEY ARE (No changes needed below) --- */
         .card-visual { height: 120px; background: #F1F5F9; display: flex; align-items: center; justify-content: center; color: var(--navy-deep); font-size: 2.5rem; }
         .card-body { padding: 20px; text-align: center; display: flex; flex-direction: column; flex: 1; }
@@ -345,11 +360,12 @@
 
         let activeService = null;
 
-        function filterCategory(cat, el) {
+       function filterCategory(cat, el) {
+            // 1. Update the Active Tab Pill
             document.querySelectorAll('.tab-pill').forEach(t => t.classList.remove('active'));
             if(el) el.classList.add('active');
             
-            // LOGIC TO HIDE/SHOW PROCESS STRIP
+            // 2. Hide/Show Process Strip (Only show on Featured)
             const processStrip = document.getElementById('process-strip');
             if (cat === 'featured') {
                 processStrip.style.display = 'block';
@@ -357,20 +373,36 @@
                 processStrip.style.display = 'none';
             }
 
+            // 3. Prepare the Card Container
             const container = document.getElementById('service-grid');
             container.innerHTML = '';
             
+            // 4. Select Which Items to Show
             let items = [];
             if (cat === 'featured') {
-                items.push(serviceData['jm-passports'][0]);
-                items.push(serviceData['foreign-passports'][1]);
-                items.push(serviceData['license'][0]);
-                items.push(serviceData['rgd'][0]);
-            } else { items = serviceData[cat]; }
+                // Manually picking the "Best Of" list
+                items.push(serviceData['jm-passports'][0]);      // Adult Renewal
+                items.push(serviceData['foreign-passports'][1]); // UK Renewal
+                items.push(serviceData['license'][0]);           // Licence Renewal
+                items.push(serviceData['rgd'][0]);               // Birth Cert
+            } else { 
+                // Otherwise show the whole category
+                items = serviceData[cat]; 
+            }
 
+            // 5. Build the Cards (WITH THE NEW "POP" LOGIC)
             items.forEach(item => {
                 const card = document.createElement('div');
-                card.className = 'service-card';
+                
+                // --- THE NEW CHANGE IS HERE ---
+                // If we are on the Featured tab, add the special 'featured-item' class
+                if (cat === 'featured') {
+                    card.className = 'service-card featured-item';
+                } else {
+                    card.className = 'service-card';
+                }
+                // ------------------------------
+
                 card.onclick = () => openPage(item);
                 card.innerHTML = `<div class="card-visual"><i class="fa-solid ${item.icon}"></i></div><div class="card-body"><div class="card-title">${item.title}</div><div class="card-link">View Requirements</div></div>`;
                 container.appendChild(card);
@@ -463,6 +495,7 @@
     </script>
 </body>
 </html>
+
 
 
 
