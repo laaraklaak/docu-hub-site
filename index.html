@@ -2,313 +2,277 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Docu-Hub Operations Services | Premium Concierge</title>
-    <link rel="icon" type="image/png" href="assets/logo.png">
-
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- 1. VARIABLES & THEME --- */
+        /* --- 1. PREMIUM VARIABLES --- */
         :root {
             --brand-red: #D32F2F;
-            --navy-deep: #021024;
-            --bg-body: #F8FAFC;
-            --bg-overlay: #E2E8F0;
-            --white: #FFFFFF;
+            --navy-deep: #021024; /* The Rich Blue you like */
+            --bg-body: #EFF4F8; 
+            --bg-card: #FFFFFF;
             --text-main: #1E293B;
-            --text-light: #64748B;
-            --container-width: 1150px; 
+            --text-muted: #64748B;
+            --container-width: 1100px;
+            --gutter: 40px;
+            --shadow-card: 0 15px 35px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.05);
+            --header-height: 80px;
         }
 
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { margin: 0; padding: 0; font-family: 'Roboto', sans-serif; background: var(--bg-body); color: var(--text-main); }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg-body); color: var(--text-main); line-height: 1.8; -webkit-font-smoothing: antialiased; padding-top: var(--header-height); }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; margin-top: 0; color: var(--navy-deep); }
+        p { margin-bottom: 20px; font-size: 1.05rem; }
+        a { text-decoration: none; transition: 0.3s; }
+        .container { max-width: var(--container-width); margin: 0 auto; padding: 0 var(--gutter); }
         
-        /* --- 2. LAYOUT UTILITIES --- */
-        .container { max-width: var(--container-width); margin: 0 auto; padding: 0 20px; width: 100%; }
+        /* --- 2. MEGA HEADER --- */
+        .app-header {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 2000;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            height: var(--header-height);
+            backdrop-filter: blur(10px);
+        }
         
-        /* --- 3. HEADER --- */
-        .app-header { position: sticky; top: 0; z-index: 1000; background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .header-inner { height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-        .header-logo { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--navy-deep); white-space: nowrap; cursor: pointer; }
+        .header-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+        
+        .header-logo { font-size: 1.4rem; font-weight: 900; color: var(--navy-deep); letter-spacing: -0.5px; z-index: 2002; }
         .header-logo span { color: var(--brand-red); }
+
+        /* Desktop Nav */
+        .desktop-nav { display: flex; align-items: center; gap: 40px; }
         
-        .search-container { flex: 1; position: relative; max-width: 400px; }
-        .search-input { width: 100%; padding: 12px 15px 12px 40px; border-radius: 50px; border: 1px solid #E2E8F0; background: #F8FAFC; outline: none; transition: 0.3s; font-size: 16px; }
-        .search-input:focus { background: white; border-color: var(--navy-deep); }
-        .search-icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94A3B8; }
-
-        /* --- 4. HERO SECTION --- */
-        .hero-section {
-            position: relative;
-            background: linear-gradient(to right, var(--navy-deep) 40%, rgba(2, 16, 36, 0.6)), url('assets/hero.png');
-            background-color: var(--navy-deep); /* Fallback */
-            background-size: cover; 
-            background-position: center; 
-            color: white;
-            min-height: 400px; display: flex; align-items: center; margin-bottom: 40px;
+        .nav-link { 
+            color: var(--navy-deep); font-weight: 600; font-size: 0.95rem; position: relative; cursor: pointer;
+            padding: 10px 0; display: flex; align-items: center; gap: 5px;
         }
-        .hero-content { max-width: 600px; padding: 40px 0; }
-        .hero-title { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; font-weight: 800; margin: 0 0 15px 0; line-height: 1.1; }
-        .hero-sub { font-size: 1.1rem; opacity: 0.9; margin-bottom: 30px; line-height: 1.6; }
-        .hero-cta { display: inline-block; background: var(--brand-red); color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.2s; }
-        .hero-cta:hover { transform: translateY(-2px); }
+        .nav-link:hover { color: var(--brand-red); }
 
-        /* --- 5. NAVIGATION (Updated for Scroll Indicator) --- */
-        .tabs-wrapper { margin-bottom: 20px; }
+        /* Dropdown Logic */
+        .dropdown-container { position: relative; }
+        .dropdown-menu {
+            position: absolute; top: 100%; left: -20px; 
+            background: white; width: 240px;
+            border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 10px 0; opacity: 0; visibility: hidden;
+            transform: translateY(10px); transition: 0.3s ease;
+            border: 1px solid #F1F5F9;
+        }
+        .dropdown-container:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
         
-        .tabs-container { 
-            overflow-x: auto; 
-            white-space: nowrap; 
-            padding-bottom: 8px; /* Extra padding for the scrollbar */
-            -webkit-overflow-scrolling: touch; 
-            /* Firefox Scrollbar */
-            scrollbar-color: #CBD5E1 transparent;
-            scrollbar-width: thin;
+        .dropdown-item { 
+            display: block; padding: 12px 20px; color: var(--text-muted); font-size: 0.9rem; font-weight: 500;
+            border-left: 3px solid transparent;
         }
+        .dropdown-item:hover { background: #F8FAFC; color: var(--navy-deep); border-left-color: var(--brand-red); }
 
-        /* CHROME/SAFARI SCROLLBAR STYLING (The "Line Indicator") */
-        .tabs-container::-webkit-scrollbar {
-            height: 4px; /* Thickness of the line */
-            display: block;
+        /* Contact Button */
+        .btn-contact {
+            background: var(--navy-deep); color: white; padding: 10px 25px;
+            border-radius: 50px; font-weight: 700; font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(2, 16, 36, 0.2);
         }
-        .tabs-container::-webkit-scrollbar-track {
-            background: transparent; 
-        }
-        .tabs-container::-webkit-scrollbar-thumb {
-            background: #CBD5E1; /* The grey indicator color */
-            border-radius: 10px;
-        }
+        .btn-contact:hover { background: var(--brand-red); transform: translateY(-2px); }
 
-        .tab-pill { display: inline-block; padding: 10px 25px; margin-right: 10px; background: white; color: var(--text-light); border-radius: 50px; font-size: 0.9rem; font-weight: 600; border: 1px solid #E2E8F0; transition: 0.2s; cursor: pointer; }
-        .tab-pill.active { background: var(--navy-deep); color: white; border-color: var(--navy-deep); box-shadow: 0 4px 10px rgba(2, 16, 36, 0.2); }
+        /* Mobile Toggle */
+        .mobile-toggle { display: none; font-size: 1.5rem; color: var(--navy-deep); cursor: pointer; z-index: 2002; }
 
-        /* --- 6. CARD GRID --- */
-        .card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-bottom: 60px; }
-        @media (max-width: 1024px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
+        /* Mobile Drawer */
+        .mobile-drawer {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: white; z-index: 2001; padding: 100px 30px;
+            display: flex; flex-direction: column; gap: 20px;
+            transform: translateY(-100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mobile-drawer.open { transform: translateY(0); }
         
-        /* Mobile Stack */
-       /* Mobile Breakpoint - Stacked Cards */
-        @media (max-width: 768px) { 
-            .card-grid { grid-template-columns: 1fr; gap: 20px; } 
-            .hero-section { min-height: 350px; text-align: left; }
-            .hero-title { font-size: 2rem; }
-            .process-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-            .footer-grid { grid-template-columns: 1fr !important; text-align: center; }
-            .blog-grid { grid-template-columns: 1fr !important; }
-            
-            /* --- THE FIX: STATIC BOTTOM CARD --- */
-            .sticky-sidebar { 
-                display: block !important;       /* 1. Reveal the sidebar on mobile */
-                position: static !important;     /* 2. Stop it from sticking/floating */
-                margin-top: 40px;                /* 3. Add space above it */
-                width: 100%;                     /* 4. Make it full width */
-            } 
-            
-            /* Hide the annoying floating bar */
-            .mobile-bar { display: none !important; }
-        }
+        .mobile-link { font-size: 1.4rem; font-weight: 800; color: var(--navy-deep); border-bottom: 1px solid #F1F5F9; padding-bottom: 15px; }
+        .mobile-sub-link { font-size: 1.1rem; color: var(--text-muted); padding-left: 20px; font-weight: 500; }
         
-       /* --- UPDATED CARD STYLING (THE "POP" LOOK) --- */
-        .service-card { 
-            background: var(--white); 
-            border-radius: 12px; 
-            overflow: hidden; 
-            
-            /* 1. THE LIFT: Stronger shadow to separate from white background */
-            
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            
-            /* 2. THE POWER BAR: Thick Navy top border */
-            border-top: 5px solid var(--navy-deep); 
-            
-            /* Remove the grey border so it looks cleaner */
-            border-left: 1px solid transparent;
-            border-right: 1px solid transparent;
-            border-bottom: 1px solid transparent;
+        /* --- 3. SPLIT HERO --- */
+        .hero-visual { width: 100%; height: 500px; background-image: url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; }
+        .hero-text-block { background: var(--bg-card); padding: 80px 0; border-bottom: 1px solid #E2E8F0; }
+        .hero-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+        .hero-tag { color: var(--brand-red); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; display: block; margin-bottom: 20px; font-family: 'Inter', sans-serif; }
+        .hero-headline { font-size: 3.5rem; line-height: 1.1; margin-bottom: 25px; }
+        .hero-desc { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; font-weight: 300; line-height: 1.6; }
+        .hero-cta { display: inline-block; background: var(--navy-deep); color: white; padding: 18px 40px; border-radius: 4px; font-weight: 700; font-size: 1rem; letter-spacing: 0.5px; box-shadow: 0 10px 20px -5px rgba(2, 16, 36, 0.4); }
+        .hero-cta:hover { transform: translateY(-3px); background: var(--brand-red); }
 
-            display: flex; 
-            flex-direction: column; 
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-            cursor: pointer; 
-            height: 100%; 
-            min-height: 220px; 
-        }
+        /* --- 4. IDENTITY --- */
+        .identity-section { padding: 80px 0; text-align: center; }
+        .identity-content { max-width: 800px; margin: 0 auto; }
+        .identity-headline { font-size: 2.2rem; margin-bottom: 20px; }
+        .identity-text { color: var(--text-muted); font-size: 1.15rem; line-height: 1.8; }
 
-        .service-card:hover { 
-            transform: translateY(-8px); 
-            
-            /* 3. THE INTERACTION: Bar turns RED on hover */
-            border-top-color: var(--brand-red);
-            
-            /* Shadow gets deeper to simulate lifting up */
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.1); 
-        }
-
-     /* --- FEATURED CARD "POP" STYLING --- */
-        .service-card.featured-item {
-            background: #EFF6FF; /* Ice Blue */
-            border-color: #DBEAFE;
-        }
-        .service-card.featured-item .card-visual {
-            background: #FFFFFF; /* White Icon Box */
-            color: var(--brand-red); /* Red Icon */
-        }
-
-        /* Make the icon box WHITE on featured cards so it stands out against the blue */
-        .service-card.featured-item .card-visual {
-            background: #FFFFFF;
-            color: var(--brand-red); /* Switch icon to Red for featured items */
-        }
-        /* --- KEEP THESE AS THEY ARE (No changes needed below) --- */
-        .card-visual { height: 120px; background: #F1F5F9; display: flex; align-items: center; justify-content: center; color: var(--navy-deep); font-size: 2.5rem; }
-        .card-body { padding: 20px; text-align: center; display: flex; flex-direction: column; flex: 1; }
-        .card-title { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--navy-deep); line-height: 1.4; }
-        .card-link { margin-top: auto; font-size: 0.8rem; font-weight: 700; color: var(--brand-red); text-transform: uppercase; letter-spacing: 0.5px; }
+        /* --- 5. SERVICES --- */
+        .services-section { padding: 60px 0 100px 0; }
+        .section-header { margin-bottom: 80px; text-align: left; }
+        .section-label { color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 10px; }
         
-     /* --- 7. PROCESS STRIP (UPDATED: Platinum/Silver Look) --- */
-        .process-section { 
-            /* Light Silver Background to separate from White Cards AND Navy Footer */
-            background: #F1F5F9; 
-            padding: 70px 0; 
-            
-            /* Sharp borders to define the edges */
-            border-top: 1px solid #E2E8F0; 
-            
-            /* A thick RED line at the bottom to introduce the footer */
-            border-bottom: 5px solid var(--brand-red); 
+        .service-row {
+            background: var(--bg-card); border-radius: 12px; overflow: hidden;
+            box-shadow: var(--shadow-card);
+            display: grid; grid-template-columns: 1fr 1fr; 
+            margin-bottom: 80px; transition: transform 0.3s ease;
         }
+        .service-row:last-child { margin-bottom: 0; }
+        .service-row:hover { transform: translateY(-5px); }
 
-        .process-grid { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr 1fr; 
-            gap: 40px; 
-            text-align: center; 
+        .service-image { height: 100%; min-height: 400px; width: 100%; background-size: cover; background-position: center; }
+        .service-content { padding: 60px; display: flex; flex-direction: column; justify-content: center; }
+        .svc-title { font-size: 2.2rem; margin-bottom: 20px; color: var(--navy-deep); }
+        .svc-desc { color: var(--text-muted); margin-bottom: 40px; font-size: 1.05rem; }
+
+        .touch-link {
+            display: inline-flex; align-items: center; gap: 12px;
+            font-size: 0.9rem; font-weight: 800; color: var(--navy-deep);
+            padding: 15px 25px; background: var(--bg-body); 
+            border-radius: 8px; width: fit-content; transition: 0.3s;
         }
+        .touch-link:hover { background: var(--navy-deep); color: white; }
+        .touch-link:hover i { transform: translateX(5px); }
 
-        .p-icon-circle { 
-            width: 80px; 
-            height: 80px; 
-            /* White circle makes it POP off the silver background */
-            background: white; 
-            color: var(--brand-red); /* Red Icon */
-            
-            border-radius: 50%; 
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: 2rem; 
-            margin-bottom: 20px;
-            
-            /* A strong shadow to make it look 3D */
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05), 0 10px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+        /* --- 6. FOOTER (Updated Color) --- */
+        .main-footer { 
+            background: var(--navy-deep); /* The Blue you requested */
+            color: #94A3B8; padding: 100px 0 30px; 
+            border-top: 1px solid rgba(255,255,255,0.05); 
         }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+        .footer-brand h2 { color: white; margin-bottom: 10px; font-size: 1.5rem; }
+        .footer-link { display: block; color: #94A3B8; margin-bottom: 12px; font-size: 0.9rem; }
+        .footer-link:hover { color: white; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; font-size: 0.85rem; text-align: center; }
 
-        /* Hover: Icon circle lifts up */
-        .process-section:hover .p-icon-circle {
-            transform: translateY(-5px);
-            color: var(--navy-deep); /* Icon turns Navy on hover */
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .desktop-nav { display: none; }
+            .mobile-toggle { display: block; }
+            .hero-visual { height: 350px; }
+            .hero-headline { font-size: 2.5rem; }
+            .hero-text-block { padding: 60px 0; }
+            .service-row { grid-template-columns: 1fr; border-radius: 12px; }
+            .service-image { height: 250px; order: -1; }
+            .service-content { padding: 40px 30px; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .identity-section { padding: 60px 0; }
         }
-
-        .p-title { 
-            font-weight: 800; 
-            font-size: 1.2rem; 
-            margin-bottom: 10px; 
-            color: var(--navy-deep); /* Dark Navy Text for contrast */
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .p-desc { 
-            font-size: 0.95rem; 
-            color: #64748B; /* Medium Grey for text */
-            line-height: 1.6;
-            max-width: 260px;
-            margin: 0 auto;
-        }
-
-        /* --- 8. FOOTER --- */
-        .main-footer { background: var(--navy-deep); color: #94A3B8; padding: 60px 0 40px; font-size: 0.9rem; }
-        .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-        .footer-col h4 { color: white; margin-bottom: 20px; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
-        .footer-link { display: block; color: #94A3B8; text-decoration: none; margin-bottom: 12px; transition: 0.2s; }
-        .footer-link:hover { color: var(--brand-red); padding-left: 5px; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 50px; padding-top: 25px; text-align: center; font-size: 0.8rem; }
-
-        /* --- 9. DETAIL PAGE --- */
-        .page-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-overlay); z-index: 2000; transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); overflow-y: auto; }
-        .page-overlay.open { transform: translateX(0); }
-        .page-nav { background: var(--white); border-bottom: 1px solid #E2E8F0; position: sticky; top: 0; z-index: 10; }
-        .page-nav-inner { height: 60px; display: flex; align-items: center; gap: 15px; }
-        .back-btn { font-size: 1.1rem; color: var(--text-main); cursor: pointer; display: flex; align-items: center; gap: 8px; font-weight: 600; }
-
-        .blog-grid { display: grid; grid-template-columns: 1fr 350px; gap: 30px; padding: 40px 0 100px; }
-        
-        .blog-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); margin-bottom: 25px; }
-        .bc-title { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--navy-deep); margin: 0 0 15px 0; line-height: 1.2; }
-        .bc-intro { font-size: 1.1rem; line-height: 1.7; color: var(--text-light); margin-bottom: 30px; }
-        .checklist-item { display: flex; gap: 15px; margin-bottom: 18px; align-items: flex-start; font-size: 1rem; color: var(--text-main); }
-        .checklist-item i { color: #16A34A; font-size: 1.2rem; margin-top: 3px; }
-
-        .sticky-sidebar { position: sticky; top: 90px; }
-        .summary-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 6px solid var(--brand-red); }
-        .sum-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px dashed #E2E8F0; font-size: 0.95rem; }
-        .sum-val { font-weight: 700; color: var(--navy-deep); text-align: right; }
-        .action-btn { background: var(--brand-red); color: white; width: 100%; padding: 18px; border: none; border-radius: 8px; margin-top: 20px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: 0.2s; box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3); }
-        .action-btn:hover { transform: translateY(-2px); }
-
-        .mobile-bar { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 15px 20px; border-top: 1px solid #E2E8F0; box-shadow: 0 -5px 20px rgba(0,0,0,0.05); z-index: 2050; justify-content: space-between; align-items: center; }
-
-        /* --- 10. WIZARD --- */
-        .wizard-overlay { background: white; }
-        .wiz-layout { max-width: 600px; margin: 40px auto; padding: 0 20px; }
-        .wiz-input { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #E2E8F0; border-radius: 8px; background: #F8FAFC; font-size: 1rem; }
-        .hp-field { display: none !important; visibility: hidden; }
-
     </style>
 </head>
 <body>
 
     <header class="app-header">
         <div class="container header-inner">
-            <div class="header-logo" onclick="location.reload()">Docu-Hub<span> Operations Services</span></div>
-            <div class="search-container">
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                <input type="text" class="search-input" placeholder="Search services..." onkeyup="searchService(this)">
+            <a href="index.html" class="header-logo">Docu-Hub<span>.</span></a>
+            
+            <nav class="desktop-nav">
+                <div class="dropdown-container">
+                    <span class="nav-link">Service Hubs <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;"></i></span>
+                    <div class="dropdown-menu">
+                        <a href="traffic-services.html" class="dropdown-item">Traffic & Licence</a>
+                        <a href="rgd-services.html" class="dropdown-item">Civil Registry (RGD)</a>
+                        <a href="uk-passport.html" class="dropdown-item">UK Passports</a>
+                        <a href="us-passport.html" class="dropdown-item">US Passports</a>
+                    </div>
+                </div>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+                <a href="https://wa.me/18765612614" class="btn-contact">
+                    <i class="fa-brands fa-whatsapp" style="margin-right:5px;"></i> Chat Now
+                </a>
+            </nav>
+
+            <div class="mobile-toggle" onclick="toggleMobileMenu()">
+                <i class="fa-solid fa-bars" id="toggle-icon"></i>
             </div>
         </div>
     </header>
 
-    <div class="hero-section">
+    <div class="mobile-drawer" id="mobile-drawer">
+        <a href="index.html" class="mobile-link" onclick="toggleMobileMenu()">Home</a>
+        
+        <div class="mobile-link" style="border:none; padding-bottom:10px;">Services</div>
+        <a href="traffic-services.html" class="mobile-sub-link" onclick="toggleMobileMenu()">Traffic & Licence</a>
+        <a href="rgd-services.html" class="mobile-sub-link" onclick="toggleMobileMenu()">Civil Registry</a>
+        <a href="uk-passport.html" class="mobile-sub-link" onclick="toggleMobileMenu()">UK Passports</a>
+        <a href="us-passport.html" class="mobile-sub-link" onclick="toggleMobileMenu()">US Passports</a>
+
+        <a href="contact.html" class="mobile-link" onclick="toggleMobileMenu()" style="margin-top:20px; color:var(--brand-red);">Contact Us</a>
+    </div>
+
+    <div class="hero-visual"></div>
+    <div class="hero-text-block">
         <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Skip the Line.</h1>
-                <p class="hero-sub">Premium concierge for Passport, Traffic & Civil matters. We handle the bureaucracy so you don't have to.</p>
-                <a href="about.html" class="hero-cta">Read Our Story</a>
+            <div class="hero-inner">
+                <span class="hero-tag">Critical Advisory</span>
+                <h1 class="hero-headline">Identity Crisis: The Real Cost of a Lost Driver’s Licence.</h1>
+                <p class="hero-desc">
+                    Losing your licence in Jamaica is more than an inconvenience; it is a sudden halt to your financial and mobile life. 
+                    From banking blocks to traffic stops, the cost of inaction is high.
+                </p>
+                <a href="traffic-services.html" class="hero-cta">Start Recovery Process</a>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="tabs-wrapper">
-            <div class="tabs-container">
-                <div class="tab-pill active" onclick="filterCategory('featured', this)">Featured</div>
-                <div class="tab-pill" onclick="filterCategory('jm-passports', this)">Passports</div>
-                <div class="tab-pill" onclick="filterCategory('foreign-passports', this)">Foreign</div>
-                <div class="tab-pill" onclick="filterCategory('license', this)">Traffic</div>
-                <div class="tab-pill" onclick="filterCategory('rgd', this)">RGD/Civil</div>
-            </div>
+    <div class="identity-section" id="about">
+        <div class="identity-content">
+            <h2 class="identity-headline">Bureaucracy, Managed.</h2>
+            <p class="identity-text">
+                Docu-Hub Operations is a registered agency in Linstead, St. Catherine. 
+                We serve professionals who value their time. We are not just form fillers; 
+                we are compliance strategists who navigate the Tax Office, PICA, and the US Embassy on your behalf.
+            </p>
         </div>
-        <div id="service-grid" class="card-grid"></div>
     </div>
 
-    <div class="process-section" id="process-strip">
+    <div class="services-section">
         <div class="container">
-            <div class="process-grid">
-                <div><div class="p-icon-circle"><i class="fa-solid fa-file-circle-check"></i></div><div class="p-title">1. We Audit</div><div class="p-desc">Zero-Rejection pre-vetting of all your documents.</div></div>
-                <div><div class="p-icon-circle"><i class="fa-solid fa-building-columns"></i></div><div class="p-title">2. We Process</div><div class="p-desc">We stand in the government lines for you.</div></div>
-                <div><div class="p-icon-circle"><i class="fa-solid fa-truck-fast"></i></div><div class="p-title">3. We Deliver</div><div class="p-desc">Secure delivery to your home or office.</div></div>
+            <div class="section-header">
+                <span class="section-label">Our Expertise</span>
+                <h2>Premium Service Hubs</h2>
+            </div>
+
+            <div class="service-row">
+                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1603986820807-c587347968de?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="service-content">
+                    <h3 class="svc-title">Traffic & Licence Hub</h3>
+                    <p class="svc-desc">Comprehensive Tax Office proxy services. Driver's Licence renewals, ticket checks, and Vehicle registration.</p>
+                    <a href="traffic-services.html" class="touch-link">ACCESS TRAFFIC HUB <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="service-row">
+                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="service-content">
+                    <h3 class="svc-title">Civil Registry (RGD)</h3>
+                    <p class="svc-desc">Express retrieval of vital records. Certified copies of Birth, Marriage, and Death certificates for legal use.</p>
+                    <a href="rgd-services.html" class="touch-link">ACCESS RGD SERVICES <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="service-row">
+                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1526045431048-f857369baa09?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="service-content">
+                    <h3 class="svc-title">UK Passport Services</h3>
+                    <p class="svc-desc">Complex HMPO digital renewals handled from Jamaica. Photo compliance and secure international courier logistics.</p>
+                    <a href="uk-passport.html" class="touch-link">ACCESS UK HUB <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="service-row">
+                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1548567117-023e9569b767?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="service-content">
+                    <h3 class="svc-title">US Passport Services</h3>
+                    <p class="svc-desc">Standard adult renewals via the DS-82 Mail-In program. Online Pay.gov fee payment and two-way DHL courier.</p>
+                    <a href="us-passport.html" class="touch-link">ACCESS US HUB <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
             </div>
         </div>
     </div>
@@ -316,249 +280,42 @@
     <footer class="main-footer">
         <div class="container">
             <div class="footer-grid">
-               <a href="contact.html" class="footer-link">Support Center</a><a href="about.html" class="footer-link">About Us</a></div>
-                <div class="footer-col"><h4>Compliance</h4><a href="terms.html" class="footer-link">Terms of Service</a><a href="privacy.html" class="footer-link">Privacy Policy</a></div>
-                <div class="footer-col"><h4>Contact</h4><a href="#" class="footer-link"><i class="fa-brands fa-whatsapp"></i> 876-561-2614</a><a href="#" class="footer-link"><i class="fa-regular fa-envelope"></i> admin@docuhub.com</a></div>
+                <div class="footer-brand">
+                    <h2>Docu-Hub.</h2>
+                    <p>Premium proxy services. Linstead, St. Catherine.</p>
+                </div>
+                <div class="footer-col">
+                    <a href="traffic-services.html" class="footer-link">Traffic Hub</a>
+                    <a href="rgd-services.html" class="footer-link">Civil Registry</a>
+                    <a href="uk-passport.html" class="footer-link">UK Passports</a>
+                    <a href="us-passport.html" class="footer-link">US Passports</a>
+                </div>
+                <div class="footer-col">
+                    <a href="https://wa.me/18765612614" class="footer-link">WhatsApp Desk</a>
+                    <a href="contact.html" class="footer-link">Contact Us</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                </div>
             </div>
-            <div class="footer-bottom">&copy; 2026 Docu-Hub Operations Services. Linstead, St. Catherine. All Rights Reserved.<br><br><a href="#" style="color:#fff; text-decoration:none; font-weight:700;">Back to Top <i class="fa-solid fa-arrow-up"></i></a></div>
+            <div class="footer-bottom">
+                &copy; 2026 Docu-Hub Operations Services. All Rights Reserved.
+            </div>
         </div>
     </footer>
 
-    <div class="page-overlay" id="detail-page">
-        <div class="page-nav">
-            <div class="container page-nav-inner">
-                <div class="back-btn" onclick="closePage()"><i class="fa-solid fa-arrow-left"></i> Back to Services</div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="blog-grid">
-                <div id="detail-content"></div>
-                <div class="sticky-sidebar" id="detail-sidebar"></div>
-            </div>
-        </div>
-        <div class="mobile-bar" id="mobile-bar"></div>
-    </div>
-
-    <div class="page-overlay wizard-overlay" id="wizard-page">
-        <div class="page-nav">
-            <div class="container page-nav-inner">
-                <div class="back-btn" onclick="closeWizard()"><i class="fa-solid fa-xmark"></i> Cancel</div>
-            </div>
-        </div>
-        <div class="wiz-layout">
-            <div class="blog-card">
-                <h2 style="color:var(--navy-deep); margin-top:0;">Your Details</h2>
-                <p style="color:var(--text-light); margin-bottom:25px;">We will contact you to arrange document collection.</p>
-                
-                <form id="intake-form" onsubmit="submitForm(event)">
-                    <div class="hp-field">
-                        <label>Ignore this field</label>
-                        <input type="text" name="_website_verify_" value="">
-                    </div>
-                    
-                    <input type="text" name="first_name" class="wiz-input" placeholder="First Name" required>
-                    <input type="text" name="last_name" class="wiz-input" placeholder="Last Name" required>
-                    <input type="email" name="email" class="wiz-input" placeholder="Email Address" required>
-                    <input type="tel" name="phone" class="wiz-input" placeholder="Phone (876)..." required>
-                    <button type="submit" class="action-btn" id="submit-btn">Send Request</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
     <script>
-        const serviceData = {
-            'jm-passports': [
-                { 
-                    title: "Adult Passport Renewal (JM)", 
-                    desc: "Simplified renewal for expired machine-readable passports.", 
-                    fees: "$10,000", govt_fee: "Inclusive", icon: "fa-passport", time: "4-6 Weeks", 
-                    intro: "We handle the full digital processing, photo vetting, and tracking so you avoid the 'bounce back' from PICA.",
-                    reqs: ["Old Passport Bio-Page (No glare)", "Digital Studio Photo (Soft Copy)", "2 Emergency Contacts"],
-                    tips: "Do not scan a printed photo. You must ask your photographer for the digital file. If your passport has water damage, select the 'Damaged Passport' service.",
-                    process: ["Intake Audit", "PICA Submission", "Tracking & Updates"]
-                },
-                { title: "New Adult / Name Change", desc: "First time or marriage change.", fees: "$3,500", govt_fee: "$6,500", icon: "fa-user-pen", time: "6-8 Weeks", intro: "First-time applications require an interview. We prepare your entire legal packet so you walk in ready.", reqs: ["Birth Cert", "Valid ID", "Marriage Cert", "2 Photos"], process: ["Packet Prep", "Interview Booking", "JP Guidance"] },
-                { title: "Child Application", desc: "Minors under 18.", fees: "$3,000", govt_fee: "$4,000", icon: "fa-child", time: "6-8 Weeks", intro: "We navigate the complex parent consent forms for you.", reqs: ["Birth Cert", "Parent ID", "Section C Form"] },
-                { title: "Lost Passport", desc: "Affidavit & Replacement.", fees: "$7,500", govt_fee: "$11,500", icon: "fa-shield-halved", time: "Variable", intro: "Lost your passport? We draft the legal affidavit and manage the police report process.", reqs: ["Police Report", "Birth Cert"] }
-            ],
-            'foreign-passports': [
-                { 
-                    title: "US Passport Renewal", 
-                    desc: "Secure courier service (DS-82).", 
-                    fees: "$6,500", govt_fee: "$130 USD", icon: "fa-flag-usa", time: "3-4 Weeks", 
-                    intro: "Mandatory mail-in program for US citizens in Jamaica. We handle the Pay.gov fees and the two-way DHL courier to the Embassy.",
-                    reqs: ["Physical US Passport (Undamaged)", "2x2 Photo (White BG, No Glasses)", "Social Security Number"],
-                    tips: "CRITICAL: No glasses allowed. If you don't have your SSN, a specific declaration is required.",
-                    process: ["Pay.gov Fee Payment", "DS-82 Form Completion", "Round-Trip Courier Logistics"]
-                },
-                { title: "UK Passport Renewal", desc: "HMPO Digital filing.", fees: "$7,000", govt_fee: "£140 + Courier", icon: "fa-crown", time: "6-10 Weeks", intro: "We handle the digital HMPO filing and international courier.", reqs: ["Old UK Passport", "Digital Photo (Cream/Grey)"], tips: "UK Photos must be Cream/Grey background, NOT White. Also, dual citizens must submit JA Passport details." }
-            ],
-            'license': [
-                { 
-                    title: "Driver's Licence Renewal (Local)", desc: "Queue Jumper Service.", fees: "$3,500", govt_fee: "~$7,200", icon: "fa-id-card", time: "Same Day", 
-                    intro: "We act as your proxy at the Tax Office. We vet your file against the Traffic Ticket database first to ensure no 'bounce back' at the cashier.",
-                    reqs: ["Expired Driver's Licence", "2x Photos (1 JP Certified)", "Completed F7 Form"],
-                    tips: "CRITICAL: We run a mandatory check on trafficticketlookup.gov.jm. If a Warrant is found, we cannot proceed—you must visit the Court.",
-                    process: ["Ticket & Warrant Vetting", "Tax Office Queue Proxy", "Payment & Collection"]
-                },
-                { title: "Driver's Licence Renewal (Overseas)", desc: "For clients abroad.", fees: "$8,500", govt_fee: "~$7,200", icon: "fa-plane", time: "5-7 Days", intro: "Living abroad? We process the renewal via proxy and handle the complex authorization.", reqs: ["Notarized F7 Form", "Stamp Duty on Auth Letter", "2x Notarized Photos"], tips: "The Authorization Letter must be stamped by the Stamp Duty Office, not just a JP." },
-                { title: "Traffic Ticket Check", desc: "Clear fines & Find details.", fees: "$1,500", govt_fee: "N/A", icon: "fa-receipt", time: "Instant", intro: "We locate lost ticket numbers and settle fines online to clear warrants.", reqs: ["TRN Number"], tips: "If a Warrant is found, we cannot process payment. We can only advise you to seek legal counsel." },
-                { title: "MV Licence Renewal", desc: "Reg & Fitness sync.", fees: "$3,500", govt_fee: "Variable", icon: "fa-car", time: "Same Day", intro: "We ensure your 'Holy Trinity' (Fitness, Insurance, Reg) matches perfectly on the TAJ Portal.", reqs: ["Fitness Cert", "Insurance Note", "Registration Cert"], tips: "Rule: Insurance must not expire within 30 days of the transaction. If you have Red Plates (PPV), your Road Licence must also be valid." }
-            ],
-            'rgd': [
-                { title: "Birth Certificate", desc: "Express retrieval.", fees: "$3,000", govt_fee: "~$2,500", icon: "fa-baby", time: "7-10 Days", intro: "Express retrieval from the RGD. Perfect for Visa applications.", reqs: ["Name", "DOB", "Mother's Maiden Name"], tips: "If you don't have the Entry #, a $1,000 Search Fee applies." },
-                { title: "Marriage Certificate", desc: "Official legal copy.", fees: "$3,000", govt_fee: "~$2,500", icon: "fa-ring", time: "7-10 Days", intro: "Need a marriage certificate for a visa application? We ensure the details match the registry perfectly.", reqs: ["Valid ID", "Date of Marriage", "Place of Marriage", "Signed Auth Letter"], tips: "If you don't have the Entry Number, a Search Fee applies." },
-                { title: "Death Certificate", desc: "For probate & insurance.", fees: "$3,000", govt_fee: "~$2,500", icon: "fa-book-open", time: "7-10 Days", intro: "We handle this sensitive process with speed to help you settle estate or insurance matters.", reqs: ["Applicant ID", "Date of Death", "Place of Death", "Burial Order"], tips: "Accuracy is key. Ensure the Date of Death is exact." }
-            ]
-        };
-
-        let activeService = null;
-
-       function filterCategory(cat, el) {
-            // 1. Update the Active Tab Pill
-            document.querySelectorAll('.tab-pill').forEach(t => t.classList.remove('active'));
-            if(el) el.classList.add('active');
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            const icon = document.getElementById('toggle-icon');
+            drawer.classList.toggle('open');
             
-            // 2. Hide/Show Process Strip (Only show on Featured)
-            const processStrip = document.getElementById('process-strip');
-            if (cat === 'featured') {
-                processStrip.style.display = 'block';
+            if(drawer.classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
             } else {
-                processStrip.style.display = 'none';
-            }
-
-            // 3. Prepare the Card Container
-            const container = document.getElementById('service-grid');
-            container.innerHTML = '';
-            
-            // 4. Select Which Items to Show
-            let items = [];
-            if (cat === 'featured') {
-                // Manually picking the "Best Of" list
-                items.push(serviceData['jm-passports'][0]);      // Adult Renewal
-                items.push(serviceData['foreign-passports'][1]); // UK Renewal
-                items.push(serviceData['license'][0]);           // Licence Renewal
-                
-            } else { 
-                // Otherwise show the whole category
-                items = serviceData[cat]; 
-            }
-
-            // 5. Build the Cards (WITH THE NEW "POP" LOGIC)
-            items.forEach(item => {
-                const card = document.createElement('div');
-                
-                // --- THE NEW CHANGE IS HERE ---
-                // If we are on the Featured tab, add the special 'featured-item' class
-                if (cat === 'featured') {
-                    card.className = 'service-card featured-item';
-                } else {
-                    card.className = 'service-card';
-                }
-                // ------------------------------
-
-                card.onclick = () => openPage(item);
-                card.innerHTML = `<div class="card-visual"><i class="fa-solid ${item.icon}"></i></div><div class="card-body"><div class="card-title">${item.title}</div><div class="card-link">View Requirements</div></div>`;
-                container.appendChild(card);
-            });
-        }
-
-        function openPage(item) {
-            activeService = item;
-            document.getElementById('detail-page').classList.add('open');
-            document.body.style.overflow = 'hidden';
-
-            document.getElementById('detail-content').innerHTML = `
-                <div class="blog-card">
-                    <h1 class="bc-title">${item.title}</h1>
-                    <div class="bc-intro">${item.intro}</div>
-                    <h3 style="color:var(--navy-deep);">Required Documents</h3>
-                    ${(item.reqs || []).map(r => `<div class="checklist-item"><i class="fa-solid fa-circle-check"></i> <span>${r}</span></div>`).join('')}
-                    ${item.tips ? `<div style="background:#FFF3E0; padding:20px; border-left:4px solid #ED6C02; margin-top:20px; border-radius:4px; font-size:0.95rem;"><strong><i class="fa-solid fa-triangle-exclamation"></i> Important:</strong> ${item.tips}</div>` : ''}
-                </div>
-                <div class="blog-card"><h3 style="color:var(--navy-deep); margin-top:0;">Our Process</h3>
-                    ${(item.process || ["Audit", "Process", "Deliver"]).map((p, i) => `<div class="checklist-item"><span style="font-weight:700; color:#ccc;">0${i+1}</span> <span>${p}</span></div>`).join('')}
-                </div>`;
-
-            const summaryHTML = `
-                <div class="summary-card">
-                    <h3 style="margin-top:0; color:var(--navy-deep);">Summary</h3>
-                    <div class="sum-row"><span style="color:#666;">Concierge Fee</span> <span class="sum-val">${item.fees}</span></div>
-                    <div class="sum-row"><span style="color:#666;">Govt Fee</span> <span class="sum-val">${item.govt_fee}</span></div>
-                    <div class="sum-row"><span style="color:#666;">Timeline</span> <span class="sum-val">${item.time}</span></div>
-                    <button class="action-btn" onclick="openWizard()">Start Application</button>
-                </div>`;
-            document.getElementById('detail-sidebar').innerHTML = summaryHTML;
-
-            document.getElementById('mobile-bar').innerHTML = `
-                <div><span style="font-size:0.8rem; color:#666;">Concierge Fee</span><div style="font-weight:800; color:var(--navy-deep); font-size:1.2rem;">${item.fees}</div></div>
-                <button style="background:var(--brand-red); color:white; padding:12px 25px; border-radius:50px; border:none; font-weight:700;" onclick="openWizard()">Start</button>`;
-        }
-
-        function closePage() { document.getElementById('detail-page').classList.remove('open'); document.body.style.overflow = 'auto'; }
-        function openWizard() { document.getElementById('wizard-page').classList.add('open'); }
-        function closeWizard() { document.getElementById('wizard-page').classList.remove('open'); }
-
-        async function submitForm(e) {
-            e.preventDefault();
-            const btn = document.getElementById('submit-btn');
-            const formData = new FormData(e.target);
-            
-            // ⚠️ PASTE YOUR NEW WEB APP URL HERE
-            const GAS_URL = "https://script.google.com/macros/s/AKfycbyR9yADPQV4-i2Kv3VhGTomgDSK6K-yqOjWZ7Ua8cuybtU5bgNEltIbHQR4-3i4YNDniA/exec"; 
-
-            if(formData.get('_website_verify_') !== "") { return; } 
-
-            btn.innerText = "Processing..."; btn.disabled = true;
-            const data = {
-                firstName: formData.get('first_name'),
-                lastName: formData.get('last_name'),
-                email: formData.get('email'),
-                phone: formData.get('phone'),
-                service: activeService.title
-            };
-
-            try {
-                await fetch(GAS_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) });
-                alert("Success! Check your email for the next steps.");
-                location.reload();
-            } catch (err) {
-                alert("Connection Error.");
-                btn.disabled = false;
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
             }
         }
-
-        function searchService(input) {
-            const term = input.value.toLowerCase();
-            const container = document.getElementById('service-grid');
-            container.innerHTML = '';
-            Object.keys(serviceData).forEach(key => {
-                serviceData[key].forEach(item => {
-                    if (item.title.toLowerCase().includes(term)) {
-                        const card = document.createElement('div');
-                        card.className = 'service-card';
-                        card.onclick = () => openPage(item);
-                        card.innerHTML = `<div class="card-visual"><i class="fa-solid ${item.icon}"></i></div><div class="card-body"><div class="card-title">${item.title}</div><div class="card-link">View Requirements</div></div>`;
-                        container.appendChild(card);
-                    }
-                });
-            });
-        }
-
-        window.onload = () => filterCategory('featured', document.querySelector('.tab-pill'));
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
