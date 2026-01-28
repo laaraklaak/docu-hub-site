@@ -16,7 +16,7 @@
             --red: #D32F2F; 
             --white: #FFFFFF; 
             --gold: #F59E0B;
-            --tint: #F0F7FF; /* Subtle tint for text area pop */
+            --tint: #F0F7FF; 
             --shadow: 0 20px 40px rgba(15, 23, 42, 0.05); 
             --radius: 16px;
         }
@@ -38,7 +38,7 @@
         
         .magazine-grid { 
             display: grid; 
-            grid-template-columns: 1.5fr 1fr; /* Asymmetric Magazine look */
+            grid-template-columns: 1.5fr 1fr; 
             gap: 40px; 
         }
 
@@ -56,10 +56,9 @@
 
         .service-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
 
-        /* TEXT AREA POP - The requested Tint */
         .card-content {
             padding: 40px;
-            background-color: var(--tint); /* TINT COLOR */
+            background-color: var(--tint); 
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -91,26 +90,28 @@
             transition: 0.3s;
         }
 
-        .service-card:hover .card-btn { background: var(--red); }
-
-        /* SECONDARY GRID (Minor articles) */
         .side-stack { display: flex; flex-direction: column; gap: 40px; }
+
+        /* GENERAL INFO SECTION (Bottom Container) */
+        .general-section { background: var(--light-bg); padding: 80px 0; border-top: 1px solid #e2e8f0; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .info-box { background: white; padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow); }
+        .info-list { list-style: none; padding: 0; margin: 0; }
+        .info-list li { margin-bottom: 15px; display: flex; gap: 12px; align-items: start; }
+        .info-list i { color: var(--gold); font-size: 0.9rem; margin-top: 5px; }
 
         /* MOBILE VIEW OPTIMIZATION */
         @media(max-width: 850px) {
-            .magazine-grid { grid-template-columns: 1fr; gap: 60px; } /* Large gap for mobile clutter */
+            .magazine-grid { grid-template-columns: 1fr; gap: 50px; } 
+            /* Fix for the bottom container competing columns */
+            .info-grid { grid-template-columns: 1fr; gap: 30px; }
+            
             .hub-hero { height: 350px; text-align: center; }
+            .hub-hero h1 { font-size: 2.5rem; }
             .card-content { padding: 30px 20px; }
-            .selector-section { transform: translateY(-40px); }
+            .magazine-section { margin-top: -40px; }
+            .general-section { padding: 60px 0; }
         }
-
-        /* UTILITY */
-        .general-section { background: var(--light-bg); padding: 100px 0; border-top: 1px solid #e2e8f0; }
-        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .info-box { background: white; padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow); }
-        .info-list { list-style: none; padding: 0; }
-        .info-list li { margin-bottom: 15px; display: flex; gap: 12px; align-items: start; }
-        .info-list i { color: var(--gold); font-size: 0.9rem; margin-top: 5px; }
 
         /* MODAL */
         .modal-overlay {
@@ -207,18 +208,18 @@
                     <h3 style="margin-top:0;"><i class="fa-solid fa-camera"></i> Photo Guidelines</h3>
                     <p style="font-size:0.9rem; color:var(--slate);">We provide in-house photography, but ensure:</p>
                     <ul class="info-list">
-                        <li><i class="fa-solid fa-circle-check"></i> <strong>Attire:</strong> Wear dark colors. White shirts are not allowed.</li>
-                        <li><i class="fa-solid fa-circle-check"></i> <strong>Face:</strong> No glasses or colored contacts. Ears must show.</li>
-                        <li><i class="fa-solid fa-circle-check"></i> <strong>Hair:</strong> Head wraps allowed for religious reasons only (ears visible).</li>
+                        <li><i class="fa-solid fa-circle-check"></i> <span><strong>Attire:</strong> Wear dark colors. White shirts are not allowed.</span></li>
+                        <li><i class="fa-solid fa-circle-check"></i> <span><strong>Face:</strong> No glasses or colored contacts. Ears must show.</span></li>
+                        <li><i class="fa-solid fa-circle-check"></i> <span><strong>Hair:</strong> Head wraps allowed for religious reasons only.</span></li>
                     </ul>
                 </div>
                 
                 <div class="info-box">
                     <h3 style="margin-top:0;"><i class="fa-solid fa-clock"></i> Current Timelines</h3>
                     <ul class="info-list">
-                        <li><i class="fa-solid fa-truck-fast"></i> <strong>Expedited:</strong> 7-10 Business Days (via Kingston).</li>
-                        <li><i class="fa-solid fa-calendar"></i> <strong>Standard:</strong> 4-6 Weeks average processing.</li>
-                        <li><i class="fa-solid fa-location-dot"></i> <strong>Collection:</strong> Secure pickup at our Linstead location.</li>
+                        <li><i class="fa-solid fa-truck-fast"></i> <span><strong>Expedited:</strong> 7-10 Business Days (via Kingston).</span></li>
+                        <li><i class="fa-solid fa-calendar"></i> <span><strong>Standard:</strong> 4-6 Weeks average processing.</span></li>
+                        <li><i class="fa-solid fa-location-dot"></i> <span><strong>Collection:</strong> Secure pickup in Linstead.</span></li>
                     </ul>
                 </div>
             </div>
@@ -314,7 +315,7 @@
             const list = document.getElementById('m-list');
             list.innerHTML = "";
             data.reqs.forEach(item => {
-                list.innerHTML += `<li><i class="fa-solid fa-circle-check"></i> ${item}</li>`;
+                list.innerHTML += `<li><i class="fa-solid fa-circle-check"></i> <span>${item}</span></li>`;
             });
             document.getElementById('detailModal').style.display = 'flex';
         }
