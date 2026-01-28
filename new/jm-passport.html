@@ -18,7 +18,7 @@
 
         /* HERO SECTION */
         .hub-hero {
-            background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('/assets/pica.png');
+            background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1548625361-1b9649962e27?auto=format&fit=crop&w=1200&q=80');
             background-size: cover; background-position: center;
             height: 350px; display: flex; align-items: center; justify-content: center; text-align: center; color: white;
         }
@@ -32,12 +32,32 @@
             background: white; padding: 30px 20px; border-radius: var(--radius);
             box-shadow: 0 15px 35px rgba(0,0,0,0.1); text-align: center;
             cursor: pointer; transition: 0.3s; border-bottom: 4px solid transparent;
+            display: flex; flex-direction: column; align-items: center; height: 100%;
         }
         .service-card:hover { transform: translateY(-10px); border-bottom-color: var(--gold); }
         
         .card-icon { font-size: 2rem; color: var(--navy); margin-bottom: 15px; }
         .card-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 10px; }
-        .card-sub { font-size: 0.9rem; color: var(--slate); }
+        .card-sub { font-size: 0.9rem; color: var(--slate); margin-bottom: auto; /* Pushes btn down */ }
+
+        /* --- NEW CTA BUTTON STYLE --- */
+        .card-btn {
+            margin-top: 20px;
+            padding: 8px 20px;
+            border: 1px solid var(--navy);
+            color: var(--navy);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        /* Hover Effect: Button fills with color when card is hovered */
+        .service-card:hover .card-btn {
+            background-color: var(--navy);
+            color: white;
+            box-shadow: 0 5px 15px rgba(15, 23, 42, 0.3);
+        }
 
         /* 2. GENERAL INFO SECTION (Commonalities) */
         .general-section { padding: 40px 0 80px 0; }
@@ -71,6 +91,10 @@
             border: none; border-radius: 8px; font-weight: 700; font-size: 1rem;
             cursor: pointer; margin-top: 20px;
         }
+        
+        /* FORM STYLES */
+        .form-label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 5px; color: var(--slate); }
+        .form-input { width: 100%; padding: 10px; border: 1px solid #CBD5E1; border-radius: 6px; box-sizing: border-box; font-size: 1rem; }
 
         /* HONEYPOT */
         .hp-field { opacity: 0; position: absolute; z-index: -1; }
@@ -100,26 +124,35 @@
     <div class="selector-section">
         <div class="container">
             <div class="grid-4">
-                <div class="service-card" onclick="openDetail('adult')">
+                
+                <div class="service-card" onclick="openDetail('JM_PASS_RENEW_ONLINE')">
                     <div class="card-icon"><i class="fa-solid fa-user"></i></div>
                     <div class="card-title">New Adult / Renewal</div>
                     <div class="card-sub">First time applicants or standard renewals.</div>
+                    <div class="card-btn">View Details <i class="fa-solid fa-arrow-right"></i></div>
                 </div>
-                <div class="service-card" onclick="openDetail('child')">
+                
+                <div class="service-card" onclick="openDetail('JM_PASS_CHILD_FIRST')">
                     <div class="card-icon"><i class="fa-solid fa-child-reaching"></i></div>
                     <div class="card-title">Child Passport</div>
                     <div class="card-sub">Minors under 18. Requires parent data.</div>
+                    <div class="card-btn">View Details <i class="fa-solid fa-arrow-right"></i></div>
                 </div>
-                <div class="service-card" onclick="openDetail('lost')">
+                
+                <div class="service-card" onclick="openDetail('JM_PASS_ADULT_LOST')">
                     <div class="card-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
                     <div class="card-title">Lost / Stolen</div>
                     <div class="card-sub">Includes affidavits & police reports.</div>
+                    <div class="card-btn">Start Recovery <i class="fa-solid fa-arrow-right"></i></div>
                 </div>
-                <div class="service-card" onclick="openDetail('name')">
+                
+                <div class="service-card" onclick="openDetail('JM_PASS_RENEW_NAME')">
                     <div class="card-icon"><i class="fa-solid fa-ring"></i></div>
                     <div class="card-title">Name Change</div>
                     <div class="card-sub">Marriage, Divorce, or Deed Poll updates.</div>
+                    <div class="card-btn">View Details <i class="fa-solid fa-arrow-right"></i></div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -184,30 +217,40 @@
                 <h3 style="margin:0;">Client Details</h3>
             </div>
             <div class="modal-body">
-                        <form id="publicForm" onsubmit="submitToBackend(event)">
+                <form id="publicForm" onsubmit="submitToBackend(event)">
                     <input type="hidden" id="p-service" name="service">
-                    <input type="text" name="website_url" id="hp-check" class="hp-field"> <div style="margin-bottom:15px;">
-                        <label style="display:block; font-size:0.8rem; font-weight:700; margin-bottom:5px;">FULL NAME</label>
-                        <input type="text" name="full_name" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px;" required>
+                    <input type="text" name="website_url" id="hp-check" class="hp-field"> 
+                    
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom:15px;">
+                        <div>
+                            <label class="form-label">FIRST NAME</label>
+                            <input type="text" name="first_name" class="form-input" required>
+                        </div>
+                        <div>
+                            <label class="form-label">LAST NAME</label>
+                            <input type="text" name="last_name" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom:15px;">
+                        <label class="form-label">PHONE</label>
+                        <input type="tel" name="phone" class="form-input" required>
                     </div>
                     <div style="margin-bottom:15px;">
-                        <label style="display:block; font-size:0.8rem; font-weight:700; margin-bottom:5px;">PHONE</label>
-                        <input type="tel" name="phone" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px;" required>
+                        <label class="form-label">EMAIL</label>
+                        <input type="email" name="email" class="form-input" required>
                     </div>
-                    <div style="margin-bottom:15px;">
-                        <label style="display:block; font-size:0.8rem; font-weight:700; margin-bottom:5px;">EMAIL</label>
-                        <input type="email" name="email" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px;" required>
-                    </div>
+                    
                     <div style="margin: 20px 0; font-size: 0.85rem; color: var(--slate); background: #F8FAFC; padding: 10px; border-radius: 6px;">
-         <label style="display:flex; gap:10px; align-items:start; cursor:pointer;">
-        <input type="checkbox" required style="margin-top:4px; accent-color:var(--red);">
-        <span>
-            I agree to the 
-            <a href="#" style="color:var(--navy); text-decoration:underline; font-weight:700;">Terms of Service</a> 
-            and authorize Docu-Hub Operations to act as my proxy for this application.
-        </span>
-    </label>
-</div>
+                        <label style="display:flex; gap:10px; align-items:start; cursor:pointer;">
+                            <input type="checkbox" required style="margin-top:4px; accent-color:var(--red);">
+                            <span>
+                                I agree to the 
+                                <a href="#" style="color:var(--navy); text-decoration:underline; font-weight:700;">Terms of Service</a> 
+                                and authorize Docu-Hub Operations to act as my proxy for this application.
+                            </span>
+                        </label>
+                    </div>
 
                     <button type="submit" id="btn-submit" class="action-btn">Submit Request</button>
                 </form>
@@ -217,61 +260,65 @@
 
     <script>
         // 1. PASTE YOUR DASHBOARD URL HERE
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyR9yADPQV4-i2Kv3VhGTomgDSK6K-yqOjWZ7Ua8cuybtU5bgNEltIbHQR4-3i4YNDniA/exec";
-       // --- DATA STORE (Updated: Birth Cert is Mandatory for All) ---
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyR9yADPQV4-i2Kv3VhGTomgDSK6K-yqOjWZ7Ua8cuybtU5bgNEltIbHQR4-3i4YNDniA/exec";
+       
+       // --- DATA STORE (UPDATED WITH BACKEND CODES) ---
         const serviceData = {
-            'adult': {
+            'JM_PASS_RENEW_ONLINE': {
                 title: "New Adult / Renewal",
                 desc: "For adults (18+) applying for their first passport or renewing an expired one.",
                 reqs: [
-                    "Original Birth Certificate", // <--- Confirmed
+                    "Original Birth Certificate",
                     "Valid Government ID (Voters/License)",
                     "Two (2) Passport Photos (Done in-office)", 
                     "Completed PICA Form (We assist)"
                 ],
-                fee: "$3500 JMD (Agency) + $6500 (PICA Fees)"
+                fee: "$4,000 JMD (Agency) + $6,500 (PICA Fees)"
             },
-            'child': {
+            'JM_PASS_CHILD_FIRST': {
                 title: "Child Passport (Under 18)",
                 desc: "Applications for minors. Parent/Guardian must be present.",
                 reqs: [
-                    "Child's Original Birth Certificate", // <--- Confirmed
+                    "Child's Original Birth Certificate",
                     "Parent's Valid ID",
                     "Marriage Certificate (if applicable)",
                     "Two (2) Photos (Done in-office)"
                 ],
-                fee: "$4000 JMD (Agency) + $4000 (PICA Fees)"
+                fee: "$4,000 JMD (Agency) + $4,000 (PICA Fees)"
             },
-            'lost': {
+            'JM_PASS_ADULT_LOST': {
                 title: "Lost or Stolen Passport",
                 desc: "Recovering your travel documents requires additional security clearance.",
                 reqs: [
-                    "Original Birth Certificate", // <--- Confirmed
+                    "Original Birth Certificate",
                     "Police Report (Original)", 
                     "PICA Affidavit (We provide)", 
                     "Valid ID (Voters/License)", 
                     "Two (2) Photos"
                 ],
-                fee: "$8,500 JMD (Agency) + PICA Fees"
+                fee: "$5,000 JMD (Agency) + $11,500 (PICA Fees)"
             },
-            'name': {
+            'JM_PASS_RENEW_NAME': {
                 title: "Passport Name Change",
                 desc: "Updating your passport to match your new legal status.",
                 reqs: [
-                    "Original Birth Certificate", // <--- Added here
+                    "Original Birth Certificate",
                     "Original Marriage Certificate", 
                     "OR Deed Poll/Divorce Decree", 
                     "Old Passport", 
                     "Valid ID in New Name"
                 ],
-                fee: "$7,000 JMD (Agency) + PICA Fees"
+                fee: "$4,000 JMD (Agency) + $6,500 (PICA Fees)"
             }
         };
 
+        // --- GLOBAL VAR TO HOLD SELECTED CODE ---
+        let currentCode = "";
+
         // --- OPEN DETAILS ---
         function openDetail(key) {
+            currentCode = key; // Save the CODE (e.g., JM_PASS_RENEW_ONLINE)
             const data = serviceData[key];
-            currentService = data.title; // Save for the form
             
             document.getElementById('m-title').innerText = data.title;
             document.getElementById('m-desc').innerText = data.desc;
@@ -294,7 +341,7 @@
         // --- INTAKE FLOW ---
         function triggerIntake() {
             closeDetail(); // Close detail modal
-            document.getElementById('p-service').value = currentService; // Set hidden input
+            document.getElementById('p-service').value = currentCode; // Set hidden input to the CODE
             document.getElementById('intakeModal').style.display = 'flex'; // Open form
         }
 
@@ -314,22 +361,19 @@
             const originalText = btn.innerText;
             btn.innerText = "Sending..."; btn.disabled = true;
 
-            // Split name for backend compatibility
-            const fullName = form.full_name.value.split(" ");
-            const fName = fullName[0];
-            const lName = fullName.slice(1).join(" ") || ".";
+            // UPDATED: Grab Separate Names
+            const fName = form.first_name.value;
+            const lName = form.last_name.value;
 
             const formData = {
                 firstName: fName,
                 lastName: lName,
                 phone: form.phone.value,
                 email: form.email.value,
-                service: form.service.value,
+                service: form.service.value, // This is now the CODE
                 notes: "Submitted via Passport Hub"
             };
 
-            // --- NEW REPLACEMENT CODE ---
-            
             // Send data to Google Sheets
             fetch(SCRIPT_URL, {
                 method: "POST",
@@ -343,8 +387,6 @@
                 setTimeout(() => {
                     alert("Application Received! We will contact you shortly.");
                     
-                    // Note: Ensure this function name matches what you have defined above 
-                    // (e.g. closeIntake() or closePublicIntake())
                     if(typeof closePublicIntake === 'function') { 
                         closePublicIntake(); 
                     } else if(typeof closeIntake === 'function') {
@@ -366,12 +408,4 @@
             }
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
