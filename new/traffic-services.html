@@ -121,12 +121,12 @@
             <div class="fee-grid">
                 <div class="fee-card">
                     <span class="fee-badge">Most Common</span>
-                    <span class="fee-price">$10,700 JMD</span>
+                    <span class="fee-price">$11,000 JMD</span>
                     <span class="fee-sub">Total for Private Licence (5 Years)</span>
                     
                     <ul class="fee-includes">
                         <li><i class="fa-solid fa-check"></i> <strong>Govt Tax:</strong> $7,200 (Included)</li>
-                        <li><i class="fa-solid fa-check"></i> <strong>Agency Fee:</strong> $3,500 (Included)</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Agency Fee:</strong> $3,800 (Included)</li>
                         <li><i class="fa-solid fa-clock"></i> <strong>Processing:</strong> 24-48 Hours</li>
                     </ul>
                     <button onclick="openIntake('Renewal - Private')" class="btn-outline">Renew Private</button>
@@ -134,12 +134,12 @@
 
                 <div class="fee-card">
                     <span class="fee-badge" style="background:#F1F5F9; color:var(--navy);">General / PPV</span>
-                    <span class="fee-price">$12,300 JMD</span>
+                    <span class="fee-price">$12,000 JMD</span>
                     <span class="fee-sub">Total for General Licence (5 Years)</span>
                     
                     <ul class="fee-includes">
                         <li><i class="fa-solid fa-check"></i> <strong>Govt Tax:</strong> $8,800 (Included)</li>
-                        <li><i class="fa-solid fa-check"></i> <strong>Agency Fee:</strong> $3,500 (Included)</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Agency Fee:</strong> $3,200 (Included)</li>
                         <li><i class="fa-solid fa-user-doctor"></i> <strong>Note:</strong> Medical Form Required</li>
                     </ul>
                     <button onclick="openIntake('Renewal - General')" class="btn-outline">Renew General</button>
@@ -163,7 +163,7 @@
                     </div>
                 </div>
                 <div class="svc-action">
-                    <span class="price-display">$2,500 JMD</span>
+                    <span class="price-display">$1,500 JMD</span>
                     <button onclick="openIntake('Ticket Check')" class="action-btn">Start Check</button>
                 </div>
             </div>
@@ -180,7 +180,7 @@
                     </div>
                 </div>
                 <div class="svc-action">
-                    <span class="price-display">$4,000 JMD</span>
+                    <span class="price-display">$3,500 JMD</span>
                     <button onclick="openIntake('MV Registration')" class="action-btn">Renew Disc</button>
                 </div>
             </div>
@@ -217,9 +217,15 @@
                 <input type="text" name="website_url" id="hp-check" class="hp-field">
                 <input type="hidden" id="p-service" name="service">
 
-                <div style="margin-bottom:15px;">
-                    <label class="form-label">FULL NAME</label>
-                    <input type="text" name="full_name" class="form-input" required>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom:15px;">
+                    <div>
+                        <label class="form-label">FIRST NAME</label>
+                        <input type="text" name="first_name" class="form-input" required>
+                    </div>
+                    <div>
+                        <label class="form-label">LAST NAME</label>
+                        <input type="text" name="last_name" class="form-input" required>
+                    </div>
                 </div>
                 
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
@@ -232,15 +238,15 @@
                     <textarea name="notes" class="form-input" rows="2" placeholder="Any specific details..."></textarea>
                 </div>
                 <div style="margin: 20px 0; font-size: 0.85rem; color: var(--slate); background: #F8FAFC; padding: 10px; border-radius: 6px;">
-    <label style="display:flex; gap:10px; align-items:start; cursor:pointer;">
-        <input type="checkbox" required style="margin-top:4px; accent-color:var(--red);">
-        <span>
-            I agree to the 
-            <a href="#" style="color:var(--navy); text-decoration:underline; font-weight:700;">Terms of Service</a> 
-            and authorize Docu-Hub Operations to act as my proxy for this application.
-        </span>
-    </label>
-</div>
+                    <label style="display:flex; gap:10px; align-items:start; cursor:pointer;">
+                        <input type="checkbox" required style="margin-top:4px; accent-color:var(--orange);">
+                        <span>
+                            I agree to the 
+                            <a href="#" style="color:var(--navy); text-decoration:underline; font-weight:700;">Terms of Service</a> 
+                            and authorize Docu-Hub Operations to act as my proxy for this application.
+                        </span>
+                    </label>
+                </div>
 
                 <button type="submit" id="btn-submit" class="action-btn">Submit Request</button>
             </form>
@@ -248,9 +254,8 @@
     </div>
 
     <script>
-
-        // 1. PASTE YOUR DASHBOARD URL HERE
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyR9yADPQV4-i2Kv3VhGTomgDSK6K-yqOjWZ7Ua8cuybtU5bgNEltIbHQR4-3i4YNDniA/exec";
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyR9yADPQV4-i2Kv3VhGTomgDSK6K-yqOjWZ7Ua8cuybtU5bgNEltIbHQR4-3i4YNDniA/exec";
+        
         function openIntake(serviceName) {
             document.getElementById('display-service').innerText = serviceName;
             document.getElementById('p-service').value = serviceName;
@@ -270,33 +275,31 @@
             const originalText = btn.innerText;
             btn.innerText = "Sending..."; btn.disabled = true;
 
-            const fullName = form.full_name.value.split(" ");
+            // UPDATED: Grab separate names
+            const fName = form.first_name.value;
+            const lName = form.last_name.value;
+
             const formData = {
-                firstName: fullName[0],
-                lastName: fullName.slice(1).join(" ") || ".",
+                firstName: fName,
+                lastName: lName,
                 phone: form.phone.value,
                 email: form.email.value,
                 service: form.service.value,
                 notes: form.notes.value || "Traffic Service"
             };
 
-           // --- NEW REPLACEMENT CODE ---
-            
             // Send data to Google Sheets
             fetch(SCRIPT_URL, {
                 method: "POST",
-                mode: "no-cors", // Crucial for Google Scripts
+                mode: "no-cors", 
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData)
             })
             .then(data => {
-                // SUCCESS!
                 btn.innerText = "✅ Success!";
                 setTimeout(() => {
                     alert("Application Received! We will contact you shortly.");
                     
-                    // Note: Ensure this function name matches what you have defined above 
-                    // (e.g. closeIntake() or closePublicIntake())
                     if(typeof closePublicIntake === 'function') { 
                         closePublicIntake(); 
                     } else if(typeof closeIntake === 'function') {
@@ -309,7 +312,6 @@
                 }, 500);
             })
             .catch(error => {
-                // ERROR
                 console.error("Error:", error);
                 alert("Connection Error. Please message us on WhatsApp.");
                 btn.innerText = originalText; 
@@ -318,8 +320,4 @@
             }
     </script>
 </body>
-
 </html>
-
-
-
