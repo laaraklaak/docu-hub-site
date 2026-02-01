@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docu-Hub Operations Services | Premium Concierge</title>
+    <title>Docu-Hub Operations Services | The Knowledge Base</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- 1. PREMIUM VARIABLES --- */
+        /* --- 1. PREMIUM VARIABLES (High Contrast Edition) --- */
         :root {
             --brand-red: #D32F2F;
             --navy-deep: #021024;
-            --bg-body: #EFF4F8; 
+            --bg-body: #F1F5F9; 
             --bg-card: #FFFFFF;
-            --text-main: #1E293B;
-            --text-muted: #64748B;
+            --text-main: #0F172A; 
+            --text-muted: #334155; /* Darker for better readability */
             --container-width: 1100px;
-            --gutter: 40px; /* Desktop Gutter */
+            --gutter: 40px; 
             --shadow-card: 0 15px 35px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.05);
             --header-height: 80px;
         }
@@ -27,25 +27,32 @@
         body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg-body); color: var(--text-main); line-height: 1.6; -webkit-font-smoothing: antialiased; padding-top: var(--header-height); }
         
         h1, h2, h3 { font-family: 'Playfair Display', serif; margin-top: 0; color: var(--navy-deep); }
-        p { margin-bottom: 20px; font-size: 1.05rem; }
+        p { margin-bottom: 20px; font-size: 1.05rem; color: var(--text-muted); }
         a { text-decoration: none; transition: 0.3s; }
         
         .container { max-width: var(--container-width); margin: 0 auto; padding: 0 var(--gutter); }
-        .section-spacer { padding: 100px 0; }
         
-        /* --- 2. HEADER --- */
+        /* --- 2. HEADER (Full Business Name) --- */
         .app-header {
             position: fixed; top: 0; left: 0; width: 100%; z-index: 2000;
-            background: rgba(255, 255, 255, 0.98); border-bottom: 1px solid white;
+            background: rgba(255, 255, 255, 0.98); border-bottom: 1px solid #E2E8F0;
             box-shadow: 0 4px 20px rgba(0,0,0,0.03); padding: 0;
             backdrop-filter: blur(10px); height: var(--header-height); display: flex; align-items: center;
         }
         .header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; }
         
-        .header-logo { font-size: 1.2rem; font-weight: 900; color: var(--navy-deep); letter-spacing: -0.5px; font-family: 'Inter', sans-serif; text-transform: uppercase; }
+        .header-logo { 
+            font-size: 1.1rem; 
+            font-weight: 900; 
+            color: var(--navy-deep); 
+            letter-spacing: -0.5px; 
+            font-family: 'Inter', sans-serif; 
+            text-transform: uppercase; 
+            line-height: 1.2;
+        }
         .header-logo span { color: var(--brand-red); }
         
-        /* Updated Contact Button Style */
+        /* Contact Button */
         .header-contact {
             display: flex; align-items: center; gap: 8px; font-weight: 700; color: white; font-size: 0.85rem;
             padding: 10px 20px; border-radius: 50px; background: var(--navy-deep); 
@@ -53,11 +60,12 @@
         }
         .header-contact:hover { background: var(--brand-red); }
 
-        /* --- 3. IDENTITY HERO --- */
+        /* --- 3. HERO SECTION (Educational Vibe) --- */
         .hero-visual {
-            width: 100%; height: 500px;
-            background-image: url('assets/laura.png');
-            background-size: cover; background-position: center;
+            width: 100%; height: 450px;
+            /* Professional Relief Image */
+            background-image: url('https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=1500&q=80');
+            background-size: cover; background-position: center 20%;
         }
 
         .hero-text-block {
@@ -68,7 +76,7 @@
 
         .hero-tag { color: var(--brand-red); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; display: block; margin-bottom: 20px; font-family: 'Inter', sans-serif; }
         .hero-headline { font-size: 3.5rem; line-height: 1.1; margin-bottom: 25px; }
-        .hero-desc { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px; font-weight: 300; line-height: 1.6; }
+        .hero-desc { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px; font-weight: 400; line-height: 1.6; }
         
         .hero-cta {
             display: inline-block; background: var(--navy-deep); color: white; padding: 18px 40px;
@@ -77,41 +85,42 @@
         }
         .hero-cta:hover { transform: translateY(-3px); background: var(--brand-red); }
 
-        /* --- 4. SERVICE CONTENT BLOCKS --- */
+        /* --- 4. GUIDES GRID --- */
         .services-section { padding: 40px 0 100px 0; }
         .section-header { margin-bottom: 60px; text-align: left; }
-        .section-label { color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 10px; }
+        .section-label { color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; font-weight: 700; display: block; margin-bottom: 10px; }
         
         .service-row {
             background: var(--bg-card); border-radius: 12px; overflow: hidden;
             box-shadow: var(--shadow-card);
             display: grid; grid-template-columns: 1fr 1fr; 
             margin-bottom: 80px; transition: transform 0.3s ease;
+            border: 1px solid #E2E8F0;
         }
         .service-row:last-child { margin-bottom: 0; }
-        .service-row:hover { transform: translateY(-5px); }
+        .service-row:hover { transform: translateY(-5px); border-color: #CBD5E1; }
 
         .service-image { height: 100%; min-height: 400px; width: 100%; background-size: cover; background-position: center; }
         .service-content { padding: 60px; display: flex; flex-direction: column; justify-content: center; }
-        .svc-title { font-size: 2.2rem; margin-bottom: 20px; color: var(--navy-deep); }
-        .svc-desc { color: var(--text-muted); margin-bottom: 40px; font-size: 1.05rem; }
+        .svc-title { font-size: 2.2rem; margin-bottom: 20px; color: var(--navy-deep); font-weight: 700; }
+        .svc-desc { color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem; }
 
         .touch-link {
             display: inline-flex; align-items: center; gap: 12px;
             font-size: 0.9rem; font-weight: 800; color: var(--navy-deep);
-            padding: 15px 25px; background: var(--bg-body); 
+            padding: 15px 25px; background: #F1F5F9; 
             border-radius: 8px; width: fit-content; transition: 0.3s;
         }
         .touch-link:hover { background: var(--navy-deep); color: white; }
         .touch-link:hover i { transform: translateX(5px); }
 
-        /* --- 5. FEATURED INSIGHT --- */
+        /* --- 5. INSIGHT SECTION --- */
         .featured-section { background: white; padding: 100px 0; border-top: 1px solid #E2E8F0; }
         .featured-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         
         .featured-img { 
             height: 400px; border-radius: 12px; 
-            background: url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1000&q=80') center/cover;
+            background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=80') center/cover;
             box-shadow: var(--shadow-card);
         }
         
@@ -119,37 +128,42 @@
         .featured-meta { color: var(--brand-red); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; display: block; margin-bottom: 15px; }
 
         /* --- 6. FOOTER --- */
-        .main-footer { background: #0A192F; color: #64748B; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .main-footer { background: #0F172A; color: #94A3B8; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
         .footer-brand h2 { color: white; margin-bottom: 10px; font-size: 1.5rem; }
-        .footer-link { display: block; color: #64748B; margin-bottom: 12px; font-size: 0.9rem; }
+        .footer-link { display: block; color: #94A3B8; margin-bottom: 12px; font-size: 0.95rem; }
         .footer-link:hover { color: white; }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; font-size: 0.85rem; text-align: center; }
+        
+        /* LEGAL DISCLAIMER */
+        .legal-disclaimer {
+            background: rgba(211, 47, 47, 0.1); 
+            border: 1px solid #D32F2F;
+            color: #CBD5E1; 
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            border-radius: 8px;
+        }
 
-        /* =========================================
-           MOBILE OPTIMIZATION (THE FIXES) 
-           ========================================= */
+        /* MOBILE OPTIMIZATION */
         @media (max-width: 900px) {
-            /* Fix Side Spacing */
             :root { --gutter: 20px; } 
 
-            /* Header Tweaks */
-            .header-logo { font-size: 0.95rem; max-width: 60%; line-height: 1.2; }
+            .header-logo { font-size: 0.95rem; max-width: 70%; }
             .header-contact { padding: 8px 16px; font-size: 0.8rem; }
 
-            /* Hero Fixes */
-            .hero-visual { height: 300px; } /* Shorter image */
+            .hero-visual { height: 300px; } 
             .hero-text-block { padding: 40px 0; margin-bottom: 40px; }
-            .hero-headline { font-size: 2.2rem; } /* Smaller Title */
-            .hero-desc { font-size: 1rem; }
+            .hero-headline { font-size: 2.2rem; } 
             
-            /* Service Card Fixes */
             .service-row, .featured-grid { grid-template-columns: 1fr; border-radius: 12px; margin-bottom: 40px; }
-            .service-image { height: 200px; order: -1; } /* Much shorter card image */
-            .service-content { padding: 30px 20px; } /* Tighter padding */
-            .svc-title { font-size: 1.6rem; margin-bottom: 10px; } /* Smaller Card Title */
+            .service-image { height: 200px; order: -1; } 
+            .service-content { padding: 30px 20px; } 
+            .svc-title { font-size: 1.8rem; margin-bottom: 10px; } 
             
-            /* Footer Fixes */
             .footer-grid { grid-template-columns: 1fr; gap: 30px; }
             .featured-img { order: -1; height: 250px; }
             .featured-content h2 { font-size: 1.8rem; }
@@ -160,11 +174,13 @@
 
     <header class="app-header">
         <div class="container header-inner">
-            <a href="index.html" class="header-logo">Docu-Hub<span> Operation Services</span></a>
+            <a href="index.html" class="header-logo">
+                Docu-Hub <span>Operations Services</span>
+            </a>
             
             <a href="contact.html" class="header-contact">
-                <i class="fa-solid fa-envelope"></i>
-                <span>Contact Us</span>
+                <i class="fa-solid fa-circle-question"></i>
+                <span>Get Help</span>
             </a>
         </div>
     </header>
@@ -173,85 +189,72 @@
     <div class="hero-text-block">
         <div class="container">
             <div class="hero-inner">
-                <span class="hero-tag">Premium Concierge</span>
-                <h1 class="hero-headline">Bureaucracy, Managed.</h1>
+                <span class="hero-tag">The Jamaica Online Knowledge Base</span>
+                <h1 class="hero-headline">The System Moved Online. You Can Too.</h1>
                 <p class="hero-desc">
-                    Docu-Hub Operations Services is a registered agency in Linstead, St. Catherine. 
-                    We are compliance strategists who navigate the Tax Office, PICA, and the US/UK Embassies on your behalf.
+                    Don't get left behind. We provide free, independent, step-by-step guides for PICA, TAJ, RGD, and Embassy services. 
+                    <strong>No gatekeeping. No confusion.</strong>
                 </p>
-                <a href="#services" class="hero-cta">Explore Services <i class="fa-solid fa-arrow-down"></i></a>
+                <a href="#guides" class="hero-cta">Select a Guide <i class="fa-solid fa-arrow-down"></i></a>
             </div>
         </div>
     </div>
 
-    <div class="services-section" id="services">
+    <div class="services-section" id="guides">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Our Expertise</span>
-                <h2>Service Hubs</h2>
+                <span class="section-label">Education Library</span>
+                <h2>Choose Your Path</h2>
             </div>
 
             <div class="service-row">
-                <div class="service-image" style="background-image: url('assets/pica.png');"></div>
+                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1000&q=80');"></div>
                 <div class="service-content">
-                    <h3 class="svc-title">Jamaican Passports</h3>
+                    <h3 class="svc-title">The PICA Protocol</h3>
                     <p class="svc-desc">
-                        Full-service PICA processing. We handle Adult Renewals, Child Applications, and Lost Passport replacement services.
+                        Stop joining the 4:00 AM line. Learn the difference between "Green Light" and "Red Light" applications and how to get your photo approved online the first time.
                     </p>
-                    <a href="new/jm-passport.html" class="touch-link">
-                        ACCESS PICA HUB <i class="fa-solid fa-arrow-right"></i>
+                    <a href="pica-guide.html" class="touch-link">
+                        READ THE GUIDE <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
 
             <div class="service-row">
-                <div class="service-image" style="background-image:  url('assets/taj.png');"></div>
+                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1000&q=80');"></div>
                 <div class="service-content">
-                    <h3 class="svc-title">Traffic & Licence Hub</h3>
+                    <h3 class="svc-title">Traffic & Licenses</h3>
                     <p class="svc-desc">
-                        Comprehensive Tax Office proxy. Driver's Licence renewals, ticket checks, and Motor Vehicle registration.
+                        Locked out of renewal by a ghost ticket? Learn how to use the "Ticket Lookup" tool before you visit the Tax Office and renew your eMVRC from your sofa.
                     </p>
-                    <a href="new/traffic-services.html" class="touch-link">
-                        ACCESS TRAFFIC HUB <i class="fa-solid fa-arrow-right"></i>
+                    <a href="taj-guide.html" class="touch-link">
+                        SKIP THE LINE <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
 
             <div class="service-row">
-                <div class="service-image" style="background-image:  url('assets/rgd.png');"></div>
+                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1635350736475-c8cef4b21906?auto=format&fit=crop&w=1000&q=80');"></div>
                 <div class="service-content">
                     <h3 class="svc-title">Civil Registry (RGD)</h3>
                     <p class="svc-desc">
-                        Express retrieval of vital records. Certified copies of Birth, Marriage, and Death certificates for legal use.
+                        Navigating Birth and Death certificates during sensitive times. Learn about the "System Down" survival protocol and how to use the online portal when it works.
                     </p>
-                    <a href="new/rgd-services.html" class="touch-link">
-                        ACCESS RGD SERVICES <i class="fa-solid fa-arrow-right"></i>
+                    <a href="rgd-guide.html" class="touch-link">
+                        GET THE FACTS <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
 
             <div class="service-row">
-                <div class="service-image" style="background-image:  url('assets/uk-image.png');"></div>
+                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1000&q=80');"></div>
                 <div class="service-content">
-                    <h3 class="svc-title">UK Passport Services</h3>
+                    <h3 class="svc-title">UK & US Renewals</h3>
                     <p class="svc-desc">
-                        Complex HMPO digital renewals handled from Jamaica. Digital photo compliance and secure international courier logistics.
+                        The "Stateless" anxiety is real. We break down the exact courier fees, photo codes, and Pay.gov requirements for renewing foreign passports from Jamaica.
                     </p>
-                    <a href="new/uk-passport.html" class="touch-link">
-                        ACCESS UK HUB <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="service-row">
-                <div class="service-image" style="background-image:  url('assets/us-image.png');"></div>
-                <div class="service-content">
-                    <h3 class="svc-title">US Passport Services</h3>
-                    <p class="svc-desc">
-                        Standard adult renewals via the DS-82 Mail-In program. Online Pay.gov fee payment and two-way DHL courier to the US Embassy.
-                    </p>
-                    <a href="new/us-passport.html" class="touch-link">
-                        ACCESS US HUB <i class="fa-solid fa-arrow-right"></i>
+                    <a href="foreign-guide.html" class="touch-link">
+                        VIEW PROTOCOLS <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
@@ -263,27 +266,26 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-label">Agency Insight</span>
-                <h2>The "Zero-Rejection" Standard.</h2>
+                <h2>Why Self-Education Matters.</h2>
             </div>
             
             <div class="featured-grid">
-                <div class="featured-img" style="background-image: url('assets/audit.png');"></div>
+                <div class="featured-img" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=80');"></div>
                 
                 <div class="featured-content">
                     <span class="featured-meta">Critical Advisory</span>
                     <h3 style="font-size: 1.8rem; margin-bottom: 15px; color:var(--navy-deep);">
-                        Why 30% of "DIY" Applications Fail.
+                        30% of "DIY" Applications Fail. Here is why.
                     </h3>
-                    <p style="color:#64748B; font-size:1.05rem; line-height:1.7; margin-bottom: 25px;">
+                    <p style="color:#334155; font-size:1.1rem; line-height:1.7; margin-bottom: 25px;">
                         It is rarely a missing document. It is usually the "small" things: 
                         a shadow on a passport photo, a signature touching the border, or a Section C error. 
                         <br><br>
-                        At Docu-Hub, we don't just submit; we audit. Every application goes through a 
-                        <strong>3-Point Compliance Check</strong> before it ever leaves our Linstead office.
+                        Our goal is to arm you with the knowledge to do it yourself. However, if your case is complex, we offer a <strong>Compliance Audit</strong> to review your files before you pay the government.
                     </p>
                     
                     <a href="contact.html" class="touch-link">
-                        SECURE AN AUDIT <i class="fa-solid fa-shield-halved"></i>
+                        BOOK AN AUDIT <i class="fa-solid fa-shield-halved"></i>
                     </a>
                 </div>
             </div>
@@ -295,21 +297,29 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <h2>Docu-Hub.</h2>
-                    <p>Premium proxy services. Linstead, St. Catherine.</p>
+                    <p>Docu-Hub Operations Services.<br>Linstead, St. Catherine.</p>
                 </div>
                 <div class="footer-col">
-                    <a href="new/traffic-services.html" class="footer-link">Traffic Hub</a>
-                    <a href="new/rgd-services.html" class="footer-link">Civil Registry</a>
-                    <a href="new/uk-passport.html" class="footer-link">UK Passports</a>
-                    <a href="new/us-passport.html" class="footer-link">US Passports</a>
+                    <a href="taj-guide.html" class="footer-link">Traffic Hub</a>
+                    <a href="rgd-guide.html" class="footer-link">Civil Registry</a>
+                    <a href="foreign-guide.html" class="footer-link">Foreign Passports</a>
+                    <a href="pica-guide.html" class="footer-link">PICA Guide</a>
                 </div>
                 <div class="footer-col">
                     <a href="https://wa.me/18765612614" class="footer-link">WhatsApp Desk</a>
-                    <a href="terms.html" class="footer-link">Terms of Service</a>
-                    <a href="privacy.html" class="footer-link">Privacy Policy</a>
-                     <a href="legal-notice.html" class="footer-link">Legal Notice</a>
+                    <a href="contact.html" class="footer-link">Book Consultation</a>
                 </div>
             </div>
+
+            <div class="legal-disclaimer">
+                <strong>IMPORTANT DISCLAIMER:</strong> Docu-Hub Operations Services is an independent educational platform and private consultancy. 
+                We are <strong>NOT</strong> a law firm, nor are we agents, affiliates, or employees of PICA, TAJ, RGD, the British High Commission, or the US Embassy. 
+                <br><br>
+                The information provided on this website is for educational purposes only, based on current 2026 protocols. 
+                Government fees and policies change frequently. <strong>It is your sole responsibility</strong> to verify all official fees, requirements, and forms on the respective government portals before submitting any payment or personal data. 
+                We are not responsible for rejected applications or financial losses incurred by using these guides.
+            </div>
+
             <div class="footer-bottom">
                 &copy; 2026 Docu-Hub Operations Services. All Rights Reserved.
             </div>
@@ -318,6 +328,3 @@
 
 </body>
 </html>
-
-
-
