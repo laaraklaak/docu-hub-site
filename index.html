@@ -113,6 +113,37 @@
         }
         .touch-link:hover { background: var(--navy-deep); color: white; }
         .touch-link:hover i { transform: translateX(5px); }
+/* --- NEW: Button Group for Dual Options --- */
+        .action-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap; /* Ensures they stack on mobile screens */
+            margin-top: 20px;
+        }
+
+        .touch-link.green { 
+            background: #F0FDF4; 
+            color: #166534; 
+            border: 1px solid #DCFCE7; 
+        }
+        
+        .touch-link.green:hover { 
+            background: #166534; 
+            color: white; 
+            border-color: #166534; 
+        }
+
+        .touch-link.red { 
+            background: #FEF2F2; 
+            color: #991B1B; 
+            border: 1px solid #FEE2E2; 
+        }
+
+        .touch-link.red:hover { 
+            background: #991B1B; 
+            color: white; 
+            border-color: #991B1B; 
+        }
 
         /* --- 5. INSIGHT SECTION --- */
         .featured-section { background: white; padding: 100px 0; border-top: 1px solid #E2E8F0; }
@@ -207,16 +238,23 @@
                 <h2>Choose Your Path</h2>
             </div>
 
-            <div class="service-row">
+           <div class="service-row">
                 <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1000&q=80');"></div>
                 <div class="service-content">
                     <h3 class="svc-title">The PICA Protocol</h3>
                     <p class="svc-desc">
-                        Stop joining the 4:00 AM line. Learn the difference between "Green Light" and "Red Light" applications and how to get your photo approved online the first time.
+                        Are you eligible for the easy online renewal, or do you have a complex case? Choose your path below to avoid getting turned away.
                     </p>
-                    <a href="pica-guide.html" class="touch-link">
-                        READ THE GUIDE <i class="fa-solid fa-arrow-right"></i>
-                    </a>
+                    
+                    <div class="action-group">
+                        <a href="pica-online.html" class="touch-link green">
+                            🟢 Online Renewal
+                        </a>
+
+                        <a href="pica-redlight.html" class="touch-link red">
+                            🔴 Red Light / Complex
+                        </a>
+                    </div>
                 </div>
             </div>
 
