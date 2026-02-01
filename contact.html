@@ -3,156 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Liaison | Docu-Hub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>Contact Docu-Hub | Linstead, Jamaica</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- DESIGN SYSTEM --- */
+        :root {
+            --brand-red: #D32F2F;
+            --navy-deep: #021024;
+            --bg-body: #F1F5F9; 
+            --bg-card: #FFFFFF;
+            --text-main: #0F172A; 
+            --text-muted: #334155;
+            --container-width: 800px; 
+            --gutter: 20px; 
+            --header-height: 80px;
+        }
+
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg-body); color: var(--text-main); line-height: 1.6; padding-top: var(--header-height); }
+        
+        h1, h2 { font-family: 'Playfair Display', serif; color: var(--navy-deep); }
+        a { text-decoration: none; transition: 0.3s; }
+        
+        .container { max-width: var(--container-width); margin: 0 auto; padding: 0 var(--gutter); }
+
+        /* HEADER */
+        .app-header {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 2000;
+            background: rgba(255, 255, 255, 0.98); border-bottom: 1px solid #E2E8F0;
+            height: var(--header-height); display: flex; align-items: center;
+        }
+        .header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; }
+        .header-logo { font-weight: 900; color: var(--navy-deep); text-transform: uppercase; font-size: 1.1rem; }
+        .header-logo span { color: var(--brand-red); }
+
+        /* CONTACT SECTION */
+        .contact-section { padding: 60px 0; }
+        
+        /* WHATSAPP CARD */
+        .whatsapp-card {
+            background: #DCFCE7; 
+            border: 1px solid #86EFAC;
+            padding: 30px; 
+            border-radius: 12px; 
+            margin-bottom: 40px;
+            display: flex; 
+            align-items: center; 
+            gap: 20px;
+            color: #14532D;
+        }
+        .whatsapp-btn {
+            background: #16A34A; color: white; padding: 12px 25px; 
+            border-radius: 50px; font-weight: 700; white-space: nowrap;
+        }
+        .whatsapp-btn:hover { background: #15803D; }
+
+        /* FORM CONTAINER */
+        .form-container {
+            background: white; padding: 40px; border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #E2E8F0;
+        }
+        
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 0.9rem; }
+        input, select, textarea {
+            width: 100%; padding: 15px; border: 2px solid #E2E8F0; border-radius: 8px;
+            font-family: inherit; font-size: 1rem;
+        }
+        input:focus, textarea:focus { border-color: var(--navy-deep); outline: none; }
+        
+        .submit-btn {
+            width: 100%; background: var(--navy-deep); color: white; padding: 18px;
+            border: none; border-radius: 8px; font-weight: 800; cursor: pointer;
+            font-size: 1rem; transition: 0.2s; display: flex; justify-content: center; align-items: center; gap: 10px;
+        }
+        .submit-btn:hover { background: var(--brand-red); }
+
+        @media (max-width: 600px) {
+            .whatsapp-card { flex-direction: column; text-align: center; }
+            .form-container { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="container header-inner">
+            <a href="index.html" class="header-logo">Docu-Hub <span>Operations</span></a>
+            <a href="index.html" style="font-weight: 700; color: var(--text-muted);">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container contact-section">
+        <h1 style="text-align: center; margin-bottom: 10px;">Get in Touch</h1>
+        <p style="text-align: center; max-width: 500px; margin: 0 auto 50px auto; color: var(--text-muted);">
+            We reply within 24 hours. Use the form below to prepare a detailed email, or chat with us for quick updates.
+        </p>
+
+        <div class="whatsapp-card">
+            <i class="fa-brands fa-whatsapp" style="font-size: 3rem;"></i>
+            <div style="flex-grow: 1;">
+                <h3 style="margin:0; font-size: 1.2rem;">Quick Chat?</h3>
+                <p style="margin:5px 0 0 0; font-size: 0.95rem;">Best for simple questions or checking hours.</p>
+            </div>
+            <a href="https://wa.me/18765612614" class="whatsapp-btn">Open WhatsApp</a>
+        </div>
+
+        <div class="form-container">
+            <h2 style="margin-top: 0; color: var(--navy-deep);">Document Review / Audit</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 30px;">
+                Fill this out to start a formal inquiry. Clicking "Draft Email" will open your mail app with all details ready. 
+                
+            </p>
+
+            <div id="contactForm">
+                
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" id="clientName" placeholder="e.g. John Brown" required>
+                </div>
+
+                <div class="form-group">
+                    <label>What do you need help with?</label>
+                    <select id="clientTopic">
+                        <option value="Consultation Request">General Consultation</option>
+                        <option value="PICA Passport Audit">PICA Passport Audit</option>
+                        <option value="Traffic/Licence Check">Traffic Ticket / Licence</option>
+                        <option value="Foreign Passport Renewal">UK/US/CAN Passport</option>
+                        <option value="RGD Certificate">RGD / Birth Certificate</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Details (Please be specific)</label>
+                    <textarea id="clientMessage" rows="5" placeholder="e.g. My passport expires next month and I need a rush renewal..."></textarea>
+                </div>
+
+                <button onclick="sendPrefilledEmail()" class="submit-btn">
+                    <i class="fa-solid fa-paper-plane"></i> Draft Email
+                </button>
+            </div>
+        </div>
+
+    </div>
+
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: { navy: '#003366', gold: '#D4AF37', offwhite: '#334155' },
-                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] }
-                }
+        function sendPrefilledEmail() {
+            // 1. Get the values the user typed
+            const name = document.getElementById('clientName').value;
+            const topic = document.getElementById('clientTopic').value;
+            const message = document.getElementById('clientMessage').value;
+
+            // 2. Validation (Make sure they typed a name)
+            if(name === "") {
+                alert("Please enter your name first.");
+                return;
             }
+
+            // 3. Your Email Address
+            const myEmail = "docuhubops@gmail.com"; // CHANGE THIS TO YOUR REAL EMAIL
+
+            // 4. Create the Subject Line
+            const subject = `Inquiry: ${topic} - ${name}`;
+
+            // 5. Create the Body Text
+            const body = `Hi Docu-Hub,\n\nMy Name: ${name}\nService Needed: ${topic}\n\nHere are the details:\n${message}\n\n(I will attach any relevant documents to this email now.)`;
+
+            // 6. Open the Mail App
+            window.location.href = `mailto:${myEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         }
     </script>
-</head>
-<body class="bg-gray-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
 
-    <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
-            <div class="flex items-center gap-3 cursor-pointer" onclick="window.open('?page=intake', '_top')">
-                <i data-lucide="shield-check" class="text-gold w-8 h-8"></i>
-                <div>
-                    <h1 class="font-serif text-2xl text-navy font-bold italic">Docu-Hub</h1>
-                    <p class="text-[10px] uppercase tracking-widest text-gray-500">Concierge & Compliance</p>
-                </div>
-            </div>
-            <a href="index.html" class="text-xs font-bold text-navy border border-navy px-5 py-2 rounded hover:bg-navy hover:text-white transition uppercase tracking-widest">
-                Back to Home
-            </a>
-        </div>
-    </nav>
-
-    <main class="flex-grow">
-        <section class="bg-navy py-16 text-center text-white">
-            <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
-            <p class="text-gray-300 max-w-lg mx-auto text-sm leading-relaxed">
-                Whether you need a status update or a custom consultation, our liaison officers are ready to assist.
-            </p>
-        </section>
-
-        <section class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-16">
-            
-            <div class="space-y-10">
-                <div>
-                    <h3 class="text-xl font-serif font-bold text-navy mb-6 border-b border-gray-200 pb-2">Direct Channels</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-gold/10 text-gold rounded flex items-center justify-center shrink-0"><i data-lucide="phone" class="w-5 h-5"></i></div>
-                            <div>
-                                <p class="text-xs font-bold uppercase text-gray-400 tracking-widest">Phone / WhatsApp</p>
-                                <a href="tel:8765612614" class="text-lg font-bold text-navy hover:text-gold transition">(876) 561-2614</a>
-                                <p class="text-xs text-gray-500">Mon-Fri, 9am - 2pm EST</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-gold/10 text-gold rounded flex items-center justify-center shrink-0"><i data-lucide="mail" class="w-5 h-5"></i></div>
-                            <div>
-                                <p class="text-xs font-bold uppercase text-gray-400 tracking-widest">Email Desk</p>
-                                <a href="mailto:admin@dochubservices.com" class="text-lg font-bold text-navy hover:text-gold transition">admin@dochubservices.com</a>
-                                <p class="text-xs text-gray-500">24/7 Response Queue</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 shadow-lg border-l-4 border-gold rounded">
-                    <h4 class="font-bold text-navy mb-2 flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-gold"></i> Service Area</h4>
-                    <p class="text-sm text-gray-600 leading-relaxed">
-                        We operate primarily in the <strong>Linstead</strong> area for physical agency visits. Remote processing is available island-wide via courier.
-                    </p>
-                </div>
-            </div>
-
-            <div class="bg-white p-8 rounded-lg shadow-xl border border-gray-100">
-                <h3 class="text-xl font-serif font-bold text-navy mb-6">Send a Message</h3>
-                <form id="contactForm" class="space-y-5">
-                    <div>
-                        <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Your Name</label>
-                        <input type="text" id="cName" class="w-full p-3 border border-gray-300 rounded focus:border-navy focus:ring-1 outline-none" required>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Contact Number</label>
-                        <input type="tel" id="cPhone" class="w-full p-3 border border-gray-300 rounded focus:border-navy focus:ring-1 outline-none" required>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-gray-500 uppercase mb-1">How can we help?</label>
-                        <textarea id="cMessage" rows="4" class="w-full p-3 border border-gray-300 rounded focus:border-navy focus:ring-1 outline-none" required></textarea>
-                    </div>
-                    <button type="submit" id="submitBtn" class="w-full bg-navy text-white font-bold py-4 rounded uppercase tracking-widest hover:bg-gold transition shadow-lg">
-                        Send Message
-                    </button>
-                </form>
-                <div id="successMsg" class="hidden text-center mt-4 p-4 bg-green-50 text-green-800 text-sm font-bold rounded">
-                    Message Sent! We will contact you shortly.
-                </div>
-            </div>
-
-        </section>
-    </main>
-
-    <footer class="bg-navy text-white py-8 text-center text-xs">
-        <p>&copy; 2025 Docu-Hub Operations Services.</p>
-    </footer>
-
-    <script>
-        lucide.createIcons();
-        
-        // PASTE YOUR SCRIPT URL HERE (Same as index.html)
-        const SCRIPT_URL = "https://dhubservices.com"; 
-
-        document.getElementById('contactForm').onsubmit = async (e) => {
-            e.preventDefault();
-            const btn = document.getElementById('submitBtn');
-            const msg = document.getElementById('successMsg');
-            
-            btn.innerHTML = "Sending...";
-            btn.disabled = true;
-
-            const payload = {
-                name: document.getElementById('cName').value,
-                contact: document.getElementById('cPhone').value,
-                service: "General Inquiry: " + document.getElementById('cMessage').value, // This puts the message in the Service column
-                trn: "N/A",
-                fileData: null 
-            };
-
-            try {
-                await fetch(SCRIPT_URL, { 
-                    method: 'POST', 
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'text/plain' }, 
-                    body: JSON.stringify(payload)
-                });
-                
-                // Success State
-                document.getElementById('contactForm').reset();
-                btn.innerHTML = "Send Message";
-                btn.disabled = false;
-                msg.classList.remove('hidden');
-                setTimeout(() => msg.classList.add('hidden'), 5000);
-
-            } catch (error) {
-                btn.innerHTML = "Error - Try Again";
-                btn.disabled = false;
-                alert("Connection failed. Please call us directly.");
-            }
-        };
-    </script>
 </body>
-
 </html>
-
-
