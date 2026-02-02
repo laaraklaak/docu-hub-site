@@ -329,31 +329,104 @@
             </div>
         </div>
     </div>
-    <div style="background: #f8f9fa; padding: 40px; border-radius: 12px; border: 1px solid #e2e8f0; margin-top: 50px;">
-    <h3 style="font-family: 'Playfair Display', serif; color: #021024; margin-bottom: 10px;">Help Us Expand the Knowledge Base</h3>
-    <p style="color: #334155; font-size: 1rem;">Our roadmap is driven by your feedback. Which system should we decode next? Select the portal giving you the most trouble:</p>
-    
-    <form style="display: grid; gap: 15px; margin-top: 20px;">
-        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-            <input type="radio" name="next_guide" value="nids"> <strong>NIDS Enrollment:</strong> The new National Identification System protocols.
-        </label>
-        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-            <input type="radio" name="next_guide" value="bank_kyc"> <strong>Banking KYC:</strong> Navigating the "Know Your Customer" updates for local banks.
-        </label>
-        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-            <input type="radio" name="next_guide" value="insurance"> <strong>Insurance Portals:</strong> Digital claims and policy management.
-        </label>
-        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-            <input type="radio" name="next_guide" value="other"> <strong>Other:</strong> Tell us what's confusing you.
-        </label>
-        
-        <button type="submit" style="background: #D32F2F; color: white; padding: 12px 25px; border: none; border-radius: 4px; font-weight: 700; cursor: pointer; width: fit-content; margin-top: 10px;">SUBMIT FEEDBACK</button>
-    </form>
-    
-    <p style="font-size: 0.8rem; color: #64748b; margin-top: 20px;">
-        <em>Privacy Note: This survey is anonymous. In accordance with the DPA (2020), we do not collect names or emails here—just your preference for future guides.</em>
-    </p>
-</div>
+   <div class="roadmap-section">
+        <div class="container">
+            <div class="roadmap-header">
+                <h2>Help Us Expand the Knowledge Base</h2>
+                <p>Our roadmap is driven by your feedback. Which system should we decode next?</p>
+            </div>
+
+            <div class="roadmap-grid" id="pollGrid">
+                
+                <div class="roadmap-option">
+                    <input type="radio" name="requested_topic" value="NIDS" id="opt_nids" class="roadmap-input">
+                    <label for="opt_nids" class="roadmap-card">
+                        <h3>NIDS Enrollment</h3>
+                        <p>The new National Identification System protocols.</p>
+                    </label>
+                </div>
+
+                <div class="roadmap-option">
+                    <input type="radio" name="requested_topic" value="Banking KYC" id="opt_banking" class="roadmap-input">
+                    <label for="opt_banking" class="roadmap-card">
+                        <h3>Banking KYC</h3>
+                        <p>Navigating "Know Your Customer" updates.</p>
+                    </label>
+                </div>
+
+                <div class="roadmap-option">
+                    <input type="radio" name="requested_topic" value="Insurance" id="opt_insurance" class="roadmap-input">
+                    <label for="opt_insurance" class="roadmap-card">
+                        <h3>Insurance Portals</h3>
+                        <p>Digital claims and policy management.</p>
+                    </label>
+                </div>
+
+                <div class="roadmap-option">
+                    <input type="radio" name="requested_topic" value="Other" id="opt_other" class="roadmap-input">
+                    <label for="opt_other" class="roadmap-card">
+                        <h3>Other</h3>
+                        <p>Tell us what's confusing you.</p>
+                    </label>
+                    <input type="text" id="otherText" placeholder="Type topic here..." class="other-input">
+                </div>
+
+            </div>
+
+            <div id="successMessage" style="display:none; background:rgba(255,255,255,0.1); padding:20px; border-radius:12px; margin-top:20px;">
+                <h3 style="color:#4ADE80; margin:0;">Vote Received! ✅</h3>
+                <p style="color:white; margin:5px 0 0 0;">Thanks for helping us build the roadmap.</p>
+            </div>
+
+            <button onclick="submitPoll()" id="submitBtn" class="roadmap-submit">SUBMIT FEEDBACK</button>
+
+            <div class="privacy-note">
+                <i class="fa-solid fa-lock"></i> Privacy Note: This survey is anonymous. 
+                Data is sent securely to our internal roadmap planner.
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function submitPoll() {
+            // 1. PASTE YOUR GOOGLE WEB APP URL HERE
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyOENgccbIpn0DRQOB1XzP59LtQUBEEbT7wkPbFBho_xXIXn_zGXjANVdA1tWp4g1o/exec';
+
+            // 2. Get the selected option
+            const selected = document.querySelector('input[name="requested_topic"]:checked');
+            const otherText = document.getElementById('otherText').value;
+
+            if (!selected) {
+                alert("Please select an option first.");
+                return;
+            }
+
+            // 3. Prepare the Data
+            const formData = new FormData();
+            formData.append('topic', selected.value);
+            formData.append('other_details', otherText);
+
+            // 4. Update Button Text to show loading
+            const btn = document.getElementById('submitBtn');
+            btn.innerHTML = "Sending...";
+            btn.disabled = true;
+
+            // 5. Send to Google Sheets
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => {
+                    // 6. Show Success
+                    document.getElementById('pollGrid').style.display = 'none';
+                    btn.style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
+                })
+                .catch(error => {
+                    alert('Error! ' + error.message);
+                    btn.innerHTML = "Try Again";
+                    btn.disabled = false;
+                });
+        }
+    </script>
 
     <footer class="main-footer">
         <div class="container">
@@ -391,6 +464,7 @@
 
 </body>
 </html>
+
 
 
 
