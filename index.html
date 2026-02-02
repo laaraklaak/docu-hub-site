@@ -60,10 +60,9 @@
         }
         .header-contact:hover { background: var(--brand-red); }
 
-        /* --- 3. HERO SECTION (Educational Vibe) --- */
+        /* --- 3. HERO SECTION --- */
         .hero-visual {
             width: 100%; height: 450px;
-            /* Professional Relief Image */
             background-image: url('https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=1500&q=80');
             background-size: cover; background-position: center 20%;
         }
@@ -113,37 +112,15 @@
         }
         .touch-link:hover { background: var(--navy-deep); color: white; }
         .touch-link:hover i { transform: translateX(5px); }
-/* --- NEW: Button Group for Dual Options --- */
+
+        /* --- PICA DUAL BUTTONS --- */
         .action-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap; /* Ensures they stack on mobile screens */
-            margin-top: 20px;
+            display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px;
         }
-
-        .touch-link.green { 
-            background: #F0FDF4; 
-            color: #166534; 
-            border: 1px solid #DCFCE7; 
-        }
-        
-        .touch-link.green:hover { 
-            background: #166534; 
-            color: white; 
-            border-color: #166534; 
-        }
-
-        .touch-link.red { 
-            background: #FEF2F2; 
-            color: #991B1B; 
-            border: 1px solid #FEE2E2; 
-        }
-
-        .touch-link.red:hover { 
-            background: #991B1B; 
-            color: white; 
-            border-color: #991B1B; 
-        }
+        .touch-link.green { background: #F0FDF4; color: #166534; border: 1px solid #DCFCE7; }
+        .touch-link.green:hover { background: #166534; color: white; border-color: #166534; }
+        .touch-link.red { background: #FEF2F2; color: #991B1B; border: 1px solid #FEE2E2; }
+        .touch-link.red:hover { background: #991B1B; color: white; border-color: #991B1B; }
 
         /* --- 5. INSIGHT SECTION --- */
         .featured-section { background: white; padding: 100px 0; border-top: 1px solid #E2E8F0; }
@@ -154,11 +131,109 @@
             background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=80') center/cover;
             box-shadow: var(--shadow-card);
         }
-        
         .featured-content h2 { font-size: 2.5rem; margin-bottom: 20px; }
         .featured-meta { color: var(--brand-red); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; display: block; margin-bottom: 15px; }
 
-        /* --- 6. FOOTER --- */
+        /* --- 6. ROADMAP POLL SECTION (RESPONSIVE STYLES) --- */
+        .roadmap-section {
+            background-color: var(--navy-deep);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .roadmap-header h2 { color: white; margin-bottom: 15px; font-size: 1.8rem; }
+        .roadmap-header p { color: #94A3B8; max-width: 600px; margin: 0 auto 40px auto; line-height: 1.5; }
+
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 15px;
+            max-width: 1000px;
+            margin: 0 auto 30px auto;
+            text-align: left;
+        }
+
+        .roadmap-option {
+            position: relative;
+            display: flex; 
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .roadmap-input { position: absolute; opacity: 0; height: 0; width: 0; }
+
+        .roadmap-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .roadmap-card h3 { color: white; font-size: 1.1rem; margin: 0 0 8px 0; }
+        .roadmap-card p { color: #94A3B8; font-size: 0.9rem; margin: 0; line-height: 1.4; }
+
+        .roadmap-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--brand-red);
+        }
+
+        .roadmap-input:checked + .roadmap-card {
+            background: white;
+            border-color: white;
+            box-shadow: 0 0 15px rgba(255,255,255,0.2);
+        }
+        
+        .roadmap-input:checked + .roadmap-card h3 { color: var(--navy-deep); }
+        .roadmap-input:checked + .roadmap-card p { color: var(--text-muted); }
+
+        .other-input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            margin-top: 10px;
+            font-family: inherit;
+            display: none;
+            box-sizing: border-box;
+        }
+        
+        #opt_other:checked ~ .other-input { display: block; }
+
+        .roadmap-submit {
+            background-color: var(--brand-red);
+            color: white;
+            font-weight: 800;
+            padding: 15px 40px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-block;
+        }
+        .roadmap-submit:hover { transform: scale(1.05); background-color: #B91C1C; }
+
+        .privacy-note {
+            margin-top: 30px;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.4);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- 7. FOOTER --- */
         .main-footer { background: #0F172A; color: #94A3B8; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
         .footer-brand h2 { color: white; margin-bottom: 10px; font-size: 1.5rem; }
@@ -179,7 +254,7 @@
             border-radius: 8px;
         }
 
-        /* MOBILE OPTIMIZATION */
+        /* --- MOBILE OPTIMIZATION --- */
         @media (max-width: 900px) {
             :root { --gutter: 20px; } 
 
@@ -195,6 +270,11 @@
             .service-content { padding: 30px 20px; } 
             .svc-title { font-size: 1.8rem; margin-bottom: 10px; } 
             
+            /* Roadmap Mobile Fix */
+            .roadmap-grid { grid-template-columns: 1fr; gap: 15px; }
+            .roadmap-card { padding: 20px; text-align: center; }
+            .roadmap-submit { width: 100%; padding: 18px; }
+
             .footer-grid { grid-template-columns: 1fr; gap: 30px; }
             .featured-img { order: -1; height: 250px; }
             .featured-content h2 { font-size: 1.8rem; }
@@ -329,7 +409,8 @@
             </div>
         </div>
     </div>
-   <div class="roadmap-section">
+
+    <div class="roadmap-section">
         <div class="container">
             <div class="roadmap-header">
                 <h2>Help Us Expand the Knowledge Base</h2>
@@ -390,7 +471,7 @@
 
     <script>
         function submitPoll() {
-            // 1. PASTE YOUR GOOGLE WEB APP URL HERE
+            // 1. YOUR GOOGLE WEB APP URL
             const scriptURL = 'https://script.google.com/macros/s/AKfycbyOENgccbIpn0DRQOB1XzP59LtQUBEEbT7wkPbFBho_xXIXn_zGXjANVdA1tWp4g1o/exec';
 
             // 2. Get the selected option
@@ -464,7 +545,3 @@
 
 </body>
 </html>
-
-
-
-
