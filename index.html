@@ -22,7 +22,6 @@
 
         * { box-sizing: border-box; }
         
-        /* Smooth scrolling added for accessibility and smooth UX */
         html { scroll-behavior: smooth; }
         
         body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg-body); color: var(--text-main); line-height: 1.6; padding-top: var(--header-height); -webkit-font-smoothing: antialiased;}
@@ -33,7 +32,7 @@
         
         .container { max-width: var(--container-width); margin: 0 auto; padding: 0 30px; }
         
-        /* --- HIGH CONTRAST HEADER --- */
+        /* --- HEADER --- */
         .app-header {
             position: fixed; top: 0; left: 0; width: 100%; z-index: 2000;
             background: var(--navy-deep); 
@@ -63,7 +62,7 @@
         .brand-suffix { display: block; font-size: 1.1rem; color: #94A3B8; text-transform: uppercase; letter-spacing: 6px; font-weight: 700; font-family: 'Inter', sans-serif; }
 
         /* --- THE FLOATING INTAKE DESK --- */
-        .intake-section { background: var(--bg-body); padding-bottom: 80px; }
+        .intake-section { background: var(--bg-body); padding-bottom: 100px; }
         
         .intake-wrapper {
             background: var(--bg-card); border-radius: 24px; box-shadow: 0 25px 60px rgba(2, 16, 36, 0.15); 
@@ -73,7 +72,19 @@
         .hero-headline { color: var(--navy-deep); font-size: 2.2rem; line-height: 1.2; margin-bottom: 20px; font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; }
         .hero-sub { color: var(--text-muted); font-size: 1.15rem; max-width: 600px; margin: 0 auto 40px auto; line-height: 1.6; }
 
-        .intake-grid { display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 700px; margin: 0 auto; }
+      .intake-grid { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 30px; /* Increased from 15px for beautiful white space between cards */
+            max-width: 700px; 
+            margin: 0 auto; 
+        }
+        
+        .intake-btn {
+            background: #F8FAFC; display: flex; align-items: center; justify-content: space-between;
+            padding: 30px 40px; /* Slightly increased internal padding for a plusher feel */
+            border-radius: 12px; border: 1px solid #E2E8F0; color: var(--navy-deep); cursor: pointer; transition: 0.3s;
+        }
         
         .intake-btn {
             background: #F8FAFC; display: flex; align-items: center; justify-content: space-between;
@@ -88,36 +99,15 @@
         .intake-btn i.arrow { color: #94A3B8; font-size: 1.2rem; transition: 0.3s; }
         .intake-btn:hover i.arrow { color: var(--brand-red); transform: translateX(5px); }
 
-        /* --- HOW IT WORKS --- */
-        .process-section { padding: 80px 0; text-align: center; }
-        .process-title { font-size: 2rem; margin-bottom: 60px; color: var(--navy-deep); font-family: 'Playfair Display', serif;}
-        .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; position: relative; }
-        
-        .process-grid::before { content: ''; position: absolute; top: 35px; left: 15%; right: 15%; height: 2px; background: #94A3B8; z-index: 0; opacity: 0.3; }
-
-        .step { position: relative; z-index: 1; }
-        .step-icon { width: 70px; height: 70px; background: white; border: 2px solid #94A3B8; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.5rem; color: var(--navy-deep); box-shadow: 0 4px 10px rgba(0,0,0,0.04); }
-        .step h3 { font-size: 1.1rem; font-family: 'Inter', sans-serif; margin-bottom: 10px; color: var(--navy-deep); }
-        .step p { font-size: 0.95rem; color: var(--text-main); }
-
-        /* --- THE PROMISE --- */
-        .promise-section { background: var(--navy-deep); color: white; padding: 80px 0; text-align: center; border-radius: 16px; margin-bottom: 80px; box-shadow: 0 20px 40px rgba(2, 16, 36, 0.15); }
-        .promise-section h2 { color: white; font-size: 2.2rem; margin-bottom: 20px; font-family: 'Playfair Display', serif;}
-        .promise-section p { color: #94A3B8; max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem; }
-        .promise-link { color: white; font-weight: 600; border-bottom: 1px solid var(--brand-red); padding-bottom: 2px; }
-        .promise-link:hover { color: var(--brand-red); }
-
         /* --- THE UPGRADED NAVY FOOTER --- */
         .main-footer { background: var(--navy-deep); color: #94A3B8; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
         
-        /* Updated Grid to support 3 columns for better navigation */
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 50px; align-items: start; }
         
         .footer-brand h2 { color: white; margin-bottom: 10px; font-size: 1.6rem; font-family: 'Inter', sans-serif; letter-spacing: -1px; }
         .footer-brand h2 span { color: var(--brand-red); }
         .footer-brand p { font-size: 0.95rem; color: #94A3B8; margin-bottom: 15px; }
         
-        /* Click-to-call phone link styling */
         .phone-smart { color: white; font-weight: 600; font-size: 1.05rem; }
         .phone-smart:hover { color: var(--brand-red); }
         
@@ -137,6 +127,7 @@
 
         /* --- MOBILE FIXES --- */
         @media (max-width: 768px) {
+            .container { padding: 0 20px; }
             .header-logo .light-text { display: none; } 
             .concierge-hero { padding: 80px 0 140px; }
             .brand-name { font-size: 3.5rem; }
@@ -144,23 +135,20 @@
             .intake-wrapper { padding: 40px 20px; margin-top: -80px; }
             .hero-headline { font-size: 1.6rem; }
             .hero-sub { font-size: 1.05rem; }
-            .process-grid { grid-template-columns: 1fr; gap: 50px; }
-            .process-grid::before { display: none; }
-            .promise-section { border-radius: 0; }
             
-            /* Footer mobile fix for 3 columns */
             .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
             .footer-link:hover { transform: none; color: white; }
-            
-            /* Adjust back to top for mobile thumbs */
             .back-to-top { bottom: 20px; right: 20px; width: 45px; height: 45px; }
         }
     </style>
 </head>
-<body id="top"> <header class="app-header">
+
+<body id="top"> 
+
+    <header class="app-header">
         <div class="container header-inner">
             <a href="index.html" class="header-logo">Docu-Hub<span>.</span> <span class="light-text">Operations Services</span></a>
-            <a href="https://wa.me/18765612614" class="header-contact">Talk to a Human</a>
+            <a href="contact.html" class="header-contact">Talk to a Human</a>
         </div>
     </header>
 
@@ -216,37 +204,6 @@
             </div>
         </div>
     </section>
-
-    <section class="process-section">
-        <div class="container">
-            <h2 class="process-title">How it works</h2>
-            <div class="process-grid">
-                <div class="step">
-                    <div class="step-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-                    <h3>1. The Single Step</h3>
-                    <p>Click your need above and fill out one simple, plain-English form. Upload your basic IDs securely.</p>
-                </div>
-                <div class="step">
-                    <div class="step-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h3>2. We Fight the Portal</h3>
-                    <p>We audit your files, navigate the confusing government gateways, and process the fees.</p>
-                </div>
-                <div class="step">
-                    <div class="step-icon"><i class="fa-solid fa-check-double"></i></div>
-                    <h3>3. You Get the Result</h3>
-                    <p>You receive your official digital receipts, tracking numbers, or final documents in your inbox.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="container">
-        <section class="promise-section">
-            <h2>The Preparedness Promise.</h2>
-            <p>If government regulations strictly require your in-person attendance (like first-time passports), we won't leave you guessing. We provide custom guides so you walk in and get approved on your first try.</p>
-            <a href="contact.html" class="promise-link">Learn about our Custom Guides &rarr;</a>
-        </section>
-    </div>
 
     <footer class="main-footer">
         <div class="container">
