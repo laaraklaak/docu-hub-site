@@ -3,136 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docu-Hub | Terms of Engagement</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: { navy: '#003366', gold: '#D4AF37', 'gold-light': '#FDF8E8' },
-                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] }
-                }
-            }
-        }
-    </script>
-</head>
-<body class="bg-gray-50 text-gray-800 pb-20">
+    <title>Terms of Engagement | Docu-Hub Operations Services</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <header class="bg-white shadow-sm sticky top-0 z-40 no-print">
-        <div class="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-2 group">
-                <i data-lucide="arrow-left" class="text-navy w-5 h-5 group-hover:-translate-x-1 transition"></i>
-                <span class="text-navy font-bold text-sm uppercase tracking-widest">Back to Home</span>
-            </a>
-            <div class="flex items-center gap-2">
-                <i data-lucide="shield-alert" class="text-gold w-6 h-6"></i>
-                <span class="font-serif font-bold text-navy italic text-lg">Docu-Hub Legal</span>
-            </div>
+    <style>
+        /* --- CORE STYLES --- */
+        :root {
+            --brand-red: #D32F2F; --navy-deep: #021024; --bg-body: #CBD5E1; 
+            --bg-card: #FFFFFF; --text-main: #0F172A; --text-muted: #475569; 
+            --container-width: 1000px; 
+            --header-height: 80px;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg-body); color: var(--text-main); line-height: 1.7; padding-top: var(--header-height); -webkit-font-smoothing: antialiased;}
+        h1, h2, h3, h4 { margin-top: 0; font-weight: 700; }
+        p { margin-bottom: 20px; font-size: 1.05rem; color: var(--text-muted); }
+        a { text-decoration: none; transition: 0.3s ease; }
+        .container { max-width: var(--container-width); margin: 0 auto; padding: 0 30px; }
+        
+        /* --- HEADER --- */
+        .app-header { position: fixed; top: 0; left: 0; width: 100%; z-index: 2000; background: var(--navy-deep); border-bottom: 1px solid rgba(255, 255, 255, 0.05); height: var(--header-height); display: flex; align-items: center; }
+        .header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; }
+        .header-logo { font-size: 1.1rem; font-weight: 800; color: #FFFFFF; letter-spacing: -0.5px; text-transform: uppercase; }
+        .header-logo span { color: var(--brand-red); }
+        .header-logo .light-text { font-weight: 400; color: #94A3B8; font-size: 0.9rem; letter-spacing: 0; margin-left: 5px; display: inline-block; }
+        .header-contact { font-weight: 600; color: #FFFFFF; font-size: 0.9rem; border-bottom: 2px solid transparent; padding-bottom: 2px; }
+        .header-contact:hover { border-bottom-color: var(--brand-red); }
+
+        /* --- LEGAL HERO --- */
+        .legal-hero { background: var(--navy-deep); color: white; padding: 100px 0 160px; text-align: center; }
+        .brand-kicker { display: block; font-size: 0.9rem; color: var(--brand-red); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; margin-bottom: 15px; }
+        .brand-name { font-size: 3.5rem; font-weight: 900; line-height: 1.2; margin-bottom: 20px; letter-spacing: -1px; color: #FFFFFF; font-family: 'Playfair Display', serif; }
+
+        /* --- FLOATING LEGAL DOCUMENT --- */
+        .legal-wrapper {
+            background: var(--bg-card); border-radius: 24px; box-shadow: 0 25px 60px rgba(2, 16, 36, 0.12); 
+            padding: 80px; max-width: 850px; margin: -100px auto 80px auto; position: relative; z-index: 10;
+        }
+
+        .document-meta {
+            text-align: center; border-bottom: 1px solid #E2E8F0; padding-bottom: 30px; margin-bottom: 40px; position: relative;
+        }
+        .document-meta h1 { font-family: 'Inter', sans-serif; font-size: 2rem; color: var(--navy-deep); letter-spacing: -0.5px; margin-bottom: 10px; }
+        .last-updated { font-size: 0.9rem; color: var(--brand-red); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+        .print-btn {
+            position: absolute; right: 0; top: 0; background: #F8FAFC; border: 1px solid #E2E8F0; color: var(--navy-deep);
+            padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: 0.3s;
+        }
+        .print-btn:hover { border-color: var(--brand-red); color: var(--brand-red); }
+
+        /* --- TYPOGRAPHY & BOXES --- */
+        .legal-content h2 { 
+            font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--navy-deep); 
+            margin-top: 50px; margin-bottom: 20px; border-bottom: 1px solid #E2E8F0; padding-bottom: 10px; 
+            display: flex; align-items: center; gap: 12px;
+        }
+        .legal-content h2 i { color: var(--brand-red); font-size: 1.3rem; }
+        .legal-content p { margin-bottom: 15px; }
+        .legal-content ul { padding-left: 20px; margin-bottom: 25px; color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; }
+        .legal-content li { margin-bottom: 12px; }
+        .legal-content strong { color: var(--navy-deep); }
+
+        .disclaimer-box { 
+            background: #FFFBEB; border: 1px solid #FEF3C7; padding: 25px; 
+            border-radius: 12px; margin: 25px 0; color: #92400E; font-size: 1.05rem; line-height: 1.7;
+            border-left: 4px solid #F59E0B;
+        }
+
+        .compliance-box { 
+            background: #F0F9FF; border: 1px solid #BAE6FD; padding: 25px; 
+            border-radius: 12px; margin: 25px 0; color: #0369A1; font-size: 1.05rem; line-height: 1.7;
+        }
+
+        /* --- FOOTER --- */
+        .main-footer { background: var(--navy-deep); color: #94A3B8; padding: 60px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+        .footer-brand h2 { color: white; margin-bottom: 10px; font-size: 1.6rem; letter-spacing: -1px; }
+        .footer-brand h2 span { color: var(--brand-red); }
+        .footer-link { display: block; color: #94A3B8; margin-bottom: 12px; font-size: 0.95rem; transition: 0.3s; }
+        .footer-link:hover { color: white; transform: translateX(3px); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; font-size: 0.85rem; text-align: center; }
+
+        /* =========================================
+           PRINT & MOBILE OPTIMIZATION
+           ========================================= */
+        @media print {
+            .app-header, .legal-hero, .main-footer, .print-btn { display: none !important; }
+            body { background: white; padding: 0; color: black; }
+            .legal-wrapper { box-shadow: none; margin: 0; padding: 0; border-radius: 0; }
+            .legal-content { font-size: 12pt; }
+            h2 { page-break-after: avoid; }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; } 
+            .header-logo .light-text { display: none; } 
+            .legal-hero { padding: 100px 0 120px; }
+            .brand-name { font-size: 2.5rem; }
+            
+            .legal-wrapper { padding: 40px 25px; margin-top: -60px; }
+            .document-meta h1 { font-size: 1.6rem; }
+            .print-btn { position: relative; margin-top: 20px; width: 100%; text-align: center; }
+            
+            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="container header-inner">
+            <a href="index.html" class="header-logo">Docu-Hub<span>.</span> <span class="light-text">Operations Services</span></a>
+            <a href="contact.html" class="header-contact">Talk to a Human</a>
         </div>
     </header>
 
-    <section class="bg-navy text-white py-16 px-6 text-center">
-        <h1 class="font-serif text-3xl md:text-4xl font-bold mb-4">Terms of Engagement</h1>
-        <p class="text-gray-300 max-w-xl mx-auto text-sm leading-relaxed font-light uppercase tracking-widest">
-            Compliance Protocol & Service Agreement
-        </p>
-        <p class="text-gold text-xs mt-4 font-mono">Last Updated: January 2026</p>
+    <section class="legal-hero">
+        <div class="container">
+            <span class="brand-kicker">Service Agreement</span>
+            <h1 class="brand-name">Terms of Engagement</h1>
+        </div>
     </section>
 
-    <div class="max-w-4xl mx-auto px-6 -mt-10 relative z-10">
-        <div class="bg-white rounded-xl shadow-xl border border-gray-100 p-8 md:p-12 text-sm leading-loose text-gray-600">
+    <div class="container">
+        <div class="legal-wrapper">
             
-            <div class="mb-10 border-b border-gray-100 pb-8">
-                <p class="font-bold text-navy text-base mb-4">PREAMBLE</p>
-                <p>
-                    By submitting an application through Docu-Hub Operations Services ("The Agency"), you ("The Client") agree to be bound by the following terms. These terms constitute a legal agreement regulating the relationship between the Client and the Agency regarding the processing of government documents.
-                </p>
+            <div class="document-meta">
+                <h1>Terms of Engagement</h1>
+                <p class="last-updated">Document ID: DH-POL-2026-03 &nbsp;|&nbsp; Last Verified: January 2026</p>
+                <button onclick="window.print()" class="print-btn"><i class="fa-solid fa-print" style="margin-right: 5px;"></i> Print</button>
             </div>
 
-            <div class="mb-10">
-                <h3 class="font-serif text-xl text-navy font-bold mb-4">1. Private Agency Status</h3>
-                <p class="mb-4">
-                    <strong>1.1 No Government Affiliation:</strong> Docu-Hub is a private logistics and administrative firm. We are <strong>not</strong> the Passport, Immigration & Citizenship Agency (PICA), Tax Administration Jamaica (TAJ), or the Registrar General's Department (RGD).
-                </p>
-                <p>
-                    <strong>1.2 Authorized Bearer:</strong> By engaging our services, you appoint Docu-Hub as your "Authorized Bearer" or "Agent" to transact business with government bodies on your behalf.
-                </p>
-            </div>
+            <div class="legal-content">
 
-            <div class="mb-10">
-                <h3 class="font-serif text-xl text-navy font-bold mb-4">2. Fees & Financials</h3>
-                <p class="mb-4">
-                    <strong>2.1 Service Fees:</strong> The "Service Fee" covers our professional time, consultation, data entry, and logistical execution. This fee is <strong>non-refundable</strong> once the vetting process has begun.
-                </p>
-                <p class="mb-4">
-                    <strong>2.2 Government Fees:</strong> Statutory fees (taxes) are collected by us as "Client Funds" and paid directly to the government agency on your behalf. If an application is rejected by the government, the government may or may not refund this portion based on their own policies.
-                </p>
-            </div>
+                <p style="font-size: 1.15rem; color: var(--navy-deep); font-weight: 500; font-family: 'Playfair Display', serif;">PREAMBLE</p>
+                <p>By submitting an intake form, application, or request through Docu-Hub Operations Services ("The Agency"), you ("The Client") agree to be bound by the following terms. These terms constitute a legally binding agreement regulating the relationship between the Client and the Agency regarding the processing of government documents and the curation of custom memorial tributes.</p>
 
-            <div class="mb-10 bg-blue-50 p-6 rounded-lg border border-blue-100">
-                <h3 class="font-serif text-xl text-navy font-bold mb-4 flex items-center gap-2">
-                    <i data-lucide="lock" class="w-5 h-5 text-gold"></i> 3. Compliance & Data Privacy
-                </h3>
-                <p class="mb-4">
-                    <strong>3.1 POCA (Anti-Money Laundering):</strong> In compliance with the <em>Proceeds of Crime Act</em>, we reserve the right to request valid government identification to verify the identity of all clients. We will not process transactions where the source of funds cannot be verified or appears illicit.
-                </p>
-                <p class="mb-4">
-                    <strong>3.2 JDPA (Data Protection):</strong> In compliance with the <em>Jamaica Data Protection Act (2020)</em>:
-                </p>
-                <ul class="list-disc pl-5 space-y-2 text-navy/80 font-medium">
-                    <li>We collect your TRN and ID solely for the purpose of the requested transaction.</li>
-                    <li><strong>30-Day Purge Rule:</strong> All copies of your sensitive documents (Birth Certs, ID Scans) are permanently deleted from our operational servers 30 days after your file is closed.</li>
-                    <li>We do not sell or share your data with third parties, except the relevant Government Agencies required to complete your job.</li>
-                </ul>
-            </div>
+                <h2><i class="fa-solid fa-building-user"></i> 1. Scope of Services & Identity</h2>
+                <p><strong>1.1 No Government Affiliation:</strong> Docu-Hub is a private administrative logistics and design firm. We are not an extension of the Passport, Immigration & Citizenship Agency (PICA), Tax Administration Jamaica (TAJ), or the Registrar General's Department (RGD).</p>
+                <p><strong>1.2 Authorized Proxy:</strong> For government processes, engaging our services appoints Docu-Hub as your "Authorized Bearer" or "Proxy" to transact business with government bodies exclusively on your behalf.</p>
 
-            <div class="mb-10">
-                <h3 class="font-serif text-xl text-navy font-bold mb-4">4. Client Obligations</h3>
-                <p class="mb-4">
-                    <strong>4.1 Accuracy:</strong> The Client is responsible for the accuracy of all information provided. Docu-Hub is not liable for rejections caused by incorrect spelling, wrong dates, or hidden information provided by the Client.
-                </p>
-                <p>
-                    <strong>4.2 Document Integrity:</strong> The Client warrants that all physical documents provided (Old Passports, Birth Certificates) are genuine and authentic. Docu-Hub reserves the right to terminate services immediately if forged documents are suspected.
-                </p>
-            </div>
+                <h2><i class="fa-solid fa-file-invoice-dollar"></i> 2. Fees & Financial Policy</h2>
+                <p><strong>2.1 Service & Design Fees:</strong> Our "Service Fee" compensates the Agency for professional time, pre-submission audits, digital formatting, curation, and logistical execution. This fee is <strong>strictly non-refundable</strong> once our administrative or design processes have commenced.</p>
+                <p><strong>2.2 Statutory/Government Fees:</strong> Statutory fees (e.g., taxes, passport fees) are collected by us as "Client Funds" and paid directly to the relevant agency. Should an application be rejected by a government entity, that entity may or may not refund this portion based on their own internal policies. Docu-Hub bears no liability for withheld government funds.</p>
 
-            <div class="mb-10">
-                <h3 class="font-serif text-xl text-navy font-bold mb-4">5. Limitation of Liability</h3>
-                <p>
-                    Docu-Hub Operations Services shall not be held liable for delays, losses, or damages caused by:
-                </p>
-                <ul class="list-disc pl-5 mt-2 space-y-2">
-                    <li>Government system outages (e.g., PICA website crash or Tax Office network failure).</li>
-                    <li>Strikes, natural disasters, or "Acts of God."</li>
-                    <li>Rejection of an application by a Government Officer due to their discretion.</li>
-                    <li>Loss of travel tickets or appointments due to government processing delays.</li>
-                </ul>
-            </div>
+                <h2><i class="fa-solid fa-clipboard-check"></i> 3. Client Obligations</h2>
+                <p><strong>3.1 Application Accuracy:</strong> The Client is solely responsible for the accuracy of all information provided via our intake forms. Docu-Hub is not liable for rejections, delays, or reprints caused by incorrect spelling, omitted dates, or hidden legal information provided by the Client.</p>
+                <p><strong>3.2 Document Integrity:</strong> The Client warrants that all physical and digital documents provided (e.g., Old Passports, Birth Certificates) are genuine. Docu-Hub reserves the right to terminate services immediately without refund if forged or altered documents are suspected.</p>
+                <p><strong>3.3 Memorial Content Rights:</strong> For Memorial Formatting services, the Client warrants that they have the right and permission to use all photographs, poems, and texts submitted for curation. Docu-Hub accepts no liability for copyright infringement claims arising from client-supplied materials.</p>
 
-            <div class="mt-16 pt-10 border-t-2 border-navy">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-navy rounded-full flex items-center justify-center text-white font-bold font-serif text-xl">D</div>
-                    <div>
-                        <p class="font-bold text-navy uppercase tracking-widest text-xs">Administered By</p>
-                        <p class="font-serif text-lg italic font-bold">Docu-Hub Operations Services</p>
-                        <p class="text-xs text-gray-400">Linstead, St. Catherine, Jamaica</p>
-                    </div>
+                <h2><i class="fa-solid fa-shield-halved"></i> 4. Compliance & Data Privacy</h2>
+                <div class="compliance-box">
+                    <strong>Notice of Compliance:</strong> In adherence to the <em>Proceeds of Crime Act (POCA)</em> and <em>Jamaica Data Protection Act (JDPA)</em>, we reserve the right to verify client identity prior to transaction execution. Sensitive records are permanently purged from our operational servers thirty (30) days following the completion of your service. For full details, please refer to our <a href="privacy.html" style="color: var(--brand-red); font-weight: 700;">Privacy Policy</a>.
                 </div>
-            </div>
 
+                <h2><i class="fa-solid fa-triangle-exclamation"></i> 5. Limitation of Liability</h2>
+                <p>Docu-Hub Operations Services shall not be held liable for delays, losses, or damages resulting from factors outside our direct control, including but not limited to:</p>
+                <ul>
+                    <li><strong>Government Delays:</strong> System outages (e.g., TAJ or PICA network failures), backlogs, or processing delays by the issuing authority.</li>
+                    <li><strong>Officer Discretion:</strong> Rejection of an application by a Government Officer exercising their legal discretion.</li>
+                    <li><strong>Logistical Interruptions:</strong> Loss of travel tickets, missed appointments, or courier delays.</li>
+                    <li><strong>Print Variations (Memorials):</strong> Slight variations in color calibration between digital proofs viewed on mobile devices and final physical prints produced by third-party print shops.</li>
+                    <li><strong>Acts of God:</strong> Strikes, extreme weather events, or national emergencies.</li>
+                </ul>
+
+                <div class="disclaimer-box" style="margin-top: 50px; text-align: center; border: none; background: transparent; padding: 0;">
+                    <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: var(--navy-deep); color: white; border-radius: 50%; font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 15px;">D</div>
+                    <p style="text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; font-weight: 700; color: var(--navy-deep); margin-bottom: 5px;">Administered By</p>
+                    <p style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--navy-deep); font-style: italic; font-weight: 700; margin-bottom: 0;">Docu-Hub Operations Services</p>
+                </div>
+
+            </div>
         </div>
     </div>
 
-    <div class="text-center py-10 no-print">
-        <button onclick="window.print()" class="text-navy font-bold text-xs uppercase tracking-widest hover:text-gold transition flex items-center justify-center gap-2 w-full">
-            <i data-lucide="printer" class="w-4 h-4"></i> Print this agreement
-        </button>
-    </div>
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>Docu-Hub<span>.</span></h2>
+                    <p>Operations Services<br>Linstead, St. Catherine.</p>
+                </div>
+                <div>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="proxy-services.html" class="footer-link">Proxy Services</a>
+                    <a href="contact.html" class="footer-link">Contact & Intake</a>
+                </div>
+                <div>
+                    <a href="terms.html" class="footer-link">Terms of Service</a>
+                    <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                    <a href="legal-notice.html" class="footer-link">Legal Notice</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Docu-Hub Operations Services. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
 
-    <script>
-        lucide.createIcons();
-    </script>
 </body>
 </html>
