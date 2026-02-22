@@ -4,149 +4,178 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Institutional Disclosure | Docu-Hub Operations Services</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
+        /* --- CORE STYLES --- */
         :root {
-            --navy: #0F172A;
-            --gold: #A5915F;
-            --slate: #64748B;
-            --bg: #F8FAFC;
+            --brand-red: #D32F2F; --navy-deep: #021024; --bg-body: #CBD5E1; 
+            --bg-card: #FFFFFF; --text-main: #0F172A; --text-muted: #475569; 
+            --container-width: 1000px; 
+            --header-height: 80px;
         }
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            line-height: 1.7;
-            color: #334155;
-            background-color: var(--bg);
-            margin: 0;
-            padding: 40px 20px;
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg-body); color: var(--text-main); line-height: 1.7; padding-top: var(--header-height); -webkit-font-smoothing: antialiased;}
+        h1, h2, h3, h4 { margin-top: 0; font-weight: 700; }
+        p { margin-bottom: 20px; font-size: 1.05rem; color: var(--text-muted); }
+        a { text-decoration: none; transition: 0.3s ease; }
+        .container { max-width: var(--container-width); margin: 0 auto; padding: 0 30px; }
+        
+        /* --- HEADER --- */
+        .app-header { position: fixed; top: 0; left: 0; width: 100%; z-index: 2000; background: var(--navy-deep); border-bottom: 1px solid rgba(255, 255, 255, 0.05); height: var(--header-height); display: flex; align-items: center; }
+        .header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; }
+        .header-logo { font-size: 1.1rem; font-weight: 800; color: #FFFFFF; letter-spacing: -0.5px; text-transform: uppercase; }
+        .header-logo span { color: var(--brand-red); }
+        .header-logo .light-text { font-weight: 400; color: #94A3B8; font-size: 0.9rem; letter-spacing: 0; margin-left: 5px; display: inline-block; }
+        .header-contact { font-weight: 600; color: #FFFFFF; font-size: 0.9rem; border-bottom: 2px solid transparent; padding-bottom: 2px; }
+        .header-contact:hover { border-bottom-color: var(--brand-red); }
+
+        /* --- LEGAL HERO --- */
+        .legal-hero { background: var(--navy-deep); color: white; padding: 100px 0 160px; text-align: center; }
+        .brand-kicker { display: block; font-size: 0.9rem; color: var(--brand-red); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; margin-bottom: 15px; }
+        .brand-name { font-size: 3.5rem; font-weight: 900; line-height: 1.2; margin-bottom: 20px; letter-spacing: -1px; color: #FFFFFF; font-family: 'Playfair Display', serif; }
+
+        /* --- FLOATING LEGAL DOCUMENT --- */
+        .legal-wrapper {
+            background: var(--bg-card); border-radius: 24px; box-shadow: 0 25px 60px rgba(2, 16, 36, 0.12); 
+            padding: 80px; max-width: 850px; margin: -100px auto 80px auto; position: relative; z-index: 10;
         }
-        .container {
-            max-width: 850px;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 50px;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            border-top: 6px solid var(--navy);
+
+        .document-meta {
+            text-align: center; border-bottom: 1px solid #E2E8F0; padding-bottom: 30px; margin-bottom: 40px;
         }
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
+        .document-meta h1 { font-family: 'Inter', sans-serif; font-size: 2rem; color: var(--navy-deep); letter-spacing: -0.5px; margin-bottom: 10px; }
+        .last-updated { font-size: 0.9rem; color: var(--brand-red); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- TYPOGRAPHY & BOXES --- */
+        .legal-content h2 { 
+            font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--navy-deep); 
+            margin-top: 50px; margin-bottom: 20px; border-bottom: 1px solid #E2E8F0; padding-bottom: 10px; 
+            display: flex; align-items: center; gap: 12px;
         }
-        .header h1 {
-            color: var(--navy);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+        .legal-content h2 i { color: var(--brand-red); font-size: 1.3rem; }
+        
+        .legal-content strong { color: var(--navy-deep); }
+
+        .disclaimer-box { 
+            background: #FFFBEB; border: 1px solid #FEF3C7; padding: 25px; 
+            border-radius: 12px; margin: 25px 0; color: #92400E; font-size: 1.05rem; line-height: 1.7; font-style: italic;
+            border-left: 4px solid #F59E0B;
         }
-        .header p {
-            color: var(--gold);
-            font-weight: 600;
-            font-size: 0.9rem;
+
+        /* --- AGENCY BADGES --- */
+        .badge-group { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 25px; margin-bottom: 20px; }
+        .badge { background: #F8FAFC; color: var(--navy-deep); padding: 8px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; border: 1px solid #E2E8F0; }
+
+        /* --- FOOTER --- */
+        .main-footer { background: var(--navy-deep); color: #94A3B8; padding: 60px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+        .footer-brand h2 { color: white; margin-bottom: 10px; font-size: 1.6rem; letter-spacing: -1px; }
+        .footer-brand h2 span { color: var(--brand-red); }
+        .footer-link { display: block; color: #94A3B8; margin-bottom: 12px; font-size: 0.95rem; transition: 0.3s; }
+        .footer-link:hover { color: white; transform: translateX(3px); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; font-size: 0.85rem; text-align: center; }
+
+        /* =========================================
+           MOBILE OPTIMIZATION
+           ========================================= */
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; } 
+            .header-logo .light-text { display: none; } 
+            .legal-hero { padding: 100px 0 120px; }
+            .brand-name { font-size: 2.5rem; }
+            
+            .legal-wrapper { padding: 40px 25px; margin-top: -60px; }
+            .document-meta h1 { font-size: 1.6rem; }
+            .legal-content h2 { font-size: 1.3rem; }
+            
+            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
         }
-        .section {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #E2E8F0;
-        }
-        .section:last-child { border-bottom: none; }
-        h2 {
-            font-size: 1.1rem;
-            color: var(--navy);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        h2 i { color: var(--gold); }
-        .disclaimer-card {
-            background: #FFFBEB;
-            border: 1px solid #FEF3C7;
-            padding: 20px;
-            border-radius: 8px;
-            font-style: italic;
-            margin: 20px 0;
-        }
-        .badge-group {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 10px;
-        }
-        .badge {
-            background: #F1F5F9;
-            color: #475569;
-            padding: 4px 12px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            border: 1px solid #CBD5E1;
-        }
-        .footer-note {
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--slate);
-            margin-top: 40px;
-        }
-        .btn-portal {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background: var(--navy);
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-        .btn-portal:hover { background: #1E293B; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header">
-        <h1>Institutional Disclosure</h1>
-        <p>Legal Notice & Regulatory Disclaimer</p>
-    </div>
-
-    <div class="section">
-        <h2><i class="fa-solid fa-building-shield"></i> Legal Status & Identity</h2>
-        <p><strong>Docu-Hub Operations Services</strong> is a registered administrative logistics and consultancy firm operating within the jurisdiction of Jamaica. We provide specialized support for individuals and organizations navigating civil, governmental, and international administrative processes.</p>
-    </div>
-
-    <div class="section">
-        <h2><i class="fa-solid fa-gavel"></i> Non-Legal Service Disclaimer</h2>
-        <p>In strict accordance with the <strong>Legal Profession Act</strong>, Docu-Hub Operations Services is not a law firm, and its agents are not attorneys-at-law.</p>
-        <div class="disclaimer-card">
-            "We do not engage in the practice of law, nor do we offer legal representation, statutory interpretation, or legal advice of any kind."
+    <header class="app-header">
+        <div class="container header-inner">
+            <a href="index.html" class="header-logo">Docu-Hub<span>.</span> <span class="light-text">Operations Services</span></a>
+            <a href="contact.html" class="header-contact">Talk to a Human</a>
         </div>
-        <p>Our role is exclusively limited to clerical assistance, document formatting, and acting as an administrative liaison with various local and international government agencies and civil registries based on client-provided data and declarations.</p>
-        <div class="badge-group">
-            <span class="badge">Civil Registries</span>
-            <span class="badge">Passport Agencies</span>
-            <span class="badge">Tax Authorities</span>
-            <span class="badge">Social Security</span>
-            <span class="badge">Police Records</span>
+    </header>
+
+    <section class="legal-hero">
+        <div class="container">
+            <span class="brand-kicker">Legal & Compliance</span>
+            <h1 class="brand-name">Institutional Disclosure</h1>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="legal-wrapper">
+            
+            <div class="document-meta">
+                <h1>Legal Notice & Regulatory Disclaimer</h1>
+                <p class="last-updated">Document ID: DH-POL-2026-02 &nbsp;|&nbsp; Last Verified: January 2026</p>
+            </div>
+
+            <div class="legal-content">
+
+                <h2><i class="fa-solid fa-building-shield"></i> Legal Status & Identity</h2>
+                <p><strong>Docu-Hub Operations Services</strong> is a registered administrative logistics and consultancy firm operating within the jurisdiction of Jamaica. We provide specialized support for individuals and organizations navigating civil, governmental, and international administrative processes.</p>
+                
+                <h2><i class="fa-solid fa-scale-balanced"></i> Non-Legal Service Disclaimer</h2>
+                <p>In strict accordance with the <strong>Legal Profession Act</strong>, Docu-Hub Operations Services is not a law firm, and its agents are not attorneys-at-law.</p>
+                
+                <div class="disclaimer-box">
+                    "We do not engage in the practice of law, nor do we offer legal representation, statutory interpretation, or legal advice of any kind."
+                </div>
+                
+                <p>Our role is exclusively limited to clerical assistance, document formatting, and acting as an administrative liaison with various local and international government agencies and civil registries based on client-provided data and declarations.</p>
+                
+                <div class="badge-group">
+                    <span class="badge">Civil Registries</span>
+                    <span class="badge">Passport Agencies</span>
+                    <span class="badge">Tax Authorities</span>
+                    <span class="badge">Social Security</span>
+                    <span class="badge">Police Records</span>
+                </div>
+
+                <h2><i class="fa-solid fa-shield-halved"></i> Regulatory Oversight (DNFBP)</h2>
+                <p>We are recognized as a <strong>Designated Non-Financial Business or Profession (DNFBP)</strong> under the <em>Proceeds of Crime Act (POCA)</em> and the <em>Terrorism Prevention Act</em>. We operate under the oversight of relevant competent authorities and maintain robust Anti-Money Laundering (AML) and Counter-Financing of Terrorism (CFT) protocols applicable to our local and international service offerings.</p>
+                
+                <h2><i class="fa-solid fa-user-lock"></i> Data Privacy & Protection</h2>
+                <p>Pursuant to the <strong>Jamaica Data Protection Act (JDPA)</strong>, we serve as a data controller for the information provided. All personal data—including sensitive international identification documents—is processed under strict confidentiality, encrypted during storage, and utilized solely for the fulfillment of contracted services.</p>
+
+            </div>
         </div>
     </div>
 
-    <div class="section">
-        <h2><i class="fa-solid fa-scale-balanced"></i> Regulatory Oversight (DNFBP)</h2>
-        <p>We are recognized as a <strong>Designated Non-Financial Business or Profession (DNFBP)</strong> under the <em>Proceeds of Crime Act (POCA)</em> and the <em>Terrorism Prevention Act</em>. We operate under the oversight of relevant competent authorities and maintain robust Anti-Money Laundering (AML) and Counter-Financing of Terrorism (CFT) protocols applicable to our local and international service offerings.</p>
-    </div>
-
-    <div class="section">
-        <h2><i class="fa-solid fa-user-lock"></i> Data Privacy & Protection</h2>
-        <p>Pursuant to the <strong>Jamaica Data Protection Act (JDPA)</strong>, we serve as a data controller for the information provided. All personal data—including sensitive international identification documents—is processed under strict confidentiality, encrypted during storage, and utilized solely for the fulfillment of contracted services.</p>
-    </div>
-
-    <div class="footer-note">
-        <p>Last Verified: January 29, 2026</p>
-        <a href="/" class="btn-portal"><i class="fa-solid fa-arrow-left"></i> Return to Portal</a>
-    </div>
-</div>
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>Docu-Hub<span>.</span></h2>
+                    <p>Operations Services<br>Linstead, St. Catherine.</p>
+                </div>
+                <div>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="proxy-services.html" class="footer-link">Proxy Services</a>
+                    <a href="contact.html" class="footer-link">Contact & Intake</a>
+                </div>
+                <div>
+                    <a href="terms.html" class="footer-link">Terms of Service</a>
+                    <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                    <a href="legal-notice.html" class="footer-link">Legal Notice</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Docu-Hub Operations Services. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
