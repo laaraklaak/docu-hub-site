@@ -150,7 +150,7 @@
                     <input type="email" name="email" class="form-input" placeholder="jane@example.com" required>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" id="service-selection-group">
                     <label class="form-label">What do you need help with today?</label>
                     <select id="service-dropdown" name="service_requested" class="form-select" required>
                         <option value="" disabled selected>Select the service you need...</option>
@@ -176,6 +176,14 @@
 
                         <option value="other">Something Else / General Inquiry</option>
                     </select>
+                </div>
+
+                <div class="form-group" id="locked-service-group" style="display: none; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 16px 20px; border-radius: 12px;">
+                    <label class="form-label" style="color: #166534; margin-bottom: 5px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Service Requested</label>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span id="locked-service-name" style="font-weight: 800; color: #166534; font-size: 1.15rem;">Passport Services</span>
+                        <a href="#" onclick="unlockService(event)" style="font-size: 0.85rem; color: #166534; text-decoration: underline; font-weight: 600;">Change Service</a>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -232,24 +240,30 @@
     </footer>
 
     <script>
-        // Runs when the page loads
         document.addEventListener("DOMContentLoaded", function() {
-            // Get the URL parameters (e.g., ?service=pica-lost&status=red)
             const urlParams = new URLSearchParams(window.location.search);
             const serviceTag = urlParams.get('service');
             const statusTag = urlParams.get('status');
             
-            // 1. Auto-Select the Dropdown
+            // 1. Auto-Select & Lock the Dropdown
             if (serviceTag) {
                 const dropdown = document.getElementById('service-dropdown');
                 const options = Array.from(dropdown.options);
+                let selectedText = "";
                 
-                // Find the option that matches the URL tag and select it
                 options.forEach(option => {
                     if (option.value === serviceTag) {
                         option.selected = true;
+                        selectedText = option.text;
                     }
                 });
+
+                // If a valid service was found in the URL, hide the dropdown and show the Locked Badge
+                if (selectedText) {
+                    document.getElementById('service-selection-group').style.display = 'none';
+                    document.getElementById('locked-service-group').style.display = 'block';
+                    document.getElementById('locked-service-name').innerText = selectedText;
+                }
 
                 // Change the textarea placeholder to match their service
                 const textareaLabel = document.getElementById('textarea-label');
@@ -260,7 +274,7 @@
                 }
             }
 
-            // 2. Show the Dynamic Success/Warning Banner (from the PICA checker)
+            // 2. Show the Dynamic Success/Warning Banner
             if (statusTag === 'green') {
                 const banner = document.getElementById('dynamic-banner');
                 banner.className = 'status-banner green';
@@ -271,6 +285,13 @@
                 banner.innerHTML = '<i class="fa-solid fa-clipboard-list"></i> Let\'s get your info so an agent can build your custom Success Checklist.';
             }
         });
+
+        // Function to unlock the dropdown if the user clicked the wrong link
+        function unlockService(e) {
+            e.preventDefault();
+            document.getElementById('locked-service-group').style.display = 'none';
+            document.getElementById('service-selection-group').style.display = 'flex';
+        }
     </script>
 </body>
 </html>
