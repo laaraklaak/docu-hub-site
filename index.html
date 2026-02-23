@@ -46,6 +46,25 @@
             border-bottom: 1px solid #E2E8F0; 
             height: var(--header-height); display: flex; align-items: center;
         }
+        .studio-tagline {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--text-muted); /* or #94A3B8 */
+    text-transform: none;
+    letter-spacing: 0;
+    margin-left: 10px;
+    border-left: 1px solid #E2E8F0;
+    padding-left: 10px;
+    vertical-align: middle;
+}
+
+/* On mobile, we might want to hide the tagline or stack it */
+@media (max-width: 768px) {
+    .studio-tagline {
+        display: none; /* Keeps the mobile header clean */
+    }
+}
         .header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; }
         .header-logo { font-size: 1.4rem; font-weight: 800; color: var(--studio-black); letter-spacing: -0.5px; text-transform: uppercase; font-family: 'Inter', sans-serif;}
         
@@ -158,8 +177,10 @@
 <body>
 
     <header class="app-header">
-        <div class="container header-inner">
-            <a href="index.html" class="header-logo">Docu-Hub.</a>
+       <div class="container header-inner">
+    <a href="index.html" class="header-logo">
+        Docu-Hub<span>.</span> <small class="studio-tagline">Operations & Design Studio</small>
+    </a>
             <nav class="nav-links">
                 <a href="memorial-design.html">Memorials</a>
                 <a href="stationery.html">Stationery</a>
@@ -266,6 +287,7 @@
 
 </body>
 </html>
+
 
 
 
