@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        /* --- CORE STYLES --- */
         :root {
             --brand-red: #D32F2F;
             --navy-deep: #021024;
@@ -24,7 +25,7 @@
         html { scroll-behavior: smooth; }
         body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg-body); color: var(--text-main); line-height: 1.6; padding-top: var(--header-height); -webkit-font-smoothing: antialiased;}
         
-        h1, h2, h3 { margin-top: 0; font-weight: 700; }
+        h1, h2, h3, h4 { margin-top: 0; font-weight: 700; }
         p { margin-bottom: 0; font-size: 1.1rem; color: var(--text-muted); }
         a { text-decoration: none; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         
@@ -39,24 +40,36 @@
         .header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; }
         .header-logo { font-size: 1.1rem; font-weight: 800; color: #FFFFFF; letter-spacing: -0.5px; text-transform: uppercase; }
         .header-logo span { color: var(--brand-red); }
+        .header-contact { font-weight: 600; color: #FFFFFF; font-size: 0.9rem; border-bottom: 2px solid transparent; padding-bottom: 2px; }
+        .header-contact:hover { border-bottom-color: var(--brand-red); }
         
         /* --- HERO --- */
-        .concierge-hero { background: var(--navy-deep); color: white; padding: 80px 0 160px; text-align: center; }
-        .brand-name { font-size: 4rem; font-weight: 900; margin-bottom: 5px; letter-spacing: -2px; }
+        .concierge-hero { 
+            position: relative; 
+            background: url('https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&q=80&w=1500') center/cover no-repeat; 
+            padding: 140px 0 220px;
+            overflow: hidden;
+            text-align: center;
+        }
+        .hero-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            background: linear-gradient(135deg, rgba(2, 10, 36, 0.92) 0%, rgba(2, 16, 36, 0.7) 100%); 
+            z-index: 1;
+        }
+        .brand-kicker { display: block; color: var(--brand-red); letter-spacing: 4px; font-weight: 800; font-size: 0.9rem; margin-bottom: 15px; }
+        .brand-name { font-size: clamp(3rem, 8vw, 5.5rem); margin-bottom: 5px; text-shadow: 0 4px 20px rgba(0,0,0,0.6); letter-spacing: -3px; color: #FFFFFF; font-family: 'Playfair Display', serif;}
         .brand-name span { color: var(--brand-red); }
+        .brand-suffix { color: #94A3B8; font-weight: 700; letter-spacing: 8px; font-size: 1.2rem; display: block; margin-bottom: 30px; text-transform: uppercase; }
 
-        /* --- INTAKE SECTION --- */
+        /* --- INTAKE SECTION (FLOATING BOX) --- */
         .intake-section { background: var(--bg-body); padding-bottom: 80px; }
         .intake-wrapper {
             background: var(--bg-card); border-radius: 24px; box-shadow: 0 25px 60px rgba(2, 16, 36, 0.15); 
-            padding: 50px 40px; margin-top: -100px; position: relative; z-index: 10; text-align: center;
+            padding: 60px 50px; margin-top: -120px; position: relative; z-index: 10; 
         }
 
-        .hero-headline { color: var(--navy-deep); font-size: 2.2rem; margin-bottom: 15px; font-family: 'Playfair Display', serif; font-style: italic; }
-        .hero-sub { color: var(--text-muted); margin-bottom: 40px; }
-
+        /* --- SERVICE CARDS --- */
         .intake-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 750px; margin: 0 auto; }
-        
         .service-card { border-radius: 15px; overflow: hidden; border: 1px solid #E2E8F0; transition: 0.3s; background: #F8FAFC; }
         .intake-btn { width: 100%; background: none; display: flex; align-items: center; justify-content: space-between; padding: 25px; border: none; cursor: pointer; text-align: left; }
         .btn-content { display: flex; align-items: center; gap: 20px; }
@@ -64,34 +77,71 @@
         .btn-title { display: block; font-size: 1.2rem; font-weight: 700; color: var(--navy-deep); }
         .btn-desc { display: block; font-size: 0.95rem; color: var(--text-muted); }
 
-        /* Dropdown Logic */
         .service-details { max-height: 0; overflow: hidden; transition: all 0.4s ease-in-out; background: #FFFFFF; text-align: left; }
         .service-details.active { max-height: 800px; padding: 0 25px 25px 85px; border-top: 1px solid #f1f5f9; }
-
+        
         .detail-list { list-style: none; padding: 0; margin: 0; }
         .detail-list li { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #f1f5f9; }
         
-        .tag { font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; font-weight: 700; text-transform: uppercase; margin-top: 4px; display: inline-block; }
+        .tag { font-size: 0.7rem; padding: 4px 8px; border-radius: 4px; font-weight: 700; text-transform: uppercase; margin-top: 4px; display: inline-block; }
         .tag-proxy { background: #dcfce7; color: #166534; }
         .tag-guide { background: #fef9c3; color: #854d0e; }
 
-        .mini-cta { font-size: 0.8rem; font-weight: 700; padding: 8px 12px; border-radius: 5px; background: var(--brand-red); color: white !important; white-space: nowrap; transition: 0.2s; }
+        .mini-cta { font-size: 0.85rem; font-weight: 700; padding: 10px 15px; border-radius: 6px; background: var(--brand-red); color: white !important; white-space: nowrap; transition: 0.2s; border: none; cursor: pointer;}
         .mini-cta.outline { background: transparent; border: 1px solid var(--brand-red); color: var(--brand-red) !important; }
-        .mini-cta:hover { transform: scale(1.05); }
+        .mini-cta:hover { transform: scale(1.03); }
+
+        /* --- 4-STEP PROCESS (NEW) --- */
+        .process-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; position: relative; margin-bottom: 50px; }
+        .process-grid-4::before { content: ''; position: absolute; top: 30px; left: 10%; right: 10%; height: 2px; background: #E2E8F0; z-index: 0; }
+        .step-4 { position: relative; z-index: 1; text-align: center; background: var(--bg-card); padding-top: 10px;}
+        .step-4-icon { width: 60px; height: 60px; background: white; border: 2px solid #CBD5E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 1.3rem; color: var(--navy-deep); font-weight: 800; box-shadow: 0 4px 10px rgba(0,0,0,0.04); }
+        .step-4 h4 { font-size: 1.1rem; color: var(--navy-deep); margin-bottom: 5px; }
+        .step-4 p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+
+        /* --- PRIVACY BOX (NEW) --- */
+        .privacy-box { background: #F8FAFC; border: 1px dashed #CBD5E1; border-radius: 12px; padding: 40px 30px; text-align: center; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
+        .privacy-box i { font-size: 2.5rem; color: var(--navy-deep); margin-bottom: 15px; }
+        .privacy-box h4 { color: var(--navy-deep); font-size: 1.3rem; margin-bottom: 10px; }
+        .privacy-box p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; max-width: 650px; margin: 0 auto; }
+
+        /* --- PICA CHECKER MODAL --- */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 16, 36, 0.8); z-index: 3000; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
+        .modal-content { background: white; width: 90%; max-width: 500px; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.2); animation: popIn 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .modal-header { background: var(--navy-deep); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .close-modal { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; transition: 0.2s; }
+        .close-modal:hover { color: var(--brand-red); transform: scale(1.1); }
+        .modal-body { padding: 40px 30px; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; }
+        
+        .quiz-step { animation: fadeIn 0.4s ease-in-out; }
+        .quiz-btn { background: var(--brand-red); color: white; border: none; padding: 12px 25px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.3s; width: 120px; margin: 5px;}
+        .quiz-btn:hover { background: #B71C1C; transform: translateY(-2px); }
+        .quiz-btn.outline { background: white; color: var(--navy-deep); border: 2px solid #E2E8F0; }
+        .quiz-btn.outline:hover { border-color: var(--navy-deep); }
+
+        @keyframes popIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* --- FOOTER --- */
-        .main-footer { background: var(--navy-deep); color: #94A3B8; padding: 60px 0 30px; }
-        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; }
-        .footer-heading { color: white; margin-bottom: 20px; font-size: 1rem; text-transform: uppercase; }
-        .footer-link { display: block; color: #94A3B8; margin-bottom: 10px; }
-        .footer-link:hover { color: white; }
+        .main-footer { background: var(--navy-deep); color: #94A3B8; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+        .footer-link { display: block; color: #94A3B8; margin-bottom: 12px; font-size: 0.95rem; transition: 0.3s; }
+        .footer-link:hover { color: white; transform: translateX(5px); }
 
+        /* --- MOBILE OPTIMIZATION --- */
+        @media (max-width: 900px) {
+            .process-grid-4 { grid-template-columns: 1fr 1fr; gap: 40px; } 
+            .process-grid-4::before { display: none; }
+        }
         @media (max-width: 768px) {
             .brand-name { font-size: 2.8rem; }
-            .footer-grid { grid-template-columns: 1fr; text-align: center; }
-            .intake-wrapper { padding: 30px 20px; }
-            .service-details.active { padding: 0 20px 20px 20px; } /* Fixed mobile padding */
+            .intake-wrapper { padding: 40px 20px; margin-top: -80px; }
+            .service-details.active { padding: 0 20px 20px 20px; } 
             .detail-list li { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .process-grid-4 { grid-template-columns: 1fr; gap: 30px; }
+            .privacy-box { padding: 30px 20px; }
+            .footer-grid { grid-template-columns: 1fr !important; text-align: center; }
+            .footer-brand a { justify-content: center; }
         }
     </style>
 </head>
@@ -100,238 +150,227 @@
     <header class="app-header">
         <div class="container header-inner">
             <a href="index.html" class="header-logo">Docu-Hub<span>.</span></a>
-            <a href="contact.html" style="color:white; font-weight:600;">Talk to a Human</a>
+            <a href="contact.html" class="header-contact">Talk to a Human</a>
         </div>
     </header>
 
-    <section class="concierge-hero" style="
-    position: relative; 
-    background: url('assets/pica.png') center/cover no-repeat; 
-    padding: 140px 0 220px;
-    overflow: hidden;
-">
-    <div style="
-        position: absolute; 
-        top: 0; 
-        left: 0; 
-        width: 100%; 
-        height: 100%; 
-        background: linear-gradient(135deg, rgba(2, 10, 36, 0.92) 0%, rgba(2, 16, 36, 0.7) 100%); 
-        z-index: 1;
-    "></div>
-    
-    <div class="container" style="position: relative; z-index: 2;">
-        <span class="brand-kicker" style="
-            display: block;
-            color: var(--brand-red); 
-            letter-spacing: 4px; 
-            font-weight: 800; 
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        ">CERTIFIED • DISCREET • JAMAICAN</span>
-        
-        <h1 class="brand-name" style="
-            font-size: clamp(3rem, 8vw, 5.5rem); 
-            margin-bottom: 5px;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
-            letter-spacing: -3px;
-        ">Docu-Hub<span>.</span></h1>
-        
-        <span class="brand-suffix" style="
-            color: #94A3B8; 
-            font-weight: 700; 
-            letter-spacing: 8px;
-            font-size: 1.2rem;
-            display: block;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-        ">Operations Services</span>
-        
-        <div style="
-            max-width: 550px; 
-            margin: 0 auto; 
-            border-top: 2px solid var(--brand-red);
-            padding-top: 25px;
-        ">
-            <p style="
-                color: #FFFFFF; 
-                font-size: 1.25rem; 
-                line-height: 1.6; 
-                font-weight: 300;
-            ">
-                "Whether it's a <strong>Birth Paper</strong> or a <strong>Passport Renewal</strong>—we handle the run-around so you can stay home."
-            </p>
-        </div>
-    </div>
-</section>
-              <div class="intake-grid">
-    
-   <div class="service-card">
-        <button class="intake-btn" onclick="toggleService('pica')">
-            <div class="btn-content">
-                <i class="fa-solid fa-passport"></i>
-                <div>
-                    <span class="btn-title">Passport Services</span>
-                    <span class="btn-desc">Renewals & Application Help</span>
-                </div>
-            </div>
-            <i class="fa-solid fa-chevron-down" id="pica-icon"></i>
-        </button>
-        <div id="pica" class="service-details">
-            <ul class="detail-list">
-                
-                <li style="flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px 0;">
-                    <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <span style="font-weight: 700; color: var(--navy-deep);">Adult Renewal (Online)</span><br>
-                            <span class="tag tag-proxy">We handle the whole process</span>
-                        </div>
-                    </div>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.5;">For adults with passports issued after Sept 2001. We manage the portal, photo formatting, and payment.</p>
-                    <a href="proxy-services.html" class="mini-cta" style="width: 100%; text-align: center; margin-top: 5px; padding: 10px;">Check Eligibility</a>
-                </li>
-
-                <li style="flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px 0; border-top: 1px solid #f1f5f9;">
-                    <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <span style="font-weight: 700; color: var(--navy-deep);">Child Renewal (Under 18)</span><br>
-                            <span class="tag tag-guide">In-person required</span>
-                        </div>
-                    </div>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.5;">Minors require an in-person visit. We prep your forms and documents beforehand so you get approved on the first try.</p>
-                    <a href="contact.html?service=pica-child" class="mini-cta outline" style="width: 100%; text-align: center; margin-top: 5px; padding: 10px;">Get The Success Checklist</a>
-                </li>
-
-                <li style="flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px 0; border-top: 1px solid #f1f5f9;">
-                    <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <span style="font-weight: 700; color: var(--navy-deep);">Lost or Damaged Passport</span><br>
-                            <span class="tag tag-guide">Expert Protocol Guide</span>
-                        </div>
-                    </div>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.5;">Requires specific police reports and affidavits. We provide the exact step-by-step prep to ensure you aren't sent home.</p>
-                    <a href="contact.html?service=pica-lost" class="mini-cta outline" style="width: 100%; text-align: center; margin-top: 5px; padding: 10px;">Get The Success Checklist</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="service-card">
-        <button class="intake-btn" onclick="toggleService('rgd')">
-            <div class="btn-content">
-                <i class="fa-solid fa-file-signature"></i>
-                <div>
-                    <span class="btn-title">Birth & Marriage Papers</span>
-                    <span class="btn-desc">New Copies & Corrections</span>
-                </div>
-            </div>
-            <i class="fa-solid fa-chevron-down" id="rgd-icon"></i>
-        </button>
-        <div id="rgd" class="service-details">
-            <ul class="detail-list">
-                <li style="flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px 0;">
-                    <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <span style="font-weight: 700; color: var(--navy-deep);">Fast Copies & Retrievals</span><br>
-                            <span class="tag tag-proxy">We handle the run-around</span>
-                        </div>
-                    </div>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.5;">If you have your Entry Number or old "Pink Slip," we can expedite your application. If not, we will conduct a record search for you.</p>
-                    <a href="contact.html?service=rgd-proxy" class="mini-cta" style="width: 100%; text-align: center; margin-top: 5px; padding: 10px;">Retrieve My Papers</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="service-card">
-        <button class="intake-btn" onclick="toggleService('taj')">
-            <div class="btn-content">
-                <i class="fa-solid fa-car-side"></i>
-                <div>
-                    <span class="btn-title">Tax Office & Traffic Tickets</span>
-                    <span class="btn-desc">Vehicle Registration & Payments</span>
-                </div>
-            </div>
-            <i class="fa-solid fa-chevron-down" id="taj-icon"></i>
-        </button>
-        <div id="taj" class="service-details">
-            <ul class="detail-list">
-                <li style="flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px 0;">
-                    <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <span style="font-weight: 700; color: var(--navy-deep);">Fitness, License & Tickets</span><br>
-                            <span class="tag tag-proxy">Skip the line - We go for you</span>
-                        </div>
-                    </div>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.5;">Provide your Valuation Number or Vehicle details, and we will clear your arrears and provide official digital receipts immediately.</p>
-                    <a href="contact.html?service=taj-proxy" class="mini-cta" style="width: 100%; text-align: center; margin-top: 5px; padding: 10px;">Clear My Fees</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="service-card">
-        <button class="intake-btn" onclick="toggleService('mem')">
-            <div class="btn-content">
-                <i class="fa-solid fa-book-open"></i>
-                <div>
-                    <span class="btn-title">Funeral Programs</span>
-                    <span class="btn-desc">Professional Design & Layout</span>
-                </div>
-            </div>
-            <i class="fa-solid fa-chevron-down" id="mem-icon"></i>
-        </button>
-        <div id="mem" class="service-details">
-            <ul class="detail-list">
-                <li>
-                    <div>
-                        <span style="font-weight: 700; color: var(--navy-deep);">Custom Memorial Programs</span><br>
-                        <span class="tag tag-proxy">Print-ready high quality</span>
-                    </div>
-                    <a href="memorial-design.html" class="mini-cta outline">See How It Works</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-</div>
+    <section class="concierge-hero">
+        <div class="hero-overlay"></div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <span class="brand-kicker">CERTIFIED • DISCREET • JAMAICAN</span>
+            <h1 class="brand-name">Docu-Hub<span>.</span></h1>
+            <span class="brand-suffix">Operations Services</span>
+            
+            <div style="max-width: 550px; margin: 0 auto; border-top: 2px solid var(--brand-red); padding-top: 25px;">
+                <p style="color: #FFFFFF; font-size: 1.25rem; line-height: 1.6; font-weight: 300;">
+                    "Whether it's a <strong>Birth Paper</strong> or a <strong>Passport Renewal</strong>—we handle the run-around so you can stay home."
+                </p>
             </div>
         </div>
     </section>
-<section class="about-preview" style="background: #FFFFFF; padding: 80px 0; border-top: 1px solid #E2E8F0;">
-    <div class="container">
-        <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-            <span class="brand-kicker" style="color: var(--brand-red); letter-spacing: 2px; font-weight: 800; font-size: 0.8rem; margin-bottom: 10px;">THE DOCU-HUB STORY</span>
-            <h2 class="hero-headline" style="max-width: 600px;">We know how it feel fi stand inna line and get send home.</h2>
-            
-            <div style="max-width: 750px; margin-top: 20px; text-align: left; background: #F8FAFC; padding: 40px; border-radius: 20px; border-left: 5px solid var(--brand-red); box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-                <p style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 20px; line-height: 1.8;">
-                    It always happen when you’re in a rush. You take a day off work, reach the office from 6:00 AM, and wait for hours. Then you reach the window, and they tell you: <em>"Document not signed right"</em> or <em>"System down, come back tomorrow."</em> 
-                </p>
-                <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px;">
-                    We created Docu-Hub because we were tired of seeing Jamaicans lose time and money to simple paperwork mistakes. We aren't just an agency; we are your "Road Runners." We know the protocols, we know the shortcuts, and we know exactly what is needed to get it done the first time.
-                </p>
-                
-                <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.8;">
-                    <strong>Docu-Hub</strong> was built on the belief that your time is your most valuable asset. Whether you are a busy professional in Kingston, a parent in Linstead, or a member of the Diaspora abroad, you shouldn't have to navigate the bureaucracy alone. We bridge the gap between you and the window, providing the transparency and reliability that the system often lacks.
-                </p>
 
-                <p style="font-size: 1.2rem; color: var(--navy-deep); font-weight: 700; margin-bottom: 30px; font-family: 'Playfair Display', serif; font-style: italic;">
-                    We handle the paperwork, so you can handle your life.
-                </p>
+    <section class="intake-section">
+        <div class="container">
+            <div class="intake-wrapper">
                 
-                <a href="about.html" style="display: inline-block; font-weight: 800; color: var(--brand-red); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; border-bottom: 2px solid var(--brand-red); padding-bottom: 4px; transition: 0.3s;">
-                    Read Our Full Story <i class="fa-solid fa-arrow-right" style="margin-left: 5px;"></i>
-                </a>
+                <div class="intake-grid">
+                    
+                    <div class="service-card">
+                        <button class="intake-btn" onclick="toggleService('pica')">
+                            <div class="btn-content">
+                                <i class="fa-solid fa-passport"></i>
+                                <div>
+                                    <span class="btn-title">Passport Services</span>
+                                    <span class="btn-desc">Renewals & Application Help</span>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-chevron-down" id="pica-icon"></i>
+                        </button>
+                        <div id="pica" class="service-details">
+                            <ul class="detail-list">
+                                <li style="flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px 0;">
+                                    <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                                        <div>
+                                            <span style="font-weight: 700; color: var(--navy-deep);">Adult Renewal (Online)</span><br>
+                                            <span class="tag tag-proxy">We handle the whole process</span>
+                                        </div>
+                                    </div>
+                                    <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.5;">For adults with passports issued after Sept 2001. We manage the portal, photo formatting, and payment.</p>
+                                    <button onclick="openPicaModal()" class="mini-cta" style="width: 100%; text-align: center; margin-top: 5px; padding: 10px;">Check Eligibility</button>
+                                </li>
+
+                                <li style="flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px 0; border-top: 1px solid #f1f5f9;">
+                                    <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                                        <div>
+                                            <span style="font-weight: 700; color: var(--navy-deep);">Child Renewal (Under 18)</span><br>
+                                            <span class="tag tag-guide">In-person required</span>
+                                        </div>
+                                    </div>
+                                    <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.5;">Minors require an in-person visit. We prep your forms and documents beforehand so you get approved on the first try.</p>
+                                    <a href="contact.html?service=pica-child" class="mini-cta outline" style="width: 100%; text-align: center; margin-top: 5px; padding: 10px; display:block;">Get The Success Checklist</a>
+                                </li>
+
+                                <li style="flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px 0; border-top: 1px solid #f1f5f9;">
+                                    <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                                        <div>
+                                            <span style="font-weight: 700; color: var(--navy-deep);">Lost or Damaged Passport</span><br>
+                                            <span class="tag tag-guide">Expert Protocol Guide</span>
+                                        </div>
+                                    </div>
+                                    <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.5;">Requires specific police reports and affidavits. We provide the exact step-by-step prep to ensure you aren't sent home.</p>
+                                    <a href="contact.html?service=pica-lost" class="mini-cta outline" style="width: 100%; text-align: center; margin-top: 5px; padding: 10px; display:block;">Get The Success Checklist</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <button class="intake-btn" onclick="toggleService('rgd')">
+                            <div class="btn-content">
+                                <i class="fa-solid fa-file-signature"></i>
+                                <div>
+                                    <span class="btn-title">Birth & Marriage Papers</span>
+                                    <span class="btn-desc">New Copies & Corrections</span>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-chevron-down" id="rgd-icon"></i>
+                        </button>
+                        <div id="rgd" class="service-details">
+                            <ul class="detail-list">
+                                <li style="flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px 0;">
+                                    <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                                        <div>
+                                            <span style="font-weight: 700; color: var(--navy-deep);">Fast Copies & Retrievals</span><br>
+                                            <span class="tag tag-proxy">We handle the run-around</span>
+                                        </div>
+                                    </div>
+                                    <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.5;">If you have your Entry Number or old "Pink Slip," we can expedite your application. If not, we will conduct a record search for you.</p>
+                                    <a href="contact.html?service=rgd-proxy" class="mini-cta" style="width: 100%; text-align: center; margin-top: 5px; padding: 10px; display:block;">Retrieve My Papers</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <button class="intake-btn" onclick="toggleService('taj')">
+                            <div class="btn-content">
+                                <i class="fa-solid fa-car-side"></i>
+                                <div>
+                                    <span class="btn-title">Tax Office & Traffic Tickets</span>
+                                    <span class="btn-desc">Vehicle Registration & Payments</span>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-chevron-down" id="taj-icon"></i>
+                        </button>
+                        <div id="taj" class="service-details">
+                            <ul class="detail-list">
+                                <li style="flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px 0;">
+                                    <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                                        <div>
+                                            <span style="font-weight: 700; color: var(--navy-deep);">Fitness, License & Tickets</span><br>
+                                            <span class="tag tag-proxy">Skip the line - We go for you</span>
+                                        </div>
+                                    </div>
+                                    <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.5;">Provide your Valuation Number or Vehicle details, and we will clear your arrears and provide official digital receipts immediately.</p>
+                                    <a href="contact.html?service=taj-proxy" class="mini-cta" style="width: 100%; text-align: center; margin-top: 5px; padding: 10px; display:block;">Clear My Fees</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <button class="intake-btn" onclick="toggleService('mem')">
+                            <div class="btn-content">
+                                <i class="fa-solid fa-book-open"></i>
+                                <div>
+                                    <span class="btn-title">Funeral Programs</span>
+                                    <span class="btn-desc">Professional Design & Layout</span>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-chevron-down" id="mem-icon"></i>
+                        </button>
+                        <div id="mem" class="service-details">
+                            <ul class="detail-list">
+                                <li>
+                                    <div>
+                                        <span style="font-weight: 700; color: var(--navy-deep);">Custom Memorial Programs</span><br>
+                                        <span class="tag tag-proxy">Print-ready high quality</span>
+                                    </div>
+                                    <a href="memorial.html" class="mini-cta outline">See How It Works</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> <div style="margin-top: 80px; border-top: 1px solid #E2E8F0; padding-top: 60px;">
+                    
+                    <div style="text-align: center; margin-bottom: 40px;">
+                        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--navy-deep);">Your Simple Path to Done</h2>
+                    </div>
+                    
+                    <div class="process-grid-4">
+                        <div class="step-4">
+                            <div class="step-4-icon">1</div>
+                            <h4>Basic Intake</h4>
+                            <p>Submit your basic KYC info (Name, Contact, Service required).</p>
+                        </div>
+                        <div class="step-4">
+                            <div class="step-4-icon">2</div>
+                            <h4>Secure Link</h4>
+                            <p>We send a private, encrypted link for your TRN and ID uploads.</p>
+                        </div>
+                        <div class="step-4">
+                            <div class="step-4-icon">3</div>
+                            <h4>Execution</h4>
+                            <p>We handle the portals, uploads, and payments on your behalf.</p>
+                        </div>
+                        <div class="step-4">
+                            <div class="step-4-icon">4</div>
+                            <h4>Delivery</h4>
+                            <p>You receive your official receipts, tracking numbers, and papers.</p>
+                        </div>
+                    </div>
+
+                    <div class="privacy-box">
+                        <i class="fa-solid fa-user-shield"></i>
+                        <h4>We Protect Your Privacy</h4>
+                        <p>To protect your data, our initial intake only asks for basic contact info. Once we confirm your eligibility, you will receive a <strong>private, encrypted link</strong> to safely share sensitive data like TRNs or ID scans. We never store your data beyond the completion of the service.</p>
+                    </div>
+
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <section class="about-preview" style="background: #FFFFFF; padding: 80px 0; border-top: 1px solid #E2E8F0;">
+        <div class="container">
+            <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <span class="brand-kicker">THE DOCU-HUB STORY</span>
+                <h2 style="color: var(--navy-deep); font-size: 2.2rem; margin-bottom: 15px; font-family: 'Playfair Display', serif; font-style: italic; max-width: 600px;">We know how it feel fi stand inna line and get send home.</h2>
+                
+                <div style="max-width: 750px; margin-top: 20px; text-align: left; background: #F8FAFC; padding: 40px; border-radius: 20px; border-left: 5px solid var(--brand-red); box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                    <p style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 20px; line-height: 1.8;">
+                        It always happen when you’re in a rush. You take a day off work, reach the office from 6:00 AM, and wait for hours. Then you reach the window, and they tell you: <em>"Document not signed right"</em> or <em>"System down, come back tomorrow."</em> 
+                    </p>
+                    <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px;">
+                        We created Docu-Hub because we were tired of seeing Jamaicans lose time and money to simple paperwork mistakes. We aren't just an agency; we are your "Road Runners." We know the protocols, we know the shortcuts, and we know exactly what is needed to get it done the first time.
+                    </p>
+                    <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.8;">
+                        <strong>Docu-Hub</strong> was built on the belief that your time is your most valuable asset. Whether you are a busy professional in Kingston, a parent in Linstead, or a member of the Diaspora abroad, you shouldn't have to navigate the bureaucracy alone.
+                    </p>
+                    <p style="font-size: 1.2rem; color: var(--navy-deep); font-weight: 700; margin-bottom: 30px; font-family: 'Playfair Display', serif; font-style: italic;">
+                        We handle the paperwork, so you can handle your life.
+                    </p>
+                    <a href="about.html" style="display: inline-block; font-weight: 800; color: var(--brand-red); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; border-bottom: 2px solid var(--brand-red); padding-bottom: 4px; transition: 0.3s;">
+                        Read Our Full Story <i class="fa-solid fa-arrow-right" style="margin-left: 5px;"></i>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-  <footer class="main-footer" style="background: var(--navy-deep); color: #94A3B8; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05);">
+    <footer class="main-footer">
         <div class="container">
-            <div class="footer-grid" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 50px;">
-                
+            <div class="footer-grid">
                 <div class="footer-brand">
                     <h2 style="color: white; margin-bottom: 10px; font-size: 1.6rem; letter-spacing: -1px;">Docu-Hub<span>.</span></h2>
                     <p style="font-size: 0.95rem; color: #94A3B8; margin-bottom: 20px;">
@@ -357,36 +396,65 @@
                 </div>
             </div>
 
-            <div class="footer-bottom" style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; font-size: 0.85rem; text-align: center;">
+            <div class="footer-bottom">
                 &copy; 2026 Docu-Hub Operations Services. All Rights Reserved.
             </div>
         </div>
     </footer>
 
-    <style>
-        .footer-link { 
-            display: block; 
-            color: #94A3B8; 
-            margin-bottom: 12px; 
-            font-size: 0.95rem; 
-            transition: 0.3s; 
-        }
-        .footer-link:hover { 
-            color: white; 
-            transform: translateX(5px); 
-        }
-        
-        @media (max-width: 768px) {
-            .footer-grid { 
-                grid-template-columns: 1fr !important; 
-                text-align: center; 
-            }
-            .footer-brand a {
-                justify-content: center;
-            }
-        }
-    </style>
+    <div id="pica-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 1.5rem;">PICA Proxy Checker</h3>
+                <button onclick="closePicaModal()" class="close-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div id="quiz-container" class="modal-body">
+                <div id="q1" class="quiz-step">
+                    <h4 style="font-size: 1.2rem; color: var(--navy-deep); margin-bottom: 25px;">1. Are you 18 years of age or older?</h4>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <button class="quiz-btn" onclick="nextStep('q2')">Yes</button>
+                        <button class="quiz-btn outline" onclick="showResult('red', 'Child passports require in-person biometric capture. We cannot be your proxy, but we will prepare your papers.')">No</button>
+                    </div>
+                </div>
+
+                <div id="q2" class="quiz-step" style="display: none;">
+                    <h4 style="font-size: 1.2rem; color: var(--navy-deep); margin-bottom: 25px;">2. Was your last passport issued AFTER September 2001?</h4>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <button class="quiz-btn" onclick="nextStep('q3')">Yes</button>
+                        <button class="quiz-btn outline" onclick="showResult('red', 'Older passports require a fresh biometric capture at the PICA office. We will prep your Success Checklist.')">No</button>
+                    </div>
+                </div>
+
+                <div id="q3" class="quiz-step" style="display: none;">
+                    <h4 style="font-size: 1.2rem; color: var(--navy-deep); margin-bottom: 25px;">3. Has your name changed since your last passport? (e.g., Marriage)</h4>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <button class="quiz-btn outline" onclick="showResult('red', 'Name changes require physical submission of your marriage certificate or deed poll. We will prepare your Checklist.')">Yes</button>
+                        <button class="quiz-btn" onclick="showResult('green', '')">No</button>
+                    </div>
+                </div>
+
+                <div id="result-green" class="quiz-step" style="display: none;">
+                    <span class="tag tag-proxy" style="margin-bottom: 15px;"><i class="fa-solid fa-check-circle"></i> ELIGIBLE FOR FULL PROXY</span>
+                    <h4 style="font-size: 1.4rem; color: var(--navy-deep); margin-bottom: 10px;">Great news! We can handle it all.</h4>
+                    <p style="margin-bottom: 25px; color: var(--text-muted); font-size: 0.95rem;">You qualify for our online concierge service. You won't have to step foot in a PICA office.</p>
+                    <a href="contact.html?service=pica-proxy&status=green" class="btn-primary" style="display: inline-block; padding: 12px 25px; background: var(--brand-red); color: white; border-radius: 8px;">Start Secure Intake</a>
+                    <p style="margin-top: 20px;"><a href="javascript:void(0)" onclick="resetQuiz()" style="color: var(--text-muted); text-decoration: underline; font-size: 0.85rem;">Start over</a></p>
+                </div>
+
+                <div id="result-red" class="quiz-step" style="display: none;">
+                    <span class="tag tag-guide" style="margin-bottom: 15px; background: #fee2e2; color: #991b1b;"><i class="fa-solid fa-circle-exclamation"></i> IN-PERSON REQUIRED</span>
+                    <h4 style="font-size: 1.4rem; color: var(--navy-deep); margin-bottom: 10px;">You must visit the window.</h4>
+                    <p id="red-reason" style="margin-bottom: 25px; color: var(--text-muted); font-size: 0.95rem;"></p>
+                    <a href="contact.html?service=pica-checklist&status=red" class="btn-primary" style="display: inline-block; padding: 12px 25px; background: var(--navy-deep); color: white; border-radius: 8px;">Get Your Success Checklist</a>
+                    <p style="margin-top: 20px;"><a href="javascript:void(0)" onclick="resetQuiz()" style="color: var(--text-muted); text-decoration: underline; font-size: 0.85rem;">Start over</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Dropdown Logic
         function toggleService(id) {
             const element = document.getElementById(id);
             const icon = document.getElementById(id + '-icon');
@@ -405,11 +473,32 @@
                 icon.style.transform = 'rotate(180deg)';
             }
         }
+
+        // Modal & Quiz Logic
+        function openPicaModal() {
+            document.getElementById('pica-modal').style.display = 'flex';
+            resetQuiz(); 
+        }
+        function closePicaModal() {
+            document.getElementById('pica-modal').style.display = 'none';
+        }
+        function nextStep(nextId) {
+            document.querySelectorAll('.quiz-step').forEach(step => step.style.display = 'none');
+            document.getElementById(nextId).style.display = 'block';
+        }
+        function showResult(type, reasonText) {
+            document.querySelectorAll('.quiz-step').forEach(step => step.style.display = 'none');
+            if (type === 'green') {
+                document.getElementById('result-green').style.display = 'block';
+            } else if (type === 'red') {
+                document.getElementById('red-reason').innerText = reasonText;
+                document.getElementById('result-red').style.display = 'block';
+            }
+        }
+        function resetQuiz() {
+            document.querySelectorAll('.quiz-step').forEach(step => step.style.display = 'none');
+            document.getElementById('q1').style.display = 'block';
+        }
     </script>
 </body>
 </html>
-
-
-
-
-
