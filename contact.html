@@ -3,110 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact & Intake | Docu-Hub Operations Services</title>
+    <title>Liaison Desk | Docu-Hub Design Studio</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- CORE STYLES --- */
         :root {
-            --brand-red: #D32F2F; --navy-deep: #021024; --bg-body: #CBD5E1; 
-            --bg-card: #FFFFFF; --text-main: #0F172A; --text-muted: #475569; 
-            --container-width: 1000px; 
+            --zen-ink: #111827;
+            --bg-body: #94A3B8;
+            --bg-wrapper: #F1F5F9;
+            --bg-card: #FFFFFF;
+            --brand-steel: #0284C7;
+            --brand-slate: #1E293B;
+            --text-muted: #475569;
             --header-height: 80px;
         }
 
         * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg-body); color: var(--text-main); line-height: 1.6; padding-top: var(--header-height); -webkit-font-smoothing: antialiased;}
-        h1, h2, h3 { margin-top: 0; font-weight: 700; }
-        p { margin-bottom: 0; font-size: 1.1rem; color: var(--text-muted); }
-        a { text-decoration: none; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .container { max-width: var(--container-width); margin: 0 auto; padding: 0 30px; }
+        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg-body); color: var(--zen-ink); line-height: 1.6; padding-top: var(--header-height); -webkit-font-smoothing: antialiased;}
+        
+        h1, h2, h3 { margin-top: 0; font-family: 'Noto Serif JP', serif; }
+        p { margin-bottom: 0; font-size: 1.05rem; color: var(--text-muted); }
+        a { text-decoration: none; transition: 0.3s ease; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 30px; }
         
         /* --- HEADER --- */
-        .app-header { position: fixed; top: 0; left: 0; width: 100%; z-index: 2000; background: var(--navy-deep); border-bottom: 1px solid rgba(255, 255, 255, 0.05); height: var(--header-height); display: flex; align-items: center; }
+        .app-header { 
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 2000; 
+            background: rgba(255, 255, 255, 0.98); 
+            border-bottom: 1px solid #E2E8F0; 
+            height: var(--header-height); display: flex; align-items: center; 
+        }
         .header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; }
-        .header-logo { font-size: 1.1rem; font-weight: 800; color: #FFFFFF; letter-spacing: -0.5px; text-transform: uppercase; }
-        .header-logo span { color: var(--brand-red); }
-        .header-logo .light-text { font-weight: 400; color: #94A3B8; font-size: 0.9rem; letter-spacing: 0; margin-left: 5px; display: inline-block; }
-        .header-contact { font-weight: 600; color: #FFFFFF; font-size: 0.9rem; border-bottom: 2px solid transparent; padding-bottom: 2px; }
-        .header-contact:hover { border-bottom-color: var(--brand-red); }
+        .header-logo { font-size: 1.2rem; font-weight: 800; color: var(--zen-ink); text-transform: uppercase;}
+        .header-logo span { color: var(--brand-steel); }
 
-        /* --- CONTACT HERO --- */
-        .contact-hero { background: var(--navy-deep); color: white; padding: 100px 0 160px; text-align: center; }
-        .brand-kicker { display: block; font-size: 0.9rem; color: var(--brand-red); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; margin-bottom: 15px; }
-        .brand-name { font-size: 4.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 20px; letter-spacing: -1px; color: #FFFFFF; font-family: 'Playfair Display', serif; }
-        .hero-sub { color: #94A3B8; font-size: 1.25rem; max-width: 700px; margin: 0 auto; line-height: 1.6; font-family: 'Inter', sans-serif;}
+        /* --- LIAISON HERO --- */
+        .liaison-hero { padding: 80px 0 120px; text-align: center; color: white; background: var(--brand-slate); }
+        .hero-title { font-size: 3rem; margin-bottom: 20px; }
+        .hero-sub { color: #CBD5E1; max-width: 600px; margin: 0 auto; font-weight: 300; }
 
-        /* --- FLOATING INTAKE DESK --- */
-        .contact-wrapper {
-            background: var(--bg-card); border-radius: 24px; box-shadow: 0 25px 60px rgba(2, 16, 36, 0.12); 
-            padding: 60px 80px; max-width: 800px; margin: -100px auto 80px auto; position: relative; z-index: 10;
+        /* --- MAIN WRAPPER --- */
+        .liaison-wrapper {
+            background: var(--bg-wrapper); border-radius: 12px; box-shadow: 0 25px 50px rgba(15, 23, 42, 0.2); 
+            padding: 60px; margin: -60px auto 80px auto; position: relative; z-index: 10;
         }
 
-        /* --- FORM STYLES --- */
-        .intake-form { display: flex; flex-direction: column; gap: 24px; text-align: left; }
-        
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-        .form-group { display: flex; flex-direction: column; gap: 8px; }
-        
-        .form-label { font-weight: 600; color: var(--navy-deep); font-size: 0.95rem; }
-        
-        .form-input, .form-select, .form-textarea {
-            width: 100%; padding: 16px 20px; border-radius: 12px; border: 1px solid #E2E8F0;
-            background: #F8FAFC; font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--text-main);
-            transition: all 0.3s ease;
-        }
-        
-        .form-input:focus, .form-select:focus, .form-textarea:focus {
-            outline: none; border-color: var(--brand-red); background: #FFFFFF; box-shadow: 0 0 0 4px rgba(211, 47, 47, 0.08);
-        }
+        .hub-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 
-        .security-notice { font-size: 0.9rem; color: var(--text-muted); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; background: #F8FAFC; padding: 15px; border-radius: 8px; border: 1px dashed #E2E8F0; }
+        /* --- LEFT SIDE: THE ESCAPE HATCHES --- */
+        .direct-links h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .direct-links p { font-size: 0.95rem; margin-bottom: 30px; }
         
-        .submit-btn {
-            background: var(--brand-red); color: white; border: none; padding: 20px; border-radius: 12px;
-            font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: 0.3s; margin-top: 10px; width: 100%;
+        .pill-link {
+            display: flex; align-items: center; gap: 15px; background: white; 
+            padding: 20px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #E2E8F0;
+            color: var(--brand-slate); font-weight: 600;
         }
-        .submit-btn:hover { background: var(--navy-deep); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(2, 16, 36, 0.15); }
+        .pill-link:hover { border-color: var(--brand-steel); transform: translateX(5px); }
+        .pill-link i { font-size: 1.4rem; color: var(--brand-steel); }
 
-        /* --- DYNAMIC STATUS BANNER --- */
-        .status-banner { display: none; padding: 15px 20px; border-radius: 8px; margin-bottom: 25px; font-weight: 600; align-items: center; gap: 10px; }
-        .status-banner.green { display: flex; background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
-        .status-banner.red { display: flex; background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
-
-        /* --- DIRECT CONNECTION PILLS --- */
-        .direct-connection { margin-top: 60px; text-align: center; border-top: 1px solid #E2E8F0; padding-top: 40px; }
-        .direct-connection p { color: var(--navy-deep); font-weight: 700; margin-bottom: 20px; font-size: 1.2rem; }
-        .pill-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        
-        .contact-pill {
-            background: white; border: 1px solid #E2E8F0; padding: 16px 32px; border-radius: 50px;
-            color: var(--navy-deep); font-weight: 600; transition: 0.3s; display: flex; align-items: center; gap: 10px; font-size: 1.05rem;
+        /* --- RIGHT SIDE: QUICK INQUIRY --- */
+        .quick-form { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 8px; color: var(--brand-slate); }
+        .form-control { 
+            width: 100%; padding: 12px; border: 1px solid #CBD5E1; border-radius: 4px; font-family: 'Inter';
         }
-        .contact-pill:hover { border-color: var(--brand-red); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .submit-btn { 
+            width: 100%; background: var(--brand-slate); color: white; border: none; padding: 15px; 
+            border-radius: 4px; font-weight: 700; text-transform: uppercase; cursor: pointer;
+        }
+        .submit-btn:hover { background: var(--brand-steel); }
 
         /* --- FOOTER --- */
-        .main-footer { background: var(--navy-deep); color: #94A3B8; padding: 60px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 50px; }
-        .footer-brand h2 { color: white; margin-bottom: 10px; font-size: 1.6rem; letter-spacing: -1px; }
-        .footer-brand h2 span { color: var(--brand-red); }
-        .footer-link { display: block; color: #94A3B8; margin-bottom: 12px; font-size: 0.95rem; transition: 0.3s; }
-        .footer-link:hover { color: white; transform: translateX(3px); }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; font-size: 0.85rem; text-align: center; }
+        .main-footer { background: var(--brand-slate); color: #94A3B8; padding: 60px 0 30px; text-align: center;}
+        .footer-links { margin-bottom: 30px; }
+        .footer-links a { color: #94A3B8; margin: 0 15px; font-size: 0.9rem; }
+        .footer-links a:hover { color: white; }
 
         @media (max-width: 768px) {
-            .container { padding: 0 20px; } 
-            .header-logo .light-text { display: none; } 
-            .contact-hero { padding: 100px 0 120px; }
-            .brand-name { font-size: 3rem; }
-            .contact-wrapper { padding: 40px 25px; margin-top: -60px; }
-            .contact-grid { grid-template-columns: 1fr; gap: 24px; } 
-            .pill-container { flex-direction: column; }
-            .contact-pill { justify-content: center; width: 100%; }
-            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+            .hub-grid { grid-template-columns: 1fr; }
+            .liaison-wrapper { padding: 40px 20px; margin-top: -40px; border-radius: 0; }
         }
     </style>
 </head>
@@ -114,233 +93,101 @@
 
     <header class="app-header">
         <div class="container header-inner">
-            <a href="index.html" class="header-logo">Docu-Hub<span>.</span> <span class="light-text">Operations Services</span></a>
-            <a href="contact.html" class="header-contact">Talk to a Human</a>
+            <a href="index.html" class="header-logo">Docu-Hub<span>.</span></a>
+            <nav style="display: flex; gap: 20px;">
+                <a href="memorial.html" style="color: var(--text-muted); font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Memorials</a>
+                <a href="stationery.html" style="color: var(--text-muted); font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Stationery</a>
+            </nav>
         </div>
     </header>
 
-    <section class="contact-hero">
+    <section class="liaison-hero">
         <div class="container">
-            <span class="brand-kicker">Secure Intake Desk</span>
-            <h1 class="brand-name">Let's get to work<span>.</span></h1>
-            <p class="hero-sub">Skip the line. Tell us what you need below, and our team will review your request and reach out directly with the next steps.</p>
+            <h1 class="hero-title">Studio Liaison Desk</h1>
+            <p class="hero-sub">Have a general question or a unique project in mind? We are here to guide you to the right solution.</p>
         </div>
     </section>
 
     <div class="container">
-        <div class="contact-wrapper">
-            
-            <div id="dynamic-banner" class="status-banner"></div>
-
-            <form class="intake-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="liaison-wrapper">
+            <div class="hub-grid">
                 
-                <div class="contact-grid">
-                    <div class="form-group">
-                        <label class="form-label">First & Last Name</label>
-                        <input type="text" name="name" class="form-input" placeholder="Jane Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Best Phone / WhatsApp</label>
-                        <input type="tel" name="phone" class="form-input" placeholder="+1 (876) 000-0000" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Email Address</label>
-                    <input type="email" name="email" class="form-input" placeholder="jane@example.com" required>
-                </div>
-
-                <div class="form-group" id="service-selection-group">
-                    <label class="form-label">What do you need help with today?</label>
-                    <select id="service-dropdown" name="service_requested" class="form-select" required>
-                        <option value="" disabled selected>Select the service you need...</option>
-                        
-                        <optgroup label="Passport Services (PICA)">
-                            <option value="pica-proxy">Adult Renewal - Full Proxy</option>
-                            <option value="pica-child">Child Renewal - Document Prep</option>
-                            <option value="pica-lost">Lost/Damaged Passport Protocol</option>
-                            <option value="pica-checklist">General Success Checklist</option>
-                        </optgroup>
-                        
-                        <optgroup label="Vital Records (RGD)">
-                            <option value="rgd-proxy">Birth/Marriage/Death Retrieval</option>
-                        </optgroup>
-                        
-                        <optgroup label="Tax Office (TAJ)">
-                            <option value="taj-proxy">Vehicle Fitness, Registration & Property Tax</option>
-                        </optgroup>
-                        
-                        <optgroup label="Design Services">
-                            <option value="memorial">Memorial & Funeral Formatting</option>
-                        </optgroup>
-
-                        <option value="other">Something Else / General Inquiry</option>
-                    </select>
-                </div>
-
-                <div class="form-group" id="locked-service-group" style="display: none; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 16px 20px; border-radius: 12px;">
-                    <label class="form-label" style="color: #166534; margin-bottom: 5px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Service Requested</label>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <span id="locked-service-name" style="font-weight: 800; color: #166534; font-size: 1.15rem;">Passport Services</span>
-                        <a href="#" onclick="unlockService(event)" style="font-size: 0.85rem; color: #166534; text-decoration: underline; font-weight: 600;">Change Service</a>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" id="textarea-label">Briefly describe the situation</label>
-                    <textarea name="message" class="form-textarea" rows="4" placeholder="E.g., I need to pay property taxes but I've been locked out of my TAJ account..." required></textarea>
-                </div>
-
-                <div class="security-notice">
-                    <i class="fa-solid fa-shield-halved" style="color: var(--brand-red); margin-top: 3px;"></i>
-                    <span><strong>Your data is secure.</strong> We will never share your information. If sensitive documents are required, we will send you a secure, encrypted upload link after our initial chat.</span>
-                </div>
-
-                <button type="submit" class="submit-btn">Submit Request <i class="fa-solid fa-paper-plane" style="margin-left: 8px;"></i></button>
-            </form>
-
-            <div class="direct-connection">
-                <p>Need immediate answers?</p>
-                <div class="pill-container">
-                    <a href="tel:+18765612614" class="contact-pill">
-                        <i class="fa-brands fa-whatsapp" style="color: #25D366; font-size: 1.4rem;"></i> Message on WhatsApp
+                <div class="direct-links">
+                    <h3>Direct Connection</h3>
+                    <p>For immediate assistance or high-priority inquiries, use our direct channels below.</p>
+                    
+                    <a href="https://wa.me/18765612614" class="pill-link">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>Message on WhatsApp</span>
                     </a>
-                    <a href="mailto:info@docuhub.com" class="contact-pill">
-                        <i class="fa-solid fa-envelope" style="color: var(--brand-red); font-size: 1.2rem;"></i> Email the Desk
+                    
+                    <a href="mailto:admin@dochubservices.com" class="pill-link">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>Email the Studio Desk</span>
+                    </a>
+
+                    <a href="index.html#booking" class="pill-link" style="background: var(--brand-steel); border: none; color: white;">
+                        <i class="fa-solid fa-calendar-day" style="color: white;"></i>
+                        <span>Schedule Consultation</span>
                     </a>
                 </div>
+
+                <div class="quick-form">
+                    <h4 style="margin-top: 0; margin-bottom: 20px;">General Inquiry</h4>
+                    <form id="liaisonForm" action="https://script.google.com/macros/s/AKfycbw3nZeLCEG5yjTXiTEJpgCpWZK4JfLoeniVPTAZqSkLoBvQnHs6q73APRg15Jc8CPD0/exec" method="POST">
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" name="fullName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">How can we help?</label>
+                            <textarea name="message" class="form-control" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" id="subBtn">Send Message</button>
+                    </form>
+                </div>
+
             </div>
-
         </div>
     </div>
 
     <footer class="main-footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h2>Docu-Hub<span>.</span></h2>
-                    <p>Operations Services<br>Linstead, St. Catherine.</p>
-                </div>
-                <div>
-                    <h4 style="color: white; font-size: 1rem; margin-bottom: 20px; text-transform: uppercase;">Explore</h4>
-                    <a href="index.html" class="footer-link">Home</a>
-                    <a href="about.html" class="footer-link">Our Story</a>
-                    <a href="contact.html" class="footer-link">Start Intake</a>
-                </div>
-                <div>
-                    <h4 style="color: white; font-size: 1rem; margin-bottom: 20px; text-transform: uppercase;">Legal</h4>
-                    <a href="terms.html" class="footer-link">Terms of Service</a>
-                    <a href="privacy.html" class="footer-link">Privacy Policy</a>
-                </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="memorial.html">Memorials</a>
+                <a href="stationery.html">Stationery</a>
+                <a href="portals.html">Portals</a>
             </div>
-            <div class="footer-bottom">
-                &copy; 2026 Docu-Hub Operations Services. All Rights Reserved.
-            </div>
+            <p style="font-size: 0.85rem;">&copy; 2026 Docu-Hub Operations & Design Studio. Walk good. 🤍</p>
         </div>
     </footer>
 
-  <script>
-        // === 1. YOUR GOOGLE SCRIPT URL HERE ===
-        // Paste the link you got from Google inside these quote marks:
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbw3nZeLCEG5yjTXiTEJpgCpWZK4JfLoeniVPTAZqSkLoBvQnHs6q73APRg15Jc8CPD0/exec'; 
-
-        document.addEventListener("DOMContentLoaded", function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const serviceTag = urlParams.get('service');
-            const statusTag = urlParams.get('status');
-            
-            // Auto-Select & Lock the Dropdown
-            if (serviceTag) {
-                const dropdown = document.getElementById('service-dropdown');
-                const options = Array.from(dropdown.options);
-                let selectedText = "";
-                
-                options.forEach(option => {
-                    if (option.value === serviceTag) {
-                        option.selected = true;
-                        selectedText = option.text;
-                    }
-                });
-
-                if (selectedText) {
-                    document.getElementById('service-selection-group').style.display = 'none';
-                    document.getElementById('locked-service-group').style.display = 'block';
-                    document.getElementById('locked-service-name').innerText = selectedText;
-                }
-
-                const textareaLabel = document.getElementById('textarea-label');
-                if (serviceTag.includes('memorial')) {
-                    textareaLabel.innerText = "Who are we honoring? Please provide a brief timeline.";
-                } else if (serviceTag.includes('pica')) {
-                    textareaLabel.innerText = "Any specific details we should know before we prep your file?";
-                }
-            }
-
-            // Show Dynamic Status Banner
-            if (statusTag === 'green') {
-                const banner = document.getElementById('dynamic-banner');
-                banner.className = 'status-banner green';
-                banner.innerHTML = '<i class="fa-solid fa-check-circle"></i> Awesome. You qualify for our Full Proxy Service. Fill out your info to get started.';
-            } else if (statusTag === 'red') {
-                const banner = document.getElementById('dynamic-banner');
-                banner.className = 'status-banner red';
-                banner.innerHTML = '<i class="fa-solid fa-clipboard-list"></i> Let\'s get your info so an agent can build your custom Success Checklist.';
-            }
-        });
-
-        function unlockService(e) {
-            e.preventDefault();
-            document.getElementById('locked-service-group').style.display = 'none';
-            document.getElementById('service-selection-group').style.display = 'flex';
-        }
-
-        // === 2. GOOGLE SHEETS FORM SUBMISSION LOGIC ===
-        const form = document.querySelector('.intake-form');
-        const submitBtn = document.querySelector('.submit-btn');
+    <script>
+        const form = document.getElementById('liaisonForm');
+        const btn = document.getElementById('subBtn');
 
         form.addEventListener('submit', e => {
-            e.preventDefault(); 
-            
-            // Change button to "Sending..."
-            submitBtn.innerHTML = 'Sending... <i class="fa-solid fa-circle-notch fa-spin" style="margin-left: 8px;"></i>';
-            submitBtn.style.background = "var(--navy-deep)";
-            submitBtn.disabled = true;
-            
-            let formData = new FormData(form);
-            
-            // Ensure hidden locked badges still send their data
-            const urlParams = new URLSearchParams(window.location.search);
-            if(urlParams.get('service')) {
-                formData.set('service_requested', urlParams.get('service'));
-            }
+            e.preventDefault();
+            btn.innerHTML = 'Sending...';
+            btn.disabled = true;
 
-            // Send to Google (no-cors prevents browser blocking)
-            fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
-                .then(response => {
-                    // Success!
-                    submitBtn.innerHTML = 'Request Received <i class="fa-solid fa-check" style="margin-left: 8px;"></i>';
-                    submitBtn.style.background = "#166534"; 
-                    form.reset(); 
-                    
-                    // Add a polite message below the button
-                    if(!document.getElementById('success-msg')) {
-                        const successMsg = document.createElement('p');
-                        successMsg.id = 'success-msg';
-                        successMsg.style.color = "#166534";
-                        successMsg.style.fontWeight = "600";
-                        successMsg.style.textAlign = "center";
-                        successMsg.style.marginTop = "15px";
-                        successMsg.innerText = "Thank you! An agent is reviewing your request and will message you on WhatsApp shortly.";
-                        form.appendChild(successMsg);
-                    }
+            fetch(form.action, { method: 'POST', body: new FormData(form), mode: 'no-cors'})
+                .then(() => {
+                    btn.innerHTML = 'Message Sent';
+                    btn.style.background = "#059669";
+                    form.reset();
+                    alert("Thank you. We have received your inquiry and will respond via email or WhatsApp shortly.");
                 })
-                .catch(error => {
-                    submitBtn.innerHTML = 'Error. Please try again.';
-                    submitBtn.style.background = "var(--brand-red)";
-                    submitBtn.disabled = false;
+                .catch(() => {
+                    btn.innerHTML = 'Error. Try Again.';
+                    btn.disabled = false;
                 });
         });
     </script>
 </body>
 </html>
-
