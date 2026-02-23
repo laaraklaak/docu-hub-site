@@ -13,7 +13,7 @@
         :root {
             --brand-red: #D32F2F; --navy-deep: #021024; --bg-body: #CBD5E1; 
             --bg-card: #FFFFFF; --text-main: #0F172A; --text-muted: #475569; 
-            --container-width: 1100px; /* Wider for 3-column grids */
+            --container-width: 1100px; 
             --header-height: 80px;
         }
 
@@ -30,7 +30,6 @@
         .header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; }
         .header-logo { font-size: 1.1rem; font-weight: 800; color: #FFFFFF; letter-spacing: -0.5px; text-transform: uppercase; }
         .header-logo span { color: var(--brand-red); }
-        .header-logo .light-text { font-weight: 400; color: #94A3B8; font-size: 0.9rem; letter-spacing: 0; margin-left: 5px; display: inline-block; }
         .header-contact { font-weight: 600; color: #FFFFFF; font-size: 0.9rem; border-bottom: 2px solid transparent; padding-bottom: 2px; }
         .header-contact:hover { border-bottom-color: var(--brand-red); }
 
@@ -46,54 +45,47 @@
             padding: 80px 60px; margin-top: -100px; margin-bottom: 80px; position: relative; z-index: 10;
         }
 
-        .intro-text { text-align: center; max-width: 800px; margin: 0 auto 60px auto; }
-        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--navy-deep); margin-bottom: 20px; }
-        .intro-text p { font-size: 1.15rem; line-height: 1.8; margin-bottom: 15px; }
+        .intro-text { text-align: center; max-width: 800px; margin: 0 auto 50px auto; }
+        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--navy-deep); margin-bottom: 15px; }
+        
+        /* --- TAGS & GRID --- */
+        .tag { font-size: 0.75rem; padding: 5px 10px; border-radius: 6px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: inline-block; }
+        .tag-proxy { background: #dcfce7; color: #166534; }
+        .tag-guide { background: #fef9c3; color: #854d0e; }
 
-        /* --- 3-COLUMN SERVICE CARDS --- */
         .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 60px; }
         .service-card { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 16px; padding: 40px 30px; transition: 0.3s; }
         .service-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.06); border-color: var(--brand-red); }
-        .service-icon { width: 60px; height: 60px; background: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--brand-red); margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .service-card h3 { font-size: 1.3rem; color: var(--navy-deep); margin-bottom: 15px; border-bottom: 2px solid #E2E8F0; padding-bottom: 15px; }
+        .service-icon { width: 50px; height: 50px; background: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--brand-red); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .service-card h3 { font-size: 1.3rem; color: var(--navy-deep); margin: 20px 0 15px; border-bottom: 2px solid #E2E8F0; padding-bottom: 15px; }
         .service-card p { font-size: 0.95rem; margin-bottom: 15px; }
-        .service-card ul { padding-left: 20px; margin: 0; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
-        .service-card li { margin-bottom: 10px; }
-        .service-card li strong { color: var(--navy-deep); }
-
-        /* --- HIGHLIGHT BANNER (Preparedness Promise) --- */
-        .promise-banner { background: var(--navy-deep); color: white; border-radius: 16px; padding: 50px; margin: 60px 0; text-align: left; display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: center; box-shadow: 0 15px 35px rgba(2, 16, 36, 0.15); }
-        .promise-banner h2 { color: white; font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 10px; line-height: 1.2; }
-        .promise-banner .kicker { color: var(--brand-red); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; display: block; margin-bottom: 10px; }
-        .promise-banner p { color: #94A3B8; font-size: 1.05rem; margin-bottom: 15px; }
-        .promise-banner p strong { color: white; }
+        
+        /* --- INTERACTIVE CHECKER STYLES --- */
+        .checker-box { background: #FFFFFF; border: 2px solid var(--navy-deep); border-radius: 16px; overflow: hidden; margin: 0 auto 60px; max-width: 800px; box-shadow: 0 15px 35px rgba(2, 16, 36, 0.1); }
+        .checker-header { background: var(--navy-deep); color: white; padding: 25px 30px; text-align: center; }
+        .quiz-step { padding: 40px; text-align: center; animation: fadeIn 0.4s ease-in-out; }
+        .quiz-btn { background: var(--brand-red); color: white; border: none; padding: 14px 30px; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: 0.3s; width: 140px; }
+        .quiz-btn:hover { background: #B71C1C; transform: translateY(-2px); }
+        .quiz-btn.outline { background: white; color: var(--navy-deep); border: 2px solid #E2E8F0; }
+        .quiz-btn.outline:hover { border-color: var(--navy-deep); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* --- 4-STEP PROCESS GRID --- */
         .process-header { text-align: center; margin-bottom: 40px; }
         .process-header h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--navy-deep); }
-        
         .process-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; position: relative; margin-bottom: 60px; }
         .process-grid-4::before { content: ''; position: absolute; top: 30px; left: 10%; right: 10%; height: 2px; background: #E2E8F0; z-index: 0; }
-        
         .step-4 { position: relative; z-index: 1; text-align: center; background: white; padding-top: 10px; }
-        .step-4-icon { width: 60px; height: 60px; background: white; border: 2px solid #CBD5E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.3rem; color: var(--navy-deep); box-shadow: 0 4px 10px rgba(0,0,0,0.04); font-weight: 800; }
-        .step-4 h4 { font-size: 1.1rem; color: var(--navy-deep); margin-bottom: 10px; }
-        .step-4 p { font-size: 0.9rem; }
+        .step-4-icon { width: 60px; height: 60px; background: white; border: 2px solid #CBD5E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.3rem; color: var(--navy-deep); font-weight: 800; }
 
         /* --- STANDARD & CTA --- */
         .standard-box { background: #F8FAFC; border: 1px dashed #CBD5E1; border-radius: 12px; padding: 30px; text-align: center; max-width: 800px; margin: 0 auto 50px auto; }
-        .standard-box i { color: var(--brand-red); font-size: 1.5rem; margin-bottom: 15px; }
-        .standard-box h4 { color: var(--navy-deep); font-size: 1.2rem; margin-bottom: 10px; }
-        .standard-box p { font-size: 0.95rem; }
-
         .cta-bar { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .btn-primary { background: var(--brand-red); color: white; padding: 18px 35px; border-radius: 8px; font-weight: 700; transition: 0.3s; box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3); font-size: 1.05rem; }
-        .btn-primary:hover { background: #B71C1C; transform: translateY(-3px); color: white; box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4); }
-        .btn-secondary { background: white; color: var(--navy-deep); border: 2px solid #E2E8F0; padding: 16px 35px; border-radius: 8px; font-weight: 700; transition: 0.3s; font-size: 1.05rem; }
-        .btn-secondary:hover { border-color: var(--navy-deep); transform: translateY(-3px); }
+        .btn-primary { background: var(--brand-red); color: white; padding: 16px 35px; border-radius: 8px; font-weight: 700; transition: 0.3s; display: inline-block;}
+        .btn-primary:hover { background: #B71C1C; transform: translateY(-3px); }
 
         /* --- FOOTER --- */
-        .main-footer { background: var(--navy-deep); color: #94A3B8; padding: 60px 0 30px; }
+        .main-footer { background: var(--navy-deep); color: #94A3B8; padding: 60px 0 30px; border-top: 1px solid rgba(255,255,255,0.05);}
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 50px; }
         .footer-brand h2 { color: white; margin-bottom: 10px; font-size: 1.6rem; letter-spacing: -1px; }
         .footer-brand h2 span { color: var(--brand-red); }
@@ -101,31 +93,20 @@
         .footer-link:hover { color: white; transform: translateX(3px); }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; font-size: 0.85rem; text-align: center; }
 
-        /* =========================================
-           MOBILE OPTIMIZATION
-           ========================================= */
+        /* --- MOBILE --- */
         @media (max-width: 900px) {
-            .promise-banner { grid-template-columns: 1fr; text-align: center; gap: 20px; padding: 40px 25px; }
-            .process-grid-4 { grid-template-columns: 1fr 1fr; } /* 2x2 grid on tablets */
+            .process-grid-4 { grid-template-columns: 1fr 1fr; } 
             .process-grid-4::before { display: none; }
         }
-
         @media (max-width: 768px) {
             .container { padding: 0 20px; } 
-            .header-logo .light-text { display: none; } 
             .proxy-hero { padding: 100px 0 120px; }
             .brand-name { font-size: 3rem; }
-            .hero-sub { font-size: 1.05rem; }
-            
             .page-wrapper { padding: 50px 25px; margin-top: -60px; }
-            .intro-text h2 { font-size: 1.8rem; }
-            
-            .service-grid { grid-template-columns: 1fr; gap: 20px; }
-            .process-grid-4 { grid-template-columns: 1fr; gap: 30px; } /* Stack process on mobile */
-            
-            .cta-bar { flex-direction: column; width: 100%; }
-            .btn-primary, .btn-secondary { width: 100%; text-align: center; }
-            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+            .service-grid { grid-template-columns: 1fr; }
+            .process-grid-4 { grid-template-columns: 1fr; gap: 30px; } 
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .quiz-step { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -133,7 +114,7 @@
 
     <header class="app-header">
         <div class="container header-inner">
-            <a href="index.html" class="header-logo">Docu-Hub<span>.</span> <span class="light-text">Operations Services</span></a>
+            <a href="index.html" class="header-logo">Docu-Hub<span>.</span></a>
             <a href="contact.html" class="header-contact">Talk to a Human</a>
         </div>
     </header>
@@ -141,8 +122,8 @@
     <section class="proxy-hero">
         <div class="container">
             <span class="brand-kicker">Core Solutions</span>
-            <h1 class="brand-name">Government Proxy<span>.</span></h1>
-            <p class="hero-sub">Stop fighting with portals. Let us handle the bureaucracy.</p>
+            <h1 class="brand-name">Execution & Eligibility<span>.</span></h1>
+            <p class="hero-sub">You’ve chosen the service. Let’s ensure you meet the requirements so we can get to work.</p>
         </div>
     </section>
 
@@ -150,95 +131,132 @@
         <div class="page-wrapper">
             
             <div class="intro-text">
-                <h2>Online Isn't Always Easy.</h2>
-                <p>Even when government services go "digital," they rarely go easy. Between session timeouts, strict file requirements, and hunting down old entry numbers, submitting a simple application can quickly consume your entire afternoon.</p>
-                <p>At Docu-Hub, we act as your dedicated digital proxy for eligible applications. You provide the basic information through our simplified intake process, and we handle the logins, the formatting, the uploads, and the payment gateways.</p>
+                <span class="brand-kicker" style="color: var(--navy-deep); margin-bottom: 10px;">The Logic of Service</span>
+                <h2>We play by the rules, so you win.</h2>
+                <p>We handle the heavy lifting, but the government systems have specific rules we must follow together. Review the eligibility for your service below to see if we can be your Full Proxy, or if you need our Success Checklist.</p>
+            </div>
+
+            <div class="checker-box">
+                <div class="checker-header">
+                    <h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 1.6rem;">PICA Passport Checker</h3>
+                    <p style="margin: 5px 0 0 0; font-size: 0.95rem; color: #CBD5E1;">Find out instantly if you qualify for our 100% online renewal proxy.</p>
+                </div>
+                
+                <div id="quiz-container">
+                    <div id="q1" class="quiz-step">
+                        <h4 style="font-size: 1.3rem; color: var(--navy-deep); margin-bottom: 25px;">1. Are you 18 years of age or older?</h4>
+                        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                            <button class="quiz-btn" onclick="nextStep('q2')">Yes</button>
+                            <button class="quiz-btn outline" onclick="showResult('red', 'Child passports require in-person biometric capture. We cannot be your proxy, but we will prepare your papers.')">No</button>
+                        </div>
+                    </div>
+
+                    <div id="q2" class="quiz-step" style="display: none;">
+                        <h4 style="font-size: 1.3rem; color: var(--navy-deep); margin-bottom: 25px;">2. Was your last passport issued AFTER September 2001?</h4>
+                        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                            <button class="quiz-btn" onclick="nextStep('q3')">Yes</button>
+                            <button class="quiz-btn outline" onclick="showResult('red', 'Older passports require a fresh biometric capture at the PICA office. We will prep your Success Checklist.')">No</button>
+                        </div>
+                    </div>
+
+                    <div id="q3" class="quiz-step" style="display: none;">
+                        <h4 style="font-size: 1.3rem; color: var(--navy-deep); margin-bottom: 25px;">3. Has your name changed since your last passport? (e.g., Marriage)</h4>
+                        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                            <button class="quiz-btn outline" onclick="showResult('red', 'Name changes require physical submission of your marriage certificate or deed poll. We will prepare your Checklist.')">Yes</button>
+                            <button class="quiz-btn" onclick="showResult('green', '')">No</button>
+                        </div>
+                    </div>
+
+                    <div id="result-green" class="quiz-step" style="display: none;">
+                        <span class="tag tag-proxy" style="margin-bottom: 15px; font-size: 0.85rem;"><i class="fa-solid fa-check-circle"></i> ELIGIBLE FOR FULL PROXY</span>
+                        <h4 style="font-size: 1.5rem; color: var(--navy-deep); margin-bottom: 10px;">Great news! We can handle it all.</h4>
+                        <p style="margin-bottom: 25px; color: var(--text-muted);">You qualify for our online concierge service. You won't have to step foot in a PICA office.</p>
+                        <a href="contact.html?service=pica-proxy" class="btn-primary">Start Secure Intake</a>
+                        <p style="margin-top: 20px;"><a href="javascript:void(0)" onclick="resetQuiz()" style="color: var(--text-muted); text-decoration: underline; font-size: 0.9rem;">Start over</a></p>
+                    </div>
+
+                    <div id="result-red" class="quiz-step" style="display: none;">
+                        <span class="tag tag-guide" style="margin-bottom: 15px; font-size: 0.85rem; background: #fee2e2; color: #991b1b;"><i class="fa-solid fa-circle-exclamation"></i> IN-PERSON REQUIRED</span>
+                        <h4 style="font-size: 1.5rem; color: var(--navy-deep); margin-bottom: 10px;">You must visit the window.</h4>
+                        <p id="red-reason" style="margin-bottom: 25px; color: var(--text-muted);"></p>
+                        <a href="contact.html?service=pica-checklist" class="btn-primary" style="background: var(--navy-deep);">Get Your Success Checklist</a>
+                        <p style="margin-top: 20px;"><a href="javascript:void(0)" onclick="resetQuiz()" style="color: var(--text-muted); text-decoration: underline; font-size: 0.9rem;">Start over</a></p>
+                    </div>
+                </div>
             </div>
 
             <div class="service-grid">
                 
                 <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div class="service-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                        <span class="tag tag-proxy">WE GO FOR YOU</span>
+                    </div>
                     <h3>TAJ eServices</h3>
-                    <p>Don't let a forgotten password delay your compliance. We handle the digital paperwork.</p>
-                    <ul>
-                        <li><strong>Property Taxes:</strong> We track down valuation numbers and process payments.</li>
-                        <li><strong>Motor Vehicle:</strong> Processing for fitness, registration, and ticket clearances.</li>
-                        <li><strong>General Compliance:</strong> Accurate, on-time submissions.</li>
-                    </ul>
+                    <p><strong>Eligibility:</strong> You have a Valuation Number (for property) or Plate/Chassis Number (for vehicles).</p>
+                    <p><strong>Execution:</strong> We clear the arrears, process the registration, and provide digital receipts immediately.</p>
+                    <a href="contact.html?service=taj-proxy" style="color: var(--brand-red); font-weight: 700; margin-top: 10px; display: inline-block;">Start Request <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-file-certificate"></i></div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div class="service-icon"><i class="fa-solid fa-file-certificate"></i></div>
+                        <span class="tag tag-proxy">WE GO FOR YOU</span>
+                    </div>
                     <h3>RGD Vital Records</h3>
-                    <p>Securing your vital records shouldn't feel like a guessing game. We bridge the gap.</p>
-                    <ul>
-                        <li><strong>Certificate Retrieval:</strong> Birth, Death, and Marriage certificates.</li>
-                        <li><strong>The Entry Number Hurdle:</strong> We bypass the confusion of finding specific birth entry numbers or deciphering "pink slips."</li>
-                    </ul>
+                    <p><strong>Eligibility:</strong> Available for any record registered in Jamaica. "Pink Slips" or Entry Numbers make it faster.</p>
+                    <p><strong>Execution:</strong> We handle the application, track the record search, and arrange delivery to you.</p>
+                    <a href="contact.html?service=rgd-proxy" style="color: var(--brand-red); font-weight: 700; margin-top: 10px; display: inline-block;">Start Request <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-passport"></i></div>
-                    <h3>PICA Renewals</h3>
-                    <p>A single formatting error can trigger a rejection. We remove the friction.</p>
-                    <ul>
-                        <li><strong>Photo & Document Audits:</strong> We ensure your files meet strict size and dimension requirements.</li>
-                        <li><strong>End-to-End Submission:</strong> From forms to final payment, we manage the entire digital adult renewal.</li>
-                    </ul>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div class="service-icon"><i class="fa-solid fa-passport"></i></div>
+                        <span class="tag tag-guide">EXPERT GUIDANCE</span>
+                    </div>
+                    <h3>Lost/Damaged Passports</h3>
+                    <p><strong>Eligibility:</strong> Any lost, stolen, or physically damaged Jamaican passport.</p>
+                    <p><strong>Execution:</strong> These require police reports and affidavits. We provide the exact step-by-step protocol guide.</p>
+                    <a href="contact.html?service=pica-lost" style="color: var(--brand-red); font-weight: 700; margin-top: 10px; display: inline-block;">Start Request <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
-            </div>
-
-            <div class="promise-banner">
-                <div>
-                    <span class="kicker">Transparency First</span>
-                    <h2>When a Proxy Isn't Permitted.</h2>
-                </div>
-                <div>
-                    <p>Government regulations dictate that certain processes—like first-time passport applications or specific biometric captures—simply cannot be handled by a third party.</p>
-                    <p>If your request requires an in-person appearance, we won't leave you to figure it out alone. <strong>We equip you with a Custom Guide and Pre-Submission Checklist.</strong> We outline exactly where to go, what formats to bring, and what fees to expect so you get approved on your first try.</p>
-                </div>
             </div>
 
             <div class="process-header">
-                <h2>How It Works</h2>
+                <h2>Your Simple Path to Done</h2>
             </div>
             
             <div class="process-grid-4">
                 <div class="step-4">
                     <div class="step-4-icon">1</div>
-                    <h4>Single-Step Intake</h4>
-                    <p>Fill out one simple, plain-English form and securely upload your basic IDs.</p>
+                    <h4 style="color: var(--navy-deep); font-size: 1.1rem; margin-bottom: 5px;">Basic Intake</h4>
+                    <p>Submit your basic KYC info (Name, Contact, Service required).</p>
                 </div>
                 <div class="step-4">
                     <div class="step-4-icon">2</div>
-                    <h4>Pre-Submission Audit</h4>
-                    <p>We review your files. If a proxy is allowed, we proceed. If not, we generate your Custom Guide.</p>
+                    <h4 style="color: var(--navy-deep); font-size: 1.1rem; margin-bottom: 5px;">Secure Link</h4>
+                    <p>We send a private, encrypted link for your TRN and ID uploads.</p>
                 </div>
                 <div class="step-4">
                     <div class="step-4-icon">3</div>
-                    <h4>Execution</h4>
-                    <p>We navigate the government gateways, upload formatted documents, and process the fees.</p>
+                    <h4 style="color: var(--navy-deep); font-size: 1.1rem; margin-bottom: 5px;">Execution</h4>
+                    <p>We handle the portals, uploads, and payments on your behalf.</p>
                 </div>
                 <div class="step-4">
                     <div class="step-4-icon">4</div>
-                    <h4>Delivery</h4>
-                    <p>You receive the official digital receipts, tracking numbers, and confirmations.</p>
+                    <h4 style="color: var(--navy-deep); font-size: 1.1rem; margin-bottom: 5px;">Delivery</h4>
+                    <p>You receive your official receipts, tracking numbers, and papers.</p>
                 </div>
             </div>
 
             <div class="standard-box">
-                <i class="fa-solid fa-lock"></i>
-                <h4>The Docu-Hub Standard</h4>
-                <p>Absolute privacy and security are the foundation of our proxy services. Your personal data, TRN, and payment information are handled with strict confidentiality and are never stored beyond the completion of your requested service.</p>
+                <i class="fa-solid fa-user-shield" style="font-size: 2rem; color: var(--navy-deep);"></i>
+                <h4 style="color: var(--navy-deep); margin-top: 15px; font-size: 1.2rem;">We Protect Your Privacy</h4>
+                <p style="margin-top: 10px;">To protect your data, our initial intake only asks for basic contact info. Once we confirm your eligibility, you will receive a <strong>private, encrypted link</strong> to safely share sensitive data like TRNs or ID scans. We never store your data beyond the completion of the service.</p>
             </div>
 
-            <h3 style="text-align: center; color: var(--navy-deep); font-size: 1.5rem; margin-bottom: 30px;">Reclaim your time today.</h3>
-            
-            <div class="cta-bar">
-                <a href="contact.html" class="btn-primary">Start a TAJ Request</a>
-                <a href="contact.html" class="btn-secondary">Start an RGD / PICA Request</a>
+            <div class="cta-bar" style="margin-top: 40px;">
+                <a href="contact.html" class="btn-primary" style="background: var(--navy-deep);">Open General Intake Form</a>
             </div>
 
         </div>
@@ -249,14 +267,17 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <h2>Docu-Hub<span>.</span></h2>
-                    <p>Operations Services<br>Linstead, St. Catherine.</p>
+                    <p style="font-size: 0.95rem; color: #94A3B8; margin-bottom: 20px;">Operations Services<br>Linstead, St. Catherine, Jamaica.</p>
+                    <a href="tel:+18765612614" style="color: white; font-weight: 700; font-size: 1.05rem;"><i class="fa-solid fa-phone" style="color: var(--brand-red);"></i> +1 (876) 561-2614</a>
                 </div>
                 <div>
-                    <a href="about.html" class="footer-link">About Us</a>
-                    <a href="proxy-services.html" class="footer-link">Proxy Services</a>
-                    <a href="contact.html" class="footer-link">Contact & Intake</a>
+                    <h4 style="color: white; font-size: 1rem; margin-bottom: 20px; text-transform: uppercase;">Explore</h4>
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="about.html" class="footer-link">Our Story</a>
+                    <a href="contact.html" class="footer-link">Start Intake</a>
                 </div>
                 <div>
+                    <h4 style="color: white; font-size: 1rem; margin-bottom: 20px; text-transform: uppercase;">Legal</h4>
                     <a href="terms.html" class="footer-link">Terms of Service</a>
                     <a href="privacy.html" class="footer-link">Privacy Policy</a>
                 </div>
@@ -267,5 +288,26 @@
         </div>
     </footer>
 
+    <script>
+        function nextStep(nextId) {
+            document.querySelectorAll('.quiz-step').forEach(step => step.style.display = 'none');
+            document.getElementById(nextId).style.display = 'block';
+        }
+
+        function showResult(type, reasonText) {
+            document.querySelectorAll('.quiz-step').forEach(step => step.style.display = 'none');
+            if (type === 'green') {
+                document.getElementById('result-green').style.display = 'block';
+            } else if (type === 'red') {
+                document.getElementById('red-reason').innerText = reasonText;
+                document.getElementById('result-red').style.display = 'block';
+            }
+        }
+
+        function resetQuiz() {
+            document.querySelectorAll('.quiz-step').forEach(step => step.style.display = 'none');
+            document.getElementById('q1').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
