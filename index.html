@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docu-Hub Operations Services | Premium Proxy & Concierge</title>
+    <title>Docu-Hub Operations | Premium Proxy & Concierge</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,9 +21,7 @@
         }
 
         * { box-sizing: border-box; }
-        
         html { scroll-behavior: smooth; }
-        
         body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg-body); color: var(--text-main); line-height: 1.6; padding-top: var(--header-height); -webkit-font-smoothing: antialiased;}
         
         h1, h2, h3 { margin-top: 0; font-weight: 700; }
@@ -35,208 +33,316 @@
         /* --- HEADER --- */
         .app-header {
             position: fixed; top: 0; left: 0; width: 100%; z-index: 2000;
-            background: var(--navy-deep); 
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--navy-deep); border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             height: var(--header-height); display: flex; align-items: center;
         }
         .header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; }
-        
         .header-logo { font-size: 1.1rem; font-weight: 800; color: #FFFFFF; letter-spacing: -0.5px; text-transform: uppercase; }
         .header-logo span { color: var(--brand-red); }
-        .header-logo .light-text { font-weight: 400; color: #94A3B8; font-size: 0.9rem; letter-spacing: 0; margin-left: 5px; display: inline-block; }
         
-        .header-contact { font-weight: 600; color: #FFFFFF; font-size: 0.9rem; border-bottom: 2px solid transparent; padding-bottom: 2px; opacity: 0.9; }
-        .header-contact:hover { border-bottom-color: var(--brand-red); opacity: 1; }
-
-        /* --- THE BRAND HERO --- */
-        .concierge-hero { 
-            background: var(--navy-deep); 
-            color: white; 
-            padding: 100px 0 200px; 
-            text-align: center; 
-        }
-        
-        .brand-kicker { display: block; font-size: 0.9rem; color: var(--brand-red); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; margin-bottom: 15px; }
-        .brand-name { font-size: 5.5rem; font-weight: 900; line-height: 1; margin-bottom: 5px; letter-spacing: -2px; color: #FFFFFF; font-family: 'Inter', sans-serif; }
+        /* --- HERO --- */
+        .concierge-hero { background: var(--navy-deep); color: white; padding: 80px 0 160px; text-align: center; }
+        .brand-name { font-size: 4rem; font-weight: 900; margin-bottom: 5px; letter-spacing: -2px; }
         .brand-name span { color: var(--brand-red); }
-        .brand-suffix { display: block; font-size: 1.1rem; color: #94A3B8; text-transform: uppercase; letter-spacing: 6px; font-weight: 700; font-family: 'Inter', sans-serif; }
 
-        /* --- THE FLOATING INTAKE DESK --- */
-        .intake-section { background: var(--bg-body); padding-bottom: 100px; }
-        
+        /* --- INTAKE SECTION --- */
+        .intake-section { background: var(--bg-body); padding-bottom: 80px; }
         .intake-wrapper {
             background: var(--bg-card); border-radius: 24px; box-shadow: 0 25px 60px rgba(2, 16, 36, 0.15); 
-            padding: 60px 50px; margin-top: -120px; position: relative; z-index: 10; text-align: center;
+            padding: 50px 40px; margin-top: -100px; position: relative; z-index: 10; text-align: center;
         }
 
-        .hero-headline { color: var(--navy-deep); font-size: 2.2rem; line-height: 1.2; margin-bottom: 20px; font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; }
-        .hero-sub { color: var(--text-muted); font-size: 1.15rem; max-width: 600px; margin: 0 auto 40px auto; line-height: 1.6; }
+        .hero-headline { color: var(--navy-deep); font-size: 2.2rem; margin-bottom: 15px; font-family: 'Playfair Display', serif; font-style: italic; }
+        .hero-sub { color: var(--text-muted); margin-bottom: 40px; }
 
-      .intake-grid { 
-            display: grid; 
-            grid-template-columns: 1fr; 
-            gap: 30px; /* Increased from 15px for beautiful white space between cards */
-            max-width: 700px; 
-            margin: 0 auto; 
-        }
+        .intake-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 750px; margin: 0 auto; }
         
-        .intake-btn {
-            background: #F8FAFC; display: flex; align-items: center; justify-content: space-between;
-            padding: 30px 40px; /* Slightly increased internal padding for a plusher feel */
-            border-radius: 12px; border: 1px solid #E2E8F0; color: var(--navy-deep); cursor: pointer; transition: 0.3s;
-        }
-        
-        .intake-btn {
-            background: #F8FAFC; display: flex; align-items: center; justify-content: space-between;
-            padding: 25px 35px; border-radius: 12px; border: 1px solid #E2E8F0; color: var(--navy-deep); cursor: pointer; transition: 0.3s;
-        }
-        
-        .intake-btn:hover { background: #FFFFFF; transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0,0,0,0.06); border-color: var(--brand-red); }
-        .intake-btn .btn-content { display: flex; align-items: center; gap: 20px; text-align: left; }
-        .intake-btn i.main-icon { font-size: 1.8rem; color: var(--brand-red); width: 30px; text-align: center; }
-        .intake-btn span.title { display: block; font-size: 1.2rem; font-weight: 700; font-family: 'Inter', sans-serif; margin-bottom: 4px; color: var(--navy-deep); }
-        .intake-btn span.desc { display: block; font-size: 0.95rem; color: var(--text-muted); font-weight: 400; }
-        .intake-btn i.arrow { color: #94A3B8; font-size: 1.2rem; transition: 0.3s; }
-        .intake-btn:hover i.arrow { color: var(--brand-red); transform: translateX(5px); }
+        .service-card { border-radius: 15px; overflow: hidden; border: 1px solid #E2E8F0; transition: 0.3s; background: #F8FAFC; }
+        .intake-btn { width: 100%; background: none; display: flex; align-items: center; justify-content: space-between; padding: 25px; border: none; cursor: pointer; text-align: left; }
+        .btn-content { display: flex; align-items: center; gap: 20px; }
+        .btn-content i { font-size: 1.8rem; color: var(--brand-red); width: 40px; text-align: center; }
+        .btn-title { display: block; font-size: 1.2rem; font-weight: 700; color: var(--navy-deep); }
+        .btn-desc { display: block; font-size: 0.95rem; color: var(--text-muted); }
 
-        /* --- THE UPGRADED NAVY FOOTER --- */
-        .main-footer { background: var(--navy-deep); color: #94A3B8; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
-        
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 50px; align-items: start; }
-        
-        .footer-brand h2 { color: white; margin-bottom: 10px; font-size: 1.6rem; font-family: 'Inter', sans-serif; letter-spacing: -1px; }
-        .footer-brand h2 span { color: var(--brand-red); }
-        .footer-brand p { font-size: 0.95rem; color: #94A3B8; margin-bottom: 15px; }
-        
-        .phone-smart { color: white; font-weight: 600; font-size: 1.05rem; }
-        .phone-smart:hover { color: var(--brand-red); }
-        
-        .footer-heading { color: white; font-size: 1.05rem; margin-bottom: 20px; font-family: 'Inter', sans-serif; letter-spacing: 0.5px; }
-        .footer-link { display: block; color: #94A3B8; margin-bottom: 12px; font-size: 0.95rem; transition: 0.3s; }
-        .footer-link:hover { color: white; transform: translateX(3px); }
-        
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; font-size: 0.85rem; text-align: center; }
+        /* Dropdown Logic */
+        .service-details { max-height: 0; overflow: hidden; transition: all 0.4s ease-in-out; background: #FFFFFF; text-align: left; }
+        .service-details.active { max-height: 800px; padding: 0 25px 25px 85px; border-top: 1px solid #f1f5f9; }
 
-        /* --- BACK TO TOP BUTTON --- */
-        .back-to-top {
-            position: fixed; bottom: 30px; right: 30px; background: var(--brand-red); color: white;
-            width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem; box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4); z-index: 1000; opacity: 0.9; transition: 0.3s;
-        }
-        .back-to-top:hover { opacity: 1; transform: translateY(-4px); color: white; box-shadow: 0 6px 20px rgba(211, 47, 47, 0.6); }
+        .detail-list { list-style: none; padding: 0; margin: 0; }
+        .detail-list li { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #f1f5f9; }
+        
+        .tag { font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; font-weight: 700; text-transform: uppercase; margin-top: 4px; display: inline-block; }
+        .tag-proxy { background: #dcfce7; color: #166534; }
+        .tag-guide { background: #fef9c3; color: #854d0e; }
 
-        /* --- MOBILE FIXES --- */
+        .mini-cta { font-size: 0.8rem; font-weight: 700; padding: 8px 12px; border-radius: 5px; background: var(--brand-red); color: white !important; white-space: nowrap; transition: 0.2s; }
+        .mini-cta.outline { background: transparent; border: 1px solid var(--brand-red); color: var(--brand-red) !important; }
+        .mini-cta:hover { transform: scale(1.05); }
+
+        /* --- FOOTER --- */
+        .main-footer { background: var(--navy-deep); color: #94A3B8; padding: 60px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; }
+        .footer-heading { color: white; margin-bottom: 20px; font-size: 1rem; text-transform: uppercase; }
+        .footer-link { display: block; color: #94A3B8; margin-bottom: 10px; }
+        .footer-link:hover { color: white; }
+
         @media (max-width: 768px) {
-            .container { padding: 0 20px; }
-            .header-logo .light-text { display: none; } 
-            .concierge-hero { padding: 80px 0 140px; }
-            .brand-name { font-size: 3.5rem; }
-            .brand-suffix { font-size: 0.85rem; letter-spacing: 4px; }
-            .intake-wrapper { padding: 40px 20px; margin-top: -80px; }
-            .hero-headline { font-size: 1.6rem; }
-            .hero-sub { font-size: 1.05rem; }
-            
-            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
-            .footer-link:hover { transform: none; color: white; }
-            .back-to-top { bottom: 20px; right: 20px; width: 45px; height: 45px; }
+            .brand-name { font-size: 2.8rem; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .intake-wrapper { padding: 30px 20px; }
+            .service-details.active { padding: 0 20px 20px 20px; } /* Fixed mobile padding */
+            .detail-list li { flex-direction: column; align-items: flex-start; gap: 10px; }
         }
     </style>
 </head>
-
-<body id="top"> 
+<body id="top">
 
     <header class="app-header">
         <div class="container header-inner">
-            <a href="index.html" class="header-logo">Docu-Hub<span>.</span> <span class="light-text">Operations Services</span></a>
-            <a href="contact.html" class="header-contact">Talk to a Human</a>
+            <a href="index.html" class="header-logo">Docu-Hub<span>.</span></a>
+            <a href="contact.html" style="color:white; font-weight:600;">Talk to a Human</a>
         </div>
     </header>
 
-    <section class="concierge-hero">
-        <div class="container">
-            <span class="brand-kicker">Welcome To The Official</span>
-            <h1 class="brand-name">Docu-Hub<span>.</span></h1>
-            <span class="brand-suffix">Operations Services</span>
+    <section class="concierge-hero" style="
+    position: relative; 
+    background: url('https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&q=80&w=1500') center/cover no-repeat; 
+    padding: 140px 0 220px;
+    overflow: hidden;
+">
+    <div style="
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+        background: linear-gradient(135deg, rgba(2, 10, 36, 0.92) 0%, rgba(2, 16, 36, 0.7) 100%); 
+        z-index: 1;
+    "></div>
+    
+    <div class="container" style="position: relative; z-index: 2;">
+        <span class="brand-kicker" style="
+            display: block;
+            color: var(--brand-red); 
+            letter-spacing: 4px; 
+            font-weight: 800; 
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        ">CERTIFIED • DISCREET • JAMAICAN</span>
+        
+        <h1 class="brand-name" style="
+            font-size: clamp(3rem, 8vw, 5.5rem); 
+            margin-bottom: 5px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            letter-spacing: -3px;
+        ">Docu-Hub<span>.</span></h1>
+        
+        <span class="brand-suffix" style="
+            color: #94A3B8; 
+            font-weight: 700; 
+            letter-spacing: 8px;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        ">Operations Services</span>
+        
+        <div style="
+            max-width: 550px; 
+            margin: 0 auto; 
+            border-top: 2px solid var(--brand-red);
+            padding-top: 25px;
+        ">
+            <p style="
+                color: #FFFFFF; 
+                font-size: 1.25rem; 
+                line-height: 1.6; 
+                font-weight: 300;
+            ">
+                "Whether it's a <strong>Birth Paper</strong> or a <strong>Passport Renewal</strong>—we handle the run-around so you can stay home."
+            </p>
         </div>
-    </section>
-
-    <section class="intake-section" id="services">
-        <div class="container">
-            <div class="intake-wrapper">
-                
-                <h2 class="hero-headline">We navigate the complex. You reclaim your time.</h2>
-                <p class="hero-sub">Don't fight with government portals or design software. Tell us what is causing you stress today, and let us handle the bureaucracy.</p>
-                
-                <div class="intake-grid">
-                    <a href="proxy-services.html" class="intake-btn">
-                        <div class="btn-content">
-                            <i class="fa-solid fa-file-invoice main-icon"></i>
-                            <div>
-                                <span class="title">Taxes & Licences (TAJ)</span>
-                                <span class="desc">Property taxes, vehicle fitness, and ticket clearances.</span>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-chevron-right arrow"></i>
-                    </a>
-
-                    <a href="proxy-services.html" class="intake-btn">
-                        <div class="btn-content">
-                            <i class="fa-solid fa-passport main-icon"></i>
-                            <div>
-                                <span class="title">Passports & Vital Records</span>
-                                <span class="desc">PICA renewals and RGD birth/death certificates.</span>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-chevron-right arrow"></i>
-                    </a>
-
-                    <a href="memorial-design.html" class="intake-btn">
-                        <div class="btn-content">
-                            <i class="fa-solid fa-dove main-icon"></i>
-                            <div>
-                                <span class="title">Memorial Formatting</span>
-                                <span class="desc">Premium, stress-free funeral program design.</span>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-chevron-right arrow"></i>
-                    </a>
+    </div>
+</section>
+               <div class="intake-grid">
+    
+    <div class="service-card">
+        <button class="intake-btn" onclick="toggleService('pica')">
+            <div class="btn-content">
+                <i class="fa-solid fa-passport"></i>
+                <div>
+                    <span class="btn-title">Passport Services</span>
+                    <span class="btn-desc">Renewals & Application Help</span>
                 </div>
+            </div>
+            <i class="fa-solid fa-chevron-down" id="pica-icon"></i>
+        </button>
+        <div id="pica" class="service-details">
+            <ul class="detail-list">
+                <li>
+                    <div>
+                        <span>Adult Renewal (Online)</span><br>
+                        <span class="tag tag-proxy">We handle the whole process</span>
+                    </div>
+                    <a href="contact.html?service=pica-full" class="mini-cta">Apply For Me</a>
+                </li>
+                <li>
+                    <div>
+                        <span>New Adult / Child Renewals</span><br>
+                        <span class="tag tag-guide">You go (We prepare the papers)</span>
+                    </div>
+                    <a href="contact.html?service=pica-checklist" class="mini-cta outline">Get My Checklist</a>
+                </li>
+                <li>
+                    <div>
+                        <span>Lost or Damaged Passport</span><br>
+                        <span class="tag tag-guide">Expert step-by-step help</span>
+                    </div>
+                    <a href="contact.html?service=pica-guide" class="mini-cta outline">Show Me How</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="service-card">
+        <button class="intake-btn" onclick="toggleService('rgd')">
+            <div class="btn-content">
+                <i class="fa-solid fa-file-signature"></i>
+                <div>
+                    <span class="btn-title">Birth & Marriage Papers</span>
+                    <span class="btn-desc">New Copies & Corrections</span>
+                </div>
+            </div>
+            <i class="fa-solid fa-chevron-down" id="rgd-icon"></i>
+        </button>
+        <div id="rgd" class="service-details">
+            <ul class="detail-list">
+                <li>
+                    <div><span>New Applications / Fast Copies</span><br><span class="tag tag-proxy">We handle the run-around</span></div>
+                    <a href="contact.html?service=rgd-full" class="mini-cta">Get My Papers</a>
+                </li>
+                <li>
+                    <div><span>Fixing Errors on Papers</span><br><span class="tag tag-guide">We review your documents</span></div>
+                    <a href="contact.html?service=rgd-review" class="mini-cta outline">Help Me Fix This</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="service-card">
+        <button class="intake-btn" onclick="toggleService('taj')">
+            <div class="btn-content">
+                <i class="fa-solid fa-car-side"></i>
+                <div>
+                    <span class="btn-title">Tax Office & Traffic Tickets</span>
+                    <span class="btn-desc">Vehicle Registration & Payments</span>
+                </div>
+            </div>
+            <i class="fa-solid fa-chevron-down" id="taj-icon"></i>
+        </button>
+        <div id="taj" class="service-details">
+            <ul class="detail-list">
+                <li>
+                    <div><span>Fitness & License Renewal</span><br><span class="tag tag-proxy">Skip the line - We go for you</span></div>
+                    <a href="contact.html?service=tax-full" class="mini-cta">Renew For Me</a>
+                </li>
+                <li>
+                    <div><span>Traffic Ticket Payments</span><br><span class="tag tag-proxy">Fast & reliable processing</span></div>
+                    <a href="contact.html?service=ticket-full" class="mini-cta">Pay My Ticket</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="service-card">
+        <button class="intake-btn" onclick="toggleService('mem')">
+            <div class="btn-content">
+                <i class="fa-solid fa-book-open"></i>
+                <div>
+                    <span class="btn-title">Funeral Programs</span>
+                    <span class="btn-desc">Professional Design & Layout</span>
+                </div>
+            </div>
+            <i class="fa-solid fa-chevron-down" id="mem-icon"></i>
+        </button>
+        <div id="mem" class="service-details">
+            <ul class="detail-list">
+                <li>
+                    <div><span>Custom Memorial Programs</span><br><span class="tag tag-proxy">Print-ready high quality</span></div>
+                    <a href="contact.html?service=memorial" class="mini-cta">Request Design</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
             </div>
         </div>
     </section>
+<section class="about-preview" style="background: #FFFFFF; padding: 80px 0; border-top: 1px solid #E2E8F0;">
+    <div class="container">
+        <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <span class="brand-kicker" style="color: var(--brand-red); letter-spacing: 2px; font-weight: 800; font-size: 0.8rem; margin-bottom: 10px;">THE DOCU-HUB STORY</span>
+            <h2 class="hero-headline" style="max-width: 600px;">We know how it feel fi stand inna line and get send home.</h2>
+            
+            <div style="max-width: 700px; margin-top: 20px; text-align: left; background: #F8FAFC; padding: 40px; border-radius: 20px; border-left: 5px solid var(--brand-red);">
+                <p style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 20px; line-height: 1.8;">
+                    It always happen when you’re in a rush. You take a day off work, reach the office from 6:00 AM, and wait for hours. Then you reach the window, and they tell you: <em>"Document not signed right"</em> or <em>"System down, come back tomorrow."</em> 
+                </p>
+                <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px;">
+                    We created Docu-Hub because we were tired of seeing Jamaicans lose time and money to simple paperwork mistakes. We aren't just an agency; we are your "Road Runners." We know the protocols, we know the shortcuts, and we know exactly what is needed to get it done the first time...
+                </p>
+                
+                <a href="about.html" style="display: inline-block; font-weight: 800; color: var(--brand-red); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; border-bottom: 2px solid var(--brand-red); padding-bottom: 4px; transition: 0.3s;">
+                    Read Our Full Story <i class="fa-solid fa-arrow-right" style="margin-left: 5px;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
     <footer class="main-footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-brand">
-                    <h2>Docu-Hub<span>.</span></h2>
-                    <p>Operations Services<br>Linstead, St. Catherine.</p>
-                    <a href="tel:+18765612614" class="phone-smart" aria-label="Call Docu-Hub Operations Services"><i class="fa-solid fa-phone"></i> +1 (876) 561-2614</a>
+                <div>
+                    <h2 style="color:white;">Docu-Hub<span>.</span></h2>
+                    <p>Linstead, St. Catherine, Jamaica</p>
+                    <p style="margin-top:10px;"><a href="tel:+18765612614" style="color:white; font-weight:700;"><i class="fa-solid fa-phone"></i> +1 (876) 561-2614</a></p>
                 </div>
-                
-                <div class="footer-links-col">
-                    <h4 class="footer-heading">Navigate</h4>
-                    <a href="about.html" class="footer-link">About Us</a>
-                    <a href="#services" class="footer-link">Our Services</a>
-                    <a href="contact.html" class="footer-link">Contact & Intake</a>
+                <div>
+                    <h4 class="footer-heading">Services</h4>
+                    <a href="#" class="footer-link">RGD Records</a>
+                    <a href="#" class="footer-link">PICA Passports</a>
+                    <a href="#" class="footer-link">Tax Payments</a>
                 </div>
-
-                <div class="footer-links-col">
-                    <h4 class="footer-heading">Legal</h4>
-                    <a href="terms.html" class="footer-link">Terms of Service</a>
-                    <a href="privacy.html" class="footer-link">Privacy Policy</a>
-                    <a href="legal-notice.html" class="footer-link">Legal Notice</a>
+                <div>
+                    <h4 class="footer-heading">Support</h4>
+                    <a href="contact.html" class="footer-link">Contact Us</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                &copy; 2026 Docu-Hub Operations Services. All Rights Reserved.
             </div>
         </div>
     </footer>
 
-    <a href="#top" class="back-to-top" aria-label="Scroll back to top">
-        <i class="fa-solid fa-arrow-up"></i>
-    </a>
-
+    <script>
+        function toggleService(id) {
+            const element = document.getElementById(id);
+            const icon = document.getElementById(id + '-icon');
+            document.querySelectorAll('.service-details').forEach(detail => {
+                if (detail.id !== id) {
+                    detail.classList.remove('active');
+                    const otherIcon = document.getElementById(detail.id + '-icon');
+                    if(otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+            if (element.classList.contains('active')) {
+                element.classList.remove('active');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                element.classList.add('active');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
 </body>
 </html>
