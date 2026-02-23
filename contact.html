@@ -239,13 +239,17 @@
         </div>
     </footer>
 
-    <script>
+  <script>
+        // === 1. YOUR GOOGLE SCRIPT URL HERE ===
+        // Paste the link you got from Google inside these quote marks:
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw3nZeLCEG5yjTXiTEJpgCpWZK4JfLoeniVPTAZqSkLoBvQnHs6q73APRg15Jc8CPD0/exec'; 
+
         document.addEventListener("DOMContentLoaded", function() {
             const urlParams = new URLSearchParams(window.location.search);
             const serviceTag = urlParams.get('service');
             const statusTag = urlParams.get('status');
             
-            // 1. Auto-Select & Lock the Dropdown
+            // Auto-Select & Lock the Dropdown
             if (serviceTag) {
                 const dropdown = document.getElementById('service-dropdown');
                 const options = Array.from(dropdown.options);
@@ -258,14 +262,12 @@
                     }
                 });
 
-                // If a valid service was found in the URL, hide the dropdown and show the Locked Badge
                 if (selectedText) {
                     document.getElementById('service-selection-group').style.display = 'none';
                     document.getElementById('locked-service-group').style.display = 'block';
                     document.getElementById('locked-service-name').innerText = selectedText;
                 }
 
-                // Change the textarea placeholder to match their service
                 const textareaLabel = document.getElementById('textarea-label');
                 if (serviceTag.includes('memorial')) {
                     textareaLabel.innerText = "Who are we honoring? Please provide a brief timeline.";
@@ -274,7 +276,7 @@
                 }
             }
 
-            // 2. Show the Dynamic Success/Warning Banner
+            // Show Dynamic Status Banner
             if (statusTag === 'green') {
                 const banner = document.getElementById('dynamic-banner');
                 banner.className = 'status-banner green';
@@ -286,12 +288,59 @@
             }
         });
 
-        // Function to unlock the dropdown if the user clicked the wrong link
         function unlockService(e) {
             e.preventDefault();
             document.getElementById('locked-service-group').style.display = 'none';
             document.getElementById('service-selection-group').style.display = 'flex';
         }
+
+        // === 2. GOOGLE SHEETS FORM SUBMISSION LOGIC ===
+        const form = document.querySelector('.intake-form');
+        const submitBtn = document.querySelector('.submit-btn');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault(); 
+            
+            // Change button to "Sending..."
+            submitBtn.innerHTML = 'Sending... <i class="fa-solid fa-circle-notch fa-spin" style="margin-left: 8px;"></i>';
+            submitBtn.style.background = "var(--navy-deep)";
+            submitBtn.disabled = true;
+            
+            let formData = new FormData(form);
+            
+            // Ensure hidden locked badges still send their data
+            const urlParams = new URLSearchParams(window.location.search);
+            if(urlParams.get('service')) {
+                formData.set('service_requested', urlParams.get('service'));
+            }
+
+            // Send to Google (no-cors prevents browser blocking)
+            fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
+                .then(response => {
+                    // Success!
+                    submitBtn.innerHTML = 'Request Received <i class="fa-solid fa-check" style="margin-left: 8px;"></i>';
+                    submitBtn.style.background = "#166534"; 
+                    form.reset(); 
+                    
+                    // Add a polite message below the button
+                    if(!document.getElementById('success-msg')) {
+                        const successMsg = document.createElement('p');
+                        successMsg.id = 'success-msg';
+                        successMsg.style.color = "#166534";
+                        successMsg.style.fontWeight = "600";
+                        successMsg.style.textAlign = "center";
+                        successMsg.style.marginTop = "15px";
+                        successMsg.innerText = "Thank you! An agent is reviewing your request and will message you on WhatsApp shortly.";
+                        form.appendChild(successMsg);
+                    }
+                })
+                .catch(error => {
+                    submitBtn.innerHTML = 'Error. Please try again.';
+                    submitBtn.style.background = "var(--brand-red)";
+                    submitBtn.disabled = false;
+                });
+        });
     </script>
 </body>
 </html>
+
