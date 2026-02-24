@@ -11,26 +11,16 @@
     <style>
         /* --- RICH ROSEWOOD & BLUSH PALETTE --- */
         :root {
-            /* Core Tones */
-            --text-main: #2B1410;      /* Deep Espresso / Black-Brown for high contrast */
-            
-            /* The 3-Layer Depth System */
-            --bg-body: #C8AFA8;        /* Dusty Rose / Warm Clay background */
-            --bg-wrapper: #FDF8F7;     /* Soft Blush off-white wrapper */
-            --bg-card: #FFFFFF;        /* Pure Washi White for the cards */
-            
-            /* Theme Accents */
-            --brand-rosewood: #592922; /* Rich Rosewood / Terracotta */
-            --brand-blush: #F9E5E0;    /* Soft Blush / Peach */
-            --brand-terracotta: #A85A4A; /* Mid-tone for icons and kickers */
-            
-            --text-muted: #5D433F;     /* Warm muted brown for paragraphs */
-            
+            --text-main: #2B1410;      
+            --bg-body: #C8AFA8;        /* Rosewood / Warm Clay */
+            --bg-wrapper: #FDF8F7;     /* Soft Blush off-white */
+            --bg-card: #FFFFFF;        
+            --brand-rosewood: #592922; 
+            --brand-blush: #F9E5E0;    
+            --brand-terracotta: #A85A4A; 
+            --text-muted: #5D433F;     
             --container-width: 1000px; 
             --header-height: 80px;
-            
-            /* Warm Shadow System */
-            --shadow-soft: 0 10px 30px rgba(89, 41, 34, 0.06);
             --shadow-strong: 0 25px 50px rgba(89, 41, 34, 0.15);
             --shadow-float: 0 30px 60px rgba(43, 20, 16, 0.25);
         }
@@ -59,24 +49,21 @@
         .back-btn { color: var(--text-muted); font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
         .back-btn:hover { color: var(--brand-rosewood); }
         
-        /* --- HERO SECTION (UPDATED FOR IMAGE VISIBILITY) --- */
+        /* --- FIXED HERO SECTION --- */
         .creative-hero { 
-            /* Changed to a dark overlay so the image pops and text is readable */
-            .stationery-hero { 
-    background: linear-gradient(to bottom, rgba(74, 30, 30, 0.7), rgba(45, 20, 20, 0.8)), 
-                url('https://images.unsplash.com/photo-1586075010633-2470acfd8e8b?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
-    background-attachment: fixed;
-    padding: 140px 0 200px;
-    text-align: center;
-    border-bottom: 4px solid var(--brand-rose); 
-}
+            background: linear-gradient(to bottom, rgba(74, 30, 30, 0.7), rgba(45, 20, 20, 0.8)), 
+                        url('https://images.unsplash.com/photo-1586075010633-2470acfd8e8b?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+            background-attachment: fixed;
+            padding: 140px 0 200px;
+            text-align: center;
+            border-bottom: 4px solid var(--brand-terracotta); 
+        }
         
-        /* Flipped Hero Text to Light Colors for Contrast against Dark Image */
         .brand-kicker { display: block; color: var(--brand-blush); letter-spacing: 4px; font-weight: 700; font-size: 0.85rem; margin-bottom: 20px; text-transform: uppercase; font-family: 'Inter', sans-serif;}
         .hero-title { font-size: clamp(2.8rem, 6vw, 4.5rem); margin-bottom: 25px; color: #FFFFFF; line-height: 1.1; font-weight: 700;}
         .hero-desc { max-width: 650px; margin: 0 auto; color: var(--brand-blush); font-size: 1.2rem; font-weight: 400; line-height: 1.8;}
 
-        /* --- MAIN CONTENT Wrapper --- */
+        /* --- CONTENT Wrapper --- */
         .content-section { background: var(--bg-body); padding-bottom: 100px; position: relative; }
         .content-wrapper {
             background: var(--bg-wrapper); 
@@ -85,170 +72,63 @@
             padding: 80px 60px; margin-top: -120px; position: relative; z-index: 10; 
         }
 
-        /* --- EDITORIAL PATOIS QUOTE --- */
-        .editorial-quote {
-            text-align: center;
-            max-width: 750px;
-            margin: 0 auto 100px auto;
-            position: relative;
-        }
-        .editorial-quote::before {
-            content: '“';
-            display: block;
-            font-family: 'Noto Serif JP', serif;
-            font-size: 6rem;
-            color: var(--brand-blush);
-            line-height: 0;
-            margin-bottom: 30px;
-        }
-        .editorial-quote p {
-            font-size: 1.4rem;
-            color: var(--text-main);
-            line-height: 1.8;
-            font-family: 'Noto Serif JP', serif;
-            font-style: italic;
-            font-weight: 400;
-        }
+        /* --- EDITORIAL QUOTE --- */
+        .editorial-quote { text-align: center; max-width: 750px; margin: 0 auto 100px auto; position: relative;}
+        .editorial-quote::before { content: '“'; display: block; font-family: 'Noto Serif JP', serif; font-size: 6rem; color: var(--brand-blush); line-height: 0; margin-bottom: 30px; }
+        .editorial-quote p { font-size: 1.4rem; color: var(--text-main); line-height: 1.8; font-family: 'Noto Serif JP', serif; font-style: italic; font-weight: 400; }
 
         /* --- EDITORIAL Z-PATTERN LAYOUT --- */
-        .editorial-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            margin-bottom: 100px;
-        }
+        .editorial-row { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 100px; }
         .editorial-row.reverse .editorial-text { order: 1; }
         .editorial-row.reverse .editorial-img-box { order: 2; }
-
         .editorial-text h3 { font-size: 2.2rem; margin-bottom: 20px; line-height: 1.2; }
-        .editorial-text p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; color: var(--text-muted); }
         .editorial-img-box { position: relative; }
         .editorial-img-box img {
-            width: 100%; height: 450px; object-fit: cover;
+            width: 100%; height: 480px; object-fit: cover;
             border-radius: 4px; box-shadow: var(--shadow-float); transition: 0.5s ease;
         }
-        .editorial-img-box img:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 40px 70px rgba(43, 20, 16, 0.3); }
-        
+        .editorial-img-box img:hover { transform: translateY(-5px) scale(1.02); }
         .editorial-img-box::after {
             content: ''; position: absolute; top: 20px; left: -20px; width: 100%; height: 100%;
-            border: 1px solid var(--brand-terracotta); z-index: -1; transition: 0.5s ease;
+            border: 1px solid var(--brand-terracotta); z-index: -1;
         }
         .editorial-row.reverse .editorial-img-box::after { left: 20px; }
 
         /* --- WORKFLOW GRID --- */
-        .workflow-title { text-align: center; font-size: 2.2rem; color: var(--text-main); margin-bottom: 60px; margin-top: 40px; padding-top: 60px; border-top: 1px solid #EEDCD9;}
+        .workflow-title { text-align: center; font-size: 2.2rem; margin-bottom: 60px; margin-top: 40px; padding-top: 60px; border-top: 1px solid #EEDCD9;}
         .workflow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 100px; }
-
-        .step-card { 
-            text-align: center; background: var(--bg-card); padding: 50px 30px; 
-            border-radius: 8px; box-shadow: var(--shadow-soft);
-        }
-        .step-num { 
-            width: 60px; height: 60px; background: var(--bg-wrapper); color: var(--brand-rosewood); 
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; font-size: 1.2rem; font-weight: 800; 
-        }
-        .step-card h4 { color: var(--text-main); font-size: 1.15rem; margin-bottom: 15px; font-weight: 700; font-family: 'Inter', sans-serif;}
-        .step-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;}
+        .step-card { text-align: center; background: var(--bg-card); padding: 50px 30px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);}
+        .step-num { width: 60px; height: 60px; background: var(--bg-wrapper); color: var(--brand-rosewood); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; font-size: 1.2rem; font-weight: 800; }
 
         /* --- CTA BOX --- */
-        .cta-box { 
-            background: var(--brand-rosewood);
-            border-radius: 8px; padding: 70px 50px; text-align: center; color: white; 
-            box-shadow: var(--shadow-strong);
-        }
-        .cta-box h3 { font-size: 2.5rem; margin-bottom: 20px; font-weight: 700; color: #FFFFFF;}
-        .cta-box p { color: var(--brand-blush); margin-bottom: 40px; font-size: 1.15rem; font-weight: 400; max-width: 600px; margin-left: auto; margin-right: auto;}
-        
+        .cta-box { background: var(--brand-rosewood); border-radius: 8px; padding: 70px 50px; text-align: center; color: white; }
         .btn-blush { 
             display: inline-block; background: var(--brand-blush); color: var(--brand-rosewood); font-weight: 700; 
-            padding: 18px 50px; border-radius: 50px; font-size: 1.05rem; transition: 0.3s ease; 
-            border: none; cursor: pointer; letter-spacing: 1px; text-transform: uppercase; font-family: 'Inter', sans-serif;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 18px 50px; border-radius: 50px; text-transform: uppercase; cursor: pointer; border: none; font-family: 'Inter';
         }
-        .btn-blush:hover { background: #FFFFFF; transform: translateY(-2px); }
 
-        /* General Primary Button (For the modal) */
-        .btn-primary { 
-            display: inline-block; background: var(--brand-rosewood); color: #FFFFFF; font-weight: 700; 
-            padding: 16px 40px; border-radius: 50px; font-size: 1.05rem; transition: 0.3s ease; 
-            border: none; cursor: pointer; font-family: 'Inter', sans-serif;
-        }
-        .btn-primary:hover { background: #401D18; }
-
-        /* --- FOOTER (HIGH CONTRAST UPDATE) --- */
+        /* --- FOOTER --- */
         .main-footer { background: var(--brand-rosewood); color: #FFFFFF; padding: 60px 0 30px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 50px; text-align: left; }
-        .footer-brand h2 { color: #FFFFFF; margin-bottom: 10px; font-size: 1.8rem; letter-spacing: -1px; font-family: 'Noto Serif JP', serif; }
-        .footer-brand h2 span { color: var(--brand-blush); }
-        
-        /* Updated links to pure white for perfect legibility */
-        .footer-link { display: block; color: #FFFFFF; margin-bottom: 12px; font-size: 1rem; text-decoration: none; transition: 0.3s; font-weight: 500;}
-        .footer-link:hover { color: var(--brand-blush); transform: translateX(3px); }
-        
-        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 30px; font-size: 0.9rem; text-align: center; color: #FFFFFF; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-link { display: block; color: #FFFFFF; margin-bottom: 12px; font-size: 1rem; text-decoration: none; }
+        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 30px; font-size: 0.9rem; text-align: center; }
 
         /* --- MODAL --- */
         .modal-overlay { 
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(43, 20, 16, 0.85);
-            z-index: 3000; justify-content: center; align-items: center; 
-            backdrop-filter: blur(8px); opacity: 0; transition: opacity 0.3s ease;
+            background: rgba(43, 20, 16, 0.85); z-index: 3000; justify-content: center; align-items: center; backdrop-filter: blur(8px);
         }
-        .modal-overlay.show { display: flex; opacity: 1; }
-        .modal-box { 
-            background: var(--bg-card); padding: 50px 40px; width: 90%; max-width: 500px; border-radius: 8px; 
-            position: relative; box-shadow: var(--shadow-strong); transform: translateY(20px); transition: transform 0.3s ease;
-        }
-        .modal-overlay.show .modal-box { transform: translateY(0); }
-        .close-modal { position: absolute; top: 25px; right: 25px; font-size: 1.2rem; cursor: pointer; color: var(--text-muted); transition: 0.2s; background: none; border: none;}
-        .close-modal:hover { color: var(--brand-rosewood); }
-        
-        .modal-title { color: var(--text-main); font-size: 1.6rem; margin-bottom: 10px; font-weight: 700;}
-        .modal-subtitle { font-size: 1rem; margin-bottom: 35px; color: var(--text-muted); }
-        
-        .form-group { margin-bottom: 25px; text-align: left; }
-        .form-label { display: block; font-weight: 700; font-size: 0.85rem; color: var(--text-main); margin-bottom: 10px; letter-spacing: 0.5px; text-transform: uppercase; font-family: 'Inter', sans-serif;}
-        .form-control { 
-            width: 100%; padding: 14px 15px; 
-            border: 2px solid #EEDCD9; border-radius: 4px; 
-            font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--text-main); transition: 0.3s;
-            background: var(--bg-wrapper); font-weight: 500;
-        }
-        .form-control:focus { outline: none; border-color: var(--brand-rosewood); background: var(--bg-card);}
-        
-        #loadingState, #successState { display: none; text-align: center; padding: 40px 0; }
-        .spinner { border: 3px solid var(--bg-wrapper); border-top: 3px solid var(--brand-rosewood); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 25px; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .success-icon { font-size: 3rem; color: var(--brand-rosewood); margin-bottom: 25px; }
-
-        /* --- MOBILE OPTIMIZATION --- */
-        @media (max-width: 900px) {
-            .editorial-row { grid-template-columns: 1fr; gap: 40px; margin-bottom: 70px;}
-            .editorial-row.reverse .editorial-text { order: 2; }
-            .editorial-row.reverse .editorial-img-box { order: 1; }
-            .editorial-img-box img { height: 350px; }
-            .workflow-grid { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 768px) {
-            :root { --header-height: 70px; }
-            .container { padding: 0 25px; }
-            .creative-hero { padding: 120px 0 160px; background-attachment: scroll; }
-            .content-wrapper { padding: 40px 20px; margin-top: -60px; }
-            .editorial-quote p { font-size: 1.15rem; }
-            .editorial-quote::before { margin-bottom: 10px; font-size: 4rem;}
-            .cta-box { padding: 50px 25px; }
-            .btn-blush, .btn-primary { width: 100%; padding: 18px 0; text-align: center;}
-            .modal-box { padding: 40px 25px; }
-            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
-        }
+        .modal-overlay.show { display: flex; }
+        .modal-box { background: var(--bg-card); padding: 50px 40px; width: 90%; max-width: 500px; border-radius: 8px; position: relative; }
+        .close-modal { position: absolute; top: 25px; right: 25px; cursor: pointer; border: none; background: none; font-size: 1.5rem; }
+        .form-control { width: 100%; padding: 14px; border: 2px solid #EEDCD9; border-radius: 4px; margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
     <header class="app-header">
         <div class="container header-inner">
-            <a href="index.html" class="back-btn" aria-label="Back"><i class="fa-solid fa-arrow-left"></i> <span>Back to Hub</span></a>
+            <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> <span>Back to Hub</span></a>
             <a href="index.html" class="header-logo">Docu-Hub<span>.</span></a>
         </div>
     </header>
@@ -273,13 +153,12 @@
 
                 <div class="editorial-row">
                     <div class="editorial-img-box">
-                        <img src="assets/stationery.png" alt="Business Inserts Design">
+                        <img src="http://googleusercontent.com/image_collection/image_retrieval/3211837504799265468" alt="Business Inserts Design">
                     </div>
                     <div class="editorial-text">
                         <span class="brand-kicker" style="color: var(--brand-terracotta); letter-spacing: 2px;">Business & Loyalty</span>
                         <h3>Enhance the Unboxing Experience</h3>
-                        <p>Your packaging is your best marketing opportunity. We design stunning package inserts, product care cards, discount promo codes, and custom loyalty punch cards that keep your customers coming back.</p>
-                        <p>We take your existing logo and brand colors and transform them into physical assets that elevate your perceived value.</p>
+                        <p>Your packaging is your best marketing opportunity. We design stunning package inserts, product care cards, and custom loyalty cards that keep customers coming back.</p>
                     </div>
                 </div>
 
@@ -287,49 +166,34 @@
                     <div class="editorial-text">
                         <span class="brand-kicker" style="color: var(--brand-terracotta); letter-spacing: 2px;">Corporate Events</span>
                         <h3>Formal Announcements</h3>
-                        <p>Set the absolute perfect tone before the event even begins. We create impeccable, high-end layouts for corporate milestones, grand openings, elegant dinners, and formal invitations.</p>
-                        <p>Whether you need a digital file for email distribution or a perfectly-sized PDF with printer bleeds for physical mailing, we handle the technical layout so you can focus on the guest list.</p>
+                        <p>Set the absolute perfect tone before the event even begins. We create impeccable layouts for corporate milestones, grand openings, and formal invitations.</p>
                     </div>
                     <div class="editorial-img-box">
-                        <img src="assets/formal.jpg" alt="Formal Announcements">
+                        <img src="http://googleusercontent.com/image_collection/image_retrieval/5885632041483127101" alt="Formal Announcements">
                     </div>
                 </div>
 
                 <div class="editorial-row">
                     <div class="editorial-img-box">
-                        <img src="assets/thank-you.jpg" alt="Thank You Notes">
+                        <img src="http://googleusercontent.com/image_collection/image_retrieval/15045024946535507439" alt="Thank You Notes">
                     </div>
                     <div class="editorial-text">
                         <span class="brand-kicker" style="color: var(--brand-terracotta); letter-spacing: 2px;">Personal Keepsakes</span>
                         <h3>Heartfelt Appreciation</h3>
-                        <p>Show genuine gratitude that stands out from the digital noise. We create beautifully branded, premium 'Thank You' stationery that allows you to write personalized messages to your high-value clients and partners.</p>
-                        <p>We also design elegant, custom-named flat cards featuring your unique branding—perfect for sending a thoughtful message 'just because'.</p>
+                        <p>Show genuine gratitude that stands out from the digital noise. We create beautifully branded 'Thank You' stationery that allows for personalized messages.</p>
                     </div>
                 </div>
 
                 <h2 class="workflow-title">How Our Design Process Works</h2>
-                
                 <div class="workflow-grid">
-                    <div class="step-card">
-                        <div class="step-num">1</div>
-                        <h4>Share Your Vision</h4>
-                        <p>Upload your logo, brand colors, and the text you want included. Tell us the vibe you are going for, and we will take it from there.</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-num">2</div>
-                        <h4>We Design the Magic</h4>
-                        <p>Our team crafts a vibrant, professional layout. We send you a digital proof to review and request any tweaks until it is flawless.</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-num">3</div>
-                        <h4>Print-Ready Delivery</h4>
-                        <p>Receive your high-resolution, print-ready PDF instantly. Take it to any local print shop, or ask us about arranging the physical printing for you.</p>
-                    </div>
+                    <div class="step-card"><div class="step-num">1</div><h4>Share Your Vision</h4><p>Upload your logo, colors, and text. We take it from there.</p></div>
+                    <div class="step-card"><div class="step-num">2</div><h4>Design Magic</h4><p>We craft the layout and send a proof for your review.</p></div>
+                    <div class="step-card"><div class="step-num">3</div><h4>Print-Ready</h4><p>Receive your high-resolution PDF instantly.</p></div>
                 </div>
 
                 <div class="cta-box">
                     <h3>Ready to upgrade your brand's look?</h3>
-                    <p>Check our current design capacity and get a custom quote for your upcoming project.</p>
+                    <p>Check our current design capacity and get a custom quote for your project.</p>
                     <button class="btn-blush" onclick="openModal()">Check Design Capacity</button>
                 </div>
 
@@ -340,149 +204,31 @@
     <footer class="main-footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-brand">
-                    <h2>Docu-Hub<span>.</span></h2>
-                    <p style="color: #FFFFFF; font-size: 1.05rem;">Operations & Design Studio<br>Linstead, St. Catherine.</p>
-                </div>
-                <div>
-                    <a href="about.html" class="footer-link">About Us</a>
-                    <a href="portals.html" class="footer-link">Client Portals</a>
-                    <a href="contact.html" class="footer-link">Contact & Intake</a>
-                </div>
-                <div>
-                    <a href="terms.html" class="footer-link">Terms of Service</a>
-                    <a href="privacy.html" class="footer-link">Privacy Policy</a>
-                </div>
+                <div class="footer-brand"><h2>Docu-Hub<span>.</span></h2><p>Operations & Design Studio<br>Linstead, St. Catherine.</p></div>
+                <div><a href="about.html" class="footer-link">About Us</a><a href="portals.html" class="footer-link">Client Portals</a></div>
+                <div><a href="terms.html" class="footer-link">Terms</a><a href="privacy.html" class="footer-link">Privacy</a></div>
             </div>
-            <div class="footer-bottom">
-                &copy; 2026 Docu-Hub Operations Services. All Rights Reserved. Walk good. 🤍
-            </div>
+            <div class="footer-bottom">&copy; 2026 Docu-Hub. Take care. 🤍</div>
         </div>
     </footer>
 
     <div class="modal-overlay" id="intakeModal">
         <div class="modal-box">
-            <button class="close-modal" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
-            
-            <div id="formState">
-                <h3 class="modal-title">Project Intake</h3>
-                <p class="modal-subtitle">Fill out the details below to check our availability and get a quote.</p>
-                
-                <form id="capacityForm" action="YOUR_GAS_WEB_APP_URL_HERE" method="POST" onsubmit="submitForm(event)">
-                    <div class="form-group">
-                        <label class="form-label">Full Name / Business Name</label>
-                        <input type="text" name="fullName" class="form-control" required placeholder="e.g. Jane Doe or Apex Corp">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">WhatsApp Number</label>
-                        <input type="tel" name="whatsapp" class="form-control" required placeholder="876-XXX-XXXX">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">What are we designing?</label>
-                        <select name="designType" class="form-control" required>
-                            <option value="">-- Select an option --</option>
-                            <option value="Business Insert">Business Insert / Loyalty Card</option>
-                            <option value="Formal Announcement">Corporate / Formal Announcement</option>
-                            <option value="Promotional Postcard">Promotional Postcard</option>
-                            <option value="Thank You Notes">Branded 'Thank You' Notes</option>
-                            <option value="Personalized Flat Cards">Personalized Flat Cards / Stationery</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Target Deadline</label>
-                        <input type="date" name="deadline" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Material Status</label>
-                        <select name="materialStatus" class="form-control" required>
-                            <option value="">-- Select an option --</option>
-                            <option value="Have logo ready">I have my logo and branding ready</option>
-                            <option value="Have text only">I only have the text/idea</option>
-                            <option value="Need full branding">I need full design direction</option>
-                            <option value="Just getting a quote">I am just getting a quote for now</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Submit Project Details</button>
-                </form>
-            </div>
-
-            <div id="loadingState">
-                <div class="spinner"></div>
-                <h3 style="color: var(--text-main);">Checking Capacity...</h3>
-                <p>Please wait while we securely transmit your details.</p>
-            </div>
-
-            <div id="successState">
-                <i class="fa-solid fa-circle-check success-icon"></i>
-                <h3 style="color: var(--text-main); margin-bottom: 10px;">Request Received!</h3>
-                <p style="margin-bottom: 25px;">We have logged your project details. Our design desk will contact you via WhatsApp shortly to discuss your custom quote.</p>
-                <button class="btn-primary" style="width: 100%;" onclick="closeModal()">Close Window</button>
-            </div>
-
+            <button class="close-modal" onclick="closeModal()">×</button>
+            <h3 class="modal-title">Project Intake</h3>
+            <p class="modal-subtitle">Share your details for a custom quote.</p>
+            <form id="capacityForm">
+                <input type="text" class="form-control" placeholder="Full Name / Business Name" required>
+                <input type="tel" class="form-control" placeholder="WhatsApp Number" required>
+                <button type="button" class="btn-blush" style="width:100%" onclick="closeModal()">Submit Request</button>
+            </form>
         </div>
     </div>
 
     <script>
         const modal = document.getElementById('intakeModal');
-        const formState = document.getElementById('formState');
-        const loadingState = document.getElementById('loadingState');
-        const successState = document.getElementById('successState');
-        const form = document.getElementById('capacityForm');
-
-        function openModal() {
-            formState.style.display = 'block';
-            loadingState.style.display = 'none';
-            successState.style.display = 'none';
-            form.reset();
-            
-            modal.classList.add('show');
-            document.body.style.overflow = 'hidden'; 
-        }
-
-        function closeModal() {
-            modal.classList.remove('show');
-            document.body.style.overflow = 'auto'; 
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-
-        function submitForm(event) {
-            event.preventDefault(); 
-            formState.style.display = 'none';
-            loadingState.style.display = 'block';
-
-            const formData = new FormData(form);
-            const scriptURL = form.getAttribute('action'); 
-
-            fetch(scriptURL, {
-                method: 'POST',
-                mode: 'no-cors', 
-                body: formData
-            })
-            .then(() => {
-                loadingState.style.display = 'none';
-                successState.style.display = 'block';
-            })
-            .catch((error) => {
-                console.error('Error!', error.message);
-                alert("There was a network error sending your request. Please try again or contact us via WhatsApp.");
-                loadingState.style.display = 'none';
-                formState.style.display = 'block';
-            });
-        }
+        function openModal() { modal.classList.add('show'); document.body.style.overflow = 'hidden'; }
+        function closeModal() { modal.classList.remove('show'); document.body.style.overflow = 'auto'; }
     </script>
 </body>
-
 </html>
-
-
-
