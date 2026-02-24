@@ -100,12 +100,60 @@
         .step-card { text-align: center; background: var(--bg-card); padding: 50px 30px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);}
         .step-num { width: 60px; height: 60px; background: var(--bg-wrapper); color: var(--brand-rosewood); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; font-size: 1.2rem; font-weight: 800; }
 
-        /* --- CTA BOX --- */
-        .cta-box { background: var(--brand-rosewood); border-radius: 8px; padding: 70px 50px; text-align: center; color: white; }
-        .btn-blush { 
-            display: inline-block; background: var(--brand-blush); color: var(--brand-rosewood); font-weight: 700; 
-            padding: 18px 50px; border-radius: 50px; text-transform: uppercase; cursor: pointer; border: none; font-family: 'Inter';
-        }
+       /* --- CTA BOX REPAIR --- */
+.cta-box { 
+    background: var(--brand-rosewood); 
+    border-radius: 12px; 
+    padding: 80px 50px; 
+    text-align: center; 
+    box-shadow: var(--shadow-strong);
+}
+.cta-box h3 { 
+    font-size: 2.4rem; 
+    margin-bottom: 20px; 
+    color: var(--brand-blush); /* Softer than white, matches theme */
+    font-family: 'Noto Serif JP', serif;
+}
+.cta-box p { 
+    color: rgba(249, 229, 224, 0.85); /* 85% opacity Blush for better legibility */
+    margin-bottom: 40px; 
+    font-size: 1.2rem; 
+    max-width: 600px; 
+    margin: 0 auto 40px auto;
+}
+.btn-blush { 
+    display: inline-block; 
+    background: var(--brand-blush); 
+    color: var(--brand-rosewood); 
+    font-weight: 700; 
+    padding: 20px 60px; 
+    border-radius: 50px; 
+    text-transform: uppercase; 
+    letter-spacing: 1.5px;
+    cursor: pointer; 
+    border: none; 
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-blush:hover { background: #FFFFFF; transform: translateY(-3px); }
+
+/* --- FOOTER REPAIR --- */
+.main-footer { 
+    background: var(--brand-rosewood); 
+    color: #FFFFFF; 
+    padding: 80px 0 40px; 
+    border-top: 1px solid rgba(249, 229, 224, 0.1); 
+}
+.footer-brand h2 span { color: var(--brand-blush); }
+.footer-brand p { color: var(--brand-blush); opacity: 0.9; font-size: 1rem; }
+.footer-link { color: #FFFFFF; font-weight: 500; font-size: 1rem; }
+.footer-link:hover { color: var(--brand-blush); }
+.footer-bottom { 
+    border-top: 1px solid rgba(255, 255, 255, 0.1); 
+    padding-top: 30px; 
+    color: var(--brand-blush); 
+    opacity: 0.7; 
+    font-size: 0.85rem; 
+}
 
        /* --- FOOTER (HIGH-CONTRAST WARM UPDATE) --- */
 .main-footer { 
@@ -295,25 +343,36 @@
                 </div>
 
                 <div class="cta-box">
-                    <h3>Ready to upgrade your brand's look?</h3>
-                    <p>Check our current design capacity and get a custom quote for your project.</p>
-                    <button class="btn-blush" onclick="openModal()">Check Design Capacity</button>
-                </div>
+    <h3>Ready to upgrade your brand's look?</h3>
+    <p>Check our current design capacity and get a custom quote for your upcoming project.</p>
+    <button class="btn-blush" onclick="openModal()">Check Design Capacity</button>
+</div>
 
             </div>
         </div>
     </section>
 
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand"><h2>Docu-Hub<span>.</span></h2><p>Operations & Design Studio<br>Linstead, St. Catherine.</p></div>
-                <div><a href="about.html" class="footer-link">About Us</a><a href="portals.html" class="footer-link">Client Portals</a></div>
-                <div><a href="terms.html" class="footer-link">Terms</a><a href="privacy.html" class="footer-link">Privacy</a></div>
+   <footer class="main-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>Docu-Hub<span>.</span></h2>
+                <p>Operations & Design Studio<br>Linstead, St. Catherine.</p>
             </div>
-            <div class="footer-bottom">&copy; 2026 Docu-Hub. Take care. 🤍</div>
+            <div>
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="documents.html" class="footer-link">Client Portals</a>
+            </div>
+            <div>
+                <a href="terms.html" class="footer-link">Terms</a>
+                <a href="privacy.html" class="footer-link">Privacy</a>
+            </div>
         </div>
-    </footer>
+        <div class="footer-bottom">
+            &copy; 2026 Docu-Hub Operations & Design Studio. Take Care. 🤍
+        </div>
+    </div>
+</footer>
 
     <div class="modal-overlay" id="intakeModal">
         <div class="modal-box">
@@ -335,5 +394,6 @@
     </script>
 </body>
 </html>
+
 
 
