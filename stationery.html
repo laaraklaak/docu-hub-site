@@ -122,6 +122,46 @@
         .modal-box { background: var(--bg-card); padding: 50px 40px; width: 90%; max-width: 500px; border-radius: 8px; position: relative; }
         .close-modal { position: absolute; top: 25px; right: 25px; cursor: pointer; border: none; background: none; font-size: 1.5rem; }
         .form-control { width: 100%; padding: 14px; border: 2px solid #EEDCD9; border-radius: 4px; margin-bottom: 20px; }
+
+        /* --- MOBILE RESPONSIVENESS (NEW) --- */
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            
+            .app-header { height: 70px; }
+            .header-logo { font-size: 1rem; }
+            .back-btn span { display: none; } /* Hide text on mobile, keep icon */
+            
+            .creative-hero { padding: 100px 0 140px; background-attachment: scroll; }
+            .hero-title { font-size: 2.2rem; }
+            
+            .content-wrapper { padding: 40px 20px; margin-top: -60px; }
+            .editorial-quote { margin-bottom: 60px; }
+            .editorial-quote p { font-size: 1.15rem; }
+            
+            /* Stack the Editorial Rows */
+            .editorial-row { grid-template-columns: 1fr; gap: 40px; margin-bottom: 80px; }
+            
+            /* Always put Image on TOP for Mobile */
+            .editorial-row.reverse .editorial-img-box { order: 1; }
+            .editorial-row.reverse .editorial-text { order: 2; }
+            .editorial-row .editorial-img-box { order: 1; }
+            .editorial-row .editorial-text { order: 2; }
+            
+            .editorial-img-box img { height: 350px; }
+            .editorial-img-box::after { display: none; } /* Remove decorative border to avoid overflow */
+            
+            .editorial-text h3 { font-size: 1.7rem; text-align: center; }
+            .editorial-text p { text-align: center; }
+
+            .workflow-grid { grid-template-columns: 1fr; gap: 20px; }
+            .step-card { padding: 30px 20px; }
+            
+            .cta-box { padding: 50px 25px; }
+            .cta-box h3 { font-size: 1.8rem; }
+            .btn-blush { width: 100%; text-align: center; padding: 18px 0; }
+            
+            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+        }
     </style>
 </head>
 <body>
@@ -153,7 +193,7 @@
 
                 <div class="editorial-row">
                     <div class="editorial-img-box">
-                        <img src="assets/stationery.jpg" alt="Business Inserts Design">
+                        <img src="assets/stationery.png" alt="Business Inserts Design">
                     </div>
                     <div class="editorial-text">
                         <span class="brand-kicker" style="color: var(--brand-terracotta); letter-spacing: 2px;">Business & Loyalty</span>
@@ -232,5 +272,3 @@
     </script>
 </body>
 </html>
-
-
