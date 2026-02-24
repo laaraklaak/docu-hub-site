@@ -41,7 +41,7 @@
         .back-btn { color: #94A3B8; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 8px; text-decoration: none;}
         .back-btn:hover { color: #FFFFFF; }
         
-        /* --- RESTORED HERO (SOLID NAVY TEXTURE) --- */
+        /* --- HERO --- */
         .design-hero { 
             background: var(--anchor-dark); 
             padding: 100px 0 160px; 
@@ -59,116 +59,60 @@
         .empathy-box { background: var(--bg-card); border-left: 5px solid var(--brand-gold); padding: 35px; border-radius: 12px; margin-bottom: 80px; box-shadow: 0 10px 25px rgba(0,0,0,0.03); }
         .empathy-box p { font-size: 1.15rem; color: var(--text-main); line-height: 1.8; font-weight: 500;}
 
-        /* --- EDITORIAL Z-PATTERN LAYOUT --- */
+        /* --- EDITORIAL ROWS --- */
         .editorial-row { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 100px; }
         .editorial-row.reverse .editorial-text { order: 1; }
         .editorial-row.reverse .editorial-img-box { order: 2; }
-
         .editorial-text h3 { font-size: 2.2rem; margin-bottom: 20px; color: var(--anchor-dark); }
-        .editorial-text p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 15px;}
-
-        .editorial-img-box { position: relative; }
-        .editorial-img-box img {
-            width: 100%; height: 480px; object-fit: cover; border-radius: 4px;
-            box-shadow: 0 30px 60px rgba(10, 17, 40, 0.2);
-            border: 1px solid #E2E8F0; transition: 0.5s ease;
-        }
-        .editorial-img-box img:hover { transform: scale(1.02); }
-        
-        .editorial-img-box::after {
-            content: ''; position: absolute; top: 20px; left: -20px; width: 100%; height: 100%;
-            border: 1px solid var(--brand-gold); z-index: -1;
-        }
+        .editorial-img-box img { width: 100%; height: 480px; object-fit: cover; border-radius: 4px; box-shadow: 0 30px 60px rgba(10, 17, 40, 0.2); border: 1px solid #E2E8F0; transition: 0.5s ease; }
+        .editorial-img-box::after { content: ''; position: absolute; top: 20px; left: -20px; width: 100%; height: 100%; border: 1px solid var(--brand-gold); z-index: -1; }
         .editorial-row.reverse .editorial-img-box::after { left: 20px; }
 
         /* --- WORKFLOW --- */
         .workflow-title { text-align: center; font-size: 2.2rem; color: var(--anchor-dark); margin-bottom: 40px; margin-top: 40px; padding-top: 60px; border-top: 1px solid #D1D5DB; }
         .workflow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 50px; }
         .step-card { text-align: center; background: var(--bg-card); padding: 30px 20px; border-radius: 16px; box-shadow: 0 10px 20px rgba(0,0,0,0.04);}
-        .step-num { width: 50px; height: 50px; background: var(--brand-gold); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.2rem; font-weight: 800; box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);}
+        .step-num { width: 50px; height: 50px; background: var(--brand-gold); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.2rem; font-weight: 800;}
         
         /* --- CTA --- */
-        .cta-box { background: var(--anchor-dark); border-radius: 16px; padding: 60px 40px; text-align: center; color: white; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        .cta-box { background: var(--anchor-dark); border-radius: 16px; padding: 60px 40px; text-align: center; color: white; }
         .cta-box h3 { font-size: 2.2rem; margin-bottom: 15px; color: var(--brand-gold); font-style: italic; }
-        .btn-primary { border: none; display: inline-block; background: var(--brand-gold); color: white; font-weight: 700; padding: 15px 35px; border-radius: 8px; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4); text-align: center; cursor: pointer; text-decoration: none;}
+        .btn-primary { border: none; display: inline-block; background: var(--brand-gold); color: white; font-weight: 700; padding: 15px 35px; border-radius: 8px; font-size: 1.1rem; cursor: pointer; text-decoration: none;}
 
-       /* --- FOOTER (REFINED HIGH-CONTRAST) --- */
-.main-footer { 
-    background: var(--anchor-dark); 
-    color: #FFFFFF; 
-    padding: 80px 0 40px; 
-    border-top: 1px solid rgba(212, 175, 55, 0.2); /* Subtle Gold border */
-}
+        /* --- RESTORED MODAL STYLES --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 17, 40, 0.85); backdrop-filter: blur(5px);
+            z-index: 3000; display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: 0.3s ease;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-content {
+            background: var(--bg-card); width: 90%; max-width: 550px;
+            border-radius: 16px; padding: 40px; position: relative;
+            max-height: 90vh; overflow-y: auto; transform: translateY(20px); transition: 0.4s ease;
+        }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+        .close-modal { position: absolute; top: 20px; right: 25px; background: none; border: none; font-size: 1.5rem; color: var(--text-muted); cursor: pointer; }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; color: var(--anchor-dark); }
+        .form-control { width: 100%; padding: 12px 15px; border: 1px solid #CBD5E1; border-radius: 8px; font-family: 'Inter', sans-serif; }
 
-.footer-grid { 
-    display: grid; 
-    grid-template-columns: 2fr 1fr 1fr; 
-    gap: 40px; 
-    margin-bottom: 50px; 
-    text-align: left; 
-}
+        /* --- FOOTER --- */
+        .main-footer { background: var(--anchor-dark); color: #FFFFFF; padding: 80px 0 40px; border-top: 1px solid rgba(212, 175, 55, 0.2); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 50px; text-align: left; }
+        .footer-brand h2 { color: white; font-size: 1.8rem; letter-spacing: -1px; }
+        .footer-brand h2 span { color: var(--brand-gold); }
+        .footer-link { display: block; color: #FFFFFF; margin-bottom: 12px; text-decoration: none; }
+        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 30px; font-size: 0.9rem; text-align: center; color: #E2E8F0; }
 
-.footer-brand h2 { 
-    color: white; 
-    margin-bottom: 15px; 
-    font-size: 1.8rem; 
-    letter-spacing: -1px; 
-    font-family: 'Playfair Display', serif; 
-}
-
-.footer-brand h2 span { color: var(--brand-gold); }
-
-/* Updated from pale grey to a readable light gold tint */
-.footer-brand p { 
-    color: #E2E8F0; 
-    font-size: 1rem; 
-    opacity: 0.9; 
-    line-height: 1.6;
-}
-
-.footer-link { 
-    display: block; 
-    color: #FFFFFF; 
-    margin-bottom: 12px; 
-    font-size: 1rem; 
-    text-decoration: none; 
-    transition: 0.3s; 
-    font-weight: 500;
-}
-
-.footer-link:hover { 
-    color: var(--brand-gold); 
-    transform: translateX(5px); 
-}
-
-.footer-bottom { 
-    border-top: 1px solid rgba(255, 255, 255, 0.1); 
-    padding-top: 30px; 
-    font-size: 0.9rem; 
-    text-align: center; 
-    color: #E2E8F0;
-    letter-spacing: 1px;
-}
-
-/* Mobile Footer Fix */
-@media (max-width: 768px) {
-    .footer-grid { 
-        grid-template-columns: 1fr; 
-        text-align: center; 
-        gap: 40px; 
-    }
-    .footer-link:hover { transform: translateY(-2px); }
-}
-
-        /* --- MOBILE --- */
         @media (max-width: 768px) {
             .container { padding: 0 20px; } 
             .editorial-row { grid-template-columns: 1fr; gap: 40px; }
-            .editorial-row.reverse .editorial-text { order: 2; }
             .editorial-row.reverse .editorial-img-box { order: 1; }
-            .editorial-img-box img { height: 350px; }
+            .editorial-row.reverse .editorial-text { order: 2; }
             .workflow-grid { grid-template-columns: 1fr; }
-            .content-wrapper { padding: 40px 20px; margin-top: -40px; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
         }
     </style>
 </head>
@@ -176,7 +120,7 @@
 
     <header class="app-header">
         <div class="container header-inner">
-            <a href="index.html" class="back-btn" aria-label="Back"><i class="fa-solid fa-arrow-left"></i> <span>Back to Hub</span></a>
+            <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> <span>Back to Hub</span></a>
             <a href="index.html" class="header-logo">Docu-Hub<span>.</span></a>
         </div>
     </header>
@@ -194,9 +138,7 @@
             <div class="content-wrapper">
                 
                 <div class="empathy-box">
-                    <p>
-                        "Fi plan wan funeral a bare stress, especially when yuh have a million an wan things pon yuh plate. Yuh shouldn't haffi settle fi dem basic, 'hurry come-up' program from di parlour. <strong>We take that headache off your hands and deliver a beautiful, print-ready file.</strong>"
-                    </p>
+                    <p>"Fi plan wan funeral a bare stress. We take that headache off your hands and deliver a beautiful, print-ready file."</p>
                 </div>
 
                 <div class="editorial-row">
@@ -204,90 +146,122 @@
                         <img src="assets/program.png" alt="Standard Program Design">
                     </div>
                     <div class="editorial-text">
-                        <span style="color: var(--brand-gold); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">Premium Layout</span>
                         <h3>Standard Order of Service</h3>
-                        <p>A clean, elegant 4 to 8-page layout covering the essentials. This covers the order of service, obituary summary, selected hymns, and your cover photos.</p>
-                        <p>We ensure every line is perfectly spaced and every photo is color-corrected to look sharp on any printer.</p>
+                        <p>A clean, elegant 4 to 8-page layout covering the essentials for the service.</p>
                     </div>
                 </div>
 
                 <div class="editorial-row reverse">
                     <div class="editorial-text">
-                        <span style="color: var(--brand-gold); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">Luxury Keepsake</span>
                         <h3>Full Tribute Booklets</h3>
-                        <p>A premium, magazine-style keepsake for families who want to tell the full story. Designed to be kept and cherished for generations.</p>
-                        <p>This layout includes extended tributes, family photo collages, and a detailed life story spread with classic typography.</p>
+                        <p>A premium, magazine-style keepsake for families who want to tell the full story.</p>
                     </div>
                     <div class="editorial-img-box">
                         <img src="assets/memorial.png" alt="Full Tribute Booklet">
                     </div>
                 </div>
 
-                <h2 class="workflow-title">The Digital Workflow</h2>
-                <div class="workflow-grid">
-                    <div class="step-card"><div class="step-num">1</div><h4>Send Details</h4><p>WhatsApp or Email us your photos and obituary text.</p></div>
-                    <div class="step-card"><div class="step-num">2</div><h4>We Design</h4><p>Our team crafts the layout and sends a digital proof to review.</p></div>
-                    <div class="step-card"><div class="step-num">3</div><h4>Final PDF</h4><p>Receive your high-resolution, print-ready file instantly.</p></div>
-                </div>
-
                 <div class="cta-box">
                     <h3>Let Us Help You Prepare.</h3>
-                    <p>Contact our concierge desk to discuss your layout needs and get a custom quote.</p>
-                    <button id="openModalBtn" class="btn-primary" style="padding: 15px 35px; border-radius: 8px;">Request a Memorial Design <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></button>
+                    <button id="openModalBtn" class="btn-primary">Request a Memorial Design <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></button>
                 </div>
 
             </div>
         </div>
     </section>
 
-
-
-   <footer class="main-footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <h2>Docu-Hub<span>.</span></h2>
-                <p>Operations & Design Studio<br>Linstead, St. Catherine.</p>
+    <div id="intakeModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModalBtn"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header">
+                <h3>Check Availability</h3>
+                <p>Please share your timeline below. We will confirm if we can accommodate your required dates.</p>
             </div>
-            <div>
-                <a href="memorial-design.html" class="footer-link">Memorial Studio</a>
-                <a href="stationery.html" class="footer-link">Stationery Studio</a>
-                <a href="documents.html" class="footer-link">Virtual Desk</a>
-            </div>
-            <div>
-                <a href="terms.html" class="footer-link">Terms of Service</a>
-                <a href="privacy.html" class="footer-link">Privacy Policy</a>
-                <a href="contact.html" class="footer-link">Contact Us</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2026 Docu-Hub Operations Services. All Rights Reserved. Take care. 🤍
+            <form id="intakeForm" action="https://script.google.com/macros/s/AKfycbw3qGpVj1GpaRh9MtTV3_DO3IfG0pnpw3WLA4iglzWU0bh2MyHWYwjIM30NLU1DIus/exec" method="POST">
+                <div class="form-group">
+                    <label>Full Name & WhatsApp Number *</label>
+                    <input type="text" name="Client_Contact" class="form-control" placeholder="Jane Doe - 876-555-0199" required>
+                </div>
+                <div class="form-group">
+                    <label>What do you need designed? *</label>
+                    <select name="Service_Requested" class="form-control" required>
+                        <option value="Standard Program">Standard Program (4-8 Pages)</option>
+                        <option value="Full Tribute Booklet">Full Tribute Booklet (12+ Pages)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Date of the Memorial Service *</label>
+                    <input type="date" name="Memorial_Date" class="form-control" required>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">Submit Request</button>
+            </form>
         </div>
     </div>
-</footer>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>Docu-Hub<span>.</span></h2>
+                    <p>Operations & Design Studio<br>Linstead, St. Catherine.</p>
+                </div>
+                <div>
+                    <a href="memorial-design.html" class="footer-link">Memorial Studio</a>
+                    <a href="stationery.html" class="footer-link">Stationery Studio</a>
+                    <a href="documents.html" class="footer-link">Virtual Desk</a>
+                </div>
+                <div>
+                    <a href="terms.html" class="footer-link">Terms of Service</a>
+                    <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                    <a href="contact.html" class="footer-link">Contact Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Docu-Hub Operations Services. All Rights Reserved. Take care. 🤍
+            </div>
+        </div>
+    </footer>
 
     <script>
         const modal = document.getElementById('intakeModal');
         const openBtn = document.getElementById('openModalBtn');
         const closeBtn = document.getElementById('closeModalBtn');
 
-        openBtn.addEventListener('click', () => { modal.classList.add('active'); document.body.style.overflow = 'hidden'; });
-        closeBtn.addEventListener('click', () => { modal.classList.remove('active'); document.body.style.overflow = 'auto'; });
-        window.onclick = (e) => { if (e.target === modal) { modal.classList.remove('active'); document.body.style.overflow = 'auto'; } };
+        // Opening the modal
+        openBtn.addEventListener('click', () => { 
+            modal.classList.add('active'); 
+            document.body.style.overflow = 'hidden'; 
+        });
+
+        // Closing the modal
+        closeBtn.addEventListener('click', () => { 
+            modal.classList.remove('active'); 
+            document.body.style.overflow = 'auto'; 
+        });
+
+        // Close on outside click
+        window.onclick = (e) => { 
+            if (e.target === modal) { 
+                modal.classList.remove('active'); 
+                document.body.style.overflow = 'auto'; 
+            } 
+        };
 
         const form = document.getElementById('intakeForm');
         form.addEventListener('submit', e => {
             e.preventDefault();
             const btn = form.querySelector('button');
             btn.innerHTML = 'Sending...';
+            
             fetch(form.action, { method: 'POST', body: new FormData(form) })
             .then(() => {
                 document.querySelector('.modal-header').innerHTML = '<h3>Received!</h3><p>We will WhatsApp you shortly.</p>';
                 form.style.display = 'none';
+            })
+            .catch(() => {
+                btn.innerHTML = 'Error. Try Again.';
             });
         });
     </script>
-    
 </body>
 </html>
-
