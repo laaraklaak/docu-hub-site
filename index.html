@@ -3,48 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docu-Hub | Premium Design & Print Studio</title>
+    <title>Docu-Hub | Design Mastery & Operational Precision</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-     /* --- MASTER STUDIO PALETTE --- */
         :root {
             --studio-black: #0F172A; 
             --studio-white: #FFFFFF;
-            --studio-stone: #F8FAFC;
             --text-muted: #64748B;
-            
-            --mem-base: #0A1128;   
-            --mem-accent: #D4AF37; 
-            
-            --stat-base: #592922;  
-            --stat-accent: #F9E5E0; 
-            
-            /* These were outside the brackets - fixed now */
-            --brand-slate: #1E293B;
-            --brand-steel: #0284C7;
-            --brand-blush: #F9E5E0; /* Added this so the concierge section works */
-            --bg-wrapper: #F1F5F9;
-
+            --mem-accent: #D4AF37; /* Rich Gold */
+            --stat-accent: #F9E5E0; /* Soft Blush */
+            --brand-steel: #38BDF8; /* Brightened Steel Blue for Contrast */
             --header-height: 85px;
         }
-        --brand-slate: #1E293B;
---brand-steel: #0284C7;
---bg-wrapper: #F1F5F9;
 
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         html { scroll-behavior: smooth; }
-        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--studio-white); color: var(--studio-black); line-height: 1.6; padding-top: var(--header-height); -webkit-font-smoothing: antialiased;}
-        
-        h1, h2, h3, h4 { margin-top: 0; font-weight: 700; color: var(--studio-black); font-family: 'Playfair Display', serif;}
-        p { margin-bottom: 0; font-size: 1.1rem; color: var(--text-muted); font-weight: 300;}
+        body { 
+            margin: 0; 
+            font-family: 'Inter', sans-serif; 
+            background: var(--studio-white); 
+            color: var(--studio-black); 
+            line-height: 1.6; 
+            padding-top: var(--header-height);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 { margin: 0; font-weight: 700; color: var(--studio-black); font-family: 'Playfair Display', serif;}
+        p { margin-bottom: 0; font-size: 1.1rem; color: var(--text-muted); font-weight: 400;}
         a { text-decoration: none; transition: 0.3s ease; }
         
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
-        
-        /* --- HEADER --- */
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+
+        /* --- NAVIGATION --- */
         .app-header {
             position: fixed; top: 0; left: 0; width: 100%; z-index: 2000;
             background: rgba(255, 255, 255, 0.98); 
@@ -52,182 +45,104 @@
             border-bottom: 1px solid #E2E8F0; 
             height: var(--header-height); display: flex; align-items: center;
         }
-        .studio-tagline {
-    display: inline-block;
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: var(--text-muted); /* or #94A3B8 */
-    text-transform: none;
-    letter-spacing: 0;
-    margin-left: 10px;
-    border-left: 1px solid #E2E8F0;
-    padding-left: 10px;
-    vertical-align: middle;
-}
-
-/* On mobile, we might want to hide the tagline or stack it */
-@media (max-width: 768px) {
-    .studio-tagline {
-        display: none; /* Keeps the mobile header clean */
-    }
-}
         .header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; }
-        .header-logo { font-size: 1.4rem; font-weight: 800; color: var(--studio-black); letter-spacing: -0.5px; text-transform: uppercase; font-family: 'Inter', sans-serif;}
-        
+        .header-logo { font-size: 1.4rem; font-weight: 800; color: var(--studio-black); letter-spacing: -0.5px; text-transform: uppercase;}
+        .studio-tagline { font-size: 0.85rem; color: var(--text-muted); margin-left: 10px; border-left: 1px solid #E2E8F0; padding-left: 10px; font-weight: 500; }
+
         .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { color: var(--text-muted); font-size: 0.95rem; font-weight: 600; font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 1px;}
-        .nav-links a:hover { color: var(--studio-black); }
-        .nav-btn { background: var(--studio-black); color: var(--studio-white) !important; padding: 10px 20px; border-radius: 4px; }
-        .nav-btn:hover { background: var(--text-muted); }
+        .nav-links a { color: var(--text-muted); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;}
+        .nav-links a:hover { color: var(--brand-steel); }
+        .nav-btn { background: var(--studio-black); color: var(--studio-white) !important; padding: 12px 24px; border-radius: 4px; }
+
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
 
         /* --- HERO SECTION --- */
         .main-hero { 
-            background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.6)), url('assets/home.png') center/cover no-repeat;
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.7)), url('assets/home.png') center/cover no-repeat;
             padding: 160px 0 180px;
             color: var(--studio-white);
         }
-        
-        .main-hero h1 { color: var(--studio-white); font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 25px; line-height: 1.1; letter-spacing: -1px;}
-        .main-hero p { color: #CBD5E1; font-size: 1.25rem; max-width: 600px; margin-bottom: 40px; font-family: 'Inter', sans-serif;}
+        .main-hero h1 { color: var(--studio-white); font-size: clamp(2.8rem, 6vw, 4.8rem); margin-bottom: 25px; line-height: 1; letter-spacing: -2px;}
+        .main-hero p { color: #CBD5E1; font-size: 1.3rem; max-width: 750px; margin-bottom: 40px; font-weight: 400; line-height: 1.5;}
 
-        /* --- THE DUAL SHOWCASE (THE MAINSTAY) --- */
+        /* --- THE TRIO SHOWCASE (Enhanced Contrast) --- */
         .showcase-section { padding: 100px 0 120px; background: var(--studio-white); }
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-size: 2.8rem; margin-bottom: 15px; }
-        .section-header p { font-size: 1.15rem; max-width: 700px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-size: 3.2rem; margin-bottom: 20px; letter-spacing: -1px; }
 
-        .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .trio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
         
         .service-card {
-            position: relative;
-            height: 600px;
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            align-items: flex-end;
-            text-decoration: none;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative; height: 600px; border-radius: 12px; overflow: hidden;
+            display: flex; align-items: flex-end; text-decoration: none; box-shadow: 0 20px 50px rgba(0,0,0,0.15);
         }
-        
-        .service-img {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover; transition: transform 0.8s ease; z-index: 1;
-        }
-        
-        .service-content {
-            position: relative; z-index: 3; padding: 50px; width: 100%;
-            transform: translateY(20px); transition: transform 0.4s ease;
-        }
+        .service-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; z-index: 1; }
+        .service-overlay { position: absolute; inset: 0; z-index: 2; transition: 0.4s ease; }
+        .service-content { position: relative; z-index: 3; padding: 50px; width: 100%; transform: translateY(10px); transition: transform 0.4s ease; }
 
-        .service-content h3 { font-size: 2.4rem; margin-bottom: 10px; font-style: italic; line-height: 1.1;}
-        .service-content p { font-size: 1.05rem; margin-bottom: 25px; opacity: 0.9; font-family: 'Inter', sans-serif;}
-        .explore-link { font-family: 'Inter', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; padding-bottom: 5px; display: inline-block;}
+        /* Typography on Cards */
+        .service-content h3 { font-size: 2.6rem; margin-bottom: 15px; font-style: italic; line-height: 1; letter-spacing: -0.5px; }
+        .service-content p { font-size: 1.1rem; margin-bottom: 30px; opacity: 1; color: #F8FAFC; font-weight: 500; line-height: 1.6; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .explore-link { font-weight: 800; text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem; padding-bottom: 8px; display: inline-block; }
 
-        /* --- IDENTITY 1: MEMORIAL THEME (NAVY & GOLD) --- */
-        .theme-memorial .service-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to top, rgba(10, 17, 40, 0.95) 0%, rgba(10, 17, 40, 0.3) 100%);
-            z-index: 2; transition: 0.4s ease;
-        }
-        .theme-memorial:hover .service-overlay { background: linear-gradient(to top, rgba(10, 17, 40, 0.98) 0%, rgba(10, 17, 40, 0.5) 100%); }
-        .theme-memorial:hover .service-img { transform: scale(1.05); }
-        .theme-memorial:hover .service-content { transform: translateY(0); }
+        /* --- THEME OVERLAYS (Deepened for Text Protection) --- */
+        .theme-memorial .service-overlay { background: linear-gradient(to top, rgba(5, 10, 25, 1) 0%, rgba(10, 17, 40, 0.6) 40%, transparent 100%); }
         .theme-memorial h3 { color: var(--mem-accent); }
-        .theme-memorial p { color: var(--studio-white); }
-        .theme-memorial .explore-link { color: var(--studio-white); border-bottom: 2px solid var(--mem-accent); }
+        .theme-memorial .explore-link { color: var(--studio-white); border-bottom: 3px solid var(--mem-accent); }
 
-        /* --- IDENTITY 2: STATIONERY THEME (ROSEWOOD & BLUSH) --- */
-        .theme-stationery .service-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to top, rgba(89, 41, 34, 0.95) 0%, rgba(89, 41, 34, 0.3) 100%);
-            z-index: 2; transition: 0.4s ease;
-        }
-        .theme-stationery:hover .service-overlay { background: linear-gradient(to top, rgba(89, 41, 34, 0.98) 0%, rgba(89, 41, 34, 0.5) 100%); }
-        .theme-stationery:hover .service-img { transform: scale(1.05); }
-        .theme-stationery:hover .service-content { transform: translateY(0); }
+        .theme-stationery .service-overlay { background: linear-gradient(to top, rgba(40, 15, 10, 1) 0%, rgba(89, 41, 34, 0.6) 40%, transparent 100%); }
         .theme-stationery h3 { color: var(--stat-accent); }
-        .theme-stationery p { color: var(--studio-white); }
-        .theme-stationery .explore-link { color: var(--studio-white); border-bottom: 2px solid var(--stat-accent); }
+        .theme-stationery .explore-link { color: var(--studio-white); border-bottom: 3px solid var(--stat-accent); }
 
-        /* --- THE BACKGROUNDED PORTALS --- */
-        .portals-banner { background: var(--studio-stone); padding: 80px 0; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0;}
-        .portals-layout { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
-        .portals-text h3 { font-size: 2rem; margin-bottom: 15px; font-family: 'Inter', sans-serif; letter-spacing: -1px;}
-        .portals-text p { font-size: 1.1rem; max-width: 600px; }
-        .btn-dark { background: var(--studio-black); color: var(--studio-white); padding: 16px 35px; font-weight: 700; border-radius: 4px; font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; white-space: nowrap;}
-        .btn-dark:hover { background: #334155; transform: translateY(-2px);}
+        .theme-concierge .service-overlay { background: linear-gradient(to top, rgba(15, 23, 42, 1) 0%, rgba(30, 41, 59, 0.6) 40%, transparent 100%); }
+        .theme-concierge h3 { color: var(--brand-steel); }
+        .theme-concierge .explore-link { color: var(--studio-white); border-bottom: 3px solid var(--brand-steel); }
 
-        /* --- FOOTER --- */
-        .main-footer { background: var(--studio-black); color: #94A3B8; padding: 60px 0 30px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 50px; text-align: left; }
-       .footer-tagline { 
-    color: #E2E8F0 !important; /* This is the brighter, readable off-white */
-    font-size: 0.95rem; 
-    opacity: 0.8; 
-    line-height: 1.6;
-    margin-top: 10px;
-}
-        .footer-link { display: block; color: #94A3B8; margin-bottom: 12px; font-size: 0.95rem; transition: 0.3s; font-family: 'Inter', sans-serif;}
-        .footer-link:hover { color: white; transform: translateX(3px); }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; font-size: 0.85rem; text-align: center; font-family: 'Inter', sans-serif;}
+        .service-card:hover .service-img { transform: scale(1.08); }
+        .service-card:hover .service-content { transform: translateY(0); }
 
-        /* --- MOBILE --- */
-        @media (max-width: 900px) {
-            .dual-grid { grid-template-columns: 1fr; }
-            .service-card { height: 450px; }
-            .portals-layout { flex-direction: column; text-align: center; }
+        /* --- UI ELEMENTS --- */
+        #back-to-top {
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            background: var(--studio-black); color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 3000; opacity: 0; visibility: hidden; transition: 0.4s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); font-size: 1.2rem;
         }
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .main-hero { padding: 120px 0 140px; text-align: center;}
-            .main-hero h1 { font-size: 2.8rem; }
-            .service-content { padding: 30px; transform: translateY(0); }
-            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+        #back-to-top.visible { opacity: 1; visibility: visible; }
+
+        /* --- MOBILE REFINEMENTS --- */
+        @media (max-width: 850px) {
+            .container { padding: 0 30px; }
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: fixed; top: var(--header-height); right: -100%; width: 100%; height: calc(100vh - var(--header-height));
+                background: white; flex-direction: column; padding: 60px 0; gap: 40px; transition: 0.4s ease;
+            }
+            .nav-links.active { right: 0; }
+            .nav-links a { font-size: 1.4rem; color: var(--studio-black); }
+            .trio-grid { grid-template-columns: 1fr; }
+            .service-card { height: 500px; }
+            .service-content h3 { font-size: 2.2rem; }
         }
-        /* --- CTA BOX (Administrative Section) --- */
-.cta-box { 
-    background: var(--brand-slate); 
-    border-radius: 12px; 
-    padding: 60px 40px; 
-    text-align: center; 
-}
-
-/* --- THE BUTTONS --- */
-.btn-blush { 
-    display: inline-block; 
-    background: var(--stat-accent); 
-    color: var(--stat-base); 
-    font-weight: 700; 
-    padding: 18px 60px; 
-    border-radius: 50px; 
-    text-transform: uppercase; 
-    letter-spacing: 1px;
-    cursor: pointer;
-    border: none;
-}
-
-.submit-btn {
-    background: var(--brand-steel);
-    color: white;
-    padding: 15px 40px;
-    border-radius: 4px;
-    font-weight: 700;
-    transition: 0.3s;
-}
-.submit-btn:hover { background: var(--brand-slate); }
     </style>
 </head>
 <body>
 
     <header class="app-header">
-       <div class="container header-inner">
-    <a href="index.html" class="header-logo">
-        Docu-Hub<span>.</span> <small class="studio-tagline">Operations Services</small>
-    </a>
-            <nav class="nav-links">
+        <div class="container header-inner">
+            <a href="index.html" class="header-logo">
+                Docu-Hub<span style="color:var(--brand-steel)">.</span> <small class="studio-tagline">Operations Services</small>
+            </a>
+            
+            <div class="menu-toggle" id="menu-btn">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </div>
+
+            <nav class="nav-links" id="nav-list">
                 <a href="memorial-design.html">Memorials</a>
                 <a href="stationery.html">Stationery</a>
-                <a href="documents.html">Portals</a>
+                <a href="documents.html">Concierge Desk</a>
                 <a href="contact.html" class="nav-btn">Start a Project</a>
             </nav>
         </div>
@@ -235,27 +150,27 @@
 
     <section class="main-hero">
         <div class="container">
-            <h1>Beautiful Design.<br>Print-Ready Precision.</h1>
-            <p>From elegant memorial tributes to high-end business stationery, we transform your vision into stunning, professionally formatted physical assets.</p>
+            <h1>Design for the heart.<br>Help with the details.</h1>
+            <p>From breathtaking memorial memoirs to the high-level logistics of our Concierge Desk, we manage the creative and administrative details so you can stay focused.</p>
         </div>
     </section>
 
     <section class="showcase-section">
         <div class="container">
             <div class="section-header">
-                <h2>Our Design Studios</h2>
-                <p>Select your studio below. We specialize in meticulous layout and breathtaking typography, delivering flawless files ready for the press.</p>
+                <h2>The Three Pillars</h2>
+                <p>Meticulous design meets seamless operational support. Select a point of entry below.</p>
             </div>
 
-            <div class="dual-grid">
+            <div class="trio-grid">
                 
                 <a href="memorial-design.html" class="service-card theme-memorial">
                     <img src="assets/memorial.png" class="service-img" alt="Memorial Tributes">
                     <div class="service-overlay"></div>
                     <div class="service-content">
                         <h3>Memorial Tributes</h3>
-                        <p>Done with care and dignity. We handle the formatting, photo editing, and layout of your custom memorial keepsakes so you can focus on family.</p>
-                        <span class="explore-link">Enter Studio <i class="fa-solid fa-arrow-right" style="margin-left: 5px;"></i></span>
+                        <p>Handling formatting, photo editing, and layout of your keepsakes with care and dignity.</p>
+                        <span class="explore-link">Enter Studio <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i></span>
                     </div>
                 </a>
 
@@ -264,8 +179,18 @@
                     <div class="service-overlay"></div>
                     <div class="service-content">
                         <h3>Custom Stationery</h3>
-                        <p>Make a lasting impression. Vibrant business inserts, formal corporate announcements, and heartfelt branded 'Thank You' notes designed to elevate your brand.</p>
-                        <span class="explore-link">Enter Studio <i class="fa-solid fa-arrow-right" style="margin-left: 5px;"></i></span>
+                        <p>Vibrant corporate announcements and heartfelt personal suites designed for impact.</p>
+                        <span class="explore-link">Enter Studio <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i></span>
+                    </div>
+                </a>
+
+                <a href="documents.html" class="service-card theme-concierge">
+                    <img src="assets/concierge.png" class="service-img" alt="Concierge Desk">
+                    <div class="service-overlay"></div>
+                    <div class="service-content">
+                        <h3>Concierge Desk</h3>
+                        <p>Your administrative boots on the ground for secure paperwork and proxy services.</p>
+                        <span class="explore-link">Access Desk <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i></span>
                     </div>
                 </a>
 
@@ -273,79 +198,53 @@
         </div>
     </section>
 
-   <section class="portals-banner">
-        <div class="container">
-            <div class="cta-box" style="background: var(--brand-slate); border-radius: 12px; padding: 80px 40px; text-align: center;">
-                <h3 style="font-family: 'Noto Serif JP', serif; color: #FFFFFF; font-size: 2.2rem; margin-bottom: 20px;">
-                    Administrative Concierge
-                </h3>
-                <p style="color: var(--brand-blush); font-size: 1.15rem; max-width: 750px; margin: 0 auto 40px auto; line-height: 1.8; opacity: 1; font-weight: 400;">
-                    Docu-Hub remains your dedicated boots on the ground for foundational proxy and administrative tasks. 
-                    Whether you need secure form processing, document coordination, or professional support, we handle the 
-                    red tape so you can stay focused.
-                </p>
-                <a href="contact.html" class="btn-blush" style="padding: 18px 60px; border-radius: 50px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: inline-block;">
-                    Get Help
-                </a>
-            </div>
-        </div>
-    </section>
-    <section class="booking-section" style="background: #FFFFFF; padding: 100px 0; border-top: 1px solid #E2E8F0;">
-    <div class="container" style="text-align: center;">
-        <span style="display: block; font-size: 0.85rem; color: var(--brand-steel); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; margin-bottom: 20px;">Dedicated Time</span>
-        <h2 style="font-family: 'Noto Serif JP', serif; font-size: 2.5rem; color: var(--brand-slate); margin-bottom: 20px;">Schedule a Consultation</h2>
-        <p style="max-width: 600px; margin: 0 auto 40px; color: var(--text-muted); font-size: 1.1rem;">
-            Need to discuss a complex memorial project or a full brand stationery suite? Book a 15-minute discovery call to align on your vision.
-        </p>
-        
-        <div class="booking-card" style="background: var(--bg-wrapper); padding: 40px; border-radius: 12px; max-width: 500px; margin: 0 auto; border: 1px solid #E2E8F0; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-            <i class="fa-regular fa-calendar-check" style="font-size: 2.5rem; color: var(--brand-steel); margin-bottom: 20px;"></i>
-            <h3 style="font-family: 'Inter', sans-serif; font-size: 1.2rem; margin-bottom: 10px;">Discovery Call</h3>
-            <p style="font-size: 0.95rem; margin-bottom: 25px;">15 Minutes • Video or Phone</p>
-            
-            <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" target="_blank" class="submit-btn" style="display: inline-block; text-decoration: none; padding: 15px 40px;">Check Availability</a>
-        </div>
-    </div>
-</section>
+    <a href="#" id="back-to-top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </a>
 
-    <footer class="main-footer">
+    <footer class="main-footer" style="background: var(--studio-black); color: #94A3B8; padding: 100px 0 40px;">
         <div class="container">
-            <div class="footer-grid">
+            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 60px;">
                 <div class="footer-brand">
-                    <h2>Docu-Hub.</h2>
-                   <p class="footer-tagline">Operations Services<br>Linstead, St. Catherine.</p>
+                    <h2 style="color: white; font-size: 2rem;">Docu-Hub.</h2>
+                    <p style="color: #E2E8F0; opacity: 0.8; margin-top: 15px;">Operations Services<br>Linstead, St. Catherine.</p>
                 </div>
                 <div>
-                    <h4 style="color: white; font-family: 'Inter', sans-serif; font-size: 1rem; margin-bottom: 15px;">Studios</h4>
-                    <a href="memorial-design.html" class="footer-link">Memorial Tributes</a>
-                    <a href="stationery.html" class="footer-link">Custom Stationery</a>
-                    <a href="documents.html" class="footer-link">Proxy Services</a>
+                    <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">The Pillars</h4>
+                    <a href="memorial-design.html" style="display: block; color: #94A3B8; margin-bottom: 12px; font-weight: 600;">Memorials</a>
+                    <a href="stationery.html" style="display: block; color: #94A3B8; margin-bottom: 12px; font-weight: 600;">Stationery</a>
+                    <a href="documents.html" style="display: block; color: #94A3B8; font-weight: 600;">Concierge Desk</a>
                 </div>
                 <div>
-                    <h4 style="color: white; font-family: 'Inter', sans-serif; font-size: 1rem; margin-bottom: 15px;">Legal</h4>
-                    <a href="terms.html" class="footer-link">Terms of Service</a>
-                    <a href="privacy.html" class="footer-link">Privacy Policy</a>
-                    <a href="contact.html" class="footer-link">Contact Us</a>
+                    <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Contact</h4>
+                    <a href="contact.html" style="display: block; color: #94A3B8; margin-bottom: 12px; font-weight: 600;">Get Started</a>
+                    <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" style="display: block; color: #94A3B8; font-weight: 600;">Book Consultation</a>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px; text-align: center; font-size: 0.85rem; letter-spacing: 1px;">
                 &copy; 2026 Docu-Hub Operations Services. All Rights Reserved. Take care. 🤍
             </div>
         </div>
     </footer>
 
+    <script>
+        // MOBILE MENU
+        const menuBtn = document.getElementById('menu-btn');
+        const navList = document.getElementById('nav-list');
+        menuBtn.addEventListener('click', () => {
+            navList.classList.toggle('active');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars-staggered');
+            icon.classList.toggle('fa-xmark');
+        });
+
+        // BACK TO TOP
+        const btt = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 500) { btt.classList.add('visible'); }
+            else { btt.classList.remove('visible'); }
+        });
+    </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
