@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concierge Desk | Eligibility & Proxy | Docu-Hub</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --text-main: #0F172A;      
+            --bg-body: #94A3B8;        /* Grey-Blue Body */
+            --bg-wrapper: #F1F5F9;     /* Light Grey Wrapper */
+            --bg-card: #FFFFFF;        
+            --brand-slate: #1E293B;    
+            --brand-steel: #0284C7;    
+            --text-muted: #475569;     
+            --header-height: 80px;
+            --section-gap: 120px;      /* Increased Spacing */
+            --shadow-strong: 0 25px 50px rgba(15, 23, 42, 0.15);
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
+        body { 
+            margin: 0; font-family: 'Inter', sans-serif; 
+            background: var(--bg-body); color: var(--text-main); 
+            line-height: 1.6; padding-top: var(--header-height); 
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 { margin: 0; font-family: 'Playfair Display', serif; font-weight: 700; }
+        p { font-size: 1.05rem; color: var(--text-muted); }
+        
+        .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 25px; }
+
+        /* --- HEADER --- */
+        .app-header {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 2000;
+            background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px);
+            border-bottom: 1px solid #E2E8F0; height: var(--header-height);
+            display: flex; align-items: center;
+        }
+        .header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 1.2rem; font-weight: 800; text-transform: uppercase; color: var(--text-main); text-decoration: none;}
+        .logo span { color: var(--brand-steel); }
+        .menu-toggle { font-size: 1.5rem; cursor: pointer; color: var(--brand-slate); }
+
+        /* --- NAVIGATION --- */
+        .nav-links {
+            position: fixed; top: var(--header-height); right: -100%; width: 100%; height: calc(100vh - var(--header-height));
+            background: white; flex-direction: column; padding: 40px; gap: 30px; transition: 0.4s ease; display: flex;
+        }
+        .nav-links.active { right: 0; }
+        .nav-links a { font-size: 1.2rem; font-weight: 700; color: var(--brand-slate); text-transform: uppercase; text-decoration: none; }
+
+        /* --- HERO --- */
+        .admin-hero { 
+            background: linear-gradient(rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95)), url('assets/portal.png') center/cover;
+            padding: 80px 0 140px; text-align: center; color: white;
+        }
+        .admin-hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 20px; }
+        .admin-hero p { font-size: 1.2rem; color: #E2E8F0; max-width: 650px; margin: 0 auto; font-style: italic; }
+
+        /* --- CONTENT WRAPPER & SPACING --- */
+        .content-wrapper {
+            background: var(--bg-wrapper); border-radius: 12px;
+            margin: -80px auto 80px; padding: 60px 20px;
+            box-shadow: var(--shadow-strong);
+        }
+
+        .section-container { margin-bottom: var(--section-gap); } /* Vertical breathing room */
+
+        .section-header { 
+            border-bottom: 2px solid var(--brand-steel); padding-bottom: 15px; 
+            margin-bottom: 40px; display: flex; align-items: center; gap: 15px;
+        }
+        .section-header h2 { font-size: 1.8rem; color: var(--brand-slate); }
+
+        /* --- CARDS & GRID --- */
+        .card-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+        
+        .service-card {
+            background: var(--bg-card); padding: 40px; border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); display: flex; flex-direction: column;
+            border-top: 4px solid var(--brand-steel);
+        }
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; font-style: italic; color: var(--brand-slate); }
+        .card-note { font-size: 0.85rem; color: var(--brand-steel); font-weight: 700; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- SMART CHECKLIST --- */
+        .checklist { list-style: none; padding: 0; margin: 0 0 30px 0; flex-grow: 1; }
+        .checklist li { display: flex; align-items: flex-start; font-size: 1rem; color: var(--text-main); margin-bottom: 15px; font-weight: 500; }
+        .checklist input {
+            width: 24px; height: 24px; accent-color: var(--brand-steel); margin-right: 15px; flex-shrink: 0; cursor: pointer;
+        }
+        .or-divider { padding: 10px 0 10px 40px; font-size: 0.8rem; font-weight: 800; color: var(--text-muted); position: relative; }
+        .or-divider::before { content: ""; position: absolute; left: 0; top: 50%; width: 30px; height: 1px; background: #CBD5E1; }
+
+        .cta-btn {
+            width: 100%; padding: 18px; border: none; border-radius: 4px;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+            background: #CBD5E1; color: #FFFFFF; cursor: not-allowed; transition: 0.3s;
+        }
+        .cta-btn.active { background: var(--brand-steel); cursor: pointer; box-shadow: 0 10px 20px rgba(2, 132, 199, 0.2); }
+
+        /* --- FOOTER --- */
+        footer { background: var(--brand-slate); color: #94A3B8; padding: 60px 0; text-align: center; }
+
+        /* --- TABLET/DESKTOP --- */
+        @media (min-width: 768px) {
+            .nav-links { position: static; height: auto; width: auto; background: none; flex-direction: row; padding: 0; }
+            .nav-links a { font-size: 0.85rem; color: var(--text-muted); }
+            .menu-toggle { display: none; }
+            .card-grid { grid-template-columns: repeat(2, 1fr); }
+            .full-width { grid-column: span 2; }
+            .content-wrapper { padding: 80px 60px; margin-top: -120px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">Docu-Hub<span>.</span></a>
+            <div class="menu-toggle" id="menu-btn"><i class="fa-solid fa-bars-staggered"></i></div>
+            <nav class="nav-links" id="nav-list">
+                <a href="memorial-design.html">Memorials</a>
+                <a href="stationery.html">Stationery</a>
+                <a href="documents.html" style="color: var(--brand-steel);">Concierge Desk</a>
+                <a href="contact.html" class="nav-btn" style="background:var(--brand-slate); color:white!important; padding: 10px 20px; border-radius:4px;">Request Help</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="admin-hero">
+        <div class="container">
+            <span class="brand-kicker" style="color:#7DD3FC; margin-bottom:15px; display:block;">Secure Operations</span>
+            <h1>The Concierge Desk.</h1>
+            <p>"Tan a yuh yard" while we handle the red tape. Use our checklists below to see if your request is ready for the desk.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="content-wrapper">
+
+            <div class="section-container">
+                <div class="section-header">
+                    <i class="fa-solid fa-passport" style="color:var(--brand-steel)"></i>
+                    <h2>1. Travel Documents (PICA)</h2>
+                </div>
+                <div class="card-grid">
+                    <div class="service-card">
+                        <div class="card-note">Online Renewal Requirements</div>
+                        <h3>PICA Online Eligibility</h3>
+                        <ul class="checklist">
+                            <li><input type="checkbox" class="step"> Passport issued after age 18</li>
+                            <li><input type="checkbox" class="step"> No name change since last issue</li>
+                            <li><input type="checkbox" class="step"> Passport is not damaged/lost</li>
+                        </ul>
+                        <button class="cta-btn" disabled onclick="openForm('Online Passport Renewal')">Start Digital Filing</button>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="card-note">First-Time / Minor / Stolen</div>
+                        <h3>Paper-Based Filing</h3>
+                        <ul class="checklist">
+                            <li><input type="checkbox" class="step"> I have Original Birth Certificate</li>
+                            <li><input type="checkbox" class="step"> I have Valid Photo ID</li>
+                        </ul>
+                        <button class="cta-btn" disabled onclick="openForm('Manual Passport Filing')">Request Manual Filing</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-container">
+                <div class="section-header">
+                    <i class="fa-solid fa-file-invoice" style="color:var(--brand-steel)"></i>
+                    <h2>2. Vital Records (RGD)</h2>
+                </div>
+                <div class="card-grid">
+                    <div class="service-card full-width">
+                        <div class="card-note">Flexible Entry Logic</div>
+                        <h3>Certificate Requests (Birth/Marriage/Death)</h3>
+                        <p style="margin-bottom:20px;">We only need <strong>one</strong> of the identifying markers below to locate your record.</p>
+                        <ul class="checklist">
+                            <li><input type="checkbox" class="step"> Full Name on the Record</li>
+                            <div class="or-divider">PLUS EITHER:</div>
+                            <li><input type="checkbox" class="step"> <strong>I have the Entry Number</strong></li>
+                            <div class="or-divider">OR</div>
+                            <li><input type="checkbox" class="step"> <strong>I have the Date & Location of event</strong></li>
+                        </ul>
+                        <button class="cta-btn" id="rgd-btn" onclick="openForm('RGD Request')">Request Certificate</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-container" style="margin-bottom: 0;">
+                <div class="section-header">
+                    <i class="fa-solid fa-car-side" style="color:var(--brand-steel)"></i>
+                    <h2>3. Tax & License (TAJ)</h2>
+                </div>
+                <div class="card-grid">
+                    <div class="service-card">
+                        <h3>License Renewal</h3>
+                        <ul class="checklist">
+                            <li><input type="checkbox" class="step"> Current License Number ready</li>
+                            <li><input type="checkbox" class="step"> TRN available</li>
+                        </ul>
+                        <button class="cta-btn" disabled onclick="openForm('License Renewal')">Renew License</button>
+                    </div>
+
+                    <div class="service-card">
+                        <h3>Traffic Tickets</h3>
+                        <ul class="checklist">
+                            <li><input type="checkbox" class="step"> Current License Number ready</li>
+                        </ul>
+                        <button class="cta-btn" disabled onclick="openForm('Ticket Payment')">Clear Tickets</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+   <footer class="main-footer" style="background: var(--brand-slate); color: #94A3B8; padding: 80px 0 40px; margin-top: var(--section-gap);">
+    <div class="container">
+        
+        <div style="margin-bottom: 60px; border-left: 3px solid var(--brand-steel); padding-left: 20px;">
+            <p style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-weight: 800; color: var(--brand-steel); margin-bottom: 5px;">Currently Viewing</p>
+            <h3 style="color: white; font-family: 'Playfair Display', serif; font-size: 1.8rem;">
+                Concierge & Eligibility Desk </h3>
+        </div>
+
+        <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 60px; text-align: left;">
+            
+            <div class="footer-brand">
+                <h2 style="color: white; font-size: 1.6rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Docu-Hub<span>.</span></h2>
+                <p style="color: #E2E8F0; opacity: 0.8; font-size: 0.95rem; line-height: 1.6;">
+                    Operations Services<br>
+                    Linstead, St. Catherine<br>
+                    Jamaica, W.I.
+                </p>
+            </div>
+
+            <div>
+                <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Design Studios</h4>
+                <a href="memorial-design.html" class="footer-link-style">Memorial Tributes</a>
+                <a href="stationery.html" class="footer-link-style">Premium Stationery</a>
+                <a href="index.html" class="footer-link-style">Showcase Home</a>
+            </div>
+
+            <div>
+                <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Operations</h4>
+                <a href="documents.html" class="footer-link-style">Concierge Desk</a>
+                <a href="documents.html#eligibility" class="footer-link-style">Eligibility Checks</a>
+                <a href="contact.html" class="footer-link-style">Request Proxy</a>
+            </div>
+
+            <div>
+                <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Connect</h4>
+                <a href="contact.html" class="footer-link-style">Contact Desk</a>
+                <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" target="_blank" class="footer-link-style">Book 15-Mins</a>
+                <a href="privacy.html" class="footer-link-style">Privacy Policy</a>
+            </div>
+        </div>
+
+        <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px; text-align: center;">
+            <p style="font-size: 0.85rem; letter-spacing: 1px; color: #64748B;">
+                &copy; 2026 Docu-Hub Operations Services. All Rights Reserved. 
+                <span style="display: block; margin-top: 10px; color: #94A3B8;">Take care. 🤍</span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<style>
+    /* Styling for footer links to ensure high contrast and hover elegance */
+    .footer-link-style {
+        display: block;
+        color: #94A3B8;
+        margin-bottom: 12px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: 0.3s ease;
+    }
+    .footer-link-style:hover {
+        color: var(--brand-steel);
+        transform: translateX(5px);
+    }
+</style>
+
+    <script>
+        // MOBILE MENU
+        const btn = document.getElementById('menu-btn');
+        const list = document.getElementById('nav-list');
+        btn.onclick = () => {
+            list.classList.toggle('active');
+            btn.querySelector('i').classList.toggle('fa-bars-staggered');
+            btn.querySelector('i').classList.toggle('fa-xmark');
+        };
+
+        // STANDARD SMART CHECKBOX LOGIC
+        document.querySelectorAll('.service-card').forEach(card => {
+            const checks = card.querySelectorAll('.step');
+            const cta = card.querySelector('.cta-btn');
+            if(card.id !== 'rgd-card'){ // Skip RGD for custom logic
+                checks.forEach(c => c.onchange = () => {
+                    const allSet = Array.from(checks).every(i => i.checked);
+                    cta.classList.toggle('active', allSet);
+                    cta.disabled = !allSet;
+                });
+            }
+        });
+
+        // RGD CUSTOM LOGIC (Special handling for OR logic)
+        const rgdChecks = document.querySelectorAll('.service-card.full-width .step');
+        const rgdBtn = document.getElementById('rgd-btn');
+        rgdChecks.forEach(c => c.onchange = () => {
+            const nameCheck = rgdChecks[0].checked;
+            const entryCheck = rgdChecks[1].checked;
+            const dateCheck = rgdChecks[2].checked;
+            
+            if (nameCheck && (entryCheck || dateCheck)) {
+                rgdBtn.classList.add('active');
+                rgdBtn.disabled = false;
+            } else {
+                rgdBtn.classList.remove('active');
+                rgdBtn.disabled = true;
+            }
+        });
+
+        function openForm(s) { alert("Opening request for: " + s); }
+    </script>
+</body>
+</html>
