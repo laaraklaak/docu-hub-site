@@ -80,12 +80,10 @@
         .service-overlay { position: absolute; inset: 0; z-index: 2; transition: 0.4s ease; }
         .service-content { position: relative; z-index: 3; padding: 50px; width: 100%; transform: translateY(10px); transition: transform 0.4s ease; }
 
-        /* Typography on Cards */
         .service-content h3 { font-size: 2.6rem; margin-bottom: 15px; font-style: italic; line-height: 1; letter-spacing: -0.5px; }
         .service-content p { font-size: 1.1rem; margin-bottom: 30px; opacity: 1; color: #F8FAFC; font-weight: 500; line-height: 1.6; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
         .explore-link { font-weight: 800; text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem; padding-bottom: 8px; display: inline-block; }
 
-        /* --- THEME OVERLAYS (Deepened for Text Protection) --- */
         .theme-memorial .service-overlay { background: linear-gradient(to top, rgba(5, 10, 25, 1) 0%, rgba(10, 17, 40, 0.6) 40%, transparent 100%); }
         .theme-memorial h3 { color: var(--mem-accent); }
         .theme-memorial .explore-link { color: var(--studio-white); border-bottom: 3px solid var(--mem-accent); }
@@ -101,7 +99,6 @@
         .service-card:hover .service-img { transform: scale(1.08); }
         .service-card:hover .service-content { transform: translateY(0); }
 
-        /* --- UI ELEMENTS --- */
         #back-to-top {
             position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
             background: var(--studio-black); color: white; border-radius: 50%;
@@ -111,7 +108,6 @@
         }
         #back-to-top.visible { opacity: 1; visibility: visible; }
 
-        /* --- MOBILE REFINEMENTS --- */
         @media (max-width: 850px) {
             .container { padding: 0 30px; }
             .menu-toggle { display: block; }
@@ -140,7 +136,7 @@
             </div>
 
             <nav class="nav-links" id="nav-list">
-                <a href="Commemorative.html">Stationery</a>
+                <a href="Commemorative.html">The Studio</a>
                 <a href="concierge.html">Concierge Desk</a>
                 <a href="contact.html" class="nav-btn">Start a Project</a>
             </nav>
@@ -163,7 +159,7 @@
 
             <div class="trio-grid">
                 
-                <a href="Commemorative.html" class="service-card theme-memorial">
+                <a href="Commemorative.html?mode=memorial" class="service-card theme-memorial">
                     <img src="assets/memorial.png" class="service-img" alt="Memorial Tributes">
                     <div class="service-overlay"></div>
                     <div class="service-content">
@@ -173,7 +169,7 @@
                     </div>
                 </a>
 
-                <a href="Commemorative.html" class="service-card theme-stationery">
+                <a href="Commemorative.html?mode=milestone" class="service-card theme-stationery">
                     <img src="assets/stationery.png" class="service-img" alt="Custom Stationery">
                     <div class="service-overlay"></div>
                     <div class="service-content">
@@ -210,8 +206,8 @@
                 </div>
                 <div>
                     <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">The Pillars</h4>
-                    <a href="Commemorative.html" style="display: block; color: #94A3B8; margin-bottom: 12px; font-weight: 600;">Memorials</a>
-                    <a href="Commemorative.html" style="display: block; color: #94A3B8; margin-bottom: 12px; font-weight: 600;">Stationery</a>
+                    <a href="Commemorative.html?mode=memorial" style="display: block; color: #94A3B8; margin-bottom: 12px; font-weight: 600;">Memorials</a>
+                    <a href="Commemorative.html?mode=milestone" style="display: block; color: #94A3B8; margin-bottom: 12px; font-weight: 600;">Stationery</a>
                     <a href="concierge.html" style="display: block; color: #94A3B8; font-weight: 600;">Concierge Desk</a>
                 </div>
                 <div>
@@ -227,7 +223,6 @@
     </footer>
 
    <script>
-        // SMART MOBILE MENU
         const menuBtn = document.getElementById('menu-btn');
         const navList = document.getElementById('nav-list');
         const navLinks = navList.querySelectorAll('a');
@@ -241,7 +236,6 @@
 
         menuBtn.addEventListener('click', toggleMenu);
 
-        // Close menu automatically when a link is clicked
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 if(navList.classList.contains('active')) {
@@ -250,27 +244,17 @@
             });
         });
 
-        // SMOOTH BACK TO TOP
         const btt = document.getElementById('back-to-top');
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 500) { btt.classList.add('visible'); }
+            if (window.scrollY > 500) { btt.classList.add('visible'); }
             else { btt.classList.remove('visible'); }
         });
 
         btt.addEventListener('click', (e) => {
-            e.preventDefault(); // Stops the default jump
-            window.scrollTo({ top: 0, behavior: 'smooth' }); // Forces a smooth glide
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
