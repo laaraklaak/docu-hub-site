@@ -226,27 +226,46 @@
         </div>
     </footer>
 
-    <script>
-        // MOBILE MENU
+   <script>
+        // SMART MOBILE MENU
         const menuBtn = document.getElementById('menu-btn');
         const navList = document.getElementById('nav-list');
-        menuBtn.addEventListener('click', () => {
+        const navLinks = navList.querySelectorAll('a');
+
+        function toggleMenu() {
             navList.classList.toggle('active');
             const icon = menuBtn.querySelector('i');
             icon.classList.toggle('fa-bars-staggered');
             icon.classList.toggle('fa-xmark');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+
+        // Close menu automatically when a link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if(navList.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
         });
 
-        // BACK TO TOP
+        // SMOOTH BACK TO TOP
         const btt = document.getElementById('back-to-top');
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 500) { btt.classList.add('visible'); }
             else { btt.classList.remove('visible'); }
         });
+
+        btt.addEventListener('click', (e) => {
+            e.preventDefault(); // Stops the default jump
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Forces a smooth glide
+        });
     </script>
 
 </body>
 </html>
+
 
 
 
