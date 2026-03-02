@@ -19,7 +19,7 @@
             --bg-body: #EAE6DF;        /* Stone Grey */
             --bg-wrapper: #FDF8F7;     /* Soft Blush tint */
             --header-height: 80px;
-            --section-gap: 140px;      
+            --section-gap: 120px;      
         }
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -50,43 +50,73 @@
             background: var(--anchor-dark); flex-direction: column; padding: 40px; gap: 30px; transition: 0.4s ease; display: flex;
         }
         .nav-links.active { right: 0; }
-        .nav-links a { font-size: 1.2rem; font-weight: 700; color: #CBD5E1; text-transform: uppercase; text-decoration: none; }
+        .nav-links a { font-size: 1.2rem; font-weight: 700; color: #CBD5E1; text-transform: uppercase; text-decoration: none; cursor: pointer; }
 
         /* --- HERO --- */
         .commemorative-hero { 
-            background: linear-gradient(rgba(10, 17, 40, 0.8), rgba(10, 17, 40, 0.95)), 
+            background: linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.98)), 
                         url('assets/studio-bg.png') center/cover;
-            padding: 80px 0 140px; text-align: center; color: white;
+            padding: 100px 0 160px; text-align: center; color: white;
             border-bottom: 4px solid var(--brand-gold);
         }
         .brand-kicker { display: block; color: var(--brand-gold); letter-spacing: 4px; font-weight: 800; font-size: 0.8rem; margin-bottom: 15px; text-transform: uppercase; }
         .commemorative-hero h1 { font-size: clamp(2.2rem, 8vw, 3.8rem); margin-bottom: 20px; line-height: 1.1; }
-        .commemorative-hero p { font-size: 1.1rem; color: #CBD5E1; max-width: 650px; margin: 0 auto; font-style: italic; }
+        .commemorative-hero p { font-size: 1.15rem; color: #CBD5E1; max-width: 650px; margin: 0 auto; font-style: italic; }
 
         /* --- CONTENT WRAPPER --- */
         .content-wrapper {
             background: var(--bg-wrapper); border-radius: 24px;
-            margin: -60px auto 80px; padding: 60px 20px;
+            margin: -80px auto 80px; padding: 60px 20px;
             box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
 
         .empathy-box { 
             background: white; border-left: 5px solid var(--brand-gold); 
-            padding: 35px; border-radius: 12px; margin-bottom: var(--section-gap);
+            padding: 35px; border-radius: 12px; margin-bottom: 100px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.02);
         }
-        .empathy-box p { font-size: 1.2rem; line-height: 1.8; color: var(--anchor-dark); font-family: 'Playfair Display', serif; font-style: italic; }
+        .empathy-box p { font-size: 1.25rem; line-height: 1.8; color: var(--anchor-dark); font-family: 'Playfair Display', serif; font-style: italic; }
 
-        /* --- EDITORIAL ROWS --- */
-        .editorial-row { display: grid; grid-template-columns: 1fr; gap: 40px; margin-bottom: var(--section-gap); align-items: center; }
-        .editorial-img-box img { width: 100%; height: 380px; object-fit: cover; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        /* --- NEW SPLIT ARCHIVE LAYOUT --- */
+        .archive-container { margin-bottom: 100px; }
+        .archive-label { 
+            font-size: 0.75rem; font-weight: 800; color: var(--brand-gold); 
+            text-transform: uppercase; letter-spacing: 3px; margin-bottom: 30px; 
+        }
+        .archive-split { 
+            display: grid; grid-template-columns: 1fr; gap: 50px; align-items: center; 
+        }
         
-        .editorial-text .sub-kicker { color: var(--brand-gold); font-weight: 800; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 10px; display: block; }
-        .editorial-text h3 { font-size: 2rem; margin-bottom: 20px; color: var(--anchor-dark); line-height: 1.2; }
-        .editorial-text p { font-size: 1.05rem; line-height: 1.8; color: var(--text-main); }
+        .archive-info h2 { font-size: 2.6rem; color: var(--anchor-dark); margin-bottom: 20px; }
+        .archive-info p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 25px; }
+        
+        .archive-list { list-style: none; padding: 0; margin: 0 0 35px 0; }
+        .archive-list li { margin-bottom: 12px; font-weight: 500; display: flex; align-items: center; gap: 10px; color: var(--text-main); }
+        .archive-list i { color: var(--brand-gold); font-size: 0.9rem; }
+        
+        .archive-btn {
+            background: var(--anchor-dark); color: white; border: none; padding: 16px 32px;
+            border-radius: 6px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            cursor: pointer; transition: 0.3s; font-family: 'Inter', sans-serif;
+        }
+        .archive-btn:hover { background: var(--brand-gold); transform: translateY(-2px); }
+
+        .featured-frame { 
+            position: relative; border-radius: 15px; overflow: hidden; 
+            box-shadow: 0 30px 60px rgba(10, 17, 40, 0.15); cursor: pointer;
+            aspect-ratio: 4 / 3;
+        }
+        .featured-frame img { width: 100%; height: 100%; object-fit: cover; display: block; transition: 0.6s ease; }
+        .frame-overlay {
+            position: absolute; inset: 0; background: rgba(10, 17, 40, 0.5);
+            display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.4s;
+        }
+        .frame-overlay span { color: white; font-weight: 700; border: 2px solid white; padding: 12px 24px; text-transform: uppercase; letter-spacing: 1px; }
+        .featured-frame:hover img { transform: scale(1.05); }
+        .featured-frame:hover .frame-overlay { opacity: 1; }
 
         /* --- WORKFLOW --- */
-        .workflow-title { text-align: center; font-size: 2.2rem; margin-bottom: 60px; }
+        .workflow-title { text-align: center; font-size: 2.2rem; margin: 40px 0 60px; }
         .workflow-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
         .step-card { text-align: center; background: white; padding: 40px 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
         .step-num { width: 50px; height: 50px; background: var(--brand-gold); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-weight: 800; }
@@ -94,32 +124,23 @@
         /* --- CTA --- */
         .cta-box { background: var(--anchor-dark); border-radius: 16px; padding: 60px 30px; text-align: center; color: white; margin-top: 80px; }
         .cta-box h3 { font-size: 2.2rem; color: var(--brand-gold); margin-bottom: 20px; font-style: italic; }
-        .btn-primary { 
-            display: inline-block; background: var(--brand-gold); color: white; 
-            padding: 18px 45px; border-radius: 8px; font-weight: 800; text-transform: uppercase;
-            letter-spacing: 1px; border: none; cursor: pointer; text-decoration: none;
+
+        /* --- MODAL --- */
+        #formModal {
+            display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(10, 17, 40, 0.85); backdrop-filter: blur(8px);
         }
-
-        #backToTop {
-            position: fixed; bottom: 25px; right: 25px; width: 50px; height: 50px;
-            background: var(--brand-gold); color: white; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            z-index: 3000; opacity: 0; visibility: hidden; transition: 0.4s;
+        .modal-content {
+            background-color: white; margin: 5vh auto; width: 95%; max-width: 550px; border-radius: 12px; 
+            position: relative; overflow: hidden; border-top: 4px solid var(--brand-gold);
         }
-        #backToTop.visible { opacity: 1; visibility: visible; }
+        .close-btn { position: absolute; right: 20px; top: 18px; font-size: 28px; cursor: pointer; color: var(--text-muted); z-index: 10; }
+        iframe { width: 100%; height: 550px; border: none; }
 
-        /* --- TABLET/DESKTOP --- */
-        @media (min-width: 768px) {
-            .menu-toggle { display: none; }
-            .nav-links { position: static; height: auto; width: auto; background: none; flex-direction: row; padding: 0; }
-            .nav-links a { font-size: 0.85rem; color: #94A3B8; }
-            .nav-links a:hover { color: var(--brand-gold); }
-
-            .editorial-row { grid-template-columns: 1fr 1fr; gap: 80px; }
-            .editorial-row.reverse .editorial-text { order: 1; }
-            .editorial-row.reverse .editorial-img-box { order: 2; }
-            .editorial-img-box img { height: 500px; }
-            
+        @media (min-width: 900px) {
+            .archive-split { grid-template-columns: 1.2fr 1fr; gap: 80px; }
+            .archive-split.is-reversed .archive-media { order: 2; }
+            .archive-split.is-reversed .archive-info { order: 1; }
             .workflow-grid { grid-template-columns: repeat(3, 1fr); }
             .content-wrapper { padding: 80px 100px; }
         }
@@ -133,7 +154,7 @@
             <div class="menu-toggle" id="menu-btn"><i class="fa-solid fa-bars-staggered"></i></div>
             <nav class="nav-links" id="nav-list">
                 <a href="concierge.html">Concierge Desk</a>
-                <a href="contact.html" style="background: var(--brand-gold); color: white!important; padding: 10px 20px; border-radius: 4px;">Request Help</a>
+                <a onclick="openForm('Studio Inquiry: General')" style="background: var(--brand-gold); color: white!important; padding: 10px 20px; border-radius: 4px;">Request Help</a>
             </nav>
         </div>
     </header>
@@ -142,7 +163,7 @@
         <div class="container">
             <span class="brand-kicker">Custom Tributes & Milestone Memoirs</span>
             <h1>Preserve the Moment.<br>Honor the Legacy.</h1>
-            <p>From soulful legacy tributes to artful postcards of your most significant projects and missions, we design physical keepsakes that turn events into history.</p>
+            <p>We design physical keepsakes that turn emotional milestones into enduring history—from soulful tributes to artful project memoirs.</p>
         </div>
     </section>
 
@@ -150,114 +171,136 @@
         <div class="content-wrapper">
             
             <div class="empathy-box">
-                <p>"When a moment carries weight, a digital post isn't enough. We handle the technical layout and curation to deliver high-end, physical commemoratives that stand the test of time."</p>
+                <p>"When a moment carries weight, a digital post isn't enough. We handle the technical curation to deliver high-end, physical commemoratives that stand the test of time."</p>
             </div>
 
-            <div class="editorial-row">
-                <div class="editorial-img-box">
-                    <img src="assets/memorial.png" alt="Legacy Tributes">
-                </div>
-                <div class="editorial-text">
-                    <span class="sub-kicker">Legacy Tributes</span>
-                    <h3>Memorial Service Programs</h3>
-                    <p>Meticulous formatting for the Order of Service, soulful tributes, and legacy photo galleries. We ensure every page reflects the dignity of your family’s story with premium, print-ready precision that honors a life well-lived.</p>
+            <div class="archive-container">
+                <div class="archive-label">01 — The Legacy Archive</div>
+                <div class="archive-split">
+                    <div class="archive-media">
+                        <div class="featured-frame" onclick="openForm('Memorial Program Inquiry')">
+                            <img src="assets/memorial.png" alt="Memorial Program Design">
+                            <div class="frame-overlay">
+                                <span>View Memorial Suite</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="archive-info">
+                        <h2>Memorial Service Programs</h2>
+                        <p>We provide a steady hand during difficult times, translating family history into a physical legacy. Every page reflects dignity with premium, print-ready precision.</p>
+                        <ul class="archive-list">
+                            <li><i class="fa-solid fa-check"></i> Multi-page Order of Service</li>
+                            <li><i class="fa-solid fa-check"></i> Soulful Photo Gallery Curation</li>
+                            <li><i class="fa-solid fa-check"></i> High-Resolution Print Ready Files</li>
+                        </ul>
+                        <button class="archive-btn" onclick="openForm('Memorial Inquiry')">Inquire for Memorials</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="editorial-row reverse">
-                <div class="editorial-text">
-                    <span class="sub-kicker">Event & Project Memoirs</span>
-                    <h3>Commemorative Postcards</h3>
-                    <p>Document your service projects, professional milestones, or field missions with editorial-style postcards. We turn event data and high-impact photography into curated physical reports that highlight successful outcomes and lasting impact.</p>
-                </div>
-                <div class="editorial-img-box">
-                    <img src="assets/stationery.png" alt="Project Memoirs">
-                </div>
-            </div>
+            <hr style="border: 0; border-top: 1px solid #E2E8F0; margin: 80px 0;">
 
-            <div class="editorial-row">
-                <div class="editorial-img-box">
-                    <img src="assets/thank-you.jpg" alt="Appreciation Suites">
-                </div>
-                <div class="editorial-text">
-                    <span class="sub-kicker">Personal Gratitude</span>
-                    <h3>Appreciation & 'Thank You' Suites</h3>
-                    <p>Make a lasting impression of gratitude. We create custom-branded stationery designed for heartfelt messages, ensuring your appreciation stands out as a premium physical keepsake.</p>
+            <div class="archive-container">
+                <div class="archive-label">02 — The Milestone Archive</div>
+                <div class="archive-split is-reversed">
+                    <div class="archive-media">
+                        <div class="featured-frame" onclick="openForm('Postcard/Thank-You Inquiry')">
+                            <img src="assets/thank-youy.png" alt="Commemorative Postcards & Thank You Cards">
+                            <div class="frame-overlay">
+                                <span>View Gratitude Suite</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="archive-info">
+                        <h2>Postcards & Gratitude Suites</h2>
+                        <p>Document your service projects, professional milestones, or field missions. We turn data and photography into curated physical reports and custom-branded stationery.</p>
+                        <ul class="archive-list">
+                            <li><i class="fa-solid fa-check"></i> Project Mission Postcards</li>
+                            <li><i class="fa-solid fa-check"></i> Branded 'Thank You' Stationery</li>
+                            <li><i class="fa-solid fa-check"></i> Editorial-style Event Memoirs</li>
+                        </ul>
+                        <button class="archive-btn" onclick="openForm('Milestone Inquiry')">Request Design Quote</button>
+                    </div>
                 </div>
             </div>
 
             <h2 class="workflow-title">The Design Workflow</h2>
             <div class="workflow-grid">
-                <div class="step-card"><div class="step-num">1</div><h4>Curation</h4><p>Submit your event photos, tributes, and specific project data.</p></div>
+                <div class="step-card"><div class="step-num">1</div><h4>Curation</h4><p>Submit your event photos, tributes, and project data.</p></div>
                 <div class="step-card"><div class="step-num">2</div><h4>Design</h4><p>We build your layout and send a proof for final approval.</p></div>
-                <div class="step-card"><div class="step-num">3</div><h4>Delivery</h4><p>Receive high-resolution files ready for local or professional printing.</p></div>
+                <div class="step-card"><div class="step-num">3</div><h4>Delivery</h4><p>Receive high-resolution files ready for professional printing.</p></div>
             </div>
 
             <div class="cta-box">
                 <h3>Ready to mark the moment?</h3>
-                <a href="contact.html" class="btn-primary">Request a Custom Quote <i class="fa-solid fa-arrow-right" style="margin-left:10px;"></i></a>
+                <button onclick="openForm('Commemorative Custom Quote')" class="archive-btn" style="background:var(--brand-gold)">Request a Custom Quote <i class="fa-solid fa-arrow-right" style="margin-left:10px;"></i></button>
             </div>
 
         </div>
     </div>
 
+    <div id="formModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div style="padding: 25px 30px; background: var(--bg-wrapper); border-bottom: 1px solid #E2E8F0;">
+                <h2 id="modalTitle" style="color: var(--anchor-dark); font-size: 1.4rem; margin:0;"></h2>
+            </div>
+            <iframe id="intakeIframe" src="">Loading...</iframe>
+        </div>
+    </div>
+
     <footer class="main-footer" style="background: var(--brand-slate); color: #94A3B8; padding: 80px 0 40px;">
         <div class="container">
-            <div style="margin-bottom: 60px; border-left: 3px solid var(--brand-gold); padding-left: 20px;">
-                <p style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-weight: 800; color: var(--brand-gold); margin-bottom: 5px;">Currently Viewing</p>
-                <h3 style="color: white; font-family: 'Playfair Display', serif; font-size: 1.8rem;">Commemorative Studio</h3>
-            </div>
-
-            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 60px; text-align: left;">
-                <div class="footer-brand">
+            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 60px;">
+                <div>
                     <h2 style="color: white; font-size: 1.6rem; margin-bottom: 15px; text-transform: uppercase;">Docu-Hub<span>.</span></h2>
                     <p style="color: #E2E8F0; opacity: 0.8; font-size: 0.95rem;">Operations Services<br>Linstead, St. Catherine, Jamaica.</p>
                 </div>
                 <div>
                     <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">The Studios</h4>
                     <a href="Commemorative.html" style="display:block; color:#94A3B8; margin-bottom:12px; text-decoration:none;">Commemorative Studio</a>
-                    <a href="Commemorative.html" style="display:block; color:#94A3B8; margin-bottom:12px; text-decoration:none;">Premium Stationery</a>
                     <a href="index.html" style="display:block; color:#94A3B8; text-decoration:none;">Showcase Home</a>
                 </div>
                 <div>
                     <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Operations</h4>
                     <a href="concierge.html" style="display:block; color:#94A3B8; margin-bottom:12px; text-decoration:none;">Concierge Desk</a>
-                    <a href="concierge.html#eligibility" style="display:block; color:#94A3B8; margin-bottom:12px; text-decoration:none;">Eligibility Checks</a>
-                    <a href="contact.html" style="display:block; color:#94A3B8; text-decoration:none;">Request Proxy</a>
-                </div>
-                <div>
-                    <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Connect</h4>
-                    <a href="contact.html" style="display:block; color:#94A3B8; margin-bottom:12px; text-decoration:none;">Contact Desk</a>
-                    <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" style="display:block; color:#94A3B8; text-decoration:none;">Book 15-Mins</a>
+                    <a onclick="openForm('Contact Desk')" style="display:block; color:#94A3B8; text-decoration:none; cursor: pointer;">Contact Desk</a>
                 </div>
             </div>
             <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px; text-align: center; font-size: 0.85rem;">
-                &copy; 2026 Docu-Hub Operations Services. All Rights Reserved. Take care. 🤍
+                &copy; 2026 Docu-Hub Operations Services. 🤍
             </div>
         </div>
     </footer>
 
-    <a href="#" id="backToTop"><i class="fa-solid fa-chevron-up"></i></a>
-
     <script>
+        // Menu Toggle
         const btn = document.getElementById('menu-btn');
         const list = document.getElementById('nav-list');
         btn.onclick = () => {
             list.classList.toggle('active');
-            btn.querySelector('i').classList.toggle('fa-bars-staggered');
-            btn.querySelector('i').classList.toggle('fa-xmark');
         };
 
-        const btt = document.getElementById('backToTop');
-        window.onscroll = () => {
-            if (window.pageYOffset > 400) btt.classList.add('visible');
-            else btt.classList.remove('visible');
-        };
+        // Modal Logic
+        const modal = document.getElementById("formModal");
+        const iframe = document.getElementById("intakeIframe");
+        const modalTitle = document.getElementById("modalTitle");
+
+        function openForm(service) {
+            const scriptUrl = "https://YOUR_DEPLOYED_SCRIPT_URL_HERE"; 
+            modalTitle.innerText = "Request: " + service;
+            iframe.src = scriptUrl + "?service=" + encodeURIComponent(service);
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+            iframe.src = "";
+            document.body.style.overflow = "auto";
+        }
+
+        window.onclick = (e) => { if (e.target == modal) closeModal(); }
     </script>
 </body>
-
 </html>
-
-
-
-
