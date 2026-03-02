@@ -322,15 +322,27 @@
     }
 
     // 4. GALLERY & ZOOM LOGIC
+// 4. GALLERY & ZOOM LOGIC
     const galleries = {
-        memorial: ["assets/memorial.png", "assets/program.png", "assets/memorial-3.png"],
-        milestone: ["assets/thank-you.jpg", "assets/memoir-card.jpg"]
+        // ADD YOUR PHOTOS HERE
+        memorial: [
+            "assets/memorial.png", 
+            "assets/program.png", 
+            "assets/memorial-3.png",
+            "assets/your-new-photo.png" // <--- I ADDED THIS. Change to your actual file name!
+        ],
+        milestone: [
+            "assets/thank-you.jpg", 
+            "assets/memoir-card.jpg"
+        ]
     };
+
     let currentGallery = [];
     let currentIndex = 0;
 
     function openGallery(type) {
-        currentGallery = galleries[type];
+        // This function connects the HTML click to the list above
+        currentGallery = galleries[type]; 
         currentIndex = 0;
         updateGallery();
         document.getElementById("galleryModal").style.display = "flex";
@@ -350,14 +362,20 @@
     function changeImg(step) {
         document.getElementById("galleryImg").classList.remove("is-zoomed");
         currentIndex += step;
+        
+        // This logic makes the arrows loop back to the start
         if (currentIndex >= currentGallery.length) currentIndex = 0;
         if (currentIndex < 0) currentIndex = currentGallery.length - 1;
+        
         updateGallery();
     }
 
     function updateGallery() {
-        document.getElementById("galleryImg").src = currentGallery[currentIndex];
-        document.getElementById("galleryCounter").innerText = `${currentIndex + 1} / ${currentGallery.length}`;
+        const imgElement = document.getElementById("galleryImg");
+        const counterElement = document.getElementById("galleryCounter");
+        
+        imgElement.src = currentGallery[currentIndex];
+        counterElement.innerText = (currentIndex + 1) + " / " + currentGallery.length;
     }
 
     window.onclick = (e) => {
@@ -367,5 +385,6 @@
     </script>
 </body>
 </html>
+
 
 
