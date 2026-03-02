@@ -71,7 +71,7 @@
             box-shadow: var(--shadow-strong);
         }
 
-        .section-container { margin-bottom: var(--section-gap); } /* Vertical breathing room */
+        .section-container { margin-bottom: var(--section-gap); } 
 
         .section-header { 
             border-bottom: 2px solid var(--brand-steel); padding-bottom: 15px; 
@@ -106,6 +106,27 @@
         }
         .cta-btn.active { background: var(--brand-steel); cursor: pointer; box-shadow: 0 10px 20px rgba(2, 132, 199, 0.2); }
 
+        /* --- SMART MODAL UI --- */
+        #formModal {
+            display: none; position: fixed; z-index: 9999;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(15, 23, 42, 0.85); /* Deep slate overlay */
+            backdrop-filter: blur(8px);
+        }
+        .modal-content {
+            background-color: var(--bg-card);
+            margin: 5% auto; padding: 0;
+            width: 95%; max-width: 550px;
+            border-radius: 12px; position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-strong);
+            border-top: 4px solid var(--brand-steel);
+        }
+        .modal-header { padding: 25px 30px; background: var(--bg-wrapper); border-bottom: 1px solid #E2E8F0; }
+        .close-btn { position: absolute; right: 20px; top: 18px; font-size: 28px; cursor: pointer; color: var(--text-muted); transition: 0.3s; }
+        .close-btn:hover { color: var(--brand-slate); }
+        iframe { width: 100%; height: 600px; border: none; display: block; }
+
         /* --- FOOTER --- */
         footer { background: var(--brand-slate); color: #94A3B8; padding: 60px 0; text-align: center; }
 
@@ -118,6 +139,13 @@
             .full-width { grid-column: span 2; }
             .content-wrapper { padding: 80px 60px; margin-top: -120px; }
         }
+
+        /* Styling for footer links */
+        .footer-link-style {
+            display: block; color: #94A3B8; margin-bottom: 12px;
+            font-size: 0.95rem; font-weight: 500; text-decoration: none; transition: 0.3s ease;
+        }
+        .footer-link-style:hover { color: var(--brand-steel); transform: translateX(5px); }
     </style>
 </head>
 <body>
@@ -179,7 +207,7 @@
                     <h2>2. Vital Records (RGD)</h2>
                 </div>
                 <div class="card-grid">
-                    <div class="service-card full-width">
+                    <div class="service-card full-width" id="rgd-card">
                         <div class="card-note">Flexible Entry Logic</div>
                         <h3>Certificate Requests (Birth/Marriage/Death)</h3>
                         <p style="margin-bottom:20px;">We only need <strong>one</strong> of the identifying markers below to locate your record.</p>
@@ -190,7 +218,7 @@
                             <div class="or-divider">OR</div>
                             <li><input type="checkbox" class="step"> <strong>I have the Date & Location of event</strong></li>
                         </ul>
-                        <button class="cta-btn" id="rgd-btn" onclick="openForm('RGD Request')">Request Certificate</button>
+                        <button class="cta-btn" disabled id="rgd-btn" onclick="openForm('RGD Request')">Request Certificate</button>
                     </div>
                 </div>
             </div>
@@ -223,73 +251,63 @@
         </div>
     </div>
 
-   <footer class="main-footer" style="background: var(--brand-slate); color: #94A3B8; padding: 80px 0 40px; margin-top: var(--section-gap);">
-    <div class="container">
-        
-        <div style="margin-bottom: 60px; border-left: 3px solid var(--brand-steel); padding-left: 20px;">
-            <p style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-weight: 800; color: var(--brand-steel); margin-bottom: 5px;">Currently Viewing</p>
-            <h3 style="color: white; font-family: 'Playfair Display', serif; font-size: 1.8rem;">
-                Concierge & Eligibility Desk </h3>
-        </div>
-
-        <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 60px; text-align: left;">
-            
-            <div class="footer-brand">
-                <h2 style="color: white; font-size: 1.6rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Docu-Hub<span>.</span></h2>
-                <p style="color: #E2E8F0; opacity: 0.8; font-size: 0.95rem; line-height: 1.6;">
-                    Operations Services<br>
-                    Linstead, St. Catherine<br>
-                    Jamaica, W.I.
-                </p>
+    <div id="formModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalTitle" style="color: var(--brand-slate); font-size: 1.5rem; margin:0;"></h2>
             </div>
-
-            <div>
-                <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Design Studios</h4>
-                <a href="Commemorative" class="footer-link-style">Memorial Tributes</a>
-                <a href="Commemorative.html" class="footer-link-style">Premium Stationery</a>
-                <a href="index.html" class="footer-link-style">Showcase Home</a>
-            </div>
-
-            <div>
-                <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Operations</h4>
-                <a href="documents.html" class="footer-link-style">Concierge Desk</a>
-                <a href="documents.html#eligibility" class="footer-link-style">Eligibility Checks</a>
-                <a href="contact.html" class="footer-link-style">Request Proxy</a>
-            </div>
-
-            <div>
-                <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Connect</h4>
-                <a href="contact.html" class="footer-link-style">Contact Desk</a>
-                <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" target="_blank" class="footer-link-style">Book 15-Mins</a>
-                <a href="privacy.html" class="footer-link-style">Privacy Policy</a>
-            </div>
-        </div>
-
-        <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px; text-align: center;">
-            <p style="font-size: 0.85rem; letter-spacing: 1px; color: #64748B;">
-                &copy; 2026 Docu-Hub Operations Services. All Rights Reserved. 
-                <span style="display: block; margin-top: 10px; color: #94A3B8;">Take care. 🤍</span>
-            </p>
+            <iframe id="intakeIframe" src="">Loading...</iframe>
         </div>
     </div>
-</footer>
 
-<style>
-    /* Styling for footer links to ensure high contrast and hover elegance */
-    .footer-link-style {
-        display: block;
-        color: #94A3B8;
-        margin-bottom: 12px;
-        font-size: 0.95rem;
-        font-weight: 500;
-        text-decoration: none;
-        transition: 0.3s ease;
-    }
-    .footer-link-style:hover {
-        color: var(--brand-steel);
-        transform: translateX(5px);
-    }
-</style>
+    <footer class="main-footer" style="background: var(--brand-slate); color: #94A3B8; padding: 80px 0 40px; margin-top: var(--section-gap);">
+        <div class="container">
+            <div style="margin-bottom: 60px; border-left: 3px solid var(--brand-steel); padding-left: 20px;">
+                <p style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-weight: 800; color: var(--brand-steel); margin-bottom: 5px;">Currently Viewing</p>
+                <h3 style="color: white; font-family: 'Playfair Display', serif; font-size: 1.8rem;">Concierge & Eligibility Desk</h3>
+            </div>
+
+            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 60px; text-align: left;">
+                <div class="footer-brand">
+                    <h2 style="color: white; font-size: 1.6rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Docu-Hub<span>.</span></h2>
+                    <p style="color: #E2E8F0; opacity: 0.8; font-size: 0.95rem; line-height: 1.6;">
+                        Operations Services<br>
+                        Linstead, St. Catherine<br>
+                        Jamaica, W.I.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Design Studios</h4>
+                    <a href="Commemorative.html" class="footer-link-style">Memorial Tributes</a>
+                    <a href="Commemorative.html" class="footer-link-style">Premium Stationery</a>
+                    <a href="index.html" class="footer-link-style">Showcase Home</a>
+                </div>
+
+                <div>
+                    <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Operations</h4>
+                    <a href="concierge.html" class="footer-link-style">Concierge Desk</a>
+                    <a href="concierge.html#eligibility" class="footer-link-style">Eligibility Checks</a>
+                    <a href="contact.html" class="footer-link-style">Request Proxy</a>
+                </div>
+
+                <div>
+                    <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Connect</h4>
+                    <a href="contact.html" class="footer-link-style">Contact Desk</a>
+                    <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" target="_blank" class="footer-link-style">Book 15-Mins</a>
+                    <a href="privacy.html" class="footer-link-style">Privacy Policy</a>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px; text-align: center;">
+                <p style="font-size: 0.85rem; letter-spacing: 1px; color: #64748B;">
+                    &copy; 2026 Docu-Hub Operations Services. All Rights Reserved. 
+                    <span style="display: block; margin-top: 10px; color: #94A3B8;">Take care. 🤍</span>
+                </p>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // MOBILE MENU
@@ -315,26 +333,49 @@
         });
 
         // RGD CUSTOM LOGIC (Special handling for OR logic)
-        const rgdChecks = document.querySelectorAll('.service-card.full-width .step');
+        const rgdChecks = document.querySelectorAll('#rgd-card .step');
         const rgdBtn = document.getElementById('rgd-btn');
-        rgdChecks.forEach(c => c.onchange = () => {
-            const nameCheck = rgdChecks[0].checked;
-            const entryCheck = rgdChecks[1].checked;
-            const dateCheck = rgdChecks[2].checked;
-            
-            if (nameCheck && (entryCheck || dateCheck)) {
-                rgdBtn.classList.add('active');
-                rgdBtn.disabled = false;
-            } else {
-                rgdBtn.classList.remove('active');
-                rgdBtn.disabled = true;
-            }
-        });
+        if(rgdChecks.length > 0) {
+            rgdChecks.forEach(c => c.onchange = () => {
+                const nameCheck = rgdChecks[0].checked;
+                const entryCheck = rgdChecks[1].checked;
+                const dateCheck = rgdChecks[2].checked;
+                
+                if (nameCheck && (entryCheck || dateCheck)) {
+                    rgdBtn.classList.add('active');
+                    rgdBtn.disabled = false;
+                } else {
+                    rgdBtn.classList.remove('active');
+                    rgdBtn.disabled = true;
+                }
+            });
+        }
 
-        function openForm(s) { alert("Opening request for: " + s); }
+        // --- NEW MODAL LOGIC ---
+        const modal = document.getElementById("formModal");
+        const iframe = document.getElementById("intakeIframe");
+        const modalTitle = document.getElementById("modalTitle");
+
+        function openForm(service) {
+            // *** PASTE YOUR DEPLOYED GOOGLE SCRIPT URL BELOW ***
+            const scriptUrl = "https://YOUR_DEPLOYED_SCRIPT_URL_HERE"; 
+            
+            modalTitle.innerText = "Request: " + service;
+            iframe.src = scriptUrl + "?service=" + encodeURIComponent(service);
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden"; // Locks the background
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+            iframe.src = "";
+            document.body.style.overflow = "auto"; // Unlocks the background
+        }
+
+        // Close modal if user clicks the dark background overlay
+        window.onclick = function(event) {
+            if (event.target == modal) { closeModal(); }
+        }
     </script>
 </body>
-
 </html>
-
-
