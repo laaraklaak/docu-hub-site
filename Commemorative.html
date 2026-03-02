@@ -340,14 +340,13 @@
     let currentGallery = [];
     let currentIndex = 0;
 
-    function openGallery(type) {
-        // This function connects the HTML click to the list above
-        currentGallery = galleries[type]; 
-        currentIndex = 0;
-        updateGallery();
-        document.getElementById("galleryModal").style.display = "flex";
-        document.body.style.overflow = "hidden";
-    }
+  function openGallery(type) {
+    currentGallery = galleries[type];
+    currentIndex = 0;
+    updateGallery();
+    document.getElementById("galleryModal").style.display = "flex"; // Must be flex or block
+    document.body.style.overflow = "hidden";
+}
 
     function closeGallery() {
         document.getElementById("galleryImg").classList.remove("is-zoomed");
@@ -385,6 +384,7 @@
     </script>
 </body>
 </html>
+
 
 
 
