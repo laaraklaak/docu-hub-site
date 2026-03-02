@@ -171,7 +171,9 @@
                 <p>"When a moment carries weight, a digital post isn't enough. We handle the technical curation to deliver high-end, physical commemoratives that stand the test of time."</p>
             </div>
 
-            <div class="archive-container">
+           <div class="archive-container">
+
+<div id="section-memorial" class="archive-container">
                 <div class="archive-label">01 — The Legacy Archive</div>
                 <div class="archive-split">
                     <div class="archive-media">
@@ -195,9 +197,11 @@
                 </div>
             </div>
 
-            <hr style="border: 0; border-top: 1px solid #E2E8F0; margin: 80px 0;">
+           
 
-            <div class="archive-container">
+           <hr id="section-divider" style="border: 0; border-top: 1px solid #E2E8F0; margin: 80px 0;">
+
+<div id="section-milestone" class="archive-container">
                 <div class="archive-label">02 — The Milestone Archive</div>
                 <div class="archive-split is-reversed">
                     <div class="archive-media">
@@ -262,75 +266,104 @@
     </div>
 
     <script>
-        // NAVIGATION
-        const btn = document.getElementById('menu-btn');
-        const list = document.getElementById('nav-list');
-        btn.onclick = () => list.classList.toggle('active');
+      /* --- Replace your current <script> section with this updated logic --- */
 
-        // FORM MODAL LOGIC
-        const modal = document.getElementById("formModal");
-        const iframe = document.getElementById("intakeIframe");
-        const modalTitle = document.getElementById("modalTitle");
-        const loader = document.getElementById("portalLoader");
+    // 1. URL NAVIGATION LOGIC (The Switcher)
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const mode = urlParams.get('mode');
 
-        function openForm(service) {
-            const scriptUrl = "https://script.google.com/macros/s/AKfycbw3nZeLCEG5yjTXiTEJpgCpWZK4JfLoeniVPTAZqSkLoBvQnHs6q73APRg15Jc8CPD0/exec"; 
-            modalTitle.innerText = "Request: " + service;
-            loader.style.display = "flex";
-            iframe.src = scriptUrl + "?service=" + encodeURIComponent(service);
-            modal.style.display = "block";
-            document.body.style.overflow = "hidden";
+        // IDs for our two sections
+        const memorialSection = document.getElementById('section-memorial');
+        const milestoneSection = document.getElementById('section-milestone');
+
+        if (mode === 'memorial') {
+            memorialSection.style.display = 'block';
+            milestoneSection.style.display = 'none';
+            document.title = "Memorial Programs | Docu-Hub";
+        } 
+        else if (mode === 'milestone') {
+            milestoneSection.style.display = 'block';
+            memorialSection.style.display = 'none';
+            document.title = "Milestone Stationery | Docu-Hub";
+        } 
+        else {
+            // If no mode is specified, show both (fallback)
+            memorialSection.style.display = 'block';
+            milestoneSection.style.display = 'block';
         }
+    }
 
-        function closeModal() {
-            modal.style.display = "none";
-            iframe.src = "";
-            document.body.style.overflow = "auto";
-        }
+    // 2. NAVIGATION TOGGLE
+    const btn = document.getElementById('menu-btn');
+    const list = document.getElementById('nav-list');
+    btn.onclick = () => list.classList.toggle('active');
 
-        // GALLERY & ZOOM LOGIC
-        const galleries = {
-            memorial: ["assets/memorial.png", "assets/memorial-2.png", "assets/memorial-3.png"],
-            milestone: ["assets/stationery.png", "assets/stationery-2.png"]
-        };
-        let currentGallery = [];
-        let currentIndex = 0;
+    // 3. FORM MODAL LOGIC
+    const modal = document.getElementById("formModal");
+    const iframe = document.getElementById("intakeIframe");
+    const modalTitle = document.getElementById("modalTitle");
+    const loader = document.getElementById("portalLoader");
 
-        function openGallery(type) {
-            currentGallery = galleries[type];
-            currentIndex = 0;
-            updateGallery();
-            document.getElementById("galleryModal").style.display = "flex";
-            document.body.style.overflow = "hidden";
-        }
+    function openForm(service) {
+        // Use your verified script URL here
+        const scriptUrl = "https://script.google.com/macros/s/AKfycbx_-QpP_wXeABQq_DoJrdmznVnIhciqLnEMB59G0LO5PQIUWkwxghgucktid42SQDP6/exec"; 
+        modalTitle.innerText = "Request: " + service;
+        loader.style.display = "flex";
+        iframe.src = scriptUrl + "?service=" + encodeURIComponent(service);
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden";
+    }
 
-        function closeGallery() {
-            document.getElementById("galleryImg").classList.remove("is-zoomed");
-            document.getElementById("galleryModal").style.display = "none";
-            document.body.style.overflow = "auto";
-        }
+    function closeModal() {
+        modal.style.display = "none";
+        iframe.src = "";
+        document.body.style.overflow = "auto";
+    }
 
-        function toggleZoom() {
-            document.getElementById("galleryImg").classList.toggle("is-zoomed");
-        }
+    // 4. GALLERY & ZOOM LOGIC
+    const galleries = {
+        memorial: ["assets/memorial.png", "assets/memorial-2.png", "assets/memorial-3.png"],
+        milestone: ["assets/stationery.png", "assets/stationery-2.png"]
+    };
+    let currentGallery = [];
+    let currentIndex = 0;
 
-        function changeImg(step) {
-            document.getElementById("galleryImg").classList.remove("is-zoomed");
-            currentIndex += step;
-            if (currentIndex >= currentGallery.length) currentIndex = 0;
-            if (currentIndex < 0) currentIndex = currentGallery.length - 1;
-            updateGallery();
-        }
+    function openGallery(type) {
+        currentGallery = galleries[type];
+        currentIndex = 0;
+        updateGallery();
+        document.getElementById("galleryModal").style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
 
-        function updateGallery() {
-            document.getElementById("galleryImg").src = currentGallery[currentIndex];
-            document.getElementById("galleryCounter").innerText = `${currentIndex + 1} / ${currentGallery.length}`;
-        }
+    function closeGallery() {
+        document.getElementById("galleryImg").classList.remove("is-zoomed");
+        document.getElementById("galleryModal").style.display = "none";
+        document.body.style.overflow = "auto";
+    }
 
-        window.onclick = (e) => {
-            if (e.target == modal) closeModal();
-            if (e.target == document.getElementById("galleryModal")) closeGallery();
-        }
+    function toggleZoom() {
+        document.getElementById("galleryImg").classList.toggle("is-zoomed");
+    }
+
+    function changeImg(step) {
+        document.getElementById("galleryImg").classList.remove("is-zoomed");
+        currentIndex += step;
+        if (currentIndex >= currentGallery.length) currentIndex = 0;
+        if (currentIndex < 0) currentIndex = currentGallery.length - 1;
+        updateGallery();
+    }
+
+    function updateGallery() {
+        document.getElementById("galleryImg").src = currentGallery[currentIndex];
+        document.getElementById("galleryCounter").innerText = `${currentIndex + 1} / ${currentGallery.length}`;
+    }
+
+    window.onclick = (e) => {
+        if (e.target == modal) closeModal();
+        if (e.target == document.getElementById("galleryModal")) closeGallery();
+    }
     </script>
 </body>
 </html>
