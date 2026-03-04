@@ -11,14 +11,14 @@
     <style>
         :root {
             --text-main: #0F172A;      
-            --bg-body: #94A3B8;        /* Grey-Blue Body */
-            --bg-wrapper: #F1F5F9;     /* Light Grey Wrapper */
+            --bg-body: #94A3B8;        
+            --bg-wrapper: #F1F5F9;     
             --bg-card: #FFFFFF;        
             --brand-slate: #1E293B;    
             --brand-steel: #0284C7;    
             --text-muted: #475569;     
             --header-height: 80px;
-            --section-gap: 120px;      /* Increased Spacing */
+            --section-gap: 120px;      
             --shadow-strong: 0 25px 50px rgba(15, 23, 42, 0.15);
         }
 
@@ -64,7 +64,7 @@
         .admin-hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 20px; }
         .admin-hero p { font-size: 1.2rem; color: #E2E8F0; max-width: 650px; margin: 0 auto; font-style: italic; }
 
-        /* --- CONTENT WRAPPER & SPACING --- */
+        /* --- CONTENT WRAPPER --- */
         .content-wrapper {
             background: var(--bg-wrapper); border-radius: 12px;
             margin: -80px auto 80px; padding: 60px 20px;
@@ -100,37 +100,15 @@
         .or-divider::before { content: ""; position: absolute; left: 0; top: 50%; width: 30px; height: 1px; background: #CBD5E1; }
 
         .cta-btn {
-            width: 100%; padding: 18px; border: none; border-radius: 4px;
-            font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+            display: block; width: 100%; padding: 18px; border: none; border-radius: 4px;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-align: center; text-decoration: none;
             background: #CBD5E1; color: #FFFFFF; cursor: not-allowed; transition: 0.3s;
         }
         .cta-btn.active { background: var(--brand-steel); cursor: pointer; box-shadow: 0 10px 20px rgba(2, 132, 199, 0.2); }
 
-        /* --- SMART MODAL UI --- */
-        #formModal {
-            display: none; position: fixed; z-index: 9999;
-            left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(15, 23, 42, 0.85); /* Deep slate overlay */
-            backdrop-filter: blur(8px);
-        }
-        .modal-content {
-            background-color: var(--bg-card);
-            margin: 5% auto; padding: 0;
-            width: 95%; max-width: 550px;
-            border-radius: 12px; position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-strong);
-            border-top: 4px solid var(--brand-steel);
-        }
-        .modal-header { padding: 25px 30px; background: var(--bg-wrapper); border-bottom: 1px solid #E2E8F0; }
-        .close-btn { position: absolute; right: 20px; top: 18px; font-size: 28px; cursor: pointer; color: var(--text-muted); transition: 0.3s; }
-        .close-btn:hover { color: var(--brand-slate); }
-        iframe { width: 100%; height: 600px; border: none; display: block; }
-
         /* --- FOOTER --- */
         footer { background: var(--brand-slate); color: #94A3B8; padding: 60px 0; text-align: center; }
 
-        /* --- TABLET/DESKTOP --- */
         @media (min-width: 768px) {
             .nav-links { position: static; height: auto; width: auto; background: none; flex-direction: row; padding: 0; }
             .nav-links a { font-size: 0.85rem; color: var(--text-muted); }
@@ -140,7 +118,6 @@
             .content-wrapper { padding: 80px 60px; margin-top: -120px; }
         }
 
-        /* Styling for footer links */
         .footer-link-style {
             display: block; color: #94A3B8; margin-bottom: 12px;
             font-size: 0.95rem; font-weight: 500; text-decoration: none; transition: 0.3s ease;
@@ -156,7 +133,7 @@
             <div class="menu-toggle" id="menu-btn"><i class="fa-solid fa-bars-staggered"></i></div>
             <nav class="nav-links" id="nav-list">
                 <a href="Commemorative.html">Stationery</a>
-                <a href="contact.html" class="nav-btn" style="background:var(--brand-slate); color:white!important; padding: 10px 20px; border-radius:4px;">Request Help</a>
+                <a href="https://wa.me/1876XXXXXXX" class="nav-btn" style="background:var(--brand-slate); color:white!important; padding: 10px 20px; border-radius:4px;">Request Help</a>
             </nav>
         </div>
     </header>
@@ -186,7 +163,7 @@
                             <li><input type="checkbox" class="step"> No name change since last issue</li>
                             <li><input type="checkbox" class="step"> Passport is not damaged/lost</li>
                         </ul>
-                        <button class="cta-btn" disabled onclick="openForm('Online Passport Renewal')">Start Digital Filing</button>
+                        <a href="#" class="cta-btn" onclick="triggerWhatsApp(event, 'PICA Online Eligibility')">Start Digital Filing</a>
                     </div>
 
                     <div class="service-card">
@@ -196,7 +173,7 @@
                             <li><input type="checkbox" class="step"> I have Original Birth Certificate</li>
                             <li><input type="checkbox" class="step"> I have Valid Photo ID</li>
                         </ul>
-                        <button class="cta-btn" disabled onclick="openForm('Manual Passport Filing')">Request Manual Filing</button>
+                        <a href="#" class="cta-btn" onclick="triggerWhatsApp(event, 'Manual Passport Filing')">Request Manual Filing</a>
                     </div>
                 </div>
             </div>
@@ -218,7 +195,7 @@
                             <div class="or-divider">OR</div>
                             <li><input type="checkbox" class="step"> <strong>I have the Date & Location of event</strong></li>
                         </ul>
-                        <button class="cta-btn" disabled id="rgd-btn" onclick="openForm('RGD Request')">Request Certificate</button>
+                        <a href="#" class="cta-btn" id="rgd-btn" onclick="triggerWhatsApp(event, 'RGD Certificate Request')">Request Certificate</a>
                     </div>
                 </div>
             </div>
@@ -235,7 +212,7 @@
                             <li><input type="checkbox" class="step"> Current License Number ready</li>
                             <li><input type="checkbox" class="step"> TRN available</li>
                         </ul>
-                        <button class="cta-btn" disabled onclick="openForm('License Renewal')">Renew License</button>
+                        <a href="#" class="cta-btn" onclick="triggerWhatsApp(event, 'TAJ License Renewal')">Renew License</a>
                     </div>
 
                     <div class="service-card">
@@ -243,21 +220,11 @@
                         <ul class="checklist">
                             <li><input type="checkbox" class="step"> Current License Number ready</li>
                         </ul>
-                        <button class="cta-btn" disabled onclick="openForm('Ticket Payment')">Clear Tickets</button>
+                        <a href="#" class="cta-btn" onclick="triggerWhatsApp(event, 'Traffic Ticket Clearance')">Clear Tickets</a>
                     </div>
                 </div>
             </div>
 
-        </div>
-    </div>
-
-    <div id="formModal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div class="modal-header">
-                <h2 id="modalTitle" style="color: var(--brand-slate); font-size: 1.5rem; margin:0;"></h2>
-            </div>
-            <iframe id="intakeIframe" src="">Loading...</iframe>
         </div>
     </div>
 
@@ -274,7 +241,7 @@
                     <p style="color: #E2E8F0; opacity: 0.8; font-size: 0.95rem; line-height: 1.6;">
                         Operations Services<br>
                         Linstead, St. Catherine<br>
-                        Jamaica, W.I.
+                        Jamaica, W.I.<br>
                     </p>
                 </div>
 
@@ -289,12 +256,12 @@
                     <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Operations</h4>
                     <a href="concierge.html" class="footer-link-style">Concierge Desk</a>
                     <a href="concierge.html#eligibility" class="footer-link-style">Eligibility Checks</a>
-                    <a href="contact.html" class="footer-link-style">Request Proxy</a>
+                    <a href="https://wa.me/1876XXXXXXX" class="footer-link-style">Request Proxy</a>
                 </div>
 
                 <div>
                     <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Connect</h4>
-                    <a href="contact.html" class="footer-link-style">Contact Desk</a>
+                    <a href="https://wa.me/1876XXXXXXX" class="footer-link-style">Contact Desk</a>
                     <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" target="_blank" class="footer-link-style">Book 15-Mins</a>
                     <a href="privacy.html" class="footer-link-style">Privacy Policy</a>
                 </div>
@@ -319,15 +286,26 @@
             btn.querySelector('i').classList.toggle('fa-xmark');
         };
 
+        // SHARED WHATSAPP LOGIC
+        function triggerWhatsApp(e, service) {
+            const btn = e.currentTarget;
+            if (btn.classList.contains('active')) {
+                const phone = "1876XXXXXXX"; // Update with your actual number
+                const text = encodeURIComponent(`Hi Docu-Hub, I've completed the checklist for ${service} and would like to proceed with proxy services.`);
+                window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+            } else {
+                e.preventDefault();
+            }
+        }
+
         // STANDARD SMART CHECKBOX LOGIC
         document.querySelectorAll('.service-card').forEach(card => {
             const checks = card.querySelectorAll('.step');
             const cta = card.querySelector('.cta-btn');
-            if(card.id !== 'rgd-card'){ // Skip RGD for custom logic
+            if(card.id !== 'rgd-card'){ 
                 checks.forEach(c => c.onchange = () => {
                     const allSet = Array.from(checks).every(i => i.checked);
                     cta.classList.toggle('active', allSet);
-                    cta.disabled = !allSet;
                 });
             }
         });
@@ -343,40 +321,11 @@
                 
                 if (nameCheck && (entryCheck || dateCheck)) {
                     rgdBtn.classList.add('active');
-                    rgdBtn.disabled = false;
                 } else {
                     rgdBtn.classList.remove('active');
-                    rgdBtn.disabled = true;
                 }
             });
-        }
-
-        // --- NEW MODAL LOGIC ---
-        const modal = document.getElementById("formModal");
-        const iframe = document.getElementById("intakeIframe");
-        const modalTitle = document.getElementById("modalTitle");
-
-        function openForm(service) {
-            // *** PASTE YOUR DEPLOYED GOOGLE SCRIPT URL BELOW ***
-            const scriptUrl = "https://script.google.com/macros/s/AKfycbx_-QpP_wXeABQq_DoJrdmznVnIhciqLnEMB59G0LO5PQIUWkwxghgucktid42SQDP6/exec"; 
-            
-            modalTitle.innerText = "Request: " + service;
-            iframe.src = scriptUrl + "?service=" + encodeURIComponent(service);
-            modal.style.display = "block";
-            document.body.style.overflow = "hidden"; // Locks the background
-        }
-
-        function closeModal() {
-            modal.style.display = "none";
-            iframe.src = "";
-            document.body.style.overflow = "auto"; // Unlocks the background
-        }
-
-        // Close modal if user clicks the dark background overlay
-        window.onclick = function(event) {
-            if (event.target == modal) { closeModal(); }
         }
     </script>
 </body>
 </html>
-
