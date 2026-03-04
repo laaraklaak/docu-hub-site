@@ -50,32 +50,17 @@
             padding: 60px; margin: -60px auto 80px auto; position: relative; z-index: 10;
         }
 
-        .hub-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-
-        /* --- LEFT SIDE: THE ESCAPE HATCHES --- */
-        .direct-links h3 { font-size: 1.5rem; margin-bottom: 15px; }
-        .direct-links p { font-size: 0.95rem; margin-bottom: 30px; }
+        /* --- CLEAN CENTERED LAYOUT --- */
+        .hub-center { max-width: 600px; margin: 0 auto; text-align: center; }
         
         .pill-link {
-            display: flex; align-items: center; gap: 15px; background: white; 
-            padding: 20px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #E2E8F0;
-            color: var(--brand-slate); font-weight: 600;
+            display: flex; align-items: center; gap: 20px; background: white; 
+            padding: 25px; border-radius: 12px; margin-bottom: 20px; border: 1px solid #E2E8F0;
+            color: var(--brand-slate); font-weight: 600; text-align: left;
         }
-        .pill-link:hover { border-color: var(--brand-steel); transform: translateX(5px); }
-        .pill-link i { font-size: 1.4rem; color: var(--brand-steel); }
-
-        /* --- RIGHT SIDE: QUICK INQUIRY --- */
-        .quick-form { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .form-group { margin-bottom: 20px; }
-        .form-label { display: block; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 8px; color: var(--brand-slate); }
-        .form-control { 
-            width: 100%; padding: 12px; border: 1px solid #CBD5E1; border-radius: 4px; font-family: 'Inter';
-        }
-        .submit-btn { 
-            width: 100%; background: var(--brand-slate); color: white; border: none; padding: 15px; 
-            border-radius: 4px; font-weight: 700; text-transform: uppercase; cursor: pointer;
-        }
-        .submit-btn:hover { background: var(--brand-steel); }
+        .pill-link:hover { border-color: var(--brand-steel); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .pill-link i { font-size: 1.8rem; color: var(--brand-steel); }
+        .pill-text span { display: block; font-size: 0.85rem; color: var(--text-muted); font-weight: 400; margin-top: 4px; }
 
         /* --- FOOTER --- */
         .main-footer { background: var(--brand-slate); color: #94A3B8; padding: 60px 0 30px; text-align: center;}
@@ -84,7 +69,6 @@
         .footer-links a:hover { color: white; }
 
         @media (max-width: 768px) {
-            .hub-grid { grid-template-columns: 1fr; }
             .liaison-wrapper { padding: 40px 20px; margin-top: -40px; border-radius: 0; }
         }
     </style>
@@ -103,54 +87,41 @@
 
     <section class="liaison-hero">
         <div class="container">
-            <h1 class="hero-title">Studio Liaison Desk</h1>
-            <p class="hero-sub">Have a general question or a unique project in mind? We are here to guide you to the right solution.</p>
+            <h1 class="hero-title">Liaison Desk</h1>
+            <p class="hero-sub">The form is gone, but we are more reachable than ever. Connect with the Studio through our secure direct channels.</p>
         </div>
     </section>
 
     <div class="container">
         <div class="liaison-wrapper">
-            <div class="hub-grid">
+            <div class="hub-center">
                 
-                <div class="direct-links">
-                    <h3>Direct Connection</h3>
-                    <p>For immediate assistance or high-priority inquiries, use our direct channels below.</p>
-                    
-                    <a href="https://wa.me/18765612614" class="pill-link">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        <span>Message on WhatsApp</span>
-                    </a>
-                    
-                    <a href="mailto:admin@dochubservices.com" class="pill-link">
-                        <i class="fa-solid fa-envelope"></i>
-                        <span>Email the Studio Desk</span>
-                    </a>
+                <a href="https://wa.me/18765612614" class="pill-link">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <div class="pill-text">
+                        Message on WhatsApp
+                        <span>Best for quick questions and project updates.</span>
+                    </div>
+                </a>
+                
+                <a href="mailto:admin@dochubservices.com" class="pill-link">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div class="pill-text">
+                        Email the Studio Desk
+                        <span>Best for sending photos, data, and documents.</span>
+                    </div>
+                </a>
 
-                    <a href="index.html#booking" class="pill-link" style="background: var(--brand-steel); border: none; color: white;">
-                        <i class="fa-solid fa-calendar-day" style="color: white;"></i>
-                        <span>Schedule Consultation</span>
-                    </a>
-                </div>
+                <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" target="_blank" class="pill-link" style="background: var(--brand-steel); border: none; color: white;">
+                    <i class="fa-solid fa-calendar-day" style="color: white;"></i>
+                    <div class="pill-text">
+                        <span style="color: rgba(255,255,255,0.8); margin-top:0; margin-bottom:4px; text-transform: uppercase; font-weight: 800; font-size: 0.7rem;">High Priority</span>
+                        Schedule Consultation
+                        <span style="color: white; opacity: 0.9;">Book a 15-minute slot for custom project planning.</span>
+                    </div>
+                </a>
 
-                <div class="quick-form">
-                    <h4 style="margin-top: 0; margin-bottom: 20px;">General Inquiry</h4>
-                    <form id="liaisonForm" action="https://script.google.com/macros/s/AKfycbw3nZeLCEG5yjTXiTEJpgCpWZK4JfLoeniVPTAZqSkLoBvQnHs6q73APRg15Jc8CPD0/exec" method="POST">
-                        <div class="form-group">
-                            <label class="form-label">Full Name</label>
-                            <input type="text" name="fullName" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">How can we help?</label>
-                            <textarea name="message" class="form-control" rows="4" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn" id="subBtn">Send Message</button>
-                    </form>
-                </div>
-
+                <p style="margin-top: 40px; font-size: 0.9rem; font-style: italic;">"We handle the red tape so you don't have to."</p>
             </div>
         </div>
     </div>
@@ -167,30 +138,5 @@
         </div>
     </footer>
 
-    <script>
-        const form = document.getElementById('liaisonForm');
-        const btn = document.getElementById('subBtn');
-
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            btn.innerHTML = 'Sending...';
-            btn.disabled = true;
-
-            fetch(form.action, { method: 'POST', body: new FormData(form), mode: 'no-cors'})
-                .then(() => {
-                    btn.innerHTML = 'Message Sent';
-                    btn.style.background = "#059669";
-                    form.reset();
-                    alert("Thank you. We have received your inquiry and will respond via email or WhatsApp shortly.");
-                })
-                .catch(() => {
-                    btn.innerHTML = 'Error. Try Again.';
-                    btn.disabled = false;
-                });
-        });
-    </script>
 </body>
 </html>
-
-
-
