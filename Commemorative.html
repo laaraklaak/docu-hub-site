@@ -80,7 +80,7 @@
         
         .archive-btn {
             background: var(--anchor-dark); color: white; border: none; padding: 16px 32px;
-            border-radius: 6px; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: 0.3s;
+            border-radius: 6px; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: 0.3s; display: inline-block;
         }
         .archive-btn:hover { background: var(--brand-gold); transform: translateY(-2px); }
 
@@ -107,32 +107,13 @@
         .gallery-nav { margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 30px; color: white; position: relative; z-index: 10001; }
         .gallery-nav button { background: rgba(255,255,255,0.1); border: 1px solid white; color: white; padding: 8px 15px; cursor: pointer; border-radius: 4px; }
 
-        /* --- INTAKE PORTAL MODAL --- */
-        #formModal {
-            display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%;
-            background: rgba(10, 17, 40, 0.85); backdrop-filter: blur(8px);
-        }
-        .modal-content {
-            background: white; margin: 5vh auto; width: 95%; max-width: 600px; border-radius: 16px; 
-            position: relative; overflow: hidden; border-top: 5px solid var(--brand-gold);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-        }
-        .close-btn { position: absolute; right: 20px; top: 15px; font-size: 30px; cursor: pointer; color: var(--text-muted); z-index: 100; }
-        #intakeIframe { width: 100%; height: 75vh; border: none; display: block; }
-
-        /* Loader inside Portal */
-        .portal-loader {
-            position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-            background: white; z-index: 1; flex-direction: column; gap: 15px;
-        }
-        .spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px solid var(--brand-gold); border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
         /* --- WORKFLOW --- */
         .workflow-title { text-align: center; font-size: 2.2rem; margin: 40px 0 60px; }
         .workflow-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
         .step-card { text-align: center; background: white; padding: 40px 25px; border-radius: 12px; }
         .step-num { width: 50px; height: 50px; background: var(--brand-gold); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-weight: 800; }
+
+        .cta-box { text-align: center; margin-top: 80px; padding: 40px; background: #FFF; border-radius: 12px; }
 
         @media (min-width: 900px) {
             .archive-split { grid-template-columns: 1.2fr 1fr; gap: 80px; }
@@ -151,7 +132,7 @@
             <div class="menu-toggle" id="menu-btn"><i class="fa-solid fa-bars-staggered"></i></div>
             <nav class="nav-links" id="nav-list">
                 <a href="concierge.html">Concierge Desk</a>
-                <a onclick="openForm('Studio Inquiry: General')" style="background: var(--brand-gold); color: white!important; padding: 10px 20px; border-radius: 4px; cursor:pointer;">Request Help</a>
+                <a href="https://wa.me/1876XXXXXXX?text=Hi%20Docu-Hub,%20I'm%20inquiring%20about%20a%20Studio%20project." target="_blank" style="background: var(--brand-gold); color: white!important; padding: 10px 20px; border-radius: 4px; cursor:pointer;">Request Help</a>
             </nav>
         </div>
     </header>
@@ -171,9 +152,7 @@
                 <p>"When a moment carries weight, a digital post isn't enough. We handle the technical curation to deliver high-end, physical commemoratives that stand the test of time."</p>
             </div>
 
-           <div class="archive-container">
-
-<div id="section-memorial" class="archive-container">
+            <div id="section-memorial" class="archive-container">
                 <div class="archive-label">01 — The Legacy Archive</div>
                 <div class="archive-split">
                     <div class="archive-media">
@@ -192,16 +171,14 @@
                             <li><i class="fa-solid fa-check"></i> Soulful Photo Gallery Curation</li>
                             <li><i class="fa-solid fa-check"></i> High-Resolution Print Ready Files</li>
                         </ul>
-                        <button class="archive-btn" onclick="openForm('Memorial Inquiry')">Inquire for Memorials</button>
+                        <a href="https://wa.me/1876XXXXXXX?text=I'm%20interested%20in%20Memorial%20Service%20Programs." target="_blank" class="archive-btn">Inquire for Memorials</a>
                     </div>
                 </div>
             </div>
 
-           
+            <hr id="section-divider" style="border: 0; border-top: 1px solid #E2E8F0; margin: 80px 0;">
 
-           <hr id="section-divider" style="border: 0; border-top: 1px solid #E2E8F0; margin: 80px 0;">
-
-<div id="section-milestone" class="archive-container">
+            <div id="section-milestone" class="archive-container">
                 <div class="archive-label">02 — The Milestone Archive</div>
                 <div class="archive-split is-reversed">
                     <div class="archive-media">
@@ -220,7 +197,7 @@
                             <li><i class="fa-solid fa-check"></i> Branded 'Thank You' Stationery</li>
                             <li><i class="fa-solid fa-check"></i> Editorial-style Event Memoirs</li>
                         </ul>
-                        <button class="archive-btn" onclick="openForm('Milestone Inquiry')">Request Design Quote</button>
+                        <a href="https://wa.me/1876XXXXXXX?text=I'd%20like%20a%20design%20quote%20for%20a%20Milestone%20project." target="_blank" class="archive-btn">Request Design Quote</a>
                     </div>
                 </div>
             </div>
@@ -234,7 +211,7 @@
 
             <div class="cta-box">
                 <h3>Ready to mark the moment?</h3>
-                <button onclick="openForm('Commemorative Custom Quote')" class="archive-btn" style="background:var(--brand-gold)">Request a Custom Quote <i class="fa-solid fa-arrow-right" style="margin-left:10px;"></i></button>
+                <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" target="_blank" class="archive-btn" style="background:var(--brand-gold)">Book Consultation <i class="fa-solid fa-arrow-right" style="margin-left:10px;"></i></a>
             </div>
         </div>
     </div>
@@ -251,46 +228,20 @@
         </div>
     </div>
 
-    <div id="formModal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div id="portalLoader" class="portal-loader">
-                <div class="spinner"></div>
-                <span style="font-size: 0.8rem; letter-spacing: 1px; color: var(--text-muted); text-transform: uppercase;">Opening Intake Portal</span>
-            </div>
-            <div style="padding: 20px 30px; background: var(--bg-wrapper); border-bottom: 1px solid #E2E8F0;">
-                <h2 id="modalTitle" style="color: var(--anchor-dark); font-size: 1.2rem; margin:0;"></h2>
-            </div>
-            <iframe id="intakeIframe" src="" onload="document.getElementById('portalLoader').style.display='none'"></iframe>
-        </div>
-    </div>
-
     <script>
-      /* --- Replace your current <script> section with this updated logic --- */
-
     // 1. URL NAVIGATION LOGIC (The Switcher)
     window.onload = function() {
         const urlParams = new URLSearchParams(window.location.search);
         const mode = urlParams.get('mode');
-
-        // IDs for our two sections
         const memorialSection = document.getElementById('section-memorial');
         const milestoneSection = document.getElementById('section-milestone');
 
         if (mode === 'memorial') {
             memorialSection.style.display = 'block';
             milestoneSection.style.display = 'none';
-            document.title = "Memorial Programs | Docu-Hub";
-        } 
-        else if (mode === 'milestone') {
+        } else if (mode === 'milestone') {
             milestoneSection.style.display = 'block';
             memorialSection.style.display = 'none';
-            document.title = "Milestone Stationery | Docu-Hub";
-        } 
-        else {
-            // If no mode is specified, show both (fallback)
-            memorialSection.style.display = 'block';
-            milestoneSection.style.display = 'block';
         }
     }
 
@@ -299,54 +250,22 @@
     const list = document.getElementById('nav-list');
     btn.onclick = () => list.classList.toggle('active');
 
-    // 3. FORM MODAL LOGIC
-    const modal = document.getElementById("formModal");
-    const iframe = document.getElementById("intakeIframe");
-    const modalTitle = document.getElementById("modalTitle");
-    const loader = document.getElementById("portalLoader");
-
-    function openForm(service) {
-        // Use your verified script URL here
-        const scriptUrl = "https://script.google.com/macros/s/AKfycbx_-QpP_wXeABQq_DoJrdmznVnIhciqLnEMB59G0LO5PQIUWkwxghgucktid42SQDP6/exec"; 
-        modalTitle.innerText = "Request: " + service;
-        loader.style.display = "flex";
-        iframe.src = scriptUrl + "?service=" + encodeURIComponent(service);
-        modal.style.display = "block";
-        document.body.style.overflow = "hidden";
-    }
-
-    function closeModal() {
-        modal.style.display = "none";
-        iframe.src = "";
-        document.body.style.overflow = "auto";
-    }
-
-    // 4. GALLERY & ZOOM LOGIC
-// 4. GALLERY & ZOOM LOGIC
+    // 3. GALLERY & ZOOM LOGIC
     const galleries = {
-        // ADD YOUR PHOTOS HERE
-        memorial: [
-            "assets/memorial.png", 
-            "assets/program.png", 
-            "assets/memorial-3.jpg",
-            "assets/your-new-photo.png" // <--- I ADDED THIS. Change to your actual file name!
-        ],
-        milestone: [
-            "assets/thank-you.jpg", 
-            "assets/memoir-card.jpg"
-        ]
+        memorial: ["assets/memorial.png", "assets/program.png"],
+        milestone: ["assets/thank-you.jpg", "assets/memoir-card.jpg"]
     };
 
     let currentGallery = [];
     let currentIndex = 0;
 
-  function openGallery(type) {
-    currentGallery = galleries[type];
-    currentIndex = 0;
-    updateGallery();
-    document.getElementById("galleryModal").style.display = "flex"; // Must be flex or block
-    document.body.style.overflow = "hidden";
-}
+    function openGallery(type) {
+        currentGallery = galleries[type];
+        currentIndex = 0;
+        updateGallery();
+        document.getElementById("galleryModal").style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
 
     function closeGallery() {
         document.getElementById("galleryImg").classList.remove("is-zoomed");
@@ -361,31 +280,21 @@
     function changeImg(step) {
         document.getElementById("galleryImg").classList.remove("is-zoomed");
         currentIndex += step;
-        
-        // This logic makes the arrows loop back to the start
         if (currentIndex >= currentGallery.length) currentIndex = 0;
         if (currentIndex < 0) currentIndex = currentGallery.length - 1;
-        
         updateGallery();
     }
 
     function updateGallery() {
         const imgElement = document.getElementById("galleryImg");
         const counterElement = document.getElementById("galleryCounter");
-        
         imgElement.src = currentGallery[currentIndex];
         counterElement.innerText = (currentIndex + 1) + " / " + currentGallery.length;
     }
 
     window.onclick = (e) => {
-        if (e.target == modal) closeModal();
         if (e.target == document.getElementById("galleryModal")) closeGallery();
     }
     </script>
 </body>
 </html>
-
-
-
-
-
