@@ -13,10 +13,10 @@
             --studio-black: #0F172A; 
             --studio-white: #FFFFFF;
             --text-muted: #64748B;
-            --mem-accent: #D4AF37; /* Rich Gold */
-            --stat-accent: #F9E5E0; /* Soft Blush */
-            --brand-steel: #38BDF8; /* Brightened Steel Blue for Contrast */
-            --header-height: 85px;
+            --mem-accent: #D4AF37;
+            --stat-accent: #F9E5E0;
+            --brand-steel: #38BDF8;
+            --header-height: 80px;
         }
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -46,81 +46,103 @@
             height: var(--header-height); display: flex; align-items: center;
         }
         .header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; }
-        .header-logo { font-size: 1.4rem; font-weight: 800; color: var(--studio-black); letter-spacing: -0.5px; text-transform: uppercase;}
-        .studio-tagline { font-size: 0.85rem; color: var(--text-muted); margin-left: 10px; border-left: 1px solid #E2E8F0; padding-left: 10px; font-weight: 500; }
+        
+        .header-logo { 
+            font-size: 1.3rem; 
+            font-weight: 800; 
+            color: var(--studio-black); 
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+        }
+        
+        .studio-tagline { 
+            font-size: 0.75rem; 
+            color: var(--text-muted); 
+            margin-left: 10px; 
+            border-left: 1px solid #E2E8F0; 
+            padding-left: 10px; 
+            font-weight: 500; 
+            text-transform: none;
+            letter-spacing: 0;
+        }
 
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { color: var(--text-muted); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;}
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-links a { color: var(--text-muted); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;}
         .nav-links a:hover { color: var(--brand-steel); }
-        .nav-btn { background: var(--studio-black); color: var(--studio-white) !important; padding: 12px 24px; border-radius: 4px; }
+        .nav-btn { background: var(--studio-black); color: var(--studio-white) !important; padding: 10px 20px; border-radius: 4px; }
 
-        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+        .menu-toggle { display: none; font-size: 1.4rem; cursor: pointer; color: var(--studio-black); }
 
         /* --- HERO SECTION --- */
         .main-hero { 
             background: linear-gradient(to right, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.7)), url('assets/hero2.png') center/cover no-repeat;
-            padding: 160px 0 180px;
+            padding: 120px 0;
             color: var(--studio-white);
         }
-        .main-hero h1 { color: var(--studio-white); font-size: clamp(2.8rem, 6vw, 4.8rem); margin-bottom: 25px; line-height: 1; letter-spacing: -2px;}
-        .main-hero p { color: #CBD5E1; font-size: 1.3rem; max-width: 750px; margin-bottom: 40px; font-weight: 400; line-height: 1.5;}
+        .main-hero h1 { color: var(--studio-white); font-size: clamp(2.2rem, 6vw, 4.5rem); margin-bottom: 20px; line-height: 1.1; letter-spacing: -1px;}
+        .main-hero p { color: #CBD5E1; font-size: clamp(1.1rem, 2vw, 1.3rem); max-width: 700px; margin-bottom: 30px; font-weight: 400;}
 
-        /* --- THE TRIO SHOWCASE (Enhanced Contrast) --- */
-        .showcase-section { padding: 100px 0 120px; background: var(--studio-white); }
-        .section-header { text-align: center; margin-bottom: 80px; }
-        .section-header h2 { font-size: 3.2rem; margin-bottom: 20px; letter-spacing: -1px; }
+        /* --- SHOWCASE --- */
+        .showcase-section { padding: 80px 0; background: var(--studio-white); }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin-bottom: 15px; }
 
-        .trio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .trio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         
         .service-card {
-            position: relative; height: 600px; border-radius: 12px; overflow: hidden;
-            display: flex; align-items: flex-end; text-decoration: none; box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            position: relative; height: 550px; border-radius: 12px; overflow: hidden;
+            display: flex; align-items: flex-end; text-decoration: none; box-shadow: 0 15px 40px rgba(0,0,0,0.1);
         }
         .service-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; z-index: 1; }
         .service-overlay { position: absolute; inset: 0; z-index: 2; transition: 0.4s ease; }
-        .service-content { position: relative; z-index: 3; padding: 50px; width: 100%; transform: translateY(10px); transition: transform 0.4s ease; }
+        .service-content { position: relative; z-index: 3; padding: 40px; width: 100%; transition: 0.4s ease; }
 
-        .service-content h3 { font-size: 2.6rem; margin-bottom: 15px; font-style: italic; line-height: 1; letter-spacing: -0.5px; }
-        .service-content p { font-size: 1.1rem; margin-bottom: 30px; opacity: 1; color: #F8FAFC; font-weight: 500; line-height: 1.6; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-        .explore-link { font-weight: 800; text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem; padding-bottom: 8px; display: inline-block; }
+        .service-content h3 { font-size: 2.2rem; margin-bottom: 10px; font-style: italic; color: #fff; }
+        .service-content p { font-size: 1rem; margin-bottom: 25px; color: #F8FAFC; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        .explore-link { font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; padding-bottom: 5px; display: inline-block; color: #fff; border-bottom: 2px solid transparent;}
 
-        .theme-memorial .service-overlay { background: linear-gradient(to top, rgba(5, 10, 25, 1) 0%, rgba(10, 17, 40, 0.6) 40%, transparent 100%); }
+        .theme-memorial .service-overlay { background: linear-gradient(to top, rgba(5, 10, 25, 0.9) 10%, transparent 100%); }
         .theme-memorial h3 { color: var(--mem-accent); }
-        .theme-memorial .explore-link { color: var(--studio-white); border-bottom: 3px solid var(--mem-accent); }
+        .theme-memorial .explore-link { border-color: var(--mem-accent); }
 
-        .theme-stationery .service-overlay { background: linear-gradient(to top, rgba(40, 15, 10, 1) 0%, rgba(89, 41, 34, 0.6) 40%, transparent 100%); }
+        .theme-stationery .service-overlay { background: linear-gradient(to top, rgba(40, 15, 10, 0.9) 10%, transparent 100%); }
         .theme-stationery h3 { color: var(--stat-accent); }
-        .theme-stationery .explore-link { color: var(--studio-white); border-bottom: 3px solid var(--stat-accent); }
+        .theme-stationery .explore-link { border-color: var(--stat-accent); }
 
-        .theme-concierge .service-overlay { background: linear-gradient(to top, rgba(15, 23, 42, 1) 0%, rgba(30, 41, 59, 0.6) 40%, transparent 100%); }
+        .theme-concierge .service-overlay { background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 10%, transparent 100%); }
         .theme-concierge h3 { color: var(--brand-steel); }
-        .theme-concierge .explore-link { color: var(--studio-white); border-bottom: 3px solid var(--brand-steel); }
+        .theme-concierge .explore-link { border-color: var(--brand-steel); }
 
-        .service-card:hover .service-img { transform: scale(1.08); }
-        .service-card:hover .service-content { transform: translateY(0); }
+        /* --- MOBILE REFINEMENTS --- */
+        @media (max-width: 850px) {
+            .container { padding: 0 25px; }
+            .studio-tagline { display: none; } /* Hide tagline on mobile for space */
+            
+            .menu-toggle { display: block; }
+            
+            .nav-links {
+                position: fixed; top: var(--header-height); right: -100%; width: 100%; height: calc(100vh - var(--header-height));
+                background: white; flex-direction: column; padding: 40px 25px; gap: 30px; transition: 0.4s ease; align-items: flex-start;
+            }
+            .nav-links.active { right: 0; }
+            .nav-links a { font-size: 1.2rem; color: var(--studio-black); width: 100%; border-bottom: 1px solid #f1f5f9; padding-bottom: 15px; }
+            .nav-btn { background: var(--brand-steel); text-align: center; border: none; }
+
+            .main-hero { padding: 80px 0 100px; text-align: center; }
+            .main-hero p { margin: 0 auto 30px; }
+
+            .trio-grid { grid-template-columns: 1fr; }
+            .service-card { height: 450px; }
+        }
 
         #back-to-top {
-            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px;
             background: var(--studio-black); color: white; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             z-index: 3000; opacity: 0; visibility: hidden; transition: 0.4s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3); font-size: 1.2rem;
         }
         #back-to-top.visible { opacity: 1; visibility: visible; }
-
-        @media (max-width: 850px) {
-            .container { padding: 0 30px; }
-            .menu-toggle { display: block; }
-            .nav-links {
-                position: fixed; top: var(--header-height); right: -100%; width: 100%; height: calc(100vh - var(--header-height));
-                background: white; flex-direction: column; padding: 60px 0; gap: 40px; transition: 0.4s ease;
-            }
-            .nav-links.active { right: 0; }
-            .nav-links a { font-size: 1.4rem; color: var(--studio-black); }
-            .trio-grid { grid-template-columns: 1fr; }
-            .service-card { height: 500px; }
-            .service-content h3 { font-size: 2.2rem; }
-        }
     </style>
 </head>
 <body>
@@ -128,24 +150,20 @@
     <header class="app-header">
         <div class="container header-inner">
             <a href="index.html" class="header-logo">
-                Docu-Hub<span style="color:var(--brand-steel)">.</span> <small class="studio-tagline">Operations Services</small>
+                Docu-Hub<span style="color:var(--brand-steel)">.</span> 
+                <span class="studio-tagline">Operations Services</span>
             </a>
             
             <div class="menu-toggle" id="menu-btn">
                 <i class="fa-solid fa-bars-staggered"></i>
             </div>
 
-          <nav class="nav-links" id="nav-list">
-    <a href="Commemorative.html">The Studio</a>
-    <a href="concierge.html">Concierge Desk</a>
-    <a href="https://wa.me/18765612614?text=Hi%20Docu-Hub,%20I'd%20like%20to%20start%20a%20project." class="nav-btn" target="_blank">Start a Project</a>
-</nav>
-
-<div>
-    <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Contact</h4>
-    <a href="https://wa.me/18765612614?text=Hi%20Docu-Hub,%20I%20have%20a%20question." style="display: block; color: #94A3B8; margin-bottom: 12px; font-weight: 600;" target="_blank">Chat on WhatsApp</a>
-    <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" style="display: block; color: #94A3B8; font-weight: 600;" target="_blank">Book Consultation</a>
-</div>
+            <nav class="nav-links" id="nav-list">
+                <a href="Commemorative.html">The Studio</a>
+                <a href="concierge.html">Concierge Desk</a>
+                <a href="contact.html">Contact</a>
+                <a href="https://wa.me/18765612614?text=Hi%20Docu-Hub,%20I'd%20like%20to%20start%20a%20project." class="nav-btn" target="_blank">Start a Project</a>
+            </nav>
         </div>
     </header>
 
@@ -160,11 +178,10 @@
         <div class="container">
             <div class="section-header">
                 <h2>The Three Pillars</h2>
-                <p>Meticulous design meets seamless operational support. Select a point of entry below.</p>
+                <p>Meticulous design meets seamless operational support.</p>
             </div>
 
             <div class="trio-grid">
-                
                 <a href="Commemorative.html?mode=memorial" class="service-card theme-memorial">
                     <img src="assets/memorial.png" class="service-img" alt="Memorial Tributes">
                     <div class="service-overlay"></div>
@@ -194,7 +211,6 @@
                         <span class="explore-link">Access Desk <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i></span>
                     </div>
                 </a>
-
             </div>
         </div>
     </section>
@@ -203,27 +219,27 @@
         <i class="fa-solid fa-chevron-up"></i>
     </a>
 
-    <footer class="main-footer" style="background: var(--studio-black); color: #94A3B8; padding: 100px 0 40px;">
+    <footer class="main-footer" style="background: var(--studio-black); color: #94A3B8; padding: 80px 0 40px;">
         <div class="container">
             <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 60px;">
                 <div class="footer-brand">
-                    <h2 style="color: white; font-size: 2rem;">Docu-Hub.</h2>
-                    <p style="color: #E2E8F0; opacity: 0.8; margin-top: 15px;">Operations Services<br>Linstead, St. Catherine.</p>
+                    <h2 style="color: white; font-size: 1.8rem; font-family: 'Playfair Display', serif;">Docu-Hub.</h2>
+                    <p style="color: #E2E8F0; opacity: 0.8; margin-top: 15px; font-size: 0.95rem;">Operations Services<br>Linstead, St. Catherine.</p>
                 </div>
                 <div>
-                    <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">The Pillars</h4>
-                    <a href="Commemorative.html?mode=memorial" style="display: block; color: #94A3B8; margin-bottom: 12px; font-weight: 600;">Memorials</a>
-                    <a href="Commemorative.html?mode=milestone" style="display: block; color: #94A3B8; margin-bottom: 12px; font-weight: 600;">Stationery</a>
-                    <a href="concierge.html" style="display: block; color: #94A3B8; font-weight: 600;">Concierge Desk</a>
+                    <h4 style="color: white; margin-bottom: 20px; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-family: 'Inter';">The Pillars</h4>
+                    <a href="Commemorative.html?mode=memorial" style="display: block; color: #94A3B8; margin-bottom: 12px; font-size: 0.9rem;">Memorials</a>
+                    <a href="Commemorative.html?mode=milestone" style="display: block; color: #94A3B8; margin-bottom: 12px; font-size: 0.9rem;">Stationery</a>
+                    <a href="concierge.html" style="display: block; color: #94A3B8; font-size: 0.9rem;">Concierge Desk</a>
                 </div>
                 <div>
-                    <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Contact</h4>
-                    <a href="contact.html" style="display: block; color: #94A3B8; margin-bottom: 12px; font-weight: 600;">Get Started</a>
-                    <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" style="display: block; color: #94A3B8; font-weight: 600;">Book Consultation</a>
+                    <h4 style="color: white; margin-bottom: 20px; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-family: 'Inter';">Contact</h4>
+                    <a href="https://wa.me/18765612614" style="display: block; color: #94A3B8; margin-bottom: 12px; font-size: 0.9rem;">WhatsApp Chat</a>
+                    <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" style="display: block; color: #94A3B8; font-size: 0.9rem;">Book Consultation</a>
                 </div>
             </div>
-            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px; text-align: center; font-size: 0.85rem; letter-spacing: 1px;">
-                &copy; 2026 Docu-Hub Operations Services. All Rights Reserved. Take care. 🤍
+            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px; text-align: center; font-size: 0.8rem; letter-spacing: 1px;">
+                &copy; 2026 Docu-Hub Operations Services. Take care. 🤍
             </div>
         </div>
     </footer>
@@ -238,6 +254,13 @@
             const icon = menuBtn.querySelector('i');
             icon.classList.toggle('fa-bars-staggered');
             icon.classList.toggle('fa-xmark');
+            
+            // Prevent body scroll when menu is open
+            if(navList.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
         }
 
         menuBtn.addEventListener('click', toggleMenu);
@@ -261,8 +284,5 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
-
 </body>
 </html>
-
-
