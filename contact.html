@@ -58,7 +58,7 @@
             background: radial-gradient(circle at center top, #151820 0%, var(--true-black) 100%);
         }
         .hero-title { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--mem-accent); font-style: italic; margin-bottom: 20px; }
-        .hero-sub { max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+        .hero-sub { max-width: 600px; margin: 0 auto; font-size: 1.1rem; color: var(--studio-white); }
 
         /* --- INTEGRATED STORY SECTION --- */
         .story-grid {
@@ -71,13 +71,17 @@
         }
         .story-image {
             height: 450px;
-            background: url('assets/hero2.png') center/cover; /* Ensure this path is correct */
+            background: url('assets/hero2.png') center/cover;
             border-radius: 4px;
             filter: grayscale(1) contrast(1.1);
             border: 1px solid rgba(255,255,255,0.1);
         }
         .story-text h2 { font-size: 2.2rem; margin-bottom: 20px; line-height: 1.2; }
         .story-text p { margin-bottom: 20px; font-size: 1.05rem; }
+        
+        .service-tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 25px 0; }
+        .tag { font-size: 0.7rem; padding: 6px 12px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; color: var(--brand-steel); }
+
         .promise-tag {
             border-left: 2px solid var(--mem-accent);
             padding-left: 20px;
@@ -121,7 +125,6 @@
             font-size: 0.9rem; color: var(--text-muted); margin-top: 5px; 
         }
 
-        /* Priority Style */
         .pill-link.priority {
             background: radial-gradient(circle at right, rgba(212, 175, 55, 0.08), #0d0f14);
             border: 1px solid rgba(212, 175, 55, 0.2);
@@ -129,7 +132,6 @@
         .pill-link.priority i { color: var(--mem-accent); }
         .pill-link.priority:hover { border-color: var(--mem-accent); }
 
-        /* --- FOOTER --- */
         .main-footer {
             background: var(--true-black);
             padding: 80px 0 40px;
@@ -143,6 +145,7 @@
             .story-grid { grid-template-columns: 1fr; text-align: center; }
             .story-image { height: 300px; order: 2; }
             .story-text { order: 1; }
+            .service-tags { justify-content: center; }
             .promise-tag { border-left: none; border-top: 1px solid var(--mem-accent); padding: 20px 0 0 0; }
         }
     </style>
@@ -164,7 +167,7 @@
     <section class="liaison-hero">
         <div class="container">
             <h1 class="hero-title">Liaison Desk</h1>
-            <p class="hero-sub">The form is gone, but we are more reachable than ever. Direct access to the Studio starts here.</p>
+            <p class="hero-sub">Direct access to the Studio. Whether you are building a digital menu, a memorial gallery, or need administrative proxy support.</p>
         </div>
     </section>
 
@@ -172,39 +175,47 @@
         <section class="story-grid">
             <div class="story-image"></div>
             <div class="story-text">
-                <span style="color: var(--brand-steel); text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; font-weight: 800;">The Bridge</span>
-                <h2>We handle the <br>run-around.</h2>
-                <p>Government portals and administrative layout shouldn't take up your weekend. We act as your person on the ground—checking every signature and stamp before it reaches the window.</p>
+                <span style="color: var(--brand-steel); text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; font-weight: 800;">The Studio Approach</span>
+                <h2>One Hub. <br>Infinite Solutions.</h2>
+                <p>From modernizing your business with NFC technology to preserving legacies through smart memorials, we bridge the gap between complex tasks and seamless results.</p>
+                
+                <div class="service-tags">
+                    <span class="tag">Smart Menus</span>
+                    <span class="tag">Digital Tributes</span>
+                    <span class="tag">NFC Cards</span>
+                    <span class="tag">Proxy Logistics</span>
+                </div>
+
                 <div class="promise-tag">
-                    "If we can't do it for you, we will tell you exactly how to get it done yourself. You will never leave empty-handed."
+                    "If we can't solve it for you, we will give you the roadmap to do it yourself. You will never leave our desk empty-handed."
                 </div>
             </div>
         </section>
 
         <section class="contact-channels">
-            <div class="channel-label">Direct Communication</div>
+            <div class="channel-label">Open a Ticket</div>
 
             <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" target="_blank" class="pill-link priority">
                 <i class="fa-solid fa-calendar-day"></i>
                 <div class="pill-text">
-                    Schedule Consultation
-                    <span>Book a 15-minute slot for custom project planning.</span>
+                    Strategic Consultation
+                    <span>Book 15 minutes to plan your NFC Hub, Memorial, or Logistics project.</span>
                 </div>
             </a>
 
             <a href="https://wa.me/18765612614" class="pill-link" target="_blank">
                 <i class="fa-brands fa-whatsapp"></i>
                 <div class="pill-text">
-                    Message on WhatsApp
-                    <span>Best for quick questions and project updates.</span>
+                    Instant Messenger
+                    <span>Best for quick tech support or concierge status updates.</span>
                 </div>
             </a>
             
             <a href="mailto:admin@dochubservices.com" class="pill-link">
                 <i class="fa-solid fa-envelope"></i>
                 <div class="pill-text">
-                    Email the Studio
-                    <span>Best for sending secure data and legal documents.</span>
+                    Studio Email
+                    <span>Best for sending digital assets, photos, and secure documents.</span>
                 </div>
             </a>
         </section>
