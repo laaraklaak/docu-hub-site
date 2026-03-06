@@ -86,8 +86,11 @@
         .nav-links { display: flex; gap: 25px; align-items: center; }
         .nav-links a { color: var(--text-muted); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;}
         .nav-links a:hover { color: var(--studio-white); }
-        .nav-btn { background: rgba(212, 175, 55, 0.1); border: 1px solid var(--mem-accent); color: var(--mem-accent) !important; padding: 10px 20px; border-radius: 8px; transition: 0.3s;}
-        .nav-btn:hover { background: var(--mem-accent); color: var(--true-black) !important; transform: translateY(-2px); box-shadow: 0 4px 15px var(--mem-glow);}
+        
+        /* Nav Button Refinement */
+        .nav-btn { background: var(--true-black); border: 2px solid var(--mem-accent); color: var(--mem-accent) !important; padding: 8px 18px; border-radius: 8px; transition: 0.3s;}
+        .nav-btn:hover { background: rgba(212, 175, 55, 0.1); transform: translateY(-2px); box-shadow: 0 4px 15px var(--mem-glow);}
+        
         .menu-toggle { display: none; font-size: 1.4rem; cursor: pointer; color: var(--studio-white); }
 
         /* --- CONSTRAINED HERO SECTION --- */
@@ -141,7 +144,7 @@
         .bento-grid { 
             display: grid; 
             grid-template-columns: repeat(12, 1fr); 
-            gap: 40px; /* Space between side-by-side cards */
+            gap: 40px; 
         }
         
         .bento-box {
@@ -178,13 +181,18 @@
         .bento-half h3 { font-size: 1.8rem; margin-bottom: 15px; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: -0.5px;}
         .bento-half p { flex-grow: 1; margin-bottom: 30px; line-height: 1.7; color: #CBD5E1;}
         
+        /* Unified Elegant Button Style (No solid yelling filling) */
         .action-link {
             font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; 
             display: inline-flex; align-items: center; gap: 8px; color: var(--mem-accent);
-            padding: 12px 24px; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 8px;
+            background: var(--true-black);
+            padding: 12px 24px; border: 2px solid var(--mem-accent); border-radius: 8px;
             transition: 0.3s; width: fit-content;
         }
-        .bento-box:hover .action-link { background: var(--mem-accent); color: var(--true-black); }
+        .bento-box:hover .action-link, .action-link:hover { 
+            background: rgba(212, 175, 55, 0.1); /* Gentle glow instead of solid color */
+            box-shadow: 0 5px 15px var(--mem-glow);
+        }
 
         /* --- CONSTRAINED CTA BANNER --- */
         .cta-wrapper { padding: 40px 20px 120px; } 
@@ -202,13 +210,19 @@
         .cta-text h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 15px; font-weight: 500;}
         .cta-text p { color: #94A3B8; font-size: 1.05rem; line-height: 1.7;}
         
-        .cta-action { position: relative; z-index: 2; flex-shrink: 0;}
+        .cta-action { position: relative; z-index: 2; flex-shrink: 0; text-align: center;}
+        
+        /* Match Book Consultation Style (No solid yelling filling) */
         .cta-btn-gold { 
-            background: transparent; color: var(--mem-accent); padding: 18px 40px; font-size: 1rem; font-weight: 700; font-family: 'Inter', sans-serif;
-            border-radius: 8px; display: inline-block; text-transform: uppercase; letter-spacing: 1px; 
+            background: var(--true-black); color: var(--mem-accent); padding: 18px 40px; font-size: 1rem; font-weight: 700; font-family: 'Inter', sans-serif;
+            border-radius: 8px; display: inline-flex; justify-content: center; align-items: center; text-transform: uppercase; letter-spacing: 1px; 
             border: 2px solid var(--mem-accent); transition: 0.3s; white-space: nowrap;
         }
-        .cta-btn-gold:hover { background: var(--mem-accent); color: var(--true-black); box-shadow: 0 10px 30px var(--mem-glow); transform: translateY(-3px);}
+        .cta-btn-gold:hover { 
+            background: rgba(212, 175, 55, 0.1); /* Gentle glow instead of solid color */
+            box-shadow: 0 10px 30px var(--mem-glow); 
+            transform: translateY(-3px);
+        }
 
         /* --- REDEFINED FOOTER --- */
         .main-footer { background: var(--true-black); color: #94A3B8; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
@@ -232,7 +246,7 @@
             }
             .nav-links.active { right: 0; }
             .nav-links a { font-size: 1.1rem; width: 100%; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
-            .nav-btn { text-align: center; width: 100%; background: transparent;}
+            .nav-btn { text-align: center; width: 100%; }
             
             /* Box Adjustments */
             .hero-wrapper { padding: 24px 16px 16px; }
@@ -244,10 +258,19 @@
             .bento-grid { gap: 24px; }
             .bento-half { grid-column: span 12; padding: 40px 24px; border-radius: 20px;}
             
+            /* Sized Down Mobile Action Links */
+            .action-link { font-size: 0.75rem; padding: 10px 20px; }
+            
             .cta-wrapper { padding: 40px 16px 80px; }
             .cta-box { flex-direction: column; text-align: center; padding: 60px 24px; border-radius: 20px; gap: 30px;}
             .cta-action { width: 100%; }
-            .cta-btn-gold { width: 100%; }
+            
+            /* Reduced CTA Button for Mobile */
+            .cta-btn-gold { 
+                width: auto; /* Removed width: 100% to stop it being massive */
+                padding: 14px 28px; 
+                font-size: 0.85rem; 
+            }
         }
 
         #back-to-top {
