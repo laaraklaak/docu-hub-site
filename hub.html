@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Business Hubs | Docu-Hub</title>
+    <title>Smart Business Hubs | Docu-Hub Operations</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -85,15 +85,27 @@
         .product-row:last-child { margin-bottom: 0; }
         .product-row:nth-child(even) { flex-direction: row-reverse; }
         .product-text { flex: 1; }
-        .product-text h2 { font-size: 2.8rem; margin-bottom: 25px; font-style: italic; color: var(--studio-white); }
+        .product-text h2 { font-size: clamp(2.2rem, 5vw, 2.8rem); margin-bottom: 25px; font-style: italic; color: var(--studio-white); }
         .product-text p { margin-bottom: 35px; font-size: 1.1rem; }
         .feature-list { list-style: none; padding: 0; margin-bottom: 40px; }
         .feature-list li { margin-bottom: 20px; color: #D1D5DB; display: flex; align-items: flex-start; gap: 15px; font-size: 1.05rem; font-weight: 300;}
         .feature-list i { color: var(--brand-steel); font-size: 1.1rem; margin-top: 5px; opacity: 0.9;}
         
-        .product-image { flex: 1; border-radius: 12px; overflow: hidden; background: radial-gradient(circle at center, #111 0%, #050505 100%); padding: 20px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        .product-image img { width: 100%; height: auto; border-radius: 8px; opacity: 0.9; transition: 0.5s ease;}
-        .product-image:hover img { opacity: 1; transform: scale(1.02); }
+        /* SLEEK TECH GLOW IMAGE WRAPPER */
+        .product-image { 
+            flex: 1; border-radius: 12px; overflow: hidden; 
+            background: radial-gradient(circle at center, #111 0%, #050505 100%); 
+            padding: 20px; 
+            border: 1px solid rgba(56, 189, 248, 0.1); /* Subtle Blue Border */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 20px var(--tech-glow); /* Blue Tech Glow */
+            position: relative;
+        }
+        .product-image img { 
+            width: 100%; height: auto; border-radius: 8px; 
+            filter: contrast(1.1) brightness(0.9); /* Editorial look */
+            transition: 0.5s ease;
+        }
+        .product-image:hover img { filter: contrast(1.1) brightness(1); transform: scale(1.02); }
 
         /* --- PREMIUM FRICTION BANNER --- */
         .friction-banner { 
@@ -152,6 +164,7 @@
             .product-row, .product-row:nth-child(even) { flex-direction: column; gap: 50px; text-align: left; }
             .tech-hero { padding: 80px 0; }
             .friction-banner h3 { font-size: 2rem; }
+            .featured-panel .service-content h3 { font-size: 2.2rem; }
         }
 
         #back-to-top {
@@ -184,7 +197,7 @@
     <section class="tech-hero">
         <div class="container">
             <h1>One Tap. <span>Infinite Connections.</span></h1>
-            <p>Paper business cards get thrown away. Paper menus get ruined. Upgrade your business with our Matte Black Smart Cards and Waterproof Table Tags powered by NFC technology.</p>
+            <p>Paper business cards get thrown away. Paper menus get ruined. Upgrade your brand presence with our Matte Black Smart Cards and Waterproof Table Tags powered by native NFC technology.</p>
             <div class="hero-img-container">
                 <img src="assets/tech.png" alt="Tapping a phone to a Docu-Hub Smart Card">
             </div>
@@ -196,22 +209,24 @@
             
             <div class="product-row">
                 <div class="product-text">
+                    <span style="color:var(--mem-accent); text-transform:uppercase; letter-spacing:3px; font-weight:700; font-size:0.7rem;">Elite Networking</span>
                     <h2>The VIP Digital Business Card</h2>
-                    <p>Stop printing thousands of paper business cards. Hand your client one premium Matte Black card. They tap it with their phone, and your entire portfolio, contact info, and booking links instantly save to their device.</p>
+                    <p>Stop printing thousands of paper cards. Hand your client one premium Matte Black card. They tap it with their phone, and your entire portfolio, contact info, and booking links instantly save to their device.</p>
                     <ul class="feature-list">
                         <li><i class="fa-solid fa-check"></i> Premium Matte Black PVC finish.</li>
                         <li><i class="fa-solid fa-check"></i> Includes a security-lined presentation sleeve.</li>
                         <li><i class="fa-solid fa-check"></i> Update your links anytime without reprinting.</li>
                     </ul>
-                    <a href="https://wa.me/18765612614?text=I'm%20interested%20in%20the%20VIP%20Business%20Card." class="nav-btn" target="_blank" style="display:inline-block;">Order Your Card</a>
+                    <a href="https://wa.me/18765612614?text=Hi%20Docu-Hub,%20I'm%20interested%20in%20the%20VIP%20Smart%20Business%20Card." class="nav-btn" target="_blank" style="display:inline-block; border-color:var(--mem-accent); color:var(--mem-accent)!important;">Secure Your VIP Card</a>
                 </div>
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1613535973809-9686866ec0cb?auto=format&fit=crop&q=80&w=800" alt="Black Smart Card">
-                </div>
+               <div class="product-image">
+    <img src="assets/vip-card-glow.png" alt="Premium Matte Black PVC VIP Smart Card with DH monogram and NFC tap technology" style="filter: brightness(1.1); transition: 0.5s ease; width: 100%; height: auto; border-radius: 8px;">
+</div>
             </div>
 
             <div class="product-row">
                 <div class="product-text">
+                    <span style="color:var(--brand-steel); text-transform:uppercase; letter-spacing:3px; font-weight:700; font-size:0.7rem;">Hospitality Upgrade</span>
                     <h2>Smart Table Menus</h2>
                     <p>For restaurants, cafes, and cook shops. We install sleek, waterproof NFC tags directly onto your tables. Customers tap their phones to instantly view a beautiful, mobile-optimized digital menu.</p>
                     <ul class="feature-list">
@@ -219,10 +234,10 @@
                         <li><i class="fa-solid fa-money-bill-trend-up"></i> Never pay to reprint a menu when prices change.</li>
                         <li><i class="fa-solid fa-bolt"></i> Anti-metal backing works on any table surface.</li>
                     </ul>
-                    <a href="https://wa.me/18765612614?text=I'm%20interested%20in%20Smart%20Table%20Menus." class="nav-btn" target="_blank" style="display:inline-block;">Upgrade Your Restaurant</a>
+                    <a href="https://wa.me/18765612614?text=Hi%20Docu-Hub,%20I'd%20like%20to%20upgrade%20my%20restaurant%20with%20Smart%20Table%20Menus." class="nav-btn" target="_blank" style="display:inline-block;">Modernize Your Venue</a>
                 </div>
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=800" alt="Restaurant Table">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=800" alt="Customer tapping phone to modern cafe menu">
                 </div>
             </div>
 
@@ -243,8 +258,8 @@
     <section class="cta-banner">
         <div class="container">
             <h2>Ready to step into the future?</h2>
-            <p>Contact us today to design your digital hub and order your physical hardware.</p>
-            <a href="https://wa.me/18765612614" class="cta-btn-gold" target="_blank">Start Your Build</a>
+            <p>Contact us today to design your digital hub and order your physical hardware. We handle the design, the hosting, and the chip programming.</p>
+            <a href="https://wa.me/18765612614?text=Hi%20Docu-Hub,%20I'm%20ready%20to%20build%20my%20Smart%20Hub." class="cta-btn-gold" target="_blank">Start Your Build</a>
         </div>
     </section>
 
@@ -318,4 +333,3 @@
    </script>
 </body>
 </html>
-
