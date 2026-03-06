@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Business Hubs | Docu-Hub</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --studio-black: #0F172A; 
+            --true-black: #050505;
+            --studio-white: #FFFFFF;
+            --text-muted: #94A3B8;
+            --mem-accent: #D4AF37; /* Gold */
+            --brand-steel: #38BDF8;
+            --header-height: 80px;
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
+        body { 
+            margin: 0; 
+            font-family: 'Inter', sans-serif; 
+            background: var(--true-black); /* Dark mode by default for tech */
+            color: var(--studio-white); 
+            line-height: 1.6; 
+            padding-top: var(--header-height);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 { margin: 0; font-weight: 700; font-family: 'Playfair Display', serif; color: var(--studio-white); }
+        p { margin-bottom: 0; font-size: 1.1rem; color: var(--text-muted); font-weight: 400;}
+        a { text-decoration: none; transition: 0.3s ease; }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+        /* --- NAVIGATION (Dark Theme) --- */
+        .app-header {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 2000;
+            background: rgba(5, 5, 5, 0.95); 
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1E293B; 
+            height: var(--header-height); display: flex; align-items: center;
+        }
+        .header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; }
+        .header-logo { font-size: 1.3rem; font-weight: 800; color: var(--studio-white); text-transform: uppercase; display: flex; align-items: center; }
+        .studio-tagline { font-size: 0.75rem; color: var(--text-muted); margin-left: 10px; border-left: 1px solid #1E293B; padding-left: 10px; font-weight: 500; text-transform: none; letter-spacing: 0; }
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-links a { color: var(--studio-white); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;}
+        .nav-links a:hover { color: var(--mem-accent); }
+        .nav-btn { background: var(--mem-accent); color: var(--true-black) !important; padding: 10px 20px; border-radius: 4px; }
+        .menu-toggle { display: none; font-size: 1.4rem; cursor: pointer; color: var(--studio-white); }
+
+        /* --- TECH HERO --- */
+        .tech-hero { padding: 100px 0; text-align: center; border-bottom: 1px solid #1E293B; }
+        .tech-hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 20px; color: var(--mem-accent); }
+        .tech-hero p { font-size: clamp(1.1rem, 2vw, 1.3rem); max-width: 700px; margin: 0 auto 40px; color: #CBD5E1; }
+        .hero-img-container { max-width: 800px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .hero-img-container img { width: 100%; height: auto; display: block; }
+
+        /* --- PRODUCT ROWS (Alternating) --- */
+        .product-section { padding: 100px 0; border-bottom: 1px solid #1E293B; }
+        .product-row { display: flex; align-items: center; gap: 60px; margin-bottom: 80px; }
+        .product-row:nth-child(even) { flex-direction: row-reverse; }
+        .product-text { flex: 1; }
+        .product-text h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .product-text p { margin-bottom: 30px; }
+        .feature-list { list-style: none; padding: 0; margin-bottom: 30px; }
+        .feature-list li { margin-bottom: 15px; color: #E2E8F0; display: flex; align-items: center; gap: 15px; font-size: 1.1rem; }
+        .feature-list i { color: var(--mem-accent); font-size: 1.2rem; }
+        .product-image { flex: 1; border-radius: 12px; overflow: hidden; background: #111; padding: 20px; border: 1px solid #222; }
+        .product-image img { width: 100%; height: auto; border-radius: 8px; }
+
+        /* --- NO APP NEEDED BANNER --- */
+        .friction-banner { background: #111; padding: 60px 20px; text-align: center; }
+        .friction-banner h3 { font-size: 2rem; margin-bottom: 15px; }
+        .friction-banner p { max-width: 600px; margin: 0 auto; }
+
+        /* --- CTA BANNER --- */
+        .cta-banner { padding: 100px 20px; text-align: center; background: linear-gradient(to top, #111, var(--true-black)); }
+        .cta-banner h2 { font-size: 2.8rem; margin-bottom: 20px; }
+        .cta-btn-gold { background: var(--mem-accent); color: var(--true-black); padding: 18px 45px; font-size: 1.1rem; font-weight: 700; border-radius: 4px; display: inline-block; text-transform: uppercase; letter-spacing: 1px; margin-top: 20px; }
+
+        /* --- MOBILE REFINEMENTS --- */
+        @media (max-width: 850px) {
+            .container { padding: 0 25px; }
+            .studio-tagline { display: none; } 
+            .menu-toggle { display: block; }
+            .nav-links { position: fixed; top: var(--header-height); right: -100%; width: 100%; height: calc(100vh - var(--header-height)); background: var(--true-black); flex-direction: column; padding: 40px 25px; gap: 30px; transition: 0.4s ease; align-items: flex-start; border-top: 1px solid #222; }
+            .nav-links.active { right: 0; }
+            .nav-links a { font-size: 1.2rem; width: 100%; border-bottom: 1px solid #222; padding-bottom: 15px; }
+            
+            .product-row, .product-row:nth-child(even) { flex-direction: column; gap: 40px; text-align: left; }
+            .tech-hero { padding: 60px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="container header-inner">
+            <a href="index.html" class="header-logo">Docu-Hub<span style="color:var(--brand-steel)">.</span></a>
+            <div class="menu-toggle" id="menu-btn"><i class="fa-solid fa-bars-staggered"></i></div>
+            <nav class="nav-links" id="nav-list">
+                <a href="index.html">Home</a>
+                <a href="Commemorative.html">Memorials</a>
+                <a href="concierge.html">Concierge</a>
+                <a href="https://wa.me/18765612614" class="nav-btn" target="_blank">Order Your Hub</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="tech-hero">
+        <div class="container">
+            <h1>One Tap. Infinite Connections.</h1>
+            <p>Paper business cards get thrown away. Paper menus get ruined. Upgrade your business with our Matte Black Smart Cards and Waterproof Table Tags powered by NFC technology.</p>
+            <div class="hero-img-container">
+                <img src="tech.png" alt="Tapping a phone to a Docu-Hub Smart Card">
+            </div>
+        </div>
+    </section>
+
+    <section class="product-section">
+        <div class="container">
+            
+            <div class="product-row">
+                <div class="product-text">
+                    <h2>The VIP Digital Business Card</h2>
+                    <p>Stop printing thousands of paper business cards. Hand your client one premium Matte Black card. They tap it with their phone, and your entire portfolio, contact info, and booking links instantly save to their device.</p>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-check"></i> Premium Matte Black PVC finish.</li>
+                        <li><i class="fa-solid fa-check"></i> Includes a security-lined presentation sleeve.</li>
+                        <li><i class="fa-solid fa-check"></i> Update your links anytime without reprinting.</li>
+                    </ul>
+                    <a href="https://wa.me/18765612614?text=I'm%20interested%20in%20the%20VIP%20Business%20Card." class="nav-btn" target="_blank">Order Your Card</a>
+                </div>
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1613535973809-9686866ec0cb?auto=format&fit=crop&q=80&w=800" alt="Black Smart Card">
+                </div>
+            </div>
+
+            <div class="product-row">
+                <div class="product-text">
+                    <h2>Smart Table Menus</h2>
+                    <p>For restaurants, cafes, and cook shops. We install sleek, waterproof NFC tags directly onto your tables. Customers tap their phones to instantly view a beautiful, mobile-optimized digital menu.</p>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-droplet"></i> 100% Waterproof and easily wiped clean.</li>
+                        <li><i class="fa-solid fa-money-bill-trend-up"></i> Never pay to reprint a menu when prices change.</li>
+                        <li><i class="fa-solid fa-bolt"></i> Anti-metal backing works on any table surface.</li>
+                    </ul>
+                    <a href="https://wa.me/18765612614?text=I'm%20interested%20in%20Smart%20Table%20Menus." class="nav-btn" target="_blank">Upgrade Your Restaurant</a>
+                </div>
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=800" alt="Restaurant Table">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="friction-banner">
+        <div class="container">
+            <h3><i class="fa-brands fa-apple" style="margin-right: 15px;"></i><i class="fa-brands fa-android"></i></h3>
+            <h3 style="color: var(--mem-accent);">No App Required.</h3>
+            <p>Your clients do not need to download an app or create an account. Our technology works natively with the built-in scanners on all modern iPhones and Android devices. Just tap and go.</p>
+        </div>
+    </section>
+
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Ready to step into the future?</h2>
+            <p>Contact us today to design your digital hub and order your physical hardware.</p>
+            <a href="https://wa.me/18765612614" class="cta-btn-gold" target="_blank">Start Your Build</a>
+        </div>
+    </section>
+
+   <script>
+       const menuBtn = document.getElementById('menu-btn');
+       const navList = document.getElementById('nav-list');
+       function toggleMenu() {
+           navList.classList.toggle('active');
+           const icon = menuBtn.querySelector('i');
+           icon.classList.toggle('fa-bars-staggered');
+           icon.classList.toggle('fa-xmark');
+           document.body.style.overflow = navList.classList.contains('active') ? 'hidden' : 'auto';
+       }
+       menuBtn.addEventListener('click', toggleMenu);
+   </script>
+</body>
+</html>
