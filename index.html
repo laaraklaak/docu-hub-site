@@ -79,7 +79,7 @@
 
         /* --- CONSTRAINED HERO SECTION (TECH UI FRAME) --- */
         .hero-wrapper {
-            padding: 40px 20px 60px; /* Increased vertical padding for breathing room */
+            padding: 40px 20px 60px;
             background: var(--studio-white);
         }
         .main-hero { 
@@ -96,7 +96,6 @@
             overflow: hidden;
         }
         
-        /* Tech glowing accent */
         .main-hero::before {
             content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px;
             background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
@@ -113,14 +112,14 @@
         .main-hero p { color: #94A3B8; font-size: clamp(1rem, 2vw, 1.2rem); margin-bottom: 30px; font-weight: 400; line-height: 1.7;}
 
         /* --- BENTO BOX SHOWCASE SECTION --- */
-        .showcase-section { padding: 140px 0; background: var(--bg-light); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); } /* Increased padding */
+        .showcase-section { padding: 140px 0; background: var(--bg-light); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); } 
         .section-header { text-align: center; margin-bottom: 80px; }
         .section-header h2 { font-size: clamp(2.2rem, 4vw, 3rem); margin-bottom: 15px; }
 
         .bento-grid { 
             display: grid; 
             grid-template-columns: repeat(12, 1fr); 
-            gap: 40px; /* Increased gap for clear separation between cards */
+            gap: 40px; 
         }
         
         .bento-card {
@@ -130,7 +129,7 @@
             display: flex; 
             align-items: flex-end; 
             text-decoration: none; 
-            background-color: var(--studio-black);
+            background-color: var(--true-black); /* Switched to true black so images don't look blue/slate */
             border: 1px solid rgba(0,0,0,0.05);
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -140,12 +139,17 @@
         .card-large { grid-column: span 12; min-height: 480px; }
         .card-half { grid-column: span 6; min-height: 400px; }
 
-        .service-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; z-index: 1; opacity: 0.4; }
-        .bento-card:hover .service-img { transform: scale(1.05); opacity: 0.5; }
+        /* BRIGHTENED IMAGES */
+        .service-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; z-index: 1; opacity: 0.75; }
+        .bento-card:hover .service-img { transform: scale(1.05); opacity: 0.9; }
         
-        /* Distinct Glassmorphism overlays for clear text reading */
+        /* REFINED GRADIENT OVERLAY (Fades to completely clear at the top) */
         .service-overlay { position: absolute; inset: 0; z-index: 2; transition: 0.4s ease; }
-        .service-content { position: relative; z-index: 3; padding: 40px; width: 100%; backdrop-filter: blur(4px); border-top: 1px solid rgba(255,255,255,0.05); background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.4) 100%);}
+        .service-content { 
+            position: relative; z-index: 3; padding: 40px; width: 100%; 
+            border-top: 1px solid rgba(255,255,255,0.05); 
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.98) 0%, rgba(15, 23, 42, 0.5) 70%, transparent 100%);
+        }
 
         .service-content h3 { font-size: clamp(1.8rem, 3vw, 2.8rem); margin-bottom: 12px; font-style: italic; color: #fff;}
         .service-content p { margin-bottom: 20px; color: #E2E8F0; line-height: 1.6; max-width: 600px;}
@@ -167,7 +171,7 @@
         /* --- TECH CTA BANNER --- */
         .cta-banner {
             background: var(--studio-white);
-            padding: 140px 20px; /* Increased vertical padding */
+            padding: 140px 20px; 
             text-align: center;
         }
         .cta-box {
@@ -225,18 +229,18 @@
             .nav-links a { font-size: 1.1rem; color: var(--studio-black); width: 100%; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
             .nav-btn { background: var(--studio-black); text-align: center; border: none; width: 100%; }
 
-            /* Fix Hero Container */
             .hero-wrapper { padding: 24px 16px 40px; }
             .main-hero { padding: 60px 24px; min-height: 55vh; border-radius: 20px; text-align: center; justify-content: center;}
             .tech-badge { margin: 0 auto 20px; }
             
-            /* Fix Bento Layout to Stack Gracefully */
             .showcase-section { padding: 80px 0; }
             .bento-grid { display: flex; flex-direction: column; gap: 24px; }
             .card-large, .card-half { min-height: 380px; border-radius: 16px;}
-            .service-content { padding: 24px; }
             
-            /* CTA Constraints */
+            /* Enhanced image brightness for mobile */
+            .service-img { opacity: 0.85; }
+            .service-content { padding: 30px 24px; }
+            
             .cta-banner { padding: 80px 16px 100px; }
             .cta-box { padding: 40px 24px; border-radius: 20px; }
         }
@@ -265,17 +269,15 @@
             </div>
 
             <nav class="nav-links" id="nav-list">
-    <a href="index.html">Home</a>
-    <a href="hub.html">Smart Hubs</a>
-    <a href="memorials.html">Memorials</a>
-    <a href="concierge.html">Concierge</a>
-    <!-- The single, clear Call to Action -->
-    <a href="contact.html" class="nav-btn">Contact Studio</a>
-</nav>
+                <a href="index.html">Home</a>
+                <a href="hub.html">Smart Hubs</a>
+                <a href="memorials.html">Memorials</a>
+                <a href="concierge.html">Concierge</a>
+                <a href="contact.html" class="nav-btn">Contact Studio</a>
+            </nav>
         </div>
     </header>
 
-    <!-- Contained UI Hero -->
     <div class="hero-wrapper">
         <section class="main-hero">
             <div class="container" style="padding: 0;">
@@ -288,7 +290,6 @@
         </section>
     </div>
 
-    <!-- Bento Box Services Section -->
     <section id="pillars" class="showcase-section">
         <div class="container">
             <div class="section-header">
@@ -334,7 +335,6 @@
         </div> 
     </section> 
 
-    <!-- Contained CTA Block -->
     <section class="cta-banner">
         <div class="container">
             <div class="cta-box grid-bg">
@@ -415,4 +415,3 @@
    </script>
 </body>
 </html>
-
