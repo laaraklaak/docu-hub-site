@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Memorial Tributes | Docu-Hub</title>
+    <title>Smart Memorial Tributes | Docu-Hub Studio</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
             --studio-black: #0a0a0c; 
             --true-black: #030303;
-            --studio-white: #FDFBF7; /* Warmer, ivory white for luxury */
+            --surface-black: #121215;
+            --studio-white: #FDFBF7;
             --text-muted: #9BA3AF;
             --mem-accent: #D4AF37; /* Dignified Gold */
             --mem-glow: rgba(212, 175, 55, 0.15);
+            --mem-glow-strong: rgba(212, 175, 55, 0.3);
             --header-height: 85px;
         }
 
@@ -29,6 +32,7 @@
             line-height: 1.7; 
             padding-top: var(--header-height);
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4 { margin: 0; font-weight: 500; font-family: 'Playfair Display', serif; color: var(--studio-white); letter-spacing: 0.5px;}
@@ -36,6 +40,24 @@
         a { text-decoration: none; transition: 0.4s ease; }
         
         .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+        /* --- ANIMATIONS --- */
+        .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.2s; }
+        .delay-2 { transition-delay: 0.4s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 20px var(--mem-glow); }
+            50% { box-shadow: 0 0 40px var(--mem-glow-strong); }
+            100% { box-shadow: 0 0 20px var(--mem-glow); }
+        }
 
         /* --- LUXURY NAVIGATION --- */
         .app-header {
@@ -57,88 +79,193 @@
 
         /* --- ATMOSPHERIC HERO --- */
         .memorial-hero { 
-            padding: 120px 0; 
+            padding: 120px 0 80px; 
             text-align: center; 
-            background: radial-gradient(circle at center top, #151820 0%, var(--true-black) 80%);
+            background: radial-gradient(circle at center top, var(--surface-black) 0%, var(--true-black) 80%);
             border-bottom: 1px solid rgba(255,255,255,0.03); 
+            position: relative;
+            overflow: hidden;
         }
-        .memorial-hero h1 { font-size: clamp(2.8rem, 6vw, 4.5rem); margin-bottom: 25px; color: var(--mem-accent); font-style: italic; text-shadow: 0 4px 20px var(--mem-glow); }
-        .memorial-hero p { font-size: clamp(1.1rem, 2vw, 1.25rem); max-width: 700px; margin: 0 auto 50px; color: #D1D5DB; line-height: 1.8; }
-        .hero-img-container { max-width: 800px; margin: 0 auto; border-radius: 8px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.8); position: relative; }
-        .hero-img-container::after { content: ''; position: absolute; inset: 0; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; pointer-events: none; }
-        .hero-img-container img { width: 100%; height: auto; display: block; }
+        .memorial-hero::before {
+            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 80%; height: 500px; background: radial-gradient(ellipse, var(--mem-glow) 0%, transparent 70%);
+            pointer-events: none; opacity: 0.5;
+        }
+        .memorial-hero h1 { font-size: clamp(2.8rem, 6vw, 4.5rem); margin-bottom: 25px; color: var(--mem-accent); font-style: italic; text-shadow: 0 4px 25px var(--mem-glow); position: relative; z-index: 2;}
+        .memorial-hero p { font-size: clamp(1.1rem, 2vw, 1.25rem); max-width: 680px; margin: 0 auto 60px; color: #D1D5DB; line-height: 1.8; position: relative; z-index: 2;}
+        
+        /* HERO IMAGE CONTAINER */
+        .hero-img-container {
+            max-width: 550px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 40px var(--mem-glow);
+            position: relative;
+            z-index: 2;
+            animation: float 6s ease-in-out infinite;
+        }
+        .hero-img-container::after { 
+            content: ''; position: absolute; inset: 0; border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; pointer-events: none; 
+        }
+        .hero-img-container img { 
+            width: 100%; height: auto; display: block; 
+        }
 
         /* --- THE PARADIGM SHIFT SECTION --- */
-        .shift-section { padding: 100px 0; text-align: center; background: var(--true-black); }
-        .shift-section h2 { font-size: 2.4rem; margin-bottom: 25px; font-weight: 500;}
-        .shift-section p { max-width: 700px; margin: 0 auto; font-size: 1.15rem; color: var(--text-muted); }
+        .shift-section { padding: 120px 0; text-align: center; background: var(--true-black); }
+        .shift-icon { font-size: 2rem; color: var(--mem-accent); margin-bottom: 20px; opacity: 0.8; }
+        .shift-section h2 { font-size: clamp(2rem, 4vw, 2.5rem); margin-bottom: 25px; font-weight: 500;}
+        .shift-section p { max-width: 750px; margin: 0 auto; font-size: 1.15rem; color: var(--text-muted); line-height: 1.8;}
 
         /* --- HOW IT WORKS ROWS --- */
-        .product-section { padding: 100px 0; border-top: 1px solid rgba(255,255,255,0.03); background: radial-gradient(circle at right center, #0a0c10 0%, var(--true-black) 100%); }
-        .product-row { display: flex; align-items: center; gap: 80px; margin-bottom: 120px; }
-        .product-row:nth-child(even) { flex-direction: row-reverse; }
-        .product-text { flex: 1; }
-        .product-text h2 { font-size: 2.8rem; margin-bottom: 25px; color: var(--mem-accent); font-style: italic; text-shadow: 0 2px 15px var(--mem-glow);}
-        .product-text p { margin-bottom: 35px; font-size: 1.1rem; }
-        .feature-list { list-style: none; padding: 0; margin-bottom: 30px; }
-        .feature-list li { margin-bottom: 20px; color: #D1D5DB; display: flex; align-items: flex-start; gap: 15px; font-size: 1.05rem; font-weight: 300;}
-        .feature-list i { color: var(--mem-accent); font-size: 1.1rem; margin-top: 5px; opacity: 0.8;}
+        .product-section { padding: 80px 0 120px; border-top: 1px solid rgba(255,255,255,0.03); background: radial-gradient(circle at right center, var(--surface-black) 0%, var(--true-black) 100%); overflow: hidden;}
         
-        /* SLEEK TITANIUM PHONE MOCKUP */
-        .phone-mockup { flex: 1; display: flex; justify-content: center; align-items: center; }
+        .product-row { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            gap: 8%; 
+            margin-bottom: 150px; 
+            max-width: 1050px; 
+            margin: 0 auto 150px auto; 
+        }
+        .product-row:nth-child(even) { flex-direction: row-reverse; }
+        
+        .product-text { 
+            flex: 1 1 50%; 
+            max-width: 600px; 
+        } 
+        .product-text h2 { font-size: clamp(2.2rem, 5vw, 2.8rem); margin-bottom: 25px; color: var(--mem-accent); font-style: italic;}
+        .product-text p { margin-bottom: 35px; font-size: 1.1rem; line-height: 1.8; color: #D1D5DB;}
+        
+        .feature-list { list-style: none; padding: 0; margin-bottom: 30px; }
+        .feature-list li { margin-bottom: 25px; color: var(--text-muted); display: flex; align-items: flex-start; gap: 15px; font-size: 1.05rem; font-weight: 300; line-height: 1.6;}
+        .feature-list i { color: var(--mem-accent); font-size: 1.2rem; margin-top: 4px; opacity: 0.9; text-shadow: 0 0 10px var(--mem-glow);}
+        
+        /* CSS Keepsake Visual (Row 1) */
+        .visual-panel { 
+            flex: 1 1 45%; 
+            display: flex; justify-content: center; align-items: center;
+            position: relative;
+        }
+        .keepsake-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            aspect-ratio: 1.6;
+            perspective: 1200px;
+        }
+        .keepsake-card-front, .keepsake-card-back {
+            position: absolute;
+            width: 100%; height: 100%;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #18181a 0%, #050505 100%);
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: -20px 20px 40px rgba(0,0,0,0.8);
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 30px;
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .keepsake-card-front { transform: translateZ(20px) rotateY(-15deg) rotateX(5deg); z-index: 2; border-right: 1px solid rgba(212, 175, 55, 0.3); border-bottom: 1px solid rgba(212, 175, 55, 0.3);}
+        .keepsake-card-back { transform: translateZ(-30px) translateX(40px) translateY(-20px) rotateY(-15deg) rotateX(5deg); opacity: 0.6; filter: blur(2px); z-index: 1;}
+        
+        .visual-panel:hover .keepsake-card-front { transform: translateZ(40px) rotateY(-5deg) rotateX(2deg); box-shadow: -10px 30px 50px rgba(0,0,0,0.9); border-color: rgba(212, 175, 55, 0.5);}
+        .visual-panel:hover .keepsake-card-back { transform: translateZ(-50px) translateX(60px) translateY(-30px) rotateY(-5deg) rotateX(2deg); opacity: 0.4;}
+
+        /* --- CONSTRAINED PHONE MOCKUP (Row 2) --- */
+        .phone-mockup-wrapper {
+            perspective: 1000px;
+            padding: 20px;
+        }
         .phone-frame { 
-            width: 320px; height: 650px; 
+            width: 290px; height: 590px; 
             border-radius: 45px; 
             background: #000; 
             position: relative; 
             overflow: hidden; 
-            box-shadow: 0 0 0 2px #2a2a2a, 0 0 0 5px #111, 0 30px 60px rgba(0,0,0,0.9); /* Premium edge */
+            box-shadow: 0 0 0 2px #2a2a2a, 0 0 0 6px #0a0a0a, 0 30px 60px rgba(0,0,0,0.9); 
+            transform: rotateY(10deg) rotateX(5deg);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
         }
+        .visual-panel:hover .phone-frame {
+            transform: rotateY(0deg) rotateX(0deg);
+            box-shadow: 0 0 0 2px #333, 0 0 0 6px #0a0a0a, 0 40px 70px rgba(0,0,0,0.9);
+        }
+
         .phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 110px; height: 28px; background: #000; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px; z-index: 10; }
         .phone-screen { 
-            width: 100%; height: 100%; padding: 60px 25px 40px; text-align: center; 
-            background: linear-gradient(135deg, #1A202C 0%, #0F172A 100%); 
+            width: 100%; height: 100%; padding: 0; text-align: center; 
+            background: #0F172A; 
             position: relative;
+            overflow-y: auto;
+            scrollbar-width: none;
         }
-        .phone-screen::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 40%; background: radial-gradient(circle at center top, rgba(212, 175, 55, 0.1), transparent); pointer-events: none;}
         
-        .phone-screen h4 { font-size: 1.8rem; color: var(--mem-accent); margin-top: 25px; font-style: italic;}
-        .phone-screen p { font-size: 0.95rem; margin-top: 15px; color: #E2E8F0; }
-        .img-placeholder { width: 110px; height: 110px; background: #222; border-radius: 50%; margin: 20px auto; border: 1px solid rgba(212, 175, 55, 0.4); box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
-        .gallery-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; margin-top: 30px; color: #fff; font-size: 0.85rem; font-weight: 400; letter-spacing: 0.5px; backdrop-filter: blur(5px);}
+        /* Inner Phone UI Details */
+        .phone-header-img {
+            width: 100%; height: 160px;
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 1) 100%), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 400 200"><rect width="400" height="200" fill="%231E293B"/><circle cx="200" cy="100" r="50" fill="%23334155" opacity="0.5"/></svg>');
+            background-size: cover; background-position: center;
+        }
+        .phone-avatar {
+            width: 110px; height: 110px;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-radius: 50%;
+            margin: -55px auto 15px;
+            border: 3px solid #0F172A;
+            box-shadow: 0 0 0 2px var(--mem-accent), 0 10px 20px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 2;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .phone-avatar i { font-size: 2.5rem; color: rgba(212, 175, 55, 0.4); }
+        .phone-ui-content { padding: 0 25px 30px; }
+        .phone-ui-content h4 { font-size: 1.6rem; color: var(--mem-accent); font-style: italic; font-weight: 400;}
+        .phone-ui-content .dates { font-size: 0.8rem; letter-spacing: 2px; color: #94A3B8; margin-top: 5px; }
+        .ui-divider { width: 40px; height: 1px; background: var(--mem-accent); margin: 20px auto; opacity: 0.5; }
+        .ui-text-lines { display: flex; flex-direction: column; gap: 8px; align-items: center; margin-bottom: 25px;}
+        .ui-line { height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; }
+        .ui-line.l1 { width: 90%; } .ui-line.l2 { width: 80%; } .ui-line.l3 { width: 85%; } .ui-line.l4 { width: 60%; }
+        
+        .ui-btn { 
+            background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); 
+            padding: 12px; border-radius: 8px; color: var(--mem-accent); 
+            font-size: 0.8rem; font-weight: 500; letter-spacing: 0.5px; 
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            margin-bottom: 12px;
+        }
+        .ui-btn.secondary { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: #E2E8F0; }
 
         /* --- LUXURY CTA BANNER --- */
-        .cta-banner { padding: 120px 20px; text-align: center; background: radial-gradient(circle at center, #111 0%, var(--true-black) 100%); border-top: 1px solid rgba(255,255,255,0.03);}
-        .cta-banner h2 { font-size: 3rem; margin-bottom: 20px; font-weight: 500; }
-        .cta-btn-gold { background: var(--mem-accent); color: var(--true-black); padding: 18px 50px; font-size: 1.05rem; font-weight: 600; border-radius: 2px; display: inline-block; text-transform: uppercase; letter-spacing: 2px; margin-top: 30px; box-shadow: 0 10px 30px var(--mem-glow); }
-        .cta-btn-gold:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3); }
+        .cta-banner { padding: 140px 20px; text-align: center; background: radial-gradient(circle at center, var(--surface-black) 0%, var(--true-black) 100%); border-top: 1px solid rgba(255,255,255,0.03); position: relative; overflow: hidden;}
+        .cta-banner::before { content: ''; position: absolute; bottom: -50%; left: 50%; transform: translateX(-50%); width: 60%; height: 60%; background: radial-gradient(circle, var(--mem-glow) 0%, transparent 60%); pointer-events: none;}
+        .cta-banner h2 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin-bottom: 20px; font-weight: 500; position: relative; z-index: 2;}
+        .cta-banner p { max-width: 600px; margin: 0 auto 40px; position: relative; z-index: 2;}
+        .cta-btn-gold { 
+            background: linear-gradient(135deg, #E5C158 0%, #B89020 100%); 
+            color: var(--true-black); 
+            padding: 18px 50px; 
+            font-size: 1.05rem; 
+            font-weight: 600; 
+            border-radius: 4px; 
+            display: inline-block; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            box-shadow: 0 10px 30px var(--mem-glow); 
+            position: relative; z-index: 2;
+        }
+        .cta-btn-gold:hover { transform: translateY(-3px); box-shadow: 0 15px 40px var(--mem-glow-strong); }
 
         /* --- REDEFINED FOOTER --- */
-        .main-footer {
-            background: #030303;
-            color: #94A3B8;
-            padding: 80px 0 30px;
-            border-top: 1px solid #111;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 50px;
-            margin-bottom: 60px;
-        }
+        .main-footer { background: var(--true-black); color: #94A3B8; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; margin-bottom: 60px; }
         .footer-brand h2 { color: var(--studio-white); font-size: 2rem; margin-bottom: 10px; font-family: 'Playfair Display', serif;}
         .footer-brand p { font-size: 0.95rem; color: #64748B; }
         .footer-col h4 { color: var(--studio-white); margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; font-family: 'Inter', sans-serif;}
         .footer-col a { display: block; color: #94A3B8; margin-bottom: 15px; font-size: 0.95rem; transition: 0.3s; }
         .footer-col a:hover { color: var(--mem-accent); transform: translateX(5px); }
-        .footer-bottom {
-            border-top: 1px solid #111;
-            padding-top: 30px;
-            text-align: center;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            color: #64748B;
-        }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; text-align: center; font-size: 0.85rem; letter-spacing: 1px; color: #64748B; }
 
         /* --- MOBILE REFINEMENTS --- */
         @media (max-width: 850px) {
@@ -150,9 +277,13 @@
             .nav-links a { font-size: 1.1rem; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px; }
             .nav-btn { text-align: center; width: 100%; }
             
-            .product-row, .product-row:nth-child(even) { flex-direction: column; gap: 60px; text-align: center; }
-            .feature-list li { text-align: left; }
-            .memorial-hero { padding: 80px 0; }
+            .product-row, .product-row:nth-child(even) { flex-direction: column; gap: 60px; text-align: center; margin-bottom: 100px;}
+            .product-text { max-width: 100%; }
+            .feature-list li { text-align: left; justify-content: center;}
+            
+            .memorial-hero { padding: 80px 0 60px; }
+            .visual-panel { width: 100%; }
+            .keepsake-wrapper { max-width: 300px; }
         }
     </style>
 </head>
@@ -174,16 +305,19 @@
 
     <section class="memorial-hero">
         <div class="container">
-            <h1>A Legacy, Not Just Paper.</h1>
-            <p>Traditional funeral programs are limited by page count and eventually fade away. We design premium Smart Memorial Keepsakes that unlock an infinite, permanent digital tribute with a single tap.</p>
-            <div class="hero-img-container">
+            <h1 class="fade-up">A Legacy, Not Just Paper.</h1>
+            <p class="fade-up delay-1">Traditional funeral programs are limited by page count and eventually fade away. We design premium Smart Memorial Keepsakes that unlock an infinite, permanent digital tribute with a single tap.</p>
+            
+            <!-- Hero Image Visual -->
+            <div class="hero-img-container fade-up delay-2">
                 <img src="assets/memorial.png" alt="Elegant Smart Memorial Card">
             </div>
         </div>
     </section>
 
     <section class="shift-section">
-        <div class="container">
+        <div class="container fade-up">
+            <i class="fa-solid fa-dove shift-icon"></i>
             <h2>Beyond the Booklet.</h2>
             <p>Funeral homes provide standard paper booklets. Docu-Hub provides a modern, dignified legacy. Our Smart Keepsakes fit perfectly in a wallet, ensuring family and friends can carry the memory of their loved one with them forever.</p>
         </div>
@@ -192,43 +326,84 @@
     <section class="product-section">
         <div class="container">
             
-            <div class="product-row">
+            <!-- Row 1: Physical Card -->
+            <div class="product-row fade-up">
                 <div class="product-text">
                     <h2>The Physical Keepsake</h2>
                     <p>We craft a beautiful, high-quality Matte Black PVC card featuring elegant typography and subtle gold accents. It is a physical token of remembrance designed to last a lifetime, presented in a custom security sleeve.</p>
                     <ul class="feature-list">
-                        <li><i class="fa-solid fa-leaf"></i> <strong>Dignified Design:</strong> Minimalist, respectful, and completely customized for your family.</li>
-                        <li><i class="fa-solid fa-shield-halved"></i> <strong>Built to Last:</strong> Made from durable, waterproof materials—not fragile paper.</li>
-                        <li><i class="fa-solid fa-mobile-screen-button"></i> <strong>Embedded Technology:</strong> Hidden inside the card is a secure NFC microchip.</li>
+                        <li><i class="fa-solid fa-leaf"></i> <div><strong>Dignified Design:</strong> Minimalist, respectful, and completely customized for your family's aesthetic.</div></li>
+                        <li><i class="fa-solid fa-shield-halved"></i> <div><strong>Built to Last:</strong> Made from premium, waterproof PVC polymer—not fragile, easily torn paper.</div></li>
+                        <li><i class="fa-solid fa-mobile-screen-button"></i> <div><strong>Embedded Technology:</strong> Hidden securely inside the card is a passive NFC microchip requiring no batteries.</div></li>
                     </ul>
                 </div>
-                <div class="product-image" style="background: transparent; border: none; padding: 0; position: relative;">
-                     <img src="assets/program.png" alt="Physical Keepsake" style="box-shadow: 0 20px 50px rgba(0,0,0,0.8); border-radius: 8px;">
+                
+                <!-- CSS 3D Card Keepsake Visual -->
+                <div class="visual-panel">
+                    <div class="keepsake-wrapper">
+                        <!-- Back Card (Blurry Depth) -->
+                        <div class="keepsake-card-back">
+                            <div class="card-top">
+                                <i class="fa-solid fa-qrcode" style="color:#555; font-size:2rem;"></i>
+                                <div class="card-brand" style="color:#555;">Scan to View</div>
+                            </div>
+                        </div>
+                        <!-- Front Card (Focus) -->
+                        <div class="keepsake-card-front">
+                            <div class="card-top">
+                                <i class="fa-solid fa-microchip card-chip"></i>
+                            </div>
+                            <div class="card-center" style="text-align: left;">
+                                <h3 style="font-family: 'Playfair Display'; font-size: 1.6rem; color: var(--mem-accent); font-style: italic; font-weight:400; margin:0;">In Loving Memory</h3>
+                                <div style="width: 30px; height: 1px; background: var(--mem-accent); margin: 10px 0;"></div>
+                                <p style="font-size: 0.8rem; color: #aaa; text-transform: uppercase; letter-spacing: 2px;">Tap to open Tribute</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="product-row">
+            <!-- Row 2: Digital Tribute -->
+            <div class="product-row fade-up">
                 <div class="product-text">
                     <h2>The Digital Tribute</h2>
                     <p>When friends and family tap the Keepsake Card with their smartphone, it instantly opens a beautifully formatted Digital Tribute. No app downloads are required. Just a seamless celebration of life.</p>
                     <ul class="feature-list">
-                        <li><i class="fa-solid fa-images"></i> <strong>Infinite Photo Gallery:</strong> Never worry about the cost of printing extra pages. Share hundreds of photos.</li>
-                        <li><i class="fa-solid fa-video"></i> <strong>Video Integration:</strong> Include a video montage, favorite songs, or recorded speeches.</li>
-                        <li><i class="fa-solid fa-book-open"></i> <strong>The Full Story:</strong> Room for the complete obituary, family acknowledgments, and order of service.</li>
+                        <li><i class="fa-solid fa-images"></i> <div><strong>Infinite Photo Gallery:</strong> Never worry about the cost of printing extra pages. Share hundreds of cherished photos instantly.</div></li>
+                        <li><i class="fa-solid fa-video"></i> <div><strong>Rich Media Integration:</strong> Include beautiful video montages, favorite songs, or recorded speeches from family members.</div></li>
+                        <li><i class="fa-solid fa-book-open"></i> <div><strong>The Full Story:</strong> Unlimited room for the complete obituary, family acknowledgments, and the full order of service.</div></li>
                     </ul>
                 </div>
                 
-                <div class="phone-mockup">
-                    <div class="phone-frame">
-                        <div class="phone-notch"></div>
-                        <div class="phone-screen">
-                            <div class="img-placeholder"></div>
-                            <h4>In Loving Memory</h4>
-                            <p style="font-style: italic; color: var(--mem-accent); letter-spacing: 2px;">1945 — 2026</p>
-                            <div style="width: 60%; height: 1px; background: rgba(212, 175, 55, 0.3); margin: 25px auto;"></div>
-                            <p style="font-size: 0.85rem; font-weight: 300; opacity: 0.8;">Tap below to view the life story, photo gallery, and video tributes.</p>
-                            <div class="gallery-btn">
-                                <i class="fa-solid fa-image" style="margin-right: 8px; color: var(--mem-accent);"></i> View Gallery (124 Photos)
+                <!-- Enhanced Phone Mockup -->
+                <div class="visual-panel">
+                    <div class="phone-mockup-wrapper">
+                        <div class="phone-frame">
+                            <div class="phone-notch"></div>
+                            <div class="phone-screen">
+                                <div class="phone-header-img"></div>
+                                <div class="phone-avatar">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <div class="phone-ui-content">
+                                    <h4>In Loving Memory</h4>
+                                    <div class="dates">1945 — 2026</div>
+                                    <div class="ui-divider"></div>
+                                    
+                                    <div class="ui-text-lines">
+                                        <div class="ui-line l1"></div>
+                                        <div class="ui-line l2"></div>
+                                        <div class="ui-line l3"></div>
+                                        <div class="ui-line l4"></div>
+                                    </div>
+
+                                    <div class="ui-btn">
+                                        <i class="fa-solid fa-image"></i> View Gallery (124)
+                                    </div>
+                                    <div class="ui-btn secondary">
+                                        <i class="fa-solid fa-book"></i> Read Life Story
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -239,9 +414,9 @@
     </section>
 
     <section class="cta-banner">
-        <div class="container">
+        <div class="container fade-up">
             <h2>Let us build a permanent legacy.</h2>
-            <p>Our team handles the design, the digital formatting, and the physical chip programming. You focus on family.</p>
+            <p>Our studio handles the elegant physical design, the complete digital formatting, and the physical chip programming. You focus on family.</p>
             <a href="https://wa.me/18765612614?text=Hello%20Docu-Hub,%20I%20would%20like%20to%20learn%20more%20about%20the%20Smart%20Memorial%20Keepsakes." class="cta-btn-gold" target="_blank">Contact Our Studio</a>
         </div>
     </section>
@@ -256,7 +431,7 @@
                 <div class="footer-col">
                     <h4>Solutions</h4>
                     <a href="hub.html">Smart Business Hubs</a>
-                    <a href="memorials.html">Memorial Tributes</a>
+                    <a href="memorials.html" style="color: var(--mem-accent);">Memorial Tributes</a>
                     <a href="concierge.html">Concierge Desk</a>
                 </div>
                 <div class="footer-col">
@@ -272,8 +447,10 @@
     </footer>
 
    <script>
+       // Mobile Menu Toggle
        const menuBtn = document.getElementById('menu-btn');
        const navList = document.getElementById('nav-list');
+       
        function toggleMenu() {
            navList.classList.toggle('active');
            const icon = menuBtn.querySelector('i');
@@ -282,11 +459,26 @@
            document.body.style.overflow = navList.classList.contains('active') ? 'hidden' : 'auto';
        }
        menuBtn.addEventListener('click', toggleMenu);
+
+       // Scroll Animation Observer (Fade Up effect)
+       const observerOptions = {
+           root: null,
+           rootMargin: '0px',
+           threshold: 0.15
+       };
+
+       const observer = new IntersectionObserver((entries, observer) => {
+           entries.forEach(entry => {
+               if (entry.isIntersecting) {
+                   entry.target.classList.add('visible');
+                   observer.unobserve(entry.target); // Only animate once
+               }
+           });
+       }, observerOptions);
+
+       document.querySelectorAll('.fade-up').forEach(element => {
+           observer.observe(element);
+       });
    </script>
 </body>
 </html>
-
-
-
-
-
