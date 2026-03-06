@@ -221,58 +221,103 @@
         }
         .play-text { font-family: 'Inter', sans-serif; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem;}
 
-        /* --- BENTO BOX SHOWCASE SECTION --- */
+        /* --- ACCORDION SHOWCASE SECTION --- */
         .showcase-section { padding: 60px 0 120px; } 
-        .bento-grid { display: flex; flex-direction: column; gap: 80px; }
+        .bento-grid { display: flex; flex-direction: column; gap: 40px; }
         
-        .bento-box {
+        /* The main container for each Category */
+        .bento-category {
             background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(10px);
             border: 1px solid var(--border-color); border-radius: 24px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2); position: relative; overflow: hidden;
+            display: grid; grid-template-columns: 1fr 1.5fr; /* Left: Intro, Right: Accordions */
         }
 
-        .box-full { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 40px;}
-        .icon-row { display: flex; justify-content: center; gap: 30px; margin-bottom: 25px; font-size: 3.5rem; color: rgba(255,255,255,0.8); }
-        .bento-box h2 { font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 20px; font-weight: 500; font-style: italic;}
-        .bento-box p { color: #CBD5E1; font-size: 1.05rem; line-height: 1.7;}
-
-        /* Unified Split Cards for Products */
-        .bento-split { display: grid; grid-template-columns: 1fr 1fr; padding: 0; }
-        .split-content { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center;}
-        .split-visual { background: linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(5, 5, 5, 0.8) 100%); display: flex; align-items: center; justify-content: center; padding: 60px; position: relative; overflow: hidden;}
-
-        /* Border separations */
-        .bento-split .split-content { border-right: 1px solid var(--border-color); }
-        .bento-split.reverse .split-content { border-right: none; border-left: 1px solid var(--border-color); order: 2; }
-        .bento-split.reverse .split-visual { order: 1; }
+        .category-hero {
+            padding: 60px 40px;
+            display: flex; flex-direction: column; justify-content: center;
+            border-right: 1px solid var(--border-color);
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(5, 5, 5, 0.9) 100%);
+        }
+        .category-hero i { font-size: 3rem; margin-bottom: 25px; }
+        .theme-business i { color: var(--brand-steel); text-shadow: 0 0 20px var(--brand-glow); }
+        .theme-personal i { color: var(--mem-accent); text-shadow: 0 0 20px var(--mem-glow); }
         
-        .category-tag { color: var(--brand-steel); text-transform: uppercase; letter-spacing: 3px; font-weight: 700; font-size: 0.75rem; margin-bottom: 15px; display: block; font-family: 'Inter', sans-serif;}
-        .feature-list { list-style: none; padding: 0; margin-top: 30px; margin-bottom: 35px;}
-        .feature-list li { margin-bottom: 20px; color: var(--text-muted); display: flex; align-items: flex-start; gap: 15px; font-size: 1rem; font-weight: 300; line-height: 1.6;}
-        .feature-list i { color: var(--brand-steel); font-size: 1.1rem; margin-top: 4px; opacity: 0.9;}
+        .category-hero h2 { font-size: 2.4rem; font-style: italic; margin-bottom: 15px;}
+        .category-hero p { color: #CBD5E1; line-height: 1.7; font-size: 1.1rem; }
 
-        /* Visual Image Holders */
-        .img-holder {
-            width: 100%; max-width: 450px; border-radius: 12px; overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 20px var(--brand-glow);
-            border: 1px solid rgba(56, 189, 248, 0.15); transition: transform 0.5s ease;
+        /* Accordion Structure */
+        .accordion-wrapper {
+            display: flex;
+            flex-direction: column;
         }
-        .img-holder img { width: 100%; height: auto; display: block; filter: brightness(0.95); transition: 0.5s ease; }
-        .split-visual:hover .img-holder { transform: translateY(-5px); box-shadow: 0 25px 60px rgba(0,0,0,0.9), 0 0 35px var(--brand-glow-strong); }
-        .split-visual:hover .img-holder img { filter: brightness(1.1); }
+        .accordion-item {
+            border-bottom: 1px solid var(--border-color);
+        }
+        .accordion-item:last-child { border-bottom: none; }
+        
+        .accordion-header {
+            width: 100%; text-align: left; background: transparent; border: none;
+            padding: 35px 40px; font-size: 1.25rem; font-family: 'Inter', sans-serif; font-weight: 600; 
+            color: var(--studio-white); display: flex; justify-content: space-between; align-items: center; 
+            cursor: pointer; transition: 0.3s; outline: none;
+        }
+        .accordion-header:hover { background: rgba(255,255,255,0.03); }
+        .accordion-header.active { background: rgba(255,255,255,0.05); }
+        
+        .acc-title { display: flex; align-items: center; gap: 15px; }
+        .acc-title i { font-size: 1.4rem; opacity: 0.8; width: 30px; text-align: center;}
+        .theme-business .acc-title i { color: var(--brand-steel); }
+        .theme-personal .acc-title i { color: var(--mem-accent); }
+        
+        .acc-icon { transition: transform 0.4s ease; color: var(--text-muted); font-size: 1rem;}
 
-        /* Unified Action Button */
+        .accordion-content {
+            max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+            background: rgba(0,0,0,0.3);
+        }
+        .accordion-content.active { transition: max-height 0.4s ease-in-out; }
+        
+        .acc-inner { padding: 10px 40px 40px 85px; } /* Indented to align with text, bypassing the icon */
+        .acc-inner p { margin-bottom: 25px; line-height: 1.7; color: #CBD5E1;}
+        
+        /* --- NEW: Accordion Image Split --- */
+        .acc-split { display: flex; flex-direction: column; gap: 25px; }
+        .acc-split-text { flex: 1; }
+        .acc-split-img { 
+            width: 100%; border-radius: 12px; overflow: hidden; 
+            border: 1px solid rgba(255,255,255,0.1); aspect-ratio: 16/9; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3); position: relative;
+        }
+        .acc-split-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.9); transition: 0.5s ease; }
+        .acc-split-img:hover img { filter: brightness(1.1); transform: scale(1.05); }
+
+        @media (min-width: 850px) {
+            .acc-split { flex-direction: row; align-items: stretch; }
+            .acc-split-img { width: 220px; aspect-ratio: 1; flex-shrink: 0; }
+        }
+        
+        .feature-list { list-style: none; padding: 0; margin-bottom: 30px;}
+        .feature-list li { margin-bottom: 15px; color: var(--text-muted); display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; font-weight: 300;}
+        .feature-list i { font-size: 1rem; margin-top: 4px; opacity: 0.9;}
+        .theme-business .feature-list i { color: var(--brand-steel); }
+        .theme-personal .feature-list i { color: var(--mem-accent); }
+
+        /* Unified Action Button inside Accordion */
         .action-link {
-            font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; 
-            display: inline-flex; align-items: center; gap: 8px; color: var(--brand-steel);
-            background: var(--true-black);
-            padding: 14px 28px; border: 2px solid var(--brand-steel); border-radius: 8px;
-            transition: 0.3s; width: fit-content; font-family: 'Inter', sans-serif;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; 
+            display: inline-flex; align-items: center; gap: 8px; color: var(--studio-white);
+            background: transparent;
+            padding: 10px 24px; border: 1px solid rgba(255,255,255,0.3); border-radius: 6px;
+            transition: 0.3s; font-family: 'Inter', sans-serif;
         }
-        .action-link:hover { 
-            background: rgba(56, 189, 248, 0.1); box-shadow: 0 5px 15px var(--brand-glow);
-            transform: translateY(-2px);
-        }
+        .theme-business .action-link:hover { background: var(--brand-steel); color: var(--true-black); border-color: var(--brand-steel); box-shadow: 0 5px 15px var(--brand-glow);}
+        .theme-personal .action-link:hover { background: var(--mem-accent); color: var(--true-black); border-color: var(--mem-accent); box-shadow: 0 5px 15px var(--mem-glow);}
+
+
+        /* Full Span Friction Banner */
+        .box-full { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 40px; margin-top: 40px;}
+        .icon-row { display: flex; justify-content: center; gap: 30px; margin-bottom: 25px; font-size: 3.5rem; color: rgba(255,255,255,0.8); }
 
         /* --- CONSTRAINED CTA BANNER --- */
         .cta-wrapper { padding: 40px 20px 120px; } 
@@ -330,26 +375,19 @@
             .video-demo-box { aspect-ratio: 16/9; border-radius: 16px;}
             .play-btn { width: 60px; height: 60px; font-size: 1.2rem; }
 
+            /* Accordion Adjustments for Mobile */
             .showcase-section { padding: 40px 0 60px; }
-            .bento-grid { display: flex; flex-direction: column; gap: 40px; }
-            .bento-box { border-radius: 20px; }
-            .box-full { padding: 60px 24px; }
+            .bento-category { grid-template-columns: 1fr; border-radius: 20px;}
+            .category-hero { padding: 50px 24px; border-right: none; border-bottom: 1px solid var(--border-color); text-align: center;}
+            .accordion-header { padding: 25px 24px; font-size: 1.1rem; }
+            .acc-inner { padding: 10px 24px 30px 24px; } /* Removed deep indent for mobile */
+            .acc-title { gap: 10px; }
             
-            /* Split layout adjustments for mobile */
-            .bento-split { grid-template-columns: 1fr; }
-            .bento-split .split-content { border-right: none; padding: 40px 24px; }
-            .bento-split.reverse .split-content { border-left: none; padding: 40px 24px; order: 2; }
+            .box-full { padding: 60px 24px; border-radius: 20px;}
             
-            .split-visual { padding: 40px 24px; min-height: 350px; border-bottom: 1px solid var(--border-color); }
-            
-            /* Force visual to always be on top on mobile */
-            .bento-split .split-visual { order: -1; border-bottom: 1px solid var(--border-color); }
-            .bento-split.reverse .split-visual { order: -1; border-bottom: 1px solid var(--border-color); }
-            
-            .img-holder { max-width: 320px; }
             .cta-wrapper { padding: 40px 16px 80px; }
             .cta-box { padding: 60px 24px; border-radius: 20px; }
-            .action-link { width: 100%; justify-content: center; } /* Full width buttons on mobile */
+            .action-link { width: 100%; justify-content: center; } 
         }
 
         #back-to-top {
@@ -387,7 +425,7 @@
             <div class="main-hero-content">
                 <div class="tech-badge"><i class="fa-solid fa-wifi" style="margin-right: 6px;"></i> Smart Integration</div>
                 <h1>One Tap. <br><span>Infinite Connections.</span></h1>
-                <p>Paper business cards get thrown away. Paper menus get ruined. Upgrade your brand presence with our Matte Black Smart Cards and Waterproof Table Tags powered by native NFC technology.</p>
+                <p>Paper systems get thrown away, lost, or ruined. Upgrade your life with our premium Smart Tags powered by native NFC technology. Perfect for businesses, homes, and family care.</p>
             </div>
             <div class="hero-img-container">
                 <img src="assets/tech.png" alt="Tapping a phone to a Docu-Hub Smart Card">
@@ -395,12 +433,12 @@
         </section>
     </div>
 
-    <!-- NEW: How it Works / Education Section -->
+    <!-- How it Works / Education Section -->
     <section class="education-section">
         <div class="container">
             <div class="section-header fade-up">
                 <h2>No searching. Just tapping.</h2>
-                <p>We program a tiny, invisible microchip inside your physical materials. Here is how your customers interact with it in seconds.</p>
+                <p>We program a tiny, invisible microchip inside your physical materials. Here is how your network interacts with it in seconds.</p>
             </div>
 
             <!-- 3-Step Grid -->
@@ -409,19 +447,19 @@
                     <div class="step-num">01</div>
                     <div class="step-icon"><i class="fa-solid fa-mobile-screen"></i></div>
                     <h3>The Approach</h3>
-                    <p>Your client simply unlocks their smartphone. No special apps needed. It works directly with their built-in camera or NFC reader.</p>
+                    <p>Simply unlock any smartphone. No special apps needed. It works directly with built-in Apple and Android NFC readers.</p>
                 </div>
                 <div class="step-card fade-up delay-2">
                     <div class="step-num">02</div>
                     <div class="step-icon"><i class="fa-solid fa-wifi" style="transform: rotate(90deg);"></i></div>
                     <h3>The Tap</h3>
-                    <p>They gently tap the top of their phone against your Smart Card or Table Tag. A notification instantly appears on their screen.</p>
+                    <p>Gently tap the top of the phone against the Smart Tag or Card. A notification will instantly appear on the screen.</p>
                 </div>
                 <div class="step-card fade-up delay-3">
                     <div class="step-num">03</div>
                     <div class="step-icon"><i class="fa-solid fa-bolt"></i></div>
                     <h3>The Connection</h3>
-                    <p>They click the notification, and immediately your digital menu, portfolio, or contact details open perfectly on their device.</p>
+                    <p>Click the notification, and immediately the digital menu, contact card, or emergency info opens perfectly.</p>
                 </div>
             </div>
 
@@ -437,56 +475,199 @@
         </div>
     </section>
 
-    <!-- Bento Box Showcase Layout -->
+    <!-- NEW: Organized Accordion Layout -->
     <section class="showcase-section">
         <div class="container bento-grid">
             
             <div class="section-header fade-up">
-                <h2>Our Hardware Solutions</h2>
+                <h2>Explore the Scenarios</h2>
+                <p>Select a category below to discover how our Smart Hubs solve everyday friction for businesses and families alike.</p>
             </div>
 
-            <!-- Unified Card 1: VIP Card -->
-            <div class="bento-box bento-split fade-up delay-1">
-                <div class="split-content">
-                    <span class="category-tag">Elite Networking</span>
-                    <h2>The VIP Digital Business Card</h2>
-                    <p>Stop printing thousands of paper cards. Hand your client one premium Matte Black card. They tap it with their phone, and your entire portfolio, contact info, and booking links instantly save to their device.</p>
-                    <ul class="feature-list">
-                        <li><i class="fa-solid fa-check"></i> <div>Premium Matte Black PVC finish.</div></li>
-                        <li><i class="fa-solid fa-check"></i> <div>Includes a custom security-lined sleeve.</div></li>
-                        <li><i class="fa-solid fa-check"></i> <div>Update your links anytime without reprinting.</div></li>
-                    </ul>
-                    <div>
-                        <a href="contact.html" class="action-link">Design VIP Card <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
+            <!-- CATEGORY 1: Enterprise & Retail (Blue Theme) -->
+            <div class="bento-category theme-business fade-up delay-1">
+                <div class="category-hero">
+                    <i class="fa-solid fa-building"></i>
+                    <h2>Business & Retail Use</h2>
+                    <p>Streamline your operations, impress your clients, and replace outdated paper systems.</p>
                 </div>
                 
-                <div class="split-visual">
-                    <div class="img-holder">
-                        <img src="assets/vip-card-glow.png" alt="Premium Matte Black PVC VIP Smart Card with DH monogram and NFC tap technology">
+                <div class="accordion-wrapper">
+                    <!-- Business Item 1 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="acc-title"><i class="fa-solid fa-id-badge"></i> VIP Digital Business Cards</span>
+                            <i class="fa-solid fa-chevron-down acc-icon"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="acc-inner">
+                                <div class="acc-split">
+                                    <div class="acc-split-text">
+                                        <p>Stop printing thousands of paper cards. Hand your client one premium Matte Black card. They tap it with their phone, and your entire portfolio, contact info, and booking links instantly save to their device.</p>
+                                        <ul class="feature-list">
+                                            <li><i class="fa-solid fa-check"></i> Premium Matte Black PVC finish.</li>
+                                            <li><i class="fa-solid fa-check"></i> Update your links anytime without reprinting.</li>
+                                        </ul>
+                                        <a href="contact.html" class="action-link">Design VIP Card <i class="fa-solid fa-arrow-right"></i></a>
+                                    </div>
+                                    <div class="acc-split-img">
+                                        <img src="assets/vip-card-glow.png" alt="VIP Digital Business Card">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Business Item 2 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="acc-title"><i class="fa-solid fa-utensils"></i> Smart Table Menus</span>
+                            <i class="fa-solid fa-chevron-down acc-icon"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="acc-inner">
+                                <div class="acc-split">
+                                    <div class="acc-split-text">
+                                        <p>For restaurants, cafes, and cook shops. We install sleek, waterproof NFC tags directly onto your tables. Customers tap their phones to instantly view a beautiful, mobile-optimized digital menu.</p>
+                                        <ul class="feature-list">
+                                            <li><i class="fa-solid fa-droplet"></i> 100% Waterproof and easily wiped clean.</li>
+                                            <li><i class="fa-solid fa-money-bill-trend-up"></i> Never pay to reprint a menu when prices change.</li>
+                                        </ul>
+                                        <a href="contact.html" class="action-link">Upgrade Menus <i class="fa-solid fa-arrow-right"></i></a>
+                                    </div>
+                                    <div class="acc-split-img">
+                                        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=800" alt="Customer tapping phone to modern cafe menu">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Business Item 3 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="acc-title"><i class="fa-solid fa-star"></i> Tap-to-Review Tags</span>
+                            <i class="fa-solid fa-chevron-down acc-icon"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="acc-inner">
+                                <div class="acc-split">
+                                    <div class="acc-split-text">
+                                        <p>Boost your online reputation effortlessly. Place a Smart Plaque at your checkout counter. Happy customers tap it, and it takes them directly to your 5-star Google Review page. No searching required.</p>
+                                        <ul class="feature-list">
+                                            <li><i class="fa-solid fa-chart-line"></i> Drastically increases customer feedback rates.</li>
+                                        </ul>
+                                        <a href="contact.html" class="action-link">Get Review Tags <i class="fa-solid fa-arrow-right"></i></a>
+                                    </div>
+                                    <div class="acc-split-img">
+                                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800" alt="Customer checking out at counter">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Unified Card 2: Smart Menus (Reversed Layout) -->
-            <div class="bento-box bento-split reverse fade-up delay-2">
-                <div class="split-visual">
-                    <div class="img-holder">
-                        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=800" alt="Customer tapping phone to modern cafe menu">
-                    </div>
+            <!-- CATEGORY 2: Personal & Household (Gold Theme) -->
+            <div class="bento-category theme-personal fade-up delay-2">
+                <div class="category-hero">
+                    <i class="fa-solid fa-house-chimney"></i>
+                    <h2>Home & Family Care</h2>
+                    <p>Bring the convenience and security of NFC into your living room, garage, and daily care routines.</p>
                 </div>
+                
+                <div class="accordion-wrapper">
+                    <!-- Personal Item 1 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="acc-title"><i class="fa-solid fa-wifi"></i> Instant Wi-Fi Hubs</span>
+                            <i class="fa-solid fa-chevron-down acc-icon"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="acc-inner">
+                                <div class="acc-split">
+                                    <div class="acc-split-text">
+                                        <p>No more spelling out complicated passwords. Mount a beautiful Smart Plaque in your home or rental property. Guests simply tap their phone, and they are instantly connected to your secure Wi-Fi network.</p>
+                                        <ul class="feature-list">
+                                            <li><i class="fa-solid fa-star"></i> Elevates the 5-star Airbnb guest experience.</li>
+                                            <li><i class="fa-solid fa-lock"></i> Keeps your actual written password hidden.</li>
+                                        </ul>
+                                        <a href="contact.html" class="action-link">Design Wi-Fi Hub <i class="fa-solid fa-arrow-right"></i></a>
+                                    </div>
+                                    <div class="acc-split-img">
+                                        <img src="https://images.unsplash.com/photo-1560448204-61dc36dc98c8?auto=format&fit=crop&q=80&w=800" alt="Beautiful modern apartment living room">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="split-content">
-                    <span class="category-tag">Hospitality Upgrade</span>
-                    <h2>Smart Table Menus</h2>
-                    <p>For restaurants, cafes, and cook shops. We install sleek, waterproof NFC tags directly onto your tables. Customers tap their phones to instantly view a beautiful, mobile-optimized digital menu.</p>
-                    <ul class="feature-list">
-                        <li><i class="fa-solid fa-droplet"></i> <div>100% Waterproof and easily wiped clean.</div></li>
-                        <li><i class="fa-solid fa-money-bill-trend-up"></i> <div>Never pay to reprint a menu when prices change.</div></li>
-                        <li><i class="fa-solid fa-bolt"></i> <div>Anti-metal backing works seamlessly on any table surface.</div></li>
-                    </ul>
-                    <div>
-                        <a href="contact.html" class="action-link">Upgrade Menus <i class="fa-solid fa-arrow-right"></i></a>
+                    <!-- Personal Item 2 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="acc-title"><i class="fa-solid fa-notes-medical"></i> Smart Medical Tags</span>
+                            <i class="fa-solid fa-chevron-down acc-icon"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="acc-inner">
+                                <div class="acc-split">
+                                    <div class="acc-split-text">
+                                        <p>Provide peace of mind for the family. Attach a waterproof Smart Tag to an elderly parent's pillbox or fridge. One tap instantly opens their exact medication schedule, dosage instructions, or emergency contacts.</p>
+                                        <ul class="feature-list">
+                                            <li><i class="fa-solid fa-heart-pulse"></i> Simple tap-to-read instructions for caregivers.</li>
+                                            <li><i class="fa-solid fa-mobile-screen"></i> Instantly update dosages remotely from abroad.</li>
+                                        </ul>
+                                        <a href="contact.html" class="action-link">Order Care Tags <i class="fa-solid fa-arrow-right"></i></a>
+                                    </div>
+                                    <div class="acc-split-img">
+                                        <img src="https://images.unsplash.com/photo-1584308666744-24d5e463a5bd?auto=format&fit=crop&q=80&w=800" alt="Pills and medical organizing container">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Personal Item 3 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="acc-title"><i class="fa-solid fa-paw"></i> Smart Pet Nametags</span>
+                            <i class="fa-solid fa-chevron-down acc-icon"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="acc-inner">
+                                <div class="acc-split">
+                                    <div class="acc-split-text">
+                                        <p>Keep your furry family members safe. Attach a durable NFC tag to their collar. If they wander off, anyone who finds them can tap the tag to see your emergency contact info, diet restrictions, and vet records.</p>
+                                        <a href="contact.html" class="action-link">Secure Your Pet <i class="fa-solid fa-arrow-right"></i></a>
+                                    </div>
+                                    <div class="acc-split-img">
+                                        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&q=80&w=800" alt="Cute dog with collar">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Personal Item 4 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="acc-title"><i class="fa-solid fa-box-open"></i> Storage Inventory Tags</span>
+                            <i class="fa-solid fa-chevron-down acc-icon"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="acc-inner">
+                                <div class="acc-split">
+                                    <div class="acc-split-text">
+                                        <p>Moving or putting things in storage? Place a Smart Tag on the outside of opaque boxes. Tap it to instantly read a digital list of everything packed inside without having to rip open the tape.</p>
+                                        <a href="contact.html" class="action-link">Organize Storage <i class="fa-solid fa-arrow-right"></i></a>
+                                    </div>
+                                    <div class="acc-split-img">
+                                        <img src="https://images.unsplash.com/photo-1586864387789-628af9feed72?auto=format&fit=crop&q=80&w=800" alt="Cardboard storage boxes">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -497,8 +678,8 @@
                     <i class="fa-brands fa-apple"></i>
                     <i class="fa-brands fa-android"></i>
                 </div>
-                <h2 style="color: var(--brand-steel);">No App Required.</h2>
-                <p style="max-width: 700px; margin: 0 auto;">Your clients do not need to download an app or create an account. Our technology works natively with the built-in scanners on all modern iPhones and Android devices. Just tap and go.</p>
+                <h2 style="color: var(--brand-steel);">Universally Compatible.</h2>
+                <p style="max-width: 700px; margin: 0 auto;">Your clients or family members do not need to download an app or create an account. Our technology works natively with the built-in scanners on all modern iPhones and Android devices. Just tap and go.</p>
             </div>
 
         </div>
@@ -562,6 +743,33 @@
            link.addEventListener('click', () => {
                if(navList.classList.contains('active')) {
                    toggleMenu();
+               }
+           });
+       });
+
+       // --- NEW: Accordion Logic ---
+       const accHeaders = document.querySelectorAll('.accordion-header');
+       accHeaders.forEach(header => {
+           header.addEventListener('click', function() {
+               const content = this.nextElementSibling;
+               const icon = this.querySelector('.acc-icon');
+               const isActive = this.classList.contains('active');
+
+               // Close other accordions in the same wrapper for cleanliness
+               const wrapper = this.closest('.accordion-wrapper');
+               wrapper.querySelectorAll('.accordion-header').forEach(h => {
+                   h.classList.remove('active');
+                   h.querySelector('.acc-icon').style.transform = 'rotate(0deg)';
+                   h.nextElementSibling.style.maxHeight = null;
+                   h.nextElementSibling.classList.remove('active');
+               });
+
+               // If it wasn't active before, open it
+               if (!isActive) {
+                   this.classList.add('active');
+                   content.classList.add('active');
+                   content.style.maxHeight = content.scrollHeight + "px";
+                   icon.style.transform = 'rotate(180deg)';
                }
            });
        });
