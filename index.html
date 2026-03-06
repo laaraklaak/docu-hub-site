@@ -69,7 +69,7 @@
         /* --- CINEMATIC HERO SECTION --- */
         .main-hero { 
             background: linear-gradient(to right, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.7)), url('assets/hero.png') center/cover no-repeat;
-            min-height: 75vh; /* Makes the hero tall and cinematic */
+            min-height: 75vh; 
             display: flex;
             align-items: center;
             color: var(--studio-white);
@@ -86,7 +86,6 @@
 
         .services-layout { display: flex; flex-direction: column; gap: 60px; }
         
-        /* 1. The Large Featured Panel */
         .featured-panel {
             position: relative; height: 600px; border-radius: 12px; overflow: hidden;
             display: flex; align-items: flex-end; text-decoration: none; box-shadow: 0 20px 50px rgba(0,0,0,0.15);
@@ -95,7 +94,6 @@
         .featured-panel .service-content h3 { font-size: clamp(2.5rem, 5vw, 3.8rem); margin-bottom: 15px; font-style: italic; color: #fff;}
         .featured-panel .service-content p { font-size: 1.15rem; max-width: 700px; line-height: 1.7;}
 
-        /* 2. The Secondary Duo Grid */
         .secondary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px; }
         .service-card {
             position: relative; height: 500px; border-radius: 12px; overflow: hidden;
@@ -110,7 +108,6 @@
             color: #fff; 
         }
 
-        /* Shared Image & Overlay Styles */
         .service-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; z-index: 1; opacity: 0.5; }
         .featured-panel:hover .service-img, .service-card:hover .service-img { transform: scale(1.05); opacity: 0.7; }
         .service-overlay { position: absolute; inset: 0; z-index: 2; transition: 0.4s ease; }
@@ -119,7 +116,6 @@
         .service-content p { margin-bottom: 25px; color: #F8FAFC; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
         .explore-link { font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; padding-bottom: 5px; display: inline-block; color: #fff; border-bottom: 2px solid transparent;}
 
-        /* Theme Colors */
         .theme-tech .service-overlay { background: linear-gradient(to top, rgba(10, 25, 20, 0.95) 10%, transparent 100%); }
         .theme-tech h3 { color: var(--tech-accent); }
         .theme-tech .explore-link { border-color: var(--tech-accent); }
@@ -132,7 +128,6 @@
         .theme-concierge h3 { color: var(--brand-steel) !important; }
         .theme-concierge .explore-link { border-color: var(--brand-steel); }
 
-        /* --- HIGH-CONVERSION CTA SECTION --- */
         .cta-banner {
             background: var(--true-black);
             padding: 100px 20px;
@@ -148,7 +143,6 @@
         }
         .cta-btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3); }
 
-        /* --- REDEFINED FOOTER --- */
         .main-footer {
             background: #030303;
             color: #94A3B8;
@@ -175,7 +169,6 @@
             color: #64748B;
         }
 
-        /* --- MOBILE REFINEMENTS --- */
         @media (max-width: 850px) {
             .container { padding: 0 25px; }
             .studio-tagline { display: none; } 
@@ -189,7 +182,6 @@
             .nav-btn { background: var(--studio-black); text-align: center; border: none; width: 100%; }
 
             .main-hero { min-height: 60vh; padding: 100px 0; text-align: center; }
-            
             .service-content { padding: 30px; }
             .featured-panel { height: 500px; }
             .secondary-grid { grid-template-columns: 1fr; gap: 40px; } 
@@ -221,8 +213,8 @@
             <nav class="nav-links" id="nav-list">
                 <a href="#pillars">Services</a>
                 <a href="concierge.html">Concierge Desk</a>
-                <a href="https://wa.me/18765612614" target="_blank">Contact</a>
-                <a href="https://wa.me/18765612614?text=Hi%20Docu-Hub,%20I'd%20like%20to%20start%20a%20project." class="nav-btn" target="_blank">Start a Project</a>
+                <a href="contact.html">Liaison Desk</a>
+                <a href="contact.html" class="nav-btn">Start a Project</a>
             </nav>
         </div>
     </header>
@@ -249,13 +241,13 @@
                     <div class="service-overlay"></div>
                     <div class="service-content">
                         <h3>Smart Business Hubs</h3>
-                        <p>Upgrade your brand with Tap-to-Pay styled digital business cards, or completely replace paper menus with waterproof NFC Smart Tags for your restaurant tables. The future of networking is here.</p>
+                        <p>Upgrade your brand with Tap-to-Pay styled digital business cards, or completely replace paper menus with waterproof NFC Smart Tags for your restaurant tables.</p>
                         <span class="explore-link">View Tech Solutions <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i></span>
                     </div>
                 </a>
 
                 <div class="secondary-grid">
-                    <a href="memorials.html" class="service-card theme-memorial">
+                    <a href="Commemorative.html" class="service-card theme-memorial">
                         <img src="assets/memorial.png" class="service-img" alt="Memorial Tributes">
                         <div class="service-overlay"></div>
                         <div class="service-content">
@@ -276,11 +268,14 @@
                     </a>
                 </div>
             </div>
-        </div> </section> <section class="cta-banner">
+        </div> 
+    </section> 
+
+    <section class="cta-banner">
         <div class="container">
             <h2>Ready to upgrade your workflow?</h2>
             <p>Whether you need a digital menu for your cafe, a smart networking card, or logistics support, we are ready to build it.</p>
-            <a href="https://wa.me/18765612614?text=Hi%20Docu-Hub,%20I'd%20like%20to%20learn%20more%20about%20your%20services." class="cta-btn-gold" target="_blank">Chat on WhatsApp</a>
+            <a href="contact.html" class="cta-btn-gold">Secure Intake Desk</a>
         </div>
     </section>
 
@@ -299,7 +294,7 @@
                 </div>
                 <div class="footer-col">
                     <h4>Contact</h4>
-                    <a href="https://wa.me/18765612614" target="_blank">WhatsApp Chat</a>
+                    <a href="contact.html">Liaison Desk</a>
                     <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" target="_blank">Book Consultation</a>
                 </div>
             </div>
@@ -354,5 +349,3 @@
    </script>
 </body>
 </html>
-
-
