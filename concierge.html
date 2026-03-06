@@ -3,331 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Concierge Desk | Eligibility & Proxy | Docu-Hub</title>
+    <title>Concierge Desk | Docu-Hub Operations</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --text-main: #0F172A;      
-            --bg-body: #94A3B8;        
-            --bg-wrapper: #F1F5F9;     
-            --bg-card: #FFFFFF;        
-            --brand-slate: #1E293B;    
-            --brand-steel: #0284C7;    
-            --text-muted: #475569;     
+            --studio-black: #0F172A; 
+            --true-black: #050505;
+            --studio-white: #FFFFFF;
+            --text-muted: #94A3B8;
+            --mem-accent: #D4AF37; /* Executive Gold */
+            --brand-steel: #38BDF8;
             --header-height: 80px;
-            --section-gap: 120px;      
-            --shadow-strong: 0 25px 50px rgba(15, 23, 42, 0.15);
         }
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         html { scroll-behavior: smooth; }
         body { 
-            margin: 0; font-family: 'Inter', sans-serif; 
-            background: var(--bg-body); color: var(--text-main); 
-            line-height: 1.6; padding-top: var(--header-height); 
+            margin: 0; 
+            font-family: 'Inter', sans-serif; 
+            background: var(--true-black); 
+            color: var(--studio-white); 
+            line-height: 1.6; 
+            padding-top: var(--header-height);
             -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, h4 { margin: 0; font-family: 'Playfair Display', serif; font-weight: 700; }
-        p { font-size: 1.05rem; color: var(--text-muted); }
+        h1, h2, h3, h4 { margin: 0; font-weight: 700; font-family: 'Playfair Display', serif; color: var(--studio-white); }
+        p { margin-bottom: 0; font-size: 1.1rem; color: var(--text-muted); font-weight: 400;}
+        a { text-decoration: none; transition: 0.3s ease; }
         
-        .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 25px; }
-
-        /* --- HEADER --- */
-        .app-header {
-            position: fixed; top: 0; left: 0; width: 100%; z-index: 2000;
-            background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px);
-            border-bottom: 1px solid #E2E8F0; height: var(--header-height);
-            display: flex; align-items: center;
-        }
-        .header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; }
-        .logo { font-size: 1.2rem; font-weight: 800; text-transform: uppercase; color: var(--text-main); text-decoration: none;}
-        .logo span { color: var(--brand-steel); }
-        .menu-toggle { font-size: 1.5rem; cursor: pointer; color: var(--brand-slate); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
 
         /* --- NAVIGATION --- */
-        .nav-links {
-            position: fixed; top: var(--header-height); right: -100%; width: 100%; height: calc(100vh - var(--header-height));
-            background: white; flex-direction: column; padding: 40px; gap: 30px; transition: 0.4s ease; display: flex;
+        .app-header {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 2000;
+            background: rgba(5, 5, 5, 0.95); 
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1E293B; 
+            height: var(--header-height); display: flex; align-items: center;
         }
-        .nav-links.active { right: 0; }
-        .nav-links a { font-size: 1.2rem; font-weight: 700; color: var(--brand-slate); text-transform: uppercase; text-decoration: none; }
+        .header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; }
+        .header-logo { font-size: 1.3rem; font-weight: 800; color: var(--studio-white); text-transform: uppercase; display: flex; align-items: center; }
+        .studio-tagline { font-size: 0.75rem; color: var(--text-muted); margin-left: 10px; border-left: 1px solid #1E293B; padding-left: 10px; font-weight: 500; text-transform: none; letter-spacing: 0; }
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-links a { color: var(--studio-white); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;}
+        .nav-links a:hover { color: var(--mem-accent); }
+        .nav-btn { background: var(--mem-accent); color: var(--true-black) !important; padding: 10px 20px; border-radius: 4px; }
+        .menu-toggle { display: none; font-size: 1.4rem; cursor: pointer; color: var(--studio-white); }
 
-        /* --- HERO --- */
-        .admin-hero { 
-            background: linear-gradient(rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95)), url('assets/pica.png') center/cover;
-            padding: 80px 0 140px; text-align: center; color: white;
-        }
-        .admin-hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 20px; }
-        .admin-hero p { font-size: 1.2rem; color: #E2E8F0; max-width: 650px; margin: 0 auto; font-style: italic; }
+        /* --- CONCIERGE HERO --- */
+        .concierge-hero { padding: 100px 0; text-align: center; border-bottom: 1px solid #1E293B; }
+        .concierge-hero h1 { font-size: clamp(2.5rem, 6vw, 4.2rem); margin-bottom: 20px; color: var(--mem-accent); }
+        .concierge-hero p { font-size: clamp(1.1rem, 2vw, 1.3rem); max-width: 750px; margin: 0 auto 40px; color: #CBD5E1; }
+        .hero-img-container { max-width: 800px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid #222; }
+        .hero-img-container img { width: 100%; height: auto; display: block; }
 
-        /* --- CONTENT WRAPPER --- */
-        .content-wrapper {
-            background: var(--bg-wrapper); border-radius: 12px;
-            margin: -80px auto 80px; padding: 60px 20px;
-            box-shadow: var(--shadow-strong);
-        }
+        /* --- CORE SERVICES SECTION --- */
+        .services-section { padding: 100px 0; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.8rem; margin-bottom: 15px; }
 
-        .section-container { margin-bottom: var(--section-gap); } 
-
-        .section-header { 
-            border-bottom: 2px solid var(--brand-steel); padding-bottom: 15px; 
-            margin-bottom: 40px; display: flex; align-items: center; gap: 15px;
-        }
-        .section-header h2 { font-size: 1.8rem; color: var(--brand-slate); }
-
-        /* --- CARDS & GRID --- */
-        .card-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 60px; }
         
-        .service-card {
-            background: var(--bg-card); padding: 40px; border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05); display: flex; flex-direction: column;
-            border-top: 4px solid var(--brand-steel);
+        .service-box {
+            background: #111; border: 1px solid #222; border-radius: 12px; padding: 40px;
+            transition: 0.3s ease; display: flex; flex-direction: column; height: 100%;
         }
-        .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; font-style: italic; color: var(--brand-slate); }
-        .card-note { font-size: 0.85rem; color: var(--brand-steel); font-weight: 700; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* --- SMART CHECKLIST --- */
-        .checklist { list-style: none; padding: 0; margin: 0 0 30px 0; flex-grow: 1; }
-        .checklist li { display: flex; align-items: flex-start; font-size: 1rem; color: var(--text-main); margin-bottom: 15px; font-weight: 500; }
-        .checklist input {
-            width: 24px; height: 24px; accent-color: var(--brand-steel); margin-right: 15px; flex-shrink: 0; cursor: pointer;
-        }
-        .or-divider { padding: 10px 0 10px 40px; font-size: 0.8rem; font-weight: 800; color: var(--text-muted); position: relative; }
-        .or-divider::before { content: ""; position: absolute; left: 0; top: 50%; width: 30px; height: 1px; background: #CBD5E1; }
-
-        .cta-btn {
-            display: block; width: 100%; padding: 18px; border: none; border-radius: 4px;
-            font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-align: center; text-decoration: none;
-            background: #CBD5E1; color: #FFFFFF; cursor: not-allowed; transition: 0.3s;
-        }
-        .cta-btn.active { background: var(--brand-steel); cursor: pointer; box-shadow: 0 10px 20px rgba(2, 132, 199, 0.2); }
-
-        /* --- FOOTER --- */
-        footer { background: var(--brand-slate); color: #94A3B8; padding: 60px 0; text-align: center; }
-
-        @media (min-width: 768px) {
-            .nav-links { position: static; height: auto; width: auto; background: none; flex-direction: row; padding: 0; }
-            .nav-links a { font-size: 0.85rem; color: var(--text-muted); }
-            .menu-toggle { display: none; }
-            .card-grid { grid-template-columns: repeat(2, 1fr); }
-            .full-width { grid-column: span 2; }
-            .content-wrapper { padding: 80px 60px; margin-top: -120px; }
+        .service-box:hover { border-color: var(--mem-accent); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.05); }
+        .service-icon { font-size: 2.5rem; color: var(--mem-accent); margin-bottom: 25px; }
+        .service-box h3 { font-size: 1.8rem; margin-bottom: 15px; font-family: 'Inter', sans-serif; letter-spacing: -0.5px;}
+        .service-box p { flex-grow: 1; margin-bottom: 25px; font-size: 1.05rem; }
+        
+        .service-tag { 
+            display: inline-block; background: rgba(212, 175, 55, 0.1); color: var(--mem-accent); 
+            padding: 6px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px;
         }
 
-        .footer-link-style {
-            display: block; color: #94A3B8; margin-bottom: 12px;
-            font-size: 0.95rem; font-weight: 500; text-decoration: none; transition: 0.3s ease;
+        /* --- CONSULTATION BANNER (The Filter) --- */
+        .consult-banner { 
+            background: linear-gradient(135deg, #111 0%, #0a0a0a 100%); 
+            border: 1px solid #222; border-radius: 12px; padding: 60px 40px; 
+            display: flex; align-items: center; justify-content: space-between; gap: 40px;
         }
-        .footer-link-style:hover { color: var(--brand-steel); transform: translateX(5px); }
+        .consult-text { flex: 1; }
+        .consult-text h3 { font-size: 2.2rem; margin-bottom: 15px; color: #fff; }
+        .consult-text p { color: #94A3B8; }
+        
+        /* --- CTA --- */
+        .cta-btn-gold { background: var(--mem-accent); color: var(--true-black); padding: 15px 35px; font-size: 1rem; font-weight: 700; border-radius: 4px; display: inline-block; text-transform: uppercase; letter-spacing: 1px; text-align: center; white-space: nowrap;}
+        .cta-btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2); }
+
+        /* --- MOBILE REFINEMENTS --- */
+        @media (max-width: 850px) {
+            .container { padding: 0 25px; }
+            .studio-tagline { display: none; } 
+            .menu-toggle { display: block; }
+            .nav-links { position: fixed; top: var(--header-height); right: -100%; width: 100%; height: calc(100vh - var(--header-height)); background: var(--true-black); flex-direction: column; padding: 40px 25px; gap: 30px; transition: 0.4s ease; align-items: flex-start; border-top: 1px solid #222; z-index: 3000;}
+            .nav-links.active { right: 0; }
+            .nav-links a { font-size: 1.2rem; width: 100%; border-bottom: 1px solid #222; padding-bottom: 15px; }
+            
+            .concierge-hero { padding: 60px 0; }
+            .consult-banner { flex-direction: column; text-align: center; padding: 40px 20px; }
+            .cta-btn-gold { width: 100%; }
+        }
     </style>
 </head>
 <body>
 
     <header class="app-header">
         <div class="container header-inner">
-            <a href="index.html" class="logo">Docu-Hub<span>.</span></a>
+            <a href="index.html" class="header-logo">Docu-Hub<span style="color:var(--brand-steel)">.</span></a>
             <div class="menu-toggle" id="menu-btn"><i class="fa-solid fa-bars-staggered"></i></div>
             <nav class="nav-links" id="nav-list">
-                <a href="Commemorative.html">Stationery</a>
-                <a href="https://wa.me/18765612614" class="nav-btn" style="background:var(--brand-slate); color:white!important; padding: 10px 20px; border-radius:4px;">Request Help</a>
+                <a href="index.html">Home</a>
+                <a href="hub.html">Smart Hubs</a>
+                <a href="Commemorative.html">Memorials</a>
+                <a href="https://wa.me/18765612614" class="nav-btn" target="_blank">Book Service</a>
             </nav>
         </div>
     </header>
 
-    <section class="admin-hero">
+    <section class="concierge-hero">
         <div class="container">
-            <span class="brand-kicker" style="color:#7DD3FC; margin-bottom:15px; display:block;">Secure Operations</span>
-            <h1>The Concierge Desk.</h1>
-            <p>"Tan a yuh yard" while we handle the red tape. Use our checklists below to see if your request is ready for the desk.</p>
+            <h1>Skip the line. We handle the details.</h1>
+            <p>Your time is too valuable to spend waiting in government offices. Docu-Hub provides highly secure, fast-tracked digital proxy services for Jamaica's most essential online administrative tasks.</p>
+            <div class="hero-img-container">
+                <img src="concierge.png" alt="Executive Concierge Portfolio">
+            </div>
         </div>
     </section>
 
-    <div class="container">
-        <div class="content-wrapper">
-
-            <div class="section-container">
-                <div class="section-header">
-                    <i class="fa-solid fa-passport" style="color:var(--brand-steel)"></i>
-                    <h2>1. Travel Documents (PICA)</h2>
-                </div>
-                <div class="card-grid">
-                    <div class="service-card">
-                        <div class="card-note">Online Renewal Requirements</div>
-                        <h3>PICA Online Eligibility</h3>
-                        <ul class="checklist">
-                            <li><input type="checkbox" class="step"> Passport issued after age 18</li>
-                            <li><input type="checkbox" class="step"> No name change since last issue</li>
-                            <li><input type="checkbox" class="step"> Passport is not damaged/lost</li>
-                        </ul>
-                        <a href="#" class="cta-btn" onclick="triggerWhatsApp(event, 'PICA Online Eligibility')">Start Digital Filing</a>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="card-note">First-Time / Minor / Stolen</div>
-                        <h3>Paper-Based Filing</h3>
-                        <ul class="checklist">
-                            <li><input type="checkbox" class="step"> I have Original Birth Certificate</li>
-                            <li><input type="checkbox" class="step"> I have Valid Photo ID</li>
-                        </ul>
-                        <a href="#" class="cta-btn" onclick="triggerWhatsApp(event, 'Manual Passport Filing')">Request Manual Filing</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-container">
-                <div class="section-header">
-                    <i class="fa-solid fa-file-invoice" style="color:var(--brand-steel)"></i>
-                    <h2>2. Vital Records (RGD)</h2>
-                </div>
-                <div class="card-grid">
-                    <div class="service-card full-width" id="rgd-card">
-                        <div class="card-note">Flexible Entry Logic</div>
-                        <h3>Certificate Requests (Birth/Marriage/Death)</h3>
-                        <p style="margin-bottom:20px;">We only need <strong>one</strong> of the identifying markers below to locate your record.</p>
-                        <ul class="checklist">
-                            <li><input type="checkbox" class="step"> Full Name on the Record</li>
-                            <div class="or-divider">PLUS EITHER:</div>
-                            <li><input type="checkbox" class="step"> <strong>I have the Entry Number</strong></li>
-                            <div class="or-divider">OR</div>
-                            <li><input type="checkbox" class="step"> <strong>I have the Date & Location of event</strong></li>
-                        </ul>
-                        <a href="#" class="cta-btn" id="rgd-btn" onclick="triggerWhatsApp(event, 'RGD Certificate Request')">Request Certificate</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-container" style="margin-bottom: 0;">
-                <div class="section-header">
-                    <i class="fa-solid fa-car-side" style="color:var(--brand-steel)"></i>
-                    <h2>3. Tax & License (TAJ)</h2>
-                </div>
-                <div class="card-grid">
-                    <div class="service-card">
-                        <h3>License Renewal</h3>
-                        <ul class="checklist">
-                            <li><input type="checkbox" class="step"> Current License Number ready</li>
-                            <li><input type="checkbox" class="step"> TRN available</li>
-                        </ul>
-                        <a href="#" class="cta-btn" onclick="triggerWhatsApp(event, 'TAJ License Renewal')">Renew License</a>
-                    </div>
-
-                    <div class="service-card">
-                        <h3>Traffic Tickets</h3>
-                        <ul class="checklist">
-                            <li><input type="checkbox" class="step"> Current License Number ready</li>
-                        </ul>
-                        <a href="#" class="cta-btn" onclick="triggerWhatsApp(event, 'Traffic Ticket Clearance')">Clear Tickets</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <footer class="main-footer" style="background: var(--brand-slate); color: #94A3B8; padding: 80px 0 40px; margin-top: var(--section-gap);">
+    <section class="services-section">
         <div class="container">
-            <div style="margin-bottom: 60px; border-left: 3px solid var(--brand-steel); padding-left: 20px;">
-                <p style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-weight: 800; color: var(--brand-steel); margin-bottom: 5px;">Currently Viewing</p>
-                <h3 style="color: white; font-family: 'Playfair Display', serif; font-size: 1.8rem;">Concierge & Eligibility Desk</h3>
+            <div class="section-header">
+                <h2>Express E-Services</h2>
+                <p>Fully digital processing. Zero time wasted in lines.</p>
             </div>
 
-            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 60px; text-align: left;">
-                <div class="footer-brand">
-                    <h2 style="color: white; font-size: 1.6rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Docu-Hub<span>.</span></h2>
-                    <p style="color: #E2E8F0; opacity: 0.8; font-size: 0.95rem; line-height: 1.6;">
-                        Operations Services<br>
-                        Linstead, St. Catherine<br>
-                        Jamaica, W.I.<br>
-                    </p>
+            <div class="service-grid">
+                <div class="service-box">
+                    <i class="fa-solid fa-house-chimney service-icon"></i>
+                    <span class="service-tag">TAJ E-Service</span>
+                    <h3>Property Tax Payments</h3>
+                    <p>Avoid the April rush at the Tax Office. Send us your property valuation number, and we will securely process your annual property tax payments online, providing you with an instant digital receipt.</p>
+                    <a href="https://wa.me/18765612614?text=Hi,%20I%20need%20help%20paying%20my%20Property%20Tax." class="cta-btn-gold" target="_blank">Process Payment</a>
                 </div>
 
-                <div>
-                    <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Design Studios</h4>
-                    <a href="Commemorative.html" class="footer-link-style">Memorial Tributes</a>
-                    <a href="Commemorative.html" class="footer-link-style">Premium Stationery</a>
-                    <a href="index.html" class="footer-link-style">Showcase Home</a>
+                <div class="service-box">
+                    <i class="fa-solid fa-file-invoice service-icon"></i>
+                    <span class="service-tag">TAJ E-Service</span>
+                    <h3>Traffic Ticket Clearance</h3>
+                    <p>Don't let unpaid traffic tickets lead to a warrant or complicate your license renewal. We handle the secure online clearance of your traffic tickets directly through the TAJ portal.</p>
+                    <a href="https://wa.me/18765612614?text=Hi,%20I%20need%20to%20clear%20a%20traffic%20ticket." class="cta-btn-gold" target="_blank">Clear Tickets</a>
                 </div>
 
-                <div>
-                    <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Operations</h4>
-                    <a href="concierge.html" class="footer-link-style">Concierge Desk</a>
-                    <a href="concierge.html#eligibility" class="footer-link-style">Eligibility Checks</a>
-                    <a href="https://wa.me/18765612614" class="footer-link-style">Request Proxy</a>
+                <div class="service-box">
+                    <i class="fa-solid fa-id-card service-icon"></i>
+                    <span class="service-tag">TAJ E-Service</span>
+                    <h3>Driver's License Renewal</h3>
+                    <p>We manage the online data entry and fee payment for your driver's license renewal, ensuring your paperwork is perfectly prepped so you only have to do the absolute minimum in person.</p>
+                    <a href="https://wa.me/18765612614?text=Hi,%20I%20need%20help%20renewing%20my%20license." class="cta-btn-gold" target="_blank">Start Renewal</a>
                 </div>
 
-                <div>
-                    <h4 style="color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Connect</h4>
-                    <a href="https://wa.me/18765612614" class="footer-link-style">Contact Desk</a>
-                    <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" target="_blank" class="footer-link-style">Book 15-Mins</a>
-                    <a href="privacy.html" class="footer-link-style">Privacy Policy</a>
+                <div class="service-box">
+                    <i class="fa-solid fa-passport service-icon"></i>
+                    <span class="service-tag">PICA E-Service</span>
+                    <h3>Online Passport Renewal</h3>
+                    <p>Need your adult Jamaican passport renewed? We securely upload your digital photographs, input your data, and process the application via the PICA online portal for the fastest possible turnaround.</p>
+                    <a href="https://wa.me/18765612614?text=Hi,%20I%20need%20to%20renew%20my%20passport%20online." class="cta-btn-gold" target="_blank">Renew Passport</a>
                 </div>
             </div>
 
-            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px; text-align: center;">
-                <p style="font-size: 0.85rem; letter-spacing: 1px; color: #64748B;">
-                    &copy; 2026 Docu-Hub Operations Services. All Rights Reserved. 
-                    <span style="display: block; margin-top: 10px; color: #94A3B8;">Take care. 🤍</span>
-                </p>
+            <div class="consult-banner">
+                <div class="consult-text">
+                    <h3>Complex Application? Let's talk.</h3>
+                    <p>Do you need help with a first-time passport application, a deed poll, a TRN application, or other multi-step legal documentation? These require a custom approach. Book a consultation to see if your project qualifies for our Bespoke Concierge Desk.</p>
+                </div>
+                <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" class="cta-btn-gold" target="_blank" style="background: transparent; color: var(--mem-accent); border: 2px solid var(--mem-accent);">Book Consultation</a>
             </div>
+
         </div>
-    </footer>
+    </section>
 
-    <script>
-        // MOBILE MENU
-        const btn = document.getElementById('menu-btn');
-        const list = document.getElementById('nav-list');
-        btn.onclick = () => {
-            list.classList.toggle('active');
-            btn.querySelector('i').classList.toggle('fa-bars-staggered');
-            btn.querySelector('i').classList.toggle('fa-xmark');
-        };
-
-        // SHARED WHATSAPP LOGIC
-        function triggerWhatsApp(e, service) {
-            const btn = e.currentTarget;
-            if (btn.classList.contains('active')) {
-                const phone = "18765612614"; // Update with your actual number
-                const text = encodeURIComponent(`Hi Docu-Hub, I've completed the checklist for ${service} and would like to proceed with proxy services.`);
-                window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
-            } else {
-                e.preventDefault();
-            }
-        }
-
-        // STANDARD SMART CHECKBOX LOGIC
-        document.querySelectorAll('.service-card').forEach(card => {
-            const checks = card.querySelectorAll('.step');
-            const cta = card.querySelector('.cta-btn');
-            if(card.id !== 'rgd-card'){ 
-                checks.forEach(c => c.onchange = () => {
-                    const allSet = Array.from(checks).every(i => i.checked);
-                    cta.classList.toggle('active', allSet);
-                });
-            }
-        });
-
-        // RGD CUSTOM LOGIC (Special handling for OR logic)
-        const rgdChecks = document.querySelectorAll('#rgd-card .step');
-        const rgdBtn = document.getElementById('rgd-btn');
-        if(rgdChecks.length > 0) {
-            rgdChecks.forEach(c => c.onchange = () => {
-                const nameCheck = rgdChecks[0].checked;
-                const entryCheck = rgdChecks[1].checked;
-                const dateCheck = rgdChecks[2].checked;
-                
-                if (nameCheck && (entryCheck || dateCheck)) {
-                    rgdBtn.classList.add('active');
-                } else {
-                    rgdBtn.classList.remove('active');
-                }
-            });
-        }
-    </script>
+   <script>
+       const menuBtn = document.getElementById('menu-btn');
+       const navList = document.getElementById('nav-list');
+       function toggleMenu() {
+           navList.classList.toggle('active');
+           const icon = menuBtn.querySelector('i');
+           icon.classList.toggle('fa-bars-staggered');
+           icon.classList.toggle('fa-xmark');
+           document.body.style.overflow = navList.classList.contains('active') ? 'hidden' : 'auto';
+       }
+       menuBtn.addEventListener('click', toggleMenu);
+   </script>
 </body>
 </html>
-
-
