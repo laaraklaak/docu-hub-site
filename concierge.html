@@ -66,7 +66,20 @@
         .section-header { text-align: center; margin-bottom: 60px; }
         .section-header h2 { font-size: 2.8rem; margin-bottom: 15px; }
 
-        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 60px; }
+        /* Forces exactly 2 columns on desktop/tablets */
+.service-grid { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 40px; 
+    margin-bottom: 80px; 
+}
+
+/* Stacks them into 1 column on mobile phones */
+@media (max-width: 850px) {
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+}
         
         .service-box {
             background: #111; border: 1px solid #222; border-radius: 12px; padding: 40px;
@@ -202,3 +215,4 @@
    </script>
 </body>
 </html>
+
