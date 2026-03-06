@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liaison Desk | Docu-Hub Operations</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -16,12 +16,10 @@
             --text-muted: #9BA3AF;
             --mem-accent: #D4AF37; /* Gold */
             --brand-steel: #38BDF8; /* Tech Blue */
-            --mem-glow: rgba(212, 175, 55, 0.15);
             --header-height: 85px;
         }
 
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        html { scroll-behavior: smooth; }
+        * { box-sizing: border-box; }
         body { 
             margin: 0; 
             font-family: 'Inter', sans-serif; 
@@ -32,120 +30,120 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, h4 { margin: 0; font-weight: 600; font-family: 'Playfair Display', serif; color: var(--studio-white); letter-spacing: 0.5px;}
-        p { margin-bottom: 0; font-size: 1.1rem; color: var(--text-muted); font-weight: 300; letter-spacing: 0.3px;}
+        h1, h2, h3, h4 { margin: 0; font-family: 'Playfair Display', serif; color: var(--studio-white); }
+        p { color: var(--text-muted); font-weight: 300; margin-bottom: 0; }
         a { text-decoration: none; transition: 0.4s ease; }
         
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
 
-        /* --- LUXURY NAVIGATION --- */
+        /* --- NAVIGATION --- */
         .app-header {
             position: fixed; top: 0; left: 0; width: 100%; z-index: 2000;
-            background: rgba(3, 3, 3, 0.85); 
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255,255,255,0.05); 
-            height: var(--header-height); display: flex; align-items: center;
+            background: rgba(3, 3, 3, 0.9); backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.05); height: var(--header-height);
+            display: flex; align-items: center;
         }
         .header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; }
+        .header-logo { font-size: 1.2rem; font-weight: 800; color: white; text-transform: uppercase; letter-spacing: 1px; }
+        .header-logo span { color: var(--brand-steel); }
         
-        .header-logo { 
-            font-size: 1.3rem; font-weight: 800; color: var(--studio-white); text-transform: uppercase;
-            display: flex; align-items: center; letter-spacing: 1px;
-        }
-        
-        .studio-tagline { 
-            font-size: 0.75rem; color: var(--text-muted); margin-left: 12px; border-left: 1px solid rgba(255,255,255,0.1); 
-            padding-left: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; font-family: 'Inter', sans-serif;
-        }
-
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { color: var(--text-muted); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;}
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a { color: var(--text-muted); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
         .nav-links a:hover { color: var(--studio-white); }
-        .nav-btn { background: transparent; color: var(--mem-accent) !important; padding: 10px 24px; border: 1px solid var(--mem-accent); border-radius: 2px; transition: 0.4s; }
-        .nav-btn:hover { background: var(--mem-accent); color: var(--true-black) !important; box-shadow: 0 0 15px var(--mem-glow); }
-        .menu-toggle { display: none; font-size: 1.4rem; cursor: pointer; color: var(--studio-white); }
 
-        /* --- ATMOSPHERIC HERO --- */
+        /* --- HERO SECTION --- */
         .liaison-hero { 
-            padding: 100px 0 60px; 
+            padding: 100px 0 80px; 
             text-align: center; 
             background: radial-gradient(circle at center top, #151820 0%, var(--true-black) 100%);
         }
-        .hero-title { font-size: clamp(2.8rem, 6vw, 4.5rem); margin-bottom: 20px; color: var(--mem-accent); font-style: italic; text-shadow: 0 4px 20px var(--mem-glow); }
-        .hero-sub { font-size: clamp(1.1rem, 2vw, 1.25rem); max-width: 650px; margin: 0 auto; color: #D1D5DB; line-height: 1.8; font-family: 'Inter', sans-serif; font-weight: 300; }
+        .hero-title { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--mem-accent); font-style: italic; margin-bottom: 20px; }
+        .hero-sub { max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
 
-        /* --- CONTACT CARDS SECTION --- */
-        .contact-section { padding: 40px 0 120px; background: var(--true-black); }
-        .hub-center { max-width: 700px; margin: 0 auto; }
-        
-        .pill-link {
-            display: flex; align-items: center; gap: 25px; 
-            background: #0a0c10; 
-            padding: 30px; border-radius: 8px; margin-bottom: 25px; 
-            border: 1px solid rgba(255,255,255,0.05);
-            color: var(--studio-white); font-weight: 500; text-align: left;
-            transition: 0.4s ease; box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-        .pill-link:hover { 
-            border-color: rgba(255,255,255,0.2); 
-            transform: translateY(-5px); 
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6); 
-        }
-        .pill-link i { font-size: 2.2rem; color: var(--studio-white); opacity: 0.8; transition: 0.4s; }
-        .pill-link:hover i { color: var(--mem-accent); opacity: 1; transform: scale(1.1);}
-        
-        .pill-text { flex: 1; font-size: 1.3rem; font-family: 'Playfair Display', serif; font-style: italic; letter-spacing: 0.5px;}
-        .pill-text span { display: block; font-family: 'Inter', sans-serif; font-style: normal; font-size: 0.95rem; color: var(--text-muted); font-weight: 300; margin-top: 8px; letter-spacing: 0; }
-
-        /* High Priority / Consult Button Styling */
-        .pill-link.priority {
-            background: radial-gradient(circle at right, rgba(212, 175, 55, 0.1), #0a0c10);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-        .pill-link.priority:hover {
-            border-color: var(--mem-accent);
-            box-shadow: 0 15px 40px var(--mem-glow);
-        }
-        .pill-link.priority i { color: var(--mem-accent); opacity: 1; }
-
-        /* --- REDEFINED FOOTER --- */
-        .main-footer {
-            background: #030303;
-            color: #94A3B8;
-            padding: 80px 0 30px;
+        /* --- INTEGRATED STORY SECTION --- */
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            padding: 80px 0;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 50px;
-            margin-bottom: 60px;
+        .story-image {
+            height: 450px;
+            background: url('assets/hero2.png') center/cover; /* Ensure this path is correct */
+            border-radius: 4px;
+            filter: grayscale(1) contrast(1.1);
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        .footer-brand h2 { color: var(--studio-white); font-size: 2rem; margin-bottom: 10px; font-family: 'Playfair Display', serif;}
-        .footer-brand p { font-size: 0.95rem; color: #64748B; }
-        .footer-col h4 { color: var(--studio-white); margin-bottom: 25px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; font-family: 'Inter', sans-serif;}
-        .footer-col a { display: block; color: #94A3B8; margin-bottom: 15px; font-size: 0.95rem; transition: 0.3s; }
-        .footer-col a:hover { color: var(--mem-accent); transform: translateX(5px); }
-        .footer-bottom {
-            border-top: 1px solid #111;
-            padding-top: 30px;
-            text-align: center;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            color: #64748B;
+        .story-text h2 { font-size: 2.2rem; margin-bottom: 20px; line-height: 1.2; }
+        .story-text p { margin-bottom: 20px; font-size: 1.05rem; }
+        .promise-tag {
+            border-left: 2px solid var(--mem-accent);
+            padding-left: 20px;
+            font-style: italic;
+            color: var(--studio-white);
+            margin-top: 30px;
         }
 
-        /* --- MOBILE REFINEMENTS --- */
+        /* --- CONTACT CHANNELS --- */
+        .contact-channels {
+            max-width: 700px;
+            margin: 60px auto 120px;
+        }
+        .channel-label {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+
+        .pill-link {
+            display: flex; align-items: center; gap: 25px; 
+            background: #0d0f14; 
+            padding: 30px; border-radius: 8px; margin-bottom: 20px; 
+            border: 1px solid rgba(255,255,255,0.05);
+            color: var(--studio-white); transition: 0.4s;
+        }
+        .pill-link:hover { 
+            transform: translateY(-5px); 
+            border-color: rgba(255,255,255,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .pill-link i { font-size: 2rem; color: var(--brand-steel); }
+        .pill-text { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-style: italic; }
+        .pill-text span { 
+            display: block; font-family: 'Inter', sans-serif; font-style: normal; 
+            font-size: 0.9rem; color: var(--text-muted); margin-top: 5px; 
+        }
+
+        /* Priority Style */
+        .pill-link.priority {
+            background: radial-gradient(circle at right, rgba(212, 175, 55, 0.08), #0d0f14);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .pill-link.priority i { color: var(--mem-accent); }
+        .pill-link.priority:hover { border-color: var(--mem-accent); }
+
+        /* --- FOOTER --- */
+        .main-footer {
+            background: var(--true-black);
+            padding: 80px 0 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+        .footer-logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; display: block; }
+        .footer-copy { font-size: 0.85rem; letter-spacing: 1px; }
+
         @media (max-width: 850px) {
-            .container { padding: 0 25px; }
-            .studio-tagline { display: none; } 
-            .menu-toggle { display: block; }
-            .nav-links { position: fixed; top: var(--header-height); right: -100%; width: 100%; height: calc(100vh - var(--header-height)); background: rgba(3,3,3,0.98); backdrop-filter: blur(20px); flex-direction: column; padding: 40px 25px; gap: 30px; transition: 0.4s ease; align-items: flex-start; border-top: 1px solid rgba(255,255,255,0.05); z-index: 3000; }
-            .nav-links.active { right: 0; }
-            .nav-links a { font-size: 1.1rem; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px; }
-            .nav-btn { text-align: center; width: 100%; }
-            
-            .pill-link { padding: 25px 20px; flex-direction: column; text-align: center; gap: 15px;}
+            .story-grid { grid-template-columns: 1fr; text-align: center; }
+            .story-image { height: 300px; order: 2; }
+            .story-text { order: 1; }
+            .promise-tag { border-left: none; border-top: 1px solid var(--mem-accent); padding: 20px 0 0 0; }
         }
     </style>
 </head>
@@ -153,14 +151,10 @@
 
     <header class="app-header">
         <div class="container header-inner">
-            <a href="index.html" class="header-logo">
-                Docu-Hub<span style="color:var(--brand-steel)">.</span> 
-                <span class="studio-tagline">Operations Services</span>
-            </a>
-            <div class="menu-toggle" id="menu-btn"><i class="fa-solid fa-bars-staggered"></i></div>
-            <nav class="nav-links" id="nav-list">
+            <a href="index.html" class="header-logo">Docu-Hub<span>.</span></a>
+            <nav class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="hub.html">Smart Hubs</a>
+                <a href="hub.html">Hubs</a>
                 <a href="memorials.html">Memorials</a>
                 <a href="concierge.html">Concierge</a>
             </nav>
@@ -170,96 +164,58 @@
     <section class="liaison-hero">
         <div class="container">
             <h1 class="hero-title">Liaison Desk</h1>
-            <p class="hero-sub">The form is gone, but we are more reachable than ever. Connect with the Studio through our secure, direct channels.</p>
+            <p class="hero-sub">The form is gone, but we are more reachable than ever. Direct access to the Studio starts here.</p>
         </div>
     </section>
 
-    <section class="contact-section">
-        <div class="container">
-            <div class="hub-center">
-                
-                <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" target="_blank" class="pill-link priority">
-                    <i class="fa-solid fa-calendar-day"></i>
-                    <div class="pill-text">
-                        <span style="color: var(--mem-accent); margin-top:0; margin-bottom:8px; text-transform: uppercase; font-weight: 700; font-size: 0.75rem; letter-spacing: 1px;">High Priority</span>
-                        Schedule Consultation
-                        <span>Book a focused 15-minute slot for custom project planning and intake.</span>
-                    </div>
-                </a>
-
-                <a href="https://wa.me/18765612614" class="pill-link" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    <div class="pill-text">
-                        Message on WhatsApp
-                        <span>Best for quick questions, turnaround times, and immediate project updates.</span>
-                    </div>
-                </a>
-                
-                <a href="mailto:admin@dochubservices.com" class="pill-link">
-                    <i class="fa-solid fa-envelope"></i>
-                    <div class="pill-text">
-                        Email the Studio
-                        <span>Best for sending secure data, photographs, and legal documentation.</span>
-                    </div>
-                </a>
-
-                <p style="margin-top: 50px; font-size: 1rem; font-style: italic; color: #64748B; text-align: center;">"We handle the red tape so you don't have to."</p>
+    <div class="container">
+        <section class="story-grid">
+            <div class="story-image"></div>
+            <div class="story-text">
+                <span style="color: var(--brand-steel); text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; font-weight: 800;">The Bridge</span>
+                <h2>We handle the <br>run-around.</h2>
+                <p>Government portals and administrative layout shouldn't take up your weekend. We act as your person on the ground—checking every signature and stamp before it reaches the window.</p>
+                <div class="promise-tag">
+                    "If we can't do it for you, we will tell you exactly how to get it done yourself. You will never leave empty-handed."
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section class="contact-channels">
+            <div class="channel-label">Direct Communication</div>
+
+            <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" target="_blank" class="pill-link priority">
+                <i class="fa-solid fa-calendar-day"></i>
+                <div class="pill-text">
+                    Schedule Consultation
+                    <span>Book a 15-minute slot for custom project planning.</span>
+                </div>
+            </a>
+
+            <a href="https://wa.me/18765612614" class="pill-link" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i>
+                <div class="pill-text">
+                    Message on WhatsApp
+                    <span>Best for quick questions and project updates.</span>
+                </div>
+            </a>
+            
+            <a href="mailto:admin@dochubservices.com" class="pill-link">
+                <i class="fa-solid fa-envelope"></i>
+                <div class="pill-text">
+                    Email the Studio
+                    <span>Best for sending secure data and legal documents.</span>
+                </div>
+            </a>
+        </section>
+    </div>
 
     <footer class="main-footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h2>Docu-Hub.</h2>
-                    <p>Operations Services<br>Linstead, St. Catherine.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Solutions</h4>
-                    <a href="hub.html">Smart Business Hubs</a>
-                    <a href="memorials.html">Memorial Tributes</a>
-                    <a href="concierge.html">Concierge Desk</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <a href="https://wa.me/18765612614" target="_blank">WhatsApp Chat</a>
-                    <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" target="_blank">Book Consultation</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                &copy; 2026 Docu-Hub Operations Services. Moving Forward.
-            </div>
+            <span class="header-logo footer-logo">Docu-Hub<span style="color:var(--brand-steel)">.</span></span>
+            <p class="footer-copy">&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
         </div>
     </footer>
 
-   <script>
-       const menuBtn = document.getElementById('menu-btn');
-       const navList = document.getElementById('nav-list');
-       const navLinks = navList.querySelectorAll('a');
-
-       function toggleMenu() {
-           navList.classList.toggle('active');
-           const icon = menuBtn.querySelector('i');
-           icon.classList.toggle('fa-bars-staggered');
-           icon.classList.toggle('fa-xmark');
-           
-           if(navList.classList.contains('active')) {
-               document.body.style.overflow = 'hidden';
-           } else {
-               document.body.style.overflow = 'auto';
-           }
-       }
-
-       menuBtn.addEventListener('click', toggleMenu);
-
-       navLinks.forEach(link => {
-           link.addEventListener('click', () => {
-               if(navList.classList.contains('active')) {
-                   toggleMenu();
-               }
-           });
-       });
-   </script>
 </body>
 </html>
