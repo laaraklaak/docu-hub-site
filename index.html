@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docu-Hub | Design Mastery & Operational Precision</title>
+    <title>Docu-Hub | Smart Print & Operations Concierge</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -13,8 +13,8 @@
             --studio-black: #0F172A; 
             --studio-white: #FFFFFF;
             --text-muted: #64748B;
-            --mem-accent: #D4AF37;
-            --stat-accent: #F9E5E0;
+            --mem-accent: #D4AF37; /* Docu-Hub Gold */
+            --tech-accent: #10B981; /* Tech Green / Alternative Accent */
             --brand-steel: #38BDF8;
             --header-height: 80px;
         }
@@ -83,41 +83,72 @@
         .main-hero h1 { color: var(--studio-white); font-size: clamp(2.2rem, 6vw, 4.5rem); margin-bottom: 20px; line-height: 1.1; letter-spacing: -1px;}
         .main-hero p { color: #CBD5E1; font-size: clamp(1.1rem, 2vw, 1.3rem); max-width: 700px; margin-bottom: 30px; font-weight: 400;}
 
-        /* --- SHOWCASE --- */
+        /* --- SHOWCASE SECTION (REDESIGNED) --- */
         .showcase-section { padding: 80px 0; background: var(--studio-white); }
         .section-header { text-align: center; margin-bottom: 60px; }
         .section-header h2 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin-bottom: 15px; }
 
-        .trio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .services-layout { display: flex; flex-direction: column; gap: 30px; }
         
-        .service-card {
-            position: relative; height: 550px; border-radius: 12px; overflow: hidden;
-            display: flex; align-items: flex-end; text-decoration: none; box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        /* 1. The Large Featured Panel */
+        .featured-panel {
+            position: relative; height: 600px; border-radius: 12px; overflow: hidden;
+            display: flex; align-items: flex-end; text-decoration: none; box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            background-color: var(--studio-black); width: 100%;
         }
-        .service-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; z-index: 1; }
-        .service-overlay { position: absolute; inset: 0; z-index: 2; transition: 0.4s ease; }
-        .service-content { position: relative; z-index: 3; padding: 40px; width: 100%; transition: 0.4s ease; }
+        .featured-panel .service-content h3 { font-size: clamp(2.5rem, 5vw, 3.5rem); } /* Bigger text for the feature */
+        .featured-panel .service-content p { font-size: 1.2rem; max-width: 700px; }
 
-        .service-content h3 { font-size: 2.2rem; margin-bottom: 10px; font-style: italic; color: #fff; }
-        .service-content p { font-size: 1rem; margin-bottom: 25px; color: #F8FAFC; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        /* 2. The Secondary Duo Grid */
+        .secondary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .service-card {
+            position: relative; height: 500px; border-radius: 12px; overflow: hidden;
+            display: flex; align-items: flex-end; text-decoration: none; box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            background-color: var(--studio-black);
+        }
+
+        /* Shared Image & Overlay Styles */
+        .service-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; z-index: 1; opacity: 0.6; }
+        .featured-panel:hover .service-img, .service-card:hover .service-img { transform: scale(1.05); opacity: 0.8; }
+        .service-overlay { position: absolute; inset: 0; z-index: 2; transition: 0.4s ease; }
+        .service-content { position: relative; z-index: 3; padding: 50px; width: 100%; transition: 0.4s ease; }
+
+        .service-content h3 { margin-bottom: 10px; font-style: italic; color: #fff; }
+        .service-content p { margin-bottom: 25px; color: #F8FAFC; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
         .explore-link { font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; padding-bottom: 5px; display: inline-block; color: #fff; border-bottom: 2px solid transparent;}
 
-        .theme-memorial .service-overlay { background: linear-gradient(to top, rgba(5, 10, 25, 0.9) 10%, transparent 100%); }
+        /* Theme Colors */
+        .theme-tech .service-overlay { background: linear-gradient(to top, rgba(10, 25, 20, 0.95) 10%, transparent 100%); }
+        .theme-tech h3 { color: var(--tech-accent); }
+        .theme-tech .explore-link { border-color: var(--tech-accent); }
+
+        .theme-memorial .service-overlay { background: linear-gradient(to top, rgba(5, 10, 25, 0.95) 10%, transparent 100%); }
         .theme-memorial h3 { color: var(--mem-accent); }
         .theme-memorial .explore-link { border-color: var(--mem-accent); }
 
-        .theme-stationery .service-overlay { background: linear-gradient(to top, rgba(40, 15, 10, 0.9) 10%, transparent 100%); }
-        .theme-stationery h3 { color: var(--stat-accent); }
-        .theme-stationery .explore-link { border-color: var(--stat-accent); }
-
-        .theme-concierge .service-overlay { background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 10%, transparent 100%); }
+        .theme-concierge .service-overlay { background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 10%, transparent 100%); }
         .theme-concierge h3 { color: var(--brand-steel); }
         .theme-concierge .explore-link { border-color: var(--brand-steel); }
+
+        /* --- HIGH-CONVERSION CTA SECTION --- */
+        .cta-banner {
+            background: var(--studio-black);
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .cta-banner h2 { color: var(--mem-accent); margin-bottom: 20px; font-size: 2.5rem; }
+        .cta-banner p { color: #CBD5E1; max-width: 600px; margin: 0 auto 40px; }
+        .cta-btn-gold {
+            background: var(--mem-accent); color: var(--studio-black);
+            padding: 15px 40px; font-size: 1.1rem; font-weight: 700; border-radius: 4px;
+            display: inline-block; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .cta-btn-gold:hover { background: #b8972e; transform: translateY(-2px); }
 
         /* --- MOBILE REFINEMENTS --- */
         @media (max-width: 850px) {
             .container { padding: 0 25px; }
-            .studio-tagline { display: none; } /* Hide tagline on mobile for space */
+            .studio-tagline { display: none; } 
             
             .menu-toggle { display: block; }
             
@@ -132,7 +163,9 @@
             .main-hero { padding: 80px 0 100px; text-align: center; }
             .main-hero p { margin: 0 auto 30px; }
 
-            .trio-grid { grid-template-columns: 1fr; }
+            .service-content { padding: 30px; }
+            .featured-panel { height: 500px; }
+            .secondary-grid { grid-template-columns: 1fr; } /* Stacks the two bottom cards on mobile */
             .service-card { height: 450px; }
         }
 
@@ -151,7 +184,7 @@
         <div class="container header-inner">
             <a href="index.html" class="header-logo">
                 Docu-Hub<span style="color:var(--brand-steel)">.</span> 
-                <span class="studio-tagline">Operations Services</span>
+                <span class="studio-tagline">Operations & Tech</span>
             </a>
             
             <div class="menu-toggle" id="menu-btn">
@@ -159,9 +192,9 @@
             </div>
 
             <nav class="nav-links" id="nav-list">
-                <a href="Commemorative.html">The Studio</a>
+                <a href="#pillars">Services</a>
                 <a href="concierge.html">Concierge Desk</a>
-                <a href="contact.html">Contact</a>
+                <a href="https://wa.me/18765612614" target="_blank">Contact</a>
                 <a href="https://wa.me/18765612614?text=Hi%20Docu-Hub,%20I'd%20like%20to%20start%20a%20project." class="nav-btn" target="_blank">Start a Project</a>
             </nav>
         </div>
@@ -169,49 +202,59 @@
 
     <section class="main-hero">
         <div class="container">
-            <h1>Design for the heart.<br>Help with the details.</h1>
-            <p>From breathtaking memorial memoirs to the high-level logistics of our Concierge Desk, we manage the creative and administrative details so you can stay focused.</p>
+            <h1>Elegant Design.<br>Smart Technology.</h1>
+            <p>From breathtaking memorial keepsakes to waterproof smart menus and high-level concierge logistics. We bridge the gap between premium physical print and seamless digital experiences.</p>
         </div>
     </section>
 
-    <section class="showcase-section">
+    <section id="pillars" class="showcase-section">
         <div class="container">
             <div class="section-header">
-                <h2>The Three Pillars</h2>
-                <p>Meticulous design meets seamless operational support.</p>
+                <h2>Our Solutions</h2>
+                <p>Meticulous design, intelligent technology, and seamless operational support.</p>
             </div>
 
-            <div class="trio-grid">
-                <a href="Commemorative.html?mode=memorial" class="service-card theme-memorial">
-                    <img src="assets/memorial.png" class="service-img" alt="Memorial Tributes">
+            <div class="services-layout">
+                <a href="#" class="featured-panel theme-tech">
+                    <img src="tech.png" class="service-img" alt="Digital Menu and Smart Card Technology">
                     <div class="service-overlay"></div>
                     <div class="service-content">
-                        <h3>Memorial Tributes</h3>
-                        <p>Handling formatting, photo editing, and layout of your keepsakes with care and dignity.</p>
-                        <span class="explore-link">Enter Studio <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i></span>
+                        <h3>Smart Business Hubs</h3>
+                        <p>Upgrade your brand with Tap-to-Pay styled digital business cards, or completely replace paper menus with waterproof NFC Smart Tags for your restaurant tables. The future of networking is here.</p>
+                        <span class="explore-link">View Tech Solutions <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i></span>
                     </div>
                 </a>
 
-                <a href="Commemorative.html?mode=milestone" class="service-card theme-stationery">
-                    <img src="assets/stationery.png" class="service-img" alt="Custom Stationery">
-                    <div class="service-overlay"></div>
-                    <div class="service-content">
-                        <h3>Custom Stationery</h3>
-                        <p>Vibrant corporate announcements and heartfelt personal suites designed for impact.</p>
-                        <span class="explore-link">Enter Studio <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i></span>
-                    </div>
-                </a>
+                <div class="secondary-grid">
+                    <a href="Commemorative.html" class="service-card theme-memorial">
+                        <img src="assets/memorial.png" class="service-img" alt="Memorial Tributes">
+                        <div class="service-overlay"></div>
+                        <div class="service-content">
+                            <h3>Memorial Tributes</h3>
+                            <p>Beautiful physical keepsakes equipped with smart chips. A simple tap opens a full digital tribute gallery.</p>
+                            <span class="explore-link">Enter Studio <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i></span>
+                        </div>
+                    </a>
 
-                <a href="concierge.html" class="service-card theme-concierge">
-                    <img src="assets/pica.png" class="service-img" alt="Concierge Desk">
-                    <div class="service-overlay"></div>
-                    <div class="service-content">
-                        <h3>Concierge Desk</h3>
-                        <p>Your administrative boots on the ground for secure paperwork and proxy services.</p>
-                        <span class="explore-link">Access Desk <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i></span>
-                    </div>
-                </a>
+                    <a href="concierge.html" class="service-card theme-concierge">
+                        <img src="assets/pica.png" class="service-img" alt="Concierge Desk">
+                        <div class="service-overlay"></div>
+                        <div class="service-content">
+                            <h3>Concierge Desk</h3>
+                            <p>Your administrative boots on the ground for secure paperwork, applications, and trusted proxy services.</p>
+                            <span class="explore-link">Access Desk <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i></span>
+                        </div>
+                    </a>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Ready to upgrade your workflow?</h2>
+            <p>Whether you need a digital menu for your cafe, a smart networking card, or logistics support, we are ready to build it.</p>
+            <a href="https://wa.me/18765612614?text=Hi%20Docu-Hub,%20I'd%20like%20to%20learn%20more%20about%20your%20services." class="cta-btn-gold" target="_blank">Chat on WhatsApp</a>
         </div>
     </section>
 
@@ -224,12 +267,12 @@
             <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 60px;">
                 <div class="footer-brand">
                     <h2 style="color: white; font-size: 1.8rem; font-family: 'Playfair Display', serif;">Docu-Hub.</h2>
-                    <p style="color: #E2E8F0; opacity: 0.8; margin-top: 15px; font-size: 0.95rem;">Operations Services<br>Linstead, St. Catherine.</p>
+                    <p style="color: #E2E8F0; opacity: 0.8; margin-top: 15px; font-size: 0.95rem;">Operations & Tech<br>Linstead, St. Catherine.</p>
                 </div>
                 <div>
-                    <h4 style="color: white; margin-bottom: 20px; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-family: 'Inter';">The Pillars</h4>
-                    <a href="Commemorative.html?mode=memorial" style="display: block; color: #94A3B8; margin-bottom: 12px; font-size: 0.9rem;">Memorials</a>
-                    <a href="Commemorative.html?mode=milestone" style="display: block; color: #94A3B8; margin-bottom: 12px; font-size: 0.9rem;">Stationery</a>
+                    <h4 style="color: white; margin-bottom: 20px; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-family: 'Inter';">Solutions</h4>
+                    <a href="#" style="display: block; color: #94A3B8; margin-bottom: 12px; font-size: 0.9rem;">Smart Business Hubs</a>
+                    <a href="Commemorative.html" style="display: block; color: #94A3B8; margin-bottom: 12px; font-size: 0.9rem;">Memorial Tributes</a>
                     <a href="concierge.html" style="display: block; color: #94A3B8; font-size: 0.9rem;">Concierge Desk</a>
                 </div>
                 <div>
@@ -239,50 +282,49 @@
                 </div>
             </div>
             <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px; text-align: center; font-size: 0.8rem; letter-spacing: 1px;">
-                &copy; 2026 Docu-Hub Operations Services. Take care. 🤍
+                &copy; 2026 Docu-Hub Operations Services. Moving Forward.
             </div>
         </div>
     </footer>
 
    <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const navList = document.getElementById('nav-list');
-        const navLinks = navList.querySelectorAll('a');
+       const menuBtn = document.getElementById('menu-btn');
+       const navList = document.getElementById('nav-list');
+       const navLinks = navList.querySelectorAll('a');
 
-        function toggleMenu() {
-            navList.classList.toggle('active');
-            const icon = menuBtn.querySelector('i');
-            icon.classList.toggle('fa-bars-staggered');
-            icon.classList.toggle('fa-xmark');
-            
-            // Prevent body scroll when menu is open
-            if(navList.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
-            }
-        }
+       function toggleMenu() {
+           navList.classList.toggle('active');
+           const icon = menuBtn.querySelector('i');
+           icon.classList.toggle('fa-bars-staggered');
+           icon.classList.toggle('fa-xmark');
+           
+           if(navList.classList.contains('active')) {
+               document.body.style.overflow = 'hidden';
+           } else {
+               document.body.style.overflow = 'auto';
+           }
+       }
 
-        menuBtn.addEventListener('click', toggleMenu);
+       menuBtn.addEventListener('click', toggleMenu);
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if(navList.classList.contains('active')) {
-                    toggleMenu();
-                }
-            });
-        });
+       navLinks.forEach(link => {
+           link.addEventListener('click', () => {
+               if(navList.classList.contains('active')) {
+                   toggleMenu();
+               }
+           });
+       });
 
-        const btt = document.getElementById('back-to-top');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) { btt.classList.add('visible'); }
-            else { btt.classList.remove('visible'); }
-        });
+       const btt = document.getElementById('back-to-top');
+       window.addEventListener('scroll', () => {
+           if (window.scrollY > 500) { btt.classList.add('visible'); }
+           else { btt.classList.remove('visible'); }
+       });
 
-        btt.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    </script>
+       btt.addEventListener('click', (e) => {
+           e.preventDefault();
+           window.scrollTo({ top: 0, behavior: 'smooth' });
+       });
+   </script>
 </body>
 </html>
