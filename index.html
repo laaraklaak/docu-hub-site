@@ -100,53 +100,54 @@
         text-align: center; padding: calc(var(--nav-h) + 60px) 24px 80px; position: relative; overflow: hidden;
         background: radial-gradient(circle at center, var(--navy-mid) 0%, var(--navy-deep) 100%);
     }
-    .hero-inner { position: relative; z-index: 2; max-width: 900px; }
-    
-    .hero-eyebrow { font-family: var(--sc); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.45em; text-transform: uppercase; color: var(--gold-hi); margin-bottom: 24px; display: flex; align-items: center; justify-content: center; gap: 16px; }
-    .hero-eyebrow::before, .hero-eyebrow::after { content: ''; width: 50px; height: 1px; background: var(--gold-grad); opacity: 0.9; }
-    
-    .hero-brand-top { font-family: var(--display); font-size: clamp(0.9rem, 2.5vw, 1.2rem); font-weight: 400; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-    .hero-rule { width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, var(--gold), transparent); margin: 0 auto 30px; }
+    .hero-inner { position: relative; z-index: 2; max-width: 900px; display: flex; flex-direction: column; align-items: center; }
     
     .hero-offering { font-family: var(--header-main); font-size: clamp(3rem, 9vw, 5.5rem); font-weight: 400; color: var(--white); line-height: 1.1; margin-bottom: 24px; letter-spacing: 0.02em; }
     
-    .hero-tagline { font-family: var(--serif); font-size: clamp(1.3rem, 3.5vw, 1.9rem); font-weight: 400; font-style: italic; line-height: 1.5; color: var(--text-2); margin-bottom: 24px; max-width: 680px; margin-left: auto; margin-right: auto; }
+    .hero-rule { width: 1px; height: 60px; background: linear-gradient(to bottom, var(--gold), transparent); margin: 0 auto 30px; opacity: 0.8; }
+    
+    .hero-tagline { font-family: var(--serif); font-size: clamp(1.3rem, 3.5vw, 1.9rem); font-weight: 400; font-style: italic; line-height: 1.5; color: var(--text-2); margin-bottom: 24px; max-width: 680px; }
     
     .hero-sub { font-family: var(--sc); font-size: 0.8rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-2); margin-bottom: 50px; }
     
     .hero-ctas { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
     .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 16px 34px; background: var(--gold-grad); border-radius: 4px; font-family: var(--sc); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); transition: all 0.3s ease; }
     .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(220,174,61,0.3); }
-    .btn-outline { display: inline-flex; align-items: center; gap: 10px; padding: 15px 32px; border: 1px solid var(--gold-bdr); border-radius: 4px; font-family: var(--sc); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); transition: all 0.3s; }
-    .btn-outline:hover { background: var(--gold-lo); border-color: var(--gold); }
 
     .features-strip { background: var(--navy); border-top: 1px solid var(--border-dk); border-bottom: 1px solid var(--border-dk); padding: 30px 24px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
     .feature-item { display: flex; align-items: center; gap: 12px; font-family: var(--sc); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-hi); }
 
     /* ═══════════════════════════════════════════
-       COLLECTIONS
+       COLLECTIONS - MOBILE FIRST LAYOUT (TITLE -> IMAGE -> DESC)
     ═══════════════════════════════════════════ */
-    .collection { min-height: 100svh; display: flex; flex-direction: column; }
-    .col-img { width: 100%; min-height: 60vw; position: relative; overflow: hidden; background: var(--navy-mid); display: flex; align-items: stretch; justify-content: stretch; padding: 40px; }
-    .col-text { padding: 80px 24px; display: flex; flex-direction: column; justify-content: center; gap: 28px; }
     
-    .col-dark { background: var(--navy); } 
-    .col-dark .col-text { color: var(--text-1); }
+    .col-dark { background: var(--navy); color: var(--text-1); } 
     .col-dark .col-body { color: var(--text-2); }
-    
-    .col-light { background: var(--ivory); } 
-    .col-light .col-text { color: var(--ink); }
+    .col-light { background: var(--ivory); color: var(--ink); } 
     .col-light .col-body { color: var(--ink-2); }
 
-    .col-collection-label { font-family: var(--sc); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase; }
+    .collection { display: flex; flex-direction: column; min-height: 100svh; }
+    
+    .col-text-top { padding: 70px 24px 24px; display: flex; flex-direction: column; gap: 6px; }
+    
+    .col-img { width: 100%; min-height: 70vw; position: relative; overflow: hidden; background: var(--navy-mid); display: flex; align-items: stretch; justify-content: stretch; padding: 24px; }
+    
+    .col-text-bottom { padding: 30px 24px 70px; display: flex; flex-direction: column; gap: 24px; }
+
+    .col-collection-label { font-family: var(--sc); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase; margin: 0; }
     .col-dark .col-collection-label { color: var(--gold); }
     .col-light .col-collection-label { color: var(--navy-mid); }
+
+    .col-title { font-family: var(--header-main); font-size: clamp(2.8rem, 6vw, 4rem); font-weight: 400; line-height: 1.15; margin: 0; }
+    
+    .col-subtitle { font-family: var(--display); font-size: clamp(0.8rem, 1.5vw, 0.95rem); font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; margin: 0; margin-top: -6px; }
+    .col-light .col-subtitle { color: var(--ink-3); } .col-dark .col-subtitle { color: var(--text-3); }
 
     .col-rule { width: 60px; height: 2px; }
     .col-dark .col-rule { background: var(--gold-grad); }
     .col-light .col-rule { background: var(--navy-mid); }
 
-    .gallery-frame { width: 100%; height: 100%; min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px; position: relative; }
+    .gallery-frame { width: 100%; height: 100%; min-height: 350px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px; position: relative; }
     .col-dark .gallery-frame { background: rgba(0,0,0,0.4); box-shadow: inset 0 0 40px rgba(0,0,0,0.5); border: 1px solid var(--gold-bdr); }
     .col-light .gallery-frame { background: rgba(0,0,0,0.02); box-shadow: inset 0 0 40px rgba(0,0,0,0.02); border: 1px solid var(--border-lt); }
     .gallery-icon { font-size: 1.5rem; margin-bottom: 16px; opacity: 0.8; }
@@ -155,10 +156,7 @@
     .gallery-text { font-family: var(--sc); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: inherit; opacity: 0.7; }
     .gallery-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 5; }
 
-    .col-title { font-family: var(--header-main); font-size: clamp(2.8rem, 6vw, 4rem); font-weight: 400; line-height: 1.15; }
-    .col-subtitle { font-family: var(--display); font-size: clamp(0.8rem, 1.5vw, 0.95rem); font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; margin-top: -10px; }
-    .col-light .col-subtitle { color: var(--ink-3); } .col-dark .col-subtitle { color: var(--text-3); }
-    .col-body { font-family: var(--serif); font-size: clamp(1rem, 1.8vw, 1.15rem); font-weight: 400; line-height: 1.9; letter-spacing: 0.01em; }
+    .col-body { font-family: var(--serif); font-size: clamp(1rem, 1.8vw, 1.15rem); font-weight: 400; line-height: 1.9; letter-spacing: 0.01em; margin: 0; }
     
     .col-formats { display: flex; flex-wrap: wrap; gap: 12px; }
     .format-pill { font-family: var(--sans); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 10px 20px; border-radius: 30px; display: flex; align-items: center; gap: 8px; }
@@ -175,20 +173,19 @@
     .cta-gold:hover { box-shadow: 0 10px 25px rgba(220,174,61,0.25); }
 
     /* ═══════════════════════════════════════════
-       PROCESS SECTION
+       ORIGINAL PROCESS SECTION (REVERTED LAYOUT)
     ═══════════════════════════════════════════ */
-    .process-section { background: var(--navy-mid); padding: 100px 24px; border-top: 1px solid var(--border-dk); }
-    .process-header { text-align: center; margin-bottom: 60px; }
-    .process-label { font-family: var(--sc); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold-hi); margin-bottom: 16px; }
-    .process-title { font-family: var(--header-main); font-size: clamp(2.5rem, 5vw, 3.5rem); color: var(--white); font-weight: 400; line-height: 1.1; }
+    .process { background: var(--navy-deep); padding: 80px 0; border-top: 1px solid var(--border-dk); }
+    .process-label { font-family: var(--sc); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold-hi); text-align: center; margin-bottom: 12px; }
+    .process-title { font-family: var(--header-main); font-size: clamp(2.5rem, 5vw, 3.5rem); color: var(--white); font-weight: 400; line-height: 1.1; text-align: center; margin-bottom: 50px; }
     
-    .process-grid { display: grid; grid-template-columns: 1fr; gap: 40px; max-width: var(--max-w); margin: 0 auto; }
-    .p-step { background: var(--navy-deep); border: 1px solid var(--border-dk); padding: 40px; border-radius: 4px; position: relative; transition: border-color 0.3s ease; }
+    .process-steps { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .p-step { background: var(--navy-mid); border: 1px solid var(--border-dk); border-radius: 14px; padding: 24px; display: flex; gap: 20px; align-items: flex-start; transition: border-color 0.25s; }
     .p-step:hover { border-color: var(--gold-bdr); }
     
-    .p-numeral { font-family: var(--display); font-size: 3.5rem; color: var(--gold-lo); position: absolute; top: 20px; right: 30px; line-height: 1; user-select: none; pointer-events: none; }
-    .p-title { font-family: var(--display); font-size: 1.2rem; color: var(--white); margin-bottom: 16px; letter-spacing: 0.1em; text-transform: uppercase; position: relative; z-index: 2; }
-    .p-desc { font-family: var(--serif); font-size: 1rem; color: var(--text-2); line-height: 1.8; position: relative; z-index: 2; }
+    .p-num { width: 40px; height: 40px; flex-shrink: 0; border-radius: 50%; background: var(--gold-lo); border: 1px solid var(--gold-bdr); display: flex; align-items: center; justify-content: center; font-family: var(--display); font-size: 1rem; font-weight: 400; color: var(--gold-hi); }
+    .p-label { font-family: var(--display); font-size: 1.1rem; font-weight: 400; color: var(--white); margin-bottom: 6px; letter-spacing: 0.1em; text-transform: uppercase; }
+    .p-desc { font-family: var(--serif); font-size: 0.95rem; font-weight: 400; color: var(--text-2); line-height: 1.65; margin: 0; }
 
     /* ═══════════════════════════════════════════
        FOOTER
@@ -213,16 +210,39 @@
     .footer-bottom p { font-family: var(--sans); font-size: 0.75rem; color: var(--text-3); }
 
     /* ═══════════════════════════════════════════
-       RESPONSIVE DESKTOP
+       RESPONSIVE DESKTOP & TABLET
     ═══════════════════════════════════════════ */
+    @media (min-width: 640px) {
+        .process-steps { grid-template-columns: 1fr 1fr; gap: 16px; }
+    }
+    
     @media (min-width: 1024px) {
         .nav-links { display: flex; }
-        .collection { flex-direction: row; min-height: 85vh; }
-        .col-img { width: 50%; min-height: auto; padding: 60px; } 
-        .col-text { width: 50%; padding: 100px 8%; }
-        .collection.reverse { flex-direction: row-reverse; }
         
-        .process-grid { grid-template-columns: repeat(3, 1fr); }
+        .collection { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            grid-template-rows: auto auto;
+            grid-template-areas: 
+                "img text-top"
+                "img text-bottom";
+            align-content: center;
+            min-height: 85vh;
+        }
+        .collection.reverse {
+            grid-template-areas: 
+                "text-top img"
+                "text-bottom img";
+        }
+        
+        .col-img { grid-area: img; padding: 60px; height: 100%; } 
+        
+        .col-text-top { grid-area: text-top; align-self: end; padding: 100px 8% 0; }
+        .col-text-bottom { grid-area: text-bottom; align-self: start; padding: 24px 8% 100px; }
+        
+        /* Original Process Desktop Layout */
+        .process-steps { grid-template-columns: repeat(3, 1fr); }
+        
         .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; }
         .footer-bottom { flex-direction: row; justify-content: space-between; text-align: left; }
     }
@@ -248,17 +268,12 @@
 <div class="page">
     <section class="hero">
         <div class="hero-inner">
-            <p class="hero-eyebrow enter d1">Linstead · St. Catherine · Jamaica</p>
-            
-            <p class="hero-brand-top enter d2">Laura Clarke · Docu<span>-</span>Hub</p>
+            <h1 class="hero-offering enter d1">Bespoke Cards<br>& Keepsakes</h1>
             <div class="hero-rule enter d2"></div>
-            
-            <h1 class="hero-offering enter d3">Bespoke Cards<br>& Keepsakes</h1>
-            
-            <p class="hero-tagline enter d4">
+            <p class="hero-tagline enter d3">
                 Crafted in Jamaica to carry what words alone cannot.
             </p>
-            
+            <p class="hero-sub enter d4">Milestone · Memoir · Memorial</p>
             <div class="hero-ctas enter d4">
                 <a href="#milestone" class="btn-primary">Explore Collections</a>
             </div>
@@ -272,16 +287,20 @@
     </div>
 
     <section class="collection bg-paper col-light" id="milestone">
-        <div class="col-img">
-            <div class="gallery-frame">
-                <i class="fa-solid fa-camera-retro gallery-icon"></i>
-                <span class="gallery-text">Insert Wedding / Milestone Photography</span>
-            </div>
-        </div>
-        <div class="col-text enter">
+        <div class="col-text-top enter">
             <p class="col-collection-label">Collection One</p>
             <h2 class="col-title">The Milestone<br>Collection</h2>
             <p class="col-subtitle">Weddings · Anniversaries · Showers</p>
+        </div>
+        
+        <div class="col-img enter d1">
+            <div class="gallery-frame" style="padding: 0; border: none;">
+                <img src="assets/anniversay.png" alt="Premium Gold Foil Memorial Booklet on Dark Marble">
+            </div>
+                
+        </div>
+        
+        <div class="col-text-bottom enter d2">
             <div class="col-rule"></div>
             <p class="col-body">
                 Every milestone deserves a keepsake as meaningful as the moment itself. Our luxury stationery creates a tactile experience for your guests, from heavyweight wedding invites to elegant anniversary cards designed to be treasured.
@@ -295,16 +314,20 @@
     </section>
 
     <section class="collection col-dark reverse" id="memoir">
-        <div class="col-img">
-            <div class="gallery-frame">
-                <i class="fa-solid fa-camera-retro gallery-icon"></i>
-                <span class="gallery-text">Insert Memoir / Patois Card Photography</span>
-            </div>
-        </div>
-        <div class="col-text enter">
+        <div class="col-text-top enter">
             <p class="col-collection-label">Collection Two</p>
             <h2 class="col-title">The Memoir<br>Collection</h2>
             <p class="col-subtitle">Authentic Patois · Island Soul</p>
+        </div>
+        
+        <div class="col-img enter d1">
+          <div class="gallery-frame" style="padding: 0; border: none;">
+                <img src="assets/memoir-card.jpg" alt="Premium Gold Foil Memorial Booklet on Dark Marble">
+            </div>
+                
+        </div>
+        
+        <div class="col-text-bottom enter d2">
             <div class="col-rule"></div>
             <p class="col-body">
                 Built around the beauty of Jamaican Patois, these premium greeting cards and textured prints carry the warmth, resilience, and unmistakable spirit of the island. Perfect for gifting or framing.
@@ -315,21 +338,22 @@
             </div>
             <a href="https://wa.me/18765612614" class="col-cta cta-gold">Shop Memoir</a>
         </div>
-     </section>
+    </section>
 
-  
-       <section class="collection bg-paper col-light" id="memorial">
-        <div class="col-img">
+    <section class="collection bg-paper col-light" id="memorial">
+        <div class="col-text-top enter">
+            <p class="col-collection-label">Collection Three</p>
+            <h2 class="col-title">Memorial<br>Keepsakes</h2>
+            <p class="col-subtitle">Tribute Booklets · Service Programmes</p>
+        </div>
+        
+        <div class="col-img enter d1">
             <div class="gallery-frame" style="padding: 0; border: none;">
                 <img src="assets/memorial.png" alt="Premium Gold Foil Memorial Booklet on Dark Marble">
             </div>
         </div>
-
-
-        <div class="col-text enter">
-            <p class="col-collection-label">Collection Three</p>
-            <h2 class="col-title">Memorial<br>Keepsakes</h2>
-            <p class="col-subtitle">Tribute Booklets · Service Programmes</p>
+        
+        <div class="col-text-bottom enter d2">
             <div class="col-rule"></div>
             <p class="col-body">
                 A life well-lived deserves to be remembered with dignity. With years of experience managing sensitive logistics, we handle the design and printing of premium memorial booklets and tribute cards with the utmost discretion and care.
@@ -342,26 +366,32 @@
         </div>
     </section>
 
-    <section class="process-section">
-        <div class="process-header enter">
-            <p class="process-label">How it Works</p>
-            <h2 class="process-title">The Commissioning Process</h2>
-        </div>
-        <div class="process-grid">
-            <div class="p-step enter d1">
-                <span class="p-numeral">I</span>
-                <h3 class="p-title">Consultation</h3>
-                <p class="p-desc">Reach out directly via WhatsApp to discuss your upcoming event or required stationery. We will review your vision, timeline, and the specific collection that best fits your needs.</p>
-            </div>
-            <div class="p-step enter d2">
-                <span class="p-numeral">II</span>
-                <h3 class="p-title">Design & Curation</h3>
-                <p class="p-desc">Once details are gathered, meticulous care is taken to draft your bespoke layouts. You will be provided with digital proofs to ensure every word and detail is perfectly placed before printing.</p>
-            </div>
-            <div class="p-step enter d3">
-                <span class="p-numeral">III</span>
-                <h3 class="p-title">Print & Delivery</h3>
-                <p class="p-desc">Approved designs are printed on premium cardstock with high-end finishes. Your physical keepsakes, alongside any requested digital portals, are securely prepared for your collection.</p>
+    <section class="process">
+        <div class="outer">
+            <p class="process-label enter">How it works</p>
+            <h2 class="process-title enter">The Commissioning Process</h2>
+            <div class="process-steps">
+                <div class="p-step enter d1">
+                    <div class="p-num">I</div>
+                    <div>
+                        <p class="p-label">Consultation</p>
+                        <p class="p-desc">Reach out directly via WhatsApp to discuss your upcoming event or required stationery. We will review your vision, timeline, and specific needs.</p>
+                    </div>
+                </div>
+                <div class="p-step enter d2">
+                    <div class="p-num">II</div>
+                    <div>
+                        <p class="p-label">Design & Curation</p>
+                        <p class="p-desc">Meticulous care is taken to draft your bespoke layouts. You will be provided with digital proofs to ensure every detail is perfectly placed.</p>
+                    </div>
+                </div>
+                <div class="p-step enter d3">
+                    <div class="p-num">III</div>
+                    <div>
+                        <p class="p-label">Print & Delivery</p>
+                        <p class="p-desc">Approved designs are printed on premium cardstock with high-end finishes. Your physical keepsakes are securely prepared for your collection.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
