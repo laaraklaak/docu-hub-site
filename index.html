@@ -118,9 +118,8 @@
     .feature-item { display: flex; align-items: center; gap: 12px; font-family: var(--sc); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-hi); }
 
     /* ═══════════════════════════════════════════
-       COLLECTIONS - MOBILE FIRST LAYOUT (TITLE -> IMAGE -> DESC)
+       COLLECTIONS - MOBILE FIRST LAYOUT
     ═══════════════════════════════════════════ */
-    
     .col-dark { background: var(--navy); color: var(--text-1); } 
     .col-dark .col-body { color: var(--text-2); }
     .col-light { background: var(--ivory); color: var(--ink); } 
@@ -130,6 +129,7 @@
     
     .col-text-top { padding: 70px 24px 24px; display: flex; flex-direction: column; gap: 6px; }
     
+    /* On mobile, 70vw min-height is perfect */
     .col-img { width: 100%; min-height: 70vw; position: relative; overflow: hidden; background: var(--navy-mid); display: flex; align-items: stretch; justify-content: stretch; padding: 24px; }
     
     .col-text-bottom { padding: 30px 24px 70px; display: flex; flex-direction: column; gap: 24px; }
@@ -172,30 +172,15 @@
     .cta-gold { background: var(--gold-grad); color: var(--ink); }
     .cta-gold:hover { box-shadow: 0 10px 25px rgba(220,174,61,0.25); }
 
-        /* ═══════════════════════════════════════════
+    /* ═══════════════════════════════════════════
        AUTO-FADING CAROUSEL
     ═══════════════════════════════════════════ */
-    .carousel-container {
-        width: 100%;
-        height: 100%;
-        min-height: 350px;
-        position: relative;
-    }
-    .carousel-slide {
-        position: absolute;
-        inset: 0;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out;
-    }
-    .carousel-slide.active {
-        opacity: 1;
-        visibility: visible;
-        z-index: 2;
-    }
+    .carousel-container { width: 100%; height: 100%; min-height: 350px; position: relative; }
+    .carousel-slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out; }
+    .carousel-slide.active { opacity: 1; visibility: visible; z-index: 2; }
 
     /* ═══════════════════════════════════════════
-       ORIGINAL PROCESS SECTION (REVERTED LAYOUT)
+       PROCESS SECTION
     ═══════════════════════════════════════════ */
     .process { background: var(--navy-deep); padding: 80px 0; border-top: 1px solid var(--border-dk); }
     .process-label { font-family: var(--sc); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold-hi); text-align: center; margin-bottom: 12px; }
@@ -232,13 +217,15 @@
     .footer-bottom p { font-family: var(--sans); font-size: 0.75rem; color: var(--text-3); }
 
     /* ═══════════════════════════════════════════
-       RESPONSIVE DESKTOP & TABLET
+       RESPONSIVE DESKTOP (THE FIX FOR TALL CONTAINERS)
     ═══════════════════════════════════════════ */
     @media (min-width: 640px) {
         .process-steps { grid-template-columns: 1fr 1fr; gap: 16px; }
     }
     
     @media (min-width: 1024px) {
+        .hero { min-height: 85svh; } 
+        
         .nav-links { display: flex; }
         
         .collection { 
@@ -249,7 +236,8 @@
                 "img text-top"
                 "img text-bottom";
             align-content: center;
-            min-height: 85vh;
+            min-height: auto; /* Removes the massive full-screen scroll height */
+            padding: 60px 0;  /* Provides breathing room */
         }
         .collection.reverse {
             grid-template-areas: 
@@ -257,14 +245,22 @@
                 "text-bottom img";
         }
         
-        .col-img { grid-area: img; padding: 60px; height: 100%; } 
+        /* THE FIX: Hard cap on image height so it doesn't take over your monitor */
+        .col-img { 
+            grid-area: img; 
+            padding: 20px 6%; 
+            height: 100%; 
+            min-height: 450px; /* Overrides the massive 70vw mobile rule */
+            max-height: 600px; /* Caps the height cleanly */
+        } 
         
-        .col-text-top { grid-area: text-top; align-self: end; padding: 100px 8% 0; }
-        .col-text-bottom { grid-area: text-bottom; align-self: start; padding: 24px 8% 100px; }
+        .col-text-top { grid-area: text-top; align-self: end; padding: 40px 6% 0; }
+        .col-text-bottom { grid-area: text-bottom; align-self: start; padding: 16px 6% 40px; }
         
-        /* Original Process Desktop Layout */
+        .process { padding: 100px 0; }
         .process-steps { grid-template-columns: repeat(3, 1fr); }
         
+        .site-footer { padding: 80px 24px 40px; }
         .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; }
         .footer-bottom { flex-direction: row; justify-content: space-between; text-align: left; }
     }
@@ -316,10 +312,10 @@
         </div>
         
         <div class="col-img enter d1">
-            <div class="gallery-frame" style="padding: 0; border: none;">
-                <img src="assets/anniversary.png" alt="Premium Gold Foil Memorial Booklet on Dark Marble">
+            <div class="gallery-frame">
+                <i class="fa-solid fa-camera-retro gallery-icon"></i>
+               <img src="assets/anniversary.png" alt="Premium Gold Foil Memorial Booklet on Dark Marble">
             </div>
-                
         </div>
         
         <div class="col-text-bottom enter d2">
@@ -335,7 +331,7 @@
         </div>
     </section>
 
- <section class="collection col-dark reverse" id="memoir">
+    <section class="collection col-dark reverse" id="memoir">
         <div class="col-text-top enter">
             <p class="col-collection-label">Collection Two</p>
             <h2 class="col-title">The Memoir<br>Collection</h2>
@@ -347,20 +343,20 @@
                 <div class="carousel-slide active">
                     <div class="gallery-frame">
                         <i class="fa-solid fa-image gallery-icon"></i>
-                        <span class="gallery-text">Insert Photo Memory Card Image Here</span>
-                        </div>
+                       <img src="assets/memoir-card.jpg" alt="Premium Gold Foil Memorial Booklet on Dark Marble">
+                    </div>
                 </div>
                 <div class="carousel-slide">
                     <div class="gallery-frame">
                         <i class="fa-solid fa-qrcode gallery-icon"></i>
                         <span class="gallery-text">Insert QR Scan Code Detail Here</span>
-                        </div>
+                    </div>
                 </div>
                 <div class="carousel-slide">
                     <div class="gallery-frame">
                         <i class="fa-solid fa-language gallery-icon"></i>
                         <span class="gallery-text">Insert "Big Op Yuself" Patois Card</span>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -377,6 +373,7 @@
             <a href="https://wa.me/18765612614" class="col-cta cta-gold">Shop Memoir</a>
         </div>
     </section>
+
     <section class="collection bg-paper col-light" id="memorial">
         <div class="col-text-top enter">
             <p class="col-collection-label">Collection Three</p>
@@ -386,7 +383,7 @@
         
         <div class="col-img enter d1">
             <div class="gallery-frame" style="padding: 0; border: none;">
-                <img src="assets/memorial.png" alt="Premium Gold Foil Memorial Booklet on Dark Marble">
+                <img src="assets/memorial.jpg" alt="Premium Gold Foil Memorial Booklet on Dark Marble">
             </div>
         </div>
         
@@ -477,6 +474,7 @@
         });
     }, { threshold: 0.1 });
     document.querySelectorAll('.enter').forEach(el => io.observe(el));
+
     /* Carousel Logic */
     const slides = document.querySelectorAll('#memoir-carousel .carousel-slide');
     let currentSlide = 0;
@@ -486,7 +484,7 @@
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
-        }, 4000); // 4000ms = 4 seconds per image
+        }, 4000); 
     }
 </script>
 </body>
