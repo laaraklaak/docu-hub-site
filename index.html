@@ -3,977 +3,413 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docu-Hub | Operations Services · Jamaica</title>
-    <meta name="description" content="Government e-services, smart cards, and memorial keepsakes. Linstead, St. Catherine, Jamaica.">
+    <title>Bespoke Cards & Keepsakes | Laura Clarke · Docu-Hub Jamaica</title>
+    <meta name="description" content="Premium Jamaican keepsake stationery for life's milestones, memoirs, and memorials. Crafted in Linstead, St. Catherine, Jamaica.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600&family=Italiana&family=Inter:wght@300;400;500&family=Lora:ital,wght@0,400;1,400&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-    /* ═══════════════════════════════════
-       TOKENS
-    ═══════════════════════════════════ */
+    /* ═══════════════════════════════════════════
+       TOKENS & HIGH CONTRAST PALETTE
+    ═══════════════════════════════════════════ */
     :root {
-        --navy:      #0F172A;
-        --navy-deep: #050A14;
-        --navy-mid:  #1E293B;
-        --gold:      #D4AF37;
-        --gold-hi:   #B8860B;
-        --gold-lo:   rgba(212,175,55,0.10);
-        --gold-bdr:  rgba(212,175,55,0.35);
-        --steel:     #38BDF8;
-        --steel-dk:  #0369A1;
-        --steel-lo:  rgba(56,189,248,0.10);
-        --steel-bdr: rgba(56,189,248,0.32);
-        --green:     #10B981;
-        --green-dk:  #052e1c;
-        --white:     #FFFFFF;
-        --text-1:    #F1F5F9;
-        --text-2:    #94A3B8;
-        --text-3:    #475569;
-        --border:    rgba(255,255,255,0.08);
-        --border-hi: rgba(255,255,255,0.15);
-        --bg-light:  #F8FAFC;
-        --bg-card:   #FFFFFF;
-        --lt-text-1: #0F172A;
-        --lt-text-2: #475569;
-        --lt-text-3: #94A3B8;
-        --lt-border: #E2E8F0;
-        --lt-bdr-hi: #CBD5E1;
-        --serif:     'Playfair Display', Georgia, serif;
-        --sans:      'Inter', system-ui, sans-serif;
-        --nav-h:     64px;
-        --max-w:     1200px;
-        --r:         12px;
-        --r-lg:      18px;
-        --r-xl:      24px;
+        --navy:       #060A11;
+        --navy-deep:  #030508;
+        --navy-mid:   #0B121C;
+        --ivory:      #FFFEFA;
+        --ivory-warm: #F7F4EB;
+        --ink:        #050403; 
+        --ink-2:      #2A241D;
+        --ink-3:      #5C5146;
+        
+        --gold:       #DCAE3D;
+        --gold-hi:    #FCEEB5; 
+        --gold-dk:    #A3801A;
+        --gold-grad:  linear-gradient(135deg, #F3DE8A 0%, #DCAE3D 50%, #B58B22 100%);
+        --gold-lo:    rgba(220,174,61,0.12);
+        --gold-bdr:   rgba(220,174,61,0.5);
+        
+        --white:      #FFFFFF; 
+        --text-1:     #FFFFFF; 
+        --text-2:     #E2E8F0; 
+        --text-3:     #94A3B8;
+        --border-dk:  rgba(255,255,255,0.15); 
+        --border-lt:  rgba(0,0,0,0.15);
+        
+        --serif:      'Lora', Georgia, serif;            
+        --display:    'Playfair Display', serif;         
+        --header-main:'Italiana', serif;
+        --sc:         'Cormorant SC', serif;
+        --sans:       'Inter', system-ui, sans-serif;
+        
+        --nav-h:      72px;
+        --max-w:      1200px;
     }
 
-    /* ═══════════════════════════════════
-       RESET
-    ═══════════════════════════════════ */
-    *, *::before, *::after {
-        box-sizing: border-box; margin: 0; padding: 0;
-        -webkit-tap-highlight-color: transparent;
-    }
+    /* ═══════════════════════════════════════════
+       RESET & BASE
+    ═══════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     html { scroll-behavior: smooth; }
     body {
-        font-family: var(--sans);
-        background: var(--navy-deep);
-        color: var(--text-1);
-        overflow-x: hidden;
-        -webkit-font-smoothing: antialiased;
+        font-family: var(--sans); background: var(--navy-deep); color: var(--text-1);
+        overflow-x: hidden; -webkit-font-smoothing: antialiased;
     }
-    a { text-decoration: none; color: inherit; }
-    img { display: block; width: 100%; }
+    a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+    img { display: block; width: 100%; object-fit: cover; }
 
-    /* ═══════════════════════════════════
-       ANIMATION
-    ═══════════════════════════════════ */
-    .enter {
-        opacity: 0; transform: translateY(18px);
-        transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1),
-                    transform 0.75s cubic-bezier(0.16,1,0.3,1);
+    .bg-paper {
+        background-color: var(--ivory);
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
     }
+
+    .enter { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
     .enter.in { opacity: 1; transform: translateY(0); }
-    .d1 { transition-delay: 0.05s; }
-    .d2 { transition-delay: 0.12s; }
-    .d3 { transition-delay: 0.20s; }
-    .d4 { transition-delay: 0.28s; }
-    .d5 { transition-delay: 0.36s; }
-    .d6 { transition-delay: 0.44s; }
+    .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; } .d4 { transition-delay: 0.4s; }
 
-    /* ═══════════════════════════════════
-       LAYOUT
-    ═══════════════════════════════════ */
-    .outer {
-        max-width: var(--max-w);
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-
-    /* ═══════════════════════════════════
-       NAV
-    ═══════════════════════════════════ */
+    /* ═══════════════════════════════════════════
+       NAVIGATION
+    ═══════════════════════════════════════════ */
+    .outer { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
     .site-nav {
-        position: fixed; top: 0; left: 0; right: 0; z-index: 900;
-        height: var(--nav-h);
-        background: rgba(5,10,20,0.88);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-bottom: 1px solid var(--border);
-        transition: border-color 0.3s;
+        position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h);
+        background: rgba(3,5,8,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border-dk); transition: border-color 0.3s;
     }
-    .nav-inner {
-        max-width: var(--max-w); margin: 0 auto; padding: 0 20px;
-        height: 100%;
-        display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-logo {
-        font-family: var(--serif);
-        font-size: 1.2rem; font-weight: 700;
-        color: var(--white); letter-spacing: -0.3px;
-        display: flex; align-items: center; gap: 10px;
-    }
-    .nav-logo-dot { color: var(--gold); }
-    .nav-logo-tag {
-        font-family: var(--sans);
-        font-size: 0.58rem; font-weight: 300;
-        letter-spacing: 0.18em; text-transform: uppercase;
-        color: var(--text-3);
-        border-left: 1px solid var(--border-hi);
-        padding-left: 10px;
-    }
-    .nav-links {
-        display: none; list-style: none;
-        align-items: center; gap: 2px;
-    }
-    .nav-links a {
-        font-size: 0.78rem; font-weight: 400;
-        color: var(--text-2); padding: 7px 12px; border-radius: 8px;
-        transition: color 0.2s, background 0.2s;
-    }
-    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
-    .nav-wa {
-        color: var(--green) !important; font-weight: 500 !important;
-        border: 1px solid rgba(16,185,129,0.3) !important;
-        background: rgba(16,185,129,0.08) !important;
-        margin-left: 6px;
-    }
-    .nav-wa:hover { background: rgba(16,185,129,0.18) !important; color: #fff !important; }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; flex-direction: column; gap: 2px; }
+    
+    .nav-logo-name { font-family: var(--display); font-size: 0.95rem; font-weight: 400; letter-spacing: 0.15em; color: var(--white); }
+    .nav-logo-name span { color: var(--gold); }
+    .nav-logo-tag { font-family: var(--sc); font-size: 0.55rem; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-hi); }
+    
+    .nav-links { display: none; list-style: none; align-items: center; gap: 12px; }
+    .nav-links a { font-family: var(--sc); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-2); padding: 8px 16px; border-radius: 4px; }
+    .nav-links a:hover { color: var(--white); background: var(--gold-lo); }
+    
+    .nav-wa { background: var(--gold-grad) !important; color: var(--ink) !important; font-weight: 600 !important; border-radius: 30px !important; margin-left: 10px; }
+    .nav-wa:hover { box-shadow: 0 4px 15px rgba(220,174,61,0.3) !important; transform: translateY(-1px); }
 
-    /* Hamburger */
-    .hamburger {
-        display: flex; flex-direction: column; gap: 5px;
-        background: none; border: none; cursor: pointer; padding: 6px;
-    }
-    .hamburger span {
-        display: block; width: 22px; height: 1.5px;
-        background: var(--text-2); border-radius: 2px;
-        transition: transform 0.3s, opacity 0.3s;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); background: var(--white); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); background: var(--white); }
-
-    /* Mobile drawer */
-    .nav-drawer {
-        display: none; position: fixed;
-        top: var(--nav-h); left: 0; right: 0; bottom: 0;
-        background: rgba(5,10,20,0.98);
-        backdrop-filter: blur(24px);
-        z-index: 899; padding: 24px 20px 40px;
-        flex-direction: column; gap: 0;
-        border-top: 1px solid var(--border);
-    }
-    .nav-drawer.open { display: flex; }
-    .nav-drawer a {
-        font-size: 1.05rem; font-weight: 400;
-        color: var(--text-2); padding: 16px 4px;
-        border-bottom: 1px solid var(--border);
-        display: flex; align-items: center; gap: 14px;
-        transition: color 0.2s;
-    }
-    .nav-drawer a:hover { color: var(--white); }
-    .nav-drawer a i { color: var(--gold); font-size: 0.9rem; width: 16px; text-align: center; }
-    .drawer-wa {
-        margin-top: 20px; border: none !important;
-        background: var(--green) !important;
-        color: var(--green-dk) !important;
-        justify-content: center; border-radius: var(--r);
-        font-weight: 600 !important; padding: 18px 16px !important;
-        font-size: 1rem !important;
-    }
-    .drawer-wa i { color: var(--green-dk) !important; }
-
-    /* ═══════════════════════════════════
-       HERO — reduced height, left text panel
-    ═══════════════════════════════════ */
+    /* ═══════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════ */
     .hero {
-        position: relative;
-        height: 72vh;
-        min-height: 480px;
-        max-height: 700px;
-        display: flex; align-items: stretch;
-        overflow: hidden;
+        min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+        text-align: center; padding: calc(var(--nav-h) + 60px) 24px 80px; position: relative; overflow: hidden;
+        background: radial-gradient(circle at center, var(--navy-mid) 0%, var(--navy-deep) 100%);
     }
+    .hero-inner { position: relative; z-index: 2; max-width: 900px; }
+    
+    .hero-eyebrow { font-family: var(--sc); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.45em; text-transform: uppercase; color: var(--gold-hi); margin-bottom: 24px; display: flex; align-items: center; justify-content: center; gap: 16px; }
+    .hero-eyebrow::before, .hero-eyebrow::after { content: ''; width: 50px; height: 1px; background: var(--gold-grad); opacity: 0.9; }
+    
+    .hero-brand-top { font-family: var(--display); font-size: clamp(0.9rem, 2.5vw, 1.2rem); font-weight: 400; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .hero-rule { width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, var(--gold), transparent); margin: 0 auto 30px; }
+    
+    .hero-offering { font-family: var(--header-main); font-size: clamp(3rem, 9vw, 5.5rem); font-weight: 400; color: var(--white); line-height: 1.1; margin-bottom: 24px; letter-spacing: 0.02em; }
+    
+    .hero-tagline { font-family: var(--serif); font-size: clamp(1.3rem, 3.5vw, 1.9rem); font-weight: 400; font-style: italic; line-height: 1.5; color: var(--text-2); margin-bottom: 24px; max-width: 680px; margin-left: auto; margin-right: auto; }
+    
+    .hero-sub { font-family: var(--sc); font-size: 0.8rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-2); margin-bottom: 50px; }
+    
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 16px 34px; background: var(--gold-grad); border-radius: 4px; font-family: var(--sc); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); transition: all 0.3s ease; }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(220,174,61,0.3); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 10px; padding: 15px 32px; border: 1px solid var(--gold-bdr); border-radius: 4px; font-family: var(--sc); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); transition: all 0.3s; }
+    .btn-outline:hover { background: var(--gold-lo); border-color: var(--gold); }
 
-    /* Background image — full bleed behind everything */
-    .hero-bg {
-        position: absolute; inset: 0;
-        background: url('assets/hero.png') center / cover no-repeat;
-        transform: scale(1.04);
-        transition: transform 9s ease-out;
-    }
-    .hero-bg.loaded { transform: scale(1); }
+    .features-strip { background: var(--navy); border-top: 1px solid var(--border-dk); border-bottom: 1px solid var(--border-dk); padding: 30px 24px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+    .feature-item { display: flex; align-items: center; gap: 12px; font-family: var(--sc); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-hi); }
 
-    /* Very light veil — just enough for the text panel,
-       image stays vivid on the right */
-    .hero-veil {
-        position: absolute; inset: 0;
-        background: linear-gradient(
-            to right,
-            rgba(5,10,20,0.88)  0%,
-            rgba(5,10,20,0.70)  38%,
-            rgba(5,10,20,0.20)  62%,
-            rgba(5,10,20,0.04)  100%
-        );
-    }
+    /* ═══════════════════════════════════════════
+       COLLECTIONS
+    ═══════════════════════════════════════════ */
+    .collection { min-height: 100svh; display: flex; flex-direction: column; }
+    .col-img { width: 100%; min-height: 60vw; position: relative; overflow: hidden; background: var(--navy-mid); display: flex; align-items: stretch; justify-content: stretch; padding: 40px; }
+    .col-text { padding: 80px 24px; display: flex; flex-direction: column; justify-content: center; gap: 28px; }
+    
+    .col-dark { background: var(--navy); } 
+    .col-dark .col-text { color: var(--text-1); }
+    .col-dark .col-body { color: var(--text-2); }
+    
+    .col-light { background: var(--ivory); } 
+    .col-light .col-text { color: var(--ink); }
+    .col-light .col-body { color: var(--ink-2); }
 
-    /* Text panel — left-aligned, vertically centred,
-       no visible border, just the gradient doing the work */
-    .hero-content {
-        position: relative; z-index: 2;
-        width: 100%;
-        display: flex; align-items: center;
-        padding: 0;
-    }
+    .col-collection-label { font-family: var(--sc); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase; }
+    .col-dark .col-collection-label { color: var(--gold); }
+    .col-light .col-collection-label { color: var(--navy-mid); }
 
-    /* Inner panel max-width keeps text tight on the left */
-    .hero-panel {
-        max-width: 480px;
-        padding: 40px 20px;
-    }
+    .col-rule { width: 60px; height: 2px; }
+    .col-dark .col-rule { background: var(--gold-grad); }
+    .col-light .col-rule { background: var(--navy-mid); }
 
-    /* Location pill */
-    .hero-loc {
-        display: inline-flex; align-items: center; gap: 6px;
-        font-size: 0.62rem; font-weight: 500;
-        letter-spacing: 0.2em; text-transform: uppercase;
-        color: var(--gold);
-        background: var(--gold-lo);
-        border: 1px solid var(--gold-bdr);
-        padding: 5px 12px; border-radius: 20px;
-        margin-bottom: 16px;
-    }
+    .gallery-frame { width: 100%; height: 100%; min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px; position: relative; }
+    .col-dark .gallery-frame { background: rgba(0,0,0,0.4); box-shadow: inset 0 0 40px rgba(0,0,0,0.5); border: 1px solid var(--gold-bdr); }
+    .col-light .gallery-frame { background: rgba(0,0,0,0.02); box-shadow: inset 0 0 40px rgba(0,0,0,0.02); border: 1px solid var(--border-lt); }
+    .gallery-icon { font-size: 1.5rem; margin-bottom: 16px; opacity: 0.8; }
+    .col-dark .gallery-icon { color: var(--gold); }
+    .col-light .gallery-icon { color: var(--navy-mid); }
+    .gallery-text { font-family: var(--sc); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: inherit; opacity: 0.7; }
+    .gallery-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 5; }
 
-    /* Brand name */
-    .hero-brand {
-        font-family: var(--serif);
-        font-size: clamp(2.6rem, 7vw, 5rem);
-        font-weight: 700; line-height: 1;
-        letter-spacing: -1px;
-        color: var(--white);
-        margin-bottom: 12px;
-    }
-    .hero-brand-dot { color: var(--gold); }
+    .col-title { font-family: var(--header-main); font-size: clamp(2.8rem, 6vw, 4rem); font-weight: 400; line-height: 1.15; }
+    .col-subtitle { font-family: var(--display); font-size: clamp(0.8rem, 1.5vw, 0.95rem); font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; margin-top: -10px; }
+    .col-light .col-subtitle { color: var(--ink-3); } .col-dark .col-subtitle { color: var(--text-3); }
+    .col-body { font-family: var(--serif); font-size: clamp(1rem, 1.8vw, 1.15rem); font-weight: 400; line-height: 1.9; letter-spacing: 0.01em; }
+    
+    .col-formats { display: flex; flex-wrap: wrap; gap: 12px; }
+    .format-pill { font-family: var(--sans); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 10px 20px; border-radius: 30px; display: flex; align-items: center; gap: 8px; }
+    .col-dark .format-pill i { color: var(--gold); }
+    .col-light .format-pill i { color: var(--navy-mid); }
+    .col-light .format-pill { border: 1px solid var(--border-lt); color: var(--ink); background: var(--white); }
+    .col-dark .format-pill { border: 1px solid var(--border-dk); color: var(--white); background: rgba(255,255,255,0.05); }
 
-    /* Operations Services sub-label */
-    .hero-ops {
-        font-family: var(--sans);
-        font-size: 0.68rem; font-weight: 400;
-        letter-spacing: 0.28em; text-transform: uppercase;
-        color: var(--text-3);
-        margin-bottom: 20px;
-    }
+    .col-cta { display: inline-flex; align-items: center; gap: 12px; font-family: var(--sc); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; padding: 16px 32px; border-radius: 4px; align-self: flex-start; transition: all 0.3s ease; }
+    .col-cta:hover { transform: translateY(-3px); }
+    .cta-dark { background: var(--navy-deep); color: var(--white); border: 1px solid var(--navy-mid); }
+    .cta-dark:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.2); background: #000; }
+    .cta-gold { background: var(--gold-grad); color: var(--ink); }
+    .cta-gold:hover { box-shadow: 0 10px 25px rgba(220,174,61,0.25); }
 
-    /* Single-line tagline */
-    .hero-tagline {
-        font-size: clamp(0.88rem, 2vw, 1rem);
-        font-weight: 300;
-        color: var(--text-2);
-        letter-spacing: 0.02em;
-        margin-bottom: 28px;
-        max-width: 360px;
-        line-height: 1.6;
-    }
+    /* ═══════════════════════════════════════════
+       PROCESS SECTION
+    ═══════════════════════════════════════════ */
+    .process-section { background: var(--navy-mid); padding: 100px 24px; border-top: 1px solid var(--border-dk); }
+    .process-header { text-align: center; margin-bottom: 60px; }
+    .process-label { font-family: var(--sc); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold-hi); margin-bottom: 16px; }
+    .process-title { font-family: var(--header-main); font-size: clamp(2.5rem, 5vw, 3.5rem); color: var(--white); font-weight: 400; line-height: 1.1; }
+    
+    .process-grid { display: grid; grid-template-columns: 1fr; gap: 40px; max-width: var(--max-w); margin: 0 auto; }
+    .p-step { background: var(--navy-deep); border: 1px solid var(--border-dk); padding: 40px; border-radius: 4px; position: relative; transition: border-color 0.3s ease; }
+    .p-step:hover { border-color: var(--gold-bdr); }
+    
+    .p-numeral { font-family: var(--display); font-size: 3.5rem; color: var(--gold-lo); position: absolute; top: 20px; right: 30px; line-height: 1; user-select: none; pointer-events: none; }
+    .p-title { font-family: var(--display); font-size: 1.2rem; color: var(--white); margin-bottom: 16px; letter-spacing: 0.1em; text-transform: uppercase; position: relative; z-index: 2; }
+    .p-desc { font-family: var(--serif); font-size: 1rem; color: var(--text-2); line-height: 1.8; position: relative; z-index: 2; }
 
-    /* Two buttons */
-    .hero-btns {
-        display: flex; flex-wrap: wrap;
-        gap: 10px; align-items: center;
-    }
+    /* ═══════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════ */
+    .site-footer { background: var(--navy-deep); border-top: 1px solid var(--border-dk); padding: 80px 24px 40px; }
+    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 60px; max-width: var(--max-w); margin: 0 auto; border-bottom: 1px solid var(--border-dk); padding-bottom: 60px; margin-bottom: 40px; }
+    
+    .footer-brand .f-logo { font-family: var(--display); font-size: 1.2rem; color: var(--white); letter-spacing: 0.15em; margin-bottom: 8px; display: block; }
+    .footer-brand .f-logo span { color: var(--gold); }
+    .footer-brand .f-tag { font-family: var(--sc); font-size: 0.65rem; color: var(--gold-hi); letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 24px; display: block; }
+    .footer-brand .f-desc { font-family: var(--serif); font-size: 0.95rem; color: var(--text-3); line-height: 1.8; max-width: 300px; font-style: italic; }
 
-    .btn-wa {
-        display: inline-flex; align-items: center; gap: 10px;
-        padding: 15px 26px;
-        background: var(--green);
-        border-radius: var(--r);
-        font-family: var(--sans);
-        font-size: 0.9rem; font-weight: 600;
-        color: var(--green-dk);
-        transition: transform 0.18s, box-shadow 0.18s;
-        position: relative; overflow: hidden;
-        white-space: nowrap;
-    }
-    .btn-wa::after {
-        content: ''; position: absolute;
-        top: 0; left: -100%; width: 55%; height: 100%;
-        background: linear-gradient(to right, transparent, rgba(255,255,255,0.18), transparent);
-        transform: skewX(-18deg);
-        animation: shim 4s ease-in-out 1.6s infinite;
-    }
-    @keyframes shim { 0%,74%,100%{left:-100%} 38%{left:140%} }
-    .btn-wa:hover  { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(16,185,129,0.4); }
-    .btn-wa:active { transform: scale(0.98); }
-    .btn-wa i { font-size: 1.1rem; }
+    .footer-col-title { font-family: var(--sc); font-size: 0.75rem; font-weight: 600; color: var(--white); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 24px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { font-family: var(--sans); font-size: 0.85rem; color: var(--text-3); transition: color 0.2s ease; }
+    .footer-links a:hover { color: var(--gold-hi); }
+    
+    .footer-contact p { font-family: var(--sans); font-size: 0.85rem; color: var(--text-3); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+    .footer-contact i { color: var(--gold); font-size: 1rem; width: 20px; text-align: center; }
 
-    .btn-ghost {
-        display: inline-flex; align-items: center; gap: 8px;
-        padding: 13px 22px;
-        border: 1px solid var(--border-hi);
-        border-radius: var(--r);
-        font-family: var(--sans);
-        font-size: 0.85rem; font-weight: 400;
-        color: var(--text-2);
-        transition: border-color 0.2s, color 0.2s, background 0.2s;
-        white-space: nowrap;
-    }
-    .btn-ghost:hover {
-        border-color: var(--gold-bdr);
-        color: var(--gold-hi);
-        background: var(--gold-lo);
-    }
-    .btn-ghost i { font-size: 0.8rem; opacity: 0.6; }
+    .footer-bottom { max-width: var(--max-w); margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; }
+    .footer-bottom p { font-family: var(--sans); font-size: 0.75rem; color: var(--text-3); }
 
-    /* Scroll nudge — hidden, hero is short enough now */
-    .scroll-nudge { display: none; }
-
-    /* ═══════════════════════════════════
-       SERVICE CARDS — light bg, image-forward
-    ═══════════════════════════════════ */
-    .services {
-        background: var(--bg-light);
-        padding: 64px 0;
-        border-top: 4px solid var(--navy);
-    }
-
-    .sec-label {
-        font-size: 0.62rem; font-weight: 600;
-        letter-spacing: 0.22em; text-transform: uppercase;
-        color: var(--gold-hi); margin-bottom: 6px;
-        text-align: center;
-    }
-    .sec-title {
-        font-family: var(--serif);
-        font-size: clamp(1.6rem, 4vw, 2.4rem);
-        font-weight: 700; color: var(--lt-text-1);
-        text-align: center; margin-bottom: 36px;
-        line-height: 1.15; letter-spacing: -0.3px;
-    }
-
-    .svc-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .svc-card {
-        display: block;
-        border-radius: var(--r-xl);
-        overflow: hidden;
-        border: 1px solid var(--lt-border);
-        position: relative;
-        min-height: 320px;
-        transition: transform 0.3s cubic-bezier(0.16,1,0.3,1),
-                    box-shadow 0.3s, border-color 0.3s;
-    }
-    .svc-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 24px 56px rgba(15,23,42,0.22), 0 8px 20px rgba(15,23,42,0.12);
-    }
-    .svc-card:active { transform: scale(0.99); }
-
-    /* Full-bleed background image per card */
-    .svc-img {
-        position: absolute; inset: 0;
-        background-size: cover; background-position: center;
-        transition: transform 0.7s cubic-bezier(0.16,1,0.3,1), opacity 0.4s;
-        opacity: 0.6;
-    }
-    .svc-card:hover .svc-img { transform: scale(1.06); opacity: 0.72; }
-
-    .img-concierge { background-image: url('assets/concierge.png'); }
-    .img-tech      { background-image: url('assets/tech.png'); }
-    .img-memorial  { background-image: url('assets/memorial.png'); }
-
-    /* Bottom gradient for text */
-    .svc-fade {
-        position: absolute; inset: 0;
-        background: linear-gradient(to top,
-            rgba(5,10,20,0.97)  0%,
-            rgba(5,10,20,0.55)  48%,
-            rgba(5,10,20,0.08)  100%);
-        transition: background 0.3s;
-    }
-    .svc-card:hover .svc-fade {
-        background: linear-gradient(to top,
-            rgba(5,10,20,0.98)  0%,
-            rgba(5,10,20,0.65)  52%,
-            rgba(5,10,20,0.12)  100%);
-    }
-
-    /* Accent border on hover */
-    .svc-gold:hover  { border-color: var(--gold-bdr); }
-    .svc-steel:hover { border-color: var(--steel-bdr); }
-
-    /* Card text */
-    .svc-body {
-        position: relative; z-index: 2;
-        height: 100%; min-height: 320px;
-        padding: 22px 22px 24px;
-        display: flex; flex-direction: column; justify-content: flex-end;
-    }
-
-    .svc-icon {
-        width: 40px; height: 40px; border-radius: 10px;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 0.95rem; margin-bottom: 12px;
-        border: 1px solid transparent; flex-shrink: 0;
-    }
-    .ic-gold  { background: var(--gold-lo);  color: var(--gold-hi);  border-color: rgba(212,175,55,0.22); }
-    .ic-steel { background: var(--steel-lo); color: var(--steel);    border-color: rgba(56,189,248,0.22); }
-
-    .svc-name {
-        font-family: var(--serif);
-        font-size: clamp(1.25rem, 4vw, 1.5rem);
-        font-weight: 700; color: var(--white);
-        line-height: 1.15; margin-bottom: 8px;
-    }
-    .svc-pills {
-        display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px;
-    }
-    .pill {
-        font-size: 0.66rem; font-weight: 400;
-        padding: 3px 9px; border-radius: 20px;
-        border: 1px solid var(--border-hi);
-        color: var(--text-2);
-        background: rgba(255,255,255,0.04);
-        white-space: nowrap;
-    }
-    .svc-cta {
-        display: inline-flex; align-items: center; gap: 6px;
-        font-size: 0.72rem; font-weight: 600;
-        letter-spacing: 0.08em; text-transform: uppercase;
-    }
-    .svc-cta i { font-size: 0.65rem; transition: transform 0.2s; }
-    .svc-card:hover .svc-cta i { transform: translateX(4px); }
-    .cta-gold  { color: var(--gold-hi); }
-    .cta-steel { color: var(--steel); }
-
-    /* ═══════════════════════════════════
-       PROCESS — dark, numbered, no body copy
-    ═══════════════════════════════════ */
-    .process {
-        background: var(--navy);
-        padding: 64px 0;
-        position: relative; overflow: hidden;
-        border-top: 1px solid rgba(255,255,255,0.06);
-    }
-    .process::before {
-        content: '';
-        position: absolute; inset: 0;
-        background: url('assets/vip-card-glow.png') center/cover no-repeat;
-        opacity: 0.035; pointer-events: none;
-    }
-
-    .proc-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 12px;
-        position: relative; z-index: 1;
-    }
-
-    .proc-step {
-        display: flex; align-items: center; gap: 18px;
-        background: rgba(30,41,59,0.55);
-        backdrop-filter: blur(8px);
-        border: 1px solid var(--border);
-        border-radius: var(--r-lg);
-        padding: 20px 22px;
-        transition: border-color 0.25s, transform 0.25s;
-    }
-    .proc-step:hover { border-color: var(--gold-bdr); transform: translateX(4px); }
-
-    .proc-num {
-        width: 40px; height: 40px; flex-shrink: 0;
-        border-radius: 50%;
-        background: var(--gold-lo); border: 1px solid var(--gold-bdr);
-        display: flex; align-items: center; justify-content: center;
-        font-family: var(--serif);
-        font-size: 0.9rem; font-weight: 700; color: var(--gold-hi);
-    }
-    .proc-label {
-        font-size: 0.92rem; font-weight: 600; color: var(--white);
-    }
-
-    /* ═══════════════════════════════════
-       CONTACT — dead simple
-    ═══════════════════════════════════ */
-    .contact {
-        background: var(--navy-deep);
-        padding: 64px 0;
-        border-top: 1px solid rgba(255,255,255,0.06);
-    }
-    .contact-box {
-        background: linear-gradient(135deg, var(--navy-mid), var(--navy-deep));
-        border: 1px solid var(--border);
-        border-radius: var(--r-xl);
-        padding: 40px 28px;
-        text-align: center;
-        position: relative; overflow: hidden;
-    }
-    .contact-box::before {
-        content: '';
-        position: absolute; top: 0; left: 0; right: 0; height: 2px;
-        background: linear-gradient(to right, transparent, var(--gold), transparent);
-    }
-    .contact-title {
-        font-family: var(--serif);
-        font-size: clamp(1.5rem, 5vw, 2.2rem);
-        font-weight: 700; font-style: italic;
-        color: var(--white); margin-bottom: 10px;
-    }
-    .contact-sub {
-        font-size: 0.85rem; font-weight: 300;
-        color: var(--text-2); margin-bottom: 28px;
-        max-width: 380px; margin-left: auto; margin-right: auto;
-        line-height: 1.75;
-    }
-    .contact-btns {
-        display: flex; flex-direction: column;
-        gap: 10px; max-width: 360px; margin: 0 auto;
-    }
-
-    /* ═══════════════════════════════════
-       FOOTER — lean
-    ═══════════════════════════════════ */
-    .site-footer {
-        background: var(--navy-deep);
-        border-top: 1px solid var(--border);
-        padding: 40px 0 32px;
-    }
-    .footer-grid {
-        display: grid; grid-template-columns: 1fr;
-        gap: 28px; margin-bottom: 28px;
-        padding-bottom: 28px; border-bottom: 1px solid var(--border);
-    }
-    .footer-brand {
-        font-family: var(--serif);
-        font-size: 1.3rem; font-weight: 700;
-        color: var(--white); margin-bottom: 6px;
-    }
-    .footer-brand span { color: var(--gold); }
-    .footer-tagline {
-        font-size: 0.75rem; font-weight: 300;
-        color: var(--text-3); line-height: 1.7;
-    }
-    .footer-col-label {
-        font-size: 0.58rem; font-weight: 600;
-        letter-spacing: 0.2em; text-transform: uppercase;
-        color: var(--text-3); margin-bottom: 12px;
-    }
-    .footer-col a {
-        display: block; font-size: 0.78rem; font-weight: 300;
-        color: var(--text-3); margin-bottom: 8px;
-        transition: color 0.2s, transform 0.2s;
-    }
-    .footer-col a:hover { color: var(--gold-hi); transform: translateX(3px); }
-    .footer-bottom {
-        display: flex; justify-content: space-between;
-        align-items: center; flex-wrap: wrap; gap: 10px;
-    }
-    .footer-copy {
-        font-size: 0.67rem; font-weight: 300;
-        color: var(--text-3); letter-spacing: 0.05em;
-    }
-    .footer-legal { display: flex; gap: 14px; }
-    .footer-legal a {
-        font-size: 0.67rem; color: var(--text-3);
-        transition: color 0.2s;
-    }
-    .footer-legal a:hover { color: var(--gold-hi); }
-
-    /* ═══════════════════════════════════
-       FLOATING WHATSAPP
-    ═══════════════════════════════════ */
-    .wa-fab {
-        position: fixed; bottom: 22px; right: 18px; z-index: 1000;
-        width: 56px; height: 56px; border-radius: 50%;
-        background: #22C55E;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 1.5rem; color: #fff;
-        box-shadow: 0 6px 24px rgba(34,197,94,0.5);
-        transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .wa-fab:hover  { transform: scale(1.1); box-shadow: 0 10px 32px rgba(34,197,94,0.65); }
-    .wa-fab:active { transform: scale(0.95); }
-    .wa-fab::before, .wa-fab::after {
-        content: ''; position: absolute; inset: -4px; border-radius: 50%;
-        border: 2px solid rgba(34,197,94,0.4);
-        animation: wa-ring 2.5s ease-out infinite;
-    }
-    .wa-fab::after { inset: -10px; border-color: rgba(34,197,94,0.18); animation-delay: 0.7s; }
-    @keyframes wa-ring { 0%{transform:scale(1);opacity:1} 100%{transform:scale(1.55);opacity:0} }
-
-    /* ═══════════════════════════════════
-       ▸ TABLET  640px+
-    ═══════════════════════════════════ */
-    @media (min-width: 640px) {
-        .outer { padding: 0 28px; }
-        .hamburger { display: none; }
-        .nav-links  { display: flex; }
-
-        /* Hero height on tablet */
-        .hero { height: 74vh; }
-        .hero-panel { max-width: 420px; padding: 0 28px; }
-
-        /* Hero btns side by side */
-        .hero-btns { flex-wrap: nowrap; }
-
-        /* 2-col services */
-        .svc-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
-        .svc-card, .svc-body { min-height: 380px; }
-
-        /* 2-col process */
-        .proc-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-        .proc-step:hover { transform: translateX(0) translateY(-3px); }
-
-        /* Contact btns row */
-        .contact-btns { flex-direction: row; justify-content: center; max-width: none; }
-
-        /* Footer 3-col */
-        .footer-grid { grid-template-columns: 1.2fr 1fr 1fr; }
-    }
-
-    /* ═══════════════════════════════════
-       ▸ DESKTOP  1024px+
-    ═══════════════════════════════════ */
+    /* ═══════════════════════════════════════════
+       RESPONSIVE DESKTOP
+    ═══════════════════════════════════════════ */
     @media (min-width: 1024px) {
-        .outer { padding: 0 40px; }
-
-        /* Nav */
-        .nav-logo { font-size: 1.3rem; }
-
-        /* Hero */
-        .hero-content { padding-bottom: 72px; }
-        .hero-brand   { font-size: 6rem; }
-
-        /* Hero panel wider on desktop */
-        .hero { height: 78vh; max-height: 820px; }
-        .hero-panel { max-width: 560px; padding: 0 40px; }
-        .hero-brand { font-size: clamp(3.5rem, 5vw, 5.5rem); }
-
-        /* 3-col services, taller */
-        .svc-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .svc-card, .svc-body { min-height: 460px; }
-        .svc-name { font-size: 1.6rem; }
-
-        /* 3-col process */
-        .proc-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
-
-        /* Contact card wider, side-by-side content */
-        .contact-box {
-            text-align: left; padding: 48px 56px;
-        }
-        .contact-box-inner {
-            display: grid; grid-template-columns: 1fr auto;
-            gap: 56px; align-items: center;
-        }
-        .contact-sub { margin-left: 0; margin-right: 0; }
-        .contact-btns {
-            flex-direction: column; min-width: 240px;
-            margin: 0; max-width: none;
-        }
-
-        /* Footer 4-col */
-        .footer-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; }
-
-        .services  { padding: 96px 0; }
-        .process   { padding: 88px 0; }
-        .contact   { padding: 88px 0; }
-    }
-
-    /* ═══════════════════════════════════
-       ▸ WIDE  1280px+
-    ═══════════════════════════════════ */
-    @media (min-width: 1280px) {
-        .outer { padding: 0 48px; }
-        .svc-card, .svc-body { min-height: 500px; }
+        .nav-links { display: flex; }
+        .collection { flex-direction: row; min-height: 85vh; }
+        .col-img { width: 50%; min-height: auto; padding: 60px; } 
+        .col-text { width: 50%; padding: 100px 8%; }
+        .collection.reverse { flex-direction: row-reverse; }
+        
+        .process-grid { grid-template-columns: repeat(3, 1fr); }
+        .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; }
+        .footer-bottom { flex-direction: row; justify-content: space-between; text-align: left; }
     }
     </style>
 </head>
 <body>
 
-<!-- Floating WhatsApp -->
-<a href="https://wa.me/18765612614" target="_blank" rel="noopener"
-   class="wa-fab" aria-label="Chat on WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-</a>
-
-<!-- ══ NAV ══════════════════════════════════════════════ -->
 <nav class="site-nav" id="sitenav">
     <div class="nav-inner">
         <a href="index.html" class="nav-logo">
-            Docu<span class="nav-logo-dot">.</span>Hub
-            <span class="nav-logo-tag">Operations Services</span>
+            <span class="nav-logo-name">Laura Clarke · Docu<span>-</span>Hub</span>
+            <span class="nav-logo-tag">Keepsakes & Stationery</span>
         </a>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="concierge.html">E-Services</a></li>
-            <li><a href="hub.html">Smart Cards</a></li>
-            <li><a href="memorials.html">Memorials</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="nav-wa">
-                <i class="fa-brands fa-whatsapp" style="margin-right:5px;"></i>WhatsApp
-            </a></li>
+            <li><a href="#milestone">Milestone</a></li>
+            <li><a href="#memoir">Memoir</a></li>
+            <li><a href="#memorial">Memorial</a></li>
+            <li><a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="nav-wa">Order Now</a></li>
         </ul>
-        <button class="hamburger" id="hbg" aria-label="Open menu" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
     </div>
 </nav>
 
-<!-- Mobile drawer -->
-<div class="nav-drawer" id="drawer">
-    <a href="index.html"      onclick="closeNav()"><i class="fa-solid fa-house"></i>Home</a>
-    <a href="concierge.html"  onclick="closeNav()"><i class="fa-solid fa-file-shield"></i>Government E-Services</a>
-    <a href="hub.html"        onclick="closeNav()"><i class="fa-solid fa-wifi"></i>Smart Cards &amp; Menus</a>
-    <a href="memorials.html"  onclick="closeNav()"><i class="fa-solid fa-dove"></i>Memorial Keepsakes</a>
-    <a href="about.html"      onclick="closeNav()"><i class="fa-solid fa-circle-info"></i>About Us</a>
-    <a href="https://wa.me/18765612614" target="_blank" rel="noopener"
-       class="drawer-wa" onclick="closeNav()">
-        <i class="fa-brands fa-whatsapp"></i>Message me on WhatsApp
-    </a>
-</div>
-
 <div class="page">
-
-    <!-- ══ HERO ══════════════════════════════════════════ -->
     <section class="hero">
-        <div class="hero-bg" id="heroBg"></div>
-        <div class="hero-veil"></div>
-
-        <div class="hero-content outer">
-            <div class="hero-panel">
-                <p class="hero-loc enter d1">
-                    <i class="fa-solid fa-location-dot"></i>
-                    Linstead · Jamaica
-                </p>
-                <h1 class="hero-brand enter d2">
-                    Docu<span class="hero-brand-dot">.</span>Hub
-                </h1>
-                <p class="hero-ops enter d2">Operations Services</p>
-                <p class="hero-tagline enter d3">
-                    I handle the details<br>so you don't have to.
-                </p>
-                <div class="hero-btns enter d4">
-                    <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-wa">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        WhatsApp me
-                    </a>
-                    <a href="about.html" class="btn-ghost">
-                        <i class="fa-solid fa-circle-info"></i>
-                        About us
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ══ SERVICES ══════════════════════════════════════ -->
-    <section class="services">
-        <div class="outer">
-            <p class="sec-label enter d2">What I can do for you</p>
-            <h2 class="sec-title enter d2">Three services. One trusted partner.</h2>
-
-            <div class="svc-grid">
-
-                <a href="concierge.html" class="svc-card svc-gold enter d3">
-                    <div class="svc-img img-concierge"></div>
-                    <div class="svc-fade"></div>
-                    <div class="svc-body">
-                        <div class="svc-icon ic-gold">
-                            <i class="fa-solid fa-file-shield"></i>
-                        </div>
-                        <p class="svc-name">Government<br>E-Services</p>
-                        <div class="svc-pills">
-                            <span class="pill">Property Tax</span>
-                            <span class="pill">Traffic Tickets</span>
-                            <span class="pill">Licence Renewal</span>
-                            <span class="pill">Passport</span>
-                        </div>
-                        <span class="svc-cta cta-gold">
-                            Find out more <i class="fa-solid fa-arrow-right"></i>
-                        </span>
-                    </div>
-                </a>
-
-                <a href="hub.html" class="svc-card svc-steel enter d4">
-                    <div class="svc-img img-tech"></div>
-                    <div class="svc-fade"></div>
-                    <div class="svc-body">
-                        <div class="svc-icon ic-steel">
-                            <i class="fa-solid fa-wifi"></i>
-                        </div>
-                        <p class="svc-name">Smart Cards<br>&amp; Digital Menus</p>
-                        <div class="svc-pills">
-                            <span class="pill">Business Cards</span>
-                            <span class="pill">Restaurant Menus</span>
-                            <span class="pill">Wi-Fi Hubs</span>
-                        </div>
-                        <span class="svc-cta cta-steel">
-                            Find out more <i class="fa-solid fa-arrow-right"></i>
-                        </span>
-                    </div>
-                </a>
-
-                <a href="memorials.html" class="svc-card svc-gold enter d5">
-                    <div class="svc-img img-memorial"></div>
-                    <div class="svc-fade"></div>
-                    <div class="svc-body">
-                        <div class="svc-icon ic-gold">
-                            <i class="fa-solid fa-dove"></i>
-                        </div>
-                        <p class="svc-name">Memorial<br>Keepsakes</p>
-                        <div class="svc-pills">
-                            <span class="pill">Tribute Card</span>
-                            <span class="pill">Photo Gallery</span>
-                            <span class="pill">Full Obituary</span>
-                        </div>
-                        <span class="svc-cta cta-gold">
-                            Find out more <i class="fa-solid fa-arrow-right"></i>
-                        </span>
-                    </div>
-                </a>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ══ HOW IT WORKS ═══════════════════════════════════ -->
-    <section class="process">
-        <div class="outer">
-            <p class="sec-label enter d2" style="text-align:left;margin-bottom:20px;">
-                How it works
+        <div class="hero-inner">
+            <p class="hero-eyebrow enter d1">Linstead · St. Catherine · Jamaica</p>
+            
+            <p class="hero-brand-top enter d2">Laura Clarke · Docu<span>-</span>Hub</p>
+            <div class="hero-rule enter d2"></div>
+            
+            <h1 class="hero-offering enter d3">Bespoke Cards<br>& Keepsakes</h1>
+            
+            <p class="hero-tagline enter d4">
+                Crafted in Jamaica to carry what words alone cannot.
             </p>
-            <div class="proc-grid">
-                <div class="proc-step enter d3">
-                    <div class="proc-num">I</div>
-                    <p class="proc-label">Send me a WhatsApp</p>
-                </div>
-                <div class="proc-step enter d4">
-                    <div class="proc-num">II</div>
-                    <p class="proc-label">I handle everything</p>
-                </div>
-                <div class="proc-step enter d5">
-                    <div class="proc-num">III</div>
-                    <p class="proc-label">You receive your result</p>
-                </div>
+            
+            <div class="hero-ctas enter d4">
+                <a href="#milestone" class="btn-primary">Explore Collections</a>
             </div>
         </div>
     </section>
 
-    <!-- ══ CONTACT ════════════════════════════════════════ -->
-    <section class="contact">
-        <div class="outer">
-            <div class="contact-box enter d3">
-                <div class="contact-box-inner">
-                    <div>
-                        <p class="contact-title">Ready to get started?</p>
-                        <p class="contact-sub">
-                            Send me a message and I'll get back to you promptly.
-                            No forms, no waiting.
-                        </p>
-                    </div>
-                    <div class="contact-btns">
-                        <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-wa">
-                            <i class="fa-brands fa-whatsapp"></i>
-                            WhatsApp me now
-                        </a>
-                        <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" target="_blank" rel="noopener" class="btn-ghost">
-                            <i class="fa-regular fa-calendar-check"></i>
-                            Book a consultation
-                        </a>
-                    </div>
-                </div>
+    <div class="features-strip enter">
+        <div class="feature-item"><i class="fa-solid fa-layer-group"></i> Premium Materials</div>
+        <div class="feature-item"><i class="fa-solid fa-pen-nib"></i> Meticulous Design</div>
+        <div class="feature-item"><i class="fa-solid fa-qrcode"></i> Digital Integration</div>
+    </div>
+
+    <section class="collection bg-paper col-light" id="milestone">
+        <div class="col-img">
+            <div class="gallery-frame">
+                <i class="fa-solid fa-camera-retro gallery-icon"></i>
+                <span class="gallery-text">Insert Wedding / Milestone Photography</span>
+            </div>
+        </div>
+        <div class="col-text enter">
+            <p class="col-collection-label">Collection One</p>
+            <h2 class="col-title">The Milestone<br>Collection</h2>
+            <p class="col-subtitle">Weddings · Anniversaries · Showers</p>
+            <div class="col-rule"></div>
+            <p class="col-body">
+                Every milestone deserves a keepsake as meaningful as the moment itself. Our luxury stationery creates a tactile experience for your guests, from heavyweight wedding invites to elegant anniversary cards designed to be treasured.
+            </p>
+            <div class="col-formats">
+                <span class="format-pill"><i class="fa-solid fa-envelope-open-text"></i> Luxury Bifolds</span>
+                <span class="format-pill"><i class="fa-solid fa-star"></i> Gold Foil Accents</span>
+            </div>
+            <a href="https://wa.me/18765612614" class="col-cta cta-dark">Commission a Suite</a>
+        </div>
+    </section>
+
+    <section class="collection col-dark reverse" id="memoir">
+        <div class="col-img">
+            <div class="gallery-frame">
+                <i class="fa-solid fa-camera-retro gallery-icon"></i>
+                <span class="gallery-text">Insert Memoir / Patois Card Photography</span>
+            </div>
+        </div>
+        <div class="col-text enter">
+            <p class="col-collection-label">Collection Two</p>
+            <h2 class="col-title">The Memoir<br>Collection</h2>
+            <p class="col-subtitle">Authentic Patois · Island Soul</p>
+            <div class="col-rule"></div>
+            <p class="col-body">
+                Built around the beauty of Jamaican Patois, these premium greeting cards and textured prints carry the warmth, resilience, and unmistakable spirit of the island. Perfect for gifting or framing.
+            </p>
+            <div class="col-formats">
+                <span class="format-pill"><i class="fa-solid fa-language"></i> Patois Cards</span>
+                <span class="format-pill"><i class="fa-solid fa-seedling"></i> Textured Paper</span>
+            </div>
+            <a href="https://wa.me/18765612614" class="col-cta cta-gold">Shop Memoir</a>
+        </div>
+     </section>
+
+    <section class="collection bg-paper col-light" id="memorial">
+       <section class="collection bg-paper col-light" id="memorial">
+        <div class="col-img">
+            <div class="gallery-frame" style="padding: 0; border: none;">
+                <img src="memorial.png" alt="Premium Gold Foil Memorial Booklet on Dark Marble">
+            </div>
+        </div>
+
+
+        <div class="col-text enter">
+            <p class="col-collection-label">Collection Three</p>
+            <h2 class="col-title">Memorial<br>Keepsakes</h2>
+            <p class="col-subtitle">Tribute Booklets · Service Programmes</p>
+            <div class="col-rule"></div>
+            <p class="col-body">
+                A life well-lived deserves to be remembered with dignity. With years of experience managing sensitive logistics, we handle the design and printing of premium memorial booklets and tribute cards with the utmost discretion and care.
+            </p>
+            <div class="col-formats">
+                <span class="format-pill"><i class="fa-solid fa-book-open"></i> 12-Page Booklets</span>
+                <span class="format-pill"><i class="fa-solid fa-dove"></i> Tribute Cards</span>
+            </div>
+            <a href="https://wa.me/18765612614" class="col-cta cta-dark">Request Memorial Service</a>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="process-header enter">
+            <p class="process-label">How it Works</p>
+            <h2 class="process-title">The Commissioning Process</h2>
+        </div>
+        <div class="process-grid">
+            <div class="p-step enter d1">
+                <span class="p-numeral">I</span>
+                <h3 class="p-title">Consultation</h3>
+                <p class="p-desc">Reach out directly via WhatsApp to discuss your upcoming event or required stationery. We will review your vision, timeline, and the specific collection that best fits your needs.</p>
+            </div>
+            <div class="p-step enter d2">
+                <span class="p-numeral">II</span>
+                <h3 class="p-title">Design & Curation</h3>
+                <p class="p-desc">Once details are gathered, meticulous care is taken to draft your bespoke layouts. You will be provided with digital proofs to ensure every word and detail is perfectly placed before printing.</p>
+            </div>
+            <div class="p-step enter d3">
+                <span class="p-numeral">III</span>
+                <h3 class="p-title">Print & Delivery</h3>
+                <p class="p-desc">Approved designs are printed on premium cardstock with high-end finishes. Your physical keepsakes, alongside any requested digital portals, are securely prepared for your collection.</p>
             </div>
         </div>
     </section>
 
-    <!-- ══ FOOTER ═════════════════════════════════════════ -->
     <footer class="site-footer">
-        <div class="outer">
-            <div class="footer-grid">
-                <div>
-                    <p class="footer-brand">Docu<span>.</span>Hub</p>
-                    <p class="footer-tagline">
-                        Operations Services<br>
-                        Linstead, St. Catherine, Jamaica.<br>
-                        +1 (876) 561-2614
-                    </p>
-                </div>
-                <div class="footer-col">
-                    <p class="footer-col-label">Services</p>
-                    <a href="concierge.html">Government E-Services</a>
-                    <a href="hub.html">Smart Cards &amp; Menus</a>
-                    <a href="memorials.html">Memorial Keepsakes</a>
-                </div>
-                <div class="footer-col">
-                    <p class="footer-col-label">Company</p>
-                    <a href="about.html">About Us</a>
-                    <a href="contact.html">Contact</a>
-                    <a href="https://wa.me/18765612614" target="_blank" rel="noopener">WhatsApp</a>
-                </div>
-                <div class="footer-col">
-                    <p class="footer-col-label">Legal</p>
-                    <a href="privacy.html">Privacy Policy</a>
-                    <a href="disclosure.html">Disclosure</a>
-                    <a href="terms.html">Terms</a>
-                </div>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="f-logo">Laura Clarke · Docu<span>-</span>Hub</a>
+                <span class="f-tag">Keepsakes & Stationery</span>
+                <p class="f-desc">Crafting bespoke Jamaican stationery designed to carry what words alone cannot.</p>
             </div>
-            <div class="footer-bottom">
-                <p class="footer-copy">&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
-                <div class="footer-legal">
-                    <a href="privacy.html">Privacy</a>
-                    <a href="terms.html">Terms</a>
-                </div>
+            <div>
+                <h4 class="footer-col-title">Collections</h4>
+                <ul class="footer-links">
+                    <li><a href="#milestone">The Milestone</a></li>
+                    <li><a href="#memoir">The Memoir</a></li>
+                    <li><a href="#memorial">Memorial Keepsakes</a></li>
+                </ul>
             </div>
+            <div>
+                <h4 class="footer-col-title">Studio</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Laura</a></li>
+                    <li><a href="#">Print Materials</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4 class="footer-col-title">Direct Inquiries</h4>
+                <p><i class="fa-brands fa-whatsapp"></i> +1 (876) 561-2614</p>
+                <p><i class="fa-solid fa-location-dot"></i> Linstead, St. Catherine, Jamaica</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Laura Clarke · Docu-Hub Operations Services. All Rights Reserved.</p>
+            <p>Designed for Bespoke Print & Digital Experiences.</p>
         </div>
     </footer>
 
 </div>
 
 <script>
-(function () {
-    /* Entrance animations */
     const io = new IntersectionObserver(entries => {
         entries.forEach(e => {
             if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
         });
-    }, { threshold: 0.06 });
+    }, { threshold: 0.1 });
     document.querySelectorAll('.enter').forEach(el => io.observe(el));
-
-    /* Hero image slow zoom */
-    const bg = document.getElementById('heroBg');
-    if (bg) setTimeout(() => bg.classList.add('loaded'), 80);
-
-    /* Mobile nav */
-    const hbg    = document.getElementById('hbg');
-    const drawer = document.getElementById('drawer');
-    function openNav() {
-        drawer.classList.add('open'); hbg.classList.add('open');
-        hbg.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden';
-    }
-    window.closeNav = function () {
-        drawer.classList.remove('open'); hbg.classList.remove('open');
-        hbg.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-    };
-    hbg.addEventListener('click', () =>
-        drawer.classList.contains('open') ? closeNav() : openNav()
-    );
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
-
-    /* Nav border on scroll */
-    const nav = document.getElementById('sitenav');
-    window.addEventListener('scroll', () => {
-        nav.style.borderBottomColor = scrollY > 40
-            ? 'rgba(255,255,255,0.13)' : 'rgba(255,255,255,0.08)';
-    }, { passive: true });
-})();
 </script>
 </body>
 </html>
