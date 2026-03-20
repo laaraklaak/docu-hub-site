@@ -172,6 +172,28 @@
     .cta-gold { background: var(--gold-grad); color: var(--ink); }
     .cta-gold:hover { box-shadow: 0 10px 25px rgba(220,174,61,0.25); }
 
+        /* ═══════════════════════════════════════════
+       AUTO-FADING CAROUSEL
+    ═══════════════════════════════════════════ */
+    .carousel-container {
+        width: 100%;
+        height: 100%;
+        min-height: 350px;
+        position: relative;
+    }
+    .carousel-slide {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out;
+    }
+    .carousel-slide.active {
+        opacity: 1;
+        visibility: visible;
+        z-index: 2;
+    }
+
     /* ═══════════════════════════════════════════
        ORIGINAL PROCESS SECTION (REVERTED LAYOUT)
     ═══════════════════════════════════════════ */
@@ -313,33 +335,48 @@
         </div>
     </section>
 
-    <section class="collection col-dark reverse" id="memoir">
+ <section class="collection col-dark reverse" id="memoir">
         <div class="col-text-top enter">
             <p class="col-collection-label">Collection Two</p>
             <h2 class="col-title">The Memoir<br>Collection</h2>
-            <p class="col-subtitle">Authentic Patois · Island Soul</p>
+            <p class="col-subtitle">Photo Keepsakes · Authentic Patois</p>
         </div>
         
         <div class="col-img enter d1">
-          <div class="gallery-frame" style="padding: 0; border: none;">
-                <img src="assets/memoir-card.jpg" alt="Premium Gold Foil Memorial Booklet on Dark Marble">
+            <div class="carousel-container" id="memoir-carousel">
+                <div class="carousel-slide active">
+                    <div class="gallery-frame">
+                        <i class="fa-solid fa-image gallery-icon"></i>
+                        <span class="gallery-text">Insert Photo Memory Card Image Here</span>
+                        </div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="gallery-frame">
+                        <i class="fa-solid fa-qrcode gallery-icon"></i>
+                        <span class="gallery-text">Insert QR Scan Code Detail Here</span>
+                        </div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="gallery-frame">
+                        <i class="fa-solid fa-language gallery-icon"></i>
+                        <span class="gallery-text">Insert "Big Op Yuself" Patois Card</span>
+                        </div>
+                </div>
             </div>
-                
         </div>
         
         <div class="col-text-bottom enter d2">
             <div class="col-rule"></div>
             <p class="col-body">
-                Built around the beauty of Jamaican Patois, these premium greeting cards and textured prints carry the warmth, resilience, and unmistakable spirit of the island. Perfect for gifting or framing.
+                Turn your most cherished photographs and cultural expressions into lasting physical keepsakes. From our signature photo cards—each featuring a scan code that unlocks a private digital memory gallery—to our premium authentic Jamaican Patois line, these pieces carry the unmistakable spirit and warmth of the island.
             </p>
             <div class="col-formats">
-                <span class="format-pill"><i class="fa-solid fa-language"></i> Patois Cards</span>
-                <span class="format-pill"><i class="fa-solid fa-seedling"></i> Textured Paper</span>
+                <span class="format-pill"><i class="fa-solid fa-camera-retro"></i> Digital Portal Cards</span>
+                <span class="format-pill"><i class="fa-solid fa-language"></i> Authentic Patois</span>
             </div>
             <a href="https://wa.me/18765612614" class="col-cta cta-gold">Shop Memoir</a>
         </div>
     </section>
-
     <section class="collection bg-paper col-light" id="memorial">
         <div class="col-text-top enter">
             <p class="col-collection-label">Collection Three</p>
@@ -440,6 +477,17 @@
         });
     }, { threshold: 0.1 });
     document.querySelectorAll('.enter').forEach(el => io.observe(el));
+    /* Carousel Logic */
+    const slides = document.querySelectorAll('#memoir-carousel .carousel-slide');
+    let currentSlide = 0;
+
+    if (slides.length > 0) {
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 4000); // 4000ms = 4 seconds per image
+    }
 </script>
 </body>
 </html>
