@@ -3,1027 +3,1022 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bespoke Keepsakes & Concierge Services | Laura Clarke · Docu-Hub Jamaica</title>
-    <meta name="description" content="Premium Jamaican keepsake stationery, digital memory curation, and concierge logistics. Curation by Laura Clarke, Linstead, St. Catherine, Jamaica.">
-
+    <title>Laura Clarke · Docu-Hub Jamaica — Bespoke Keepsakes & Concierge</title>
+    <meta name="description" content="Premium Jamaican keepsake stationery, digital memory curation, and concierge logistics by Laura Clarke, Linstead, St. Catherine, Jamaica.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500&family=Italiana&family=Inter:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=Jost:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-    /* ═══════════════════════════════════════════
-       TOKENS
-    ═══════════════════════════════════════════ */
+    /* ═══════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════ */
     :root {
-        /* Backgrounds */
-        --navy:       #060A11;
-        --navy-deep:  #030508;
-        --navy-mid:   #0E1620;
+        --cream:      #FAF7F2;
+        --cream-deep: #EEE7D9;
+        --ivory:      #FFFDF9;
+        --sage:       #6D9067;
+        --sage-lt:    #B8CEB3;
+        --sage-deep:  #3A6235;   /* richer, deeper green */
+        --gold:       #B8880A;   /* stronger amber-gold */
+        --gold-lt:    #DFB040;
+        --gold-pale:  #F5EDCF;
+        --warm-dark:  #1C1208;   /* near-black warm ink */
+        --warm-mid:   #3D3122;   /* stronger body text */
+        --warm-soft:  #7A6A56;
+        --ink:        #100D06;   /* true rich ink */
 
-        /* Light surface */
-        --ivory:      #FDFAF5;
-        --ivory-warm: #F5F0E8;
+        --serif-display: 'DM Serif Display', Georgia, serif;
+        --serif-body:    'Cormorant Garamond', Georgia, serif;
+        --sans:          'Jost', system-ui, sans-serif;
 
-        /* Text on dark */
-        --text-1:     #FFFFFF;
-        --text-2:     #D4DCE8;   /* ↑ was E2E8F0 — now warmer, easier on eyes */
-        --text-3:     #8FA3BF;   /* ↑ was 94A3B8 — slightly warmer */
-
-        /* Text on light */
-        --ink:        #0D0A07;
-        --ink-2:      #2A241D;
-        --ink-3:      #6B5F52;   /* ↑ was 5C5146 — better contrast on ivory */
-
-        /* Gold */
-        --gold:       #DCAE3D;
-        --gold-hi:    #F5DFA0;   /* ↑ was FCEEB5 — slightly deeper, more contrast */
-        --gold-grad:  linear-gradient(135deg, #F0D878 0%, #DCAE3D 50%, #B58B22 100%);
-        --gold-lo:    rgba(220,174,61,0.13);
-        --gold-bdr:   rgba(220,174,61,0.45);
-
-        /* Borders */
-        --border-dk:  rgba(255,255,255,0.14);
-        --border-lt:  rgba(0,0,0,0.14);
-
-        /* Typography */
-        --serif:      'Lora', Georgia, serif;
-        --display:    'Playfair Display', serif;
-        --headline:   'Italiana', serif;
-        --sc:         'Cormorant SC', serif;
-        --sans:       'Inter', system-ui, sans-serif;
-
-        /* Layout */
-        --nav-h:      70px;
-        --max-w:      1200px;
-        --r:          6px;
+        --nav-h: 68px;
+        --max-w: 1180px;
+        --r: 4px;
     }
 
-    /* ═══════════════════════════════════════════
-       RESET
-    ═══════════════════════════════════════════ */
-    *, *::before, *::after {
-        box-sizing: border-box; margin: 0; padding: 0;
-        -webkit-tap-highlight-color: transparent;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+
     body {
         font-family: var(--sans);
-        background: var(--navy-deep);
-        color: var(--text-1);
+        background: var(--cream);
+        color: var(--ink);
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
     }
-    a { text-decoration: none; color: inherit; transition: color 0.2s, background 0.2s; }
+    a { text-decoration: none; color: inherit; transition: color 0.2s; }
     img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
-    /* Paper texture for light sections */
-    .bg-paper {
-        background-color: var(--ivory);
-        background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");
-    }
+    /* ═══════════════════════════
+       SCROLL ANIMATIONS
+    ═══════════════════════════ */
+    .enter { opacity: 0; transform: translateY(28px); transition: opacity 0.85s cubic-bezier(.22,1,.36,1), transform 0.85s cubic-bezier(.22,1,.36,1); }
+    .enter.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.10s; }
+    .d2 { transition-delay: 0.22s; }
+    .d3 { transition-delay: 0.34s; }
+    .d4 { transition-delay: 0.46s; }
 
-    /* Scroll-in animations */
-    .enter { opacity: 0; transform: translateY(22px); transition: opacity 0.75s ease-out, transform 0.75s ease-out; }
-    .enter.in { opacity: 1; transform: translateY(0); }
-    .d1 { transition-delay: 0.08s; }
-    .d2 { transition-delay: 0.18s; }
-    .d3 { transition-delay: 0.28s; }
-    .d4 { transition-delay: 0.38s; }
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 28px; }
 
-    .outer { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
-
-    /* ═══════════════════════════════════════════
-       NAVIGATION
-    ═══════════════════════════════════════════ */
+    /* ═══════════════════════════
+       NAV
+    ═══════════════════════════ */
     .site-nav {
-        position: fixed; top: 0; left: 0; right: 0;
-        z-index: 900; height: var(--nav-h);
-        background: rgba(3,5,8,0.94);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        border-bottom: 1px solid var(--border-dk);
+        position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+        height: var(--nav-h);
+        background: rgba(250,247,242,0.94);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(196,154,60,0.2);
+        transition: background 0.3s, box-shadow 0.3s;
+    }
+    .site-nav.scrolled {
+        box-shadow: 0 2px 24px rgba(44,36,22,0.08);
     }
     .nav-inner {
-        max-width: var(--max-w); margin: 0 auto; padding: 0 20px;
+        max-width: var(--max-w); margin: 0 auto; padding: 0 28px;
         height: 100%; display: flex; align-items: center; justify-content: space-between;
     }
-
-    /* Logo */
     .nav-logo { display: flex; flex-direction: column; gap: 2px; }
     .nav-logo-name {
-        font-family: var(--display);
-        font-size: 0.9rem; font-weight: 400;
-        letter-spacing: 0.14em; color: var(--text-1);
+        font-family: var(--serif-display);
+        font-size: 1rem; font-weight: 400;
+        color: var(--warm-dark); letter-spacing: 0.04em;
     }
-    .nav-logo-name span { color: var(--gold); }
-    .nav-logo-tag {
-        font-family: var(--sc);
+    .nav-logo-name em { color: var(--gold); font-style: normal; }
+    .nav-logo-sub {
+        font-family: var(--sans);
         font-size: 0.52rem; font-weight: 300;
-        letter-spacing: 0.22em; text-transform: uppercase;
-        color: var(--gold-hi);
+        letter-spacing: 0.28em; text-transform: uppercase;
+        color: var(--warm-soft);
     }
 
-    /* Desktop nav links */
-    .nav-links {
-        display: none; list-style: none;
-        align-items: center; gap: 4px;
-    }
+    .nav-links { display: none; list-style: none; align-items: center; gap: 2px; }
     .nav-links a {
-        font-family: var(--sc);
+        font-family: var(--sans);
         font-size: 0.72rem; font-weight: 400;
-        letter-spacing: 0.16em; text-transform: uppercase;
-        color: var(--text-2); padding: 8px 14px; border-radius: var(--r);
+        letter-spacing: 0.14em; text-transform: uppercase;
+        color: var(--warm-mid); padding: 8px 14px; border-radius: 30px;
+        transition: color 0.2s, background 0.2s;
     }
-    .nav-links a:hover { color: var(--text-1); background: var(--gold-lo); }
+    .nav-links a:hover { color: var(--warm-dark); background: var(--gold-pale); }
     .nav-wa {
-        background: var(--gold-grad) !important;
-        color: var(--ink) !important;
-        font-weight: 500 !important;
+        background: var(--sage-deep) !important;
+        color: #fff !important;
+        padding: 10px 22px !important;
         border-radius: 30px !important;
-        margin-left: 8px;
+        margin-left: 10px;
+        display: flex; align-items: center; gap: 7px;
     }
-    .nav-wa:hover { box-shadow: 0 4px 18px rgba(220,174,61,0.4) !important; }
+    .nav-wa:hover { background: var(--sage) !important; color: #fff !important; }
 
-    /* Hamburger */
     .hamburger {
         display: flex; flex-direction: column; justify-content: center;
-        gap: 5px; background: none; border: none;
-        cursor: pointer; padding: 6px; width: 38px; height: 38px;
+        gap: 5px; background: none; border: none; cursor: pointer;
+        padding: 6px; width: 40px; height: 40px;
     }
     .hamburger span {
         display: block; width: 22px; height: 1.5px;
-        background: var(--text-2); border-radius: 2px;
-        transition: transform 0.3s, opacity 0.3s, background 0.2s;
+        background: var(--warm-mid); border-radius: 2px;
+        transition: transform 0.3s, opacity 0.3s;
     }
-    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); background: var(--text-1); }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); background: var(--text-1); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-    /* Mobile drawer */
     .nav-drawer {
-        display: none;
-        position: fixed; top: var(--nav-h); left: 0; right: 0; bottom: 0;
-        background: rgba(3,5,8,0.97);
-        backdrop-filter: blur(20px);
-        z-index: 899;
-        flex-direction: column;
-        padding: 24px 20px 40px;
-        gap: 0;
-        border-top: 1px solid var(--border-dk);
+        display: none; position: fixed;
+        top: var(--nav-h); left: 0; right: 0; bottom: 0;
+        background: var(--ivory); z-index: 899;
+        flex-direction: column; padding: 28px 28px 48px;
+        border-top: 1px solid rgba(196,154,60,0.2);
         overflow-y: auto;
     }
     .nav-drawer.open { display: flex; }
     .nav-drawer a {
-        font-family: var(--sc);
-        font-size: 1.05rem; font-weight: 300;
-        letter-spacing: 0.12em; text-transform: uppercase;
-        color: var(--text-2);
-        padding: 18px 4px;
-        border-bottom: 1px solid var(--border-dk);
+        font-family: var(--sans);
+        font-size: 1rem; font-weight: 300;
+        letter-spacing: 0.1em; text-transform: uppercase;
+        color: var(--warm-mid);
+        padding: 20px 4px;
+        border-bottom: 1px solid var(--cream-deep);
         display: flex; align-items: center; gap: 14px;
-        transition: color 0.2s;
     }
-    .nav-drawer a:hover { color: var(--text-1); }
-    .nav-drawer a i { color: var(--gold); font-size: 0.85rem; width: 18px; }
+    .nav-drawer a i { color: var(--gold); width: 18px; }
     .drawer-wa {
         margin-top: 20px;
-        background: var(--gold-grad) !important;
-        color: var(--ink) !important;
-        border: none !important;
-        border-radius: 10px !important;
-        justify-content: center;
-        font-weight: 500 !important;
-        padding: 18px !important;
+        background: var(--sage-deep) !important;
+        color: #fff !important;
+        border: none !important; border-radius: 8px !important;
+        justify-content: center; padding: 18px !important;
     }
 
-    /* ═══════════════════════════════════════════
-       HERO
-    ═══════════════════════════════════════════ */
+    /* ═══════════════════════════
+       HERO — Full-bleed image
+    ═══════════════════════════ */
     .hero {
-        min-height: 100svh;
-        display: flex; flex-direction: column;
-        align-items: center; justify-content: center;
-        text-align: center;
-        padding: calc(var(--nav-h) + 48px) 24px 64px;
-        position: relative; overflow: hidden;
-        background: radial-gradient(ellipse 80% 70% at 50% 40%, var(--navy-mid) 0%, var(--navy-deep) 100%);
+        position: relative;
+        min-height: 92svh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        background: var(--cream-deep);
     }
-    .hero-inner {
+
+    /* Background image layer */
+    .hero-bg {
+        position: absolute; inset: 0; z-index: 0;
+        background:
+            linear-gradient(to right,
+                rgba(250,247,242,1) 0%,
+                rgba(250,247,242,0.96) 38%,
+                rgba(250,247,242,0.55) 58%,
+                rgba(250,247,242,0.0) 100%),
+            linear-gradient(145deg, var(--sage-lt) 0%, var(--gold-pale) 50%, var(--sage-deep) 100%);
+    }
+    /* When a real image exists it sits behind the gradient */
+    .hero-bg img {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%;
+        object-fit: cover; object-position: center right;
+        z-index: -1;
+    }
+
+    .hero-content {
         position: relative; z-index: 2;
-        max-width: 820px;
+        width: 100%;
+        padding: calc(var(--nav-h) + 64px) 7% 80px;
         display: flex; flex-direction: column;
-        align-items: center; gap: 0;
+        align-items: flex-start;
+        max-width: 520px;   /* constrains text width, not the block */
+        margin-left: 0;     /* pin to left edge */
     }
 
-    .hero-eyebrow {
-        font-family: var(--sc);
-        font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
-        color: var(--gold-hi); margin-bottom: 20px;
-    }
-
-    .hero-offering {
-        font-family: var(--headline);
-        font-size: clamp(2.6rem, 8vw, 5rem);
-        font-weight: 400; color: var(--text-1);
-        line-height: 1.1; letter-spacing: 0.02em;
-        margin-bottom: 20px;
-    }
-
-    .hero-rule {
-        width: 1px; height: 52px;
-        background: linear-gradient(to bottom, var(--gold), transparent);
-        opacity: 0.75; margin-bottom: 24px;
-    }
-
-    .hero-tagline {
-        font-family: var(--serif);
-        font-size: clamp(1.05rem, 3vw, 1.55rem);
-        font-weight: 400; font-style: italic;
-        line-height: 1.65; color: var(--text-2);
-        margin-bottom: 32px; max-width: 680px;
-    }
-
-    .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-
-    .btn-primary {
-        display: inline-flex; align-items: center; gap: 9px;
-        padding: 15px 32px;
-        background: var(--gold-grad);
-        border-radius: var(--r);
-        font-family: var(--sc);
-        font-size: 0.78rem; font-weight: 500;
-        letter-spacing: 0.18em; text-transform: uppercase;
-        color: var(--ink);
-        transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(220,174,61,0.35); }
-
-    /* ═══════════════════════════════════════════
-       FEATURES STRIP
-    ═══════════════════════════════════════════ */
-    .features-strip {
-        background: var(--navy);
-        border-top: 1px solid var(--border-dk);
-        border-bottom: 1px solid var(--border-dk);
-        padding: 22px 24px;
-        display: flex; justify-content: center;
-        gap: 20px; flex-wrap: wrap;
-    }
-    .feature-item {
-        display: flex; align-items: center; gap: 9px;
-        font-family: var(--sc);
-        font-size: 0.72rem; font-weight: 400;
-        letter-spacing: 0.18em; text-transform: uppercase;
-        color: var(--gold-hi);
-        padding: 6px 0;
-    }
-    .feature-item i { font-size: 0.78rem; }
-
-    /* ═══════════════════════════════════════════
-       COLLECTION SECTIONS — MOBILE FIRST
-    ═══════════════════════════════════════════ */
-    .col-dark  { background: var(--navy); }
-    .col-light { background: var(--ivory); }
-
-    .col-dark  .col-body  { color: var(--text-2); }
-    .col-light .col-body  { color: var(--ink-2); }
-
-    .col-dark  .col-collection-label { color: var(--gold); }
-    .col-light .col-collection-label { color: var(--navy-mid); }
-
-    .col-dark  .col-subtitle { color: var(--text-3); }
-    .col-light .col-subtitle { color: var(--ink-3); }
-
-    .col-dark  .col-rule { background: var(--gold-grad); }
-    .col-light .col-rule { background: linear-gradient(135deg, var(--navy-mid), var(--navy)); }
-
-    /* Mobile: stacked vertically */
-    .collection { display: flex; flex-direction: column; }
-
-    .col-text-top {
-        padding: 56px 24px 20px;
-        display: flex; flex-direction: column; gap: 6px;
-    }
-    .col-img {
-        width: 100%; min-height: 72vw; max-height: 480px;
-        position: relative; overflow: hidden;
-        background: var(--navy-mid);
-    }
-    .col-text-bottom {
-        padding: 24px 24px 56px;
-        display: flex; flex-direction: column; gap: 20px;
-    }
-
-    .col-collection-label {
-        font-family: var(--sc);
-        font-size: 0.68rem; font-weight: 400;
-        letter-spacing: 0.36em; text-transform: uppercase;
-    }
-    .col-title {
-        font-family: var(--headline);
-        font-size: clamp(2.4rem, 6vw, 3.6rem);
-        font-weight: 400; line-height: 1.1;
-    }
-    .col-subtitle {
-        font-family: var(--display);
-        font-size: clamp(0.72rem, 1.4vw, 0.86rem);
-        font-weight: 400; letter-spacing: 0.26em;
-        text-transform: uppercase; margin-top: -4px;
-    }
-    .col-rule { width: 52px; height: 2px; border-radius: 1px; }
-    .col-body {
-        font-family: var(--serif);
-        font-size: clamp(1rem, 1.6vw, 1.1rem);
-        font-weight: 400; line-height: 1.9;
-        letter-spacing: 0.01em;
-    }
-
-    /* Format pills */
-    .col-formats { display: flex; flex-wrap: wrap; gap: 10px; }
-    .format-pill {
+    .hero-location {
         font-family: var(--sans);
-        font-size: 0.68rem; font-weight: 400;
-        letter-spacing: 0.12em; text-transform: uppercase;
-        padding: 9px 16px; border-radius: 24px;
-        display: flex; align-items: center; gap: 7px;
+        font-size: 0.62rem; font-weight: 400;
+        letter-spacing: 0.32em; text-transform: uppercase;
+        color: var(--sage-deep);
+        display: flex; align-items: center; gap: 10px;
+        margin-bottom: 24px;
     }
-    .col-light .format-pill {
-        border: 1px solid var(--border-lt);
-        color: var(--ink-2); background: rgba(255,255,255,0.7);
+    .hero-location::after {
+        content: '';
+        display: block; width: 32px; height: 1px;
+        background: var(--sage);
     }
-    .col-dark .format-pill {
-        border: 1px solid var(--border-dk);
-        color: var(--text-2); background: rgba(255,255,255,0.05);
-    }
-    .col-light .format-pill i { color: var(--navy-mid); }
-    .col-dark  .format-pill i { color: var(--gold); }
 
-    /* CTAs */
-    .col-cta {
+    .hero-headline {
+        font-family: var(--serif-display);
+        font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+        font-weight: 400; line-height: 1.04;
+        color: var(--ink);
+        letter-spacing: -0.02em;
+        margin-bottom: 22px;
+    }
+    .hero-headline em { font-style: italic; color: var(--sage-deep); }
+
+    .hero-sub {
+        font-family: var(--serif-body);
+        font-size: clamp(1.05rem, 2vw, 1.25rem);
+        font-weight: 500; font-style: italic;
+        color: var(--warm-mid);
+        line-height: 1.75;
+        margin-bottom: 38px;
+        max-width: 400px;
+    }
+
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .btn-sage {
+        display: inline-flex; align-items: center; gap: 9px;
+        padding: 14px 30px;
+        background: var(--sage-deep); color: #fff;
+        border-radius: 30px;
+        font-family: var(--sans);
+        font-size: 0.7rem; font-weight: 400;
+        letter-spacing: 0.16em; text-transform: uppercase;
+        transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-sage:hover { background: var(--sage); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(92,122,87,0.3); }
+
+    .btn-outline {
+        display: inline-flex; align-items: center; gap: 9px;
+        padding: 13px 28px;
+        background: transparent; color: var(--warm-dark);
+        border: 1.5px solid rgba(44,36,22,0.28);
+        border-radius: 30px;
+        font-family: var(--sans);
+        font-size: 0.7rem; font-weight: 400;
+        letter-spacing: 0.16em; text-transform: uppercase;
+        transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--gold); background: var(--gold-pale); transform: translateY(-2px); }
+
+    /* ═══════════════════════════
+       MARQUEE / STRIP
+    ═══════════════════════════ */
+    .strip {
+        background: var(--warm-dark);
+        padding: 18px 0;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .strip-inner {
+        display: inline-flex; gap: 0;
+        animation: marquee 24s linear infinite;
+    }
+    .strip-item {
         display: inline-flex; align-items: center; gap: 10px;
-        font-family: var(--sc);
-        font-size: 0.75rem; font-weight: 400;
-        letter-spacing: 0.18em; text-transform: uppercase;
-        padding: 14px 28px; border-radius: var(--r);
-        align-self: flex-start;
-        transition: transform 0.2s, box-shadow 0.2s;
+        font-family: var(--sans);
+        font-size: 0.7rem; font-weight: 300;
+        letter-spacing: 0.22em; text-transform: uppercase;
+        color: #ffffff;
+        padding: 0 36px;
     }
-    .col-cta:hover { transform: translateY(-2px); }
-    .cta-dark {
-        background: var(--navy-deep); color: var(--text-1);
-        border: 1px solid rgba(255,255,255,0.18);
+    .strip-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+    @keyframes marquee {
+        from { transform: translateX(0); }
+        to   { transform: translateX(-50%); }
     }
-    .cta-dark:hover { box-shadow: 0 8px 22px rgba(0,0,0,0.35); }
-    .cta-gold {
-        background: var(--gold-grad); color: var(--ink);
-    }
-    .cta-gold:hover { box-shadow: 0 8px 22px rgba(220,174,61,0.3); }
 
-    /* Gallery frame — image container inside col-img */
-    .gallery-frame {
+    /* ═══════════════════════════
+       SECTION HEADER
+    ═══════════════════════════ */
+    .section-eyebrow {
+        font-family: var(--sans);
+        font-size: 0.62rem; font-weight: 400;
+        letter-spacing: 0.32em; text-transform: uppercase;
+        color: var(--sage-deep);
+        display: flex; align-items: center; gap: 12px;
+        margin-bottom: 14px;
+    }
+    .section-eyebrow::after {
+        content: '';
+        display: block; flex: 1; max-width: 48px; height: 1px;
+        background: var(--sage);
+    }
+    .section-title {
+        font-family: var(--serif-display);
+        font-size: clamp(2rem, 5vw, 3.4rem);
+        font-weight: 400; line-height: 1.1;
+        color: var(--ink);
+    }
+    .section-title em { font-style: italic; color: var(--sage-deep); }
+    .section-body {
+        font-family: var(--serif-body);
+        font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+        font-weight: 500; line-height: 1.85;
+        color: var(--warm-mid);
+    }
+
+    /* ═══════════════════════════
+       SERVICES — ALTERNATING
+    ═══════════════════════════ */
+    .services { background: var(--cream); }
+
+    .service-block {
+        display: flex; flex-direction: column;
+        padding: 72px 0;
+        border-bottom: 1px solid rgba(196,154,60,0.18);
+        gap: 40px;
+    }
+    .service-block:last-child { border-bottom: none; }
+
+    .service-text { padding: 0 28px; }
+    .service-num {
+        font-family: var(--serif-body);
+        font-size: 4rem; font-weight: 300; font-style: italic;
+        color: rgba(196,154,60,0.18);
+        line-height: 1;
+        margin-bottom: -16px;
+    }
+
+    .service-img-wrap {
+        margin: 0 28px;
+        border-radius: 12px; overflow: hidden;
+        aspect-ratio: 5/3;
+        position: relative;
+        box-shadow: 0 10px 36px rgba(44,36,22,0.11);
+        max-height: 320px;
+    }
+    .service-img-wrap img {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%; object-fit: cover;
+        transition: transform 0.6s cubic-bezier(.22,1,.36,1);
+    }
+    .service-img-wrap:hover img { transform: scale(1.04); }
+
+    .service-placeholder {
         position: absolute; inset: 0;
         display: flex; flex-direction: column;
-        align-items: center; justify-content: center;
-        padding: 24px;
+        align-items: center; justify-content: center; gap: 12px;
     }
-    .gallery-frame img {
-        position: absolute; inset: 0;
-        width: 100%; height: 100%;
-        object-fit: cover; object-position: center;
-        z-index: 2;
-    }
-    /* Placeholder icon (shown when image missing) */
-    .gallery-icon {
-        font-size: 2rem; z-index: 1;
-        margin-bottom: 10px;
-    }
-    .col-dark .gallery-icon { color: var(--gold); opacity: 0.5; }
-    .col-light .gallery-icon { color: var(--navy-mid); opacity: 0.35; }
-    .gallery-hint {
-        font-family: var(--sc);
-        font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase;
-        opacity: 0.5; z-index: 1; text-align: center;
-    }
-    .col-dark .gallery-hint { color: var(--text-2); }
-    .col-light .gallery-hint { color: var(--ink-3); }
-
-    /* Carousel */
-    .carousel-wrap { position: absolute; inset: 0; }
-    .carousel-slide {
-        position: absolute; inset: 0;
-        opacity: 0; visibility: hidden;
-        transition: opacity 1.4s ease-in-out, visibility 1.4s ease-in-out;
-    }
-    .carousel-slide.active { opacity: 1; visibility: visible; z-index: 3; }
-    .carousel-slide img {
-        position: absolute; inset: 0;
-        width: 100%; height: 100%;
-        object-fit: cover; object-position: center;
+    .sp-1 { background: linear-gradient(145deg, var(--sage-lt) 0%, var(--sage-deep) 100%); }
+    .sp-2 { background: linear-gradient(145deg, var(--cream-deep) 0%, var(--warm-soft) 100%); }
+    .sp-3 { background: linear-gradient(145deg, var(--gold-pale) 0%, var(--gold) 100%); }
+    .service-placeholder i { font-size: 2.5rem; color: rgba(255,255,255,0.6); }
+    .service-placeholder span {
+        font-family: var(--sans);
+        font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+        color: rgba(255,255,255,0.7);
     }
 
-    /* ═══════════════════════════════════════════
-       PROCESS SECTION
-    ═══════════════════════════════════════════ */
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; margin-bottom: 24px; }
+    .pill {
+        display: inline-flex; align-items: center; gap: 7px;
+        font-family: var(--sans);
+        font-size: 0.65rem; font-weight: 400;
+        letter-spacing: 0.12em; text-transform: uppercase;
+        color: var(--warm-mid);
+        padding: 8px 16px; border-radius: 24px;
+        border: 1px solid rgba(92,122,87,0.3);
+        background: rgba(197,212,192,0.15);
+    }
+    .pill i { color: var(--sage-deep); font-size: 0.7rem; }
+
+    .link-arrow {
+        display: inline-flex; align-items: center; gap: 10px;
+        font-family: var(--sans);
+        font-size: 0.7rem; font-weight: 400;
+        letter-spacing: 0.18em; text-transform: uppercase;
+        color: var(--sage-deep);
+        transition: gap 0.2s;
+    }
+    .link-arrow i { font-size: 0.65rem; transition: transform 0.2s; }
+    .link-arrow:hover { gap: 14px; color: var(--sage-deep); }
+    .link-arrow:hover i { transform: translateX(3px); }
+
+    .btn-service {
+        display: inline-flex; align-items: center; gap: 9px;
+        padding: 13px 28px;
+        border-radius: 4px;
+        font-family: var(--sans);
+        font-size: 0.7rem; font-weight: 400;
+        letter-spacing: 0.14em; text-transform: uppercase;
+        transition: transform 0.2s, box-shadow 0.2s;
+        margin-top: 8px;
+    }
+    .btn-service:hover { transform: translateY(-2px); }
+    .btn-sage-solid {
+        background: var(--sage-deep); color: #fff;
+    }
+    .btn-sage-solid:hover { box-shadow: 0 8px 24px rgba(92,122,87,0.35); }
+    .btn-gold-solid {
+        background: var(--gold); color: #fff;
+    }
+    .btn-gold-solid:hover { box-shadow: 0 8px 24px rgba(196,154,60,0.35); }
+    .btn-warm-solid {
+        background: var(--warm-dark); color: #fff;
+    }
+    .btn-warm-solid:hover { box-shadow: 0 8px 24px rgba(44,36,22,0.35); }
+
+    /* ═══════════════════════════
+       PROCESS — White bg, dark cards
+    ═══════════════════════════ */
     .process {
-        background: var(--navy-deep);
-        padding: 72px 0;
-        border-top: 1px solid var(--border-dk);
+        background: #ffffff;
+        padding: 96px 0;
+        position: relative;
     }
-    .process-label {
-        font-family: var(--sc);
-        font-size: 0.68rem; font-weight: 400;
-        letter-spacing: 0.36em; text-transform: uppercase;
-        color: var(--gold-hi); text-align: center; margin-bottom: 10px;
+    .process-header { text-align: center; margin-bottom: 64px; }
+    .process-eyebrow {
+        font-family: var(--sans);
+        font-size: 0.62rem; font-weight: 400;
+        letter-spacing: 0.34em; text-transform: uppercase;
+        color: var(--sage-deep);
+        display: inline-flex; align-items: center; gap: 12px;
+        margin-bottom: 16px;
+    }
+    .process-eyebrow::before,
+    .process-eyebrow::after {
+        content: '';
+        display: block; width: 32px; height: 1px;
+        background: var(--sage);
+        opacity: 0.6;
     }
     .process-title {
-        font-family: var(--headline);
-        font-size: clamp(2.2rem, 5vw, 3.2rem);
-        color: var(--text-1); font-weight: 400;
-        line-height: 1.1; text-align: center;
-        margin-bottom: 44px;
+        font-family: var(--serif-display);
+        font-size: clamp(2.2rem, 5vw, 3.4rem);
+        font-weight: 400; line-height: 1.08;
+        color: var(--ink);
     }
-    .process-steps { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    .process-title em { font-style: italic; color: var(--sage-deep); }
+
+    .process-steps {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        max-width: var(--max-w); margin: 0 auto; padding: 0 28px;
+    }
+
     .p-step {
-        background: var(--navy-mid);
-        border: 1px solid var(--border-dk);
-        border-radius: 12px; padding: 22px 20px;
-        display: flex; gap: 18px; align-items: flex-start;
-        transition: border-color 0.2s;
+        display: flex; flex-direction: column;
+        padding: 40px 36px 44px;
+        background: var(--warm-dark);
+        border-radius: 6px;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s;
     }
-    .p-step:hover { border-color: var(--gold-bdr); }
+    .p-step:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 48px rgba(28,18,8,0.22);
+    }
+    /* Decorative ghost numeral */
+    .p-step::after {
+        content: attr(data-step);
+        position: absolute;
+        bottom: -24px; right: 16px;
+        font-family: var(--serif-display);
+        font-size: 9rem; font-style: italic;
+        color: rgba(255,255,255,0.04);
+        line-height: 1;
+        pointer-events: none; user-select: none;
+    }
+
     .p-num {
-        width: 38px; height: 38px; flex-shrink: 0;
-        border-radius: 50%;
-        background: var(--gold-lo); border: 1px solid var(--gold-bdr);
-        display: flex; align-items: center; justify-content: center;
-        font-family: var(--display);
-        font-size: 0.9rem; font-weight: 400;
-        color: var(--gold-hi);
+        font-family: var(--sans);
+        font-size: 0.62rem; font-weight: 400;
+        letter-spacing: 0.28em; text-transform: uppercase;
+        color: var(--gold-lt);
+        margin-bottom: 22px;
+        display: flex; align-items: center; gap: 12px;
+    }
+    .p-num::after {
+        content: '';
+        display: block; flex: 1; height: 1px;
+        background: rgba(220,176,64,0.3);
+        max-width: 40px;
     }
     .p-label {
-        font-family: var(--display);
-        font-size: 1rem; font-weight: 400;
-        color: var(--text-1); margin-bottom: 6px;
-        letter-spacing: 0.08em;
+        font-family: var(--serif-display);
+        font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+        color: #ffffff;
+        font-weight: 400; margin-bottom: 16px;
+        line-height: 1.15;
     }
     .p-desc {
-        font-family: var(--serif);
-        font-size: 0.92rem; font-weight: 400;
-        color: var(--text-2); line-height: 1.7;
+        font-family: var(--serif-body);
+        font-size: 1.1rem; font-weight: 400;
+        color: rgba(255,255,255,0.72);
+        line-height: 1.8;
     }
 
-        /* ============================================================
-   CONCIERGE IMAGE FRAME AESTHETIC
-   ============================================================ */
+    /* ═══════════════════════════
+       ABOUT STRIP
+    ═══════════════════════════ */
+    .about-strip {
+        background: var(--ivory);
+        padding: 80px 0;
+        border-top: 1px solid rgba(196,154,60,0.18);
+        border-bottom: 1px solid rgba(196,154,60,0.18);
+    }
+    .about-inner {
+        display: flex; flex-direction: column; gap: 48px;
+        max-width: var(--max-w); margin: 0 auto; padding: 0 28px;
+    }
+    .about-text { max-width: 620px; }
+    .about-quote {
+        font-family: var(--serif-body);
+        font-size: clamp(1.3rem, 3vw, 1.9rem);
+        font-style: italic; font-weight: 300;
+        line-height: 1.6; color: var(--warm-dark);
+        border-left: 3px solid var(--gold);
+        padding-left: 28px;
+        margin: 24px 0;
+    }
+    .about-sig {
+        font-family: var(--serif-display);
+        font-size: 1.4rem; color: var(--sage-deep);
+        margin-top: 20px;
+    }
+    .about-sig span {
+        display: block;
+        font-family: var(--sans);
+        font-size: 0.62rem; font-weight: 300;
+        letter-spacing: 0.22em; text-transform: uppercase;
+        color: var(--warm-soft); margin-top: 4px;
+    }
 
-/* 1. Main Container: Establishes the aspect ratio and sophisticated framing */
-.concierge-image-frame {
-    position: relative;
-    width: 100%;
-    /* Set a unified aspect ratio for all keepsakes photography (e.g., 4:3) */
-    padding-top: 75%; 
-    background-color: var(--navy-mid); /* Loading background color */
-    border-radius: 12px;
-    overflow: hidden;
-    /* The "Cryptographic Glow": Executive Gold, subtle and deep */
-    box-shadow: 
-        0 20px 40px rgba(0,0,0,0.6), 
-        0 0 25px rgba(212, 175, 55, 0.1); 
-    border: 1px solid rgba(255,255,255,0.08);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
+    .about-stats {
+        display: grid; grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        align-self: flex-start;
+    }
+    .stat {
+        padding: 24px;
+        background: var(--cream);
+        border-radius: 12px;
+        border: 1px solid rgba(196,154,60,0.18);
+    }
+    .stat-num {
+        font-family: var(--serif-display);
+        font-size: 2.2rem; color: var(--gold);
+        line-height: 1;
+    }
+    .stat-label {
+        font-family: var(--sans);
+        font-size: 0.65rem; font-weight: 300;
+        letter-spacing: 0.18em; text-transform: uppercase;
+        color: var(--warm-soft); margin-top: 6px;
+    }
 
-/* Micro-interaction on hover */
-.concierge-image-frame:hover {
-    transform: translateY(-5px) scale(1.01);
-    box-shadow: 
-        0 25px 50px rgba(0,0,0,0.7), 
-        0 0 35px rgba(212, 175, 55, 0.2);
-}
+    /* ═══════════════════════════
+       CTA BAND
+    ═══════════════════════════ */
+    .cta-band {
+        background: var(--sage-deep);
+        padding: 72px 28px;
+        text-align: center;
+        position: relative; overflow: hidden;
+    }
+    .cta-band::before {
+        content: '';
+        position: absolute; inset: 0;
+        background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(255,255,255,0.06) 0%, transparent 70%);
+        pointer-events: none;
+    }
+    .cta-band-eyebrow {
+        font-family: var(--sans);
+        font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+        color: #ffffff; opacity: 0.75; margin-bottom: 18px;
+    }
+    .cta-band-title {
+        font-family: var(--serif-display);
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        color: #ffffff; font-weight: 400;
+        line-height: 1.1; margin-bottom: 14px;
+    }
+    .cta-band-title em { font-style: italic; color: var(--gold-lt); }
+    .cta-band-body {
+        font-family: var(--serif-body);
+        font-size: 1.1rem; color: rgba(255,255,255,0.82);
+        font-style: italic; max-width: 480px;
+        margin: 0 auto 36px;
+    }
+    .btn-white {
+        display: inline-flex; align-items: center; gap: 9px;
+        padding: 14px 32px; border-radius: 30px;
+        background: #fff; color: var(--sage-deep);
+        font-family: var(--sans);
+        font-size: 0.72rem; font-weight: 500;
+        letter-spacing: 0.14em; text-transform: uppercase;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
 
-/* 2. Carousel Wrapper: Absolute positioning within the padding-top frame */
-.carousel-wrap {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-}
-
-/* 3. Image Styling: Ensures focus and correct scaling */
-.carousel-slide img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center;
-    z-index: 2; /* This forces the image to sit ON TOP of the fallback */
-}
-
-/* 4. Optimized Fallback/Loading State */
-.image-fallback {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--navy-mid);
-    color: var(--mem-accent); /* Executive Gold */
-    z-index: 1; /* Sits *behind* the image */
-    text-align: center;
-    padding: 20px;
-}
-
-/* If the image loads successfully, the JS should handle hiding this z-index 1 layer, 
-   or CSS can hide it if the image is confirmed present. A simple JS 'load' event 
-   listener is best for true fallback logic. */
-
-.gallery-icon {
-    font-size: 3rem;
-    margin-bottom: 15px;
-    opacity: 0.5;
-}
-
-.gallery-hint {
-    font-family: var(--sc);
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    opacity: 0.6;
-}
-
-/* 5. Decorative Border Overlay (Adds the final premium touch) */
-.concierge-border-overlay {
-    position: absolute;
-    inset: 0;
-    border-radius: 12px;
-    /* Use a gradient border that implies secure encryption/vaulting */
-    border: 2px solid transparent;
-    background: linear-gradient(135deg, rgba(212,175,55,0.3) 0%, rgba(212,175,55,0) 40%, rgba(212,175,55,0) 60%, rgba(212,175,55,0.3) 100%) border-box;
-    -webkit-mask: /* Scopes the gradient to the border only */
-       linear-gradient(#fff 0 0) padding-box, 
-       linear-gradient(#fff 0 0);
-    -webkit-mask-composite: destination-out; 
-            mask-composite: exclude;
-    z-index: 3; /* Sits on top of the image */
-    pointer-events: none; /* Allows clicks to pass through to the image */
-}
-
-    /* ═══════════════════════════════════════════
+    /* ═══════════════════════════
        FOOTER
-    ═══════════════════════════════════════════ */
+    ═══════════════════════════ */
     .site-footer {
-        background: var(--navy-deep);
-        border-top: 1px solid var(--border-dk);
-        padding: 64px 24px 36px;
+        background: var(--warm-dark);
+        padding: 64px 28px 36px;
+        color: rgba(250,247,242,0.6);
     }
     .footer-grid {
-        display: grid; grid-template-columns: 1fr;
-        gap: 40px;
         max-width: var(--max-w); margin: 0 auto;
-        border-bottom: 1px solid var(--border-dk);
+        display: grid; grid-template-columns: 1fr; gap: 40px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
         padding-bottom: 48px; margin-bottom: 32px;
     }
-    .footer-brand .f-logo {
-        font-family: var(--display);
-        font-size: 1.1rem; color: var(--text-1);
-        letter-spacing: 0.14em; margin-bottom: 6px;
-        display: block;
+    .f-logo {
+        font-family: var(--serif-display);
+        font-size: 1.1rem; color: #ffffff;
+        letter-spacing: 0.04em; display: block;
+        margin-bottom: 4px;
     }
-    .footer-brand .f-logo span { color: var(--gold); }
-    .footer-brand .f-tag {
-        font-family: var(--sc);
-        font-size: 0.58rem; color: var(--gold-hi);
-        letter-spacing: 0.22em; text-transform: uppercase;
-        margin-bottom: 20px; display: block;
+    .f-logo em { font-style: normal; color: var(--gold-lt); }
+    .f-tag {
+        font-family: var(--sans);
+        font-size: 0.55rem; letter-spacing: 0.26em; text-transform: uppercase;
+        color: var(--gold-lt); display: block; margin-bottom: 18px;
     }
-    .footer-brand .f-desc {
-        font-family: var(--serif);
-        font-size: 0.9rem; color: var(--text-3);
-        line-height: 1.8; max-width: 300px;
-        font-style: italic;
+    .f-desc {
+        font-family: var(--serif-body);
+        font-size: 0.9rem; font-style: italic;
+        line-height: 1.7; max-width: 280px;
+        color: rgba(255,255,255,0.62);
     }
     .footer-col-title {
-        font-family: var(--sc);
-        font-size: 0.68rem; font-weight: 400;
-        color: var(--text-1);
-        letter-spacing: 0.2em; text-transform: uppercase;
-        margin-bottom: 18px;
+        font-family: var(--sans);
+        font-size: 0.62rem; font-weight: 400;
+        letter-spacing: 0.22em; text-transform: uppercase;
+        color: rgba(255,255,255,0.5); margin-bottom: 16px;
     }
-    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .footer-links a {
         font-family: var(--sans);
-        font-size: 0.82rem; color: var(--text-3);
+        font-size: 0.82rem; font-weight: 300;
+        color: rgba(255,255,255,0.78);
         transition: color 0.2s;
     }
-    .footer-links a:hover { color: var(--gold-hi); }
+    .footer-links a:hover { color: var(--gold-lt); }
     .footer-contact p {
-        font-family: var(--sans);
-        font-size: 0.82rem; color: var(--text-3);
-        margin-bottom: 12px;
         display: flex; align-items: center; gap: 10px;
+        font-family: var(--sans); font-size: 0.82rem; font-weight: 300;
+        color: rgba(255,255,255,0.78);
+        margin-bottom: 12px;
     }
-    .footer-contact i { color: var(--gold); font-size: 0.95rem; width: 18px; }
+    .footer-contact i { color: var(--gold-lt); width: 16px; font-size: 0.85rem; }
     .footer-bottom {
         max-width: var(--max-w); margin: 0 auto;
         display: flex; flex-direction: column;
-        align-items: center; text-align: center; gap: 8px;
+        align-items: center; text-align: center; gap: 6px;
     }
     .footer-bottom p {
         font-family: var(--sans);
-        font-size: 0.72rem; color: var(--text-3);
+        font-size: 0.7rem; font-weight: 300;
+        color: rgba(255,255,255,0.42);
     }
 
-    /* ═══════════════════════════════════════════
-       RESPONSIVE — TABLET 640px+
-    ═══════════════════════════════════════════ */
+    /* ═══════════════════════════
+       RESPONSIVE
+    ═══════════════════════════ */
     @media (min-width: 640px) {
-        .outer { padding: 0 32px; }
-        .process-steps { grid-template-columns: 1fr 1fr; gap: 14px; }
-        .features-strip { gap: 32px; }
+        .process-steps { grid-template-columns: 1fr; }
+        .about-stats { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* ═══════════════════════════════════════════
-       RESPONSIVE — DESKTOP 1024px+
-    ═══════════════════════════════════════════ */
-    @media (min-width: 1024px) {
+    @media (min-width: 900px) {
         .hamburger { display: none; }
         .nav-links { display: flex; }
-        .nav-inner { padding: 0 32px; }
 
-        /* Two-column collection layout */
-        .collection {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto 1fr;
-            grid-template-areas:
-                "img  text-top"
-                "img  text-bottom";
-            min-height: 560px;
-        }
-        .collection.reverse {
-            grid-template-areas:
-                "text-top   img"
-                "text-bottom img";
+        .hero-content {
+            padding: calc(var(--nav-h) + 80px) 0 100px max(7%, calc((100vw - var(--max-w))/2 + 28px));
+            max-width: 580px;
         }
 
-        .col-img {
-            grid-area: img;
-            min-height: 500px;
-            max-height: 680px;
-            height: 100%;
-        }
-        .col-text-top {
-            grid-area: text-top;
-            align-self: end;
-            padding: 64px 7% 16px;
-        }
-        .col-text-bottom {
-            grid-area: text-bottom;
-            align-self: start;
-            padding: 20px 7% 64px;
-        }
-
-        .process-steps { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .process { padding: 100px 0; }
-
-        .footer-grid {
-            grid-template-columns: 2fr 1fr 1fr 1.6fr;
-            gap: 48px;
-        }
-        .footer-bottom {
+        .service-block {
             flex-direction: row;
-            justify-content: space-between;
-            text-align: left;
+            align-items: center;
+            gap: 80px;
+            padding: 80px 0;
         }
-    }
+        .service-block.reverse { flex-direction: row-reverse; }
+        .service-text { flex: 1; padding: 0 0 0 7%; }
+        .service-block.reverse .service-text { padding: 0 7% 0 0; }
+        .service-img-wrap { flex: 1; margin: 0 7% 0 0; max-height: 280px; }
+        .service-block.reverse .service-img-wrap { margin: 0 0 0 7%; }
 
-    @media (min-width: 1280px) {
-        .col-text-top  { padding: 72px 8% 20px; }
-        .col-text-bottom { padding: 24px 8% 72px; }
+        .process-steps { grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 0 28px; }
+
+        .about-inner { flex-direction: row; align-items: flex-start; justify-content: space-between; }
+        .about-stats { grid-template-columns: repeat(2, 1fr); align-self: flex-start; min-width: 280px; }
+
+        .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; }
+        .footer-bottom { flex-direction: row; justify-content: space-between; text-align: left; }
     }
     </style>
 </head>
 <body>
 
-<!-- ══ NAVIGATION ══════════════════════════════════════ -->
+<!-- NAV -->
 <nav class="site-nav" id="sitenav">
     <div class="nav-inner">
-        <a href="index.html" class="nav-logo">
-            <span class="nav-logo-name">Laura Clarke · Docu<span>-</span>Hub</span>
-            <span class="nav-logo-tag">Keepsakes · Curation · Concierge</span>
+        <a href="#" class="nav-logo">
+            <span class="nav-logo-name">Laura Clarke · Docu<em>-</em>Hub</span>
+            <span class="nav-logo-sub">Keepsakes · Curation · Concierge</span>
         </a>
         <ul class="nav-links">
             <li><a href="#keepsakes">Keepsakes</a></li>
             <li><a href="#memorial">Memorial</a></li>
             <li><a href="#concierge">Concierge</a></li>
-            <li><a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="nav-wa">
-                <i class="fa-brands fa-whatsapp" style="margin-right:5px;"></i>WhatsApp Laura
-            </a></li>
+            <li>
+                <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="nav-wa">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp Laura
+                </a>
+            </li>
         </ul>
-        <button class="hamburger" id="hbg" aria-label="Open menu" aria-expanded="false">
+        <button class="hamburger" id="hbg" aria-label="Open menu">
             <span></span><span></span><span></span>
         </button>
     </div>
 </nav>
 
-<!-- Mobile drawer -->
 <div class="nav-drawer" id="drawer">
     <a href="#keepsakes" onclick="closeNav()"><i class="fa-solid fa-gem"></i>Keepsakes</a>
     <a href="#memorial"  onclick="closeNav()"><i class="fa-solid fa-dove"></i>Memorial</a>
     <a href="#concierge" onclick="closeNav()"><i class="fa-solid fa-shield-check"></i>Concierge</a>
-    <a href="https://wa.me/18765612614" target="_blank" rel="noopener"
-       class="drawer-wa" onclick="closeNav()">
-        <i class="fa-brands fa-whatsapp" style="margin-right:8px;"></i>WhatsApp Laura
+    <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="drawer-wa" onclick="closeNav()">
+        <i class="fa-brands fa-whatsapp"></i>WhatsApp Laura
     </a>
 </div>
 
-<div class="page">
-
-    <!-- ══ HERO ══════════════════════════════════════════ -->
-    <section class="hero">
-        <div class="hero-inner">
-            <p class="hero-eyebrow enter d1">Linstead · St. Catherine · Jamaica</p>
-            <h1 class="hero-offering enter d2">Bespoke Keepsakes<br>&amp; Concierge Services</h1>
-            <div class="hero-rule enter d2"></div>
-            <p class="hero-tagline enter d3">
-                Curation by Laura Clarke — crafted in Jamaica to carry what words cannot
-                and manage what time will not.
-            </p>
-            <div class="hero-ctas enter d4">
-                <a href="#keepsakes" class="btn-primary">
-                    <i class="fa-solid fa-arrow-down"></i> Explore Services
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ══ FEATURES STRIP ════════════════════════════════ -->
-<div class="features-strip enter">
-        <div class="feature-item"><i class="fa-solid fa-layer-group"></i> Premium Materials</div>
-        <div class="feature-item"><i class="fa-solid fa-pen-nib"></i> Meticulous Curation</div>
-        <div class="feature-item"><i class="fa-solid fa-qrcode"></i> Digital Integration</div>
-        <div class="feature-item"><i class="fa-solid fa-shield-check"></i> Zero-Friction Logistics</div>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg">
+        <img src="assets/wedding.png" alt="" aria-hidden="true" onerror="this.style.display='none'">
     </div>
-
-    <section class="collection bg-paper col-light" id="keepsakes">
-        <div class="col-text-top enter">
-            <p class="col-collection-label">Collection One</p>
-            <h2 class="col-title">Bespoke<br>Keepsakes</h2>
-            <p class="col-subtitle">Milestones · Memoirs · Cultural Expression</p>
+    <div class="hero-content">
+        <p class="hero-location enter d1">
+            <i class="fa-solid fa-location-dot" style="font-size:0.58rem;"></i>
+            Linstead · St. Catherine · Jamaica
+        </p>
+        <h1 class="hero-headline enter d2">
+            Bespoke<br><em>Keepsakes</em><br>&amp; Concierge
+        </h1>
+        <p class="hero-sub enter d3">
+            Curation by Laura Clarke — crafted in Jamaica to carry what words cannot.
+        </p>
+        <div class="hero-ctas enter d4">
+            <a href="#keepsakes" class="btn-sage">
+                <i class="fa-solid fa-arrow-down"></i> Explore Services
+            </a>
+            <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-outline">
+                <i class="fa-brands fa-whatsapp"></i> Chat with Laura
+            </a>
         </div>
+    </div>
+</section>
 
-        <div class="col-img enter d1">
-            <div class="concierge-image-frame">
-                <div class="carousel-wrap" id="keepsake-carousel">
-                    
-                    <div class="carousel-slide active">
-                        <img src="assets/wedding.png" alt="SPECIMEN Milestone invitation suite showing gold foil">
-                        <div class="image-fallback">
-                            <i class="fa-solid fa-envelope-open-text gallery-icon"></i>
-                            <span class="gallery-hint">Milestone Keepsakes</span>
-                        </div>
-                    </div>
+<!-- MARQUEE STRIP -->
+<div class="strip">
+    <div class="strip-inner" aria-hidden="true">
+        <!-- duplicated for seamless loop -->
+        <span class="strip-item"><span class="strip-dot"></span> Premium Print Materials</span>
+        <span class="strip-item"><span class="strip-dot"></span> Meticulous Curation</span>
+        <span class="strip-item"><span class="strip-dot"></span> Digital Memory Portals</span>
+        <span class="strip-item"><span class="strip-dot"></span> Zero-Friction Logistics</span>
+        <span class="strip-item"><span class="strip-dot"></span> Authentic Jamaican Design</span>
+        <span class="strip-item"><span class="strip-dot"></span> eMVRC Vehicle Renewal</span>
+        <span class="strip-item"><span class="strip-dot"></span> Premium Print Materials</span>
+        <span class="strip-item"><span class="strip-dot"></span> Meticulous Curation</span>
+        <span class="strip-item"><span class="strip-dot"></span> Digital Memory Portals</span>
+        <span class="strip-item"><span class="strip-dot"></span> Zero-Friction Logistics</span>
+        <span class="strip-item"><span class="strip-dot"></span> Authentic Jamaican Design</span>
+        <span class="strip-item"><span class="strip-dot"></span> eMVRC Vehicle Renewal</span>
+    </div>
+</div>
 
-                    <div class="carousel-slide">
-                        <img src="assets/memoir-card.jpg" alt="SPECIMEN Gold foil QR code on high-end cardstock">
-                        <div class="image-fallback">
-                            <i class="fa-solid fa-qrcode gallery-icon"></i>
-                            <span class="gallery-hint">Digital Portal Cards</span>
-                        </div>
-                    </div>
+<!-- SERVICES -->
+<div class="services" id="keepsakes">
 
-                    <div class="carousel-slide">
-                        <img src="assets/patois1.png" alt="SPECIMEN Authentic Patois greeting card in warm, natural light">
-                        <div class="image-fallback">
-                            <i class="fa-solid fa-language gallery-icon"></i>
-                            <span class="gallery-hint">Authentic Patois Line</span>
-                        </div>
-                    </div>
-
-                </div> <div class="concierge-border-overlay"></div>
-            </div>
-        </div>
-
-        <div class="col-text-bottom enter d2">
-            <div class="col-rule"></div>
-            <p class="col-body">
-                We merge traditional elegance with modern memory curation. From heavyweight
-                gold-foiled milestone suites to signature photo cards that unlock private digital
-                galleries — these pieces create a tactile legacy. Includes our premium line
-                celebrating authentic Jamaican Patois, carrying the island's warmth.
+    <!-- Service 1: Bespoke Keepsakes -->
+    <div class="service-block" style="padding-top: 96px;">
+        <div class="service-text enter">
+            <div class="service-num">01</div>
+            <p class="section-eyebrow">Collection One</p>
+            <h2 class="section-title" style="margin-bottom: 16px;">Bespoke<br><em>Keepsakes</em></h2>
+            <p class="section-body">
+                We merge traditional elegance with modern memory curation. From heavyweight gold-foiled milestone suites to signature photo cards that unlock private digital galleries — these pieces create a tactile legacy. Includes our premium line celebrating authentic Jamaican Patois.
             </p>
-            <div class="col-formats">
-                <span class="format-pill"><i class="fa-solid fa-star"></i> Foil Milestone Suites</span>
-                <span class="format-pill"><i class="fa-solid fa-camera-retro"></i> Digital Portal Cards</span>
-                <span class="format-pill"><i class="fa-solid fa-language"></i> Authentic Patois Line</span>
+            <div class="pills">
+                <span class="pill"><i class="fa-solid fa-star"></i> Foil Milestone Suites</span>
+                <span class="pill"><i class="fa-solid fa-camera-retro"></i> Digital Portal Cards</span>
+                <span class="pill"><i class="fa-solid fa-language"></i> Authentic Patois Line</span>
             </div>
             <a href="https://wa.me/18765612614?text=Hello%20Laura%2C%20I%27d%20like%20to%20enquire%20about%20Bespoke%20Keepsakes."
-               target="_blank" rel="noopener" class="col-cta cta-dark">
-                Commission Keepsakes
+               target="_blank" rel="noopener" class="btn-service btn-sage-solid">
+                Commission Keepsakes <i class="fa-solid fa-arrow-right"></i>
             </a>
         </div>
-    </section>
-    <!-- ══ COLLECTION 2 — MEMORIAL ═══════════════════════ -->
-    <section class="collection col-dark reverse" id="memorial">
-        <div class="col-text-top enter">
-            <p class="col-collection-label">Collection Two</p>
-            <h2 class="col-title">Memorial<br>Keepsakes</h2>
-            <p class="col-subtitle">Tribute Booklets · Service Programmes</p>
-        </div>
-
-        <div class="col-img enter d1">
-            <div class="gallery-frame">
-                <img src="assets/memorial.png" alt="Premium memorial booklet with gold foil accents">
-                <i class="fa-solid fa-dove gallery-icon" style="position:relative;z-index:1;"></i>
-                <span class="gallery-hint" style="position:relative;z-index:1;">Memorial Keepsakes</span>
+        <div class="service-img-wrap enter d2">
+            <div class="service-placeholder sp-1">
+                <i class="fa-solid fa-envelope-open-text"></i>
+                <span>Milestone Keepsakes</span>
             </div>
+            <img src="assets/wedding.png" alt="Bespoke Keepsakes" onerror="this.style.display='none'">
         </div>
+    </div>
 
-        <div class="col-text-bottom enter d2">
-            <div class="col-rule"></div>
-            <p class="col-body">
-                A life well-lived deserves to be remembered with dignity. With years of experience
-                managing sensitive logistics, Laura handles the curation, design, and premium
-                printing of memorial booklets and tribute cards with the utmost discretion and care.
+    <!-- Service 2: Memorial -->
+    <div class="service-block reverse" id="memorial">
+        <div class="service-text enter">
+            <div class="service-num">02</div>
+            <p class="section-eyebrow">Collection Two</p>
+            <h2 class="section-title" style="margin-bottom: 16px;">Memorial<br><em>Keepsakes</em></h2>
+            <p class="section-body">
+                A life well-lived deserves to be remembered with dignity. With years of experience managing sensitive logistics, Laura handles the curation, design, and premium printing of memorial booklets and tribute cards with the utmost discretion and care.
             </p>
-            <div class="col-formats">
-                <span class="format-pill"><i class="fa-solid fa-book-open"></i> 12-Page Booklets</span>
-                <span class="format-pill"><i class="fa-solid fa-dove"></i> Tribute Cards</span>
-                <span class="format-pill"><i class="fa-solid fa-qrcode"></i> Digital Tribute Portals</span>
+            <div class="pills">
+                <span class="pill"><i class="fa-solid fa-book-open"></i> 12-Page Booklets</span>
+                <span class="pill"><i class="fa-solid fa-dove"></i> Tribute Cards</span>
+                <span class="pill"><i class="fa-solid fa-qrcode"></i> Digital Tribute Portals</span>
             </div>
             <a href="https://wa.me/18765612614?text=Hello%20Laura%2C%20I%27d%20like%20to%20enquire%20about%20Memorial%20Services."
-               target="_blank" rel="noopener" class="col-cta cta-gold">
-                Request Memorial Service
+               target="_blank" rel="noopener" class="btn-service btn-gold-solid">
+                Request Memorial Service <i class="fa-solid fa-arrow-right"></i>
             </a>
         </div>
-    </section>
-
-    <!-- ══ COLLECTION 3 — CONCIERGE ══════════════════════ -->
-    <section class="collection bg-paper col-light" id="concierge">
-        <div class="col-text-top enter">
-            <p class="col-collection-label">Collection Three</p>
-            <h2 class="col-title">Concierge<br>Services</h2>
-            <p class="col-subtitle">Zero-Friction Logistics · Document Management</p>
-        </div>
-
-        <div class="col-img enter d1">
-            <div class="gallery-frame">
-                <img src="assets/taj.png" alt="Professional concierge and logistics service">
-                <i class="fa-solid fa-shield-check gallery-icon" style="position:relative;z-index:1;"></i>
-                <span class="gallery-hint" style="position:relative;z-index:1;">Concierge Services</span>
+        <div class="service-img-wrap enter d2">
+            <div class="service-placeholder sp-2">
+                <i class="fa-solid fa-dove"></i>
+                <span>Memorial Keepsakes</span>
             </div>
+            <img src="assets/memorial.png" alt="Memorial Keepsakes" onerror="this.style.display='none'">
         </div>
+    </div>
 
-        <div class="col-text-bottom enter d2">
-            <div class="col-rule"></div>
-            <p class="col-body">
-                Skip the digital frustration. We provide specialised concierge logistics to navigate
-                complex bureaucracies and digital systems — from seamless Motor Vehicle (eMVRC)
-                renewals to comprehensive document curation. We manage the process so you don't
-                have to.
+    <!-- Service 3: Concierge -->
+    <div class="service-block" id="concierge">
+        <div class="service-text enter">
+            <div class="service-num">03</div>
+            <p class="section-eyebrow">Collection Three</p>
+            <h2 class="section-title" style="margin-bottom: 16px;">Concierge<br><em>Services</em></h2>
+            <p class="section-body">
+                Skip the digital frustration. We provide specialised concierge logistics to navigate complex bureaucracies and digital systems — from seamless Motor Vehicle (eMVRC) renewals to comprehensive document curation. We manage the process so you don't have to.
             </p>
-            <div class="col-formats">
-                <span class="format-pill"><i class="fa-solid fa-car"></i> Vehicle Renewal (eMVRC)</span>
-                <span class="format-pill"><i class="fa-solid fa-file-contract"></i> Document Compliance</span>
-                <span class="format-pill"><i class="fa-solid fa-passport"></i> Operational Logistics</span>
+            <div class="pills">
+                <span class="pill"><i class="fa-solid fa-car"></i> Vehicle Renewal (eMVRC)</span>
+                <span class="pill"><i class="fa-solid fa-file-contract"></i> Document Compliance</span>
+                <span class="pill"><i class="fa-solid fa-passport"></i> Operational Logistics</span>
             </div>
             <a href="https://wa.me/18765612614?text=Hello%20Laura%2C%20I%27d%20like%20to%20enquire%20about%20Concierge%20Services."
-               target="_blank" rel="noopener" class="col-cta cta-dark">
-                Engage Docu-Hub Services
+               target="_blank" rel="noopener" class="btn-service btn-warm-solid">
+                Engage Docu-Hub <i class="fa-solid fa-arrow-right"></i>
             </a>
         </div>
-    </section>
+        <div class="service-img-wrap enter d2">
+            <div class="service-placeholder sp-3">
+                <i class="fa-solid fa-shield-check"></i>
+                <span>Concierge Services</span>
+            </div>
+            <img src="assets/taj.png" alt="Concierge Services" onerror="this.style.display='none'">
+        </div>
+    </div>
 
-    <!-- ══ PROCESS ════════════════════════════════════════ -->
-    <section class="process">
-        <div class="outer">
-            <p class="process-label enter">How it works</p>
-            <h2 class="process-title enter">Curation &amp; Commissioning</h2>
-            <div class="process-steps">
-                <div class="p-step enter d1">
-                    <div class="p-num">I</div>
-                    <div>
-                        <p class="p-label">Consultation</p>
-                        <p class="p-desc">Reach out via WhatsApp to discuss your keepsake vision or logistics needs. We review your requirements, timeline, and details together.</p>
-                    </div>
-                </div>
-                <div class="p-step enter d2">
-                    <div class="p-num">II</div>
-                    <div>
-                        <p class="p-label">Curation &amp; Execution</p>
-                        <p class="p-desc">For keepsakes, we design bespoke layouts and obtain your approval. For concierge services, we securely navigate compliance and systems on your behalf.</p>
-                    </div>
-                </div>
-                <div class="p-step enter d3">
-                    <div class="p-num">III</div>
-                    <div>
-                        <p class="p-label">Bespoke Delivery</p>
-                        <p class="p-desc">Physical keepsakes are printed on premium materials and prepared for collection in Linstead. Digital results are delivered securely and promptly.</p>
-                    </div>
-                </div>
+</div>
+
+<!-- PROCESS -->
+<section class="process">
+    <div class="wrap">
+        <div class="process-header enter">
+            <p class="process-eyebrow">How it works</p>
+            <h2 class="process-title">Curation &amp; <em>Commissioning</em></h2>
+        </div>
+        <div class="process-steps">
+            <div class="p-step enter d1" data-step="I">
+                <div class="p-num">Step I</div>
+                <p class="p-label">Consultation</p>
+                <p class="p-desc">Reach out via WhatsApp to discuss your keepsake vision or logistics needs. We review your requirements, timeline, and details together.</p>
+            </div>
+            <div class="p-step enter d2" data-step="II">
+                <div class="p-num">Step II</div>
+                <p class="p-label">Curation &amp; Execution</p>
+                <p class="p-desc">For keepsakes, we design bespoke layouts and obtain your approval. For concierge services, we securely navigate compliance and systems on your behalf.</p>
+            </div>
+            <div class="p-step enter d3" data-step="III">
+                <div class="p-num">Step III</div>
+                <p class="p-label">Bespoke Delivery</p>
+                <p class="p-desc">Physical keepsakes are printed on premium materials and prepared for collection in Linstead. Digital results are delivered securely and promptly.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- ══ FOOTER ═════════════════════════════════════════ -->
-    <footer class="site-footer">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="index.html" class="f-logo">Laura Clarke · Docu<span>-</span>Hub</a>
-                <span class="f-tag">Curation · Keepsakes · Concierge</span>
-                <p class="f-desc">
-                    Curation by Laura Clarke — bridging tactile elegance with digital simplicity,
-                    crafted in Jamaica.
-                </p>
-            </div>
-            <div>
-                <h4 class="footer-col-title">Services</h4>
-                <ul class="footer-links">
-                    <li><a href="#keepsakes">Bespoke Keepsakes</a></li>
-                    <li><a href="#memorial">Memorial Services</a></li>
-                    <li><a href="#concierge">Concierge Logistics</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="footer-col-title">Docu-Hub Studio</h4>
-                <ul class="footer-links">
-                    <li><a href="about.html">About Laura</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="terms.html">Terms of Service</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-contact">
-                <h4 class="footer-col-title">Direct Inquiries</h4>
-                <p><i class="fa-brands fa-whatsapp"></i>
-                    <a href="https://wa.me/18765612614" target="_blank" rel="noopener"
-                       style="color:inherit;">+1 (876) 561-2614</a>
-                </p>
-                <p><i class="fa-solid fa-location-dot"></i> Linstead, St. Catherine, Jamaica</p>
+<!-- ABOUT -->
+<section class="about-strip">
+    <div class="about-inner">
+        <div class="about-text enter">
+            <p class="section-eyebrow">About Laura</p>
+            <blockquote class="about-quote">
+                "Every milestone deserves to be held — not just remembered."
+            </blockquote>
+            <p class="section-body" style="margin-bottom: 28px;">
+                Based in Linstead, St. Catherine, Laura Clarke brings years of experience in premium stationery curation, digital memory design, and bureaucratic navigation — bridging the warmth of Jamaica's culture with the precision of bespoke craft.
+            </p>
+            <div class="about-sig">
+                Laura Clarke
+                <span>Linstead, St. Catherine, Jamaica</span>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Laura Clarke · Docu-Hub Operations Services. All Rights Reserved.</p>
-            <p>Designed for Bespoke Print &amp; Digital Experiences.</p>
+        <div class="about-stats enter d2">
+            <div class="stat">
+                <div class="stat-num">3</div>
+                <div class="stat-label">Core Service Collections</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">JM</div>
+                <div class="stat-label">Proudly Jamaican</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">∞</div>
+                <div class="stat-label">Memories Preserved</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">24h</div>
+                <div class="stat-label">WhatsApp Response</div>
+            </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-</div><!-- /.page -->
+<!-- CTA BAND -->
+<section class="cta-band">
+    <p class="cta-band-eyebrow enter">Ready to begin?</p>
+    <h2 class="cta-band-title enter d1">Let's create something<br><em>worth keeping</em></h2>
+    <p class="cta-band-body enter d2">One WhatsApp message is all it takes to start. Laura responds personally, always.</p>
+    <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-white enter d3">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp Laura Now
+    </a>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-grid">
+        <div>
+            <a href="#" class="f-logo">Laura Clarke · Docu<em>-</em>Hub</a>
+            <span class="f-tag">Curation · Keepsakes · Concierge</span>
+            <p class="f-desc">Bridging tactile elegance with digital simplicity, crafted in Jamaica.</p>
+        </div>
+        <div>
+            <h4 class="footer-col-title">Services</h4>
+            <ul class="footer-links">
+                <li><a href="#keepsakes">Bespoke Keepsakes</a></li>
+                <li><a href="#memorial">Memorial Services</a></li>
+                <li><a href="#concierge">Concierge Logistics</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="footer-col-title">Studio</h4>
+            <ul class="footer-links">
+                <li><a href="about.html">About Laura</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms of Service</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <h4 class="footer-col-title">Direct Inquiries</h4>
+            <p><i class="fa-brands fa-whatsapp"></i>
+                <a href="https://wa.me/18765612614" target="_blank" rel="noopener" style="color:inherit;">+1 (876) 561-2614</a>
+            </p>
+            <p><i class="fa-solid fa-location-dot"></i> Linstead, St. Catherine, Jamaica</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Laura Clarke · Docu-Hub Operations Services. All Rights Reserved.</p>
+        <p>Designed for Bespoke Print &amp; Digital Experiences.</p>
+    </div>
+</footer>
 
 <script>
-// ── Scroll animations ──────────────────────────────────────────────────────
-const io = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-}, { threshold: 0.08 });
-document.querySelectorAll('.enter').forEach(function(el) { io.observe(el); });
+// Scroll animations
+const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.07 });
+document.querySelectorAll('.enter').forEach(el => io.observe(el));
 
-// ── Mobile nav ────────────────────────────────────────────────────────────
-var hbg    = document.getElementById('hbg');
-var drawer = document.getElementById('drawer');
-
-function openNav() {
-    drawer.classList.add('open');
-    hbg.classList.add('open');
-    hbg.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-}
+// Mobile nav
+const hbg = document.getElementById('hbg');
+const drawer = document.getElementById('drawer');
 function closeNav() {
-    drawer.classList.remove('open');
-    hbg.classList.remove('open');
-    hbg.setAttribute('aria-expanded', 'false');
+    drawer.classList.remove('open'); hbg.classList.remove('open');
     document.body.style.overflow = '';
 }
-hbg.addEventListener('click', function() {
-    drawer.classList.contains('open') ? closeNav() : openNav();
+hbg.addEventListener('click', () => {
+    const isOpen = drawer.classList.toggle('open');
+    hbg.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
 });
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeNav();
-});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
 
-// ── Carousel (Keepsakes section) ──────────────────────────────────────────
-var slides = document.querySelectorAll('#keepsake-carousel .carousel-slide');
-var current = 0;
-if (slides.length > 1) {
-    setInterval(function() {
-        slides[current].classList.remove('active');
-        current = (current + 1) % slides.length;
-        slides[current].classList.add('active');
-    }, 4500);
-}
-
-// ── Nav border on scroll ──────────────────────────────────────────────────
-var nav = document.getElementById('sitenav');
-window.addEventListener('scroll', function() {
-    nav.style.borderBottomColor = window.scrollY > 60
-        ? 'rgba(255,255,255,0.22)'
-        : 'rgba(255,255,255,0.14)';
+// Nav scroll shadow
+const nav = document.getElementById('sitenav');
+window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
 }, { passive: true });
 </script>
 </body>
