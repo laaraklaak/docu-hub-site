@@ -472,6 +472,109 @@
         color: var(--text-2); line-height: 1.7;
     }
 
+        /* ============================================================
+   CONCIERGE IMAGE FRAME AESTHETIC
+   ============================================================ */
+
+/* 1. Main Container: Establishes the aspect ratio and sophisticated framing */
+.concierge-image-frame {
+    position: relative;
+    width: 100%;
+    /* Set a unified aspect ratio for all keepsakes photography (e.g., 4:3) */
+    padding-top: 75%; 
+    background-color: var(--navy-mid); /* Loading background color */
+    border-radius: 12px;
+    overflow: hidden;
+    /* The "Cryptographic Glow": Executive Gold, subtle and deep */
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.6), 
+        0 0 25px rgba(212, 175, 55, 0.1); 
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Micro-interaction on hover */
+.concierge-image-frame:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 
+        0 25px 50px rgba(0,0,0,0.7), 
+        0 0 35px rgba(212, 175, 55, 0.2);
+}
+
+/* 2. Carousel Wrapper: Absolute positioning within the padding-top frame */
+.carousel-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+/* 3. Image Styling: Ensures focus and correct scaling */
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crucial for unified display */
+    object-position: center;
+    filter: brightness(0.95) contrast(1.05); /* subtle premium "specimen" filter */
+    transition: opacity 1.2s ease-in-out; /* The fade timing */
+}
+
+/* 4. Optimized Fallback/Loading State */
+.image-fallback {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--navy-mid);
+    color: var(--mem-accent); /* Executive Gold */
+    z-index: 1; /* Sits *behind* the image */
+    text-align: center;
+    padding: 20px;
+}
+
+/* If the image loads successfully, the JS should handle hiding this z-index 1 layer, 
+   or CSS can hide it if the image is confirmed present. A simple JS 'load' event 
+   listener is best for true fallback logic. */
+
+.gallery-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.gallery-hint {
+    font-family: var(--sc);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
+/* 5. Decorative Border Overlay (Adds the final premium touch) */
+.concierge-border-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    /* Use a gradient border that implies secure encryption/vaulting */
+    border: 2px solid transparent;
+    background: linear-gradient(135deg, rgba(212,175,55,0.3) 0%, rgba(212,175,55,0) 40%, rgba(212,175,55,0) 60%, rgba(212,175,55,0.3) 100%) border-box;
+    -webkit-mask: /* Scopes the gradient to the border only */
+       linear-gradient(#fff 0 0) padding-box, 
+       linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out; 
+            mask-composite: exclude;
+    z-index: 3; /* Sits on top of the image */
+    pointer-events: none; /* Allows clicks to pass through to the image */
+}
+
     /* ═══════════════════════════════════════════
        FOOTER
     ═══════════════════════════════════════════ */
@@ -662,14 +765,13 @@
     </section>
 
     <!-- ══ FEATURES STRIP ════════════════════════════════ -->
-    <div class="features-strip enter">
+ <div class="features-strip enter">
         <div class="feature-item"><i class="fa-solid fa-layer-group"></i> Premium Materials</div>
         <div class="feature-item"><i class="fa-solid fa-pen-nib"></i> Meticulous Curation</div>
         <div class="feature-item"><i class="fa-solid fa-qrcode"></i> Digital Integration</div>
         <div class="feature-item"><i class="fa-solid fa-shield-check"></i> Zero-Friction Logistics</div>
     </div>
 
-    <!-- ══ COLLECTION 1 — KEEPSAKES ══════════════════════ -->
     <section class="collection bg-paper col-light" id="keepsakes">
         <div class="col-text-top enter">
             <p class="col-collection-label">Collection One</p>
@@ -678,30 +780,34 @@
         </div>
 
         <div class="col-img enter d1">
-            <!-- Carousel — replace img src with your actual photo filenames -->
-            <div class="carousel-wrap" id="keepsake-carousel">
-                <div class="carousel-slide active">
-                    <img src="assets/memoir1.pdf" alt="Premium milestone keepsake suite">
-                    <!-- Fallback icon shown if image missing -->
-                    <div class="gallery-frame" style="z-index:1;">
-                        <i class="fa-solid fa-envelope-open-text gallery-icon"></i>
-                        <span class="gallery-hint">Milestone Keepsakes</span>
+            <div class="concierge-image-frame">
+                <div class="carousel-wrap" id="keepsake-carousel">
+                    
+                    <div class="carousel-slide active">
+                        <img src="assets/memoir-card.jpg" alt="Premium staged milestone keepsake invitation suite showing gold foil">
+                        <div class="image-fallback">
+                            <i class="fa-solid fa-envelope-open-text gallery-icon"></i>
+                            <span class="gallery-hint">Milestone Keepsakes</span>
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-slide">
-                    <img src="assets/memoir2.pdf" alt="Gold foil QR code on dark card">
-                    <div class="gallery-frame" style="z-index:1;">
-                        <i class="fa-solid fa-qrcode gallery-icon"></i>
-                        <span class="gallery-hint">Digital Portal Cards</span>
+
+                    <div class="carousel-slide">
+                        <img src="assets/wedding.png" alt="Macro close-up of gold foil QR code on high-end cardstock">
+                        <div class="image-fallback">
+                            <i class="fa-solid fa-qrcode gallery-icon"></i>
+                            <span class="gallery-hint">Digital Portal Cards</span>
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-slide">
-                    <img src="assets/patois1.png" alt="Authentic Jamaican Patois greeting card">
-                    <div class="gallery-frame" style="z-index:1;">
-                        <i class="fa-solid fa-language gallery-icon"></i>
-                        <span class="gallery-hint">Authentic Patois Line</span>
+
+                    <div class="carousel-slide">
+                        <img src="assets/patois1.png" alt="Authentic Jamaican Patois greeting card in warm, natural light">
+                        <div class="image-fallback">
+                            <i class="fa-solid fa-language gallery-icon"></i>
+                            <span class="gallery-hint">Authentic Patois Line</span>
+                        </div>
                     </div>
-                </div>
+
+                </div> <div class="concierge-border-overlay"></div>
             </div>
         </div>
 
