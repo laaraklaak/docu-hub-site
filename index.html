@@ -513,12 +513,10 @@
 
 /* 3. Image Styling: Ensures focus and correct scaling */
 .carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Crucial for unified display */
-    object-position: center;
-    filter: brightness(0.95) contrast(1.05); /* subtle premium "specimen" filter */
-    transition: opacity 1.2s ease-in-out; /* The fade timing */
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    z-index: 2; /* This forces the image to sit ON TOP of the fallback */
 }
 
 /* 4. Optimized Fallback/Loading State */
