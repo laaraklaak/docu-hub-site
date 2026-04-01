@@ -3,480 +3,496 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Concierge Desk | Docu-Hub Operations</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <title>Bespoke Keepsakes & Concierge Services | Laura Clarke Â· Docu-Hub Operations Jamaica</title>
+    <meta name="description" content="Premium Jamaican keepsake stationery, digital memory curation, and premium concierge logistics. Curation by Laura Clarke, crafted in Linstead, St. Catherine, Jamaica.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600&family=Italiana&family=Inter:wght@300;400;500&family=Lora:ital,wght@0,400;1,400&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        :root {
-            --studio-black: #0F172A; /* Tech Slate */
-            --true-black: #050505;
-            --studio-white: #FFFFFF;
-            --text-muted: #94A3B8;
-            --border-color: rgba(255,255,255,0.1);
-            --mem-accent: #D4AF37; /* Executive Gold */
-            --mem-glow: rgba(212, 175, 55, 0.15);
-            --mem-glow-strong: rgba(212, 175, 55, 0.3);
-            --brand-steel: #38BDF8;
-            --header-height: 75px;
-        }
-
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        html { scroll-behavior: smooth; }
-        body { 
-            margin: 0; 
-            font-family: 'Inter', sans-serif; 
-            background: var(--true-black); 
-            color: var(--studio-white); 
-            line-height: 1.6; 
-            padding-top: var(--header-height);
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4 { margin: 0; font-weight: 500; font-family: 'Playfair Display', serif; color: var(--studio-white); letter-spacing: 0.5px;}
-        p { margin-bottom: 0; font-size: 1.05rem; color: var(--text-muted); font-weight: 300; letter-spacing: 0.3px;}
-        a { text-decoration: none; transition: 0.4s ease; }
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        TOKENS & HIGH CONTRAST PALETTE
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+    :root {
+        --navy:        #060A11;
+        --navy-deep:  #030508;
+        --navy-mid:   #0B121C;
+        --ivory:      #FFFEFA;
+        --ivory-warm: #F7F4EB;
+        --ink:        #050403; 
+        --ink-2:      #2A241D;
+        --ink-3:      #5C5146;
         
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-
-        /* --- TECH PATTERNS --- */
-        .grid-bg {
-            background-color: var(--true-black);
-            background-size: 30px 30px;
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        }
-
-        /* --- ANIMATIONS --- */
-        .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
-        .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.2s; }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* --- BORDERED NAVIGATION (DARK MODE) --- */
-        .app-header {
-            position: fixed; top: 0; left: 0; width: 100%; z-index: 2000;
-            background: rgba(5, 5, 5, 0.85); 
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-color); 
-            height: var(--header-height); display: flex; align-items: center;
-        }
-        .header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; }
+        --gold:       #DCAE3D;
+        --gold-hi:    #FCEEB5; 
+        --gold-dk:    #A3801A;
+        --gold-grad:  linear-gradient(135deg, #F3DE8A 0%, #DCAE3D 50%, #B58B22 100%);
+        --gold-lo:    rgba(220,174,61,0.12);
+        --gold-bdr:   rgba(220,174,61,0.5);
         
-        .header-logo { 
-            font-size: 1.2rem; font-weight: 800; color: var(--studio-white); text-transform: uppercase;
-            display: flex; align-items: center; letter-spacing: 1px; font-family: 'Inter', sans-serif;
-        }
+        --white:      #FFFFFF; 
+        --text-1:      #FFFFFF; 
+        --text-2:      #E2E8F0; 
+        --text-3:      #94A3B8;
+        --border-dk:  rgba(255,255,255,0.15); 
+        --border-lt:  rgba(0,0,0,0.15);
         
-        .studio-tagline { 
-            font-size: 0.7rem; color: var(--mem-accent); margin-left: 12px; border-left: 1px solid var(--border-color); 
-            padding-left: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
-        }
-
-        .nav-links { display: flex; gap: 25px; align-items: center; }
-        .nav-links a { color: var(--text-muted); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;}
-        .nav-links a:hover { color: var(--studio-white); }
+        --serif:      'Lora', Georgia, serif;            
+        --display:    'Playfair Display', serif;         
+        --header-main:'Italiana', serif;
+        --sc:          'Cormorant SC', serif;
+        --sans:        'Inter', system-ui, sans-serif;
         
-        /* Nav Button Refinement */
-        .nav-btn { background: var(--true-black); border: 2px solid var(--mem-accent); color: var(--mem-accent) !important; padding: 8px 18px; border-radius: 8px; transition: 0.3s;}
-        .nav-btn:hover { background: rgba(212, 175, 55, 0.1); transform: translateY(-2px); box-shadow: 0 4px 15px var(--mem-glow);}
+        --nav-h:      72px;
+        --max-w:      1200px;
+    }
+
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        RESET & BASE
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: var(--sans); background: var(--navy-deep); color: var(--text-1);
+        overflow-x: hidden; -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+    img { display: block; width: 100%; object-fit: cover; }
+
+    .bg-paper {
+        background-color: var(--ivory);
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+
+    .enter { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .enter.in { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; } .d4 { transition-delay: 0.4s; }
+
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        NAVIGATION
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+    .outer { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .site-nav {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h);
+        background: rgba(3,5,8,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border-dk); transition: border-color 0.3s;
+    }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; flex-direction: column; gap: 2px; }
+    
+    .nav-logo-name { font-family: var(--display); font-size: 0.95rem; font-weight: 400; letter-spacing: 0.15em; color: var(--white); }
+    .nav-logo-name span { color: var(--gold); }
+    .nav-logo-tag { font-family: var(--sc); font-size: 0.55rem; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-hi); }
+    
+    .nav-links { display: none; list-style: none; align-items: center; gap: 12px; }
+    .nav-links a { font-family: var(--sc); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-2); padding: 8px 16px; border-radius: 4px; }
+    .nav-links a:hover { color: var(--white); background: var(--gold-lo); }
+    
+    .nav-wa { background: var(--gold-grad) !important; color: var(--ink) !important; font-weight: 600 !important; border-radius: 30px !important; margin-left: 10px; }
+    .nav-wa:hover { box-shadow: 0 4px 15px rgba(220,174,61,0.3) !important; transform: translateY(-1px); }
+
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        HERO
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+    .hero {
+        min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+        text-align: center; padding: calc(var(--nav-h) + 60px) 24px 80px; position: relative; overflow: hidden;
+        background: radial-gradient(circle at center, var(--navy-mid) 0%, var(--navy-deep) 100%);
+    }
+    .hero-inner { position: relative; z-index: 2; max-width: 900px; display: flex; flex-direction: column; align-items: center; }
+    
+    .hero-offering { font-family: var(--header-main); font-size: clamp(3rem, 9vw, 5.5rem); font-weight: 400; color: var(--white); line-height: 1.1; margin-bottom: 24px; letter-spacing: 0.02em; }
+    
+    .hero-rule { width: 1px; height: 60px; background: linear-gradient(to bottom, var(--gold), transparent); margin: 0 auto 30px; opacity: 0.8; }
+    
+    .hero-tagline { font-family: var(--serif); font-size: clamp(1.3rem, 3.5vw, 1.9rem); font-weight: 400; font-style: italic; line-height: 1.5; color: var(--text-2); margin-bottom: 24px; max-width: 720px; }
+    
+    .hero-sub { font-family: var(--sc); font-size: 0.8rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-2); margin-bottom: 50px; }
+    
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 16px 34px; background: var(--gold-grad); border-radius: 4px; font-family: var(--sc); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); transition: all 0.3s ease; }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(220,174,61,0.3); }
+
+    .features-strip { background: var(--navy); border-top: 1px solid var(--border-dk); border-bottom: 1px solid var(--border-dk); padding: 30px 24px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+    .feature-item { display: flex; align-items: center; gap: 12px; font-family: var(--sc); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-hi); }
+
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        COLLECTIONS - MOBILE FIRST LAYOUT
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+    .col-dark { background: var(--navy); color: var(--text-1); } 
+    .col-dark .col-body { color: var(--text-2); }
+    .col-light { background: var(--ivory); color: var(--ink); } 
+    .col-light .col-body { color: var(--ink-2); }
+
+    .collection { display: flex; flex-direction: column; min-height: 100svh; }
+    
+    .col-text-top { padding: 70px 24px 24px; display: flex; flex-direction: column; gap: 6px; }
+    
+    /* On mobile, 70vw min-height is perfect */
+    .col-img { width: 100%; min-height: 70vw; position: relative; overflow: hidden; background: var(--navy-mid); display: flex; align-items: stretch; justify-content: stretch; padding: 24px; }
+    
+    .col-text-bottom { padding: 30px 24px 70px; display: flex; flex-direction: column; gap: 24px; }
+
+    .col-collection-label { font-family: var(--sc); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase; margin: 0; }
+    .col-dark .col-collection-label { color: var(--gold); }
+    .col-light .col-collection-label { color: var(--navy-mid); }
+
+    .col-title { font-family: var(--header-main); font-size: clamp(2.8rem, 6vw, 4rem); font-weight: 400; line-height: 1.15; margin: 0; }
+    
+    .col-subtitle { font-family: var(--display); font-size: clamp(0.8rem, 1.5vw, 0.95rem); font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; margin: 0; margin-top: -6px; }
+    .col-light .col-subtitle { color: var(--ink-3); } .col-dark .col-subtitle { color: var(--text-3); }
+
+    .col-rule { width: 60px; height: 2px; }
+    .col-dark .col-rule { background: var(--gold-grad); }
+    .col-light .col-rule { background: var(--navy-mid); }
+
+    .gallery-frame { width: 100%; height: 100%; min-height: 350px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px; position: relative; overflow: hidden; }
+    .col-dark .gallery-frame { background: rgba(0,0,0,0.4); box-shadow: inset 0 0 40px rgba(0,0,0,0.5); border: 1px solid var(--gold-bdr); }
+    .col-light .gallery-frame { background: rgba(0,0,0,0.02); box-shadow: inset 0 0 40px rgba(0,0,0,0.02); border: 1px solid var(--border-lt); }
+    .gallery-icon { font-size: 1.5rem; margin-bottom: 16px; opacity: 0.8; }
+    .col-dark .gallery-icon { color: var(--gold); }
+    .col-light .gallery-icon { color: var(--navy-mid); }
+    .gallery-text { font-family: var(--sc); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: inherit; opacity: 0.7; }
+    .gallery-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 5; }
+
+    .col-body { font-family: var(--serif); font-size: clamp(1rem, 1.8vw, 1.15rem); font-weight: 400; line-height: 1.9; letter-spacing: 0.01em; margin: 0; }
+    
+    .col-formats { display: flex; flex-wrap: wrap; gap: 12px; }
+    .format-pill { font-family: var(--sans); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 10px 20px; border-radius: 30px; display: flex; align-items: center; gap: 8px; }
+    .col-dark .format-pill i { color: var(--gold); }
+    .col-light .format-pill i { color: var(--navy-mid); }
+    .col-light .format-pill { border: 1px solid var(--border-lt); color: var(--ink); background: var(--white); }
+    .col-dark .format-pill { border: 1px solid var(--border-dk); color: var(--white); background: rgba(255,255,255,0.05); }
+
+    .col-cta { display: inline-flex; align-items: center; gap: 12px; font-family: var(--sc); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; padding: 16px 32px; border-radius: 4px; align-self: flex-start; transition: all 0.3s ease; }
+    .col-cta:hover { transform: translateY(-3px); }
+    .cta-dark { background: var(--navy-deep); color: var(--white); border: 1px solid var(--navy-mid); }
+    .cta-dark:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.2); background: #000; }
+    .cta-gold { background: var(--gold-grad); color: var(--ink); }
+    .cta-gold:hover { box-shadow: 0 10px 25px rgba(220,174,61,0.25); }
+
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        AUTO-FADING CAROUSEL
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+    .carousel-container { width: 100%; height: 100%; min-height: 350px; position: relative; }
+    .carousel-slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out; }
+    .carousel-slide.active { opacity: 1; visibility: visible; z-index: 2; }
+
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        PROCESS SECTION
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+    .process { background: var(--navy-deep); padding: 80px 0; border-top: 1px solid var(--border-dk); }
+    .process-label { font-family: var(--sc); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold-hi); text-align: center; margin-bottom: 12px; }
+    .process-title { font-family: var(--header-main); font-size: clamp(2.5rem, 5vw, 3.5rem); color: var(--white); font-weight: 400; line-height: 1.1; text-align: center; margin-bottom: 50px; }
+    
+    .process-steps { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .p-step { background: var(--navy-mid); border: 1px solid var(--border-dk); border-radius: 14px; padding: 24px; display: flex; gap: 20px; align-items: flex-start; transition: border-color 0.25s; }
+    .p-step:hover { border-color: var(--gold-bdr); }
+    
+    .p-num { width: 40px; height: 40px; flex-shrink: 0; border-radius: 50%; background: var(--gold-lo); border: 1px solid var(--gold-bdr); display: flex; align-items: center; justify-content: center; font-family: var(--display); font-size: 1rem; font-weight: 400; color: var(--gold-hi); }
+    .p-label { font-family: var(--display); font-size: 1.1rem; font-weight: 400; color: var(--white); margin-bottom: 6px; letter-spacing: 0.1em; text-transform: uppercase; }
+    .p-desc { font-family: var(--serif); font-size: 0.95rem; font-weight: 400; color: var(--text-2); line-height: 1.65; margin: 0; }
+
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        FOOTER
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+    .site-footer { background: var(--navy-deep); border-top: 1px solid var(--border-dk); padding: 80px 24px 40px; }
+    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 60px; max-width: var(--max-w); margin: 0 auto; border-bottom: 1px solid var(--border-dk); padding-bottom: 60px; margin-bottom: 40px; }
+    
+    .footer-brand .f-logo { font-family: var(--display); font-size: 1.2rem; color: var(--white); letter-spacing: 0.15em; margin-bottom: 8px; display: block; }
+    .footer-brand .f-logo span { color: var(--gold); }
+    .footer-brand .f-tag { font-family: var(--sc); font-size: 0.65rem; color: var(--gold-hi); letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 24px; display: block; }
+    .footer-brand .f-desc { font-family: var(--serif); font-size: 0.95rem; color: var(--text-3); line-height: 1.8; max-width: 320px; font-style: italic; }
+
+    .footer-col-title { font-family: var(--sc); font-size: 0.75rem; font-weight: 600; color: var(--white); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 24px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { font-family: var(--sans); font-size: 0.85rem; color: var(--text-3); transition: color 0.2s ease; }
+    .footer-links a:hover { color: var(--gold-hi); }
+    
+    .footer-contact p { font-family: var(--sans); font-size: 0.85rem; color: var(--text-3); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+    .footer-contact i { color: var(--gold); font-size: 1rem; width: 20px; text-align: center; }
+
+    .footer-bottom { max-width: var(--max-w); margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; }
+    .footer-bottom p { font-family: var(--sans); font-size: 0.75rem; color: var(--text-3); }
+
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        RESPONSIVE DESKTOP (THE FIX FOR TALL CONTAINERS)
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+    @media (min-width: 640px) {
+        .process-steps { grid-template-columns: 1fr 1fr; gap: 16px; }
+    }
+    
+    @media (min-width: 1024px) {
+        .hero { min-height: 85svh; } 
         
-        .menu-toggle { display: none; font-size: 1.4rem; cursor: pointer; color: var(--studio-white); }
-
-        /* --- CONSTRAINED HERO SECTION --- */
-        .hero-wrapper { padding: 40px 20px 20px; } 
-        .main-hero { 
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(5, 5, 5, 0.9) 100%);
-            border-radius: 24px;
-            padding: 80px 40px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            position: relative;
-            overflow: hidden;
-        }
+        .nav-links { display: flex; }
         
-        .main-hero::before {
-            content: ''; position: absolute; top: -50%; left: -20%; width: 600px; height: 600px;
-            background: radial-gradient(circle, var(--mem-glow) 0%, transparent 70%);
-            border-radius: 50%; pointer-events: none;
-        }
-
-        .main-hero-content { position: relative; z-index: 2; }
-        .tech-badge {
-            display: inline-block; padding: 6px 12px; border-radius: 20px; background: rgba(212, 175, 55, 0.1); 
-            border: 1px solid rgba(212, 175, 55, 0.3); color: var(--mem-accent); font-size: 0.75rem; 
-            font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; font-family: 'Inter', sans-serif;
-        }
-        .main-hero h1 { font-size: clamp(2.5rem, 4vw, 4rem); margin-bottom: 20px; color: var(--mem-accent); font-style: italic; line-height: 1.1;}
-        .main-hero p { color: #CBD5E1; font-size: clamp(1rem, 1.5vw, 1.15rem); margin-bottom: 30px; font-weight: 300; line-height: 1.7;}
-
-        .hero-img-container {
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 30px var(--mem-glow);
-            border: 1px solid rgba(255,255,255,0.1);
-            animation: float 6s ease-in-out infinite;
-            position: relative;
-            z-index: 2;
-        }
-        .hero-img-container img { width: 100%; height: auto; display: block; filter: brightness(0.95); }
-
-        /* --- VIDEO SHOWCASE SECTION --- */
-        .video-showcase { padding: 80px 0; background: var(--true-black); border-top: 1px solid rgba(255,255,255,0.05); }
-        .video-container { max-width: 900px; margin: 0 auto; padding: 0 20px; text-align: center;}
-        .video-header { margin-bottom: 50px; }
-        .video-header h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 15px; font-style: italic; color: var(--studio-white); }
-        .video-header p { max-width: 600px; margin: 0 auto; color: #CBD5E1;}
-        .video-player { width: 100%; border-radius: 20px; border: 2px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 30px rgba(212, 175, 55, 0.05); overflow: hidden; background: #000;}
-        .video-player video { width: 100%; height: auto; display: block;}
-
-        /* --- BENTO BOX SHOWCASE SECTION --- */
-        .showcase-section { padding: 80px 0; border-top: 1px solid rgba(255,255,255,0.05); } 
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-size: clamp(2.2rem, 4vw, 3rem); margin-bottom: 15px; font-style: italic; color: var(--studio-white); }
-        .section-header p { max-width: 600px; margin: 0 auto; }
-        
-        .bento-grid { 
+        .collection { 
             display: grid; 
-            grid-template-columns: repeat(12, 1fr); 
-            gap: 40px; 
+            grid-template-columns: 1fr 1fr; 
+            grid-template-rows: auto auto;
+            grid-template-areas: 
+                "img text-top"
+                "img text-bottom";
+            align-content: center;
+            min-height: auto; /* Removes the massive full-screen scroll height */
+            padding: 80px 0;  /* Provides breathing room */
+        }
+        .collection.reverse {
+            grid-template-areas: 
+                "text-top img"
+                "text-bottom img";
         }
         
-        .bento-box {
-            background: rgba(15, 23, 42, 0.4);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-        .bento-box:hover {
-            transform: translateY(-5px);
-            border-color: rgba(212, 175, 55, 0.4);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4), 0 0 20px rgba(212, 175, 55, 0.05);
-        }
-
-        /* Half-width Service Cards (2x2 Grid) */
-        .bento-half { 
-            grid-column: span 6; 
-            display: flex; 
-            flex-direction: column; 
-            padding: 50px 40px;
-        }
-
-        .service-icon { font-size: 2.2rem; color: var(--mem-accent); margin-bottom: 25px; }
-        .category-tag { 
-            display: inline-block; background: rgba(212, 175, 55, 0.1); color: var(--mem-accent); 
-            padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; 
-            letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; font-family: 'Inter', sans-serif;
-            border: 1px solid rgba(212, 175, 55, 0.2); width: fit-content;
-        }
-        .bento-half h3 { font-size: 1.8rem; margin-bottom: 15px; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: -0.5px;}
-        .bento-half p { flex-grow: 1; margin-bottom: 30px; line-height: 1.7; color: #CBD5E1;}
+        /* THE FIX: Hard cap on image height so it doesn't take over your monitor */
+        .col-img { 
+            grid-area: img; 
+            padding: 20px 6%; 
+            height: 100%; 
+            min-height: 500px; /* Overrides the massive 70vw mobile rule */
+            max-height: 700px; /* Caps the height cleanly */
+        } 
         
-        /* Unified Elegant Button Style (No solid yelling filling) */
-        .action-link {
-            font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; 
-            display: inline-flex; align-items: center; gap: 8px; color: var(--mem-accent);
-            background: var(--true-black);
-            padding: 12px 24px; border: 2px solid var(--mem-accent); border-radius: 8px;
-            transition: 0.3s; width: fit-content;
-        }
-        .bento-box:hover .action-link, .action-link:hover { 
-            background: rgba(212, 175, 55, 0.1); /* Gentle glow instead of solid color */
-            box-shadow: 0 5px 15px var(--mem-glow);
-        }
-
-        /* --- CONSTRAINED CTA BANNER --- */
-        .cta-wrapper { padding: 40px 20px 120px; } 
-        .cta-box {
-            max-width: 900px; margin: 0 auto;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(5, 5, 5, 0.95) 100%);
-            padding: 80px 60px; border-radius: 24px; border: 1px solid var(--border-color);
-            display: flex; align-items: center; justify-content: space-between; gap: 40px;
-            position: relative; overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        .cta-box::before { content: ''; position: absolute; bottom: -50%; left: -20%; transform: translateY(-50%); width: 60%; height: 100%; background: radial-gradient(circle, var(--mem-glow) 0%, transparent 60%); pointer-events: none;}
+        .col-text-top { grid-area: text-top; align-self: end; padding: 60px 8% 0; }
+        .col-text-bottom { grid-area: text-bottom; align-self: start; padding: 24px 8% 60px; }
         
-        .cta-text { flex: 1; position: relative; z-index: 2;}
-        .cta-text h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 15px; font-weight: 500;}
-        .cta-text p { color: #94A3B8; font-size: 1.05rem; line-height: 1.7;}
+        .process { padding: 120px 0; }
+        .process-steps { grid-template-columns: repeat(3, 1fr); gap: 24px; }
         
-        .cta-action { position: relative; z-index: 2; flex-shrink: 0; text-align: center;}
-        
-        /* Match Book Consultation Style (No solid yelling filling) */
-        .cta-btn-gold { 
-            background: var(--true-black); color: var(--mem-accent); padding: 18px 40px; font-size: 1rem; font-weight: 700; font-family: 'Inter', sans-serif;
-            border-radius: 8px; display: inline-flex; justify-content: center; align-items: center; text-transform: uppercase; letter-spacing: 1px; 
-            border: 2px solid var(--mem-accent); transition: 0.3s; white-space: nowrap;
-        }
-        .cta-btn-gold:hover { 
-            background: rgba(212, 175, 55, 0.1); /* Gentle glow instead of solid color */
-            box-shadow: 0 10px 30px var(--mem-glow); 
-            transform: translateY(-3px);
-        }
-
-        /* --- REDEFINED FOOTER --- */
-        .main-footer { background: var(--true-black); color: #94A3B8; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 60px; }
-        .footer-brand h2 { color: var(--studio-white); font-size: 1.8rem; margin-bottom: 10px; font-family: 'Playfair Display', serif;}
-        .footer-col h4 { color: var(--studio-white); margin-bottom: 20px; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-family: 'Inter', sans-serif;}
-        .footer-col a { display: block; color: #94A3B8; margin-bottom: 12px; font-size: 0.9rem; transition: 0.3s; }
-        .footer-col a:hover { color: var(--mem-accent); transform: translateX(3px); }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; text-align: center; font-size: 0.8rem; letter-spacing: 1px; color: #64748B; }
-
-        /* --- MOBILE REFINEMENTS --- */
-        @media (max-width: 850px) {
-            .container { padding: 0 20px; }
-            .studio-tagline { display: none; } 
-            .menu-toggle { display: block; }
-            
-            .nav-links { 
-                position: fixed; top: var(--header-height); right: -100%; width: 100%; height: calc(100vh - var(--header-height)); 
-                background: rgba(5,5,5,0.98); backdrop-filter: blur(20px); flex-direction: column; padding: 40px 24px; gap: 20px; 
-                transition: 0.4s ease; align-items: flex-start; border-top: 1px solid var(--border-color); z-index: 3000; 
-            }
-            .nav-links.active { right: 0; }
-            .nav-links a { font-size: 1.1rem; width: 100%; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
-            .nav-btn { text-align: center; width: 100%; }
-            
-            /* Box Adjustments */
-            .hero-wrapper { padding: 24px 16px 16px; }
-            .main-hero { grid-template-columns: 1fr; text-align: center; padding: 60px 24px; border-radius: 20px;}
-            .tech-badge { margin: 0 auto 20px; }
-            .hero-img-container { max-width: 400px; margin: 0 auto; }
-            
-            .showcase-section { padding: 80px 0; }
-            .bento-grid { gap: 24px; }
-            .bento-half { grid-column: span 12; padding: 40px 24px; border-radius: 20px;}
-            
-            /* Sized Down Mobile Action Links */
-            .action-link { font-size: 0.75rem; padding: 10px 20px; }
-            
-            .cta-wrapper { padding: 40px 16px 80px; }
-            .cta-box { flex-direction: column; text-align: center; padding: 60px 24px; border-radius: 20px; gap: 30px;}
-            .cta-action { width: 100%; }
-            
-            /* Reduced CTA Button for Mobile */
-            .cta-btn-gold { 
-                width: auto; /* Removed width: 100% to stop it being massive */
-                padding: 14px 28px; 
-                font-size: 0.85rem; 
-            }
-        }
-
-        #back-to-top {
-            position: fixed; bottom: 20px; right: 20px; width: 45px; height: 45px;
-            background: var(--studio-white); color: var(--true-black); border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            z-index: 3000; opacity: 0; visibility: hidden; transition: 0.4s; box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        #back-to-top.visible { opacity: 1; visibility: visible; }
+        .site-footer { padding: 100px 24px 50px; }
+        .footer-grid { grid-template-columns: 2.5fr 1fr 1fr 1.8fr; gap: 50px; padding-bottom: 80px; margin-bottom: 50px; }
+        .footer-bottom { flex-direction: row; justify-content: space-between; text-align: left; }
+    }
     </style>
 </head>
-<body class="grid-bg">
+<body>
 
-    <header class="app-header">
-        <div class="container header-inner">
-            <a href="index.html" class="header-logo">
-                Docu-Hub<span style="color:var(--mem-accent)">.</span> 
-            </a>
-            <div class="studio-tagline">Operations Services</div>
-            <div class="menu-toggle" id="menu-btn"><i class="fa-solid fa-bars-staggered"></i></div>
-            <nav class="nav-links" id="nav-list">
-    <a href="index.html">Home</a>
-    <a href="hub.html">Smart Hubs</a>
-    <a href="memorials.html">Memorials</a>
-    <a href="concierge.html" style="color: var(--mem-accent);">Concierge</a>
-    <a href="contact.html" class="nav-btn">Contact Studio</a>
+<nav class="site-nav" id="sitenav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <span class="nav-logo-name">Laura Clarke Â· Docu<span>-</span>Hub</span>
+            <span class="nav-logo-tag">Keepsakes Â· Curation Â· Concierge</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#keepsakes">Bespoke Keepsakes</a></li>
+            <li><a href="#memorial">Memorial</a></li>
+            <li><a href="#concierge">Concierge Services</a></li>
+            <li><a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="nav-wa">WhatsApp Laura</a></li>
+        </ul>
+    </div>
 </nav>
-        </div>
-    </header>
 
-    <div class="hero-wrapper">
-        <section class="main-hero fade-up">
-            <div class="main-hero-content">
-                <div class="tech-badge"><i class="fa-solid fa-briefcase" style="margin-right: 6px;"></i> Executive Proxy</div>
-                <h1>Skip the line. <br>We handle the details.</h1>
-                <p>Your time is too valuable to spend waiting in government offices. Docu-Hub provides highly secure, fast-tracked digital proxy services for Jamaica's most essential online administrative tasks.</p>
-            </div>
-            <div class="hero-img-container">
-                <img src="assets/concierge.png" alt="Executive Concierge Portfolio">
-            </div>
-        </section>
-    </div>
-
-    <section class="video-showcase">
-        <div class="video-container fade-up">
-            <div class="video-header text-center">
-                <h2>Bypass the Digital Trap</h2>
-                <p>The transition to e-services means no more long lines, but navigating government portals like TAJ and CGDS requires precision data entry. Don't let confusing interfaces waste your time or lead to system lockouts.</p>
-            </div>
-            <div class="video-player">
-                <video id="conciergeVideo" poster="assets/video_poster.jpg" controls>
-                    <source src="http://googleusercontent.com/generated_video_content/18191941384907342135" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+<div class="page">
+    <section class="hero">
+        <div class="hero-inner">
+            <h1 class="hero-offering enter d1">Bespoke Keepsakes<br>& Concierge Services</h1>
+            <div class="hero-rule enter d2"></div>
+            <p class="hero-tagline enter d3">
+                Curation by Laura Clarke, crafted in Jamaica to carry what words cannot and manage what time will not.
+            </p>
+            <p class="hero-sub enter d4">Tactile Elegance Â· Digital Simplicity</p>
+            <div class="hero-ctas enter d4">
+                <a href="#keepsakes" class="btn-primary">Explore Legacy Services</a>
             </div>
         </div>
     </section>
 
-    <section class="showcase-section">
-        <div class="container">
-            <div class="section-header fade-up">
-                <h2>Express E-Services</h2>
-                <p>Fully digital processing. Zero time wasted in lines. Laura Clarke and our trained specialists handle the bureaucracy securely on your behalf.</p>
+    <div class="features-strip enter">
+        <div class="feature-item"><i class="fa-solid fa-layer-group"></i> Premium Materials</div>
+        <div class="feature-item"><i class="fa-solid fa-pen-nib"></i> Meticulous Curation</div>
+        <div class="feature-item"><i class="fa-solid fa-qrcode"></i> Digital Integration</div>
+        <div class="feature-item"><i class="fa-solid fa-shield-check"></i> Zero-Friction Logistics</div>
+    </div>
+
+    <section class="collection bg-paper col-light" id="keepsakes">
+        <div class="col-text-top enter">
+            <p class="col-collection-label">Collection One</p>
+            <h2 class="col-title">Bespoke<br>Keepsakes</h2>
+            <p class="col-subtitle">Milestones Â· Memoirs Â· Cultural Expression</p>
+        </div>
+        
+        <div class="col-img enter d1">
+            <div class="carousel-container" id="keepsake-carousel">
+                <div class="carousel-slide active">
+                    <div class="gallery-frame">
+                        <i class="fa-solid fa-envelope-open-text gallery-icon"></i>
+                       <img src="assets/keepsakes.jpg" alt="Premium Milestone Invitation Suite on Dark Marble with Gold Foil Accents, as described.">
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="gallery-frame">
+                        <i class="fa-solid fa-qrcode gallery-icon"></i>
+                        <img src="assets/memoir2.pdf" alt="Detailed Close-Up of Gold Foil QR Code on Dark Navy Card that scans to unlock private digital memory gallery, as generated.">
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="gallery-frame">
+                        <i class="fa-solid fa-language gallery-icon"></i>
+                        <img src="assets/patois1.png" alt="Detailed Close-Up of Luxury Jamaican Patois Greeting Card featuring Metallic Gold Foil Text 'Big Op Yuself', as described.">
+                    </div>
+                </div>
             </div>
+        </div>
+        
+        <div class="col-text-bottom enter d2">
+            <div class="col-rule"></div>
+            <p class="col-body">
+                We merge traditional elegance with modern memory curation. From heavyweight, gold-foiled wedding invites to our signature photo cards featuring scan codes that unlock private digital galleries, these pieces create a tactile legacy. Includes our premium line celebrating authentic Jamaican Patois, carrying the islandâ€™s warmth.
+            </p>
+            <div class="col-formats">
+                <span class="format-pill"><i class="fa-solid fa-star"></i> Foil Milestone Suites</span>
+                <span class="format-pill"><i class="fa-solid fa-camera-retro"></i> Digital Portal Cards</span>
+                <span class="format-pill"><i class="fa-solid fa-language"></i> Authentic Patois Line</span>
+            </div>
+            <a href="https://wa.me/18765612614" class="col-cta cta-dark">Commission Keepsakes</a>
+        </div>
+    </section>
 
-            <div class="bento-grid">
-                
-                <div class="bento-box bento-half fade-up delay-1">
-                    <i class="fa-solid fa-car service-icon"></i>
-                    <div><span class="category-tag">TAJ E-Service (eMVRC)</span></div>
-                    <h3>Motor Vehicle Renewal</h3>
-                    <p>Jamaica has officially shifted to the digital eMVRC. Skip the Tax Office entirely. We manage the database syncing between IVIS (ensuring chassis numbers match exactly), eFitness, and TAJ, delivering your legally binding digital license directly to your phone.</p>
-                    <a href="https://wa.me/18765612614?text=Hi Laura, I need help with my car license renewal (eMVRC)." class="action-link" target="_blank">Start Renewal <i class="fa-solid fa-arrow-right"></i></a>
+    <section class="collection col-dark reverse" id="memorial">
+        <div class="col-text-top enter">
+            <p class="col-collection-label">Collection Two</p>
+            <h2 class="col-title">Memorial<br>Keepsakes</h2>
+            <p class="col-subtitle">Tribute Booklets Â· Service Programmes</p>
+        </div>
+        
+        <div class="col-img enter d1">
+            <div class="gallery-frame" style="padding: 0; border: none;">
+                <img src="assets/memorial.png" alt="Premium Gold Foil Memorial Booklet on Dark Marble - Dignified Tribute, as described.">
+            </div>
+        </div>
+        
+        <div class="col-text-bottom enter d2">
+            <div class="col-rule"></div>
+            <p class="col-body">
+                A life well-lived deserves to be remembered with dignity. With years of experience managing sensitive logistics, Laura handles the curation, design, and premium printing of memorial booklets and tribute cards with the utmost discretion and care.
+            </p>
+            <div class="col-formats">
+                <span class="format-pill"><i class="fa-solid fa-book-open"></i> 12-Page Booklets</span>
+                <span class="format-pill"><i class="fa-solid fa-dove"></i> Tribute Cards</span>
+                <span class="format-pill"><i class="fa-solid fa-qrcode"></i> Digital Tributary Portals</span>
+            </div>
+            <a href="https://wa.me/18765612614" class="col-cta cta-gold">Request Memorial Service</a>
+        </div>
+    </section>
+
+    <section class="collection bg-paper col-light" id="concierge">
+        <div class="col-text-top enter">
+            <p class="col-collection-label">Collection Three</p>
+            <h2 class="col-title">Concierge<br>Services</h2>
+            <p class="col-subtitle">Zero-Friction Logistics Â· Digital Trap Management</p>
+        </div>
+        
+        <div class="col-img enter d1">
+            <div class="gallery-frame" style="padding: 0; border: none;">
+                <i class="fa-solid fa-shield-check gallery-icon" style="position: absolute; color: var(--gold); font-size: 5rem; z-index: 1;"></i>
+                <img src="assets/concierge_placeholder.jpg" alt="High-end Concierge Aesthetic - Seamless Digital Curation and Vehicle Renewal, as described.">
+            </div>
+        </div>
+        
+        <div class="col-text-bottom enter d2">
+            <div class="col-rule"></div>
+            <p class="col-body">
+                Skip the digital trap. We provide specialized concierge logistics to navigate complex state bureaucracies and digital systems. From seamless Jamaican Motor Vehicle (eMVRC) renewalsâ€”managing critical data syncs between ITA, IVIS, and TAJ databasesâ€”to comprehensive document curation, we shield you from operational friction.
+            </p>
+            <div class="col-formats">
+                <span class="format-pill"><i class="fa-solid fa-car"></i> Zero-Friction Vehicle Renewal</span>
+                <span class="format-pill"><i class="fa-solid fa-file-contract"></i> Strict compliance verification (Chassis/LA Numbers)</span>
+                <span class="format-pill"><i class="fa-solid fa-passport"></i> Operational Logistics</span>
+            </div>
+            <a href="https://wa.me/18765612614" class="col-cta cta-dark">Engage Docu-Hub Services</a>
+        </div>
+    </section>
+
+    <section class="process">
+        <div class="outer">
+            <p class="process-label enter">How it works</p>
+            <h2 class="process-title enter">Curation & Commissioning</h2>
+            <div class="process-steps">
+                <div class="p-step enter d1">
+                    <div class="p-num">I</div>
+                    <div>
+                        <p class="p-label">Consultation</p>
+                        <p class="p-desc">Reach out directly via WhatsApp to discuss your keepsake vision or concierge logistics needs. We will review your requirements, timeline, and data.</p>
+                    </div>
                 </div>
-
-                <div class="bento-box bento-half fade-up delay-2">
-                    <i class="fa-solid fa-house-chimney service-icon"></i>
-                    <div><span class="category-tag">TAJ E-Service</span></div>
-                    <h3>Property Tax Payments</h3>
-                    <p>Avoid the April rush. Simply send us your property valuation number, and we will securely process your annual property tax payments online, providing you with an instant digital receipt.</p>
-                    <a href="https://wa.me/18765612614?text=Hi,%20I%20need%20help%20paying%20my%20Property%20Tax." class="action-link" target="_blank">Process Payment <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="p-step enter d2">
+                    <div class="p-num">II</div>
+                    <div>
+                        <p class="p-label">Curation & Execution</p>
+                        <p class="p-desc">For keepsakes, we meticulously design bespoke layouts. For concierge services, we securely manage your data and navigate system compliance.</p>
+                    </div>
                 </div>
-
-                <div class="bento-box bento-half fade-up delay-1">
-                    <i class="fa-solid fa-file-invoice service-icon"></i>
-                    <div><span class="category-tag">TAJ E-Service</span></div>
-                    <h3>Traffic Ticket Clearance</h3>
-                    <p>Don't let unpaid traffic tickets complicate your record. We handle the secure online clearance of your traffic tickets directly through the TAJ portal, protecting your time.</p>
-                    <a href="https://wa.me/18765612614?text=Hi,%20I%20need%20to%20clear%20a%20traffic%20ticket." class="action-link" target="_blank">Clear Tickets <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="p-step enter d3">
+                    <div class="p-num">III</div>
+                    <div>
+                        <p class="p-label">Bespoke Delivery</p>
+                        <p class="p-desc">Approved physical keepsakes are printed on premium materials and secured for collection. Digital concierge results (eMVRC, etc.) are delivered instantly via secure channel.</p>
+                    </div>
                 </div>
-
-                <div class="bento-box bento-half fade-up delay-2">
-                    <i class="fa-solid fa-passport service-icon"></i>
-                    <div><span class="category-tag">PICA E-Service</span></div>
-                    <h3>Online Passport Renewal</h3>
-                    <p>Need your adult Jamaican passport renewed? We securely upload your digital photographs, input your data, and process the application via the PICA online portal for the fastest possible turnaround.</p>
-                    <a href="https://wa.me/18765612614?text=Hi,%20I%20need%20to%20renew%20my%20passport%20online." class="action-link" target="_blank">Renew Passport <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <div class="cta-wrapper">
-        <section class="cta-box fade-up">
-            <div class="cta-text">
-                <h2>Complex Application? Let's talk.</h2>
-                <p>Do you need help with a first-time passport application, a deed poll, a TRN application, or other multi-step legal documentation? These require a custom approach. Book a consultation to see if your project qualifies for our Bespoke Concierge Desk.</p>
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="f-logo">Laura Clarke Â· Docu<span>-</span>Hub</a>
+                <span class="f-tag">Curation Â· Keepsakes Â· Concierge</span>
+                <p class="f-desc">Curation by Laura Clarke, bridging tactile elegance with digital simplicity. Docu-Hub Operations Services.</p>
             </div>
-            <div class="cta-action">
-                <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" class="cta-btn-gold" target="_blank">Book Consultation</a>
+            <div>
+                <h4 class="footer-col-title">Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#keepsakes">Bespoke Keepsakes</a></li>
+                    <li><a href="#keepsakes">Memoir Curation</a></li>
+                    <li><a href="#memorial">Memorial Services</a></li>
+                    <li><a href="#concierge">Zero-Friction Concierge</a></li>
+                </ul>
             </div>
-        </section>
-    </div>
-
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h2>Docu-Hub.</h2>
-                    <p>Operations Services<br>Curation by Laura Clarke<br>Linstead, St. Catherine.</p>
+            <div>
+                <h4 class="footer-col-title">Docu-Hub Studio</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Laura</a></li>
+                    <li><a href="#">Materials & Print</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4 class="footer-col-title">Direct Inquiries</h4>
+                <p><i class="fa-brands fa-whatsapp"></i> +1 (876) 561-2614</p>
+                <p><i class="fa-solid fa-location-dot"></i> Linstead, St. Catherine, Jamaica</p>
                 </div>
-                <div class="footer-col">
-                    <h4>Solutions</h4>
-                    <a href="hub.html">Smart Business Hubs</a>
-                    <a href="memorials.html">Memorial Tributes</a>
-                    <a href="concierge.html" style="color: var(--mem-accent);">Concierge Desk</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <a href="https://wa.me/18765612614" target="_blank">WhatsApp Laura</a>
-                    <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" target="_blank">Book Consultation</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                &copy; 2026 Docu-Hub Operations Services. Moving Forward. Digital Legacy & Concierge Logistics by Laura Clarke.
-            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Laura Clarke Â· Docu-Hub Operations Services. All Rights Reserved.</p>
+            <p>Designed for Bespoke Print & Digital Experiences.</p>
         </div>
     </footer>
 
-    <a href="#" id="back-to-top">
-        <i class="fa-solid fa-chevron-up"></i>
-    </a>
+</div>
 
-   <script>
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById('menu-btn');
-        const navList = document.getElementById('nav-list');
-        const navLinks = navList.querySelectorAll('a');
-        
-        function toggleMenu() {
-            navList.classList.toggle('active');
-            const icon = menuBtn.querySelector('i');
-            icon.classList.toggle('fa-bars-staggered');
-            icon.classList.toggle('fa-xmark');
-            document.body.style.overflow = navList.classList.contains('active') ? 'hidden' : 'auto';
-        }
-        menuBtn.addEventListener('click', toggleMenu);
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if(navList.classList.contains('active')) {
-                    toggleMenu();
-                }
-            });
+<script>
+    /* intersection Observer for animations */
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
         });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.enter').forEach(el => io.observe(el));
 
-        // Back to Top Button
-        const btt = document.getElementById('back-to-top');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) { btt.classList.add('visible'); }
-            else { btt.classList.remove('visible'); }
-        });
-        btt.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+    /* Carousel Logic (Keepsakes section) */
+    const slides = document.querySelectorAll('#keepsake-carousel .carousel-slide');
+    let currentSlide = 0;
 
-        // Scroll Animation Observer (Fade Up effect)
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // Only animate once
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-up').forEach(element => {
-            observer.observe(element);
-        });
-   </script>
+    if (slides.length > 0) {
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 4500); // 4.5 seconds per slide for dignified transition
+    }
+</script>
 </body>
 </html>
