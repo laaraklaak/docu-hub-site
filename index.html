@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laura Clarke · Docu-Hub Jamaica — Bespoke Keepsakes & Concierge</title>
-    <meta name="description" content="Premium Jamaican keepsake stationery, digital memory curation, and concierge logistics by Laura Clarke, Linstead, St. Catherine, Jamaica.">
+    <meta name="description" content="Premium Jamaican keepsake stationery, memorial curation, and secure concierge logistics. Bespoke services by Laura Clarke in Linstead, St. Catherine.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=Jost:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -169,13 +169,7 @@
     /* Background image layer */
     .hero-bg {
         position: absolute; inset: 0; z-index: 0;
-        background:
-            linear-gradient(to right,
-                rgba(250,247,242,1) 0%,
-                rgba(250,247,242,0.96) 38%,
-                rgba(250,247,242,0.55) 58%,
-                rgba(250,247,242,0.0) 100%),
-            linear-gradient(145deg, var(--sage-lt) 0%, var(--gold-pale) 50%, var(--sage-deep) 100%);
+        background: rgba(61, 49, 34, 0.15); /* Soft overlay to let the image show naturally */
     }
     /* When a real image exists it sits behind the gradient */
     .hero-bg img {
@@ -187,12 +181,20 @@
 
     .hero-content {
         position: relative; z-index: 2;
-        width: 100%;
-        padding: calc(var(--nav-h) + 64px) 7% 80px;
+        width: 90%;
+        padding: 48px 32px;
         display: flex; flex-direction: column;
         align-items: flex-start;
-        max-width: 520px;   /* constrains text width, not the block */
-        margin-left: 0;     /* pin to left edge */
+        max-width: 520px;
+        margin-left: 5%;
+        margin-top: calc(var(--nav-h) + 24px);
+        margin-bottom: 32px;
+        background: rgba(250, 247, 242, 0.82); /* Frosted glass effect */
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        box-shadow: 0 16px 40px rgba(28, 18, 8, 0.08);
     }
 
     .hero-location {
@@ -553,6 +555,9 @@
         border-radius: 12px;
         border: 1px solid rgba(196,154,60,0.18);
     }
+    .about-stats .stat:last-child {
+        grid-column: 1 / -1;
+    }
     .stat-num {
         font-family: var(--serif-display);
         font-size: 2.2rem; color: var(--gold);
@@ -686,8 +691,11 @@
         .nav-links { display: flex; }
 
         .hero-content {
-            padding: calc(var(--nav-h) + 80px) 0 100px max(7%, calc((100vw - var(--max-w))/2 + 28px));
+            padding: 56px 48px;
             max-width: 580px;
+            margin-left: max(7%, calc((100vw - var(--max-w))/2 + 28px));
+            margin-top: 0;
+            margin-bottom: 0;
         }
 
         .service-block {
@@ -722,8 +730,7 @@
             <span class="nav-logo-sub">Keepsakes · Curation · Concierge</span>
         </a>
         <ul class="nav-links">
-            <li><a href="#keepsakes">Keepsakes</a></li>
-            <li><a href="#memorial">Memorial</a></li>
+            <li><a href="#keepsakes">Keepsakes &amp; Memorial</a></li>
             <li><a href="#concierge">Concierge</a></li>
             <li>
                 <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="nav-wa">
@@ -738,8 +745,7 @@
 </nav>
 
 <div class="nav-drawer" id="drawer">
-    <a href="#keepsakes" onclick="closeNav()"><i class="fa-solid fa-gem"></i>Keepsakes</a>
-    <a href="#memorial"  onclick="closeNav()"><i class="fa-solid fa-dove"></i>Memorial</a>
+    <a href="#keepsakes" onclick="closeNav()"><i class="fa-solid fa-gem"></i>Keepsakes &amp; Memorial</a>
     <a href="#concierge" onclick="closeNav()"><i class="fa-solid fa-shield-check"></i>Concierge</a>
     <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="drawer-wa" onclick="closeNav()">
         <i class="fa-brands fa-whatsapp"></i>WhatsApp Laura
@@ -760,7 +766,7 @@
             Bespoke<br><em>Keepsakes</em><br>&amp; Concierge
         </h1>
         <p class="hero-sub enter d3">
-            Curation by Laura Clarke — crafted in Jamaica to carry what words cannot.
+            Curation by Laura Clarke — bridging tactile elegance with seamless logistics, crafted in Jamaica.
         </p>
         <div class="hero-ctas enter d4">
             <a href="#keepsakes" class="btn-sage">
@@ -777,16 +783,16 @@
 <div class="strip">
     <div class="strip-inner" aria-hidden="true">
         <!-- duplicated for seamless loop -->
-        <span class="strip-item"><span class="strip-dot"></span> Premium Print Materials</span>
+        <span class="strip-item"><span class="strip-dot"></span> Heirloom Stationery</span>
         <span class="strip-item"><span class="strip-dot"></span> Meticulous Curation</span>
         <span class="strip-item"><span class="strip-dot"></span> Digital Memory Portals</span>
-        <span class="strip-item"><span class="strip-dot"></span> Zero-Friction Logistics</span>
+        <span class="strip-item"><span class="strip-dot"></span> Secure Document Logistics</span>
         <span class="strip-item"><span class="strip-dot"></span> Authentic Jamaican Design</span>
         <span class="strip-item"><span class="strip-dot"></span> eMVRC Vehicle Renewal</span>
-        <span class="strip-item"><span class="strip-dot"></span> Premium Print Materials</span>
+        <span class="strip-item"><span class="strip-dot"></span> Heirloom Stationery</span>
         <span class="strip-item"><span class="strip-dot"></span> Meticulous Curation</span>
         <span class="strip-item"><span class="strip-dot"></span> Digital Memory Portals</span>
-        <span class="strip-item"><span class="strip-dot"></span> Zero-Friction Logistics</span>
+        <span class="strip-item"><span class="strip-dot"></span> Secure Document Logistics</span>
         <span class="strip-item"><span class="strip-dot"></span> Authentic Jamaican Design</span>
         <span class="strip-item"><span class="strip-dot"></span> eMVRC Vehicle Renewal</span>
     </div>
@@ -795,70 +801,44 @@
 <!-- SERVICES -->
 <div class="services" id="keepsakes">
 
-    <!-- Service 1: Bespoke Keepsakes -->
+    <!-- Service 1: Keepsakes & Memorial -->
     <div class="service-block" style="padding-top: 96px;">
         <div class="service-text enter">
             <div class="service-num">01</div>
-            <p class="section-eyebrow">Collection One</p>
-            <h2 class="section-title" style="margin-bottom: 16px;">Bespoke<br><em>Keepsakes</em></h2>
+            <p class="section-eyebrow">Service One</p>
+            <h2 class="section-title" style="margin-bottom: 16px;">Keepsakes &amp;<br><em>Memorial</em></h2>
             <p class="section-body">
-                We merge traditional elegance with modern memory curation. From heavyweight gold-foiled milestone suites to signature photo cards that unlock private digital galleries — these pieces create a tactile legacy. Includes our premium line celebrating authentic Jamaican Patois.
+                Transforming life's most significant moments into tangible legacies. From heavyweight, gold-foiled milestone invitations to sensitively designed memorial booklets, we craft heirloom-quality pieces. Every item merges traditional elegance with modern memory curation, printed meticulously to stand the test of time.
             </p>
             <div class="pills">
                 <span class="pill"><i class="fa-solid fa-star"></i> Foil Milestone Suites</span>
                 <span class="pill"><i class="fa-solid fa-camera-retro"></i> Digital Portal Cards</span>
                 <span class="pill"><i class="fa-solid fa-language"></i> Authentic Patois Line</span>
+                <span class="pill"><i class="fa-solid fa-book-open"></i> Memorial Booklets</span>
+                <span class="pill"><i class="fa-solid fa-dove"></i> Tribute Collections</span>
             </div>
-            <a href="https://wa.me/18765612614?text=Hello%20Laura%2C%20I%27d%20like%20to%20enquire%20about%20Bespoke%20Keepsakes."
+            <a href="https://wa.me/18765612614?text=Hello%20Laura%2C%20I%27d%20like%20to%20enquire%20about%20Keepsakes%20and%20Memorial%20Services."
                target="_blank" rel="noopener" class="btn-service btn-sage-solid">
-                Commission Keepsakes <i class="fa-solid fa-arrow-right"></i>
+                Commission a Keepsake <i class="fa-solid fa-arrow-right"></i>
             </a>
         </div>
         <div class="service-img-wrap enter d2">
             <div class="service-placeholder sp-1">
-                <i class="fa-solid fa-envelope-open-text"></i>
-                <span>Milestone Keepsakes</span>
+                <i class="fa-solid fa-gem"></i>
+                <span>Keepsakes &amp; Memorial</span>
             </div>
-            <img src="assets/wedding.png" alt="Bespoke Keepsakes" onerror="this.style.display='none'">
+            <img src="assets/wedding.png" alt="Keepsakes & Memorial" onerror="this.style.display='none'">
         </div>
     </div>
 
-    <!-- Service 2: Memorial -->
-    <div class="service-block reverse" id="memorial">
+    <!-- Service 2: Concierge -->
+    <div class="service-block reverse" id="concierge">
         <div class="service-text enter">
             <div class="service-num">02</div>
-            <p class="section-eyebrow">Collection Two</p>
-            <h2 class="section-title" style="margin-bottom: 16px;">Memorial<br><em>Keepsakes</em></h2>
+            <p class="section-eyebrow">Service Two</p>
+            <h2 class="section-title" style="margin-bottom: 16px;">Concierge<br><em>Logistics</em></h2>
             <p class="section-body">
-                A life well-lived deserves to be remembered with dignity. With years of experience managing sensitive logistics, Laura handles the curation, design, and premium printing of memorial booklets and tribute cards with the utmost discretion and care.
-            </p>
-            <div class="pills">
-                <span class="pill"><i class="fa-solid fa-book-open"></i> 12-Page Booklets</span>
-                <span class="pill"><i class="fa-solid fa-dove"></i> Tribute Cards</span>
-                <span class="pill"><i class="fa-solid fa-qrcode"></i> Digital Tribute Portals</span>
-            </div>
-            <a href="https://wa.me/18765612614?text=Hello%20Laura%2C%20I%27d%20like%20to%20enquire%20about%20Memorial%20Services."
-               target="_blank" rel="noopener" class="btn-service btn-gold-solid">
-                Request Memorial Service <i class="fa-solid fa-arrow-right"></i>
-            </a>
-        </div>
-        <div class="service-img-wrap enter d2">
-            <div class="service-placeholder sp-2">
-                <i class="fa-solid fa-dove"></i>
-                <span>Memorial Keepsakes</span>
-            </div>
-            <img src="assets/memorial.png" alt="Memorial Keepsakes" onerror="this.style.display='none'">
-        </div>
-    </div>
-
-    <!-- Service 3: Concierge -->
-    <div class="service-block" id="concierge">
-        <div class="service-text enter">
-            <div class="service-num">03</div>
-            <p class="section-eyebrow">Collection Three</p>
-            <h2 class="section-title" style="margin-bottom: 16px;">Concierge<br><em>Services</em></h2>
-            <p class="section-body">
-                Skip the digital frustration. We provide specialised concierge logistics to navigate complex bureaucracies and digital systems — from seamless Motor Vehicle (eMVRC) renewals to comprehensive document curation. We manage the process so you don't have to.
+                Bypass the bureaucratic friction. We offer specialized concierge logistics to seamlessly navigate complex local systems on your behalf. Whether it's expedited Motor Vehicle (eMVRC) renewals or comprehensive document compliance, we manage the intricacies securely and confidentially—so you don't have to.
             </p>
             <div class="pills">
                 <span class="pill"><i class="fa-solid fa-car"></i> Vehicle Renewal (eMVRC)</span>
@@ -873,7 +853,7 @@
         <div class="service-img-wrap enter d2">
             <div class="service-placeholder sp-3">
                 <i class="fa-solid fa-shield-check"></i>
-                <span>Concierge Services</span>
+                <span>Concierge Logistics</span>
             </div>
             <img src="assets/taj.png" alt="Concierge Services" onerror="this.style.display='none'">
         </div>
@@ -891,18 +871,18 @@
         <div class="process-steps">
             <div class="p-step enter d1" data-step="I">
                 <div class="p-num">Step I</div>
-                <p class="p-label">Consultation</p>
-                <p class="p-desc">Reach out via WhatsApp to discuss your keepsake vision or logistics needs. We review your requirements, timeline, and details together.</p>
+                <p class="p-label">Discovery &amp; Consultation</p>
+                <p class="p-desc">Connect directly via WhatsApp to outline your creative vision for keepsakes or detail your logistical requirements. We define the scope, timeline, and exact deliverables together.</p>
             </div>
             <div class="p-step enter d2" data-step="II">
                 <div class="p-num">Step II</div>
-                <p class="p-label">Curation &amp; Execution</p>
-                <p class="p-desc">For keepsakes, we design bespoke layouts and obtain your approval. For concierge services, we securely navigate compliance and systems on your behalf.</p>
+                <p class="p-label">Design &amp; Navigation</p>
+                <p class="p-desc">For keepsakes, we craft tailored design proofs for your review. For concierge services, we securely and swiftly interface with the necessary agencies to expedite your request.</p>
             </div>
             <div class="p-step enter d3" data-step="III">
                 <div class="p-num">Step III</div>
-                <p class="p-label">Bespoke Delivery</p>
-                <p class="p-desc">Physical keepsakes are printed on premium materials and prepared for collection in Linstead. Digital results are delivered securely and promptly.</p>
+                <p class="p-label">Secure Delivery</p>
+                <p class="p-desc">Premium physical keepsakes are beautifully packaged for collection in Linstead. Digital portals and finalized official documents are delivered to your hands with complete discretion.</p>
             </div>
         </div>
     </div>
@@ -914,10 +894,10 @@
         <div class="about-text enter">
             <p class="section-eyebrow">About Laura</p>
             <blockquote class="about-quote">
-                "Every milestone deserves to be held — not just remembered."
+                "Every milestone deserves to be held, and every process deserves peace of mind."
             </blockquote>
             <p class="section-body" style="margin-bottom: 28px;">
-                Based in Linstead, St. Catherine, Laura Clarke brings years of experience in premium stationery curation, digital memory design, and bureaucratic navigation — bridging the warmth of Jamaica's culture with the precision of bespoke craft.
+                Based in Linstead, St. Catherine, Laura Clarke provides a sanctuary of elegant design and airtight organization. By combining deep logistical expertise with a passion for premium stationery, she ensures that both your most treasured memories and your most pressing document needs are handled with flawless precision and warmth.
             </p>
             <div class="about-sig">
                 Laura Clarke
@@ -925,10 +905,6 @@
             </div>
         </div>
         <div class="about-stats enter d2">
-            <div class="stat">
-                <div class="stat-num">3</div>
-                <div class="stat-label">Core Service Collections</div>
-            </div>
             <div class="stat">
                 <div class="stat-num">JM</div>
                 <div class="stat-label">Proudly Jamaican</div>
@@ -938,8 +914,8 @@
                 <div class="stat-label">Memories Preserved</div>
             </div>
             <div class="stat">
-                <div class="stat-num">24h</div>
-                <div class="stat-label">WhatsApp Response</div>
+                <div class="stat-num">✓</div>
+                <div class="stat-label">Frictionless Logistics</div>
             </div>
         </div>
     </div>
@@ -949,7 +925,7 @@
 <section class="cta-band">
     <p class="cta-band-eyebrow enter">Ready to begin?</p>
     <h2 class="cta-band-title enter d1">Let's create something<br><em>worth keeping</em></h2>
-    <p class="cta-band-body enter d2">One WhatsApp message is all it takes to start. Laura responds personally, always.</p>
+    <p class="cta-band-body enter d2">One WhatsApp message is all it takes to start. Reach out today to begin discussing your bespoke requirements.</p>
     <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-white enter d3">
         <i class="fa-brands fa-whatsapp"></i> WhatsApp Laura Now
     </a>
@@ -966,8 +942,7 @@
         <div>
             <h4 class="footer-col-title">Services</h4>
             <ul class="footer-links">
-                <li><a href="#keepsakes">Bespoke Keepsakes</a></li>
-                <li><a href="#memorial">Memorial Services</a></li>
+                <li><a href="#keepsakes">Keepsakes &amp; Memorial</a></li>
                 <li><a href="#concierge">Concierge Logistics</a></li>
             </ul>
         </div>
