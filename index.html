@@ -19,14 +19,14 @@
         --ivory:      #FFFDF9;
         --sage:       #6D9067;
         --sage-lt:    #B8CEB3;
-        --sage-deep:  #3A6235;   /* richer, deeper green */
-        --gold:       #B8880A;   /* stronger amber-gold */
+        --sage-deep:  #3A6235;   
+        --gold:       #B8880A;   
         --gold-lt:    #DFB040;
         --gold-pale:  #F5EDCF;
-        --warm-dark:  #1C1208;   /* near-black warm ink */
-        --warm-mid:   #3D3122;   /* stronger body text */
+        --warm-dark:  #1C1208;   
+        --warm-mid:   #3D3122;   
         --warm-soft:  #7A6A56;
-        --ink:        #100D06;   /* true rich ink */
+        --ink:        #100D06;   
 
         --serif-display: 'DM Serif Display', Georgia, serif;
         --serif-body:    'Cormorant Garamond', Georgia, serif;
@@ -155,46 +155,91 @@
     }
 
     /* ═══════════════════════════
-       HERO — Full-bleed image
+       TOP SHOWCASE (The Feature Gallery)
     ═══════════════════════════ */
-    .hero {
+    .top-showcase {
+        background: var(--warm-dark);
+        padding: calc(var(--nav-h) + 40px) 28px 48px; /* Tighter vertical padding */
         position: relative;
-        min-height: 92svh;
-        display: flex;
-        align-items: center;
+    }
+    .top-showcase-header { 
+        text-align: center; margin-bottom: 32px; 
+    }
+    .top-showcase-header .section-eyebrow {
+        color: var(--gold-lt); justify-content: center;
+        font-family: var(--sans); font-size: 0.62rem; font-weight: 400;
+        letter-spacing: 0.32em; text-transform: uppercase;
+        display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+    }
+    .top-showcase-header .section-eyebrow::after,
+    .top-showcase-header .section-eyebrow::before {
+        content: ''; display: block; width: 32px; height: 1px; background: var(--gold-lt); opacity: 0.5;
+    }
+    .top-showcase-header .section-title {
+        color: #fff;
+        font-family: var(--serif-display); font-size: clamp(2rem, 5vw, 3.4rem);
+        font-weight: 400; line-height: 1.1;
+    }
+    .top-showcase-header .section-title em { color: var(--gold-lt); font-style: italic; }
+    
+    .slideshow-container {
+        max-width: 720px; /* Reduced width for a more compact, breathable layout */
+        position: relative;
+        margin: auto;
+        border-radius: 6px;
         overflow: hidden;
-        background: var(--cream-deep);
+        box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+        background: var(--cream);
+    }
+    
+    .mySlides { display: none; position: relative; }
+    .mySlides img { 
+        width: 100%; height: 400px; /* Reduced height to see more of the page below */
+        object-fit: cover; display: block; 
+    }
+    
+    .prev, .next {
+        cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%);
+        width: auto; padding: 12px 16px; color: white; font-weight: bold; font-size: 20px;
+        transition: 0.3s ease; background-color: rgba(28, 18, 8, 0.4); border-radius: 0 4px 4px 0;
+        user-select: none; z-index: 10;
+    }
+    .next { right: 0; border-radius: 4px 0 0 4px; }
+    .prev { left: 0; }
+    .prev:hover, .next:hover { background-color: rgba(28, 18, 8, 0.85); }
+    
+    .slide-caption {
+        position: absolute; bottom: 0; left: 0; width: 100%;
+        padding: 24px 24px 16px; text-align: left; box-sizing: border-box;
+        background: linear-gradient(to top, rgba(28, 18, 8, 0.95), transparent);
+    }
+    .slide-caption h3 {
+        font-family: var(--serif-display); font-size: 1.6rem; color: #fff; margin-bottom: 5px; font-weight: 400;
+    }
+    .slide-caption p {
+        font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-lt);
     }
 
-    /* Background image layer */
-    .hero-bg {
-        position: absolute; inset: 0; z-index: 0;
-        background: rgba(61, 49, 34, 0.15); /* Soft overlay to let the image show naturally */
+    .dot-container { text-align: center; margin-top: 20px; display: flex; justify-content: center; gap: 8px; }
+    .dot {
+        cursor: pointer; height: 8px; width: 8px; background-color: rgba(255,255,255,0.2);
+        border-radius: 50%; display: inline-block; transition: background-color 0.3s, transform 0.3s;
     }
-    /* When a real image exists it sits behind the gradient */
-    .hero-bg img {
-        position: absolute; inset: 0;
-        width: 100%; height: 100%;
-        object-fit: cover; object-position: center right;
-        z-index: -1;
-    }
+    .active-dot, .dot:hover { background-color: var(--gold-lt); transform: scale(1.3); }
+    
+    .fade { animation: fadeEffect 1.2s; }
+    @keyframes fadeEffect { from {opacity: 0.4} to {opacity: 1} }
 
-    .hero-content {
-        position: relative; z-index: 2;
-        width: 90%;
-        padding: 48px 32px;
-        display: flex; flex-direction: column;
-        align-items: flex-start;
-        max-width: 520px;
-        margin-left: 5%;
-        margin-top: calc(var(--nav-h) + 24px);
-        margin-bottom: 32px;
-        background: rgba(250, 247, 242, 0.82); /* Frosted glass effect */
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.7);
-        box-shadow: 0 16px 40px rgba(28, 18, 8, 0.08);
+    /* ═══════════════════════════
+       PAGE INTRO (Text spanning below hero)
+    ═══════════════════════════ */
+    .page-intro {
+        background: var(--cream);
+        padding: 56px 28px 48px; /* Tighter vertical padding */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 
     .hero-location {
@@ -202,36 +247,37 @@
         font-size: 0.62rem; font-weight: 400;
         letter-spacing: 0.32em; text-transform: uppercase;
         color: var(--sage-deep);
-        display: flex; align-items: center; gap: 10px;
-        margin-bottom: 24px;
+        display: flex; align-items: center; justify-content: center; gap: 12px;
+        margin-bottom: 20px;
     }
-    .hero-location::after {
-        content: '';
-        display: block; width: 32px; height: 1px;
-        background: var(--sage);
+    .hero-location::after, .hero-location::before {
+        content: ''; display: block; width: 32px; height: 1px; background: var(--sage); opacity: 0.6;
     }
 
     .hero-headline {
         font-family: var(--serif-display);
-        font-size: clamp(2.8rem, 6.5vw, 5.5rem);
-        font-weight: 400; line-height: 1.04;
+        font-size: clamp(2.4rem, 5vw, 4rem); 
+        font-weight: 400; line-height: 1.1; 
         color: var(--ink);
-        letter-spacing: -0.02em;
-        margin-bottom: 22px;
+        letter-spacing: -0.01em;
+        margin-bottom: 16px;
+        max-width: 900px;
     }
     .hero-headline em { font-style: italic; color: var(--sage-deep); }
 
     .hero-sub {
         font-family: var(--serif-body);
-        font-size: clamp(1.05rem, 2vw, 1.25rem);
+        font-size: clamp(1.05rem, 1.5vw, 1.2rem); 
         font-weight: 500; font-style: italic;
         color: var(--warm-mid);
-        line-height: 1.75;
-        margin-bottom: 38px;
-        max-width: 400px;
+        line-height: 1.7;
+        margin-bottom: 32px;
+        max-width: 600px; 
     }
 
-    .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-ctas { 
+        display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; 
+    }
 
     .btn-sage {
         display: inline-flex; align-items: center; gap: 9px;
@@ -322,9 +368,9 @@
 
     .service-block {
         display: flex; flex-direction: column;
-        padding: 72px 0;
+        padding: 56px 0; /* Reduced padding */
         border-bottom: 1px solid rgba(196,154,60,0.18);
-        gap: 40px;
+        gap: 32px; /* Tighter gap */
     }
     .service-block:last-child { border-bottom: none; }
 
@@ -338,19 +384,13 @@
     }
 
     .service-img-wrap {
-        margin: 0 28px;
-        border-radius: 12px; overflow: hidden;
+        margin: 0 36px; /* Added margins to squeeze the container on mobile */
+        border-radius: 8px; overflow: hidden;
         aspect-ratio: 5/3;
         position: relative;
         box-shadow: 0 10px 36px rgba(44,36,22,0.11);
-        max-height: 320px;
+        max-height: 240px; /* Reduced to show more page at a glance */
     }
-    .service-img-wrap img {
-        position: absolute; inset: 0;
-        width: 100%; height: 100%; object-fit: cover;
-        transition: transform 0.6s cubic-bezier(.22,1,.36,1);
-    }
-    .service-img-wrap:hover img { transform: scale(1.04); }
 
     .service-placeholder {
         position: absolute; inset: 0;
@@ -367,6 +407,39 @@
         color: rgba(255,255,255,0.7);
     }
 
+    /* ═══════════════════════════
+       MINI CAROUSELS (Service Blocks)
+    ═══════════════════════════ */
+    .miniSlides {
+        display: none; position: absolute; inset: 0; width: 100%; height: 100%;
+    }
+    .miniSlides img {
+        width: 100%; height: 100%; object-fit: cover;
+        transition: transform 0.6s cubic-bezier(.22,1,.36,1);
+    }
+    .service-img-wrap:hover .miniSlides img { transform: scale(1.04); }
+
+    .mini-prev, .mini-next {
+        cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%);
+        padding: 8px 12px; color: white; font-weight: bold; font-size: 16px;
+        background-color: rgba(28, 18, 8, 0.4); z-index: 10; transition: background-color 0.2s;
+    }
+    .mini-next { right: 0; border-radius: 4px 0 0 4px; }
+    .mini-prev { left: 0; border-radius: 0 4px 4px 0; }
+    .mini-prev:hover, .mini-next:hover { background-color: rgba(28, 18, 8, 0.85); }
+
+    .mini-dots {
+        position: absolute; bottom: 12px; left: 0; width: 100%;
+        text-align: center; z-index: 10; display: flex; justify-content: center; gap: 6px;
+    }
+    .mini-dot {
+        cursor: pointer; height: 8px; width: 8px; background-color: rgba(255,255,255,0.4);
+        border-radius: 50%; display: inline-block; transition: background-color 0.3s, transform 0.3s;
+    }
+    .mini-dot.active-dot, .mini-dot:hover {
+        background-color: var(--gold-lt); transform: scale(1.3);
+    }
+
     .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; margin-bottom: 24px; }
     .pill {
         display: inline-flex; align-items: center; gap: 7px;
@@ -380,18 +453,6 @@
     }
     .pill i { color: var(--sage-deep); font-size: 0.7rem; }
 
-    .link-arrow {
-        display: inline-flex; align-items: center; gap: 10px;
-        font-family: var(--sans);
-        font-size: 0.7rem; font-weight: 400;
-        letter-spacing: 0.18em; text-transform: uppercase;
-        color: var(--sage-deep);
-        transition: gap 0.2s;
-    }
-    .link-arrow i { font-size: 0.65rem; transition: transform 0.2s; }
-    .link-arrow:hover { gap: 14px; color: var(--sage-deep); }
-    .link-arrow:hover i { transform: translateX(3px); }
-
     .btn-service {
         display: inline-flex; align-items: center; gap: 9px;
         padding: 13px 28px;
@@ -403,28 +464,20 @@
         margin-top: 8px;
     }
     .btn-service:hover { transform: translateY(-2px); }
-    .btn-sage-solid {
-        background: var(--sage-deep); color: #fff;
-    }
+    .btn-sage-solid { background: var(--sage-deep); color: #fff; }
     .btn-sage-solid:hover { box-shadow: 0 8px 24px rgba(92,122,87,0.35); }
-    .btn-gold-solid {
-        background: var(--gold); color: #fff;
-    }
-    .btn-gold-solid:hover { box-shadow: 0 8px 24px rgba(196,154,60,0.35); }
-    .btn-warm-solid {
-        background: var(--warm-dark); color: #fff;
-    }
+    .btn-warm-solid { background: var(--warm-dark); color: #fff; }
     .btn-warm-solid:hover { box-shadow: 0 8px 24px rgba(44,36,22,0.35); }
 
     /* ═══════════════════════════
-       PROCESS — White bg, dark cards
+       PROCESS
     ═══════════════════════════ */
     .process {
         background: #ffffff;
-        padding: 96px 0;
+        padding: 80px 0; /* Tightened from 96px */
         position: relative;
     }
-    .process-header { text-align: center; margin-bottom: 64px; }
+    .process-header { text-align: center; margin-bottom: 48px; }
     .process-eyebrow {
         font-family: var(--sans);
         font-size: 0.62rem; font-weight: 400;
@@ -468,7 +521,6 @@
         transform: translateY(-4px);
         box-shadow: 0 16px 48px rgba(28,18,8,0.22);
     }
-    /* Decorative ghost numeral */
     .p-step::after {
         content: attr(data-step);
         position: absolute;
@@ -690,25 +742,20 @@
         .hamburger { display: none; }
         .nav-links { display: flex; }
 
-        .hero-content {
-            padding: 56px 48px;
-            max-width: 580px;
-            margin-left: max(7%, calc((100vw - var(--max-w))/2 + 28px));
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-
         .service-block {
             flex-direction: row;
             align-items: center;
-            gap: 80px;
-            padding: 80px 0;
+            gap: 64px; /* Tighter gap so text and image don't float too far apart */
+            padding: 64px 0; /* Reduced vertical padding */
         }
         .service-block.reverse { flex-direction: row-reverse; }
-        .service-text { flex: 1; padding: 0 0 0 7%; }
-        .service-block.reverse .service-text { padding: 0 7% 0 0; }
-        .service-img-wrap { flex: 1; margin: 0 7% 0 0; max-height: 280px; }
-        .service-block.reverse .service-img-wrap { margin: 0 0 0 7%; }
+        
+        /* Increased padding/margin % to squeeze the content centrally (more white space) */
+        .service-text { flex: 1; padding: 0 0 0 10%; } 
+        .service-block.reverse .service-text { padding: 0 10% 0 0; }
+        
+        .service-img-wrap { flex: 1; margin: 0 10% 0 0; max-height: 240px; } /* Reduced height, more margin */
+        .service-block.reverse .service-img-wrap { margin: 0 0 0 10%; }
 
         .process-steps { grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 0 28px; }
 
@@ -722,7 +769,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="site-nav" id="sitenav">
     <div class="nav-inner">
         <a href="#" class="nav-logo">
@@ -752,37 +798,71 @@
     </a>
 </div>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-bg">
-        <img src="assets/thank-you.jpg" alt="" aria-hidden="true" onerror="this.style.display='none'">
+<section class="top-showcase">
+    <div class="top-showcase-header enter">
+        <p class="section-eyebrow">Featured Work</p>
+        <h2 class="section-title">The Anniversary <em>Collection</em></h2>
     </div>
-    <div class="hero-content">
-        <p class="hero-location enter d1">
-            <i class="fa-solid fa-location-dot" style="font-size:0.58rem;"></i>
-            Linstead · St. Catherine · Jamaica
-        </p>
-        <h1 class="hero-headline enter d2">
-            Bespoke<br><em>Keepsakes</em><br>&amp; Concierge
-        </h1>
-        <p class="hero-sub enter d3">
-            Curation by Laura Clarke — bridging tactile elegance with seamless logistics, crafted in Jamaica.
-        </p>
-        <div class="hero-ctas enter d4">
-            <a href="#keepsakes" class="btn-sage">
-                <i class="fa-solid fa-arrow-down"></i> Explore Services
-            </a>
-            <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-outline">
-                <i class="fa-brands fa-whatsapp"></i> Chat with Laura
-            </a>
+
+    <div class="slideshow-container enter d1">
+        <div class="mySlides fade">
+            <img src="mem0.jpg" alt="Structured Portrait Card" style="background-color: #ddd;">
+            <div class="slide-caption">
+                <h3>The Modern Shield</h3>
+                <p>Vertical 5x7 Format</p>
+            </div>
         </div>
+
+        <div class="mySlides fade">
+            <img src="mem0.jpg" alt="Clean Grid Collage" style="background-color: #ccc;">
+            <div class="slide-caption">
+                <h3>The Storyteller Grid</h3>
+                <p>Multi-Photo Layout</p>
+            </div>
+        </div>
+
+        <div class="mySlides fade">
+            <img src="mem0.jpg" alt="Earthy Elegance Landscape" style="background-color: #bbb;">
+            <div class="slide-caption">
+                <h3>Earthy Elegance</h3>
+                <p>Horizontal Landscape Format</p>
+            </div>
+        </div>
+
+        <a class="prev" onclick="plusSlidesPort(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlidesPort(1)">&#10095;</a>
+    </div>
+
+    <div class="dot-container enter d2">
+        <span class="dot" onclick="currentSlidePort(1)"></span> 
+        <span class="dot" onclick="currentSlidePort(2)"></span> 
+        <span class="dot" onclick="currentSlidePort(3)"></span> 
     </div>
 </section>
 
-<!-- MARQUEE STRIP -->
+<section class="page-intro">
+    <p class="hero-location enter d1">
+        <i class="fa-solid fa-location-dot" style="font-size:0.58rem;"></i>
+        Linstead · St. Catherine · Jamaica
+    </p>
+    <h1 class="hero-headline enter d2">
+        Bespoke <em>Keepsakes</em> &amp; Concierge
+    </h1>
+    <p class="hero-sub enter d3">
+        Curation by Laura Clarke — bridging tactile elegance with seamless logistics, beautifully crafted in Jamaica.
+    </p>
+    <div class="hero-ctas enter d4">
+        <a href="#keepsakes" class="btn-sage">
+            <i class="fa-solid fa-arrow-down"></i> Explore Services
+        </a>
+        <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-outline">
+            <i class="fa-brands fa-whatsapp"></i> Chat with Laura
+        </a>
+    </div>
+</section>
+
 <div class="strip">
     <div class="strip-inner" aria-hidden="true">
-        <!-- duplicated for seamless loop -->
         <span class="strip-item"><span class="strip-dot"></span> Heirloom Stationery</span>
         <span class="strip-item"><span class="strip-dot"></span> Meticulous Curation</span>
         <span class="strip-item"><span class="strip-dot"></span> Digital Memory Portals</span>
@@ -798,11 +878,9 @@
     </div>
 </div>
 
-<!-- SERVICES -->
 <div class="services" id="keepsakes">
 
-    <!-- Service 1: Keepsakes & Memorial -->
-    <div class="service-block" style="padding-top: 96px;">
+    <div class="service-block">
         <div class="service-text enter">
             <div class="service-num">01</div>
             <p class="section-eyebrow">Service One</p>
@@ -822,16 +900,33 @@
                 Commission a Keepsake <i class="fa-solid fa-arrow-right"></i>
             </a>
         </div>
+        
         <div class="service-img-wrap enter d2">
             <div class="service-placeholder sp-1">
                 <i class="fa-solid fa-gem"></i>
                 <span>Keepsakes &amp; Memorial</span>
             </div>
-            <img src="assets/inspire2.jpg" alt="Keepsakes & Memorial" onerror="this.style.display='none'">
-        </div>
+
+            <div class="miniSlides keep-slide fade">
+                <img src="assets/inspire2.jpg" alt="Keepsakes & Memorial" style="background-color: #3A6235;" onerror="this.style.display='none'">
+            </div>
+            <div class="miniSlides keep-slide fade">
+                <img src="assets/keepsake-2.jpg" alt="Foil Milestone Suites" style="background-color: #B8880A;" onerror="this.style.display='none'">
+            </div>
+            <div class="miniSlides keep-slide fade">
+                <img src="assets/keepsake-3.jpg" alt="Memorial Booklets" style="background-color: #1C1208;" onerror="this.style.display='none'">
+            </div>
+            <a class="mini-prev" onclick="plusSlidesKeep(-1)">&#10094;</a>
+            <a class="mini-next" onclick="plusSlidesKeep(1)">&#10095;</a>
+
+            <div class="mini-dots">
+                <span class="mini-dot keep-dot" onclick="currentSlideKeep(1)"></span>
+                <span class="mini-dot keep-dot" onclick="currentSlideKeep(2)"></span>
+                <span class="mini-dot keep-dot" onclick="currentSlideKeep(3)"></span>
+            </div>
+            </div>
     </div>
 
-    <!-- Service 2: Concierge -->
     <div class="service-block reverse" id="concierge">
         <div class="service-text enter">
             <div class="service-num">02</div>
@@ -850,18 +945,35 @@
                 Engage Docu-Hub <i class="fa-solid fa-arrow-right"></i>
             </a>
         </div>
+        
         <div class="service-img-wrap enter d2">
             <div class="service-placeholder sp-3">
                 <i class="fa-solid fa-shield-check"></i>
                 <span>Concierge Logistics</span>
             </div>
-            <img src="assets/concierge.png" alt="Concierge Services" onerror="this.style.display='none'">
-        </div>
+            
+            <div class="miniSlides conc-slide fade">
+                <img src="assets/concierge-1.png" alt="Concierge Logistics" style="background-color: #3D3122;" onerror="this.style.display='none'">
+            </div>
+            <div class="miniSlides conc-slide fade">
+                <img src="assets/concierge-2.png" alt="Vehicle Renewal Services" style="background-color: #3A6235;" onerror="this.style.display='none'">
+            </div>
+            <div class="miniSlides conc-slide fade">
+                <img src="assets/concierge-3.png" alt="Secure Document Delivery" style="background-color: #B8880A;" onerror="this.style.display='none'">
+            </div>
+            <a class="mini-prev" onclick="plusSlidesConc(-1)">&#10094;</a>
+            <a class="mini-next" onclick="plusSlidesConc(1)">&#10095;</a>
+
+            <div class="mini-dots">
+                <span class="mini-dot conc-dot" onclick="currentSlideConc(1)"></span>
+                <span class="mini-dot conc-dot" onclick="currentSlideConc(2)"></span>
+                <span class="mini-dot conc-dot" onclick="currentSlideConc(3)"></span>
+            </div>
+            </div>
     </div>
 
 </div>
 
-<!-- PROCESS -->
 <section class="process">
     <div class="wrap">
         <div class="process-header enter">
@@ -888,7 +1000,6 @@
     </div>
 </section>
 
-<!-- ABOUT -->
 <section class="about-strip">
     <div class="about-inner">
         <div class="about-text enter">
@@ -921,7 +1032,6 @@
     </div>
 </section>
 
-<!-- CTA BAND -->
 <section class="cta-band">
     <p class="cta-band-eyebrow enter">Ready to begin?</p>
     <h2 class="cta-band-title enter d1">Let's create something<br><em>worth keeping</em></h2>
@@ -931,7 +1041,6 @@
     </a>
 </section>
 
-<!-- FOOTER -->
 <footer class="site-footer">
     <div class="footer-grid">
         <div>
@@ -995,6 +1104,88 @@ const nav = document.getElementById('sitenav');
 window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
 }, { passive: true });
+
+
+/* ══════════════════════════════════════
+   1. PORTFOLIO SLIDESHOW SCRIPT (MAIN)
+══════════════════════════════════════ */
+let slideIndexPort = 1;
+showSlidesPort(slideIndexPort);
+
+function plusSlidesPort(n) { showSlidesPort(slideIndexPort += n); }
+function currentSlidePort(n) { showSlidesPort(slideIndexPort = n); }
+
+function showSlidesPort(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndexPort = 1}    
+    if (n < 1) {slideIndexPort = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active-dot", "");
+    }
+    if(slides[slideIndexPort-1]) {
+        slides[slideIndexPort-1].style.display = "block";  
+        dots[slideIndexPort-1].className += " active-dot";
+    }
+}
+
+/* ══════════════════════════════════════
+   2. CONCIERGE SLIDESHOW SCRIPT (MINI)
+══════════════════════════════════════ */
+let slideIndexConc = 1;
+showSlidesConc(slideIndexConc);
+
+function plusSlidesConc(n) { showSlidesConc(slideIndexConc += n); }
+function currentSlideConc(n) { showSlidesConc(slideIndexConc = n); }
+
+function showSlidesConc(n) {
+    let i;
+    let slides = document.getElementsByClassName("conc-slide");
+    let dots = document.getElementsByClassName("conc-dot");
+    if (n > slides.length) {slideIndexConc = 1}    
+    if (n < 1) {slideIndexConc = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active-dot", "");
+    }
+    if(slides[slideIndexConc-1]) {
+        slides[slideIndexConc-1].style.display = "block";  
+        dots[slideIndexConc-1].className += " active-dot";
+    }
+}
+
+/* ══════════════════════════════════════
+   3. KEEPSAKES SLIDESHOW SCRIPT (MINI)
+══════════════════════════════════════ */
+let slideIndexKeep = 1;
+showSlidesKeep(slideIndexKeep);
+
+function plusSlidesKeep(n) { showSlidesKeep(slideIndexKeep += n); }
+function currentSlideKeep(n) { showSlidesKeep(slideIndexKeep = n); }
+
+function showSlidesKeep(n) {
+    let i;
+    let slides = document.getElementsByClassName("keep-slide");
+    let dots = document.getElementsByClassName("keep-dot");
+    if (n > slides.length) {slideIndexKeep = 1}    
+    if (n < 1) {slideIndexKeep = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active-dot", "");
+    }
+    if(slides[slideIndexKeep-1]) {
+        slides[slideIndexKeep-1].style.display = "block";  
+        dots[slideIndexKeep-1].className += " active-dot";
+    }
+}
 </script>
 </body>
 </html>
