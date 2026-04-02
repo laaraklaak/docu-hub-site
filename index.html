@@ -160,11 +160,11 @@
     ═══════════════════════════ */
     .top-showcase {
         background: var(--warm-dark);
-        padding: calc(var(--nav-h) + 24px) 20px 48px; /* Tighter top padding on mobile */
+        padding: calc(var(--nav-h) + 24px) 20px 48px;
         position: relative;
     }
     .top-showcase-header { 
-        text-align: center; margin-bottom: 12px; /* Tucked right above image on mobile */
+        text-align: center; margin-bottom: 12px; 
     }
     .top-showcase-header .section-eyebrow {
         color: var(--gold-lt); justify-content: center;
@@ -191,18 +191,23 @@
         border-radius: 6px;
         overflow: hidden;
         box-shadow: 0 24px 64px rgba(0,0,0,0.6);
-        background: var(--cream);
+        background: var(--cream-deep); /* Blends the contained edges perfectly */
     }
     
     .mySlides { display: none; position: relative; }
+    
+    /* 🔴 UPDATED MOBILE IMAGE RULE: ZOOMED OUT & PROTECTED 🔴 */
     .mySlides img { 
         width: 100%; 
-        height: clamp(320px, 60vh, 400px); 
-        object-fit: cover; display: block; 
+        height: 460px; /* Fixed height to allow room for the image AND text */
+        object-fit: contain; /* Prevents zooming/cropping of the card */
+        padding: 20px 20px 100px 20px; /* Safely pushes the image up ABOVE the text description */
+        box-sizing: border-box; /* Keeps padding inside the height constraint */
+        display: block; 
     }
     
     .prev, .next {
-        cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%);
+        cursor: pointer; position: absolute; top: 45%; transform: translateY(-50%);
         width: auto; padding: 14px 18px; color: white; font-weight: bold; font-size: 24px;
         transition: 0.3s ease; background-color: rgba(28, 18, 8, 0.4); border-radius: 0 4px 4px 0;
         user-select: none; z-index: 10;
@@ -214,7 +219,8 @@
     .slide-caption {
         position: absolute; bottom: 0; left: 0; width: 100%;
         padding: 24px 20px 16px; text-align: left; box-sizing: border-box;
-        background: linear-gradient(to top, rgba(28, 18, 8, 0.95), transparent);
+        background: linear-gradient(to top, rgba(28, 18, 8, 0.98) 0%, rgba(28, 18, 8, 0.8) 50%, transparent 100%);
+        pointer-events: none; /* Allows clicks to pass through to the image if needed */
     }
     .slide-caption h3 {
         font-family: var(--serif-display); font-size: clamp(1.4rem, 5vw, 1.6rem); color: #fff; margin-bottom: 5px; font-weight: 400;
@@ -385,12 +391,15 @@
         margin-bottom: -12px;
     }
 
+    /* 🔴 UPDATED MOBILE SERVICE CONTAINER: Taller aspect ratio 🔴 */
     .service-img-wrap {
         margin: 0 20px; 
         border-radius: 8px; overflow: hidden;
-        aspect-ratio: 5/3;
+        aspect-ratio: 4/5; /* Much taller on mobile to handle portrait cards */
+        max-height: 400px;
         position: relative;
         box-shadow: 0 10px 36px rgba(44,36,22,0.11);
+        background-color: var(--cream-deep);
     }
 
     .service-placeholder {
@@ -414,14 +423,19 @@
     .miniSlides {
         display: none; position: absolute; inset: 0; width: 100%; height: 100%;
     }
+    
+    /* 🔴 UPDATED MOBILE SERVICE IMAGES: ZOOMED OUT & PROTECTED 🔴 */
     .miniSlides img {
-        width: 100%; height: 100%; object-fit: cover;
+        width: 100%; height: 100%; 
+        object-fit: contain; /* Prevents cropping */
+        padding: 20px 20px 40px 20px; /* Protects the bottom area from dots */
+        box-sizing: border-box;
         transition: transform 0.6s cubic-bezier(.22,1,.36,1);
     }
     .service-img-wrap:hover .miniSlides img { transform: scale(1.04); }
 
     .mini-prev, .mini-next {
-        cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%);
+        cursor: pointer; position: absolute; top: 45%; transform: translateY(-50%);
         padding: 10px 14px; color: white; font-weight: bold; font-size: 16px;
         background-color: rgba(28, 18, 8, 0.4); z-index: 10; transition: background-color 0.2s;
     }
@@ -430,7 +444,7 @@
     .mini-prev:hover, .mini-next:hover { background-color: rgba(28, 18, 8, 0.85); }
 
     .mini-dots {
-        position: absolute; bottom: 10px; left: 0; width: 100%;
+        position: absolute; bottom: 12px; left: 0; width: 100%;
         text-align: center; z-index: 10; display: flex; justify-content: center; gap: 8px;
     }
     .mini-dot {
@@ -738,9 +752,13 @@
         .nav-links { display: flex; }
         .nav-inner { padding: 0 28px; }
 
-        /* Maintain elegant desktop spacing */
         .top-showcase { padding: calc(var(--nav-h) + 40px) 28px 48px; }
         .top-showcase-header { margin-bottom: 32px; }
+
+        /* Restoring Desktop Proportions */
+        .mySlides img {
+            height: 500px;
+        }
 
         .page-intro { padding: 56px 28px 48px; }
 
@@ -755,7 +773,12 @@
         .service-text { flex: 1; padding: 0 0 0 10%; } 
         .service-block.reverse .service-text { padding: 0 10% 0 0; }
         
-        .service-img-wrap { flex: 1; margin: 0 10% 0 0; max-height: 280px; } 
+        .service-img-wrap { 
+            flex: 1; 
+            margin: 0 10% 0 0; 
+            aspect-ratio: 4/3; /* Flatter, elegant desktop aspect ratio */
+            max-height: 340px; 
+        } 
         .service-block.reverse .service-img-wrap { margin: 0 0 0 10%; }
 
         .process { padding: 80px 0; }
@@ -821,15 +844,22 @@
         </div>
 
         <div class="mySlides fade">
-            <img src="assets/inspire10.jpg" alt="Clean Grid Collage" style="background-color: #ccc;">
+            <img src="assets/inspire6.jpg" alt="Clean Grid Collage" style="background-color: #ccc;">
             <div class="slide-caption">
                 <h3>The Storyteller Grid</h3>
                 <p>Multi-Photo Layout</p>
             </div>
         </div>
 
+  <div class="mySlides fade">
+            <img src="assets/inspire8.jpg" alt="Clean Grid Collage" style="background-color: #ccc;">
+            <div class="slide-caption">
+                <h3>The Storyteller Grid</h3>
+                <p>Multi-Photo Layout</p>
+            </div>
+        </div>
         <div class="mySlides fade">
-            <img src="assets/inspire8.jpg" alt="Earthy Elegance Landscape" style="background-color: #bbb;">
+            <img src="assets/inspire10.jpg" alt="Earthy Elegance Landscape" style="background-color: #bbb;">
             <div class="slide-caption">
                 <h3>Earthy Elegance</h3>
                 <p>Horizontal Landscape Format</p>
@@ -925,12 +955,11 @@
                 <img src="assets/keepsakes.jpg" alt="Keepsakes & Memorial" style="background-color: #3A6235;" onerror="this.style.display='none'">
             </div>
             <div class="miniSlides keep-slide fade">
-                <img src="assets/pica.png" alt="Foil Milestone Suites" style="background-color: #B8880A;" onerror="this.style.display='none'">
+                <img src="assets/patios1.png" alt="Foil Milestone Suites" style="background-color: #B8880A;" onerror="this.style.display='none'">
             </div>
             <div class="miniSlides keep-slide fade">
                 <img src="assets/memorial.png" alt="Memorial Booklets" style="background-color: #1C1208;" onerror="this.style.display='none'">
             </div>
-
             <a class="mini-prev" onclick="plusSlidesKeep(-1)">&#10094;</a>
             <a class="mini-next" onclick="plusSlidesKeep(1)">&#10095;</a>
 
@@ -939,7 +968,7 @@
                 <span class="mini-dot keep-dot" onclick="currentSlideKeep(2)"></span>
                 <span class="mini-dot keep-dot" onclick="currentSlideKeep(3)"></span>
             </div>
-        </div>
+            </div>
     </div>
 
     <div class="service-block reverse" id="concierge">
@@ -971,12 +1000,11 @@
                 <img src="assets/concierge.png" alt="Concierge Logistics" style="background-color: #3D3122;" onerror="this.style.display='none'">
             </div>
             <div class="miniSlides conc-slide fade">
-                <img src="assets/pica.png" alt="Vehicle Renewal Services" style="background-color: #3A6235;" onerror="this.style.display='none'">
+                <img src="assets/taj.png" alt="Vehicle Renewal Services" style="background-color: #3A6235;" onerror="this.style.display='none'">
             </div>
             <div class="miniSlides conc-slide fade">
-                <img src="assets/taj.png" alt="Secure Document Delivery" style="background-color: #B8880A;" onerror="this.style.display='none'">
+                <img src="assets/pica.png" alt="Secure Document Delivery" style="background-color: #B8880A;" onerror="this.style.display='none'">
             </div>
-
             <a class="mini-prev" onclick="plusSlidesConc(-1)">&#10094;</a>
             <a class="mini-next" onclick="plusSlidesConc(1)">&#10095;</a>
 
@@ -985,7 +1013,7 @@
                 <span class="mini-dot conc-dot" onclick="currentSlideConc(2)"></span>
                 <span class="mini-dot conc-dot" onclick="currentSlideConc(3)"></span>
             </div>
-        </div>
+            </div>
     </div>
 
 </div>
