@@ -191,11 +191,10 @@
         border-radius: 6px;
         overflow: hidden;
         box-shadow: 0 24px 64px rgba(0,0,0,0.6);
-        background: var(--cream-deep); 
+        background: var(--cream-deep);
     }
     
     .mySlides { display: none; position: relative; }
-    
     .mySlides img { 
         width: 100%; 
         height: 460px; 
@@ -340,39 +339,11 @@
     }
 
     /* ═══════════════════════════
-       SECTION HEADER
-    ═══════════════════════════ */
-    .section-eyebrow {
-        font-family: var(--sans);
-        font-size: 0.62rem; font-weight: 400;
-        letter-spacing: 0.32em; text-transform: uppercase;
-        color: var(--sage-deep);
-        display: flex; align-items: center; gap: 12px;
-        margin-bottom: 12px;
-    }
-    .section-eyebrow::after {
-        content: ''; display: block; flex: 1; max-width: 48px; height: 1px; background: var(--sage);
-    }
-    .section-title {
-        font-family: var(--serif-display);
-        font-size: clamp(2rem, 7vw, 3.4rem); 
-        font-weight: 400; line-height: 1.1;
-        color: var(--ink);
-    }
-    .section-title em { font-style: italic; color: var(--sage-deep); }
-    .section-body {
-        font-family: var(--serif-body);
-        font-size: clamp(1.05rem, 3.5vw, 1.25rem);
-        font-weight: 500; line-height: 1.8;
-        color: var(--warm-mid);
-    }
-
-    /* ═══════════════════════════
-       SERVICES — ALTERNATING
+       SERVICES — Layout Engine
     ═══════════════════════════ */
     .services { background: var(--cream); }
 
-    /* Mobile First Flex Stacking */
+    /* 🔴 MOBILE: Flex Stacking 🔴 */
     .service-block {
         display: flex; 
         flex-direction: column;
@@ -382,10 +353,15 @@
     }
     .service-block:last-child { border-bottom: none; }
 
-    /* The order property controls the visual stacking on mobile! */
-    .service-header-group { order: 1; }
-    .service-img-wrap { order: 2; margin: 0; } /* Removed horizontal margin on mobile for full width */
-    .service-desc-group { order: 3; }
+    /* Magic Unwrapper: Allows children to be sorted directly by the Flex Container */
+    .text-wrap {
+        display: contents; 
+    }
+
+    /* Force the Perfect Mobile Order */
+    .service-header { order: 1; }
+    .service-img-wrap { order: 2; width: 100%; margin: 0; }
+    .service-body { order: 3; }
     
     .service-num {
         font-family: var(--serif-body);
@@ -395,6 +371,26 @@
         line-height: 1;
         margin-bottom: -12px;
     }
+    .section-eyebrow {
+        font-family: var(--sans); font-size: 0.62rem; font-weight: 400;
+        letter-spacing: 0.32em; text-transform: uppercase; color: var(--sage-deep);
+        display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+    }
+    .section-eyebrow::after {
+        content: ''; display: block; flex: 1; max-width: 48px; height: 1px; background: var(--sage);
+    }
+    .section-title {
+        font-family: var(--serif-display);
+        font-size: clamp(2rem, 7vw, 3.4rem); 
+        font-weight: 400; line-height: 1.1; color: var(--ink);
+    }
+    .section-title em { font-style: italic; color: var(--sage-deep); }
+    
+    .section-body {
+        font-family: var(--serif-body);
+        font-size: clamp(1.05rem, 3.5vw, 1.25rem);
+        font-weight: 500; line-height: 1.8; color: var(--warm-mid);
+    }
 
     .service-img-wrap {
         border-radius: 8px; overflow: hidden;
@@ -403,7 +399,6 @@
         position: relative;
         box-shadow: 0 10px 36px rgba(44,36,22,0.11);
         background-color: var(--cream-deep);
-        width: 100%;
     }
 
     .service-placeholder {
@@ -427,7 +422,6 @@
     .miniSlides {
         display: none; position: absolute; inset: 0; width: 100%; height: 100%;
     }
-    
     .miniSlides img {
         width: 100%; height: 100%; 
         object-fit: contain; 
@@ -454,9 +448,7 @@
         cursor: pointer; height: 8px; width: 8px; background-color: rgba(255,255,255,0.4);
         border-radius: 50%; display: inline-block; transition: background-color 0.3s, transform 0.3s;
     }
-    .mini-dot.active-dot, .mini-dot:hover {
-        background-color: var(--gold-lt); transform: scale(1.3);
-    }
+    .mini-dot.active-dot, .mini-dot:hover { background-color: var(--gold-lt); transform: scale(1.3); }
 
     .pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; margin-bottom: 24px; }
     .pill {
@@ -688,33 +680,37 @@
         .top-showcase { padding: calc(var(--nav-h) + 40px) 28px 48px; }
         .top-showcase-header { margin-bottom: 32px; }
         .mySlides img { height: 500px; }
-
         .page-intro { padding: 56px 28px 48px; }
 
         /* 🔴 Desktop Flex Layout Restored 🔴 */
         .service-block {
-            flex-direction: row; /* Puts items side-by-side */
+            flex-direction: row; 
             align-items: center;
             gap: 64px; 
             padding: 64px 0; 
         }
-        .service-block.reverse { flex-direction: row-reverse; } /* Flips the side */
+        .service-block.reverse { flex-direction: row-reverse; }
         
-        /* Reset the order properties so they follow the HTML structure naturally on desktop */
-        .service-header-group { order: unset; margin-bottom: 16px;}
-        .service-desc-group { order: unset; }
-        .service-img-wrap { order: unset; }
-
-        /* Desktop specific sizing and spacing */
-        .service-text { flex: 1; padding: 0 0 0 10%; display: flex; flex-direction: column;} 
-        .service-block.reverse .service-text { padding: 0 10% 0 0; }
+        /* Turning display:contents back into a physical flex container block */
+        .text-wrap {
+            display: block; 
+            flex: 1;
+            padding: 0 0 0 10%;
+        }
+        .service-block.reverse .text-wrap { 
+            padding: 0 10% 0 0; 
+        }
+        
+        /* Reset mobile ordering overrides */
+        .service-header, .service-img-wrap, .service-body {
+            order: unset;
+        }
         
         .service-img-wrap { 
             flex: 1; 
             margin: 0 10% 0 0; 
             aspect-ratio: 4/3; 
             max-height: 340px; 
-            width: auto;
         } 
         .service-block.reverse .service-img-wrap { margin: 0 0 0 10%; }
 
@@ -724,7 +720,6 @@
         .about-stats { grid-template-columns: repeat(2, 1fr); }
 
         .cta-band { padding: 72px 28px; }
-
         .site-footer { padding: 64px 28px 36px; }
         .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; }
         .footer-bottom { flex-direction: row; justify-content: space-between; text-align: left; }
@@ -776,7 +771,6 @@
                 <p>Vertical 5x7 Format</p>
             </div>
         </div>
-
         <div class="mySlides fade">
             <img src="assets/inspire6.jpg" alt="Clean Grid Collage" style="background-color: #ccc;">
             <div class="slide-caption">
@@ -784,7 +778,6 @@
                 <p>Multi-Photo Layout</p>
             </div>
         </div>
-
         <div class="mySlides fade">
             <img src="assets/inspire10.jpg" alt="Clean Grid Collage" style="background-color: #ccc;">
             <div class="slide-caption">
@@ -839,17 +832,14 @@
         <span class="strip-item"><span class="strip-dot"></span> Secure Document Logistics</span>
         <span class="strip-item"><span class="strip-dot"></span> Meticulous Curation</span>
         <span class="strip-item"><span class="strip-dot"></span> Authentic Jamaican Design</span>
-        
         <span class="strip-item"><span class="strip-dot"></span> Heirloom Stationery</span>
         <span class="strip-item"><span class="strip-dot"></span> Secure Document Logistics</span>
         <span class="strip-item"><span class="strip-dot"></span> Meticulous Curation</span>
         <span class="strip-item"><span class="strip-dot"></span> Authentic Jamaican Design</span>
-        
         <span class="strip-item"><span class="strip-dot"></span> Heirloom Stationery</span>
         <span class="strip-item"><span class="strip-dot"></span> Secure Document Logistics</span>
         <span class="strip-item"><span class="strip-dot"></span> Meticulous Curation</span>
         <span class="strip-item"><span class="strip-dot"></span> Authentic Jamaican Design</span>
-        
         <span class="strip-item"><span class="strip-dot"></span> Heirloom Stationery</span>
         <span class="strip-item"><span class="strip-dot"></span> Secure Document Logistics</span>
         <span class="strip-item"><span class="strip-dot"></span> Meticulous Curation</span>
@@ -861,14 +851,15 @@
 
     <div class="service-block">
         
-        <div class="service-text enter">
-            <div class="service-header-group">
+        <div class="text-wrap">
+            
+            <div class="service-header enter">
                 <div class="service-num">01</div>
                 <p class="section-eyebrow">Service One</p>
                 <h2 class="section-title">Keepsakes &amp;<br><em>Memorial</em></h2>
             </div>
             
-            <div class="service-desc-group">
+            <div class="service-body enter d1">
                 <p class="section-body">
                     Transforming life's most significant moments into tangible legacies. From heavyweight, gold-foiled milestone invitations to sensitively designed memorial booklets, we craft heirloom-quality pieces. Every item merges traditional elegance with modern memory curation, printed meticulously to stand the test of time.
                 </p>
@@ -915,14 +906,15 @@
 
     <div class="service-block reverse" id="concierge">
         
-        <div class="service-text enter">
-            <div class="service-header-group">
+        <div class="text-wrap">
+            
+            <div class="service-header enter">
                 <div class="service-num">02</div>
                 <p class="section-eyebrow">Service Two</p>
                 <h2 class="section-title">Concierge<br><em>Logistics</em></h2>
             </div>
 
-            <div class="service-desc-group">
+            <div class="service-body enter d1">
                 <p class="section-body">
                     Bypass the bureaucratic friction. We offer specialized concierge logistics to seamlessly navigate complex local systems on your behalf. Whether it's expedited Motor Vehicle (eMVRC) renewals or comprehensive document compliance, we manage the intricacies securely and confidentially—so you don't have to.
                 </p>
@@ -983,20 +975,6 @@
                     Based in Linstead, St. Catherine, Laura Clarke provides a sanctuary of elegant design and airtight organization. By combining deep logistical expertise with a passion for premium stationery, she ensures that both your most treasured memories and your most pressing document needs are handled with flawless precision and warmth.
                 </p>
                 
-                <div class="about-stats">
-                    <div class="stat">
-                        <div class="stat-num">JM</div>
-                        <div class="stat-label">Proudly Jamaican</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-num">∞</div>
-                        <div class="stat-label">Memories Preserved</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-num">✓</div>
-                        <div class="stat-label">Frictionless Logistics</div>
-                    </div>
-                </div>
             </div>
 
             <div class="process-col enter d2">
