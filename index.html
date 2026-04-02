@@ -1095,7 +1095,7 @@ startSlideTimerPort();
 function startSlideTimerPort() {
     slideTimerPort = setInterval(function() {
         plusSlidesPort(1);
-    }, 5000);
+    }, 5000); // Changes every 5 seconds
 }
 
 function resetSlideTimerPort() {
@@ -1131,13 +1131,33 @@ function showSlidesPort(n) {
 }
 
 /* ══════════════════════════════════════
-   2. CONCIERGE SLIDESHOW SCRIPT (MINI)
+   2. CONCIERGE SLIDESHOW SCRIPT (AUTOPLAY)
 ══════════════════════════════════════ */
 let slideIndexConc = 1;
-showSlidesConc(slideIndexConc);
+let slideTimerConc;
 
-function plusSlidesConc(n) { showSlidesConc(slideIndexConc += n); }
-function currentSlideConc(n) { showSlidesConc(slideIndexConc = n); }
+showSlidesConc(slideIndexConc);
+startSlideTimerConc();
+
+function startSlideTimerConc() {
+    slideTimerConc = setInterval(function() {
+        plusSlidesConc(1);
+    }, 6000); // Changes every 6 seconds
+}
+
+function resetSlideTimerConc() {
+    clearInterval(slideTimerConc);
+    startSlideTimerConc();
+}
+
+function plusSlidesConc(n) { 
+    showSlidesConc(slideIndexConc += n); 
+    resetSlideTimerConc();
+}
+function currentSlideConc(n) { 
+    showSlidesConc(slideIndexConc = n); 
+    resetSlideTimerConc();
+}
 
 function showSlidesConc(n) {
     let i;
@@ -1158,13 +1178,33 @@ function showSlidesConc(n) {
 }
 
 /* ══════════════════════════════════════
-   3. KEEPSAKES SLIDESHOW SCRIPT (MINI)
+   3. KEEPSAKES SLIDESHOW SCRIPT (AUTOPLAY)
 ══════════════════════════════════════ */
 let slideIndexKeep = 1;
-showSlidesKeep(slideIndexKeep);
+let slideTimerKeep;
 
-function plusSlidesKeep(n) { showSlidesKeep(slideIndexKeep += n); }
-function currentSlideKeep(n) { showSlidesKeep(slideIndexKeep = n); }
+showSlidesKeep(slideIndexKeep);
+startSlideTimerKeep();
+
+function startSlideTimerKeep() {
+    slideTimerKeep = setInterval(function() {
+        plusSlidesKeep(1);
+    }, 5500); // Changes every 5.5 seconds
+}
+
+function resetSlideTimerKeep() {
+    clearInterval(slideTimerKeep);
+    startSlideTimerKeep();
+}
+
+function plusSlidesKeep(n) { 
+    showSlidesKeep(slideIndexKeep += n); 
+    resetSlideTimerKeep();
+}
+function currentSlideKeep(n) { 
+    showSlidesKeep(slideIndexKeep = n); 
+    resetSlideTimerKeep();
+}
 
 function showSlidesKeep(n) {
     let i;
@@ -1184,5 +1224,3 @@ function showSlidesKeep(n) {
     }
 }
 </script>
-</body>
-</html>
