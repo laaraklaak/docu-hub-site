@@ -761,23 +761,124 @@
     </div>
 </div>
 
+<style>
+    .video-catalog-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        max-width: var(--max-w);
+        margin: 0 auto;
+    }
+    @media (min-width: 768px) {
+        .video-catalog-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    .video-card {
+        background: #ffffff;
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow: 0 16px 40px rgba(44,36,22,0.08);
+        border: 1px solid rgba(193, 154, 91, 0.15);
+    }
+    .video-card-title {
+        font-family: var(--serif-display);
+        font-size: 1.3rem;
+        color: var(--ink);
+        margin-top: 20px;
+        margin-bottom: 8px;
+        text-align: center;
+        line-height: 1.3;
+    }
+    .video-card-desc {
+        font-family: var(--sans);
+        font-size: 0.85rem;
+        color: var(--warm-mid);
+        text-align: center;
+    }
+</style>
+
+<style>
+    .video-catalog-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        max-width: var(--max-w);
+        margin: 0 auto;
+    }
+    @media (min-width: 768px) {
+        .video-catalog-grid {
+            /* This makes the grid automatically adjust whether you have 2, 3, or 4 videos! */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+    }
+    .video-card {
+        background: #ffffff;
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow: 0 16px 40px rgba(44,36,22,0.08);
+        border: 1px solid rgba(193, 154, 91, 0.15);
+        display: flex;
+        flex-direction: column;
+    }
+    .video-card-title {
+        font-family: var(--serif-display);
+        font-size: 1.3rem;
+        color: var(--ink);
+        margin-top: 20px;
+        margin-bottom: 8px;
+        text-align: center;
+        line-height: 1.3;
+    }
+    .video-card-desc {
+        font-family: var(--sans);
+        font-size: 0.85rem;
+        color: var(--warm-mid);
+        text-align: center;
+        flex-grow: 1;
+    }
+</style>
+
 <section id="guides" class="video-section">
     <div class="card-section-header enter d1">
         <p class="section-eyebrow">Free Resources</p>
         <h2 class="section-title">Official <em>Video Guides</em></h2>
     </div>
+    
     <div class="wrap">
-        <div class="video-wrapper enter d2">
-           <div class="responsive-iframe">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLJ6Nwx36QGsI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="video-catalog-grid">
+            
+            <div class="video-card enter d2">
+                <div class="responsive-iframe">
+                    <iframe width="560" height="315" src="https://youtu.be/MVUZ57iQJgA?si=cKFUZJH9QkR-DjqY" title="Online Passport Renewal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <h4 class="video-card-title">Online Passport Renewal</h4>
+                <p class="video-card-desc">The complete guide to renewing your Jamaican passport from home.</p>
             </div>
+
+            <div class="video-card enter d3">
+                <div class="responsive-iframe">
+                    <iframe width="560" height="315" src="https://youtu.be/-RJuMBYu-0U?si=zTDfdBnJKkpDODnK" title="In-Person Passport Renewal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <h4 class="video-card-title">In-Person Passport Package</h4>
+                <p class="video-card-desc">The zero-rejection checklist for first-timers and office walk-ins.</p>
+            </div>
+
+            <div class="video-card enter d4">
+                <div class="responsive-iframe">
+                    <iframe width="560" height="315" src="https://youtu.be/jpS-mIde1Ro?si=kBOKgBD2yyOps2iV" title="Motor Vehicle Renewal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <h4 class="video-card-title">Motor Vehicle Renewal</h4>
+                <p class="video-card-desc">Navigate the tax office and renew your vehicle documents fast.</p>
+            </div>
+
         </div>
-        <p class="video-caption enter d3">
-            Prefer to handle the bureaucracy yourself? Watch our step-by-step guides for Jamaican document renewals. If this official library saves you time, a 5-star Google review is always appreciated!
+
+        <p class="video-caption enter d1" style="margin-top: 48px;">
+            Prefer to handle the bureaucracy yourself? Watch our step-by-step guides above. If this library saves you time, a 5-star Google review is always appreciated!
         </p>
     </div>
 </section>
-
 <section class="about-approach" id="about">
     <div class="wrap">
         <div class="approach-grid">
