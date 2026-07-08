@@ -464,6 +464,88 @@
     }
 
     /* ═══════════════════════════════════════════
+       VIDEO RESOURCE LIBRARY (Dropdown Stack Layout)
+     ═══════════════════════════════════════════ */
+    .video-section {
+        background: var(--cream-deep);
+        padding: 80px 0;
+        border-top: 1px solid rgba(193, 154, 91, 0.15);
+    }
+
+    .video-catalog-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        max-width: var(--max-w);
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .video-catalog-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+    }
+
+    .video-card {
+        background: #ffffff;
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow: 0 16px 40px rgba(44,36,22,0.08);
+        border: 1px solid rgba(193, 154, 91, 0.15);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .video-card-title {
+        font-family: var(--serif-display);
+        font-size: 1.3rem;
+        color: var(--ink);
+        margin-top: 20px;
+        margin-bottom: 8px;
+        text-align: center;
+        line-height: 1.3;
+    }
+
+    .video-card-desc {
+        font-family: var(--sans);
+        font-size: 0.85rem;
+        color: var(--warm-mid);
+        text-align: center;
+        flex-grow: 1;
+    }
+
+    .responsive-iframe {
+        position: relative;
+        padding-bottom: 56.25%; 
+        height: 0;
+        overflow: hidden;
+        border-radius: 6px;
+        background: var(--warm-dark);
+    }
+
+    .responsive-iframe iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    .video-caption {
+        text-align: center;
+        font-family: var(--serif-body);
+        font-size: 1.15rem;
+        color: var(--warm-mid);
+        margin-top: 32px;
+        font-style: italic;
+        line-height: 1.6;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* ═══════════════════════════════════════════
        FACT SHEET RESOURCE LIBRARY (Accordions)
      ═══════════════════════════════════════════ */
     .resource-section {
@@ -755,7 +837,7 @@
         .hero-split { grid-template-columns: 1.1fr 0.9fr; padding: calc(var(--nav-h) + 80px) 28px 80px; gap: 64px; }
         .hero-badge { left: -32px; }
 
-        .card-grid { grid-template-columns: repeat(2, 1fr); gap: 48px; }
+        .card-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; } /* Clean, horizontal grid presentation for 4 marketing cards */
 
         .about-approach { padding: 96px 0; }
         .approach-grid { grid-template-columns: 0.8fr 1.2fr 1fr; gap: 64px; }
@@ -765,7 +847,7 @@
 
         .card-img-container {
             aspect-ratio: auto; 
-            height: 320px; 
+            height: 240px; 
         }
     }
     </style>
@@ -780,8 +862,8 @@
         </a>
         <ul class="nav-links">
             <li><a href="#concierge">Concierge Services</a></li>
-            <li><a href="#resources">Portal Fact Sheets</a></li>
-            <li><a href="#about">Our Protocol</a></li>
+            <li><a href="#guides">Video Library</a></li>
+            <li><a href="#resources">Fact Sheets</a></li>
             <li>
                 <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="nav-wa">
                     <i class="fa-brands fa-whatsapp"></i> WhatsApp Laura
@@ -796,8 +878,8 @@
 
 <div class="nav-drawer" id="drawer">
     <a href="#concierge" onclick="closeNav()"><i class="fa-solid fa-shield-check"></i>Concierge Services</a>
-    <a href="#resources" onclick="closeNav()"><i class="fa-solid fa-file-lines"></i>Portal Fact Sheets</a>
-    <a href="#about" onclick="closeNav()"><i class="fa-solid fa-list-check"></i>Our Protocol</a>
+    <a href="#guides" onclick="closeNav()"><i class="fa-solid fa-play"></i>Video Library</a>
+    <a href="#resources" onclick="closeNav()"><i class="fa-solid fa-file-lines"></i>Fact Sheets</a>
     <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="drawer-wa" onclick="closeNav()">
         <i class="fa-brands fa-whatsapp"></i>WhatsApp Laura
     </a>
@@ -924,6 +1006,55 @@
     </div>
 </div>
 
+<!-- ═══════════════════════════════════════════
+     VIDEO RESOURCE LIBRARY (Flexible Accordion Stack)
+ ═══════════════════════════════════════════ -->
+<section id="guides" class="video-section">
+    <div class="card-section-header enter d1">
+        <p class="section-eyebrow">Video Library</p>
+        <h2 class="section-title">Official <em>Video Walkthroughs</em></h2>
+    </div>
+    
+    <div class="wrap" style="max-width: 700px; margin: 0 auto;">
+        <p class="video-caption enter d1" style="text-align: center; margin-bottom: 24px;">
+            Prefer a visual guide? Open our active video walkthroughs below. If these guides save you a trip, a 5-star Google review is always appreciated!
+        </p>
+
+        <div class="resource-accordions" style="display: flex; flex-direction: column; gap: 16px;">
+            
+            <!-- VIDEO 1: PASSPORT (Updated 3-Gateway Version) -->
+            <details class="res-expand enter d2">
+                <summary>
+                    <span><i class="fa-solid fa-play" style="margin-right: 12px; color: var(--gold); width: 20px;"></i> Watch: Online Passport Renewal Guide</span>
+                </summary>
+                <div class="res-hidden" style="padding: 16px;">
+                    <div class="responsive-iframe">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/X_vP65ETG2U?si=UiYbSL6oLmtdiZeo" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <p style="margin-top: 12px; font-family: var(--sans); font-size: 0.85rem; color: var(--warm-mid); text-align: center;">The complete 3-gateway blueprint to successfully completing your renewal processing seamlessly.</p>
+                </div>
+            </details>
+
+            <!-- VIDEO 2: VEHICLE LICENSING -->
+            <details class="res-expand enter d3">
+                <summary>
+                    <span><i class="fa-solid fa-play" style="margin-right: 12px; color: var(--gold); width: 20px;"></i> Watch: Online Motor Vehicle Renewal (eMVRC)</span>
+                </summary>
+                <div class="res-hidden" style="padding: 16px;">
+                    <div class="responsive-iframe">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/jpS-mIde1Ro?si=OtzW4_La_TffGgxk" title="Motor Vehicle Renewal" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <p style="margin-top: 12px; font-family: var(--sans); font-size: 0.85rem; color: var(--warm-mid); text-align: center;">How to map out the TAJ payment process and successfully generate your paperless certificate.</p>
+                </div>
+            </details>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PORTAL FACT SHEETS (Elegant Card Grid Presentation)
+ ═══════════════════════════════════════════ -->
 <section id="resources" class="resource-section">
     <div class="card-section-header enter d1">
         <p class="section-eyebrow">On-Page Resources</p>
@@ -957,10 +1088,6 @@
                             • <strong>Digital Photo:</strong> A high-resolution passport photo in JPEG format (white background, no shadows, neutral expression).<br>
                             • <strong>Payment Method:</strong> A valid MasterCard or Visa credit/debit card to pay the government fees.</p>
                             
-                            <p style="margin-top: 12px; margin-bottom: 12px; padding: 10px; background: var(--cream-deep); border-radius: 4px; font-family: var(--sans); font-size: 0.8rem; border-left: 3px solid var(--gold);">
-                                🎥 <strong>Visual Walkthrough:</strong> Prefer a video format while you get set up? <a href="https://www.youtube.com/watch?v=MVUZ57iQJgA" target="_blank" rel="noopener" style="color: var(--sage-deep); font-weight: 600; text-decoration: underline;">Watch our official Online Passport Renewal Video Guide on YouTube</a>.
-                            </p>
-
                             <p style="margin-top: 16px; border-top: 1px dashed rgba(193, 154, 91, 0.2); padding-top: 12px;">
                                 <strong>Gateway Warning:</strong> While the application process is digital, overseas bank cards are frequently blocked at the final payment screen by foreign fraud filters. If your card is declined, Docu-Hub can securely complete the transaction on your behalf using local channels.
                             </p>
@@ -984,7 +1111,7 @@
                 </div>
             </div>
 
-            <!-- FACT SHEET 2: VITAL RECORDS -->
+            <!-- FACT SHEET 2: VITAL RECORDS (UPDATED FOR NEW APPS2 PORTAL) -->
             <div class="resource-card enter d3">
                 <i class="fa-solid fa-file-signature resource-icon"></i>
                 <h4 class="resource-card-title">Vital Records (NIRA / RGD)</h4>
@@ -1127,7 +1254,7 @@
     <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-white enter d3">
         <i class="fa-brands fa-whatsapp"></i> Contact Us Securely
     </a>
-</section>Target Audience: Global Jamaican Diaspora and Residents.
+</section>
 
 <footer class="site-footer">
     <div class="footer-grid">
@@ -1140,8 +1267,8 @@
             <h4 class="footer-col-title">Services</h4>
             <ul class="footer-links">
                 <li><a href="#concierge">Concierge Services</a></li>
-                <li><a href="#resources">Portal Fact Sheets</a></li>
-                <li><a href="#about">Our Protocol</a></li>
+                <li><a href="#guides">Video Library</a></li>
+                <li><a href="#resources">Fact Sheets</a></li>
             </ul>
         </div>
         <div>
