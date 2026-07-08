@@ -422,6 +422,12 @@
         margin: 0 auto;
     }
 
+    @media (min-width: 768px) {
+        .video-catalog-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+    }
+
     .video-card {
         background: #ffffff;
         padding: 16px;
@@ -430,24 +436,6 @@
         border: 1px solid rgba(193, 154, 91, 0.15);
         display: flex;
         flex-direction: column;
-    }
-    
-    .responsive-iframe {
-        position: relative;
-        padding-bottom: 56.25%; 
-        height: 0;
-        overflow: hidden;
-        border-radius: 6px;
-        background: var(--warm-dark);
-    }
-
-    .responsive-iframe iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
     }
 
     .video-card-title {
@@ -468,12 +456,30 @@
         flex-grow: 1;
     }
 
+    .responsive-iframe {
+        position: relative;
+        padding-bottom: 56.25%; 
+        height: 0;
+        overflow: hidden;
+        border-radius: 6px;
+        background: var(--warm-dark);
+    }
+
+    .responsive-iframe iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
     .video-caption {
         text-align: center;
         font-family: var(--serif-body);
         font-size: 1.15rem;
         color: var(--warm-mid);
-        margin-top: 48px;
+        margin-top: 32px;
         font-style: italic;
         line-height: 1.6;
         max-width: 600px;
@@ -482,7 +488,7 @@
     }
 
     /* ═══════════════════════════════════════════
-       PDF RESOURCE LIBRARY
+       PDF RESOURCE LIBRARY (Accordions)
     ═══════════════════════════════════════════ */
     .resource-section {
         background: var(--cream);
@@ -496,6 +502,12 @@
         gap: 40px;
         max-width: var(--max-w);
         margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .resource-catalog-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
     }
 
     .resource-card {
@@ -537,17 +549,73 @@
         margin-bottom: 24px;
     }
 
-    .btn-download {
-        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-        width: 100%; padding: 12px 20px;
-        background: var(--sage-lt); color: var(--sage-deep);
+    .resource-accordions {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: auto;
+    }
+
+    .res-expand {
+        background: var(--cream);
+        border: 1px solid rgba(193, 154, 91, 0.2);
         border-radius: 6px;
-        font-family: var(--sans); font-size: 0.72rem; font-weight: 600;
+        overflow: hidden;
+    }
+
+    .res-expand summary {
+        font-family: var(--sans);
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--sage-deep);
+        padding: 14px 16px;
+        cursor: pointer;
+        list-style: none; 
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #ffffff;
+        transition: background 0.3s ease;
+    }
+
+    .res-expand summary::-webkit-details-marker { display: none; }
+    .res-expand summary:hover { background: var(--gold-pale); }
+    
+    .res-expand summary::after {
+        content: '\002B'; 
+        font-size: 1.2rem;
+        font-weight: 300;
+    }
+    
+    .res-expand[open] summary::after { content: '\2212'; }
+    .res-expand[open] summary { border-bottom: 1px solid rgba(193, 154, 91, 0.1); }
+
+    .res-hidden {
+        padding: 16px;
+        background: var(--cream);
+    }
+
+    .res-hidden p {
+        font-family: var(--sans);
+        font-size: 0.8rem;
+        line-height: 1.5;
+        color: var(--warm-mid);
+        margin-bottom: 16px;
+    }
+
+    .btn-download-small {
+        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+        width: 100%; padding: 10px 16px;
+        background: var(--sage-lt); color: var(--sage-deep);
+        border-radius: 4px;
+        font-family: var(--sans); font-size: 0.65rem; font-weight: 600;
         letter-spacing: 0.1em; text-transform: uppercase;
         transition: all 0.3s ease;
     }
 
-    .btn-download:hover { 
+    .btn-download-small:hover { 
         background: var(--sage);
         color: #ffffff; 
     }
@@ -703,12 +771,6 @@
     /* ═══════════════════════════════════════════
        RESPONSIVE DESKTOP OVERRIDES
     ═══════════════════════════════════════════ */
-    @media (min-width: 768px) {
-        .video-catalog-grid, .resource-catalog-grid {
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        }
-    }
-
     @media (min-width: 900px) {
         .hamburger { display: none; }
         .nav-links { display: flex; }
@@ -867,7 +929,7 @@
 </div>
 
 <section id="guides" class="video-section">
-    <div class="card-section-header enter d1" style="padding-top: 0;">
+    <div class="card-section-header enter d1">
         <p class="section-eyebrow">Free Resources</p>
         <h2 class="section-title">Official <em>Video Guides</em></h2>
     </div>
@@ -901,7 +963,7 @@
 
         </div>
 
-        <p class="video-caption enter d1">
+        <p class="video-caption enter d1" style="margin-top: 48px;">
             Prefer to handle the bureaucracy yourself? Watch our step-by-step guides above. If this library saves you time, a 5-star Google review is always appreciated!
         </p>
     </div>
@@ -917,30 +979,97 @@
         <div class="resource-catalog-grid">
             
             <div class="resource-card enter d2">
-                <i class="fa-solid fa-laptop-file resource-icon"></i>
-                <h4 class="resource-card-title">Online Renewal Checklist</h4>
-                <p class="resource-card-desc">For adults with post-2001 "A" passports. Includes exact digital photo specifications, the 10-day draft rule, and portal troubleshooting steps.</p>
-                <a href="assets/pdfs/online-renewal-checklist.pdf" target="_blank" rel="noopener" class="btn-download">
-                    <i class="fa-solid fa-file-arrow-down"></i> Download PDF
-                </a>
+                <i class="fa-solid fa-passport resource-icon"></i>
+                <h4 class="resource-card-title">Jamaican Passports</h4>
+                <p class="resource-card-desc">Expand your specific application track below to download the exact document requirements.</p>
+                
+                <div class="resource-accordions">
+                    <details class="res-expand">
+                        <summary>Online Renewal (A-Books)</summary>
+                        <div class="res-hidden">
+                            <p>Digital photo specs, the 10-day draft rule, and troubleshooting for portal errors.</p>
+                            <a href="assets/pdfs/online-renewal-checklist.pdf" target="_blank" rel="noopener" class="btn-download-small">
+                                <i class="fa-solid fa-file-arrow-down"></i> Download PDF
+                            </a>
+                        </div>
+                    </details>
+
+                    <details class="res-expand">
+                        <summary>In-Person (Local)</summary>
+                        <div class="res-hidden">
+                            <p>For walk-ins, minors, and first-timers. Includes JP certification rules and the signature box trap.</p>
+                            <a href="assets/pdfs/in-person-checklist.pdf" target="_blank" rel="noopener" class="btn-download-small">
+                                <i class="fa-solid fa-file-arrow-down"></i> Download PDF
+                            </a>
+                        </div>
+                    </details>
+
+                    <details class="res-expand">
+                        <summary>Overseas (Diaspora)</summary>
+                        <div class="res-hidden">
+                            <p>Consular mail-in rules, Notary requirements, and exact money order fee structures.</p>
+                            <a href="assets/pdfs/diaspora-checklist.pdf" target="_blank" rel="noopener" class="btn-download-small">
+                                <i class="fa-solid fa-file-arrow-down"></i> Download PDF
+                            </a>
+                        </div>
+                    </details>
+                </div>
             </div>
 
             <div class="resource-card enter d3">
-                <i class="fa-solid fa-building-user resource-icon"></i>
-                <h4 class="resource-card-title">In-Person Local Checklist</h4>
-                <p class="resource-card-desc">For first-timers, minors, and physical walk-ins inside Jamaica. Includes physical document requirements and JP certification rules.</p>
-                <a href="assets/pdfs/in-person-checklist.pdf" target="_blank" rel="noopener" class="btn-download">
-                    <i class="fa-solid fa-file-arrow-down"></i> Download PDF
-                </a>
+                <i class="fa-solid fa-file-signature resource-icon"></i>
+                <h4 class="resource-card-title">Vital Records (RGD)</h4>
+                <p class="resource-card-desc">Checklists for securely sourcing official civil registry certificates and documents.</p>
+                
+                <div class="resource-accordions">
+                    <details class="res-expand">
+                        <summary>Birth Certificates</summary>
+                        <div class="res-hidden">
+                            <p>Requirements for requesting modern RGD printed certificates with security watermarks.</p>
+                            <a href="#" target="_blank" rel="noopener" class="btn-download-small">
+                                <i class="fa-solid fa-file-arrow-down"></i> Coming Soon
+                            </a>
+                        </div>
+                    </details>
+                    
+                    <details class="res-expand">
+                        <summary>Marriage Certificates</summary>
+                        <div class="res-hidden">
+                            <p>Data required to locate and print official Jamaican marriage records.</p>
+                            <a href="#" target="_blank" rel="noopener" class="btn-download-small">
+                                <i class="fa-solid fa-file-arrow-down"></i> Coming Soon
+                            </a>
+                        </div>
+                    </details>
+                </div>
             </div>
 
             <div class="resource-card enter d4">
-                <i class="fa-solid fa-plane-departure resource-icon"></i>
-                <h4 class="resource-card-title">Overseas Diaspora Checklist</h4>
-                <p class="resource-card-desc">For citizens applying via Consular Mail-In. Includes Notary requirements, money order instructions, and international mailing protocols.</p>
-                <a href="assets/pdfs/diaspora-checklist.pdf" target="_blank" rel="noopener" class="btn-download">
-                    <i class="fa-solid fa-file-arrow-down"></i> Download PDF
-                </a>
+                <i class="fa-solid fa-stamp resource-icon"></i>
+                <h4 class="resource-card-title">Official Clearances</h4>
+                <p class="resource-card-desc">Prepare the exact documentation needed for legal, employment, or driving records.</p>
+                
+                <div class="resource-accordions">
+                    <details class="res-expand">
+                        <summary>Driving Abstracts</summary>
+                        <div class="res-hidden">
+                            <p>The exact TAJ forms and procedures to request an official Jamaican driving record.</p>
+                            <a href="#" target="_blank" rel="noopener" class="btn-download-small">
+                                <i class="fa-solid fa-file-arrow-down"></i> Coming Soon
+                            </a>
+                        </div>
+                    </details>
+
+                    <details class="res-expand">
+                        <summary>Police Records</summary>
+                        <div class="res-hidden">
+                            <p>Fingerprinting requirements and physical submission protocols for background checks.</p>
+                            <a href="#" target="_blank" rel="noopener" class="btn-download-small">
+                                <i class="fa-solid fa-file-arrow-down"></i> Coming Soon
+                            </a>
+                        </div>
+                    </details>
+                </div>
             </div>
 
         </div>
