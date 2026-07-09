@@ -3,445 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liaison Desk | Docu-Hub Operations</title>
+    <title>Contact Us &middot; Docu-Hub Jamaica</title>
     
-    <!-- Premium Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
     <style>
-        :root {
-            --studio-black: #0F172A; /* Tech Slate */
-            --true-black: #050505;
-            --studio-white: #FFFFFF;
-            --text-muted: #94A3B8;
-            --border-color: rgba(255,255,255,0.1);
-            --mem-accent: #D4AF37; /* Executive Gold */
-            --mem-glow: rgba(212, 175, 55, 0.15);
-            --brand-steel: #38BDF8; /* Tech Blue */
-            --brand-glow: rgba(56, 189, 248, 0.15);
-            --header-height: 75px;
-        }
+    :root {
+        --bg-light:   #F9F9F8; 
+        --ivory:      #FFFFFF;
+        --brand-drk:  #1E2B1D; 
+        --brand-mid:  #3A4F38;
+        --gold:       #C19A5B; 
+        --gold-lt:    #DAB87F;
+        --text-dark:  #111410; 
+        --text-mid:   #4A4F48; 
+        --serif:      'Playfair Display', Georgia, serif; 
+        --sans:       'Jost', Arial, sans-serif; 
+        --nav-h: 75px;
+        --max-w: 1200px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg-light); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; transition: 0.3s ease; }
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
 
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        html { scroll-behavior: smooth; }
-        body { 
-            margin: 0; 
-            font-family: 'Inter', sans-serif; 
-            background: var(--true-black); 
-            color: var(--studio-white); 
-            line-height: 1.6; 
-            padding-top: var(--header-height);
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
+    /* Nav */
+    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.98); border-bottom: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo-name { font-family: var(--serif); font-size: 1.2rem; color: #fff; letter-spacing: 0.05em; display: block; }
+    .nav-logo-name em { color: var(--gold-lt); font-style: normal; }
+    .nav-links { display: none; list-style: none; align-items: center; gap: 8px; }
+    .nav-links a { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 8px 16px; border-radius: 4px; }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
 
-        h1, h2, h3, h4 { margin: 0; font-weight: 500; font-family: 'Playfair Display', serif; color: var(--studio-white); letter-spacing: 0.5px;}
-        p { margin-bottom: 0; font-size: 1.05rem; color: var(--text-muted); font-weight: 300; letter-spacing: 0.3px;}
-        a { text-decoration: none; transition: 0.4s ease; }
-        
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    /* Header */
+    .contact-header { padding: calc(var(--nav-h) + 60px) 0 60px; background: var(--brand-drk); color: #fff; text-align: center; }
+    .contact-header h1 { font-family: var(--serif); font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 400; margin-bottom: 16px; }
+    .contact-header p { font-family: var(--sans); font-size: 1.1rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase; }
 
-        /* --- TECH PATTERNS --- */
-        .grid-bg {
-            background-color: var(--true-black);
-            background-size: 30px 30px;
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        }
+    /* Layout Content */
+    .contact-content { padding: 80px 0; }
+    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 64px; align-items: start; }
+    
+    /* Instructions Column */
+    .steps-box h2 { font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk); margin-bottom: 16px; }
+    .steps-box > p { font-family: var(--sans); font-size: 1.05rem; color: var(--text-mid); margin-bottom: 40px; }
+    
+    .step-item { display: flex; gap: 24px; margin-bottom: 32px; }
+    .step-num { background: var(--brand-mid); color: #fff; font-family: var(--sans); font-weight: 600; font-size: 1.1rem; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 2px solid var(--gold-lt); }
+    .step-text h3 { font-family: var(--serif); font-size: 1.3rem; color: var(--brand-drk); margin-bottom: 8px; }
+    .step-text p { font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; }
 
-        /* --- ANIMATIONS --- */
-        .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
-        .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.2s; }
+    /* Action Column */
+    .booking-box { background: var(--ivory); padding: 40px; border-radius: 8px; box-shadow: 0 12px 40px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.05); text-align: center; }
+    .booking-box i { font-size: 3rem; color: var(--gold); margin-bottom: 24px; display: block; }
+    .booking-box h3 { font-family: var(--serif); font-size: 1.8rem; color: var(--brand-drk); margin-bottom: 12px; }
+    .booking-box p { font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); margin-bottom: 32px; max-width: 400px; margin-left: auto; margin-right: auto; }
+    
+    .btn-booking { display: inline-flex; align-items: center; justify-content: center; gap: 12px; width: 100%; max-width: 340px; padding: 18px; background: var(--gold); color: #fff; border-radius: 4px; font-family: var(--sans); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; box-shadow: 0 4px 12px rgba(193, 154, 91, 0.3); }
+    .btn-booking:hover { background: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(193, 154, 91, 0.4); }
 
-        /* --- BORDERED NAVIGATION (DARK MODE) --- */
-        .app-header {
-            position: fixed; top: 0; left: 0; width: 100%; z-index: 2000;
-            background: rgba(5, 5, 5, 0.85); 
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-color); 
-            height: var(--header-height); display: flex; align-items: center;
-        }
-        .header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; }
-        
-        .header-logo { 
-            font-size: 1.2rem; font-weight: 800; color: var(--studio-white); text-transform: uppercase;
-            display: flex; align-items: center; letter-spacing: 1px; font-family: 'Inter', sans-serif;
-        }
-        
-        .studio-tagline { 
-            font-size: 0.7rem; color: var(--text-muted); margin-left: 12px; border-left: 1px solid var(--border-color); 
-            padding-left: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
-        }
+    .fallback-email { margin-top: 40px; padding-top: 32px; border-top: 1px dashed rgba(0,0,0,0.1); font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); }
+    .fallback-email a { color: var(--brand-mid); font-weight: 600; text-decoration: underline; }
 
-        .nav-links { display: flex; gap: 25px; align-items: center; }
-        .nav-links a { color: var(--text-muted); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;}
-        .nav-links a:hover { color: var(--studio-white); }
-        .menu-toggle { display: none; font-size: 1.4rem; cursor: pointer; color: var(--studio-white); }
-
-        /* --- CONSTRAINED HERO SECTION --- */
-        .hero-wrapper { padding: 40px 20px 20px; } 
-        .main-hero { 
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(5, 5, 5, 0.9) 100%);
-            border-radius: 24px;
-            padding: 100px 40px;
-            text-align: center;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .main-hero::before {
-            content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%); width: 800px; height: 600px;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
-            border-radius: 50%; pointer-events: none;
-        }
-
-        .main-hero-content { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
-        .tech-badge {
-            display: inline-block; padding: 6px 12px; border-radius: 20px; background: rgba(255,255,255, 0.05); 
-            border: 1px solid rgba(255,255,255, 0.1); color: var(--studio-white); font-size: 0.75rem; 
-            font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; font-family: 'Inter', sans-serif;
-        }
-        .main-hero h1 { font-size: clamp(2.8rem, 5vw, 4.5rem); margin-bottom: 20px; font-style: italic; line-height: 1.1; color: var(--mem-accent);}
-        .main-hero p { color: #CBD5E1; font-size: clamp(1.05rem, 1.5vw, 1.15rem); font-weight: 300; line-height: 1.7;}
-
-        /* --- BENTO BOX SHOWCASE SECTION --- */
-        .showcase-section { padding: 100px 0 140px; } 
-        
-        .bento-grid { 
-            display: flex;
-            flex-direction: column;
-            gap: 40px; 
-        }
-        
-        .bento-box {
-            background: rgba(15, 23, 42, 0.4);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        /* Unified Split Cards for the Story */
-        .bento-split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            padding: 0; 
-        }
-        .bento-split:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255,255,255, 0.2);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-        }
-        
-        .split-content {
-            padding: 80px 60px; 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .split-visual {
-            background: url('assets/hero2.png') center/cover;
-            filter: grayscale(1) contrast(1.1);
-            position: relative;
-            min-height: 400px;
-        }
-        .split-visual::after {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(to right, rgba(15, 23, 42, 0.8) 0%, transparent 100%);
-        }
-
-        .bento-split .split-content { border-right: 1px solid var(--border-color); order: 1; }
-        .bento-split .split-visual { order: 2; }
-
-        .category-tag { 
-            display: inline-block; color: var(--brand-steel); 
-            font-size: 0.75rem; font-weight: 700; 
-            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; font-family: 'Inter', sans-serif;
-        }
-        .split-content h2 { font-size: clamp(2rem, 3vw, 2.5rem); margin-bottom: 15px; font-family: 'Playfair Display', serif; line-height: 1.2;}
-        .split-content p { margin-bottom: 25px; line-height: 1.7; color: #CBD5E1;}
-
-        .service-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
-        .tag { font-size: 0.7rem; padding: 6px 12px; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); background: rgba(0,0,0,0.3);}
-
-        .promise-tag {
-            border-left: 2px solid var(--mem-accent);
-            padding-left: 20px;
-            font-style: italic;
-            color: var(--studio-white);
-        }
-
-        /* --- CONTACT CHANNELS --- */
-        .channel-header { text-align: center; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; color: var(--text-muted); margin: 60px 0 30px; font-weight: 700; }
-        
-        .contact-pill {
-            display: flex; align-items: center; gap: 30px;
-            padding: 40px; 
-            text-decoration: none; color: var(--studio-white);
-        }
-        .contact-pill:hover {
-            transform: translateY(-5px);
-            border-color: rgba(56, 189, 248, 0.4);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4), 0 0 20px var(--brand-glow);
-        }
-        
-        .contact-pill i { font-size: 2.5rem; color: var(--brand-steel); transition: 0.3s; }
-        .pill-text { flex: 1; }
-        .pill-text h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; margin-bottom: 5px; transition: 0.3s; }
-        .pill-text p { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: var(--text-muted); margin: 0; }
-        .pill-arrow { color: var(--text-muted); font-size: 1.2rem; transition: 0.3s; }
-
-        .contact-pill:hover i, .contact-pill:hover h3 { color: var(--studio-white); }
-        .contact-pill:hover .pill-arrow { transform: translateX(5px); color: var(--brand-steel); }
-
-        /* Priority Gold Pill */
-        .contact-pill.priority {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(15, 23, 42, 0.4) 100%);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-        .contact-pill.priority i { color: var(--mem-accent); }
-        .contact-pill.priority:hover { border-color: rgba(212, 175, 55, 0.5); box-shadow: 0 15px 40px rgba(0,0,0,0.4), 0 0 20px var(--mem-glow); }
-        .contact-pill.priority:hover .pill-arrow { color: var(--mem-accent); }
-
-
-        /* --- REDEFINED FOOTER --- */
-        .main-footer { background: var(--true-black); color: #94A3B8; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 60px; }
-        .footer-brand h2 { color: var(--studio-white); font-size: 1.8rem; margin-bottom: 10px; font-family: 'Playfair Display', serif;}
-        .footer-col h4 { color: var(--studio-white); margin-bottom: 20px; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-family: 'Inter', sans-serif;}
-        .footer-col a { display: block; color: #94A3B8; margin-bottom: 12px; font-size: 0.9rem; transition: 0.3s; }
-        .footer-col a:hover { color: var(--mem-accent); transform: translateX(3px); }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; text-align: center; font-size: 0.8rem; letter-spacing: 1px; color: #64748B; }
-
-        /* --- MOBILE REFINEMENTS --- */
-        @media (max-width: 850px) {
-            .container { padding: 0 20px; }
-            .studio-tagline { display: none; } 
-            .menu-toggle { display: block; }
-            
-            .nav-links { 
-                position: fixed; top: var(--header-height); right: -100%; width: 100%; height: calc(100vh - var(--header-height)); 
-                background: rgba(5,5,5,0.98); backdrop-filter: blur(20px); flex-direction: column; padding: 40px 24px; gap: 20px; 
-                transition: 0.4s ease; align-items: flex-start; border-top: 1px solid var(--border-color); z-index: 3000; 
-            }
-            .nav-links.active { right: 0; }
-            .nav-links a { font-size: 1.1rem; width: 100%; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
-            
-            /* Box Adjustments */
-            .hero-wrapper { padding: 24px 16px 16px; }
-            .main-hero { padding: 60px 24px; border-radius: 20px;}
-            
-            .showcase-section { padding: 60px 0 80px; }
-            .bento-grid { gap: 24px; }
-            
-            /* Split layout adjustments for mobile */
-            .bento-split { grid-template-columns: 1fr; }
-            .bento-split .split-content { border-right: none; padding: 40px 24px; order: 2; border-top: 1px solid var(--border-color);}
-            .bento-split .split-visual { order: 1; min-height: 250px; }
-            .split-visual::after { background: linear-gradient(to bottom, rgba(15, 23, 42, 0.4) 0%, rgba(5,5,5, 1) 100%); }
-
-            /* Pills on Mobile */
-            .contact-pill { flex-direction: column; text-align: center; gap: 20px; padding: 40px 24px; border-radius: 20px; }
-            .pill-arrow { display: none; } /* Hide arrow on mobile to save space */
-        }
-
-        #back-to-top {
-            position: fixed; bottom: 20px; right: 20px; width: 45px; height: 45px;
-            background: var(--studio-black); color: white; border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            z-index: 3000; opacity: 0; visibility: hidden; transition: 0.4s; box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        #back-to-top.visible { opacity: 1; visibility: visible; }
+    /* Footer */
+    .site-footer { background: #111; color: #fff; padding: 60px 0 30px; margin-top: 60px; }
+    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 30px; }
+    .f-logo { font-family: var(--serif); font-size: 1.2rem; color: #fff; margin-bottom: 16px; display: block; }
+    
+    @media (min-width: 900px) {
+        .nav-links { display: flex; }
+        .contact-grid { grid-template-columns: 1.2fr 0.8fr; gap: 80px; }
+    }
     </style>
 </head>
-<body class="grid-bg">
+<body>
 
-    <header class="app-header">
-        <div class="container header-inner">
-            <a href="index.html" class="header-logo">
-                Docu-Hub<span style="color:var(--brand-steel)">.</span> 
-            </a>
-            <div class="studio-tagline">Operations Services</div>
-            <div class="menu-toggle" id="menu-btn"><i class="fa-solid fa-bars-staggered"></i></div>
-          <nav class="nav-links" id="nav-list">
-    <a href="index.html">Home</a>
-    <a href="hub.html">Smart Hubs</a>
-    <a href="memorials.html">Memorials</a>
-    <a href="concierge.html">Concierge</a>
-    <!-- The single, clear Call to Action -->
-    <a href="contact.html" class="nav-btn">Contact Studio</a>
-</nav>
-        </div>
-    </header>
-
-    <!-- Constrained Frame Hero -->
-    <div class="hero-wrapper">
-        <section class="main-hero fade-up">
-            <div class="main-hero-content">
-                <div class="tech-badge"><i class="fa-solid fa-headset" style="margin-right: 6px;"></i> Support & Intake</div>
-                <h1>Liaison Desk</h1>
-                <p>Direct access to the Studio. Whether you are building a digital menu, a memorial gallery, or need administrative proxy support.</p>
-            </div>
-        </section>
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo-name">Laura Clarke <em>&middot;</em> Docu-Hub</a>
+        <ul class="nav-links">
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#faq">Portal FAQs</a></li>
+            <li><a href="about.html">About Us</a></li>
+        </ul>
     </div>
+</nav>
 
-    <!-- Bento Box Layout -->
-    <section class="showcase-section">
-        <div class="container bento-grid">
+<header class="contact-header">
+    <div class="wrap">
+        <h1>Secure Intake Desk</h1>
+        <p>Schedule your dedicated file review</p>
+    </div>
+</header>
+
+<section class="contact-content">
+    <div class="wrap contact-grid">
+        
+        <!-- Step-by-Step Instructions -->
+        <div class="steps-box">
+            <h2>The On-The-Ground Process</h2>
+            <p>To guard operational security and maintain flawless accuracy across our clients' files, Docu-Hub works strictly by scheduled appointment. Follow the blueprint below to lock in your execution date.</p>
             
-            <!-- Unified Card: The Studio Story -->
-            <div class="bento-box bento-split fade-up delay-1">
-                <div class="split-content">
-                    <span class="category-tag">The Studio Approach</span>
-                    <h2>One Hub. <br>Infinite Solutions.</h2>
-                    <p>From modernizing your business with NFC technology to preserving legacies through smart memorials, we bridge the gap between complex tasks and seamless results.</p>
-                    
-                    <div class="service-tags">
-                        <span class="tag">Smart Menus</span>
-                        <span class="tag">Digital Tributes</span>
-                        <span class="tag">NFC Cards</span>
-                        <span class="tag">Proxy Logistics</span>
-                    </div>
-
-                    <div class="promise-tag">
-                        "If we can't solve it for you, we will give you the roadmap to do it yourself. You will never leave our desk empty-handed."
-                    </div>
+            <div class="step-item">
+                <div class="step-num">1</div>
+                <div class="step-text">
+                    <h3>Select an Intake Slot</h3>
+                    <p>Use the calendar panel to select an available time zone that works best for your schedule. We operate across standard international processing blocks.</p>
                 </div>
-                
-                <div class="split-visual"></div>
             </div>
 
-            <!-- Contact Channels Heading -->
-            <div class="channel-header fade-up">Open a Ticket</div>
-
-            <!-- Contact Channel 1: Consultation -->
-            <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" target="_blank" class="bento-box contact-pill priority fade-up delay-1">
-                <i class="fa-solid fa-calendar-day"></i>
-                <div class="pill-text">
-                    <h3>Strategic Consultation</h3>
-                    <p>Book 15 minutes to carefully plan your NFC Hub, Memorial, or Logistics project.</p>
-                </div>
-                <i class="fa-solid fa-arrow-right pill-arrow"></i>
-            </a>
-
-            <!-- Contact Channel 2: WhatsApp -->
-            <a href="https://wa.me/18765612614" class="bento-box contact-pill fade-up delay-2" target="_blank">
-                <i class="fa-brands fa-whatsapp"></i>
-                <div class="pill-text">
-                    <h3>Instant Messenger</h3>
-                    <p>Best for quick tech support or concierge status updates via WhatsApp.</p>
-                </div>
-                <i class="fa-solid fa-arrow-right pill-arrow"></i>
-            </a>
-            
-            <!-- Contact Channel 3: Email -->
-            <a href="mailto:admin@dochubservices.com" class="bento-box contact-pill fade-up delay-1">
-                <i class="fa-solid fa-envelope"></i>
-                <div class="pill-text">
-                    <h3>Studio Email</h3>
-                    <p>Best for sending digital assets, photos, and secure documents.</p>
-                </div>
-                <i class="fa-solid fa-arrow-right pill-arrow"></i>
-            </a>
-
-        </div>
-    </section>
-
-    <!-- Dark Tech Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h2>Docu-Hub.</h2>
-                    <p>Operations Services<br>Linstead, St. Catherine.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Solutions</h4>
-                    <a href="hub.html">Smart Business Hubs</a>
-                    <a href="memorials.html">Memorial Tributes</a>
-                    <a href="concierge.html">Concierge Desk</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <a href="https://wa.me/18765612614" target="_blank">WhatsApp Chat</a>
-                    <a href="https://calendar.app.google/9NgDDpe4gPefTwWJ7" target="_blank">Book Consultation</a>
+            <div class="step-item">
+                <div class="step-num">2</div>
+                <div class="step-text">
+                    <h3>Complete the Portal Questionnaire</h3>
+                    <p>During booking, the Google system will present our secure intake form. Detail exactly what document service you require, your current portal status, and any systemic errors or payment block bottlenecks you have encountered.</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                &copy; 2026 Docu-Hub Operations Services. Moving Forward.
+
+            <div class="step-item">
+                <div class="step-num">3</div>
+                <div class="step-text">
+                    <h3>Flawless Prepared Return Call</h3>
+                    <p>Once your spot is confirmed, Laura Clarke will personally audit your details, run a background check against current agency processing timelines, and call you back completely prepared with your exact logistical map and execution timeline.</p>
+                </div>
             </div>
         </div>
-    </footer>
 
-    <a href="#" id="back-to-top">
-        <i class="fa-solid fa-chevron-up"></i>
-    </a>
+        <!-- The Interactive Booking Box -->
+        <div class="booking-box">
+            <i class="fa-regular fa-calendar-check"></i>
+            <h3>Secure Appointment Scheduling</h3>
+            <p>Select your time slot, submit your file details, and lock in your proxy verification spot instantly.</p>
+            
+            <!-- Replace placeholder link with your actual Google Calendar Schedule link -->
+            <a href="https://calendar.app.google/mCXiJ2GLF15mLMV48" target="_blank" rel="noopener" class="btn-booking">
+                Schedule Appointment <i class="fa-solid fa-arrow-right"></i>
+            </a>
 
-   <script>
-       // Mobile Menu Toggle
-       const menuBtn = document.getElementById('menu-btn');
-       const navList = document.getElementById('nav-list');
-       const navLinks = navList.querySelectorAll('a');
-       
-       function toggleMenu() {
-           navList.classList.toggle('active');
-           const icon = menuBtn.querySelector('i');
-           icon.classList.toggle('fa-bars-staggered');
-           icon.classList.toggle('fa-xmark');
-           document.body.style.overflow = navList.classList.contains('active') ? 'hidden' : 'auto';
-       }
-       menuBtn.addEventListener('click', toggleMenu);
+            <div class="fallback-email">
+                <p>For general public, vendor, or non-application inquiries, contact our sorting desk at:</p>
+                <p style="margin-top: 8px;"><i class="fa-regular fa-envelope"></i> <a href="mailto:admin@dhubservices.com">admin@dhubservices.com</a></p>
+            </div>
+        </div>
 
-       navLinks.forEach(link => {
-           link.addEventListener('click', () => {
-               if(navList.classList.contains('active')) {
-                   toggleMenu();
-               }
-           });
-       });
+    </div>
+</section>
 
-       // Back to Top Button
-       const btt = document.getElementById('back-to-top');
-       window.addEventListener('scroll', () => {
-           if (window.scrollY > 500) { btt.classList.add('visible'); }
-           else { btt.classList.remove('visible'); }
-       });
-       btt.addEventListener('click', (e) => {
-           e.preventDefault();
-           window.scrollTo({ top: 0, behavior: 'smooth' });
-       });
+<footer class="site-footer">
+    <div class="wrap footer-grid">
+        <div>
+            <span class="f-logo">Docu-Hub Jamaica</span>
+            <p style="font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 300px;">Providing highly secure, on-the-ground document processing and compliance.</p>
+        </div>
+        <div>
+            <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt);">QUICK LINKS</h4>
+            <ul style="list-style: none; display: grid; gap: 8px;">
+                <li><a href="index.html#services" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Services</a></li>
+                <li><a href="index.html#faq" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Portal FAQs</a></li>
+                <li><a href="about.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">About Us</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt);">SECURE PORTAL</h4>
+            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px;"><i class="fa-regular fa-envelope" style="color: var(--gold); margin-right: 8px;"></i> <a href="mailto:admin@dhubservices.com">admin@dhubservices.com</a></p>
+            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 8px;"></i> Linstead, Jamaica</p>
+        </div>
+    </div>
+</footer>
 
-       // Scroll Animation Observer (Fade Up effect)
-       const observerOptions = {
-           root: null,
-           rootMargin: '0px',
-           threshold: 0.15
-       };
-
-       const observer = new IntersectionObserver((entries, observer) => {
-           entries.forEach(entry => {
-               if (entry.isIntersecting) {
-                   entry.target.classList.add('visible');
-                   observer.unobserve(entry.target); // Only animate once
-               }
-           });
-       }, observerOptions);
-
-       document.querySelectorAll('.fade-up').forEach(element => {
-           observer.observe(element);
-       });
-   </script>
 </body>
 </html>
-
