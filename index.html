@@ -41,7 +41,7 @@
     
     <style>
     /* ═══════════════════════════════════════════
-       DESIGN TOKENS (Breathable & Scannable)
+       DESIGN TOKENS
      ═══════════════════════════════════════════ */
     :root {
         --cream:      #FCFAEE; 
@@ -72,7 +72,6 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
-    /* INCREASED LINE HEIGHT FOR READABILITY */
     body {
         font-family: var(--sans); background: var(--cream); color: var(--ink);
         overflow-x: hidden; -webkit-font-smoothing: antialiased; line-height: 1.8;
@@ -122,30 +121,43 @@
     .drawer-wa { margin-top: 32px; background: linear-gradient(135deg, #3A4F38 0%, var(--sage-deep) 100%)!important; color: #fff!important; border: none!important; border-radius: 8px!important; justify-content: center; padding: 20px!important; font-size: 1rem!important; letter-spacing: 0.2em!important; }
 
     /* ═══════════════════════════════════════════
-       TYPOGRAPHY-LED HERO BANNER
+       RESTORED SPLIT HERO (Visual Impact)
      ═══════════════════════════════════════════ */
-    .hero-banner {
-        position: relative;
-        padding: calc(var(--nav-h) + 80px) 24px 100px;
-        text-align: center;
-        background: linear-gradient(135deg, var(--warm-dark) 0%, var(--sage-deep) 100%);
-        color: #ffffff;
-        display: flex; flex-direction: column; align-items: center;
-        border-bottom: 4px solid var(--gold);
+    .hero-split {
+        background: radial-gradient(circle at top right, #FFFFFF 0%, var(--cream) 70%);
+        padding: calc(var(--nav-h) + 60px) 24px 80px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 48px;
+        align-items: center;
+        max-width: var(--max-w);
+        margin: 0 auto;
     }
-    .hero-location { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-lt); display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 24px; }
-    .hero-headline { font-family: var(--serif-display); font-size: clamp(2.4rem, 9vw, 4.2rem); font-weight: 400; line-height: 1.1; margin-bottom: 24px; max-width: 800px; color: #ffffff; }
-    .hero-headline em { background: linear-gradient(to right, var(--gold-pale), var(--gold-lt)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-style: italic; }
-    .hero-sub { font-family: var(--serif-body); font-size: clamp(1.15rem, 3.5vw, 1.4rem); max-width: 600px; line-height: 1.6; margin-bottom: 40px; font-style: italic; color: rgba(255,255,255,0.85); }
-    .hero-ctas { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
 
-    .btn-sage { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; background: linear-gradient(135deg, var(--gold) 0%, #A68045 100%); color: #fff; border-radius: 50px; font-family: var(--sans); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 8px 24px rgba(0, 0, 0, 0.3); transition: all 0.3s; }
-    .btn-sage:hover { background: linear-gradient(135deg, #A68045 0%, #8A6834 100%); transform: translateY(-2px); }
-    .btn-outline { display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; background: transparent; color: #ffffff; border: 1px solid rgba(255,255,255,0.4); border-radius: 50px; font-family: var(--sans); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; transition: all 0.3s; }
-    .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: #ffffff; transform: translateY(-2px); }
+    .hero-text-col { display: flex; flex-direction: column; align-items: flex-start; }
+
+    .hero-location { font-family: var(--sans); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: var(--sage-deep); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .hero-location::after { content: ''; display: block; width: 32px; height: 1px; background: var(--sage); opacity: 0.6; }
+
+    .hero-headline { font-family: var(--serif-display); font-size: clamp(2.4rem, 9vw, 4.2rem); font-weight: 400; line-height: 1.05; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 24px; }
+    .hero-headline em { background: linear-gradient(to right, var(--sage), var(--sage-deep)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-style: italic; }
+
+    .hero-sub { font-family: var(--serif-body); font-size: clamp(1.15rem, 3.5vw, 1.4rem); font-weight: 500; font-style: italic; color: var(--warm-mid); line-height: 1.6; margin-bottom: 40px; max-width: 540px; }
+
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 16px; }
+
+    .hero-img-col { position: relative; width: 100%; aspect-ratio: 4/5; border-radius: 12px; overflow: hidden; box-shadow: 0 24px 64px rgba(44,36,22,0.15); background: var(--sage-lt); }
+    
+    .hero-badge { position: absolute; bottom: 24px; left: -16px; background: rgba(30, 32, 29, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: var(--gold-lt); padding: 16px 24px; border-radius: 4px; font-family: var(--sans); font-size: 0.65rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 12px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.15); }
+
+    .btn-sage { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; background: linear-gradient(135deg, #3A4F38 0%, var(--sage-deep) 100%); color: #fff; border-radius: 50px; font-family: var(--sans); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 8px 24px rgba(0, 0, 0, 0.3); transition: all 0.3s; }
+    .btn-sage:hover { background: linear-gradient(135deg, #445D42 0%, #30462F 100%); transform: translateY(-2px); }
+    
+    .btn-outline { display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; background: transparent; color: var(--sage-deep); border: 1px solid var(--sage-deep); border-radius: 50px; font-family: var(--sans); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; transition: all 0.3s; }
+    .btn-outline:hover { background: linear-gradient(135deg, #3A4F38 0%, var(--sage-deep) 100%); color: #ffffff; border-color: transparent; transform: translateY(-2px); }
 
     /* ═══════════════════════════════════════════
-       SCANNABLE CONCIERGE CARDS (Massive Padding)
+       BREATHABLE CONCIERGE CARDS (No Images)
      ═══════════════════════════════════════════ */
     .services { padding-bottom: 40px; }
     .card-section-header { text-align: center; margin-bottom: 48px; padding-top: 80px; }
@@ -154,7 +166,6 @@
     .section-title { font-family: var(--serif-display); font-size: clamp(2rem, 7vw, 3.4rem); font-weight: 400; line-height: 1.1; color: var(--ink); }
     .section-title em { background: linear-gradient(to right, var(--gold), var(--gold-lt)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-style: italic; }
 
-    /* Added gap for extreme breathing room on mobile */
     .card-grid { display: grid; grid-template-columns: 1fr; gap: 32px; max-width: var(--max-w); margin: 0 auto; padding: 0 24px 80px; }
     
     .master-card { 
@@ -168,16 +179,12 @@
     }
     .master-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(42, 61, 41, 0.08); border-top-color: var(--gold); }
     
-    /* Massive internal padding so the text doesn't feel boxed in */
     .card-body { padding: 48px 32px; display: flex; flex-direction: column; flex: 1; text-align: center; }
-    
     .service-icon { font-size: 3rem; color: var(--gold); margin-bottom: 24px; }
-    
     .card-topic { font-family: var(--serif-display); font-size: 1.6rem; font-weight: 500; color: var(--ink); margin-bottom: 16px; }
     .card-essential { font-family: var(--sans); font-size: 0.95rem; line-height: 1.7; color: var(--warm-mid); margin-bottom: 32px; }
 
     .card-expand { width: 100%; margin-top: auto; text-align: left; }
-    /* Bigger tap targets for thumbs */
     .card-expand summary { font-family: var(--sans); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage-deep); cursor: pointer; list-style: none; display: flex; align-items: center; border-top: 1px solid rgba(193, 154, 91, 0.15); padding-top: 24px; }
     .card-expand summary::-webkit-details-marker { display: none; }
     .card-expand summary::after { content: '\002B'; margin-left: auto; font-size: 1.4rem; font-weight: 300; }
@@ -261,11 +268,13 @@
     /* Desktop Adjustments */
     @media (min-width: 900px) {
         .hamburger { display: none; } .nav-links { display: flex; }
-        .hero-banner { padding: calc(var(--nav-h) + 120px) 24px 140px; }
+        .nav-inner { padding: 0 28px; }
+        .hero-split { grid-template-columns: 1.1fr 0.9fr; padding: calc(var(--nav-h) + 80px) 28px 100px; gap: 64px; }
+        .hero-badge { left: -32px; }
         .card-grid { grid-template-columns: repeat(4, 1fr); gap: 32px; }
         .resource-catalog-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
         .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; }
-        .footer-bottom { flex-direction: row; justify-content: space-between; }
+        .footer-bottom { flex-direction: row; justify-content: space-between; text-align: left; }
         .cookie-banner { justify-content: space-between; } .cookie-banner p { text-align: left; }
     }
     </style>
@@ -303,19 +312,33 @@
     </a>
 </div>
 
-<section class="hero-banner">
-    <p class="hero-location enter d1">
-        <i class="fa-solid fa-location-dot"></i> Linstead &middot; St. Catherine
-    </p>
-    <h1 class="hero-headline enter d2">
-        <em>Confidential</em> Jamaican Document Concierge
-    </h1>
-    <p class="hero-sub enter d3">
-        Bypass bureaucratic friction. We manage secure Jamaican passport renewals, vital records, and official clearances for the diaspora.
-    </p>
-    <div class="hero-ctas enter d4">
-        <a href="#concierge" class="btn-sage">Explore Services <i class="fa-solid fa-arrow-down"></i></a>
-        <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-outline"><i class="fa-brands fa-whatsapp"></i> Chat with Laura</a>
+<section class="hero-split">
+    <div class="hero-text-col enter d1">
+        <p class="hero-location">
+            <i class="fa-solid fa-location-dot" style="font-size:0.6rem;"></i>
+            Linstead &middot; St. Catherine &middot; Jamaica
+        </p>
+        <h1 class="hero-headline">
+            <em>Confidential</em> Jamaican Document Concierge
+        </h1>
+        <p class="hero-sub">
+            Bypass the bureaucratic friction. From hassle-free Jamaican document renewals and official clearances to secure sourcing. Whether you are local or overseas, we handle the logistics with strict confidentiality.
+        </p>
+        <div class="hero-ctas">
+            <a href="#concierge" class="btn-sage">
+                Explore Services <i class="fa-solid fa-arrow-down"></i>
+            </a>
+            <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-outline">
+                <i class="fa-brands fa-whatsapp"></i> Chat with Laura
+            </a>
+        </div>
+    </div>
+    
+    <div class="hero-img-col enter d2">
+        <img src="assets/concierge.png" alt="Docu-Hub Citadel Services" onerror="this.style.opacity='0';">
+        <div class="hero-badge">
+            <i class="fa-solid fa-shield-check"></i> Secure On-The-Ground Processing
+        </div>
     </div>
 </section>
 
@@ -335,7 +358,7 @@
                     <summary>More Details</summary>
                     <div class="card-hidden-info">We review your application for strict compliance, ensuring all supporting documents meet PICA standards to prevent delays.</div>
                 </details>
-                <a href="https://wa.me/18765612614" class="btn-card"><i class="fa-brands fa-whatsapp"></i> Inquire</a>
+                <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-card"><i class="fa-brands fa-whatsapp"></i> Inquire</a>
             </div>
         </div>
 
@@ -348,7 +371,7 @@
                     <summary>More Details</summary>
                     <div class="card-hidden-info">We interface directly with the RGD on your behalf to securely retrieve official stamped documents.</div>
                 </details>
-                <a href="https://wa.me/18765612614" class="btn-card"><i class="fa-brands fa-whatsapp"></i> Inquire</a>
+                <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-card"><i class="fa-brands fa-whatsapp"></i> Inquire</a>
             </div>
         </div>
 
@@ -361,7 +384,7 @@
                     <summary>More Details</summary>
                     <div class="card-hidden-info">We handle the local logistics, strict document coordination, and agency follow-ups required to obtain clearances.</div>
                 </details>
-                <a href="https://wa.me/18765612614" class="btn-card"><i class="fa-brands fa-whatsapp"></i> Inquire</a>
+                <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-card"><i class="fa-brands fa-whatsapp"></i> Inquire</a>
             </div>
         </div>
 
@@ -374,7 +397,7 @@
                     <summary>More Details</summary>
                     <div class="card-hidden-info">We process local TAJ payments to bypass international card blocks and generate your digital eMVRC.</div>
                 </details>
-                <a href="https://wa.me/18765612614" class="btn-card"><i class="fa-brands fa-whatsapp"></i> Inquire</a>
+                <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-card"><i class="fa-brands fa-whatsapp"></i> Inquire</a>
             </div>
         </div>
     </div>
@@ -412,7 +435,7 @@
                             • It is an "A" series book (post-Sept 2001).<br>
                             • It is not lost or damaged.<br>
                             • Your name has not changed.</p>
-                            <a href="https://wa.me/18765612614" class="btn-download-small"><i class="fa-brands fa-whatsapp"></i> Get Help</a>
+                            <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-download-small"><i class="fa-brands fa-whatsapp"></i> Get Help</a>
                         </div>
                     </details>
                 </div>
@@ -430,7 +453,7 @@
                             <p>• <strong>Birth Entry Number:</strong> Critical to avoid manual search fees.<br>
                             • <strong>Spatial Data:</strong> Exact Hospital, Parish, and District.<br>
                             • <strong>Parental ID:</strong> Mother's exact maiden name.</p>
-                            <a href="https://wa.me/18765612614" class="btn-download-small"><i class="fa-brands fa-whatsapp"></i> Search Proxy</a>
+                            <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-download-small"><i class="fa-brands fa-whatsapp"></i> Search Proxy</a>
                         </div>
                     </details>
                     <details class="res-expand">
@@ -465,7 +488,7 @@
                             <p><strong>Step 1:</strong> Clear traffic tickets via portal.<br>
                             <strong>Step 2 (TAJ):</strong> Process payment via TRN and Chassis Number.<br>
                             <strong>Step 3 (CGDS):</strong> Use TAJ receipt to distribute the digital eMVRC to your email.</p>
-                            <a href="https://wa.me/18765612614" class="btn-download-small"><i class="fa-brands fa-whatsapp"></i> Gateway Rescue</a>
+                            <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-download-small"><i class="fa-brands fa-whatsapp"></i> Gateway Rescue</a>
                         </div>
                     </details>
                 </div>
