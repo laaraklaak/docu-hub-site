@@ -168,7 +168,7 @@
     .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
 
     /* ═══════════════════════════════════════════
-       UNIFORM SERVICES SECTION ("View More" Dropdowns)
+       UNIFORM SERVICES SECTION (Stacked Accordions)
      ═══════════════════════════════════════════ */
     .services-section { padding: 100px 0; background: var(--bg-light); }
     .section-header { text-align: center; margin-bottom: 64px; }
@@ -178,37 +178,27 @@
     .service-card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.06); transition: 0.3s; display: flex; flex-direction: column; }
     .service-card:hover { box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
     
-    /* Image Section with 40% dark tint */
     .card-img-wrap { position: relative; height: 200px; width: 100%; }
     .card-img-wrap::after { content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4); } 
     .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
-    
-    /* Text on top of the image */
     .card-title-overlay { position: absolute; bottom: 20px; left: 24px; right: 24px; color: #fff; z-index: 2; font-family: var(--serif); font-size: 1.8rem; font-weight: 500; line-height: 1.1; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
 
     .card-content { padding: 32px 24px; display: flex; flex-direction: column; flex: 1; }
-    .card-desc { font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px; }
+    .card-desc { font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px; }
     
-    /* The Unified "View More" Details Component */
-    .card-view-more { margin-top: auto; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 16px; }
-    .card-view-more summary { font-family: var(--sans); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brand-drk); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; transition: 0.3s; }
-    .card-view-more summary::-webkit-details-marker { display: none; }
-    .card-view-more summary i { transition: transform 0.3s ease; color: var(--gold); }
-    .card-view-more summary:hover { color: var(--gold); }
-    .card-view-more[open] summary i { transform: rotate(180deg); }
+    /* Clean Nested Accordions inside the Cards */
+    .card-accordions { margin-top: auto; display: flex; flex-direction: column; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 8px; margin-bottom: 24px; }
+    .card-acc summary { font-family: var(--sans); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand-drk); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.05); transition: 0.3s; }
+    .card-acc summary::-webkit-details-marker { display: none; }
+    .card-acc summary i { transition: transform 0.3s ease; color: var(--gold); }
+    .card-acc summary:hover { color: var(--gold); }
+    .card-acc[open] summary i { transform: rotate(180deg); }
     
-    /* What opens inside the dropdown */
-    .card-expanded-content { padding-top: 24px; margin-top: 16px; border-top: 1px dashed rgba(0,0,0,0.1); animation: fadeIn 0.4s ease; text-align: left; }
-    
-    .info-block { margin-bottom: 24px; }
-    .info-block h4 { font-family: var(--sans); font-size: 0.85rem; font-weight: 600; color: var(--brand-drk); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.08em; }
-    .info-block p, .info-block ul { font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; }
-    .info-block ul { padding-left: 16px; margin-bottom: 8px; }
+    .card-acc-content { padding: 16px 0 8px; animation: fadeIn 0.4s ease; text-align: left; }
+    .card-acc-content p, .card-acc-content ul { font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; }
+    .card-acc-content ul { padding-left: 16px; margin-bottom: 8px; margin-top: 8px; }
 
-    .responsive-iframe { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; background: #000; margin-top: 12px; }
-    .responsive-iframe iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-
-    .btn-action { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 14px; background: var(--brand-mid); color: #fff; border-radius: 4px; font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; margin-top: 24px; }
+    .btn-action { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 14px; background: var(--brand-mid); color: #fff; border-radius: 4px; font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; }
     .btn-action:hover { background: var(--brand-drk); }
 
     /* ═══════════════════════════════════════════
@@ -228,9 +218,20 @@
     .sec-feature p { font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
 
     /* ═══════════════════════════════════════════
-       FAQ & PORTAL GUIDES
+       RESOURCE LIBRARY (Videos)
      ═══════════════════════════════════════════ */
-    .faq-section { padding: 100px 0; background: var(--ivory); }
+    .resource-section { padding: 100px 0 60px; background: var(--ivory); }
+    .video-grid { display: grid; grid-template-columns: 1fr; gap: 32px; max-width: 1000px; margin: 0 auto; }
+    .video-card { background: var(--bg-light); padding: 24px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.05); }
+    .video-card h4 { font-family: var(--sans); font-size: 1.1rem; color: var(--brand-drk); margin-bottom: 12px; }
+    .video-card p { font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); margin-bottom: 20px; }
+    .responsive-iframe { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; background: #000; }
+    .responsive-iframe iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+    /* ═══════════════════════════════════════════
+       FAQ SECTION
+     ═══════════════════════════════════════════ */
+    .faq-section { padding: 40px 0 100px; background: var(--ivory); }
     .faq-container { max-width: 800px; margin: 0 auto; }
     
     .faq-item { border-bottom: 1px solid rgba(0,0,0,0.1); }
@@ -239,7 +240,7 @@
     .faq-item summary::after { content: '\002B'; font-size: 1.5rem; font-weight: 300; color: var(--gold); }
     .faq-item[open] summary::after { content: '\2212'; }
     
-    .faq-answer { padding-bottom: 32px; font-family: var(--sans); font-size: 0.95rem; line-height: 1.7; color: var(--text-mid); }
+    .faq-answer { padding-bottom: 32px; font-family: var(--sans); font-size: 0.95rem; line-height: 1.7; color: var(--text-mid); animation: fadeIn 0.4s ease; }
 
     /* ═══════════════════════════════════════════
        FOOTER
@@ -253,6 +254,7 @@
     @media (min-width: 900px) {
         .hamburger { display: none; } .nav-links { display: flex; }
         .cards-grid { grid-template-columns: repeat(3, 1fr); }
+        .video-grid { grid-template-columns: 1fr 1fr; }
         .security-grid { grid-template-columns: 1fr 1fr; gap: 80px; }
         .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
     }
@@ -266,7 +268,7 @@
         <ul class="nav-links">
             <li><a href="#services">Services</a></li>
             <li><a href="#security">Security</a></li>
-            <li><a href="#faq">Portal FAQs</a></li>
+            <li><a href="#resources">Resources & FAQs</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="nav-wa">WhatsApp Us</a></li>
         </ul>
@@ -284,7 +286,7 @@
     </div>
 </section>
 
-<!-- SERVICE CARDS ("View More" Architecture) -->
+<!-- SERVICE CARDS (Stacked Accordion Architecture) -->
 <section class="services-section" id="services">
     <div class="wrap">
         <div class="section-header enter d1">
@@ -302,54 +304,29 @@
                 <div class="card-content">
                     <p class="card-desc">Guidance for online renewals, payment gateway rescues, and secure mail-in processing for damaged documents.</p>
                     
-                    <details class="card-view-more">
-                        <summary>View More <i class="fa-solid fa-chevron-down"></i></summary>
-                        <div class="card-expanded-content">
-                            <!-- Facts First -->
-                            <div class="info-block">
-                                <h4>Online Eligibility Rules</h4>
-                                <ul>
-                                    <li>You were an adult (18+) when your current passport was issued.</li>
-                                    <li>It is an "A" series book (post-Sept 2001).</li>
-                                    <li>It is physically intact (not lost/damaged).</li>
-                                </ul>
+                    <div class="card-accordions">
+                        <details class="card-acc">
+                            <summary>Eligibility & Rules <i class="fa-solid fa-chevron-down"></i></summary>
+                            <div class="card-acc-content">
+                                <p><strong>Online Qualification:</strong> You must have been 18+ when your current passport was issued, it must be an "A" series book (post-2001), and physically intact with no name changes.</p>
+                                <p style="margin-top: 12px;"><strong>Damaged Passports:</strong> Do not qualify online. They require physical inspection, an official Police Report, and a manual mail-in application.</p>
                             </div>
-                            <div class="info-block">
-                                <h4>Damaged Passports (Mail-In)</h4>
-                                <p>Damaged passports strictly do not qualify for online renewal. They require physical inspection and an official Police Report.</p>
-                            </div>
-                            <!-- Video Second -->
-                            <div class="info-block">
-                                <h4>Watch: Portal Walkthrough</h4>
-                                <div class="responsive-iframe">
-                                    <iframe src="https://www.youtube.com/embed/X_vP65ETG2U?si=UiYbSL6oLmtdiZeo" loading="lazy" title="Online Passport Renewal" allowfullscreen></iframe>
-                                </div>
-                            </div>
-                            <!-- Transparent Cost Breakdown -->
-                            <div class="info-block">
-                                <h4>Estimated Cost Breakdown</h4>
+                        </details>
+                        <details class="card-acc">
+                            <summary>Estimated Cost Breakdown <i class="fa-solid fa-chevron-down"></i></summary>
+                            <div class="card-acc-content">
                                 <ul style="list-style-type: none; padding-left: 0;">
-                                    <li style="margin-bottom: 8px;">
-                                        <strong>1. Government Fee:</strong> ~$120.00 USD <em>(Paid directly to PICA)</em>
-                                    </li>
-                                    <li style="margin-bottom: 8px;">
-                                        <strong>2. Docu-Hub Proxy Fee (Online):</strong> ~$4,000 JMD base 
-                                        <br><span style="font-size: 0.85rem; color: var(--text-mid);">- For digital gateway rescue and standard compliance review.</span>
-                                    </li>
-                                    <li style="margin-bottom: 8px;">
-                                        <strong>3. In-Person Handling (If required):</strong> +$10,000 JMD
-                                        <br><span style="font-size: 0.85rem; color: var(--text-mid);">- For manual mail-in applications. Covers physical travel to PICA and high-security document protection.</span>
-                                    </li>
-                                    <li>
-                                        <strong>4. Delivery:</strong> Quoted directly via DHL/Courier for secure return shipping.
-                                    </li>
+                                    <li style="margin-bottom: 8px;"><strong>1. Gov Fee:</strong> ~$120.00 USD <em>(Paid to PICA)</em></li>
+                                    <li style="margin-bottom: 8px;"><strong>2. Proxy Fee (Online):</strong> ~$4,000 JMD base <br><span style="font-size: 0.8rem; color: var(--text-mid);">- Gateway rescue & compliance.</span></li>
+                                    <li style="margin-bottom: 8px;"><strong>3. In-Person Handling:</strong> +$10,000 JMD <br><span style="font-size: 0.8rem; color: var(--text-mid);">- For manual mail-in applications.</span></li>
+                                    <li><strong>4. Delivery:</strong> Quoted via DHL/Courier.</li>
                                 </ul>
-                                <p style="font-size: 0.85rem; font-style: italic; margin-top: 12px; color: var(--brand-drk);">* Total proxy service costs typically range between $4,000 - $14,000 JMD depending on application complexity and back-and-forth requirements.</p>
+                                <p style="font-size: 0.8rem; font-style: italic; margin-top: 12px; color: var(--brand-drk);">* Total proxy costs range between $4,000 - $14,000 JMD based on complexity.</p>
                             </div>
-                            <!-- Action Button -->
-                            <a href="https://wa.me/18765612614" target="_blank" class="btn-action">Secure this Service</a>
-                        </div>
-                    </details>
+                        </details>
+                    </div>
+                    
+                    <a href="https://wa.me/18765612614" target="_blank" class="btn-action">Secure this Service</a>
                 </div>
             </div>
 
@@ -362,43 +339,27 @@
                 <div class="card-content">
                     <p class="card-desc">Secure sourcing and application management for official Birth, Marriage, and Death Certificates from the RGD.</p>
                     
-                    <details class="card-view-more">
-                        <summary>View More <i class="fa-solid fa-chevron-down"></i></summary>
-                        <div class="card-expanded-content">
-                            <!-- Facts First -->
-                            <div class="info-block">
-                                <h4>Birth Certificate Portal Rules</h4>
-                                <ul>
-                                    <li><strong>Birth Entry Number:</strong> Critical to avoid manual search fees.</li>
-                                    <li><strong>Spatial Data:</strong> Exact Hospital, Parish, and District required.</li>
-                                    <li><strong>Parental ID:</strong> Full names, including mother's exact maiden name.</li>
-                                </ul>
+                    <div class="card-accordions">
+                        <details class="card-acc">
+                            <summary>Portal Requirements <i class="fa-solid fa-chevron-down"></i></summary>
+                            <div class="card-acc-content">
+                                <p><strong>Birth Certificates:</strong> You must possess your Birth Entry Number to avoid manual search fees. Exact Hospital, Parish, District, and Mother's maiden name are required.</p>
+                                <p style="margin-top: 12px;"><strong>Marriage Certificates:</strong> Physical verification scans are required (Minister's License, valid IDs, and proof of dissolution if previously married).</p>
                             </div>
-                            <div class="info-block">
-                                <h4>Marriage Certificate Rules</h4>
-                                <p>Physical verification scans are required. Ensure you have high-res scans of the Minister's License, valid IDs, and proof of dissolution if previously married.</p>
-                            </div>
-                            <!-- Transparent Cost Breakdown -->
-                            <div class="info-block">
-                                <h4>Estimated Cost Breakdown</h4>
+                        </details>
+                        <details class="card-acc">
+                            <summary>Estimated Cost Breakdown <i class="fa-solid fa-chevron-down"></i></summary>
+                            <div class="card-acc-content">
                                 <ul style="list-style-type: none; padding-left: 0;">
-                                    <li style="margin-bottom: 8px;">
-                                        <strong>1. Government Fee:</strong> ~$45.00 - $75.00 USD <em>(Paid directly to RGD)</em>
-                                    </li>
-                                    <li style="margin-bottom: 8px;">
-                                        <strong>2. Docu-Hub Proxy Fee (Online Search):</strong> ~$4,000 JMD base 
-                                        <br><span style="font-size: 0.85rem; color: var(--text-mid);">- For online record retrieval and compliance processing.</span>
-                                    </li>
-                                    <li style="margin-bottom: 8px;">
-                                        <strong>3. In-Person Handling (If required):</strong> +$6,000 JMD
-                                        <br><span style="font-size: 0.85rem; color: var(--text-mid);">- For manual paper searches or physical document collection at the agency.</span>
-                                    </li>
+                                    <li style="margin-bottom: 8px;"><strong>1. Gov Fee:</strong> ~$45-$75 USD <em>(Paid to RGD)</em></li>
+                                    <li style="margin-bottom: 8px;"><strong>2. Proxy Fee (Online):</strong> ~$4,000 JMD base <br><span style="font-size: 0.8rem; color: var(--text-mid);">- Online retrieval & compliance.</span></li>
+                                    <li style="margin-bottom: 8px;"><strong>3. In-Person Handling:</strong> +$6,000 JMD <br><span style="font-size: 0.8rem; color: var(--text-mid);">- For manual paper searches/collection.</span></li>
                                 </ul>
                             </div>
-                            <!-- Action Button -->
-                            <a href="https://wa.me/18765612614" target="_blank" class="btn-action">Secure this Service</a>
-                        </div>
-                    </details>
+                        </details>
+                    </div>
+                    
+                    <a href="https://wa.me/18765612614" target="_blank" class="btn-action">Secure this Service</a>
                 </div>
             </div>
 
@@ -411,43 +372,26 @@
                 <div class="card-content">
                     <p class="card-desc">Complete proxy management for paperless TAJ vehicle renewals, Police Records, and Driving Abstracts.</p>
                     
-                    <details class="card-view-more">
-                        <summary>View More <i class="fa-solid fa-chevron-down"></i></summary>
-                        <div class="card-expanded-content">
-                            <!-- Facts First -->
-                            <div class="info-block">
-                                <h4>Vehicle Renewal Steps (eMVRC)</h4>
-                                <ul>
-                                    <li><strong>Step 1:</strong> Clear traffic tickets via portal.</li>
-                                    <li><strong>Step 2 (TAJ):</strong> Process payment via TRN and Chassis Number.</li>
-                                    <li><strong>Step 3 (CGDS):</strong> Use TAJ receipt to distribute the digital eMVRC to your email.</li>
-                                </ul>
+                    <div class="card-accordions">
+                        <details class="card-acc">
+                            <summary>Process Overview <i class="fa-solid fa-chevron-down"></i></summary>
+                            <div class="card-acc-content">
+                                <p><strong>Vehicle Renewal (eMVRC):</strong> We clear any outstanding traffic tickets, process the TAJ payment via TRN/Chassis Number, and distribute the digital certificate.</p>
+                                <p style="margin-top: 12px;"><strong>Abstracts & Police Records:</strong> Requires physical coordination, drop-off, and collection across multiple agencies.</p>
                             </div>
-                            <!-- Video Second -->
-                            <div class="info-block">
-                                <h4>Watch: eMVRC Walkthrough</h4>
-                                <div class="responsive-iframe">
-                                    <iframe src="https://www.youtube.com/embed/jpS-mIde1Ro?si=OtzW4_La_TffGgxk" loading="lazy" title="Motor Vehicle Renewal" allowfullscreen></iframe>
-                                </div>
-                            </div>
-                            <!-- Transparent Cost Breakdown -->
-                            <div class="info-block">
-                                <h4>Docu-Hub Proxy Fees</h4>
+                        </details>
+                        <details class="card-acc">
+                            <summary>Proxy Fee Breakdown <i class="fa-solid fa-chevron-down"></i></summary>
+                            <div class="card-acc-content">
                                 <ul style="list-style-type: none; padding-left: 0;">
-                                    <li style="margin-bottom: 12px;">
-                                        <strong>1. Vehicle Registration (Online TAJ):</strong> $5,000 JMD
-                                        <br><span style="font-size: 0.85rem; color: var(--text-mid);">- Flat fee for navigating multiple digital portals and handling gateway payments. (Government renewal fees are separate).</span>
-                                    </li>
-                                    <li style="margin-bottom: 8px;">
-                                        <strong>2. Driving Abstracts / Clearances:</strong> $15,000 JMD
-                                        <br><span style="font-size: 0.85rem; color: var(--text-mid);">- Flat fee for complete in-person handling. Covers time and travel for multiple physical agency visits (drop-off and collection). Courier shipping quoted separately.</span>
-                                    </li>
+                                    <li style="margin-bottom: 12px;"><strong>1. Vehicle Registration:</strong> $5,000 JMD <br><span style="font-size: 0.8rem; color: var(--text-mid);">- Navigating digital TAJ/Traffic portals.</span></li>
+                                    <li style="margin-bottom: 8px;"><strong>2. Abstracts/Clearances:</strong> $15,000 JMD <br><span style="font-size: 0.8rem; color: var(--text-mid);">- Full in-person handling (multiple agency visits for drop-off & collection).</span></li>
                                 </ul>
                             </div>
-                            <!-- Action Button -->
-                            <a href="https://wa.me/18765612614" target="_blank" class="btn-action">Secure this Service</a>
-                        </div>
-                    </details>
+                        </details>
+                    </div>
+                    
+                    <a href="https://wa.me/18765612614" target="_blank" class="btn-action">Secure this Service</a>
                 </div>
             </div>
 
@@ -493,10 +437,39 @@
     </div>
 </section>
 
-<!-- DEDICATED FAQ & PORTAL GLITCHES SECTION -->
+<!-- VIDEO RESOURCE LIBRARY -->
+<section class="resource-section" id="resources">
+    <div class="wrap">
+        <div class="section-header enter d1" style="margin-bottom: 40px;">
+            <h2>Process Overviews</h2>
+            <p style="font-family: var(--sans); color: var(--text-mid); margin-top: 16px;">See how the online Jamaican portal systems work.</p>
+        </div>
+
+        <div class="video-grid enter d2">
+            <!-- Passport Video -->
+            <div class="video-card">
+                <h4>Online Passport Walkthrough</h4>
+                <p>The complete 3-gateway blueprint to navigating the PICA renewal system seamlessly.</p>
+                <div class="responsive-iframe">
+                    <iframe src="https://www.youtube.com/embed/X_vP65ETG2U?si=UiYbSL6oLmtdiZeo" loading="lazy" title="Online Passport Renewal" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- eMVRC Video -->
+            <div class="video-card">
+                <h4>Motor Vehicle Renewal (eMVRC)</h4>
+                <p>How to map out the TAJ payment process and generate your digital certificate.</p>
+                <div class="responsive-iframe">
+                    <iframe src="https://www.youtube.com/embed/jpS-mIde1Ro?si=OtzW4_La_TffGgxk" loading="lazy" title="Motor Vehicle Renewal" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DEDICATED FAQ SECTION -->
 <section class="faq-section" id="faq">
     <div class="wrap">
-        <div class="section-header enter d1">
+        <div class="section-header enter d1" style="margin-bottom: 40px;">
             <h2>Portal Help & FAQs</h2>
             <p style="font-family: var(--sans); color: var(--text-mid); margin-top: 16px;">Direct answers to the most common Jamaican government portal errors.</p>
         </div>
@@ -580,7 +553,7 @@
             <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt);">QUICK LINKS</h4>
             <ul style="list-style: none; display: grid; gap: 8px;">
                 <li><a href="#services" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Services</a></li>
-                <li><a href="#faq" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Portal FAQs</a></li>
+                <li><a href="#resources" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Resources & FAQs</a></li>
                 <li><a href="about.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">About Us</a></li>
             </ul>
         </div>
