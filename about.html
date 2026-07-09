@@ -110,10 +110,26 @@
     .footer-grid { display: grid; grid-template-columns: 1fr; gap: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 30px; }
     .f-logo { font-family: var(--serif); font-size: 1.2rem; color: #fff; margin-bottom: 16px; display: block; }
 
+ /* ═══════════════════════════════════════════
+       WIDESCREEN DESKTOP OVERRIDE GRID (3 Columns Flat)
+     ═══════════════════════════════════════════ */
     @media (min-width: 900px) {
-        .bio-grid { grid-template-columns: 1.1fr 0.9fr; gap: 80px; }
-        .pillars-grid { grid-template-columns: repeat(3, 1fr); }
-        .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
+        /* Header Fixes */
+        .hamburger { display: none !important; } 
+        .nav-links { display: flex !important; flex-direction: row; position: static; background: transparent; padding: 0; box-shadow: none; border: none; }
+        .nav-links a { font-size: 0.75rem; padding: 8px 16px; }
+
+        /* Grid Layouts */
+        .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; max-width: var(--max-w); margin: 0 auto; }
+        .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+        .security-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; }
+        
+        /* Flatten and permanently open the accordions on desktop viewports */
+        .card-acc summary { pointer-events: none; cursor: default; border-bottom: none; padding: 24px 0 0; font-size: 0.9rem; letter-spacing: 0.1em; color: var(--brand-mid); }
+        .card-acc summary i { display: none!important; } 
+        .card-acc-content { padding-top: 12px; }
+        .card-accordions { border-top: 1px solid rgba(0,0,0,0.05); }
     }
     </style>
 </head>
