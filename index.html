@@ -177,53 +177,23 @@
     .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
 
     /* ═══════════════════════════════════════════
-       SERVICES CARDS SYSTEM (Fixed Structural Padding & Snap)
+       SERVICES CARDS SYSTEM (Flawless Spacious Stack)
      ═══════════════════════════════════════════ */
-    .services-section { padding: 100px 0; background: var(--bg-light); overflow: hidden; }
+    .services-section { padding: 100px 0; background: var(--bg-light); }
     .section-header { text-align: center; margin-bottom: 64px; }
     .section-header h2 { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 400; color: var(--brand-drk); }
 
-    .carousel-wrapper { position: relative; width: 100%; display: flex; align-items: center; }
-
-    /* Floating High-Contrast Navigation Arrows */
-    .carousel-arrow {
-        position: absolute;
-        top: 40%;
-        transform: translateY(-50%);
-        background: var(--brand-drk);
-        color: var(--gold-lt);
-        border: 2px solid var(--gold);
-        width: 46px;
-        height: 46px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10;
-        font-size: 1.2rem;
-        font-weight: 900;
-        cursor: pointer;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-    }
-    .carousel-arrow:active { scale: 0.95; background: var(--brand-mid); }
-    .carousel-arrow.left { left: 12px; }
-    .carousel-arrow.right { right: 12px; }
-
+    /* Premium Vertical Stacking Engine */
     .cards-grid { 
-        display: flex; 
-        gap: 20px; 
-        overflow-x: auto; 
-        padding: 0 24px 40px; 
-        scroll-snap-type: x mandatory;
-        scroll-padding-left: 24px; /* Matches layout padding precisely */
-        scrollbar-width: none;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 56px; /* Massive breathing space between standalone panels on mobile */
         width: 100%;
+        max-width: 600px; /* Perfectly bounds card width on massive mobile screens */
+        margin: 0 auto;
     }
-    .cards-grid::-webkit-scrollbar { display: none; }
     
     .service-card { 
-        flex: 0 0 calc(100% - 60px); /* Clean math calculation guarantees a 60px peek space */
-        scroll-snap-align: start; /* Locks flush to the left edge on every single swipe */
         background: #fff; 
         border-radius: 12px; 
         overflow: hidden; 
@@ -231,6 +201,7 @@
         transition: 0.3s; 
         display: flex; 
         flex-direction: column; 
+        width: 100%;
     }
     
     .card-img-wrap { position: relative; height: 220px; width: 100%; }
@@ -238,6 +209,7 @@
     .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
     .card-title-overlay { position: absolute; bottom: 24px; left: 32px; right: 24px; color: #fff; z-index: 2; font-family: var(--serif); font-size: 2rem; font-weight: 500; line-height: 1.1; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
 
+    /* Luxurious Internal Padding Setup */
     .card-content { padding: 48px 32px; display: flex; flex-direction: column; flex: 1; }
     .card-desc { font-family: var(--sans); font-size: 1rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 32px; }
     
@@ -256,20 +228,18 @@
     .btn-action:hover { background: var(--brand-drk); }
 
     /* ═══════════════════════════════════════════
-       WIDESCREEN DESKTOP OVERRIDE GRID
+       WIDESCREEN DESKTOP OVERRIDE GRID (3 Columns Flat)
      ═══════════════════════════════════════════ */
     @media (min-width: 900px) {
-        .carousel-arrow { display: none; } 
         .cards-grid { 
             display: grid; 
             grid-template-columns: repeat(3, 1fr); 
             gap: 48px; 
-            padding: 0;
-            overflow-x: visible; 
-            scroll-snap-type: none;
+            max-width: var(--max-w);
+            margin: 0 auto;
         }
-        .service-card { flex: none; }
         
+        /* Flatten and permanently open the accordions on desktop viewports */
         .card-acc summary { pointer-events: none; cursor: default; border-bottom: none; padding: 24px 0 0; font-size: 0.9rem; letter-spacing: 0.1em; color: var(--brand-mid); }
         .card-acc summary i { display: none!important; } 
         .card-acc-content { padding-top: 12px; }
@@ -356,121 +326,115 @@
     </div>
 </section>
 
-<!-- SERVICE CARDS (Dynamic Slider Engine) -->
+<!-- SERVICE CARDS (Clean Vertical Stack Layout) -->
 <section class="services-section" id="services">
     <div class="wrap">
         <div class="section-header enter d1">
             <h2>How can we help you today?</h2>
         </div>
 
-        <div class="carousel-wrapper">
-            <!-- Big Mobile Navigation Trigger Anchors -->
-            <button class="carousel-arrow left" id="arrL"><i class="fa-solid fa-chevron-left"></i></button>
-            <button class="carousel-arrow right" id="arrR"><i class="fa-solid fa-chevron-right"></i></button>
-
-            <div class="cards-grid" id="cardsGrid">
-                
-                <!-- Card 1: Passport -->
-                <div class="service-card enter d1">
-                    <div class="card-img-wrap">
-                        <img src="assets/passport.png" loading="lazy" alt="Passport Renewal">
-                        <h3 class="card-title-overlay">Passport<br>Assistance</h3>
-                    </div>
-                    <div class="card-content">
-                        <p class="card-desc">Guidance for online renewals, payment gateway rescues, and secure mail-in processing for damaged documents.</p>
-                        
-                        <div class="card-accordions">
-                            <details class="card-acc">
-                                <summary>Eligibility & Rules <i class="fa-solid fa-chevron-down"></i></summary>
-                                <div class="card-acc-content">
-                                    <p><strong>Online Qualification:</strong> You must have been 18+ when your current passport was issued, it must be an "A" series book (post-2001), and physically intact with no name changes.</p>
-                                    <p style="margin-top: 12px;"><strong>Damaged Passports:</strong> Do not qualify online. They require physical inspection, an official Police Report, and a manual mail-in application.</p>
-                                </div>
-                            </details>
-                            <details class="card-acc">
-                                <summary>Estimated Cost Breakdown <i class="fa-solid fa-chevron-down"></i></summary>
-                                <div class="card-acc-content">
-                                    <ul style="list-style-type: none; padding-left: 0;">
-                                        <li><strong>1. Gov Fee:</strong> ~$120.00 USD <em>(Paid to PICA)</em></li>
-                                        <li><strong>2. Proxy Fee (Online):</strong> ~$5,000 JMD base</li>
-                                        <li><strong>3. In-Person Handling:</strong> +$15,000 JMD</li>
-                                        <li><strong>4. Delivery:</strong> Quoted via DHL/Courier.</li>
-                                    </ul>
-                                    <p style="font-size: 0.8rem; font-style: italic; margin-top: 12px; color: var(--brand-drk);">* Total proxy costs range between $5,000 - $15,000 JMD based on complexity.</p>
-                                </div>
-                            </details>
-                        </div>
-                        
-                        <a href="contact.html" class="btn-action"><i class="fa-regular fa-calendar-check" style="margin-right: 8px;"></i> Secure this Service</a>
-                    </div>
+        <div class="cards-grid">
+            
+            <!-- Card 1: Passport -->
+            <div class="service-card enter d1">
+                <div class="card-img-wrap">
+                    <img src="assets/passport.png" loading="lazy" alt="Passport Renewal">
+                    <h3 class="card-title-overlay">Passport<br>Assistance</h3>
                 </div>
-
-                <!-- Card 2: Vital Records -->
-                <div class="service-card enter d2">
-                    <div class="card-img-wrap">
-                        <img src="assets/rgd.png" loading="lazy" alt="Vital Records">
-                        <h3 class="card-title-overlay">Vital<br>Records</h3>
+                <div class="card-content">
+                    <p class="card-desc">Guidance for online renewals, payment gateway rescues, and secure mail-in processing for damaged documents.</p>
+                    
+                    <div class="card-accordions">
+                        <details class="card-acc">
+                            <summary>Eligibility & Rules <i class="fa-solid fa-chevron-down"></i></summary>
+                            <div class="card-acc-content">
+                                <p><strong>Online Qualification:</strong> You must have been 18+ when your current passport was issued, it must be an "A" series book (post-2001), and physically intact with no name changes.</p>
+                                <p style="margin-top: 12px;"><strong>Damaged Passports:</strong> Do not qualify online. They require physical inspection, an official Police Report, and a manual mail-in application.</p>
+                            </div>
+                        </details>
+                        <details class="card-acc">
+                            <summary>Estimated Cost Breakdown <i class="fa-solid fa-chevron-down"></i></summary>
+                            <div class="card-acc-content">
+                                <ul style="list-style-type: none; padding-left: 0;">
+                                    <li><strong>1. Gov Fee:</strong> ~$120.00 USD <em>(Paid to PICA)</em></li>
+                                    <li><strong>2. Proxy Fee (Online):</strong> ~$5,000 JMD base</li>
+                                    <li><strong>3. In-Person Handling:</strong> +$15,000 JMD</li>
+                                    <li><strong>4. Delivery:</strong> Quoted via DHL/Courier.</li>
+                                </ul>
+                                <p style="font-size: 0.8rem; font-style: italic; margin-top: 12px; color: var(--brand-drk);">* Total proxy costs range between $5,000 - $15,000 JMD based on complexity.</p>
+                            </div>
+                        </details>
                     </div>
-                    <div class="card-content">
-                        <p class="card-desc">Secure sourcing and application management for official Birth, Marriage, and Death Certificates from the RGD.</p>
-                        
-                        <div class="card-accordions">
-                            <details class="card-acc">
-                                <summary>Portal Requirements <i class="fa-solid fa-chevron-down"></i></summary>
-                                <div class="card-acc-content">
-                                    <p><strong>Birth Certificates:</strong> You must possess your Birth Entry Number to avoid manual search fees. Exact Hospital, Parish, District, and Mother's maiden name are required.</p>
-                                    <p style="margin-top: 12px;"><strong>Marriage Certificates:</strong> Physical verification scans are required (Minister's License, valid IDs, and proof of dissolution if previously married).</p>
-                                </div>
-                            </details>
-                            <details class="card-acc">
-                                <summary>Estimated Cost Breakdown <i class="fa-solid fa-chevron-down"></i></summary>
-                                <div class="card-acc-content">
-                                    <ul style="list-style-type: none; padding-left: 0;">
-                                        <li><strong>1. Gov Fee:</strong> ~$45-$75 USD <em>(Paid to RGD)</em></li>
-                                        <li><strong>2. Proxy Fee (Online):</strong> ~$5,000 JMD base</li>
-                                        <li><strong>3. In-Person Handling:</strong> +$10,000 JMD</li>
-                                    </ul>
-                                </div>
-                            </details>
-                        </div>
-                        
-                        <a href="contact.html" class="btn-action"><i class="fa-regular fa-calendar-check" style="margin-right: 8px;"></i> Secure this Service</a>
-                    </div>
+                    
+                    <a href="contact.html" class="btn-action"><i class="fa-regular fa-calendar-check" style="margin-right: 8px;"></i> Secure this Service</a>
                 </div>
-
-                <!-- Card 3: Vehicle Licensing -->
-                <div class="service-card enter d3">
-                    <div class="card-img-wrap">
-                        <img src="assets/motor-vehicle.png" loading="lazy" alt="Vehicle Registration">
-                        <h3 class="card-title-overlay">Vehicle &<br>Clearances</h3>
-                    </div>
-                    <div class="card-content">
-                        <p class="card-desc">Complete proxy management for paperless TAJ vehicle renewals, Police Records, and Driving Abstracts.</p>
-                        
-                        <div class="card-accordions">
-                            <details class="card-acc">
-                                <summary>Process Overview <i class="fa-solid fa-chevron-down"></i></summary>
-                                <div class="card-acc-content">
-                                    <p><strong>Vehicle Renewal (eMVRC):</strong> We clear any outstanding traffic tickets, process the TAJ payment via TRN/Chassis Number, and distribute the digital certificate.</p>
-                                    <p style="margin-top: 12px;"><strong>Abstracts & Police Records:</strong> Requires physical coordination, drop-off, and collection across multiple agencies.</p>
-                                </div>
-                            </details>
-                            <details class="card-acc">
-                                <summary>Proxy Fee Breakdown <i class="fa-solid fa-chevron-down"></i></summary>
-                                <div class="card-acc-content">
-                                    <ul style="list-style-type: none; padding-left: 0;">
-                                        <li><strong>1. Vehicle Registration:</strong> $5,000 JMD</li>
-                                        <li><strong>2. Abstracts/Clearances:</strong> $15,000 JMD <br><span style="font-size: 0.8rem; color: var(--text-mid);">- Full on-the-ground handling from Linstead base.</span></li>
-                                    </ul>
-                                </div>
-                            </details>
-                        </div>
-                        
-                        <a href="contact.html" class="btn-action"><i class="fa-regular fa-calendar-check" style="margin-right: 8px;"></i> Secure this Service</a>
-                    </div>
-                </div>
-
             </div>
+
+            <!-- Card 2: Vital Records -->
+            <div class="service-card enter d2">
+                <div class="card-img-wrap">
+                    <img src="assets/rgd.png" loading="lazy" alt="Vital Records">
+                    <h3 class="card-title-overlay">Vital<br>Records</h3>
+                </div>
+                <div class="card-content">
+                    <p class="card-desc">Secure sourcing and application management for official Birth, Marriage, and Death Certificates from the RGD.</p>
+                    
+                    <div class="card-accordions">
+                        <details class="card-acc">
+                            <summary>Portal Requirements <i class="fa-solid fa-chevron-down"></i></summary>
+                            <div class="card-acc-content">
+                                <p><strong>Birth Certificates:</strong> You must possess your Birth Entry Number to avoid manual search fees. Exact Hospital, Parish, District, and Mother's maiden name are required.</p>
+                                <p style="margin-top: 12px;"><strong>Marriage Certificates:</strong> Physical verification scans are required (Minister's License, valid IDs, and proof of dissolution if previously married).</p>
+                            </div>
+                        </details>
+                        <details class="card-acc">
+                            <summary>Estimated Cost Breakdown <i class="fa-solid fa-chevron-down"></i></summary>
+                            <div class="card-acc-content">
+                                <ul style="list-style-type: none; padding-left: 0;">
+                                    <li><strong>1. Gov Fee:</strong> ~$45-$75 USD <em>(Paid to RGD)</em></li>
+                                    <li><strong>2. Proxy Fee (Online):</strong> ~$5,000 JMD base</li>
+                                    <li><strong>3. In-Person Handling:</strong> +$10,000 JMD</li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+                    
+                    <a href="contact.html" class="btn-action"><i class="fa-regular fa-calendar-check" style="margin-right: 8px;"></i> Secure this Service</a>
+                </div>
+            </div>
+
+            <!-- Card 3: Vehicle Licensing -->
+            <div class="service-card enter d3">
+                <div class="card-img-wrap">
+                    <img src="assets/motor-vehicle.png" loading="lazy" alt="Vehicle Registration">
+                    <h3 class="card-title-overlay">Vehicle &<br>Clearances</h3>
+                </div>
+                <div class="card-content">
+                    <p class="card-desc">Complete proxy management for paperless TAJ vehicle renewals, Police Records, and Driving Abstracts.</p>
+                    
+                    <div class="card-accordions">
+                        <details class="card-acc">
+                            <summary>Process Overview <i class="fa-solid fa-chevron-down"></i></summary>
+                            <div class="card-acc-content">
+                                <p><strong>Vehicle Renewal (eMVRC):</strong> We clear any outstanding traffic tickets, process the TAJ payment via TRN/Chassis Number, and distribute the digital certificate.</p>
+                                <p style="margin-top: 12px;"><strong>Abstracts & Police Records:</strong> Requires physical coordination, drop-off, and collection across multiple agencies.</p>
+                            </div>
+                        </details>
+                        <details class="card-acc">
+                            <summary>Proxy Fee Breakdown <i class="fa-solid fa-chevron-down"></i></summary>
+                            <div class="card-acc-content">
+                                <ul style="list-style-type: none; padding-left: 0;">
+                                    <li><strong>1. Vehicle Registration:</strong> $5,000 JMD</li>
+                                    <li><strong>2. Abstracts/Clearances:</strong> $15,000 JMD <br><span style="font-size: 0.8rem; color: var(--text-mid);">- Full on-the-ground handling from Linstead base.</span></li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+                    
+                    <a href="contact.html" class="btn-action"><i class="fa-regular fa-calendar-check" style="margin-right: 8px;"></i> Secure this Service</a>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -577,7 +541,7 @@
                 <summary style="font-family: var(--sans); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.85rem;">Access Strategy Podcasts <i class="fa-solid fa-headphones" style="color: var(--gold); margin-left: 8px;"></i></summary>
                 <div class="faq-answer" style="padding-top: 16px;">
                     <div class="video-grid">
-                        <!-- Passport Audio -->
+                       <!-- Passport Audio -->
                         <div class="video-card">
                             <h4>1. The Online Passport Blueprint</h4>
                             <p>An authoritative audio guide mapping out the 3-gateway security protocols and regional 3D-Secure payment blocks on the PICA portal.</p>
@@ -657,22 +621,6 @@ function manageAccordions() {
 }
 window.addEventListener('load', manageAccordions);
 window.addEventListener('resize', manageAccordions);
-
-// MATHEMATION SLIDER ALIGNMENT LOGIC (Left-Snap Execution)
-const grid = document.getElementById('cardsGrid');
-const btnL = document.getElementById('arrL');
-const btnR = document.getElementById('arrR');
-
-if (grid && btnL && btnR) {
-    btnL.addEventListener('click', () => {
-        // Glides perfectly backwards to matching snap lines
-        grid.scrollBy({ left: -(grid.clientWidth - 40), behavior: 'smooth' });
-    });
-    btnR.addEventListener('click', () => {
-        // Glides forward precisely by one crisp item width
-        grid.scrollBy({ left: grid.clientWidth - 40, behavior: 'smooth' });
-    });
-}
 </script>
 </body>
 </html>
