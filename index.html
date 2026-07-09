@@ -177,54 +177,53 @@
     .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
 
     /* ═══════════════════════════════════════════
-       SERVICES CARDS SYSTEM (Widescreen vs Mobile Engine)
+       SERVICES CARDS SYSTEM (Fixed Structural Padding & Snap)
      ═══════════════════════════════════════════ */
     .services-section { padding: 100px 0; background: var(--bg-light); overflow: hidden; }
     .section-header { text-align: center; margin-bottom: 64px; }
     .section-header h2 { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 400; color: var(--brand-drk); }
 
-    /* Carousel Wrapper Strategy */
     .carousel-wrapper { position: relative; width: 100%; display: flex; align-items: center; }
 
-    /* Big, Bold Mobile Nav Directional Arrows */
+    /* Floating High-Contrast Navigation Arrows */
     .carousel-arrow {
         position: absolute;
-        top: 50%;
+        top: 40%;
         transform: translateY(-50%);
         background: var(--brand-drk);
         color: var(--gold-lt);
         border: 2px solid var(--gold);
-        width: 50px;
-        height: 50px;
+        width: 46px;
+        height: 46px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         z-index: 10;
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         font-weight: 900;
         cursor: pointer;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-        transition: 0.2s ease;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
     }
-    .carousel-arrow:active { transform: translateY(-50%) scale(0.9); background: var(--brand-mid); }
-    .carousel-arrow.left { left: 8px; }
-    .carousel-arrow.right { right: 8px; }
+    .carousel-arrow:active { scale: 0.95; background: var(--brand-mid); }
+    .carousel-arrow.left { left: 12px; }
+    .carousel-arrow.right { right: 12px; }
 
     .cards-grid { 
         display: flex; 
-        gap: 24px; 
+        gap: 20px; 
         overflow-x: auto; 
-        padding: 0 40px 40px; 
+        padding: 0 24px 40px; 
         scroll-snap-type: x mandatory;
+        scroll-padding-left: 24px; /* Matches layout padding precisely */
         scrollbar-width: none;
         width: 100%;
     }
     .cards-grid::-webkit-scrollbar { display: none; }
     
     .service-card { 
-        flex: 0 0 82vw; /* Generous native panel layout strategy */
-        scroll-snap-align: center;
+        flex: 0 0 calc(100% - 60px); /* Clean math calculation guarantees a 60px peek space */
+        scroll-snap-align: start; /* Locks flush to the left edge on every single swipe */
         background: #fff; 
         border-radius: 12px; 
         overflow: hidden; 
@@ -244,7 +243,6 @@
     
     .card-accordions { margin-top: auto; display: flex; flex-direction: column; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 8px; margin-bottom: 40px; }
     
-    /* Accordion Custom Token Styling */
     .card-acc summary { font-family: var(--sans); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand-drk); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid rgba(0,0,0,0.05); transition: 0.3s; }
     .card-acc summary::-webkit-details-marker { display: none; }
     .card-acc summary i { transition: transform 0.3s ease; color: var(--gold); }
@@ -258,10 +256,10 @@
     .btn-action:hover { background: var(--brand-drk); }
 
     /* ═══════════════════════════════════════════
-       WIDESCREEN ACCORDION ARREST CODES
+       WIDESCREEN DESKTOP OVERRIDE GRID
      ═══════════════════════════════════════════ */
     @media (min-width: 900px) {
-        .carousel-arrow { display: none; } /* Vaporize arrows on monitor layouts */
+        .carousel-arrow { display: none; } 
         .cards-grid { 
             display: grid; 
             grid-template-columns: repeat(3, 1fr); 
@@ -272,9 +270,8 @@
         }
         .service-card { flex: none; }
         
-        /* Freeze accordion state into spacious flat cards */
         .card-acc summary { pointer-events: none; cursor: default; border-bottom: none; padding: 24px 0 0; font-size: 0.9rem; letter-spacing: 0.1em; color: var(--brand-mid); }
-        .card-acc summary i { display: none!important; } /* Strip closing marks */
+        .card-acc summary i { display: none!important; } 
         .card-acc-content { padding-top: 12px; }
         .card-accordions { border-top: 1px solid rgba(0,0,0,0.05); }
     }
@@ -640,44 +637,40 @@
 </footer>
 
 <script>
-// Scroll Fade-In Observer Engine
 const io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.05 });
 document.querySelectorAll('.enter').forEach(el => io.observe(el));
 
-// Sticky Nav Tracker
 const nav = document.getElementById('sitenav'); window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
 
-// Mobile Drawer Trigger Toggle
 const hbg = document.getElementById('hbg');
 const navBar = document.getElementById('sitenav');
 hbg.addEventListener('click', () => { navBar.classList.toggle('open'); });
 document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { navBar.classList.remove('open'); }); });
 
-// RESPONSIVE SCREEN DESKTOP ACCORDION OVERRIDE ENGINE
 function manageAccordions() {
     const accordions = document.querySelectorAll('.card-acc');
     if (window.innerWidth >= 900) {
-        // Enforce expanded layout instantly on computers
         accordions.forEach(acc => acc.setAttribute('open', ''));
     } else {
-        // Allow mobile device closing structures
         accordions.forEach(acc => acc.removeAttribute('open'));
     }
 }
 window.addEventListener('load', manageAccordions);
 window.addEventListener('resize', manageAccordions);
 
-// MOBILE PANEL CAROUSEL CLICK-ENGINE
+// MATHEMATION SLIDER ALIGNMENT LOGIC (Left-Snap Execution)
 const grid = document.getElementById('cardsGrid');
 const btnL = document.getElementById('arrL');
 const btnR = document.getElementById('arrR');
 
 if (grid && btnL && btnR) {
     btnL.addEventListener('click', () => {
-        grid.scrollBy({ left: -window.innerWidth * 0.8, behavior: 'smooth' });
+        // Glides perfectly backwards to matching snap lines
+        grid.scrollBy({ left: -(grid.clientWidth - 40), behavior: 'smooth' });
     });
     btnR.addEventListener('click', () => {
-        grid.scrollBy({ left: window.innerWidth * 0.8, behavior: 'smooth' });
+        // Glides forward precisely by one crisp item width
+        grid.scrollBy({ left: grid.clientWidth - 40, behavior: 'smooth' });
     });
 }
 </script>
