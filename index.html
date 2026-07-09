@@ -22,48 +22,18 @@
   "telephone": "+1-876-561-2614",
   "email": "admin@dochubservices.com",
   "areaServed": [
-    {
-      "@type": "Country",
-      "name": "Jamaica"
-    },
-    {
-      "@type": "Country",
-      "name": "United States"
-    },
-    {
-      "@type": "Country",
-      "name": "United Kingdom"
-    },
-    {
-      "@type": "Country",
-      "name": "Canada"
-    }
+    { "@type": "Country", "name": "Jamaica" },
+    { "@type": "Country", "name": "United States" },
+    { "@type": "Country", "name": "United Kingdom" },
+    { "@type": "Country", "name": "Canada" }
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Document Concierge Services",
     "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Jamaican Passport Renewal Concierge"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "RGD Vital Records Retrieval"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "TAJ Motor Vehicle License Renewal"
-        }
-      }
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Jamaican Passport Renewal Concierge" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "RGD Vital Records Retrieval" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "TAJ Motor Vehicle License Renewal" } }
     ]
   }
 }
@@ -71,7 +41,7 @@
     
     <style>
     /* ═══════════════════════════════════════════
-       DESIGN TOKENS (Secure & Premium)
+       DESIGN TOKENS
      ═══════════════════════════════════════════ */
     :root {
         --cream:      #FCFAEE; 
@@ -95,760 +65,192 @@
         --serif-body:    'Cormorant Garamond', Georgia, serif;
         --sans:          'Jost', Arial, sans-serif; 
 
-        --nav-h: 75px;
+        --nav-h: 70px;
         --max-w: 1180px;
-        --r: 8px; 
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
     body {
-        font-family: var(--sans);
-        background: var(--cream);
-        color: var(--ink);
-        overflow-x: hidden;
-        -webkit-font-smoothing: antialiased;
-        line-height: 1.6;
+        font-family: var(--sans); background: var(--cream); color: var(--ink);
+        overflow-x: hidden; -webkit-font-smoothing: antialiased; line-height: 1.6;
     }
     
     a { text-decoration: none; color: inherit; transition: color 0.3s ease, background 0.3s ease; }
     img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
-    /* ═══════════════════════════════════════════
-       SCROLL ANIMATIONS
-     ═══════════════════════════════════════════ */
-    .enter { opacity: 0; transform: translateY(28px); transition: opacity 0.85s cubic-bezier(.22,1,.36,1), transform 0.85s cubic-bezier(.22,1,.36,1); }
+    /* Animations */
+    .enter { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
     .enter.in { opacity: 1; transform: none; }
-    .d1 { transition-delay: 0.10s; }
-    .d2 { transition-delay: 0.22s; }
-    .d3 { transition-delay: 0.34s; }
-    .d4 { transition-delay: 0.46s; }
+    .d1 { transition-delay: 0.10s; } .d2 { transition-delay: 0.20s; }
+    .d3 { transition-delay: 0.30s; } .d4 { transition-delay: 0.40s; }
 
     .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
 
     /* ═══════════════════════════════════════════
-       GROUNDED NAV (FROSTED GLASS)
+       NAV
      ═══════════════════════════════════════════ */
     .site-nav {
-        position: fixed; top: 0; left: 0; right: 0; z-index: 900;
-        height: var(--nav-h);
-        background: rgba(30, 32, 29, 0.85);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-        transition: box-shadow 0.3s, background 0.3s;
+        position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h);
+        background: rgba(30, 32, 29, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255,255,255,0.08); transition: box-shadow 0.3s, background 0.3s;
     }
-    .site-nav.scrolled { 
-        box-shadow: 0 4px 24px rgba(0,0,0,0.4); 
-        background: rgba(30, 32, 29, 0.95);
-    }
-    .nav-inner {
-        max-width: var(--max-w); margin: 0 auto; padding: 0 20px;
-        height: 100%; display: flex; align-items: center; justify-content: space-between;
-    }
+    .site-nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.4); background: rgba(30, 32, 29, 0.95); }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
     .nav-logo { display: flex; flex-direction: column; gap: 2px; }
-    .nav-logo-name {
-        font-family: var(--serif-display); font-size: 1.1rem; font-weight: 400;
-        color: #ffffff; letter-spacing: 0.04em;
-    }
+    .nav-logo-name { font-family: var(--serif-display); font-size: 1.1rem; color: #ffffff; letter-spacing: 0.04em; }
     .nav-logo-name em { color: var(--gold-lt); font-style: normal; }
-    .nav-logo-sub {
-        font-family: var(--sans); font-size: 0.52rem; font-weight: 300;
-        letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.6);
-    }
+    .nav-logo-sub { font-family: var(--sans); font-size: 0.5rem; font-weight: 300; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
 
     .nav-links { display: none; list-style: none; align-items: center; gap: 4px; }
-    .nav-links a {
-        font-family: var(--sans); font-size: 0.72rem; font-weight: 400;
-        letter-spacing: 0.14em; text-transform: uppercase;
-        color: rgba(255,255,255,0.8); padding: 8px 16px; border-radius: 30px;
-    }
+    .nav-links a { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.8); padding: 8px 16px; border-radius: 30px; }
     .nav-links a:hover { color: #ffffff; background: rgba(255,255,255,0.1); }
-    .nav-wa {
-        background: linear-gradient(135deg, #3A4F38 0%, var(--sage-deep) 100%)!important; 
-        color: #fff!important;
-        padding: 10px 22px!important; border-radius: 30px!important;
-        margin-left: 10px; display: flex; align-items: center; gap: 7px;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
-    }
-    .nav-wa:hover { 
-        background: linear-gradient(135deg, #445D42 0%, #30462F 100%)!important; 
-    }
+    .nav-wa { background: linear-gradient(135deg, #3A4F38 0%, var(--sage-deep) 100%)!important; color: #fff!important; padding: 10px 22px!important; border-radius: 30px!important; margin-left: 10px; display: flex; align-items: center; gap: 7px; }
 
-    .hamburger {
-        display: flex; flex-direction: column; justify-content: center; gap: 5px; 
-        background: none; border: none; cursor: pointer; padding: 6px; width: 40px; height: 40px;
-    }
-    .hamburger span {
-        display: block; width: 22px; height: 1.5px; background: #ffffff; 
-        border-radius: 2px; transition: transform 0.3s, opacity 0.3s;
-    }
+    .hamburger { display: flex; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; width: 40px; height: 40px; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: #ffffff; border-radius: 2px; transition: 0.3s; }
     .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-    .nav-drawer {
-        display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; bottom: 0;
-        background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); z-index: 899; flex-direction: column; padding: 28px 20px 48px;
-        border-top: 1px solid rgba(196,154,60,0.2); overflow-y: auto;
-    }
+    .nav-drawer { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; bottom: 0; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); z-index: 899; flex-direction: column; padding: 20px 20px 48px; overflow-y: auto; border-top: 1px solid rgba(196,154,60,0.2); }
     .nav-drawer.open { display: flex; }
-    .nav-drawer a {
-        font-family: var(--sans); font-size: 1rem; font-weight: 300; letter-spacing: 0.1em; 
-        text-transform: uppercase; color: var(--warm-mid); padding: 20px 4px;
-        border-bottom: 1px solid var(--cream-deep); display: flex; align-items: center; gap: 14px;
-    }
+    .nav-drawer a { font-family: var(--sans); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--warm-mid); padding: 18px 4px; border-bottom: 1px solid var(--cream-deep); display: flex; align-items: center; gap: 14px; }
     .nav-drawer a i { color: var(--gold); width: 18px; }
-    .drawer-wa {
-        margin-top: 20px; background: linear-gradient(135deg, #3A4F38 0%, var(--sage-deep) 100%)!important; color: #fff!important;
-        border: none!important; border-radius: 8px!important; justify-content: center; padding: 18px!important;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
-    }
+    .drawer-wa { margin-top: 20px; background: linear-gradient(135deg, #3A4F38 0%, var(--sage-deep) 100%)!important; color: #fff!important; border: none!important; border-radius: 8px!important; justify-content: center; padding: 18px!important; }
 
     /* ═══════════════════════════════════════════
-       EDITORIAL HERO
+       NEW MOBILE-OPTIMIZED HERO BANNER
      ═══════════════════════════════════════════ */
-    .hero-split {
-        background: radial-gradient(circle at top right, #FFFFFF 0%, var(--cream) 70%);
-        padding: calc(var(--nav-h) + 48px) 20px 64px;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 40px;
-        align-items: center;
-        max-width: var(--max-w);
-        margin: 0 auto;
-    }
-
-    .hero-text-col { display: flex; flex-direction: column; align-items: flex-start; }
-
-    .hero-location {
-        font-family: var(--sans); font-size: 0.62rem; font-weight: 500;
-        letter-spacing: 0.32em; text-transform: uppercase; color: var(--sage-deep);
-        display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
-    }
-    .hero-location::after {
-        content: ''; display: block; width: 32px; height: 1px; background: var(--sage); opacity: 0.6;
-    }
-
-    .hero-headline {
-        font-family: var(--serif-display); font-size: clamp(2.4rem, 8vw, 4rem);  
-        font-weight: 400; line-height: 1.05; color: var(--ink);
-        letter-spacing: -0.02em; margin-bottom: 24px;
-    }
-    
-    .hero-headline em { 
-        background: linear-gradient(to right, var(--sage), var(--sage-deep));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-style: italic; 
-    }
-
-    .hero-sub {
-        font-family: var(--serif-body); font-size: clamp(1.1rem, 3vw, 1.3rem); 
-        font-weight: 500; font-style: italic; color: var(--warm-mid);
-        line-height: 1.6; margin-bottom: 40px; max-width: 540px; 
-    }
-
-    .hero-ctas { display: flex; flex-wrap: wrap; gap: 16px; }
-
-    .hero-img-col {
+    .hero-banner {
         position: relative;
-        width: 100%;
-        aspect-ratio: 4/5;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 24px 64px rgba(44,36,22,0.15);
-        background: var(--sage-lt);
+        padding: calc(var(--nav-h) + 60px) 20px 80px;
+        text-align: center;
+        background: linear-gradient(rgba(30, 32, 29, 0.88), rgba(30, 32, 29, 0.95)), url('assets/concierge.png') center/cover no-repeat;
+        color: #ffffff;
+        display: flex; flex-direction: column; align-items: center;
     }
-    
-    .hero-badge {
-        position: absolute; bottom: 24px; left: -24px;
-        background: rgba(30, 32, 29, 0.85);  
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        color: var(--gold-lt);
-        padding: 16px 24px; border-radius: 4px;
-        font-family: var(--sans); font-size: 0.65rem; font-weight: 400;
-        letter-spacing: 0.2em; text-transform: uppercase;
-        border: 1px solid rgba(255,255,255,0.1);
-        box-shadow: 0 12px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
-    }
+    .hero-location { font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-lt); display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 16px; }
+    .hero-headline { font-family: var(--serif-display); font-size: clamp(2.2rem, 8vw, 3.8rem); font-weight: 400; line-height: 1.1; margin-bottom: 20px; max-width: 800px; color: #ffffff; }
+    .hero-headline em { background: linear-gradient(to right, var(--gold-pale), var(--gold-lt)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-style: italic; }
+    .hero-sub { font-family: var(--serif-body); font-size: clamp(1.05rem, 3vw, 1.25rem); max-width: 600px; line-height: 1.5; margin-bottom: 32px; font-style: italic; color: rgba(255,255,255,0.85); }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
 
     /* Glossy Buttons */
-    .btn-sage {
-        display: inline-flex; align-items: center; gap: 9px; padding: 16px 32px;
-        background: linear-gradient(135deg, #3A4F38 0%, var(--sage-deep) 100%);
-        color: #fff; border-radius: 50px;
-        font-family: var(--sans); font-size: 0.75rem; font-weight: 500;
-        letter-spacing: 0.1em; text-transform: uppercase;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 8px 24px rgba(42, 61, 41, 0.2);
-        transition: all 0.3s ease;
-    }
-    .btn-sage:hover { 
-        background: linear-gradient(135deg, #445D42 0%, #30462F 100%);
-        transform: translateY(-2px); 
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 12px 32px rgba(42, 61, 41, 0.3); 
-    }
-
-    .btn-outline {
-        display: inline-flex; align-items: center; gap: 9px; padding: 15px 30px;
-        background: transparent; color: var(--sage-deep);
-        border: 1px solid var(--sage-deep); border-radius: 50px;
-        font-family: var(--sans); font-size: 0.75rem; font-weight: 500;
-        letter-spacing: 0.1em; text-transform: uppercase;
-        transition: all 0.3s ease;
-    }
-    .btn-outline:hover { 
-        background: linear-gradient(135deg, #3A4F38 0%, var(--sage-deep) 100%);
-        color: #ffffff; 
-        border-color: transparent;
-        transform: translateY(-2px); 
-        box-shadow: 0 8px 24px rgba(42, 61, 41, 0.2);
-    }
-
-    /* Full-Width Card Button */
-    .btn-card {
-        display: flex; align-items: center; justify-content: center; gap: 8px;
-        width: 100%; padding: 14px 20px; margin-top: 32px;
-        background: transparent; color: var(--sage-deep);
-        border: 1px solid rgba(42, 61, 41, 0.25); border-radius: 50px;
-        font-family: var(--sans); font-size: 0.72rem; font-weight: 600;
-        letter-spacing: 0.1em; text-transform: uppercase;
-        transition: all 0.3s ease;
-    }
-    .btn-card:hover { 
-        background: linear-gradient(135deg, #3A4F38 0%, var(--sage-deep) 100%);
-        color: #ffffff; 
-        border-color: transparent;
-        transform: translateY(-2px); 
-        box-shadow: 0 8px 24px rgba(42, 61, 41, 0.15);
-    }
+    .btn-sage { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: linear-gradient(135deg, #3A4F38 0%, var(--sage-deep) 100%); color: #fff; border-radius: 50px; font-family: var(--sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 8px 20px rgba(0, 0, 0, 0.3); transition: all 0.3s; }
+    .btn-sage:hover { background: linear-gradient(135deg, #445D42 0%, #30462F 100%); transform: translateY(-2px); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; background: transparent; color: #ffffff; border: 1px solid rgba(255,255,255,0.4); border-radius: 50px; font-family: var(--sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.3s; }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: #ffffff; transform: translateY(-2px); }
 
     /* ═══════════════════════════════════════════
-       CARD UI (High Gloss Finish)
+       TIGHTENED MOBILE CARDS
      ═══════════════════════════════════════════ */
-    .services { background: var(--cream); }
-    .card-section-header { text-align: center; margin-bottom: 48px; padding-top: 64px; }
+    .card-section-header { text-align: center; margin-bottom: 32px; padding-top: 60px; }
+    .section-eyebrow { font-family: var(--sans); font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--sage-deep); display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 8px; }
+    .section-eyebrow::after, .section-eyebrow::before { content: ''; width: 20px; height: 1px; background: var(--sage); opacity: 0.5; }
+    .section-title { font-family: var(--serif-display); font-size: clamp(1.8rem, 6vw, 3rem); font-weight: 400; line-height: 1.1; color: var(--ink); }
+    .section-title em { background: linear-gradient(to right, var(--gold), var(--gold-lt)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-style: italic; }
+
+    .card-grid { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: var(--max-w); margin: 0 auto; padding: 0 20px 60px; }
+    .master-card { background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%); border: 1px solid rgba(193, 154, 91, 0.15); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 16px rgba(42, 61, 41, 0.05), inset 0 1px 0 rgba(255,255,255,1); display: flex; flex-direction: column; transition: transform 0.3s; }
+    .card-img-container { width: 100%; height: 160px; position: relative; overflow: hidden; } /* Tighter image height */
+    .card-body { padding: 24px 20px; display: flex; flex-direction: column; flex: 1; }
     
-    .section-eyebrow {
-        font-family: var(--sans); font-size: 0.62rem; font-weight: 400;
-        letter-spacing: 0.32em; text-transform: uppercase; color: var(--sage-deep);
-        display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 12px;
-    }
-    .section-eyebrow::after, .section-eyebrow::before {
-        content: ''; display: block; width: 32px; height: 1px; background: var(--sage); opacity: 0.5;
-    }
-    .section-title {
-        font-family: var(--serif-display); font-size: clamp(2rem, 7vw, 3.4rem); 
-        font-weight: 400; line-height: 1.1; color: var(--ink);
-    }
-    .section-title em { 
-        background: linear-gradient(to right, var(--gold), var(--gold-lt));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-style: italic; 
-    }
+    .card-topic { font-family: var(--serif-display); font-size: 1.25rem; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+    .card-essential { font-family: var(--sans); font-size: 0.85rem; line-height: 1.5; color: var(--warm-mid); margin-bottom: 20px; }
 
-    .card-grid {
-        display: grid; 
-        grid-template-columns: 1fr; 
-        gap: 48px;
-        max-width: var(--max-w); 
-        margin: 0 auto; 
-        padding: 0 20px 120px; 
-    }
-    
-    .master-card {
-        background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%); 
-        border: 1px solid rgba(193, 154, 91, 0.15); 
-        border-radius: 12px; 
-        overflow: hidden; 
-        box-shadow: 0 8px 24px rgba(42, 61, 41, 0.04), inset 0 1px 0 rgba(255,255,255,1); 
-        display: flex; flex-direction: column; transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-    .master-card:hover { transform: translateY(-8px); box-shadow: 0 16px 40px rgba(42, 61, 41, 0.08), inset 0 1px 0 rgba(255,255,255,1); }
-    
-    .card-img-container { 
-        width: 100%; 
-        aspect-ratio: 4 / 3; 
-        position: relative; 
-        overflow: hidden; 
-    }
-
-    .card-img-container img {
-        width: 100%; 
-        height: 100%; 
-        object-fit: cover; 
-        transition: transform 0.4s ease; 
-    }
-    
-    .master-card:hover .card-img-container img { 
-        transform: scale(1.05); 
-    }
-
-    /* ═══════════════════════════════════════════
-       CARD TYPOGRAPHY & PREMIUM SPACING
-     ═══════════════════════════════════════════ */
-    .card-body {
-        padding: 40px 32px; 
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-    }
-
-    .card-topic {
-        font-family: var(--serif-display);
-        font-size: 1.4rem;
-        font-weight: 500;
-        color: var(--ink);
-        margin-bottom: 24px;
-        text-align: left;
-    }
-
-    .card-essential {
-        font-family: var(--sans);
-        font-size: 0.95rem;
-        font-weight: 400;
-        line-height: 2; 
-        color: var(--warm-mid);
-        margin-bottom: 32px;
-        text-align: left;
-    }
-
-    .card-expand {
-        width: 100%;
-        margin-top: auto; 
-    }
-
-    .card-expand summary {
-        font-family: var(--sans);
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: var(--sage-deep);
-        cursor: pointer;
-        list-style: none; 
-        display: flex;
-        align-items: center;
-        border-top: 1px solid rgba(193, 154, 91, 0.2); 
-        padding-top: 20px;
-        transition: color 0.3s ease;
-    }
-    
+    .card-expand { width: 100%; margin-top: auto; }
+    .card-expand summary { font-family: var(--sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage-deep); cursor: pointer; list-style: none; display: flex; align-items: center; border-top: 1px solid rgba(193, 154, 91, 0.15); padding-top: 16px; }
     .card-expand summary::-webkit-details-marker { display: none; }
-
-    .card-expand summary:hover { color: var(--gold); }
-
-    .card-expand summary::after {
-        content: '\002B'; 
-        margin-left: auto;
-        font-size: 1.2rem;
-        font-weight: 300;
-        transition: transform 0.3s ease;
-    }
-    
+    .card-expand summary::after { content: '\002B'; margin-left: auto; font-size: 1.1rem; font-weight: 300; }
     .card-expand[open] summary::after { content: '\2212'; }
+    .card-hidden-info { font-family: var(--serif-body); font-size: 1rem; line-height: 1.6; color: var(--warm-mid); font-style: italic; padding-top: 16px; margin-top: 16px; border-top: 1px dashed var(--cream-deep); }
 
-    .card-hidden-info {
-        font-family: var(--serif-body);
-        font-size: 1.1rem;
-        line-height: 2; 
-        color: var(--warm-mid);
-        font-style: italic;
-        padding-top: 24px;
-        margin-top: 24px;
-        border-top: 1px dashed var(--cream-deep);
-        text-align: left;
-    }
+    .btn-card { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px 16px; margin-top: 24px; background: transparent; color: var(--sage-deep); border: 1px solid rgba(42, 61, 41, 0.25); border-radius: 50px; font-family: var(--sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
 
     /* ═══════════════════════════════════════════
-       VIDEO RESOURCE LIBRARY (Dropdown Stack Layout)
+       FACT SHEETS & EMBEDDED VIDEOS
      ═══════════════════════════════════════════ */
-    .video-section {
-        background: var(--cream-deep);
-        padding: 80px 0;
-        border-top: 1px solid rgba(193, 154, 91, 0.15);
-    }
-
-    .video-catalog-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 40px;
-        max-width: var(--max-w);
-        margin: 0 auto;
-    }
-
-    @media (min-width: 768px) {
-        .video-catalog-grid {
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        }
-    }
-
-    .video-card {
-        background: #ffffff;
-        padding: 16px;
-        border-radius: 12px;
-        box-shadow: 0 16px 40px rgba(44,36,22,0.08);
-        border: 1px solid rgba(193, 154, 91, 0.15);
-        display: flex;
-        flex-direction: column;
-    }
-
-    .video-card-title {
-        font-family: var(--serif-display);
-        font-size: 1.3rem;
-        color: var(--ink);
-        margin-top: 20px;
-        margin-bottom: 8px;
-        text-align: center;
-        line-height: 1.3;
-    }
-
-    .video-card-desc {
-        font-family: var(--sans);
-        font-size: 0.85rem;
-        color: var(--warm-mid);
-        text-align: center;
-        flex-grow: 1;
-    }
-
-    .responsive-iframe {
-        position: relative;
-        padding-bottom: 56.25%; 
-        height: 0;
-        overflow: hidden;
-        border-radius: 6px;
-        background: var(--warm-dark);
-    }
-
-    .responsive-iframe iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-    }
-
-    .video-caption {
-        text-align: center;
-        font-family: var(--serif-body);
-        font-size: 1.15rem;
-        color: var(--warm-mid);
-        margin-top: 32px;
-        font-style: italic;
-        line-height: 1.6;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    /* ═══════════════════════════════════════════
-       FACT SHEET RESOURCE LIBRARY (Accordions)
-     ═══════════════════════════════════════════ */
-    .resource-section {
-        background: var(--cream);
-        padding: 80px 0;
-        border-top: 1px solid rgba(193, 154, 91, 0.15);
-    }
+    .resource-section { background: var(--cream); padding: 60px 0; border-top: 1px solid rgba(193, 154, 91, 0.15); }
+    .resource-catalog-grid { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: var(--max-w); margin: 0 auto; }
     
-    .resource-catalog-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 40px;
-        max-width: var(--max-w);
-        margin: 0 auto;
-    }
-
-    @media (min-width: 768px) {
-        .resource-catalog-grid {
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        }
-    }
-
-    .resource-card {
-        background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%); 
-        padding: 32px 24px;
-        border-radius: 12px;
-        box-shadow: 0 8px 24px rgba(42, 61, 41, 0.04), inset 0 1px 0 rgba(255,255,255,1); 
-        border: 1px solid rgba(193, 154, 91, 0.15);
-        display: flex;
-        flex-direction: column;
-        transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .resource-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 16px 40px rgba(42, 61, 41, 0.08), inset 0 1px 0 rgba(255,255,255,1);
-    }
-
-    .resource-icon {
-        font-size: 2rem;
-        color: var(--gold);
-        margin-bottom: 20px;
-    }
-
-    .resource-card-title {
-        font-family: var(--serif-display);
-        font-size: 1.25rem;
-        color: var(--ink);
-        margin-bottom: 12px;
-        line-height: 1.3;
-    }
-
-    .resource-card-desc {
-        font-family: var(--sans);
-        font-size: 0.85rem;
-        color: var(--warm-mid);
-        line-height: 1.6;
-        flex-grow: 1;
-        margin-bottom: 24px;
-    }
-
-    .resource-accordions {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        margin-top: auto;
-    }
-
-    .res-expand {
-        background: var(--cream);
-        border: 1px solid rgba(193, 154, 91, 0.2);
-        border-radius: 6px;
-        overflow: hidden;
-    }
-
-    .res-expand summary {
-        font-family: var(--sans);
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--sage-deep);
-        padding: 14px 16px;
-        cursor: pointer;
-        list-style: none; 
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background: #ffffff;
-        transition: background 0.3s ease;
-    }
-
+    .resource-card { background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%); padding: 24px 20px; border-radius: 10px; border: 1px solid rgba(193, 154, 91, 0.15); box-shadow: 0 4px 16px rgba(42, 61, 41, 0.05); display: flex; flex-direction: column; }
+    .resource-icon { font-size: 1.6rem; color: var(--gold); margin-bottom: 16px; }
+    .resource-card-title { font-family: var(--serif-display); font-size: 1.2rem; color: var(--ink); margin-bottom: 8px; }
+    .resource-card-desc { font-family: var(--sans); font-size: 0.8rem; color: var(--warm-mid); line-height: 1.5; margin-bottom: 20px; }
+    
+    .resource-accordions { display: flex; flex-direction: column; gap: 10px; margin-top: auto; }
+    .res-expand { background: var(--cream); border: 1px solid rgba(193, 154, 91, 0.2); border-radius: 6px; overflow: hidden; }
+    .res-expand summary { font-family: var(--sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--sage-deep); padding: 12px 14px; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; background: #ffffff; }
     .res-expand summary::-webkit-details-marker { display: none; }
-    .res-expand summary:hover { background: var(--gold-pale); }
-    
-    .res-expand summary::after {
-        content: '\002B'; 
-        font-size: 1.2rem;
-        font-weight: 300;
-    }
-    
+    .res-expand summary::after { content: '\002B'; font-size: 1.1rem; font-weight: 300; }
     .res-expand[open] summary::after { content: '\2212'; }
-    .res-expand[open] summary { border-bottom: 1px solid rgba(193, 154, 91, 0.1); }
+    .res-hidden { padding: 16px; background: var(--cream); }
+    .res-hidden p { font-family: var(--sans); font-size: 0.8rem; line-height: 1.5; color: var(--warm-mid); margin-bottom: 12px; }
 
-    .res-hidden {
-        padding: 16px;
-        background: var(--cream);
-    }
+    .btn-download-small { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 10px 16px; background: var(--sage-lt); color: var(--sage-deep); border-radius: 4px; font-family: var(--sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 8px; }
+    .video-highlight summary { background: var(--gold-pale); border-bottom: 1px solid rgba(193, 154, 91, 0.2); }
 
-    .res-hidden p {
-        font-family: var(--sans);
-        font-size: 0.8rem;
-        line-height: 1.5;
-        color: var(--warm-mid);
-        margin-bottom: 16px;
-    }
-
-    .btn-download-small {
-        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-        width: 100%; padding: 10px 16px;
-        background: var(--sage-lt); color: var(--sage-deep);
-        border-radius: 4px;
-        font-family: var(--sans); font-size: 0.65rem; font-weight: 600;
-        letter-spacing: 0.1em; text-transform: uppercase;
-        transition: all 0.3s ease;
-    }
-
-    .btn-download-small:hover { 
-        background: var(--sage);
-        color: #ffffff; 
-    }
+    .responsive-iframe { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 6px; background: var(--warm-dark); margin-bottom: 12px; }
+    .responsive-iframe iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
     /* ═══════════════════════════════════════════
-       PROFESSIONAL APPROACH
+       COMPACT ABOUT SECTION
      ═══════════════════════════════════════════ */
-    .about-approach {
-        background: radial-gradient(circle at top left, #FFFFFF 0%, var(--ivory) 100%); 
-        padding: 80px 0;
-        border-top: 1px solid rgba(196,154,60,0.18); border-bottom: 1px solid rgba(196,154,60,0.18);
-    }
-    .approach-grid { display: grid; grid-template-columns: 1fr; gap: 56px; align-items: start; }
+    .about-approach { background: radial-gradient(circle at top left, #FFFFFF 0%, var(--ivory) 100%); padding: 60px 0; border-top: 1px solid rgba(196,154,60,0.18); border-bottom: 1px solid rgba(196,154,60,0.18); }
+    .approach-grid { display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; }
+    .about-col, .process-col { flex: 1; min-width: 300px; }
     
-    .designer-photo {
-        width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 8px;
-        box-shadow: 0 16px 40px rgba(44,36,22,0.1); background-color: var(--cream-deep);
-        border: 1px solid rgba(196,154,60,0.2);
-    }
-
-    .about-quote {
-        font-family: var(--serif-body); font-size: clamp(1.2rem, 5vw, 1.8rem);
-        font-style: italic; font-weight: 300; line-height: 1.5; color: var(--warm-dark);
-        border-left: 3px solid var(--gold); padding-left: 20px; margin: 20px 0 24px;
-    }
+    .about-quote { font-family: var(--serif-body); font-size: 1.1rem; font-style: italic; color: var(--warm-dark); border-left: 2px solid var(--gold); padding-left: 16px; margin: 0 0 16px; line-height: 1.5; }
     
-    .section-body {
-        font-family: var(--serif-body); font-size: clamp(1.05rem, 3.5vw, 1.25rem);
-        font-weight: 500; line-height: 1.8; color: var(--warm-mid);
-    }
-
-    .step-list { margin-top: 32px; display: flex; flex-direction: column; gap: 32px; }
-    .step-item { display: flex; gap: 20px; align-items: flex-start; }
-    .step-num {
-        font-family: var(--serif-display); font-size: 2rem; 
-        background: linear-gradient(to bottom, var(--gold), var(--gold-lt));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        line-height: 1; font-style: italic; min-width: 32px;
-    }
-    .step-text h4 {
-        font-family: var(--sans); font-size: 0.75rem; font-weight: 500;
-        letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink); margin-bottom: 8px;
-    }
-    .step-text p {
-        font-family: var(--serif-body); font-size: 1rem; font-weight: 400;
-        color: var(--warm-mid); line-height: 1.6;
-    }
+    .step-list { margin-top: 24px; display: flex; flex-direction: column; gap: 24px; }
+    .step-item { display: flex; gap: 16px; align-items: flex-start; }
+    .step-num { font-family: var(--serif-display); font-size: 1.6rem; background: linear-gradient(to bottom, var(--gold), var(--gold-lt)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; font-style: italic; min-width: 24px; }
+    .step-text h4 { font-family: var(--sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-bottom: 4px; }
+    .step-text p { font-family: var(--sans); font-size: 0.8rem; color: var(--warm-mid); line-height: 1.5; }
 
     /* ═══════════════════════════════════════════
-       COOKIE & PRIVACY BANNER
+       FOOTER & CTA
      ═══════════════════════════════════════════ */
-    .cookie-banner {
-        position: fixed;
-        bottom: -100px; 
-        left: 0;
-        right: 0;
-        background: rgba(30, 32, 29, 0.9);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        color: var(--cream);
-        padding: 16px 20px;
-        z-index: 9999;
-        box-shadow: 0 -4px 32px rgba(0,0,0,0.3);
-        border-top: 1px solid rgba(255,255,255,0.1);
-        transition: bottom 0.5s cubic-bezier(.22,1,.36,1);
-    }
+    .cta-band { background: linear-gradient(135deg, #223321 0%, var(--sage-deep) 100%); padding: 60px 20px; text-align: center; }
+    .cta-band-eyebrow { font-family: var(--sans); font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase; color: #ffffff; opacity: 0.75; margin-bottom: 12px; }
+    .cta-band-title { font-family: var(--serif-display); font-size: clamp(1.8rem, 6vw, 2.8rem); color: #ffffff; font-weight: 400; line-height: 1.1; margin-bottom: 12px; }
+    .cta-band-title em { background: linear-gradient(to right, var(--gold-pale), var(--gold-lt)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-style: italic; }
+    .cta-band-body { font-family: var(--serif-body); font-size: 1rem; color: rgba(255,255,255,0.85); font-style: italic; max-width: 480px; margin: 0 auto 24px; }
     
-    .cookie-banner.show { bottom: 0; }
+    .btn-white { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 50px; background: #ffffff; color: var(--sage-deep); font-family: var(--sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
 
-    .cookie-content {
-        max-width: var(--max-w); margin: 0 auto; display: flex; flex-direction: column;
-        align-items: center; gap: 16px; text-align: center;
-    }
-
-    .cookie-content p { font-family: var(--sans); font-size: 0.8rem; font-weight: 300; color: rgba(255,255,255,0.8); margin: 0; }
-    .cookie-content a { color: var(--gold-lt); text-decoration: underline; }
-
-    @media (min-width: 768px) {
-        .cookie-content { flex-direction: row; justify-content: space-between; text-align: left; }
-    }
-
-    /* ═══════════════════════════════════════════
-       CTA BAND & GROUNDED FOOTER
-     ═══════════════════════════════════════════ */
-    .cta-band {
-        background: linear-gradient(135deg, #223321 0%, var(--sage-deep) 100%); 
-        padding: 80px 20px; text-align: center; position: relative; overflow: hidden;
-    }
-    .cta-band::before {
-        content: ''; position: absolute; inset: 0;
-        background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(255,255,255,0.08) 0%, transparent 70%); pointer-events: none;
-    }
-    .cta-band-eyebrow {
-        font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
-        color: #ffffff; opacity: 0.75; margin-bottom: 16px;
-    }
-    .cta-band-title {
-        font-family: var(--serif-display); font-size: clamp(2rem, 7vw, 3.2rem); color: #ffffff; font-weight: 400;
-        line-height: 1.1; margin-bottom: 12px;
-    }
-    .cta-band-title em { 
-        background: linear-gradient(to right, var(--gold-pale), var(--gold-lt));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-style: italic; 
-    }
-    .cta-band-body {
-        font-family: var(--serif-body); font-size: 1.05rem; color: rgba(255,255,255,0.82);
-        font-style: italic; max-width: 480px; margin: 0 auto 32px;
-    }
-    .btn-white {
-        display: inline-flex; align-items: center; gap: 9px; padding: 14px 32px; border-radius: 50px;
-        background: linear-gradient(180deg, #ffffff 0%, #f0f0f0 100%); color: var(--sage-deep); font-family: var(--sans); font-size: 0.72rem; font-weight: 600;
-        letter-spacing: 0.14em; text-transform: uppercase; transition: transform 0.2s, box-shadow 0.2s;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,1);
-    }
-    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,1); }
-
-    .site-footer { background: var(--warm-dark); padding: 64px 20px 32px; color: rgba(250,247,242,0.6); }
-    .footer-grid {
-        max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 40px;
-        border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 24px;
-    }
-    .f-logo {
-        font-family: var(--serif-display); font-size: 1.1rem; color: #ffffff; letter-spacing: 0.04em; display: block; margin-bottom: 4px;
-    }
+    .site-footer { background: var(--warm-dark); padding: 48px 20px 24px; color: rgba(250,247,242,0.6); }
+    .footer-grid { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 32px; margin-bottom: 20px; }
+    .f-logo { font-family: var(--serif-display); font-size: 1rem; color: #ffffff; margin-bottom: 4px; display: block; }
     .f-logo em { font-style: normal; color: var(--gold-lt); }
-    .f-tag {
-        font-family: var(--sans); font-size: 0.55rem; letter-spacing: 0.26em; text-transform: uppercase;
-        color: var(--gold-lt); display: block; margin-bottom: 16px;
-    }
-    .f-desc {
-        font-family: var(--serif-body); font-size: 0.9rem; font-style: italic; line-height: 1.6; max-width: 280px; color: rgba(255,255,255,0.62);
-    }
-    .footer-col-title {
-        font-family: var(--sans); font-size: 0.62rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase;
-        color: rgba(255,255,255,0.5); margin-bottom: 16px;
-    }
-    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-links a { font-family: var(--sans); font-size: 0.82rem; font-weight: 300; color: rgba(255,255,255,0.78); transition: color 0.2s; }
-    .footer-links a:hover { color: var(--gold-lt); }
-    .footer-contact p {
-        display: flex; align-items: center; gap: 10px; font-family: var(--sans); font-size: 0.82rem; font-weight: 300;
-        color: rgba(255,255,255,0.78); margin-bottom: 12px;
-    }
-    .footer-contact i { color: var(--gold-lt); width: 16px; font-size: 0.85rem; }
-    .footer-bottom {
-        max-width: var(--max-w); margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px;
-    }
-    .footer-bottom p { font-family: var(--sans); font-size: 0.7rem; font-weight: 300; color: rgba(255,255,255,0.42); }
+    .f-tag { font-family: var(--sans); font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-lt); display: block; margin-bottom: 12px; }
+    .f-desc { font-family: var(--sans); font-size: 0.8rem; line-height: 1.5; max-width: 280px; }
+    .footer-col-title { font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a { font-family: var(--sans); font-size: 0.8rem; color: rgba(255,255,255,0.78); }
+    .footer-contact p { display: flex; align-items: center; gap: 8px; font-family: var(--sans); font-size: 0.8rem; margin-bottom: 8px; }
+    .footer-contact i { color: var(--gold-lt); width: 16px; }
+    .footer-bottom { max-width: var(--max-w); margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; }
+    .footer-bottom p { font-family: var(--sans); font-size: 0.65rem; color: rgba(255,255,255,0.4); }
 
-    /* ═══════════════════════════════════════════
-       RESPONSIVE DESKTOP OVERRIDES
-     ═══════════════════════════════════════════ */
+    /* Cookie Banner */
+    .cookie-banner { position: fixed; bottom: -100px; left: 0; right: 0; background: rgba(30, 32, 29, 0.95); backdrop-filter: blur(12px); color: var(--cream); padding: 16px 20px; z-index: 9999; border-top: 1px solid rgba(255,255,255,0.1); transition: bottom 0.5s; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; align-items: center; }
+    .cookie-banner.show { bottom: 0; }
+    .cookie-banner p { font-family: var(--sans); font-size: 0.75rem; margin: 0; text-align: center; }
+    .cookie-banner a { color: var(--gold-lt); text-decoration: underline; }
+
+    /* Desktop Adjustments */
     @media (min-width: 900px) {
-        .hamburger { display: none; }
-        .nav-links { display: flex; }
-        .nav-inner { padding: 0 28px; }
-
-        .hero-split { grid-template-columns: 1.1fr 0.9fr; padding: calc(var(--nav-h) + 80px) 28px 80px; gap: 64px; }
-        .hero-badge { left: -32px; }
-
-        .card-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; } /* Clean, horizontal grid presentation for 4 marketing cards */
-
-        .about-approach { padding: 96px 0; }
-        .approach-grid { grid-template-columns: 0.8fr 1.2fr 1fr; gap: 64px; }
-        
+        .hamburger { display: none; } .nav-links { display: flex; }
+        .hero-banner { padding: calc(var(--nav-h) + 100px) 20px 120px; }
+        .card-grid { grid-template-columns: repeat(4, 1fr); }
+        .card-img-container { height: 180px; }
+        .resource-catalog-grid { grid-template-columns: repeat(3, 1fr); }
         .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; }
-        .footer-bottom { flex-direction: row; justify-content: space-between; text-align: left; }
-
-        .card-img-container {
-            aspect-ratio: auto; 
-            height: 240px; 
-        }
+        .footer-bottom { flex-direction: row; justify-content: space-between; }
+        .cookie-banner { justify-content: space-between; } .cookie-banner p { text-align: left; }
     }
     </style>
 </head>
@@ -862,8 +264,8 @@
         </a>
         <ul class="nav-links">
             <li><a href="#concierge">Concierge Services</a></li>
-            <li><a href="#guides">Video Library</a></li>
-            <li><a href="#resources">Fact Sheets</a></li>
+            <li><a href="#resources">Portal Fact Sheets</a></li>
+            <li><a href="#about">Our Protocol</a></li>
             <li>
                 <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="nav-wa">
                     <i class="fa-brands fa-whatsapp"></i> WhatsApp Laura
@@ -878,183 +280,93 @@
 
 <div class="nav-drawer" id="drawer">
     <a href="#concierge" onclick="closeNav()"><i class="fa-solid fa-shield-check"></i>Concierge Services</a>
-    <a href="#guides" onclick="closeNav()"><i class="fa-solid fa-play"></i>Video Library</a>
-    <a href="#resources" onclick="closeNav()"><i class="fa-solid fa-file-lines"></i>Fact Sheets</a>
+    <a href="#resources" onclick="closeNav()"><i class="fa-solid fa-file-lines"></i>Portal Fact Sheets</a>
+    <a href="#about" onclick="closeNav()"><i class="fa-solid fa-list-check"></i>Our Protocol</a>
     <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="drawer-wa" onclick="closeNav()">
         <i class="fa-brands fa-whatsapp"></i>WhatsApp Laura
     </a>
 </div>
 
-<section class="hero-split">
-    <div class="hero-text-col enter d1">
-        <p class="hero-location">
-            <i class="fa-solid fa-location-dot" style="font-size:0.58rem;"></i>
-            Linstead &middot; St. Catherine &middot; Jamaica
-        </p>
-        <h1 class="hero-headline">
-            <em>Confidential</em> Jamaican Document Concierge
-        </h1>
-        <p class="hero-sub">
-            Bypass the bureaucratic friction. From hassle-free Jamaican document renewals and official clearances to secure sourcing. Whether you are local or overseas, we handle the logistics with strict confidentiality.
-        </p>
-        <div class="hero-ctas">
-            <a href="#concierge" class="btn-sage">
-                Explore Services <i class="fa-solid fa-arrow-down"></i>
-            </a>
-            <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-outline">
-                <i class="fa-brands fa-whatsapp"></i> Chat with Laura
-            </a>
-        </div>
-    </div>
-    
-    <div class="hero-img-col enter d2">
-        <img src="assets/concierge.png" alt="Docu-Hub Citadel Services" onerror="this.style.opacity='0';">
-        <div class="hero-badge">
-            <i class="fa-solid fa-shield-check"></i> Secure On-The-Ground Processing
-        </div>
+<!-- COMPACT HERO BANNER -->
+<section class="hero-banner">
+    <p class="hero-location enter d1">
+        <i class="fa-solid fa-location-dot"></i> Linstead &middot; St. Catherine
+    </p>
+    <h1 class="hero-headline enter d2">
+        <em>Confidential</em> Jamaican Document Concierge
+    </h1>
+    <p class="hero-sub enter d3">
+        Bypass bureaucratic friction. We manage secure Jamaican passport renewals, vital records, and official clearances for the diaspora.
+    </p>
+    <div class="hero-ctas enter d4">
+        <a href="#concierge" class="btn-sage">Explore Services <i class="fa-solid fa-arrow-down"></i></a>
+        <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-outline"><i class="fa-brands fa-whatsapp"></i> Chat with Laura</a>
     </div>
 </section>
 
-<div class="services">
-    <div id="concierge">
-        <div class="card-section-header enter d1">
-            <p class="section-eyebrow">Document Concierge</p>
-            <h2 class="section-title">Navigating <em>Complex Systems</em></h2>
+<!-- TIGHTENED CONCIERGE CARDS -->
+<div class="services" id="concierge">
+    <div class="card-section-header enter d1">
+        <p class="section-eyebrow">Document Concierge</p>
+        <h2 class="section-title">Navigating <em>Complex Systems</em></h2>
+    </div>
+
+    <div class="card-grid">
+        <div class="master-card enter d1">
+            <div class="card-img-container"><img src="assets/passport.png" alt="Passport"></div>
+            <div class="card-body">
+                <h3 class="card-topic">Passport Assistance</h3>
+                <p class="card-essential">Streamlined guidance for Jamaican passport applications and renewals.</p>
+                <details class="card-expand">
+                    <summary>More Details</summary>
+                    <div class="card-hidden-info">We review your application for strict compliance, ensuring all supporting documents meet PICA standards to prevent delays.</div>
+                </details>
+                <a href="https://wa.me/18765612614" class="btn-card"><i class="fa-brands fa-whatsapp"></i> Inquire</a>
+            </div>
         </div>
 
-        <div class="card-grid">
-            <!-- CONCIERGE CARD 1: PASSPORTS -->
-            <div class="master-card enter d1">
-                <div class="card-img-container">
-                    <img src="assets/passport.png" alt="Jamaican e-Passport with biometric chip symbol">
-                </div>
-                <div class="card-body">
-                    <h3 class="card-topic">Passport Assistance</h3>
-                    <p class="card-essential">Streamlined guidance for Jamaican passport applications and renewals for overseas residents.</p>
-                    <details class="card-expand">
-                        <summary>More Details</summary>
-                        <div class="card-hidden-info">
-                            We review your application for strict compliance, ensure all supporting documents meet agency standards, and guide you through the exact submission process so your application isn't delayed by technical errors or missing criteria.
-                        </div>
-                    </details>
-                    <a href="https://wa.me/18765612614?text=Hi%20Laura%2C%20I%20am%20interested%20in%20the%20Passport%20Assistance%20service." target="_blank" rel="noopener" class="btn-card">
-                        <i class="fa-brands fa-whatsapp" style="font-size: 1.1em;"></i> Inquire Now
-                    </a>
-                </div>
+        <div class="master-card enter d2">
+            <div class="card-img-container"><img src="assets/certificate.png" alt="Vital Records"></div>
+            <div class="card-body">
+                <h3 class="card-topic">Vital Records</h3>
+                <p class="card-essential">Secure sourcing of official Jamaican Birth, Marriage, and Death Certificates.</p>
+                <details class="card-expand">
+                    <summary>More Details</summary>
+                    <div class="card-hidden-info">We interface directly with the RGD on your behalf to securely retrieve official stamped documents.</div>
+                </details>
+                <a href="https://wa.me/18765612614" class="btn-card"><i class="fa-brands fa-whatsapp"></i> Inquire</a>
             </div>
+        </div>
 
-            <!-- CONCIERGE CARD 2: VITAL RECORDS -->
-            <div class="master-card enter d2">
-                <div class="card-img-container">
-                    <img src="assets/certificate.png" alt="Official Jamaican government Vital Records on security paper">
-                </div>
-                <div class="card-body">
-                    <h3 class="card-topic">Vital Records</h3>
-                    <p class="card-essential">Secure sourcing of official Jamaican Birth, Marriage, and Death Certificates.</p>
-                    <details class="card-expand">
-                        <summary>More Details</summary>
-                        <div class="card-hidden-info">
-                            We interface directly with the Registrar General's Department (RGD) on your behalf, securely tracking the status of your request and ensuring the official stamped documents are protected and prepared for you.
-                        </div>
-                    </details>
-                    <a href="https://wa.me/18765612614?text=Hi%20Laura%2C%20I%20need%20help%20sourcing%20Vital%20Records." target="_blank" rel="noopener" class="btn-card">
-                        <i class="fa-brands fa-whatsapp" style="font-size: 1.1em;"></i> Inquire Now
-                    </a>
-                </div>
+        <div class="master-card enter d3">
+            <div class="card-img-container"><img src="assets/driving-abstract.png" alt="Official Clearances"></div>
+            <div class="card-body">
+                <h3 class="card-topic">Official Clearances</h3>
+                <p class="card-essential">Application management for Police Records and Driving Abstracts.</p>
+                <details class="card-expand">
+                    <summary>More Details</summary>
+                    <div class="card-hidden-info">We handle the local logistics, strict document coordination, and agency follow-ups required to obtain clearances.</div>
+                </details>
+                <a href="https://wa.me/18765612614" class="btn-card"><i class="fa-brands fa-whatsapp"></i> Inquire</a>
             </div>
+        </div>
 
-            <!-- CONCIERGE CARD 3: OFFICIAL CLEARANCES -->
-            <div class="master-card enter d3">
-                <div class="card-img-container">
-                    <img src="assets/driving-abstract.png" alt="Sealed official envelopes containing Police Records and Driving Abstracts">
-                </div>
-                <div class="card-body">
-                    <h3 class="card-topic">Official Clearances</h3>
-                    <p class="card-essential">Application management for Jamaican Police Records and Driving Abstracts.</p>
-                    <details class="card-expand">
-                        <summary>More Details</summary>
-                        <div class="card-hidden-info">
-                            Whether for immigration, employment, or personal records, we handle the local logistics, strict document coordination, and TAJ agency follow-ups required to obtain your official clearances confidentially.
-                        </div>
-                    </details>
-                    <a href="https://wa.me/18765612614?text=Hi%20Laura%2C%20I%20need%20assistance%20with%20Official%20Clearances." target="_blank" rel="noopener" class="btn-card">
-                        <i class="fa-brands fa-whatsapp" style="font-size: 1.1em;"></i> Inquire Now
-                    </a>
-                </div>
+        <div class="master-card enter d4">
+            <div class="card-img-container"><img src="assets/motor-vehicle.png" alt="Vehicle Licensing"></div>
+            <div class="card-body">
+                <h3 class="card-topic">Vehicle Licensing</h3>
+                <p class="card-essential">Virtual management for paperless TAJ renewals and gateway rescue.</p>
+                <details class="card-expand">
+                    <summary>More Details</summary>
+                    <div class="card-hidden-info">We process local TAJ payments to bypass international card blocks and generate your digital eMVRC.</div>
+                </details>
+                <a href="https://wa.me/18765612614" class="btn-card"><i class="fa-brands fa-whatsapp"></i> Inquire</a>
             </div>
-
-            <!-- CONCIERGE CARD 4: VEHICLE LICENSING -->
-            <div class="master-card enter d4">
-                <div class="card-img-container">
-                    <img src="assets/motor-vehicle.png" alt="Digital Jamaican Motor Vehicle Registration Certificate document on a phone screen" onerror="this.style.opacity='0';">
-                </div>
-                <div class="card-body">
-                    <h3 class="card-topic">Vehicle Licensing (eMVRC)</h3>
-                    <p class="card-essential">Complete virtual management for 100% paperless tax office renewals and gateway rescue.</p>
-                    <details class="card-expand">
-                        <summary>More Details</summary>
-                        <div class="card-hidden-info">
-                            Skip the tax office entirely. We navigate Jamaica's dual-portal eMVRC system on your behalf. Our team runs pre-checks for outstanding traffic ticket freezes, processes local TAJ payments to bypass international card blocks, and executes the secondary certificate distribution to deliver your legal digital registration directly to your inbox.
-                        </div>
-                    </details>
-                    <a href="https://wa.me/18765612614?text=Hi%20Laura%2C%20I%20need%20assistance%20with%20an%20Online%20Motor%20Vehicle%20License%20Renewal." target="_blank" rel="noopener" class="btn-card">
-                        <i class="fa-brands fa-whatsapp" style="font-size: 1.1em;"></i> Inquire Now
-                    </a>
-                </div>
-            </div>
-        </div> <!-- End of Card Grid -->
+        </div>
     </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     VIDEO RESOURCE LIBRARY (Flexible Accordion Stack)
- ═══════════════════════════════════════════ -->
-<section id="guides" class="video-section">
-    <div class="card-section-header enter d1">
-        <p class="section-eyebrow">Video Library</p>
-        <h2 class="section-title">Official <em>Video Walkthroughs</em></h2>
-    </div>
-    
-    <div class="wrap" style="max-width: 700px; margin: 0 auto;">
-        <p class="video-caption enter d1" style="text-align: center; margin-bottom: 24px;">
-            Prefer a visual guide? Open our active video walkthroughs below. If these guides save you a trip, a 5-star Google review is always appreciated!
-        </p>
-
-        <div class="resource-accordions" style="display: flex; flex-direction: column; gap: 16px;">
-            
-            <!-- VIDEO 1: PASSPORT (Updated 3-Gateway Version) -->
-            <details class="res-expand enter d2">
-                <summary>
-                    <span><i class="fa-solid fa-play" style="margin-right: 12px; color: var(--gold); width: 20px;"></i> Watch: Online Passport Renewal Guide</span>
-                </summary>
-                <div class="res-hidden" style="padding: 16px;">
-                    <div class="responsive-iframe">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/X_vP65ETG2U?si=UiYbSL6oLmtdiZeo" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <p style="margin-top: 12px; font-family: var(--sans); font-size: 0.85rem; color: var(--warm-mid); text-align: center;">The complete 3-gateway blueprint to successfully completing your renewal processing seamlessly.</p>
-                </div>
-            </details>
-
-            <!-- VIDEO 2: VEHICLE LICENSING -->
-            <details class="res-expand enter d3">
-                <summary>
-                    <span><i class="fa-solid fa-play" style="margin-right: 12px; color: var(--gold); width: 20px;"></i> Watch: Online Motor Vehicle Renewal (eMVRC)</span>
-                </summary>
-                <div class="res-hidden" style="padding: 16px;">
-                    <div class="responsive-iframe">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/jpS-mIde1Ro?si=OtzW4_La_TffGgxk" title="Motor Vehicle Renewal" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <p style="margin-top: 12px; font-family: var(--sans); font-size: 0.85rem; color: var(--warm-mid); text-align: center;">How to map out the TAJ payment process and successfully generate your paperless certificate.</p>
-                </div>
-            </details>
-
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════════════
-     PORTAL FACT SHEETS (Elegant Card Grid Presentation)
- ═══════════════════════════════════════════ -->
+<!-- FACT SHEETS (NOW FEATURING EMBEDDED VIDEOS) -->
 <section id="resources" class="resource-section">
     <div class="card-section-header enter d1">
         <p class="section-eyebrow">On-Page Resources</p>
@@ -1064,197 +376,137 @@
     <div class="wrap">
         <div class="resource-catalog-grid">
             
-            <!-- FACT SHEET 1: PASSPORTS -->
             <div class="resource-card enter d2">
                 <i class="fa-solid fa-passport resource-icon"></i>
                 <h4 class="resource-card-title">Passport Portal Guide</h4>
-                <p class="resource-card-desc">Click below to check your eligibility and verify the exact items required to start.</p>
+                <p class="resource-card-desc">Eligibility rules, requirements, and video walkthroughs.</p>
                 
                 <div class="resource-accordions">
-                    <details class="res-expand">
-                        <summary>Online Renewal Eligibility & Checklist</summary>
+                    <!-- EMBEDDED VIDEO -->
+                    <details class="res-expand video-highlight">
+                        <summary><span style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-play" style="color:var(--gold);"></i> Watch: Portal Walkthrough</span></summary>
                         <div class="res-hidden">
-                            <p><strong>1. Eligibility (Who Qualifies to Apply Online)</strong><br>
-                            You can skip the paper forms and renew 100% online ONLY if you meet all of the following conditions:</p>
-                            <p>• You were an adult (18 or older) when your current passport was issued.<br>
-                            • Your current passport is an "A" series book (issued after September 2001).<br>
-                            • Your passport is physically intact (NOT lost, stolen, or damaged).<br>
-                            • Your name has not changed since your last passport was issued.</p>
-                            
-                            <p style="margin-top: 16px;"><strong>2. The Pre-Application Checklist (What to Have on Hand)</strong><br>
-                            Before opening the PICA portal, ensure you have gathered these four items:</p>
-                            <p>• <strong>Current Passport:</strong> You will need your current passport book number and expiry details.<br>
-                            • <strong>Active Email Address:</strong> A valid email account you can access immediately to receive portal verification codes.<br>
-                            • <strong>Digital Photo:</strong> A high-resolution passport photo in JPEG format (white background, no shadows, neutral expression).<br>
-                            • <strong>Payment Method:</strong> A valid MasterCard or Visa credit/debit card to pay the government fees.</p>
-                            
-                            <p style="margin-top: 16px; border-top: 1px dashed rgba(193, 154, 91, 0.2); padding-top: 12px;">
-                                <strong>Gateway Warning:</strong> While the application process is digital, overseas bank cards are frequently blocked at the final payment screen by foreign fraud filters. If your card is declined, Docu-Hub can securely complete the transaction on your behalf using local channels.
-                            </p>
-                            <a href="https://wa.me/18765612614?text=Hi%20Laura%2C%20I%20meet%20the%20passport%20eligibility%20rules%20but%20my%20card%20is%20declined." target="_blank" rel="noopener" class="btn-download-small">
-                                <i class="fa-brands fa-whatsapp"></i> WhatsApp Payment Rescue
-                            </a>
+                            <div class="responsive-iframe">
+                                <iframe src="https://www.youtube.com/embed/X_vP65ETG2U?si=UiYbSL6oLmtdiZeo" title="Online Passport Renewal" allowfullscreen></iframe>
+                            </div>
+                            <p style="text-align:center;">The complete 3-gateway blueprint to completing your renewal seamlessly.</p>
                         </div>
                     </details>
 
                     <details class="res-expand">
-                        <summary>Damaged Passports (Diaspora Mail-In)</summary>
+                        <summary>Online Eligibility Rules</summary>
                         <div class="res-hidden">
-                            <p><strong>Important Note:</strong> Damaged, washed, or torn passports strictly do not qualify for online renewal. PICA requires physical inspection, an official physical cancellation stamp, and an explanation of the damage.</p>
-                            <p>• <strong>Required Documents:</strong> Original damaged passport, original birth certificate, an <strong>official Police Report</strong> (detailing how the damage occurred), and an officially notarized application package.<br>
-                            • <strong>Shipping:</strong> Must include a secure, prepaid DHL/FedEx return shipping label inside your package for the return of your new and cancelled documents.</p>
-                            <a href="https://wa.me/18765612614?text=Hi%20Laura%2C%20I%20have%20a%20damaged%20passport%20and%20need%20the%20mail-in%20instructions." target="_blank" rel="noopener" class="btn-download-small">
-                                <i class="fa-brands fa-whatsapp"></i> Request Secure Mailing Address
-                            </a>
+                            <p>• You were an adult (18+) when your current passport was issued.<br>
+                            • It is an "A" series book (post-Sept 2001).<br>
+                            • It is not lost or damaged.<br>
+                            • Your name has not changed.</p>
+                            <a href="https://wa.me/18765612614" class="btn-download-small"><i class="fa-brands fa-whatsapp"></i> Get Help</a>
                         </div>
                     </details>
                 </div>
             </div>
 
-            <!-- FACT SHEET 2: VITAL RECORDS (UPDATED FOR NEW APPS2 PORTAL) -->
             <div class="resource-card enter d3">
                 <i class="fa-solid fa-file-signature resource-icon"></i>
-                <h4 class="resource-card-title">Vital Records (NIRA / RGD)</h4>
-                <p class="resource-card-desc">The official prerequisite checklists required by the new live application portal.</p>
+                <h4 class="resource-card-title">Vital Records (RGD)</h4>
+                <p class="resource-card-desc">Prerequisite checklists for the live application portal.</p>
                 
                 <div class="resource-accordions">
                     <details class="res-expand">
-                        <summary>Online Birth Application Fields</summary>
+                        <summary>Birth Certificate Fields</summary>
                         <div class="res-hidden">
-                            <p>To request a certified copy via the new online portal, you must have the following primary parameters ready before filling out the form:</p>
-                            <p>• <strong>Full Legal Name:</strong> The exact spelling of the child's name at birth.<br>
-                            • <strong>Birth Entry Number:</strong> The mandatory alpha-numeric code located at the top left of previous certificates. <em>(Critical: Without this code, the online system cannot query the database; you will be blocked and forced to execute an expensive manual paper search instead).</em><br>
-                            • <strong>Temporal Data:</strong> Child's sex and exact Date of Birth.<br>
-                            • <strong>Spatial Data:</strong> Name of the hospital (or home address) alongside the precise Parish and District of birth registration.<br>
-                            • <strong>Parental Identification:</strong> Full, correct names of both the Mother and Father as originally registered.</p>
-                            
-                            <a href="https://wa.me/18765612614?text=Hi%20Laura%2C%20I%20don't%20have%20my%20Birth%20Entry%20Number%20to%20apply%20online." target="_blank" rel="noopener" class="btn-download-small" style="margin-top: 12px;">
-                                <i class="fa-brands fa-whatsapp"></i> Bypass Entry Number via Manual Search Proxy
-                            </a>
+                            <p>• <strong>Birth Entry Number:</strong> Critical to avoid manual search fees.<br>
+                            • <strong>Spatial Data:</strong> Exact Hospital, Parish, and District.<br>
+                            • <strong>Parental ID:</strong> Mother's exact maiden name.</p>
+                            <a href="https://wa.me/18765612614" class="btn-download-small"><i class="fa-brands fa-whatsapp"></i> Search Proxy</a>
                         </div>
                     </details>
-
                     <details class="res-expand">
-                        <summary>Online Marriage Certificate Fields</summary>
+                        <summary>Marriage Cert Fields</summary>
                         <div class="res-hidden">
-                            <p>The new digital registry requires physical verification scans to be uploaded instantly alongside the web form fields. Ensure you have gathered:</p>
-                            <p>• <strong>Core Data Fields:</strong> Full legal names of both the Bride and Groom at execution, the exact Date of Marriage, and the full geographic Place of Marriage.<br>
-                            • <strong>Digital Upload Checks:</strong> High-resolution scans of your approved Minister's License, valid government IDs for both parties, and original birth certificates.<br>
-                            • <strong>Dissolution Proof:</strong> If previously married, you must upload certified copies of Decree Absolutes or death certificates for the former spouse.<br>
-                            • <strong>Witness Verification:</strong> Details for two witnesses (who must be 18 or older at the time of the ceremony). Documents from overseas must be officially certified by a JP or Notary Public.</p>
-                            
-                            <a href="https://wa.me/18765612614?text=Hi%20Laura%2C%20I%20have%20questions%20about%20the%20upload%20requirements%20for%20a%20Marriage%20Certificate." target="_blank" rel="noopener" class="btn-download-small" style="margin-top: 12px;">
-                                <i class="fa-brands fa-whatsapp"></i> Consult on Document Certification
-                            </a>
+                            <p>• Required: Scans of approved Minister's License and valid government IDs.<br>
+                            • Proof of dissolution if previously married.</p>
                         </div>
                     </details>
                 </div>
             </div>
 
-            <!-- FACT SHEET 3: MOTOR VEHICLE -->
             <div class="resource-card enter d4">
                 <i class="fa-solid fa-car resource-icon"></i>
                 <h4 class="resource-card-title">Vehicle Licensing (eMVRC)</h4>
-                <p class="resource-card-desc">The verified, end-to-end digital renewal sequence to keep your vehicle street-legal.</p>
+                <p class="resource-card-desc">The digital renewal sequence for street legality.</p>
                 
                 <div class="resource-accordions">
-                    <details class="res-expand">
-                        <summary>The 2-Gateway Blueprint & Prerequisites</summary>
+                    <!-- EMBEDDED VIDEO -->
+                    <details class="res-expand video-highlight">
+                        <summary><span style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-play" style="color:var(--gold);"></i> Watch: eMVRC Walkthrough</span></summary>
                         <div class="res-hidden">
-                            <p><strong>Mandatory Prerequisites:</strong> Before opening any payment portal, ensure your auto insurance provider and the Island Traffic Authority (ITA) fitness depot have digitally uploaded your active documents to the central government database. If these aren't live, the payment portal will block you.</p>
-                            
-                            <p><strong>Step 1: The Roadblock Check (Traffic Ticket Lookup)</strong><br>
-                            Log into the official traffic ticket verification portal using the driver's license number. If the owner has any outstanding e-tickets or unpaid court fines, the renewal system will automatically freeze. Clear these first.</p>
-                            
-                            <p><strong>Step 2: Gateway 1 — Tax Administration Jamaica (TAJ)</strong><br>
-                            • Access the TAJ MyTAXES platform.<br>
-                            • Input the vehicle Owner's TRN, Plate Number, and Chassis Number to fetch your current record.<br>
-                            • Select a 6-month or 12-month renewal term and submit payment.<br>
-                            • <em>Crucial Action:</em> Instantly print, copy, or screenshot the official <strong>TAJ Receipt Number</strong>. The process is not finished here; you cannot drive on a payment receipt alone.</p>
-                            
-                            <p><strong>Step 3: Gateway 2 — The CGDS Document Portal</strong><br>
-                            • Move over to the secondary platform: The Certificate Generation and Distribution System (CGDS) portal.<br>
-                            • Key in the vehicle's Chassis Number and the exact TAJ Receipt Number from Step 2.<br>
-                            • <strong>Enter the Client's Active Email Address</strong>. Do not use a placeholder; the system uses this email to distribute the actual legal asset.<br>
-                            • Hit submit. The portal dynamically generates and emails a secure digital PDF of the <strong>Electronic Motor Vehicle Registration Certificate (eMVRC)</strong>. Save this file to a smartphone or print it out for the glovebox. Police officers scan this digital document via their e-cop devices on the road.</p>
-                            
-                            <p style="margin-top: 16px; border-top: 1px dashed rgba(193, 154, 91, 0.2); padding-top: 12px;">
-                                <strong>Stuck at the TAJ Gateway?</strong> If an international credit card is triggering fraud filters or the system fields are misaligned, Docu-Hub handles the full sequence utilizing local payment infrastructure.
-                            </p>
-                            <a href="https://wa.me/18765612614?text=Hi%20Laura%2C%20I%20am%20trying%20to%20renew%20my%20vehicle%20online%20but%20the%20TAJ%20gateway%20is%20giving%20me%20issues." target="_blank" rel="noopener" class="btn-download-small">
-                                <i class="fa-brands fa-whatsapp"></i> WhatsApp Portal Support
-                            </a>
+                            <div class="responsive-iframe">
+                                <iframe src="https://www.youtube.com/embed/jpS-mIde1Ro?si=OtzW4_La_TffGgxk" title="Motor Vehicle Renewal" allowfullscreen></iframe>
+                            </div>
+                            <p style="text-align:center;">How to map out the TAJ payment process.</p>
+                        </div>
+                    </details>
+
+                    <details class="res-expand">
+                        <summary>Gateway Blueprint</summary>
+                        <div class="res-hidden">
+                            <p><strong>Step 1:</strong> Clear traffic tickets via portal.<br>
+                            <strong>Step 2 (TAJ):</strong> Process payment via TRN and Chassis Number.<br>
+                            <strong>Step 3 (CGDS):</strong> Use TAJ receipt to distribute the digital eMVRC to your email.</p>
+                            <a href="https://wa.me/18765612614" class="btn-download-small"><i class="fa-brands fa-whatsapp"></i> Gateway Rescue</a>
                         </div>
                     </details>
                 </div>
             </div>
 
-        </div> <!-- End of Resource Catalog Grid -->
-    </div> <!-- End of Wrap -->
+        </div>
+    </div>
 </section>
 
+<!-- COMPACT HIDDEN BIO & PROTOCOL -->
 <section class="about-approach" id="about">
     <div class="wrap">
-        <div style="display: flex; flex-wrap: wrap; gap: 64px; justify-content: space-between;">
+        <div class="approach-grid">
             
-            <!-- LEADERSHIP CARD (Left Side) -->
-            <div class="about-col enter d1" style="flex: 1; min-width: 320px; max-width: 500px;">
-                <p class="section-eyebrow" style="justify-content: flex-start;">Leadership</p>
+            <div class="about-col enter d1">
+                <p class="section-eyebrow" style="justify-content:flex-start;">Leadership</p>
                 <h2 class="section-title">The <em>Director</em></h2>
                 
-                <!-- Compact Bio Card -->
-                <div class="resource-card" style="margin-top: 32px; padding: 32px 24px;">
+                <div class="resource-card" style="margin-top:24px; padding:24px 20px;">
                     <i class="fa-solid fa-user-shield resource-icon"></i>
-                    <h4 class="resource-card-title">Laura Clarke</h4>
-                    <p class="resource-card-desc">Specialist in operations, regulatory compliance, and secure document proxy logistics.</p>
+                    <h4 class="resource-card-title" style="font-size:1.1rem;">Laura Clarke</h4>
+                    <p class="resource-card-desc" style="margin-bottom:12px;">Specialist in secure document logistics.</p>
                     
-                    <div class="resource-accordions" style="margin-top: 24px;">
+                    <div class="resource-accordions">
                         <details class="res-expand">
-                            <summary>Read Full Bio & Profile</summary>
+                            <summary>Read Full Profile</summary>
                             <div class="res-hidden">
-                                
-                                <!-- Hidden Avatar Image (Only loads when opened) -->
-                               <img src="assets/laura-clarke.jpg" alt="Laura Clarke - Director" style="width: 120px; height: 120px; object-fit: cover; object-position: center top; border-radius: 50%; border: 2px solid var(--gold-lt); margin: 0 auto 20px; display: block; box-shadow: 0 8px 24px rgba(42,61,41,0.12);" onerror="this.style.opacity='0';">
-                                
-                                <blockquote class="about-quote" style="font-size: 1.05rem; margin: 0 0 20px; border-left-width: 2px; padding-left: 16px;">
-                                    "In navigating sensitive documents, strict compliance and absolute discretion are non-negotiable."
-                                </blockquote>
-                                
-                                <p style="font-family: var(--sans); font-size: 0.85rem; line-height: 1.6; color: var(--warm-mid);">
-                                    Drawing from an extensive background in high-level operations and risk management, Laura approaches document coordination with an uncompromising standard of security. Trained to navigate complex regulatory systems and safeguard sensitive assets, she leverages deep logistical expertise to ensure your vital documents are handled with flawless precision, total confidentiality, and zero compromise.
-                                </p>
+                                <img src="assets/laura-clarke.jpg" alt="Laura Clarke" style="width: 100px; height: 100px; object-fit: cover; object-position: center top; border-radius: 50%; border: 2px solid var(--gold-lt); margin: 0 auto 16px; display: block;" onerror="this.style.opacity='0';">
+                                <blockquote class="about-quote">"Strict compliance and absolute discretion are non-negotiable."</blockquote>
+                                <p>Laura leverages deep logistical expertise to ensure your vital documents are handled with flawless precision.</p>
                             </div>
                         </details>
                     </div>
                 </div>
             </div>
 
-            <!-- THE PROTOCOL (Right Side) -->
-            <div class="process-col enter d2" style="flex: 1; min-width: 320px; max-width: 500px;">
-                <p class="section-eyebrow" style="justify-content: flex-start;">How it works</p>
+            <div class="process-col enter d2">
+                <p class="section-eyebrow" style="justify-content:flex-start;">How it works</p>
                 <h2 class="section-title">The <em>Protocol</em></h2>
                 
                 <div class="step-list">
                     <div class="step-item">
                         <div class="step-num">I</div>
-                        <div class="step-text">
-                            <h4>Discovery</h4>
-                            <p>Connect securely via WhatsApp to detail your specific document requirements, timelines, and logistical needs.</p>
-                        </div>
+                        <div class="step-text"><h4>Discovery</h4><p>Connect via WhatsApp to detail your specific requirements.</p></div>
                     </div>
                     <div class="step-item">
                         <div class="step-num">II</div>
-                        <div class="step-text">
-                            <h4>Execution</h4>
-                            <p>We interface directly with Jamaican government agencies to expedite your request and ensure strict compliance.</p>
-                        </div>
+                        <div class="step-text"><h4>Execution</h4><p>We interface directly with Jamaican agencies to ensure compliance.</p></div>
                     </div>
                     <div class="step-item">
                         <div class="step-num">III</div>
-                        <div class="step-text">
-                            <h4>Secure Delivery</h4>
-                            <p>Finalized official documents are protected and delivered to you safely, securely, and with total discretion.</p>
-                        </div>
+                        <div class="step-text"><h4>Delivery</h4><p>Finalized documents are protected and delivered securely.</p></div>
                     </div>
                 </div>
             </div>
@@ -1262,104 +514,66 @@
         </div>
     </div>
 </section>
+
 <section class="cta-band">
     <p class="cta-band-eyebrow enter">Ready to begin?</p>
     <h2 class="cta-band-title enter d1">Let's secure your<br><em>documents</em></h2>
-    <p class="cta-band-body enter d2">One WhatsApp message is all it takes to bypass the lines and frustration. Reach out today to begin discussing your requirements.</p>
-    <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-white enter d3">
-        <i class="fa-brands fa-whatsapp"></i> Contact Us Securely
-    </a>
+    <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-white enter d2"><i class="fa-brands fa-whatsapp"></i> Contact Securely</a>
 </section>
 
 <footer class="site-footer">
     <div class="footer-grid">
         <div>
-            <a href="index.html" class="f-logo">Docu-Hub Operations Services</a>
+            <span class="f-logo">Docu-Hub Services</span>
             <span class="f-tag">Secure Document Concierge</span>
-            <p class="f-desc">Providing highly secure, on-the-ground document processing and compliance in Jamaica.</p>
+            <p class="f-desc">Highly secure, on-the-ground document processing in Jamaica.</p>
         </div>
         <div>
-            <h4 class="footer-col-title">Services</h4>
+            <h4 class="footer-col-title">Navigation</h4>
             <ul class="footer-links">
                 <li><a href="#concierge">Concierge Services</a></li>
-                <li><a href="#guides">Video Library</a></li>
-                <li><a href="#resources">Fact Sheets</a></li>
+                <li><a href="#resources">Portal Fact Sheets</a></li>
+                <li><a href="#about">Our Protocol</a></li>
             </ul>
         </div>
         <div>
             <h4 class="footer-col-title">Operations</h4>
             <ul class="footer-links">
-                <li><a href="#about">Leadership & Protocol</a></li>
                 <li><a href="disclosure.html">Institutional Disclosure</a></li>
                 <li><a href="privacy.html">Privacy Policy</a></li>
                 <li><a href="terms.html">Terms of Engagement</a></li>
             </ul>
         </div>
         <div class="footer-contact">
-            <h4 class="footer-col-title">Direct Inquiries</h4>
-            <p><i class="fa-brands fa-whatsapp"></i>
-                <a href="https://wa.me/18765612614" target="_blank" rel="noopener" style="color:inherit;">+1 (876) 561-2614</a>
-            </p>
-            <p><i class="fa-solid fa-location-dot"></i> Linstead, St. Catherine, Jamaica</p>
+            <h4 class="footer-col-title">Inquiries</h4>
+            <p><i class="fa-brands fa-whatsapp"></i> <a href="https://wa.me/18765612614">+1 (876) 561-2614</a></p>
         </div>
     </div>
     <div class="footer-bottom">
         <p>&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
-        <p>Engineered for Secure Document Management.</p>
     </div>
 </footer>
 
 <script>
-// Scroll animations
-const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-}, { threshold: 0.07 });
+const io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.05 });
 document.querySelectorAll('.enter').forEach(el => io.observe(el));
 
-// Mobile nav
-const hbg = document.getElementById('hbg');
-const drawer = document.getElementById('drawer');
-function closeNav() {
-    drawer.classList.remove('open'); hbg.classList.remove('open');
-    document.body.style.overflow = '';
-}
-hbg.addEventListener('click', () => {
-    const isOpen = drawer.classList.toggle('open');
-    hbg.classList.toggle('open', isOpen);
-    document.body.style.overflow = isOpen? 'hidden' : '';
-});
+const hbg = document.getElementById('hbg'); const drawer = document.getElementById('drawer');
+function closeNav() { drawer.classList.remove('open'); hbg.classList.remove('open'); document.body.style.overflow = ''; }
+hbg.addEventListener('click', () => { const isOpen = drawer.classList.toggle('open'); hbg.classList.toggle('open', isOpen); document.body.style.overflow = isOpen? 'hidden' : ''; });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
 
-// Nav scroll shadow
-const nav = document.getElementById('sitenav');
-window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-}, { passive: true });
+const nav = document.getElementById('sitenav'); window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
 
-// Cookie Banner Logic
 document.addEventListener("DOMContentLoaded", function() {
-    const cookieBanner = document.getElementById('cookie-banner');
-    const acceptBtn = document.getElementById('accept-cookies');
-
-    // Check if user already accepted
-    if (!localStorage.getItem('docuhub_cookies_accepted')) {
-        setTimeout(() => {
-            cookieBanner.classList.add('show');
-        }, 2000); 
-    }
-
-    // Handle acceptance
-    acceptBtn.addEventListener('click', () => {
-        localStorage.setItem('docuhub_cookies_accepted', 'true');
-        cookieBanner.classList.remove('show');
-    });
+    const cb = document.getElementById('cookie-banner');
+    if (!localStorage.getItem('docuhub_cookies')) { setTimeout(() => { cb.classList.add('show'); }, 2000); }
+    document.getElementById('accept-cookies').addEventListener('click', () => { localStorage.setItem('docuhub_cookies', 'true'); cb.classList.remove('show'); });
 });
 </script>
 <div id="cookie-banner" class="cookie-banner">
-    <div class="cookie-content">
-        <p>We use encrypted protocols and cookies to ensure you get the best, most secure experience on our website. By continuing to browse, you consent to our <a href="privacy.html">Privacy Policy</a>.</p>
-        <button id="accept-cookies" class="btn-sage" style="padding: 10px 24px; font-size: 0.65rem;">I Understand</button>
-    </div>
+    <p>We use encrypted protocols and cookies. By continuing, you consent to our <a href="privacy.html">Privacy Policy</a>.</p>
+    <button id="accept-cookies" class="btn-sage">I Understand</button>
 </div>
 </body>
 </html>
