@@ -3,213 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Institutional Disclosure | Docu-Hub Operations Services</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <title>Terms & Legal Notice &middot; Docu-Hub Jamaica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     <style>
-        /* --- CORE STYLES --- */
-        :root {
-            --brand-red: #D32F2F; --navy-deep: #021024; --bg-body: #CBD5E1; 
-            --bg-card: #FFFFFF; --text-main: #0F172A; --text-muted: #475569; 
-            --container-width: 1000px; 
-            --header-height: 80px;
-        }
-
-        * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg-body); color: var(--text-main); line-height: 1.7; padding-top: var(--header-height); -webkit-font-smoothing: antialiased;}
-        h1, h2, h3, h4 { margin-top: 0; font-weight: 700; }
-        p { margin-bottom: 20px; font-size: 1.05rem; color: var(--text-muted); }
-        a { text-decoration: none; transition: 0.3s ease; }
-        .container { max-width: var(--container-width); margin: 0 auto; padding: 0 30px; }
-        
-        /* --- HEADER --- */
-        .app-header { position: fixed; top: 0; left: 0; width: 100%; z-index: 2000; background: var(--navy-deep); border-bottom: 1px solid rgba(255, 255, 255, 0.05); height: var(--header-height); display: flex; align-items: center; }
-        .header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; }
-        .header-logo { font-size: 1.1rem; font-weight: 800; color: #FFFFFF; letter-spacing: -0.5px; text-transform: uppercase; }
-        .header-logo span { color: var(--brand-red); }
-        .header-logo .light-text { font-weight: 400; color: #94A3B8; font-size: 0.9rem; letter-spacing: 0; margin-left: 5px; display: inline-block; }
-        .header-contact { font-weight: 600; color: #FFFFFF; font-size: 0.9rem; border-bottom: 2px solid transparent; padding-bottom: 2px; }
-        .header-contact:hover { border-bottom-color: var(--brand-red); }
-
-        /* --- LEGAL HERO --- */
-        .legal-hero { background: var(--navy-deep); color: white; padding: 100px 0 160px; text-align: center; }
-        .brand-kicker { display: block; font-size: 0.9rem; color: var(--brand-red); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; margin-bottom: 15px; }
-        .brand-name { font-size: 3.5rem; font-weight: 900; line-height: 1.2; margin-bottom: 20px; letter-spacing: -1px; color: #FFFFFF; font-family: 'Playfair Display', serif; }
-
-        /* --- FLOATING LEGAL DOCUMENT --- */
-        .legal-wrapper {
-            background: var(--bg-card); border-radius: 24px; box-shadow: 0 25px 60px rgba(2, 16, 36, 0.12); 
-            padding: 80px; max-width: 850px; margin: -100px auto 80px auto; position: relative; z-index: 10;
-        }
-
-        .document-meta {
-            text-align: center; border-bottom: 1px solid #E2E8F0; padding-bottom: 30px; margin-bottom: 40px;
-        }
-        .document-meta h1 { font-family: 'Inter', sans-serif; font-size: 2rem; color: var(--navy-deep); letter-spacing: -0.5px; margin-bottom: 10px; }
-        .last-updated { font-size: 0.9rem; color: var(--brand-red); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* --- TYPOGRAPHY & BOXES --- */
-        .legal-content h2 { 
-            font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--navy-deep); 
-            margin-top: 50px; margin-bottom: 20px; border-bottom: 1px solid #E2E8F0; padding-bottom: 10px; 
-            display: flex; align-items: center; gap: 12px;
-        }
-        .legal-content h2 i { color: var(--brand-red); font-size: 1.3rem; }
-        
-        .legal-content strong { color: var(--navy-deep); }
-
-        .disclaimer-box { 
-            background: #FFFBEB; border: 1px solid #FEF3C7; padding: 25px; 
-            border-radius: 12px; margin: 25px 0; color: #92400E; font-size: 1.05rem; line-height: 1.7; font-style: italic;
-            border-left: 4px solid #F59E0B;
-        }
-
-        /* --- AGENCY BADGES --- */
-        .badge-group { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 25px; margin-bottom: 20px; }
-        .badge { background: #F8FAFC; color: var(--navy-deep); padding: 8px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; border: 1px solid #E2E8F0; }
-
-        /* --- FOOTER --- */
-        .main-footer { background: var(--navy-deep); color: #94A3B8; padding: 60px 0 30px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 50px; }
-        .footer-brand h2 { color: white; margin-bottom: 10px; font-size: 1.6rem; letter-spacing: -1px; }
-        .footer-brand h2 span { color: var(--brand-red); }
-        .footer-link { display: block; color: #94A3B8; margin-bottom: 12px; font-size: 0.95rem; transition: 0.3s; }
-        .footer-link:hover { color: white; transform: translateX(3px); }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; font-size: 0.85rem; text-align: center; }
-
-        /* =========================================
-           MOBILE OPTIMIZATION
-           ========================================= */
-        @media (max-width: 768px) {
-            .container { padding: 0 20px; } 
-            .header-logo .light-text { display: none; } 
-            .legal-hero { padding: 100px 0 120px; }
-            .brand-name { font-size: 2.5rem; }
-            
-            .legal-wrapper { padding: 40px 25px; margin-top: -60px; }
-            .document-meta h1 { font-size: 1.6rem; }
-            .legal-content h2 { font-size: 1.3rem; }
-            
-            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
-        }
+        :root { --bg-light: #F9F9F8; --ivory: #FFFFFF; --brand-drk: #1E2B1D; --brand-mid: #3A4F38; --gold: #C19A5B; --gold-lt: #DAB87F; --text-dark: #111410; --text-mid: #4A4F48; --serif: 'Playfair Display', Georgia, serif; --sans: 'Jost', Arial, sans-serif; --nav-h: 75px; --max-w: 800px; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--sans); background: var(--bg-light); color: var(--text-dark); line-height: 1.7; padding-bottom: 80px; }
+        .legal-header { padding: 60px 0; background: var(--brand-drk); color: #fff; text-align: center; margin-bottom: 60px; }
+        .legal-header h1 { font-family: var(--serif); font-size: 2.5rem; font-weight: 400; margin-bottom: 8px; }
+        .legal-header p { font-family: var(--sans); font-size: 0.9rem; color: var(--gold-lt); text-transform: uppercase; letter-spacing: 0.1em; }
+        .content-box { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; background: var(--ivory); padding: 48px; border-radius: 8px; box-shadow: 0 4px 30px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.04); }
+        h2 { font-family: var(--serif); font-size: 1.6rem; color: var(--brand-drk); margin: 32px 0 16px; font-weight: 500; }
+        p { color: var(--text-mid); margin-bottom: 20px; font-size: 1.05rem; }
+        ul { margin-bottom: 20px; padding-left: 20px; color: var(--text-mid); }
+        ul li { margin-bottom: 8px; font-size: 1rem; }
+        .back-home { display: inline-block; margin-bottom: 32px; font-family: var(--sans); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--brand-mid); text-decoration: none; }
+        .back-home:hover { color: var(--gold); }
     </style>
 </head>
 <body>
-
-    <header class="app-header">
-        <div class="container header-inner">
-            <a href="index.html" class="header-logo">Docu-Hub<span>.</span> <span class="light-text">Operations Services</span></a>
-            <a href="contact.html" class="header-contact">Talk to a Human</a>
-        </div>
+    <header class="legal-header">
+        <h1>Terms & Legal Disclaimer</h1>
+        <p>Docu-Hub Operations Services &middot; Registration # 15602/2025</p>
     </header>
-
-    <section class="legal-hero">
-        <div class="container">
-            <span class="brand-kicker">Legal & Compliance</span>
-            <h1 class="brand-name">Institutional Disclosure</h1>
-        </div>
-    </section>
-
-    <div class="container">
-        <div class="legal-wrapper">
-            
-            <div class="document-meta">
-                <h1>Legal Notice & Regulatory Disclaimer</h1>
-                <p class="last-updated">Document ID: DH-POL-2026-04 &nbsp;|&nbsp; Last Verified: March 2026</p>
-            </div>
-
-            <div class="legal-content">
-
-                <h2><i class="fa-solid fa-building-shield"></i> Legal Status & Dual Identity</h2>
-                <p><strong>Docu-Hub Operations Services</strong> is a registered entity operating within the jurisdiction of Jamaica. We function under a dual-division model: as an administrative logistics firm providing specialized support for governmental processes, and as a digital technology studio provisioning Near Field Communication (NFC) hardware and hosting solutions.</p>
-                
-                <h2><i class="fa-solid fa-scale-balanced"></i> Non-Legal & Non-Medical Disclaimer</h2>
-                <p>In strict accordance with the <strong>Legal Profession Act</strong>, Docu-Hub Operations Services is not a law firm, and its agents are not attorneys-at-law. Furthermore, regarding our technology division, Docu-Hub is not a healthcare provider or medical agency.</p>
-                
-                <div class="disclaimer-box">
-                    "We do not engage in the practice of law, nor do we offer legal representation or statutory interpretation. Additionally, we do not verify, endorse, or provide medical advice regarding the health data encoded onto our Smart Medical Tags."
-                </div>
-                
-                <p>Our role is exclusively limited to clerical assistance, document formatting, acting as an administrative liaison with civil registries, and operating as a third-party technology manufacturer and host for digital profiles.</p>
-                
-                <div class="badge-group">
-                    <span class="badge">Civil Registries</span>
-                    <span class="badge">Passport Agencies</span>
-                    <span class="badge">NFC Hardware</span>
-                    <span class="badge">Digital Hosting</span>
-                    <span class="badge">Police Records</span>
-                </div>
-
-                <h2><i class="fa-solid fa-shield-halved"></i> Regulatory Oversight (DNFBP)</h2>
-                <p>Regarding our administrative division, we are recognized as a <strong>Designated Non-Financial Business or Profession (DNFBP)</strong> under the <em>Proceeds of Crime Act (POCA)</em> and the <em>Terrorism Prevention Act</em>. We operate under the oversight of relevant competent authorities and maintain robust Anti-Money Laundering (AML) and Counter-Financing of Terrorism (CFT) protocols.</p>
-                
-                <h2><i class="fa-solid fa-user-lock"></i> Data Privacy & Protection</h2>
-                <p>Pursuant to the <strong>Jamaica Data Protection Act (JDPA)</strong>, we serve as a data controller. Highly sensitive administrative documents are stored in encrypted silos strictly for the fulfillment of government applications. Conversely, public-facing digital assets (such as digital menus or memorial galleries) are hosted on secure, separate servers based entirely on voluntary client authorization.</p>
-
-            </div>
-        </div>
-    </div>
-
-    <footer class="main-footer" style="background: var(--navy-deep); color: #94A3B8; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05);">
-        <div class="container">
-            <div class="footer-grid" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 50px;">
-                
-                <div class="footer-brand">
-                    <h2 style="color: white; margin-bottom: 10px; font-size: 1.6rem; letter-spacing: -1px;">Docu-Hub<span>.</span></h2>
-                    <p style="font-size: 0.95rem; color: #94A3B8; margin-bottom: 20px;">
-                        Operations Services<br>
-                        Linstead, St. Catherine, Jamaica.
-                    </p>
-                    <a href="tel:+18765612614" style="color: white; font-weight: 700; font-size: 1.05rem; display: flex; align-items: center; gap: 10px;">
-                        <i class="fa-solid fa-phone" style="color: var(--brand-red);"></i> +1 (876) 561-2614
-                    </a>
-                </div>
-                
-                <div class="footer-links-col">
-                    <h4 style="color: white; font-size: 1rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">Explore</h4>
-                    <a href="index.html" class="footer-link">Home</a>
-                    <a href="about.html" class="footer-link">Our Story</a>
-                    <a href="contact.html" class="footer-link">Start Intake</a>
-                </div>
-
-                <div class="footer-links-col">
-                    <h4 style="color: white; font-size: 1rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">Legal</h4>
-                    <a href="privacy.html" class="footer-link">Privacy Policy</a>
-                    <a href="terms.html" class="footer-link">Terms of Service</a>
-                </div>
-            </div>
-
-            <div class="footer-bottom" style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; font-size: 0.85rem; text-align: center;">
-                &copy; 2026 Docu-Hub Operations Services. All Rights Reserved.
-            </div>
-        </div>
-    </footer>
-
-    <style>
-        .footer-link { 
-            display: block; 
-            color: #94A3B8; 
-            margin-bottom: 12px; 
-            font-size: 0.95rem; 
-            transition: 0.3s; 
-        }
-        .footer-link:hover { 
-            color: white; 
-            transform: translateX(5px); 
-        }
+    <main class="content-box">
+        <a href="index.html" class="back-home">&larr; Return to Portal Overview</a>
+        <p><em>Last Updated: July 2026</em></p>
         
-        @media (max-width: 768px) {
-            .footer-grid { 
-                grid-template-columns: 1fr !important; 
-                text-align: center; 
-            }
-            .footer-brand a {
-                justify-content: center;
-            }
-        }
-    </style>
+        <h2>1. Independent Agency Status</h2>
+        <p>Docu-Hub Operations Services is a privately owned legal proxy and logistics coordinator registered under the laws of Jamaica. We maintain regulatory interfaces to drop off, trace, and clear files, but **we are not an official arm, branch, or subsidiary** of the Passport, Immigration and Citizenship Agency (PICA), the Registrar General's Department (RGD), or Tax Administration Jamaica (TAJ).</p>
+
+        <h2>2. Allocation of Fees</h2>
+        <p>The service fees presented across our portals cover dedicated physical travel tracking times, multi-office corridor clearances, administrative form preparation, and local compliance logistics. **All official government taxes or agency application statutory rates are billed separately** and are completely independent of our agency retention schedules.</p>
+
+        <h2>3. Government Processing Delays</h2>
+        <p>While Docu-Hub ensures flawless execution during file delivery and collection runs, we hold no liability for systemic government software crashes, paper ledger lookup backlogs, or unexpected agency operational adjustments. Retaining our proxy calendar confirms your understanding that government execution timelines remain outside our mechanical control.</p>
+
+        <h2>4. Shipment Execution Release</h2>
+        <p>Upon delivering uncompromised tracking documents to global courier channels (DHL), liability over delivery transit delays shifts entirely to the international carrier infrastructure. Docu-Hub tracks files dynamically until delivery, but is not liable for border or customs entry holds.</p>
+    </main>
 </body>
 </html>
