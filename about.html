@@ -89,7 +89,6 @@
        MISSION & LEADERSHIP SECTION
      ═══════════════════════════════════════════ */
     .bio-section { padding: 100px 0; background: var(--ivory); }
-    .bio-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
     .bio-text h2 { font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk); margin-bottom: 24px; }
     .bio-text p { font-family: var(--sans); font-size: 1.05rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 20px; }
     
@@ -128,12 +127,6 @@
         .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
         .security-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; }
-        
-        /* Flatten and permanently open the accordions on desktop viewports */
-        .card-acc summary { pointer-events: none; cursor: default; border-bottom: none; padding: 24px 0 0; font-size: 0.9rem; letter-spacing: 0.1em; color: var(--brand-mid); }
-        .card-acc summary i { display: none!important; } 
-        .card-acc-content { padding-top: 12px; }
-        .card-accordions { border-top: 1px solid rgba(0,0,0,0.05); }
     }
     </style>
 </head>
@@ -159,34 +152,51 @@
     </div>
 </header>
 
-<!-- MISSION & LEADERSHIP Profile -->
+<!-- MISSION & LEADERSHIP Profile (Optimized Side-by-Side Viewport Layout) -->
 <section class="bio-section">
-    <div class="wrap bio-grid">
-        <div class="bio-text enter d1">
-            <h2>Financial-Grade Security in a Stressed System</h2>
-            <p>Navigating public sector bureaucracy from overseas is an exercise in profound frustration. When digital government portals stall, bank cards fail at checkout, or strict policies require the physical surrender of irreplaceable original records, the diaspora is often left completely in the dark.</p>
-            <p>Docu-Hub Operations Services (Registered Business # 15602/2025) was established to eliminate this exact operational friction. Leveraging 14 years of corporate banking experience, Managing Director Laura Clarke built this proxy service on the strict pillars of financial-grade data security, regulatory compliance, and premium client service.</p>
-            <p>Operating out of our central operations base in Linstead, St. Catherine, we maintain direct, regulatory compliance interfaces with the Passport, Immigration and Citizenship Agency (PICA), the Registrar General's Department (RGD), and Tax Administration Jamaica (TAJ). We treat your personal data and identity records with the absolute discretion they demand.</p>
-            
-            <!-- Replace the # with your actual LinkedIn URL -->
-            <a href="https://www.linkedin.com/in/docuhubservices/?skipRedirect=true#:~:text=www.linkedin.com/in/docuhubservices" target="_blank" class="btn-outline">
-                <i class="fa-brands fa-linkedin-in"></i> Verify Professional Profile
-            </a>
-        </div>
+    <div class="wrap" style="max-width: var(--max-w); margin: 0 auto; padding: 0 24px;">
         
-        <div class="bio-img enter d2" style="max-width: 380px; margin: 0 auto; width: 100%;">
-            <!-- Optimized Professional Photo Panel -->
-            <div style="position: relative; border-radius: 8px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.1); background: var(--bg-light);">
-                
-                <!-- Fixed aspect ratio prevents the image from blowing up or stretching -->
-                <img src="assets/laura-profile.jpg" alt="Laura Clarke - Managing Director" style="width: 100%; height: auto; display: block; aspect-ratio: 4/5; object-fit: cover; max-height: 480px;">
-                
-                <!-- Elegant Name Overlay -->
-                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(30, 43, 29, 0.95), transparent); padding: 40px 24px 24px;">
-                    <span style="font-family: var(--sans); font-weight: 600; font-size: 1.2rem; display: block; color: #fff;">Laura Clarke</span>
-                    <span style="font-family: var(--sans); font-size: 0.85rem; color: var(--gold-lt); letter-spacing: 0.08em; text-transform: uppercase;">Managing Director, Docu-Hub Operations</span>
+        <!-- Inline Structural Style to guarantee clean desktop distribution -->
+        <style>
+            .premium-bio-grid { display: flex; flex-direction: column; gap: 40px; width: 100%; }
+            @media (min-width: 900px) {
+                .premium-bio-grid {
+                    display: grid !important;
+                    grid-template-columns: 350px 1fr !important;
+                    gap: 64px !important;
+                    align-items: start !important;
+                }
+            }
+        </style>
+
+        <div class="premium-bio-grid">
+            
+            <!-- COLUMN 1: PORTRAIT (Left on Desktop, Centered Top on Mobile) -->
+            <div class="bio-img enter d1" style="width: 100%; max-width: 350px; margin: 0 auto;">
+                <div style="position: relative; border-radius: 8px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.1); background: var(--bg-light);">
+                    <img src="assets/laura-profile.jpg" alt="Laura Clarke - Managing Director" style="width: 100%; height: auto; display: block; aspect-ratio: 4/5; object-fit: cover;">
+                    <!-- Elegant Name Overlay -->
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(30, 43, 29, 0.95), transparent); padding: 40px 24px 24px;">
+                        <span style="font-family: var(--sans); font-weight: 600; font-size: 1.2rem; display: block; color: #fff;">Laura Clarke</span>
+                        <span style="font-family: var(--sans); font-size: 0.85rem; color: var(--gold-lt); letter-spacing: 0.08em; text-transform: uppercase;">Managing Director</span>
+                    </div>
                 </div>
             </div>
+            
+            <!-- COLUMN 2: TEXT NARRATIVE (Right on Desktop, Fluid Bottom on Mobile) -->
+            <div class="bio-text enter d2" style="display: flex; flex-direction: column; justify-content: center;">
+                <h2>Financial-Grade Security in a Stressed System</h2>
+                <p>Navigating public sector bureaucracy from overseas is an exercise in profound frustration. When digital government portals stall, bank cards fail at checkout, or strict policies require the physical surrender of irreplaceable original records, the diaspora is often left completely in the dark.</p>
+                <p>Docu-Hub Operations Services (Registered Business # 15602/2025) was established to eliminate this exact operational friction. Leveraging 14 years of corporate banking experience, Managing Director Laura Clarke built this proxy service on the strict pillars of financial-grade data security, regulatory compliance, and premium client service.</p>
+                <p>Operating out of our central operations base in Linstead, St. Catherine, we maintain direct, regulatory compliance interfaces with the Passport, Immigration and Citizenship Agency (PICA), the Registrar General's Department (RGD), and Tax Administration Jamaica (TAJ). We treat your personal data and identity records with the absolute discretion they demand.</p>
+                
+                <div style="margin-top: 12px;">
+                    <a href="https://www.linkedin.com/in/docuhubservices/?skipRedirect=true#:~:text=www.linkedin.com/in/docuhubservices" target="_blank" class="btn-outline" style="margin-top: 0;">
+                        <i class="fa-brands fa-linkedin-in"></i> Verify Professional Profile
+                    </a>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -244,11 +254,11 @@
             <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt);">SECURE CONTACT</h4>
             <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px;"><i class="fa-regular fa-calendar-check" style="color: var(--gold); margin-right: 8px;"></i> <a href="contact.html">Book Consultation</a></p>
             <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px;"><i class="fa-regular fa-envelope" style="color: var(--gold); margin-right: 8px;"></i> <a href="mailto:admin@dhubservices.com">admin@dhubservices.com</a></p>
-            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 8px;"></i> Linstead, Jamaica</p>
+            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 8px;"></i> Kingston, Jamaica</p>
         </div>
     </div>
     <div class="wrap" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; margin-top: 24px;">
-        <p style="font-family: var(--sans); font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-bottom: 8px;">Registered Jamaican Business Entity: #[Insert Your Registration Number Here]</p>
+        <p style="font-family: var(--sans); font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-bottom: 8px;">Registered Jamaican Business Entity: # 15602/2025</p>
         <p style="font-family: var(--sans); font-size: 0.7rem; color: rgba(255,255,255,0.4);">&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
     </div>
 </footer>
