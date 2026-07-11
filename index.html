@@ -253,11 +253,6 @@
         .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
         .security-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; }
-        
-        .card-acc summary { pointer-events: none; cursor: default; border-bottom: none; padding: 20px 0 0; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--brand-mid); }
-        .card-acc summary i { display: none!important; } 
-        .card-acc-content { padding-top: 10px; }
-        .card-accordions { border-top: 1px solid rgba(0,0,0,0.05); }
     }
 
     /* ═══════════════════════════════════════════
@@ -308,12 +303,6 @@
     .footer-grid { display: grid; grid-template-columns: 1fr; gap: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 30px; }
     .f-logo { font-family: var(--serif); font-size: 1.5rem; color: #fff; margin-bottom: 16px; display: block; letter-spacing: 0.05em; }
     .f-logo em { color: var(--gold); font-style: normal; }
-    
-    @media (min-width: 900px) {
-        .video-grid { grid-template-columns: repeat(3, 1fr); }
-        .security-grid { grid-template-columns: 1fr 1fr; gap: 80px; }
-        .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
-    }
     </style>
 </head>
 <body>
@@ -646,26 +635,19 @@
 </footer>
 
 <script>
+// Fade-in effect observer
 const io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.05 });
 document.querySelectorAll('.enter').forEach(el => io.observe(el));
 
-const nav = document.getElementById('sitenav'); window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+// Sticky Navigation
+const nav = document.getElementById('sitenav'); 
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
 
+// Mobile Menu Toggle
 const hbg = document.getElementById('hbg');
 const navBar = document.getElementById('sitenav');
 hbg.addEventListener('click', () => { navBar.classList.toggle('open'); });
 document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { navBar.classList.remove('open'); }); });
-
-function manageAccordions() {
-    const accordions = document.querySelectorAll('.card-acc');
-    if (window.innerWidth >= 900) {
-        accordions.forEach(acc => acc.setAttribute('open', ''));
-    } else {
-        accordions.forEach(acc => acc.removeAttribute('open'));
-    }
-}
-window.addEventListener('load', manageAccordions);
-window.addEventListener('resize', manageAccordions);
 </script>
 </body>
 </html>
