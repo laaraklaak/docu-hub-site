@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laura Clarke &middot; Docu-Hub Jamaica &mdash; Secure Document Concierge</title>
-    <meta name="description" content="Reliable, secure Jamaican document concierge services by Laura Clarke. Confidential on-the-ground processing for passports, vital records, and official clearances.">
+    <title>Docu-Hub Jamaica &mdash; Secure Document Concierge</title>
+    <meta name="description" content="Reliable, secure Jamaican document concierge services. Confidential on-the-ground processing for passports, vital records, TRN applications, and official clearances.">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
@@ -18,7 +18,7 @@
       "@type": "ProfessionalService",
       "name": "Docu-Hub Operations Services",
       "url": "https://dhubservices.com",
-      "description": "Expert concierge assistance for Jamaican passport renewals, vital records retrieval, and document proxy services for the diaspora and local residents.",
+      "description": "Expert concierge assistance for Jamaican passport renewals, vital records retrieval, TRN applications, and document proxy services for the diaspora and local residents.",
       "telephone": "+1-876-561-2614",
       "email": "admin@dhubservices.com",
       "areaServed": [
@@ -41,7 +41,7 @@
                 "priceCurrency": "USD",
                 "lowPrice": "115",
                 "highPrice": "185",
-                "description": "Total all-inclusive packages: $115 USD for online portal rescues, $145 USD for standard manual proxy (minors/name changes), and $185 USD for penalty manual proxy (damaged/lost)."
+                "description": "Total all-inclusive packages: $115 USD for online rescues, $145 USD for standard manual proxy, and $185 USD for penalty manual proxy (damaged/lost)."
               }
             } 
           },
@@ -56,6 +56,19 @@
                 "lowPrice": "85",
                 "highPrice": "150",
                 "description": "Total all-inclusive packages: $85 USD for online retrieval, and $150 USD for manual in-person searches."
+              }
+            } 
+          },
+          { 
+            "@type": "Offer", 
+            "itemOffered": { 
+              "@type": "Service", 
+              "name": "TRN Applications from Overseas",
+              "offers": {
+                "@type": "Offer",
+                "priceCurrency": "USD",
+                "price": "95",
+                "description": "TRN Proxy Service: $95 USD. Includes form auditing, local TAJ office submission, and secure handling fees."
               }
             } 
           },
@@ -124,7 +137,7 @@
     /* Animations */
     .enter { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
     .enter.in { opacity: 1; transform: none; }
-    .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
+    .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; } .d4 { transition-delay: 0.4s; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
     .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
@@ -136,7 +149,7 @@
     .site-nav.scrolled { background: rgba(30, 43, 29, 0.98); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
     .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; position: relative; }
     
-    .nav-logo-name { font-family: var(--serif); font-size: 1.2rem; color: #fff; letter-spacing: 0.05em; display: block; z-index: 950; }
+    .nav-logo-name { font-family: var(--serif); font-size: 1.4rem; color: #fff; letter-spacing: 0.05em; display: block; z-index: 950; }
     .nav-logo-name em { color: var(--gold-lt); font-style: normal; }
     
     .nav-links { display: none; list-style: none; align-items: center; gap: 8px; }
@@ -177,13 +190,13 @@
     .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
 
     /* ═══════════════════════════════════════════
-       SERVICES CARDS SYSTEM (Flawless Spacious Stack)
+       SERVICES CARDS SYSTEM (4-Column Layout)
      ═══════════════════════════════════════════ */
     .services-section { padding: 100px 0; background: var(--bg-light); }
     .section-header { text-align: center; margin-bottom: 64px; }
     .section-header h2 { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 400; color: var(--brand-drk); }
 
-    /* Premium Vertical Stacking Engine */
+    /* Premium Vertical Stacking Engine for Mobile */
     .cards-grid { 
         display: grid;
         grid-template-columns: 1fr;
@@ -207,49 +220,48 @@
     .card-img-wrap { position: relative; height: 220px; width: 100%; }
     .card-img-wrap::after { content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4); } 
     .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
-    .card-title-overlay { position: absolute; bottom: 24px; left: 32px; right: 24px; color: #fff; z-index: 2; font-family: var(--serif); font-size: 2rem; font-weight: 500; line-height: 1.1; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+    .card-title-overlay { position: absolute; bottom: 24px; left: 32px; right: 24px; color: #fff; z-index: 2; font-family: var(--serif); font-size: 1.8rem; font-weight: 500; line-height: 1.1; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
 
-    /* Luxurious Internal Padding Setup */
-    .card-content { padding: 48px 32px; display: flex; flex-direction: column; flex: 1; }
-    .card-desc { font-family: var(--sans); font-size: 1rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 32px; }
+    .card-content { padding: 40px 24px; display: flex; flex-direction: column; flex: 1; }
+    .card-desc { font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px; }
     
-    .card-accordions { margin-top: auto; display: flex; flex-direction: column; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 8px; margin-bottom: 40px; }
+    .card-accordions { margin-top: auto; display: flex; flex-direction: column; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 8px; margin-bottom: 32px; }
     
-    .card-acc summary { font-family: var(--sans); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand-drk); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid rgba(0,0,0,0.05); transition: 0.3s; }
+    .card-acc summary { font-family: var(--sans); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand-drk); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.05); transition: 0.3s; }
     .card-acc summary::-webkit-details-marker { display: none; }
     .card-acc summary i { transition: transform 0.3s ease; color: var(--gold); }
     .card-acc[open] summary i { transform: rotate(180deg); }
     
-    .card-acc-content { padding: 20px 0 8px; animation: fadeIn 0.4s ease; text-align: left; }
-    .card-acc-content p, .card-acc-content ul { font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.7; }
-    .card-acc-content ul li { margin-bottom: 12px; }
+    .card-acc-content { padding: 16px 0 8px; animation: fadeIn 0.4s ease; text-align: left; }
+    .card-acc-content p, .card-acc-content ul { font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; }
+    .card-acc-content ul li { margin-bottom: 10px; }
 
-    .btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 18px; background: var(--brand-mid); color: #fff; border-radius: 4px; font-family: var(--sans); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; }
+    .btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 16px; background: var(--brand-mid); color: #fff; border-radius: 4px; font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; }
     .btn-action:hover { background: var(--brand-drk); }
 
-   /* ═══════════════════════════════════════════
-       WIDESCREEN DESKTOP OVERRIDE GRID (3 Columns Flat)
+    /* ═══════════════════════════════════════════
+       WIDESCREEN DESKTOP OVERRIDE GRID
      ═══════════════════════════════════════════ */
     @media (min-width: 900px) {
-        /* Header Fixes */
         .hamburger { display: none !important; } 
         .nav-links { display: flex !important; flex-direction: row; position: static; background: transparent; padding: 0; box-shadow: none; border: none; }
         .nav-links a { font-size: 0.75rem; padding: 8px 16px; }
 
-        /* Grid Layouts */
-        .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; max-width: var(--max-w); margin: 0 auto; }
+        /* Updated Grid to support 4 service cards smoothly */
+        .cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; max-width: var(--max-w); margin: 0 auto; }
+        
         .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
         .security-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; }
         
-        /* Flatten and permanently open the accordions on desktop viewports */
-        .card-acc summary { pointer-events: none; cursor: default; border-bottom: none; padding: 24px 0 0; font-size: 0.9rem; letter-spacing: 0.1em; color: var(--brand-mid); }
+        .card-acc summary { pointer-events: none; cursor: default; border-bottom: none; padding: 20px 0 0; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--brand-mid); }
         .card-acc summary i { display: none!important; } 
-        .card-acc-content { padding-top: 12px; }
+        .card-acc-content { padding-top: 10px; }
         .card-accordions { border-top: 1px solid rgba(0,0,0,0.05); }
     }
+
     /* ═══════════════════════════════════════════
-       ONLINE SECURITY GUARANTEE (Protocol)
+       ONLINE SECURITY GUARANTEE
      ═══════════════════════════════════════════ */
     .security-section { background: var(--brand-drk); color: #fff; padding: 100px 0; }
     .security-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
@@ -294,7 +306,8 @@
      ═══════════════════════════════════════════ */
     .site-footer { background: #111; color: #fff; padding: 60px 0 30px; }
     .footer-grid { display: grid; grid-template-columns: 1fr; gap: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 30px; }
-    .f-logo { font-family: var(--serif); font-size: 1.2rem; color: #fff; margin-bottom: 16px; display: block; }
+    .f-logo { font-family: var(--serif); font-size: 1.5rem; color: #fff; margin-bottom: 16px; display: block; letter-spacing: 0.05em; }
+    .f-logo em { color: var(--gold); font-style: normal; }
     
     @media (min-width: 900px) {
         .video-grid { grid-template-columns: repeat(3, 1fr); }
@@ -307,7 +320,7 @@
 
 <nav class="site-nav" id="sitenav">
     <div class="nav-inner">
-        <a href="#" class="nav-logo-name">Laura Clarke <em>&middot;</em> Docu-Hub</a>
+        <a href="#" class="nav-logo-name">Docu-Hub <em>Jamaica</em></a>
         <ul class="nav-links">
             <li><a href="#services">Services</a></li>
             <li><a href="#faq">Portal FAQs</a></li>
@@ -328,7 +341,7 @@
     </div>
 </section>
 
-<!-- SERVICE CARDS (Clean Vertical Stack Layout) -->
+<!-- SERVICE CARDS (4-Column Layout) -->
 <section class="services-section" id="services">
     <div class="wrap">
         <div class="section-header enter d1">
@@ -351,19 +364,19 @@
                             <summary>Who We Help (Eligibility) <i class="fa-solid fa-chevron-down"></i></summary>
                             <div class="card-acc-content">
                                 <ul style="list-style-type: none; padding-left: 0;">
-                                    <li style="margin-bottom: 12px;"><strong>👤 Adults (18+ Regular Renewal):</strong> Qualify for digital renewals. We resolve 3D-Secure bank payment failures and locked drafts on the PICA portal.</li>
-                                    <li style="margin-bottom: 12px;"><strong>👨‍👩‍👧 Minors & Name Changes:</strong> Cannot apply online. We provide manual, on-the-ground physical proxy submission to bypass embassy delays.</li>
-                                    <li><strong>⚠️ Damaged or Lost Books:</strong> Face automatic online rejection. We handle the strict physical compliance, police reports, and manual submission.</li>
+                                    <li><strong>👤 Adults:</strong> Digital renewals & payment failure rescue.</li>
+                                    <li><strong>👨‍👩‍👧 Minors/Name Changes:</strong> Manual on-the-ground proxy.</li>
+                                    <li><strong>⚠️ Damaged Books:</strong> Strict physical compliance proxy.</li>
                                 </ul>
                             </div>
                         </details>
                         <details class="card-acc">
-                            <summary>All-Inclusive Pricing Packages <i class="fa-solid fa-chevron-down"></i></summary>
+                            <summary>Pricing Packages <i class="fa-solid fa-chevron-down"></i></summary>
                             <div class="card-acc-content">
                                 <ul style="list-style-type: none; padding-left: 0;">
-                                    <li style="margin-bottom: 16px;"><strong>💻 Online Portal Rescue: $115 USD</strong><br><span style="font-size: 0.85rem; color: var(--text-mid);">Includes PICA online fee + digital bypass proxy fee. Best for adults facing portal system errors.</span></li>
-                                    <li style="margin-bottom: 16px;"><strong>🏛️ Standard Manual Proxy: $145 USD</strong><br><span style="font-size: 0.85rem; color: var(--text-mid);">Includes local PICA fees + physical Kingston submission. Perfect for minors and name changes (marriage).</span></li>
-                                    <li><strong>🚨 Penalty Manual Proxy: $185 USD</strong><br><span style="font-size: 0.85rem; color: var(--text-mid);">Includes the higher PICA local penalty fees + secure physical handling for damaged or lost replacements.</span></li>
+                                    <li><strong>💻 Portal Rescue: $115 USD</strong></li>
+                                    <li><strong>🏛️ Standard Proxy: $145 USD</strong></li>
+                                    <li><strong>🚨 Penalty Proxy: $185 USD</strong></li>
                                 </ul>
                             </div>
                         </details>
@@ -384,18 +397,48 @@
                     
                     <div class="card-accordions">
                         <details class="card-acc">
-                            <summary>Portal Requirements <i class="fa-solid fa-chevron-down"></i></summary>
+                            <summary>Requirements <i class="fa-solid fa-chevron-down"></i></summary>
                             <div class="card-acc-content">
-                                <p><strong>Birth Certificates:</strong> You must possess your Birth Entry Number to avoid manual search fees. Exact Hospital, Parish, District, and Mother's maiden name are required.</p>
-                                <p style="margin-top: 12px;"><strong>Marriage Certificates:</strong> Physical verification scans are required (Minister's License, valid IDs, and proof of dissolution if previously married).</p>
+                                <p><strong>Birth:</strong> Exact Hospital, Parish, District, and Mother's maiden name.</p>
+                                <p><strong>Marriage:</strong> Verification scans (Minister's License, valid IDs).</p>
                             </div>
                         </details>
                         <details class="card-acc">
-                            <summary>Pricing & Packages <i class="fa-solid fa-chevron-down"></i></summary>
+                            <summary>Pricing Packages <i class="fa-solid fa-chevron-down"></i></summary>
                             <div class="card-acc-content">
                                 <ul style="list-style-type: none; padding-left: 0;">
-                                    <li style="margin-bottom: 16px;"><strong>💻 Online Retrieval Proxy: $85 USD</strong><br><span style="font-size: 0.85rem; color: var(--text-mid);">Includes standard RGD portal fees and our digital proxy search fee.</span></li>
-                                    <li><strong>🏛️ On-The-Ground Search: $150 USD</strong><br><span style="font-size: 0.85rem; color: var(--text-mid);">Includes local express RGD fees and manual in-person searches in Spanish Town.</span></li>
+                                    <li><strong>💻 Digital Search: $85 USD</strong></li>
+                                    <li><strong>🏛️ Physical Search: $150 USD</strong></li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+                    
+                    <a href="contact.html" class="btn-action"><i class="fa-regular fa-calendar-check" style="margin-right: 8px;"></i> Secure this Service</a>
+                </div>
+            </div>
+            
+            <!-- Card 3: TRN Applications -->
+            <div class="service-card enter d3">
+                <div class="card-img-wrap">
+                    <img src="assets/trn.webp" loading="lazy" alt="TRN Registration">
+                    <h3 class="card-title-overlay">TRN & Tax<br>Registration</h3>
+                </div>
+                <div class="card-content">
+                    <p class="card-desc">Secure remote TRN application management. We handle form auditing, local agent submission, and ID delivery.</p>
+                    
+                    <div class="card-accordions">
+                        <details class="card-acc">
+                            <summary>Requirements <i class="fa-solid fa-chevron-down"></i></summary>
+                            <div class="card-acc-content">
+                                <p><strong>Required:</strong> Notarized copy of Government Issued Photo ID (Passport), proof of address, and a completed TAJ form.</p>
+                            </div>
+                        </details>
+                        <details class="card-acc">
+                            <summary>Pricing Package <i class="fa-solid fa-chevron-down"></i></summary>
+                            <div class="card-acc-content">
+                                <ul style="list-style-type: none; padding-left: 0;">
+                                    <li><strong>🏛️ Proxy Service: $95 USD</strong><br><span style="font-size: 0.85rem; color: var(--text-mid);">Includes form auditing, local TAJ submission, and handling.</span></li>
                                 </ul>
                             </div>
                         </details>
@@ -405,11 +448,11 @@
                 </div>
             </div>
 
-            <!-- Card 3: Vehicle Licensing -->
-            <div class="service-card enter d3">
+            <!-- Card 4: Vehicle Licensing -->
+            <div class="service-card enter d4">
                 <div class="card-img-wrap">
                     <img src="assets/motor-vehicle.webp" loading="lazy" alt="Vehicle Registration">
-                    <h3 class="card-title-overlay">Vehicle &<br>Clearances</h3>
+                    <h3 class="card-title-overlay">Clearances &<br>Licensing</h3>
                 </div>
                 <div class="card-content">
                     <p class="card-desc">Complete proxy management for paperless TAJ vehicle renewals, Police Records, and Driving Abstracts.</p>
@@ -418,16 +461,16 @@
                         <details class="card-acc">
                             <summary>Process Overview <i class="fa-solid fa-chevron-down"></i></summary>
                             <div class="card-acc-content">
-                                <p><strong>Vehicle Renewal (eMVRC):</strong> We clear any outstanding traffic tickets, process the TAJ payment via TRN/Chassis Number, and distribute the digital certificate.</p>
-                                <p style="margin-top: 12px;"><strong>Abstracts & Police Records:</strong> Requires physical coordination, drop-off, and collection across multiple agencies.</p>
+                                <p><strong>Vehicles:</strong> We clear tickets, process the TAJ payment, and distribute the e-certificate.</p>
+                                <p><strong>Abstracts:</strong> Multi-agency coordination, drop-off, and collection.</p>
                             </div>
                         </details>
                         <details class="card-acc">
-                            <summary>Pricing & Packages <i class="fa-solid fa-chevron-down"></i></summary>
+                            <summary>Pricing Packages <i class="fa-solid fa-chevron-down"></i></summary>
                             <div class="card-acc-content">
                                 <ul style="list-style-type: none; padding-left: 0;">
-                                    <li style="margin-bottom: 16px;"><strong>🚔 Police Records & Abstracts: $140 USD</strong><br><span style="font-size: 0.85rem; color: var(--text-mid);">Total all-inclusive fee for 5-day express local government fees and our multi-agency proxy runs.</span></li>
-                                    <li><strong>🚗 Vehicle Registration (eMVRC): $35 USD</strong><br><span style="font-size: 0.85rem; color: var(--text-mid);">Flat digital proxy fee. *Actual TAJ government tax is billed separately based on your vehicle's CC rating.</span></li>
+                                    <li><strong>🚔 Police Records: $140 USD</strong></li>
+                                    <li><strong>🚗 Vehicle (eMVRC): $35 USD</strong></li>
                                 </ul>
                             </div>
                         </details>
@@ -543,7 +586,7 @@
                 <summary style="font-family: var(--sans); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.85rem;">Access Strategy Podcasts <i class="fa-solid fa-headphones" style="color: var(--gold); margin-left: 8px;"></i></summary>
                 <div class="faq-answer" style="padding-top: 16px;">
                     <div class="video-grid">
-                       <!-- Passport Audio -->
+                        <!-- Passport Audio -->
                         <div class="video-card">
                             <h4>1. The Online Passport Blueprint</h4>
                             <p>An authoritative audio guide mapping out the 3-gateway security protocols and regional 3D-Secure payment blocks on the PICA portal.</p>
@@ -579,22 +622,22 @@
 <footer class="site-footer">
     <div class="wrap footer-grid">
         <div>
-            <span class="f-logo">Docu-Hub Jamaica</span>
-            <p style="font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 300px;">Providing highly secure, on-the-ground document processing and compliance.</p>
+            <span class="f-logo">Docu-Hub <em>Operations Services</em></span>
+            <p style="font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 300px;">Providing highly secure, on-the-ground document processing, records retrieval, and compliance for the Jamaican diaspora.</p>
         </div>
         <div>
             <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt);">QUICK LINKS</h4>
             <ul style="list-style: none; display: grid; gap: 8px;">
-                <li><a href="#services" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Services</a></li>
-                <li><a href="#faq" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Portal FAQs</a></li>
-                <li><a href="about.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">About Us</a></li>
+                <li><a href="#services" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">All Proxy Services</a></li>
+                <li><a href="#faq" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Portal Troubleshooting</a></li>
+                <li><a href="about.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">About Docu-Hub</a></li>
             </ul>
         </div>
         <div>
             <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt);">SECURE CONTACT</h4>
             <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px;"><i class="fa-regular fa-calendar-check" style="color: var(--gold); margin-right: 8px;"></i> <a href="contact.html">Book Consultation</a></p>
             <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px;"><i class="fa-regular fa-envelope" style="color: var(--gold); margin-right: 8px;"></i> <a href="mailto:admin@dhubservices.com">admin@dhubservices.com</a></p>
-            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 8px;"></i> Linstead, Jamaica</p>
+            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 8px;"></i> Kingston, Jamaica</p>
         </div>
     </div>
     <div class="wrap" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px;">
