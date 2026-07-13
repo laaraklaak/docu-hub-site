@@ -102,6 +102,15 @@
   .print-btn { display: inline-block; background-color: var(--gold); color: #fff; border: none; padding: 14px 28px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 4px; cursor: pointer; margin-top: 10px; transition: 0.3s ease; }
   .print-btn:hover { background-color: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
 
+  /* Resource Library Video Grid Styles */
+  .video-grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 24px; }
+  .video-card { background: var(--bg-light); padding: 32px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+  .video-card h4 { font-family: var(--sans); font-size: 1.1rem; color: var(--brand-drk); margin-bottom: 12px; font-weight: 600; }
+  .video-card p { font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); margin-bottom: 20px; line-height: 1.6; }
+  .responsive-iframe { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; background: #000; }
+  .responsive-iframe iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+  @media (min-width: 900px) { .video-grid { grid-template-columns: repeat(3, 1fr); } }
+
   /* ═══════════════════════════════════════════
      FOOTER (Inherited from Index)
    ═══════════════════════════════════════════ */
@@ -114,7 +123,7 @@
   /* Print Stylesheet */
   @media print {
     body { background-color: #fff; padding-top: 0; }
-    .site-nav, .page-header, .accordion-header, .print-btn, .site-footer { display: none !important; }
+    .site-nav, .page-header, .accordion-header, .print-btn, .site-footer, #audio-guides { display: none !important; }
     .accordion-content { max-height: none !important; opacity: 1 !important; padding: 0 !important; }
     .accordion-item { border: none !important; margin: 0 !important; box-shadow: none !important; }
     .checklist-group { page-break-inside: avoid; }
@@ -130,6 +139,7 @@
           <ul class="nav-links">
               <li><a href="index.html#services">Services</a></li>
               <li><a href="index.html#faq">Portal FAQs</a></li>
+              <li><a href="resource.html">Resources</a></li>
               <li><a href="about.html">About Us</a></li>
               <li><a href="contact.html" class="nav-btn">Contact Us</a></li>
           </ul>
@@ -146,7 +156,6 @@
   <!-- CHECKLIST CONTENT -->
   <main class="main-content">
     
-    <!-- ADDED ID="citizenship" AND REMOVED DEFAULT "active" CLASS -->
     <div class="accordion-item" id="citizenship"> 
       
       <button class="accordion-header" onclick="toggleAccordion(this)">
@@ -224,7 +233,7 @@
       </div>
     </div>
 
-    <!-- START OF NEW PDF RESOURCE BLOCK 1 - ADDED ID="resource-1" -->
+    <!-- START OF NEW PDF RESOURCE BLOCK 1 -->
     <div class="accordion-item" id="resource-1">
       
       <button class="accordion-header" onclick="toggleAccordion(this)">
@@ -246,7 +255,7 @@
     </div>
     <!-- END OF NEW PDF RESOURCE BLOCK -->
 
-    <!-- START OF NEW PDF RESOURCE BLOCK 2 - ADDED ID="resource-2" -->
+    <!-- START OF NEW PDF RESOURCE BLOCK 2 -->
     <div class="accordion-item" id="resource-2">
       
       <button class="accordion-header" onclick="toggleAccordion(this)">
@@ -267,6 +276,41 @@
       </div>
     </div>
     <!-- END OF NEW PDF RESOURCE BLOCK -->
+
+    <!-- AUDIO MASTERCLASSES SECTION -->
+    <div style="margin-top: 80px; border-top: 2px solid var(--gold); padding-top: 60px;" id="audio-guides">
+      <h2 style="font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk); font-weight: 400; text-align: center; margin-bottom: 8px;">Compliance Audio Briefings</h2>
+      <p style="text-align: center; color: var(--text-mid); margin-bottom: 40px; font-family: var(--sans);">Listen to our deep-dive portal breakdowns and compliance strategies.</p>
+
+      <div class="video-grid">
+          <!-- Passport Audio -->
+          <div class="video-card">
+              <h4>1. The Online Passport Blueprint</h4>
+              <p>An authoritative audio guide mapping out the 3-gateway security protocols and regional 3D-Secure payment blocks on the PICA portal.</p>
+              <div class="responsive-iframe">
+                  <iframe src="https://www.youtube.com/embed/SiL3kjTFa4Q?si=eXndcYozJvFEGvtZ" loading="lazy" title="Online Passport Renewal Masterclass" allowfullscreen></iframe>
+              </div>
+          </div>
+          
+          <!-- eMVRC Audio -->
+          <div class="video-card">
+              <h4>2. eMVRC & Vehicle Compliance</h4>
+              <p>A masterclass detailing outstanding traffic ticket clearances, TRN validation loops, and digital registration certificate distribution.</p>
+              <div class="responsive-iframe">
+                  <iframe src="https://www.youtube.com/embed/jpS-mIde1Ro?si=OtzW4_La_TffGgxk" loading="lazy" title="Motor Vehicle Compliance Masterclass" allowfullscreen></iframe>
+              </div>
+          </div>
+
+          <!-- Multi-Portal Audio -->
+          <div class="video-card">
+              <h4>3. Cross-Agency Multi-Portals</h4>
+              <p>A strategic audio layout tracking how to manage multiple complex compliance requests across different agency dashboards simultaneously.</p>
+              <div class="responsive-iframe">
+                  <iframe src="https://www.youtube.com/embed/X_vP65ETG2U" loading="lazy" title="Multi-Portal Navigation Masterclass" allowfullscreen></iframe>
+              </div>
+          </div>
+      </div>
+    </div>
 
   </main>
 
