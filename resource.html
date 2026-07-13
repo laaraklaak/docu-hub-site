@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Docu-Hub | Interactive Checklists</title>
+<meta name="description" content="Downloadable operational checklists and guides for Jamaican citizenship and document retrieval.">
+
+<!-- Official Docu-Hub Fonts & Icons -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+  /* ═══════════════════════════════════════════
+     DOCU-HUB DESIGN TOKENS 
+   ═══════════════════════════════════════════ */
+  :root {
+      --bg-light:   #F9F9F8; 
+      --ivory:      #FFFFFF;
+      --brand-drk:  #1E2B1D; 
+      --brand-mid:  #3A4F38;
+      --gold:       #C19A5B; 
+      --gold-lt:    #DAB87F;
+      --text-dark:  #111410; 
+      --text-mid:   #4A4F48; 
+      --serif:      'Playfair Display', Georgia, serif; 
+      --sans:       'Jost', Arial, sans-serif; 
+      --nav-h:      75px;
+      --max-w:      1200px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--sans); background: var(--bg-light); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; padding-top: var(--nav-h); }
+  a { text-decoration: none; color: inherit; transition: 0.3s ease; }
+  .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+  /* ═══════════════════════════════════════════
+     SITE NAV (Inherited from Index)
+   ═══════════════════════════════════════════ */
+  .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.98); box-shadow: 0 4px 20px rgba(0,0,0,0.3); border-bottom: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
+  .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; position: relative; }
+  .nav-logo-name { font-family: var(--serif); font-size: 1.4rem; color: #fff; letter-spacing: 0.05em; display: block; z-index: 950; }
+  .nav-logo-name em { color: var(--gold-lt); font-style: normal; }
+  
+  .nav-links { display: none; list-style: none; align-items: center; gap: 8px; }
+  .nav-links a { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 8px 16px; border-radius: 4px; }
+  .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+  .nav-btn { background: var(--gold)!important; color: #fff!important; font-weight: 500; }
+  .nav-btn:hover { background: var(--gold-lt)!important; }
+
+  .hamburger { display: flex; flex-direction: column; gap: 6px; background: none; border: none; padding: 5px; cursor: pointer; z-index: 950; }
+  .hamburger span { width: 24px; height: 2px; background: #fff; transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
+
+  @media (max-width: 899px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: rgba(30, 43, 29, 0.98); backdrop-filter: blur(16px); padding: 32px 24px; gap: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); box-shadow: 0 12px 30px rgba(0,0,0,0.25); text-align: center; }
+      .site-nav.open .nav-links { display: flex; }
+      .nav-links a { font-size: 0.9rem; padding: 12px; display: block; width: 100%; }
+      .site-nav.open .hamburger span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+      .site-nav.open .hamburger span:nth-child(2) { opacity: 0; }
+      .site-nav.open .hamburger span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+  }
+  @media (min-width: 900px) {
+      .hamburger { display: none !important; } 
+      .nav-links { display: flex !important; flex-direction: row; position: static; background: transparent; padding: 0; box-shadow: none; border: none; }
+  }
+
+  /* ═══════════════════════════════════════════
+     CHECKLIST CONTENT AREA
+   ═══════════════════════════════════════════ */
+  .page-header { max-width: 900px; margin: 60px auto 40px; padding: 0 24px; text-align: center; }
+  .page-header h1 { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3rem); font-weight: 400; color: var(--brand-drk); margin-bottom: 10px; }
+  .page-header p { font-size: 1.05rem; color: var(--text-mid); }
+
+  .main-content { max-width: 900px; margin: 0 auto; padding: 0 24px 100px; }
+  
+  /* Accordion Design mapped to Brand Colors */
+  .accordion-item { border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; background-color: var(--ivory); margin-bottom: 20px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+  /* Ensure scroll-margin so the sticky nav doesn't cover the title when deep-linking */
+  .accordion-item { scroll-margin-top: 100px; }
+  .accordion-header { width: 100%; background: none; border: none; padding: 24px 30px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; transition: background-color 0.2s ease; }
+  .accordion-header:hover { background-color: var(--bg-light); }
+  .accordion-title { font-family: var(--serif); font-size: 1.4rem; font-weight: 600; color: var(--brand-drk); margin: 0; }
+  
+  .icon { font-size: 1.5rem; font-weight: 300; color: var(--gold); transition: transform 0.3s ease; }
+  .accordion-item.active .icon { transform: rotate(45deg); }
+
+  .accordion-content { max-height: 0; opacity: 0; overflow: hidden; padding: 0 30px; transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease; }
+  .accordion-item.active .accordion-content { max-height: 3000px; opacity: 1; padding: 0 30px 30px 30px; }
+
+  .checklist-group { margin-bottom: 35px; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 25px; }
+  .checklist-group:first-child { border-top: none; padding-top: 10px; }
+  
+  .checklist-group h4 { font-family: var(--sans); font-size: 0.9rem; margin: 0 0 15px 0; color: var(--brand-mid); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+  
+  .check-item { display: flex; align-items: flex-start; margin-bottom: 14px; }
+  .check-item input[type="checkbox"] { margin-top: 6px; margin-right: 12px; cursor: pointer; width: 18px; height: 18px; accent-color: var(--gold); }
+  .check-item label { font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; }
+  .check-item strong { color: var(--brand-drk); font-weight: 600; }
+
+  /* Print Button mapped to Brand */
+  .print-btn { display: inline-block; background-color: var(--gold); color: #fff; border: none; padding: 14px 28px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 4px; cursor: pointer; margin-top: 10px; transition: 0.3s ease; }
+  .print-btn:hover { background-color: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+
+  /* ═══════════════════════════════════════════
+     FOOTER (Inherited from Index)
+   ═══════════════════════════════════════════ */
+  .site-footer { background: #111; color: #fff; padding: 60px 0 30px; }
+  .footer-grid { display: grid; grid-template-columns: 1fr; gap: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 30px; }
+  .f-logo { font-family: var(--serif); font-size: 1.5rem; color: #fff; margin-bottom: 16px; display: block; letter-spacing: 0.05em; }
+  .f-logo em { color: var(--gold); font-style: normal; }
+  @media (min-width: 900px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr; } }
+
+  /* Print Stylesheet */
+  @media print {
+    body { background-color: #fff; padding-top: 0; }
+    .site-nav, .page-header, .accordion-header, .print-btn, .site-footer { display: none !important; }
+    .accordion-content { max-height: none !important; opacity: 1 !important; padding: 0 !important; }
+    .accordion-item { border: none !important; margin: 0 !important; box-shadow: none !important; }
+    .checklist-group { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- SITE NAV -->
+  <nav class="site-nav" id="sitenav">
+      <div class="nav-inner">
+          <a href="index.html" class="nav-logo-name">Docu-Hub <em>Jamaica</em></a>
+          <ul class="nav-links">
+              <li><a href="index.html#services">Services</a></li>
+              <li><a href="index.html#faq">Portal FAQs</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html" class="nav-btn">Contact Us</a></li>
+          </ul>
+          <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
+      </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <h1>Interactive Operational Checklists</h1>
+    <p>Official resources and document preparation guides.</p>
+  </header>
+
+  <!-- CHECKLIST CONTENT -->
+  <main class="main-content">
+    
+    <!-- ADDED ID="citizenship" AND REMOVED DEFAULT "active" CLASS -->
+    <div class="accordion-item" id="citizenship"> 
+      
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        <h3 class="accordion-title">Master Protocol: Jamaican Citizenship & Passport Workflow</h3>
+        <span class="icon">+</span>
+      </button>
+
+      <div class="accordion-content">
+        <p style="color: var(--text-mid); margin-bottom: 25px;">
+          Complete each phase sequentially. All government reviews require physical, un-laminated, original documentation. 
+        </p>
+
+        <div class="checklist-group">
+          <h4>Part 1: Lineage Verification & Document Retrieval</h4>
+          <div class="check-item">
+            <input type="checkbox" id="pt1_1">
+            <label for="pt1_1"><strong>Document Inventory:</strong> I have my original long-form birth certificate and the original Jamaican birth certificate of my parent/grandparent.</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="pt1_2">
+            <label for="pt1_2"><strong>Outtamany Search (If Documents Missing):</strong> If my ancestor's certificate is missing and the entry number is unknown, I have interviewed relatives to secure the required search clues: childhood district/parish, primary school name, sibling names, and parents' names.</label>
+          </div>
+        </div>
+
+        <div class="checklist-group">
+          <h4>Part 2: Establishing Citizenship by Descent</h4>
+          <div class="check-item">
+            <input type="checkbox" id="pt2_1">
+            <label for="pt2_1"><strong>The Original Forms:</strong> Completed Application for Jamaican Citizenship by Descent form, filled out in blue/black ink with no white-out.</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="pt2_2">
+            <label for="pt2_2"><strong>Identity Link:</strong> The original long-form birth certificate of the applicant alongside the original birth certificate of the Jamaican ancestor.</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="pt2_3">
+            <label for="pt2_3"><strong>Name Consistency Audit:</strong> I have verified side-by-side that the names match perfectly across both certificates. (If a parent's name has a spelling variation or middle name discrepancy, a Marriage Certificate, Deed Poll, or legal bridge document is attached).</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="pt2_4">
+            <label for="pt2_4"><strong>Applicant's ID:</strong> A valid, unexpired government photo ID (Passport or Driver’s License).</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="pt2_5">
+            <label for="pt2_5"><strong>Photographs:</strong> Two recent passport-sized photos. If submitting via mail/dropbox, one photo has been properly certified on the back by a Notary Public without smudging the front face.</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="pt2_6">
+            <label for="pt2_6"><strong>Payment Compliance:</strong> An International Money Order or Bank Draft for the exact application fee made out to PICA or the respective consulate (no cash, no personal checks).</label>
+          </div>
+        </div>
+
+        <div class="checklist-group">
+          <h4>Part 3: The First-Time Passport Application</h4>
+          <div class="check-item">
+            <input type="checkbox" id="pt3_1">
+            <label for="pt3_1"><strong>Citizenship Document:</strong> The brand-new physical Certificate of Jamaican Citizenship received from PICA is in hand.</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="pt3_2">
+            <label for="pt3_2"><strong>Consulate Jurisdiction:</strong> The in-person biometric appointment has been scheduled at the specific consulate office responsible for my current state of residence.</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="pt3_3">
+            <label for="pt3_3"><strong>Untouched Photos:</strong> Two passport-sized photographs on a matte finish. These photos have <u>NOT</u> been stamped or signed by a notary, as they will be verified in person by the consulate officer.</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="pt3_4">
+            <label for="pt3_4"><strong>In-Person ID & Fees:</strong> Original ID is present, and payment has been secured exclusively via a Certified Check or Money Order matching the consulate's exact fee matrix.</label>
+          </div>
+        </div>
+
+        <button class="print-btn" onclick="window.print()">Download / Save as PDF</button>
+
+      </div>
+    </div>
+
+    <!-- START OF NEW PDF RESOURCE BLOCK 1 - ADDED ID="resource-1" -->
+    <div class="accordion-item" id="resource-1">
+      
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        <h3 class="accordion-title">Name of Your New PDF Resource</h3>
+        <span class="icon">+</span>
+      </button>
+
+      <div class="accordion-content">
+        <p style="color: var(--text-mid); margin-bottom: 25px;">
+          Write a brief 1-2 sentence description here explaining what this PDF is and how it helps the client.
+        </p>
+
+        <!-- The Download Button -->
+        <a href="assets/your-file-name.pdf" download class="print-btn" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-download"></i> Download PDF
+        </a>
+        
+      </div>
+    </div>
+    <!-- END OF NEW PDF RESOURCE BLOCK -->
+
+    <!-- START OF NEW PDF RESOURCE BLOCK 2 - ADDED ID="resource-2" -->
+    <div class="accordion-item" id="resource-2">
+      
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        <h3 class="accordion-title">Name of Your New PDF Resource</h3>
+        <span class="icon">+</span>
+      </button>
+
+      <div class="accordion-content">
+        <p style="color: var(--text-mid); margin-bottom: 25px;">
+          Write a brief 1-2 sentence description here explaining what this PDF is and how it helps the client.
+        </p>
+
+        <!-- The Download Button -->
+        <a href="assets/your-file-name.pdf" download class="print-btn" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-download"></i> Download PDF
+        </a>
+        
+      </div>
+    </div>
+    <!-- END OF NEW PDF RESOURCE BLOCK -->
+
+  </main>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+      <div class="wrap footer-grid">
+          <div>
+              <span class="f-logo">Docu-Hub <em>Operations Services</em></span>
+              <p style="font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 300px;">Providing highly secure, on-the-ground document processing, records retrieval, and compliance for the Jamaican diaspora.</p>
+          </div>
+          <div>
+              <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt);">QUICK LINKS</h4>
+              <ul style="list-style: none; display: grid; gap: 8px;">
+                  <li><a href="index.html#services" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">All Proxy Services</a></li>
+                  <li><a href="index.html#faq" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Portal Troubleshooting</a></li>
+                  <li><a href="about.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">About Docu-Hub</a></li>
+              </ul>
+          </div>
+          <div>
+              <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt);">SECURE CONTACT</h4>
+              <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px;"><i class="fa-regular fa-calendar-check" style="color: var(--gold); margin-right: 8px;"></i> <a href="https://calendar.app.google/mCXiJ2GLF15mLMV48" target="_blank" rel="noopener">Book Consultation</a></p>
+              <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px;"><i class="fa-regular fa-envelope" style="color: var(--gold); margin-right: 8px;"></i> <a href="mailto:admin@dhubservices.com">admin@dhubservices.com</a></p>
+              <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 8px;"></i> Linstead, Jamaica</p>
+          </div>
+      </div>
+      <div class="wrap" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; margin-top: 24px;">
+          <p style="font-family: var(--sans); font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-bottom: 4px;">Registered Jamaican Business Entity: # 15602/2025</p>
+          <p style="font-family: var(--sans); font-size: 0.75rem; color: var(--gold-lt); margin-bottom: 12px; letter-spacing: 0.03em;">OIC Data Controller Status: Application Initiated & Account Verified (Dec 2025)</p>
+          
+          <p style="font-family: var(--sans); font-size: 0.75rem; margin-bottom: 12px;">
+              <a href="privacy.html" style="color: rgba(255,255,255,0.5); text-decoration: none; margin-right: 16px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 2px; transition: 0.3s;">Privacy Policy</a>
+              <a href="legal-notice.html" style="color: rgba(255,255,255,0.5); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 2px; transition: 0.3s;">Terms & Legal Notice</a>
+          </p>
+          <p style="font-family: var(--sans); font-size: 0.7rem; color: rgba(255,255,255,0.4);">&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
+      </div>
+  </footer>
+
+  <script>
+    // 1. The normal click-to-open function
+    function toggleAccordion(button) {
+      const item = button.parentElement;
+      item.classList.toggle('active');
+    }
+
+    // 2. The Auto-Open "Deep Link" magic for YouTube
+    document.addEventListener("DOMContentLoaded", () => {
+      // Check if the URL has a #hashtag at the end (like #citizenship)
+      const hash = window.location.hash; 
+      
+      if (hash) {
+        // Find the specific drop-down that matches the hashtag
+        const targetAccordion = document.querySelector(hash);
+        
+        if (targetAccordion) {
+          // Force it to open
+          targetAccordion.classList.add('active');
+          
+          // Smoothly scroll the page down so it is perfectly in view
+          setTimeout(() => {
+            targetAccordion.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100); // slight delay ensures the page is fully loaded before scrolling
+        }
+      }
+    });
+
+    // 3. Mobile Menu Toggle (Inherited from Index)
+    const hbg = document.getElementById('hbg');
+    const navBar = document.getElementById('sitenav');
+    hbg.addEventListener('click', () => { navBar.classList.toggle('open'); });
+  </script>
+
+</body>
+</html>
