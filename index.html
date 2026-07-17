@@ -76,8 +76,9 @@
     .nav-links { display: none; list-style: none; align-items: center; gap: 8px; }
     .nav-links a { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 8px 16px; border-radius: 4px; }
     .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
-    .nav-btn { background: var(--gold)!important; color: #fff!important; font-weight: 500; }
-    .nav-btn:hover { background: var(--gold-lt)!important; }
+    
+    .nav-btn { background: var(--gold)!important; color: #fff!important; font-weight: 600; }
+    .nav-btn:hover { background: var(--gold-lt)!important; box-shadow: 0 4px 12px rgba(193, 154, 91, 0.4); }
 
     .hamburger { display: flex; flex-direction: column; gap: 6px; background: none; border: none; padding: 5px; cursor: pointer; z-index: 950; }
     .hamburger span { width: 24px; height: 2px; background: #fff; transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
@@ -107,13 +108,13 @@
     .hero-title { font-family: var(--serif); font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 400; line-height: 1.1; max-width: 800px; margin-bottom: 24px; }
     .hero-desc { font-family: var(--sans); font-size: clamp(1rem, 3vw, 1.2rem); max-width: 600px; color: rgba(255,255,255,0.9); margin-bottom: 40px; }
     
-    .btn-gold { display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px; background: var(--gold); color: #fff; border-radius: 4px; font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; cursor: pointer; border: none; }
+    .btn-gold { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 36px; background: var(--gold); color: #fff; border-radius: 4px; font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; cursor: pointer; border: none; text-decoration: none; }
     .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
 
     /* ═══════════════════════════════════════════
-       SERVICES CARDS SYSTEM (4-Column Layout)
+       SERVICES CARDS SYSTEM 
      ═══════════════════════════════════════════ */
-    .services-section { padding: 100px 0; background: var(--bg-light); }
+    .services-section { padding: 100px 0 60px; background: var(--bg-light); }
     .section-header { text-align: center; margin-bottom: 64px; }
     .section-header h2 { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 400; color: var(--brand-drk); }
 
@@ -140,74 +141,17 @@
     .card-acc-content p, .card-acc-content ul { font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; }
     .card-acc-content ul li { margin-bottom: 10px; }
 
-    /* Single Unified Action Button */
     .card-btn-tray { display: flex; flex-direction: column; width: 100%; margin-top: auto; }
-    .btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 16px; background: var(--brand-mid); color: #fff; border-radius: 4px; border: none; font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; cursor: pointer; }
+    .btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 16px; background: var(--brand-mid); color: #fff; border-radius: 4px; border: none; font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; cursor: pointer; text-decoration: none; }
     .btn-action:hover { background: var(--brand-drk); transform: translateY(-2px); }
 
-    /* ═══════════════════════════════════════════
-       START HERE MODAL (Pop-up)
-     ═══════════════════════════════════════════ */
-    .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(30, 43, 29, 0.7); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; visibility: hidden; transition: 0.3s ease; }
-    .modal-overlay.active { opacity: 1; visibility: visible; }
-    .modal-box { background: var(--ivory); width: 90%; max-width: 420px; border-radius: 8px; padding: 40px 32px; position: relative; transform: translateY(20px); transition: 0.3s ease; box-shadow: 0 24px 48px rgba(0,0,0,0.3); text-align: center; }
-    .modal-overlay.active .modal-box { transform: translateY(0); }
-    .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 1.5rem; color: var(--text-mid); cursor: pointer; transition: 0.2s; }
-    .modal-close:hover { color: var(--brand-drk); transform: scale(1.1); }
-    
-    .modal-title { font-family: var(--serif); font-size: 2rem; color: var(--brand-drk); margin-bottom: 8px; line-height: 1.1; }
-    .modal-desc { font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); margin-bottom: 32px; line-height: 1.5; }
-    
-    .modal-options { display: flex; flex-direction: column; gap: 12px; }
-    .modal-opt-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 18px; border-radius: 4px; font-family: var(--sans); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; text-decoration: none; border: 2px solid transparent; cursor: pointer; }
-    
-    /* Strict Brand Colors Only - No WhatsApp Green */
-    .modal-opt-btn.book-call { background: var(--brand-drk); color: #fff; }
-    .modal-opt-btn.book-call:hover { background: var(--brand-mid); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
-    
-    .modal-opt-btn.msg-wa { background: transparent; color: var(--brand-drk); border-color: var(--brand-drk); }
-    .modal-opt-btn.msg-wa:hover { background: rgba(30, 43, 29, 0.05); transform: translateY(-2px); }
-
-    /* ═══════════════════════════════════════════
-       WIDESCREEN DESKTOP OVERRIDE GRID
-     ═══════════════════════════════════════════ */
+    /* WIDESCREEN DESKTOP OVERRIDE GRID */
     @media (min-width: 900px) {
         .hamburger { display: none !important; } 
         .nav-links { display: flex !important; flex-direction: row; position: static; background: transparent; padding: 0; box-shadow: none; border: none; }
         .nav-links a { font-size: 0.75rem; padding: 8px 16px; }
-
         .cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; max-width: var(--max-w); margin: 0 auto; }
-        .security-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; }
     }
-
-    /* ═══════════════════════════════════════════
-       OTHER SECTIONS
-     ═══════════════════════════════════════════ */
-    .security-section { background: var(--brand-drk); color: #fff; padding: 100px 0; }
-    .security-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
-    .sec-icon { font-size: 3.5rem; color: var(--gold); margin-bottom: 24px; }
-    .sec-title { font-family: var(--serif); font-size: 2.4rem; margin-bottom: 20px; }
-    .sec-desc { font-family: var(--sans); font-size: 1.05rem; color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 32px; max-width: 500px; }
-    .sec-features { display: grid; grid-template-columns: 1fr; gap: 32px; }
-    .sec-feature { display: flex; gap: 16px; align-items: flex-start; }
-    .sec-feature i { color: var(--gold); font-size: 1.2rem; margin-top: 4px; }
-    .sec-feature h4 { font-family: var(--sans); font-size: 1rem; font-weight: 500; margin-bottom: 4px; }
-    .sec-feature p { font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
-
-    .faq-section { padding: 100px 0; background: var(--ivory); }
-    .faq-container { max-width: 800px; margin: 0 auto; }
-    .faq-item { border-bottom: 1px solid rgba(0,0,0,0.1); }
-    .faq-item summary { font-family: var(--sans); font-size: 1.05rem; font-weight: 500; color: var(--brand-drk); padding: 24px 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '\002B'; font-size: 1.5rem; font-weight: 300; color: var(--gold); }
-    .faq-item[open] summary::after { content: '\2212'; }
-    .faq-answer { padding-bottom: 32px; font-family: var(--sans); font-size: 0.95rem; line-height: 1.7; color: var(--text-mid); animation: fadeIn 0.4s ease; }
-
-    .site-footer { background: #111; color: #fff; padding: 60px 0 30px; }
-    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 30px; }
-    .f-logo { font-family: var(--serif); font-size: 1.5rem; color: #fff; margin-bottom: 16px; display: block; letter-spacing: 0.05em; }
-    .f-logo em { color: var(--gold); font-style: normal; }
     </style>
 </head>
 <body>
@@ -216,11 +160,12 @@
     <div class="nav-inner">
         <a href="#" class="nav-logo-name">Docu-Hub <em>Jamaica</em></a>
         <ul class="nav-links">
+            <li><a href="#process">How It Works</a></li>
             <li><a href="#services">Services</a></li>
-            <li><a href="#faq">Portal FAQs</a></li>
-            <li><a href="resource.html">Resources</a></li>
+            <li><a href="#faq-resources">Portal FAQs</a></li>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html" class="nav-btn">Contact Us</a></li>
+            <!-- Form Link Button -->
+            <li><a href="register.html" class="nav-btn">Begin Registration</a></li>
         </ul>
         <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
     </div>
@@ -232,7 +177,56 @@
         <p class="hero-eyebrow">On-The-Ground Processing</p>
         <h1 class="hero-title">Secure Jamaican Document Concierge</h1>
         <p class="hero-desc">We navigate the portals, government agencies, and secure logistics so you don't have to.</p>
-        <button onclick="openStartModal('General Inquiry')" class="btn-gold">Start Your Service</button>
+        <a href="#process" class="btn-gold">Explore Our Services</a>
+    </div>
+</section>
+
+<!-- COMBINED SECURE PROCESS & SECURITY SECTION -->
+<section class="secure-process-section" id="process" style="padding: 100px 0; background: var(--ivory);">
+    <div class="wrap">
+        
+        <div class="section-header enter d1" style="text-align: center; margin-bottom: 56px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <i class="fa-solid fa-shield-check" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 16px;"></i>
+            <h2 style="font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 400; color: var(--brand-drk);">Our Secure Concierge Process</h2>
+            <p style="font-family: var(--sans); font-size: 1.05rem; color: var(--text-mid); margin-top: 16px; line-height: 1.6;">When dealing with government identities, compliance is non-negotiable. We have designed a completely hands-off, highly secure workflow to protect your data from discovery to delivery.</p>
+        </div>
+        
+        <div class="process-grid enter d2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-bottom: 48px;">
+            <!-- Step 1 -->
+            <div style="border-top: 2px solid var(--gold); padding-top: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">Step 01</span>
+                    <i class="fa-solid fa-lock" style="color: var(--brand-drk); font-size: 1.2rem; opacity: 0.3;"></i>
+                </div>
+                <h3 style="font-family: var(--serif); font-size: 1.6rem; color: var(--brand-drk); margin-bottom: 12px;">Secure Registration</h3>
+                <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6;">Select your service via our encrypted portal. Your personal data and vital records are handled with absolute confidentiality.</p>
+            </div>
+            
+            <!-- Step 2 -->
+            <div style="border-top: 2px solid var(--brand-drk); padding-top: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">Step 02</span>
+                    <i class="fa-solid fa-building-columns" style="color: var(--brand-drk); font-size: 1.2rem; opacity: 0.3;"></i>
+                </div>
+                <h3 style="font-family: var(--serif); font-size: 1.6rem; color: var(--brand-drk); margin-bottom: 12px;">Direct Agency Processing</h3>
+                <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6;">Our local team works directly with PICA, RGD, and TAJ to handle the manual legwork and ensure exact regulatory compliance.</p>
+            </div>
+
+            <!-- Step 3 -->
+            <div style="border-top: 2px solid var(--brand-drk); padding-top: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">Step 03</span>
+                    <i class="fa-solid fa-plane-departure" style="color: var(--brand-drk); font-size: 1.2rem; opacity: 0.3;"></i>
+                </div>
+                <h3 style="font-family: var(--serif); font-size: 1.6rem; color: var(--brand-drk); margin-bottom: 12px;">Protected Global Dispatch</h3>
+                <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6;">Once finalized, your official documents are strictly secured and dispatched via trusted global couriers directly to your door.</p>
+            </div>
+        </div>
+
+        <div class="enter d3" style="text-align: center;">
+            <a href="about.html" class="btn-gold" style="background: transparent; border: 1px solid var(--gold); color: var(--brand-drk);">Learn More About Our Team</a>
+        </div>
+
     </div>
 </section>
 
@@ -240,7 +234,7 @@
 <section class="services-section" id="services">
     <div class="wrap">
         <div class="section-header enter d1">
-            <h2>How can we help you today?</h2>
+            <h2>Select A Service</h2>
         </div>
 
         <!-- PREMIUM FEATURED SERVICE: CITIZENSHIP -->
@@ -262,7 +256,6 @@
                     </div>
                 </div>
 
-                <!-- Modular Add-Ons -->
                 <div style="border-top: 1px solid rgba(0,0,0,0.08); padding-top: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
                     <div>
                         <h4 style="font-family: var(--sans); font-size: 0.9rem; color: var(--brand-drk); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;"><i class="fa-solid fa-magnifying-glass" style="color: var(--gold); margin-right: 6px;"></i> Optional Add-On 1</h4>
@@ -276,15 +269,15 @@
                     </div>
                 </div>
 
-                <div style="margin-top: 8px;">
-                    <button class="btn-action" onclick="openStartModal('Citizenship by Descent Package')" style="width: auto; padding: 16px 48px; background: var(--brand-drk);">
-                        Start Your Application
-                    </button>
+                <!-- Form Link Button -->
+                <div style="margin-top: 16px;">
+                    <a href="register.html" class="btn-action" style="width: auto; padding: 16px 48px; background: var(--brand-drk); display: inline-block;">
+                        Begin Secure Registration
+                    </a>
                 </div>
                 
             </div>
         </div>
-        <!-- END PREMIUM FEATURED SERVICE -->
 
         <div class="cards-grid">
             
@@ -296,7 +289,6 @@
                 </div>
                 <div class="card-content">
                     <p class="card-desc">Guidance for online renewals, payment gateway rescues, and secure manual processing for damaged documents.</p>
-                    
                     <div class="card-accordions">
                         <details class="card-acc">
                             <summary>Who We Help (Eligibility) <i class="fa-solid fa-chevron-down"></i></summary>
@@ -319,12 +311,9 @@
                             </div>
                         </details>
                     </div>
-                    
-                    <!-- Unified Action Button -->
+                    <!-- Form Link Button -->
                     <div class="card-btn-tray">
-                        <button class="btn-action" onclick="openStartModal('Passport Assistance')">
-                            Start Here
-                        </button>
+                        <a href="register.html" class="btn-action">Begin Secure Registration</a>
                     </div>
                 </div>
             </div>
@@ -337,7 +326,6 @@
                 </div>
                 <div class="card-content">
                     <p class="card-desc">Secure sourcing and application management for official Birth, Marriage, and Death Certificates from the RGD.</p>
-                    
                     <div class="card-accordions">
                         <details class="card-acc">
                             <summary>Requirements <i class="fa-solid fa-chevron-down"></i></summary>
@@ -356,12 +344,9 @@
                             </div>
                         </details>
                     </div>
-                    
-                    <!-- Unified Action Button -->
+                    <!-- Form Link Button -->
                     <div class="card-btn-tray">
-                        <button class="btn-action" onclick="openStartModal('Vital Records')">
-                            Start Here
-                        </button>
+                        <a href="register.html" class="btn-action">Begin Secure Registration</a>
                     </div>
                 </div>
             </div>
@@ -374,7 +359,6 @@
                 </div>
                 <div class="card-content">
                     <p class="card-desc">Secure remote TRN application management. We handle form auditing, local agent submission, and ID delivery.</p>
-                    
                     <div class="card-accordions">
                         <details class="card-acc">
                             <summary>Requirements <i class="fa-solid fa-chevron-down"></i></summary>
@@ -391,12 +375,9 @@
                             </div>
                         </details>
                     </div>
-                    
-                    <!-- Unified Action Button -->
+                    <!-- Form Link Button -->
                     <div class="card-btn-tray">
-                        <button class="btn-action" onclick="openStartModal('TRN Registration')">
-                            Start Here
-                        </button>
+                        <a href="register.html" class="btn-action">Begin Secure Registration</a>
                     </div>
                 </div>
             </div>
@@ -409,7 +390,6 @@
                 </div>
                 <div class="card-content">
                     <p class="card-desc">Complete proxy management for paperless TAJ vehicle renewals, Police Records, and Driving Abstracts.</p>
-                    
                     <div class="card-accordions">
                         <details class="card-acc">
                             <summary>Process Overview <i class="fa-solid fa-chevron-down"></i></summary>
@@ -428,12 +408,9 @@
                             </div>
                         </details>
                     </div>
-                    
-                    <!-- Unified Action Button -->
+                    <!-- Form Link Button -->
                     <div class="card-btn-tray">
-                        <button class="btn-action" onclick="openStartModal('Clearances and Licensing')">
-                            Start Here
-                        </button>
+                        <a href="register.html" class="btn-action">Begin Secure Registration</a>
                     </div>
                 </div>
             </div>
@@ -442,215 +419,151 @@
     </div>
 </section>
 
-<!-- ONLINE SECURITY GUARANTEE (Protocol) -->
-<section class="security-section" id="security">
+<!-- LOCAL YARD CLIENTS CATCH-ALL -->
+<section class="catchall-section" style="background: var(--brand-drk); padding: 80px 0; color: #fff; text-align: center;">
+    <div class="wrap enter d1" style="max-width: 800px; margin: 0 auto;">
+        <h2 style="font-family: var(--serif); font-size: clamp(2rem, 4vw, 2.6rem); margin-bottom: 16px; font-weight: 400;">Don't see your service or based locally in Jamaica?</h2>
+        <p style="font-family: var(--sans); font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-bottom: 32px; line-height: 1.7;">
+            You don't have to navigate the bureaucracy or stand in long lines alone. Whether you are a local professional needing rapid document retrieval or someone with a unique administrative challenge, Docu-Hub is here to handle the legwork.
+        </p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <a href="https://calendar.app.google/mCXiJ2GLF15mLMV48" target="_blank" rel="noopener" class="btn-gold" style="padding: 16px 36px; border-radius: 4px;">Book A Consultation</a>
+            <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-gold" style="background: transparent; border: 1px solid var(--gold); color: var(--gold-lt);">Chat on WhatsApp</a>
+        </div>
+    </div>
+</section>
+
+<!-- COMBINED FAQ & YOUTUBE SPOTLIGHT -->
+<section class="faq-resource-section" id="faq-resources" style="padding: 100px 0; background: var(--ivory);">
+    <style>
+        .split-grid { display: grid; grid-template-columns: 1fr; gap: 56px; align-items: start; }
+        @media (min-width: 900px) { .split-grid { grid-template-columns: 1.3fr 1fr; gap: 80px; } }
+        .tight-faq { border-bottom: 1px solid rgba(0,0,0,0.1); }
+        .tight-faq summary { font-family: var(--sans); font-size: 1rem; font-weight: 500; color: var(--brand-drk); padding: 20px 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        .tight-faq summary::-webkit-details-marker { display: none; }
+        .tight-faq summary::after { content: '\002B'; font-size: 1.2rem; font-weight: 300; color: var(--gold); }
+        .tight-faq[open] summary::after { content: '\2212'; }
+        .tight-faq .faq-answer { padding-bottom: 24px; font-family: var(--sans); font-size: 0.9rem; line-height: 1.6; color: var(--text-mid); animation: fadeIn 0.4s ease; }
+    </style>
+
     <div class="wrap">
-        <div class="security-grid">
-            <div class="sec-text enter d1">
-                <i class="fa-solid fa-shield-check sec-icon"></i>
-                <h2 class="sec-title">Our Document Security Guarantee</h2>
-                <p class="sec-desc">When dealing with government identities, compliance is non-negotiable. We operate as your secure on-the-ground proxy in Jamaica.</p>
-                <a href="about.html" class="btn-gold" style="background: transparent; border: 1px solid var(--gold); margin-top: 16px;">About Us</a>
+        <div class="split-grid">
+            
+            <div class="faq-column enter d1">
+                <div style="margin-bottom: 32px;">
+                    <h2 style="font-family: var(--serif); font-size: 2.4rem; color: var(--brand-drk); margin-bottom: 8px;">Portal Help & FAQs</h2>
+                    <p style="font-family: var(--sans); color: var(--text-mid); font-size: 0.95rem;">Quick fixes for the most common Jamaican government portal errors.</p>
+                </div>
+
+                <div class="faq-container">
+                    <details class="tight-faq">
+                        <summary>Why is my overseas bank card saying "Transaction Failed"?</summary>
+                        <div class="faq-answer">
+                            <p>Overseas banks frequently flag the PICA portal's 3D Secure protocol as fraud and block it instantly to protect you.</p>
+                            <p style="margin-top: 8px;"><strong>The Fix:</strong> Begin registration with us. We will step in as your proxy and process the payment securely via local Jamaican channels.</p>
+                        </div>
+                    </details>
+
+                    <details class="tight-faq">
+                        <summary>My application draft is "locked" and won't let me pay.</summary>
+                        <div class="faq-answer">
+                            <p>If a payment fails, the system automatically locks your draft for 1 to 2 hours to prevent duplicate charges.</p>
+                            <p style="margin-top: 8px;"><strong>The Fix:</strong> Wait 2 hours, log back in, and try again. If it remains locked, we can execute a manual gateway rescue for you.</p>
+                        </div>
+                    </details>
+
+                    <details class="tight-faq">
+                        <summary>Can I renew a damaged, washed, or torn passport online?</summary>
+                        <div class="faq-answer">
+                            <p><strong>No.</strong> PICA strictly prohibits online renewals for damaged books because the agency must physically inspect and apply a cancellation stamp.</p>
+                            <p style="margin-top: 8px;"><strong>The Fix:</strong> You must submit a physical mail-in application. We coordinate this strict manual protocol safely from your location.</p>
+                        </div>
+                    </details>
+                </div>
             </div>
-            
-            <div class="sec-features enter d2">
-                <div class="sec-feature">
-                    <i class="fa-solid fa-lock"></i>
-                    <div>
-                        <h4>Absolute Confidentiality</h4>
-                        <p>Your personal data and vital records are handled with strict privacy protocols from discovery to delivery.</p>
-                    </div>
-                </div>
-                <div class="sec-feature">
-                    <i class="fa-solid fa-building-columns"></i>
-                    <div>
-                        <h4>Direct Agency Interface</h4>
-                        <p>We work directly with PICA, RGD, and TAJ to ensure your applications meet exact regulatory standards.</p>
-                    </div>
-                </div>
-                <div class="sec-feature">
-                    <i class="fa-solid fa-plane-departure"></i>
-                    <div>
-                        <h4>Protected Global Delivery</h4>
-                        <p>Completed documents are secured and dispatched via trusted global couriers directly to your door.</p>
-                    </div>
+
+            <div class="resource-column enter d2" style="position: sticky; top: 120px;">
+                <div style="background: var(--bg-light); padding: 40px 32px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 12px 30px rgba(0,0,0,0.02); text-align: left;">
+                    <span style="font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: #FF0000; font-weight: 600; display: block; margin-bottom: 12px;"><i class="fa-brands fa-youtube" style="margin-right: 4px;"></i> Docu-Hub on YouTube</span>
+                    <h3 style="font-family: var(--serif); font-size: 1.8rem; color: var(--brand-drk); font-weight: 500; margin-bottom: 12px; line-height: 1.1;">Prefer to watch?</h3>
+                    <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); margin-bottom: 24px; line-height: 1.6;">
+                        Join our community on YouTube where we break down Jamaican government portals, document requirements, and provide step-by-step visual guides to save you time.
+                    </p>
+                    <a href="https://www.youtube.com/@docu-hub" target="_blank" rel="noopener" class="btn-gold" style="padding: 14px 24px; width: 100%; text-align: center; justify-content: center; background: var(--brand-drk);">Watch & Subscribe</a>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-
-<section class="faq-section" id="faq">
-    <div class="wrap">
-        <div class="section-header enter d1">
-            <h2>Portal Help & FAQs</h2>
-            <p style="font-family: var(--sans); color: var(--text-mid); margin-top: 16px;">Direct answers to the most common Jamaican government portal errors and our operational workflow.</p>
-        </div>
-
-        <div class="faq-container enter d2">
-            
-            <details class="faq-item">
-                <summary>What is the exact process when I hire Docu-Hub, and what will you need from me?</summary>
-                <div class="faq-answer">
-                    <p>Because we handle highly sensitive government records, Docu-Hub operates under a strict, secure workflow to protect your identity and ensure your application is processed without delays. Here is what you can expect when you work with us:</p>
-                    <ol style="margin-top: 16px; margin-left: 20px; font-family: var(--sans); font-size: 0.95rem; line-height: 1.6; color: var(--text-mid);">
-                        <li style="margin-bottom: 12px;"><strong>The Gateway (Your Authorization):</strong> Once we confirm your requested service is doable, we will send you our standard <em>Letter of Authorization</em>. By Jamaican law, we cannot act as your proxy or open your case file until you return this form signed, along with a clear photo of your valid Government-Issued Photo ID.</li>
-                        <li style="margin-bottom: 12px;"><strong>Quality Assurance Audit:</strong> Before we ever send you an invoice, we manually review your signed authorization and application documents. We never charge you until we are 100% sure your file is complete and ready for the government portal.</li>
-                        <li style="margin-bottom: 12px;"><strong>Invoicing & Agency Execution:</strong> Once your file passes our audit, we issue your invoice. As soon as your secure bank transfer clears, your file becomes active. Our team physically transports your documents via our secure highway corridor directly to the agency (PICA, RGD, or TAJ).</li>
-                        <li style="margin-bottom: 12px;"><strong>Secure Global Delivery:</strong> When the agency releases your finished passport or civil certificate, we collect it and immediately seal it in a secure DHL tracking envelope, completely bypassing the local public mail system.</li>
-                        <li><strong>The 7-Day Security Purge:</strong> Exactly seven (7) days after DHL confirms your package has been delivered to your door, we execute a permanent cryptographic purge of your digital file. Your biometric ID scans and application drafts are completely erased from our local systems to guarantee your data privacy.</li>
-                    </ol>
-                </div>
-            </details>
-            
-            <details class="faq-item">
-                <summary>Why is my US/UK bank card saying "Transaction Failed" on the PICA portal?</summary>
-                <div class="faq-answer">
-                    <p>This is the #1 error for the diaspora. The PICA payment gateway uses a specific regional security protocol called 3D Secure. Overseas banks flag this as a foreign fraud attempt and block it instantly to protect you.</p>
-                    <p style="margin-top: 12px;"><strong>The Fix:</strong> Book an appointment with us. Docu-Hub can step in as your proxy and process the transaction securely via local Jamaican banking channels.</p>
-                </div>
-            </details>
-
-            <details class="faq-item">
-                <summary>My PICA passport application is "locked" as a draft and won't let me pay. What do I do?</summary>
-                <div class="faq-answer">
-                    <p>If your internet drops, or a payment fails, the PICA portal automatically "locks" your draft to prevent duplicate charges. The system typically holds this lock for 1 to 2 hours before releasing it.</p>
-                    <p style="margin-top: 12px;"><strong>The Fix:</strong> Wait 2 hours, log back in, and try again. If it remains permanently locked, schedule an intake call and we can assist in clearing the cache and executing a gateway rescue.</p>
-                </div>
-            </details>
-
-            <details class="faq-item">
-                <summary>Can I renew a damaged, washed, or torn passport online?</summary>
-                <div class="faq-answer">
-                    <p><strong>Absolutely not.</strong> PICA strictly prohibits online renewals for damaged passports because the agency must physically inspect and apply an official cancellation stamp to the ruined book.</p>
-                    <p style="margin-top: 12px;"><strong>The Fix:</strong> You must submit a manual mail-in application. Book a spot on our calendar to safely coordinate this secure physical processing from your location.</p>
-                </div>
-            </details>
-
-            <details class="faq-item">
-                <summary>Why is the RGD portal asking for a "Birth Entry Number" I don't have?</summary>
-                <div class="faq-answer">
-                    <p>The digital RGD portal requires the alpha-numeric Birth Entry Number to instantly query the database. If you leave this blank, the system forces an expensive and delayed manual paper search.</p>
-                    <p style="margin-top: 12px;"><strong>The Fix:</strong> Docu-Hub can act as your proxy to conduct this search locally and securely pull your records without you paying international portal premiums.</p>
-                </div>
-            </details>
 
         </div>
     </div>
 </section>
 
-<!-- RESOURCE HUB TEASER -->
-<section class="resource-section" id="resources" style="padding: 80px 0; background: var(--ivory);">
-    <div class="wrap">
-        <div class="enter d1" style="text-align: center; max-width: 700px; margin: 0 auto; background: var(--bg-light); padding: 50px 30px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 12px 30px rgba(0,0,0,0.02);">
-            
-            <span style="font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 12px;">Docu-Hub Resource Library</span>
-            
-            <h2 style="font-family: var(--serif); font-size: clamp(2rem, 4vw, 2.6rem); color: var(--brand-drk); font-weight: 400; margin-bottom: 16px;">Audio Guides & Checklists</h2>
-            
-            <p style="font-family: var(--sans); font-size: 1.05rem; color: var(--text-mid); margin-bottom: 32px; line-height: 1.6;">
-                Don't guess with government compliance. Access our full library of interactive step-by-step checklists, portal troubleshooting guides, and deep-dive audio masterclasses.
-            </p>
-            
-            <a href="resource.html" class="btn-gold" style="text-decoration: none;">Access The Resource Hub</a>
-            
-        </div>
-    </div>
-</section>
+<!-- DEDICATED FOOTER STYLES -->
+<style>
+    .f-cta-row { display: flex; flex-direction: column; gap: 20px; text-align: center; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 30px; margin-bottom: 30px; }
+    .f-links-grid { display: grid; grid-template-columns: 1fr; gap: 40px; margin-bottom: 30px; text-align: center; }
+    .f-legal-row { display: flex; flex-direction: column; gap: 16px; align-items: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; }
 
-<footer class="site-footer">
-    <div class="wrap footer-grid">
+    @media (min-width: 900px) {
+        .f-cta-row { flex-direction: row; justify-content: space-between; text-align: left; }
+        .f-links-grid { grid-template-columns: 2fr 1fr 1fr; text-align: left; }
+        .f-legal-row { flex-direction: row; justify-content: space-between; align-items: flex-end; text-align: left; }
+    }
+</style>
+
+<footer class="site-footer" style="background: #111; color: #fff; padding: 40px 0 20px;">
+    
+    <div class="wrap f-cta-row">
+        <h2 style="font-family: var(--serif); font-size: 2.2rem; color: #fff; margin: 0; line-height: 1;">Ready to Start?</h2>
+        <!-- Form Link Button -->
+        <a href="register.html" class="btn-gold" style="font-size: 0.95rem; padding: 14px 40px; border-radius: 4px; white-space: nowrap;">Begin Secure Registration</a>
+    </div>
+
+    <div class="wrap f-links-grid">
         <div>
-            <span class="f-logo">Docu-Hub <em>Operations Services</em></span>
-            <p style="font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 300px;">Providing highly secure, on-the-ground document processing, records retrieval, and compliance for the Jamaican diaspora.</p>
+            <span class="f-logo" style="margin-bottom: 12px; display: block; font-family: var(--serif); font-size: 1.5rem; letter-spacing: 0.05em;">Docu-Hub <em style="color: var(--gold); font-style: normal;">Operations Services</em></span>
+            <p style="font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 350px;">Providing highly secure, on-the-ground document processing, records retrieval, and compliance for the Jamaican diaspora.</p>
         </div>
         <div>
-            <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt);">QUICK LINKS</h4>
-            <ul style="list-style: none; display: grid; gap: 8px;">
+            <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt); letter-spacing: 0.05em;">QUICK LINKS</h4>
+            <ul style="list-style: none; display: grid; gap: 10px; padding: 0;">
                 <li><a href="#services" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">All Proxy Services</a></li>
-                <li><a href="#faq" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Portal Troubleshooting</a></li>
+                <li><a href="#faq-resources" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Portal Troubleshooting</a></li>
                 <li><a href="resource.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Checklists & Guides</a></li>
                 <li><a href="about.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">About Docu-Hub</a></li>
             </ul>
         </div>
         <div>
-            <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt);">SECURE CONTACT</h4>
-            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px;"><i class="fa-regular fa-calendar-check" style="color: var(--gold); margin-right: 8px;"></i> <a href="https://calendar.app.google/mCXiJ2GLF15mLMV48" target="_blank" rel="noopener">Book Consultation</a></p>
-            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px;"><i class="fa-regular fa-envelope" style="color: var(--gold); margin-right: 8px;"></i> <a href="mailto:admin@dhubservices.com">admin@dhubservices.com</a></p>
+            <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt); letter-spacing: 0.05em;">SECURE CONTACT</h4>
+            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 10px;"><i class="fa-regular fa-calendar-check" style="color: var(--gold); margin-right: 8px;"></i> <a href="https://calendar.app.google/mCXiJ2GLF15mLMV48" target="_blank" rel="noopener">Book Consultation</a></p>
+            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 10px;"><i class="fa-regular fa-envelope" style="color: var(--gold); margin-right: 8px;"></i> <a href="mailto:admin@dhubservices.com">admin@dhubservices.com</a></p>
             <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 8px;"></i> Linstead, Jamaica</p>
         </div>
     </div>
-    <div class="wrap" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; margin-top: 24px;">
-        <p style="font-family: var(--sans); font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-bottom: 4px;">Registered Jamaican Business Entity: # 15602/2025</p>
-        <p style="font-family: var(--sans); font-size: 0.75rem; color: var(--gold-lt); margin-bottom: 12px; letter-spacing: 0.03em;">OIC Data Controller Status: Application Initiated & Account Verified (Dec 2025)</p>
+
+    <div class="wrap f-legal-row">
+        <div style="font-family: var(--sans); font-size: 0.75rem; color: rgba(255,255,255,0.6);">
+            <p style="margin-bottom: 6px;">Registered Business Entity: #15602/2025 <span style="margin: 0 8px; color: var(--gold-lt); display: inline-block;">|</span> OIC Data Controller Verified (Dec 2025)</p>
+            <p style="color: rgba(255,255,255,0.4);">&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
+        </div>
         
-        <!-- Legal Compliance Links -->
-        <p style="font-family: var(--sans); font-size: 0.75rem; margin-bottom: 12px;">
-            <a href="privacy.html" style="color: rgba(255,255,255,0.5); text-decoration: none; margin-right: 16px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 2px; transition: 0.3s;">Privacy Policy</a>
-            <a href="legal-notice.html" style="color: rgba(255,255,255,0.5); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 2px; transition: 0.3s;">Terms & Legal Notice</a>
-        </p>
-        
-        <p style="font-family: var(--sans); font-size: 0.7rem; color: rgba(255,255,255,0.4);">&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
+        <div style="font-family: var(--sans); font-size: 0.75rem;">
+            <a href="privacy.html" style="color: rgba(255,255,255,0.5); text-decoration: none; margin-right: 16px; transition: 0.3s;">Privacy Policy</a>
+            <a href="legal-notice.html" style="color: rgba(255,255,255,0.5); text-decoration: none; transition: 0.3s;">Terms & Legal Notice</a>
+        </div>
     </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════
-     THE CONTACT OVERLAY MODAL
-═══════════════════════════════════════════ -->
-<div id="startModal" class="modal-overlay">
-    <div class="modal-box">
-        <button class="modal-close" onclick="closeStartModal()"><i class="fa-solid fa-xmark"></i></button>
-        <h3 class="modal-title">Start Your Service</h3>
-        <p class="modal-desc">How would you like to connect with our concierge team today?</p>
-        
-        <div class="modal-options">
-            <a href="https://calendar.app.google/mCXiJ2GLF15mLMV48" target="_blank" rel="noopener" class="modal-opt-btn book-call">
-                <i class="fa-regular fa-calendar-check"></i> Schedule a Call
-            </a>
-            
-            <a href="#" id="dynamicWaLink" target="_blank" rel="noopener" class="modal-opt-btn msg-wa">
-                <i class="fa-brands fa-whatsapp"></i> Message on WhatsApp
-            </a>
-        </div>
-    </div>
-</div>
-
 <script>
-// Fade-in effect observer
 const io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.05 });
 document.querySelectorAll('.enter').forEach(el => io.observe(el));
 
-// Sticky Navigation
 const nav = document.getElementById('sitenav'); 
 window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
 
-// Mobile Menu Toggle
 const hbg = document.getElementById('hbg');
 const navBar = document.getElementById('sitenav');
 hbg.addEventListener('click', () => { navBar.classList.toggle('open'); });
 document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { navBar.classList.remove('open'); }); });
-
-// Modal Logic
-function openStartModal(serviceName) {
-    // Dynamically update the WhatsApp link so it mentions the specific service they clicked
-    const waMessage = `Hi Laura, I just saw your ${serviceName} service on Docu-Hub and I need urgent help.`;
-    const waUrl = `https://wa.me/18765612614?text=${encodeURIComponent(waMessage)}`;
-    document.getElementById('dynamicWaLink').href = waUrl;
-    
-    // Open the modal
-    document.getElementById('startModal').classList.add('active');
-}
-
-function closeStartModal() {
-    document.getElementById('startModal').classList.remove('active');
-}
-
-// Close modal if clicking outside the box
-document.getElementById('startModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-        closeStartModal();
-    }
-});
 </script>
 </body>
 </html>
