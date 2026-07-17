@@ -164,7 +164,7 @@
     
     .minimal-card-content { padding: 0 24px 24px; animation: fadeIn 0.4s ease; border-top: 1px solid rgba(0,0,0,0.05); margin-top: 16px; padding-top: 24px; }
 
-    /* ═══════════════════════════════════════════
+   /* ═══════════════════════════════════════════
        WIDESCREEN DESKTOP OVERRIDE GRID
      ═══════════════════════════════════════════ */
     @media (min-width: 900px) {
@@ -176,7 +176,9 @@
         .mobile-only { display: none; }
         
         .process-desktop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-bottom: 48px; }
-        .cards-grid { grid-template-columns: repeat(4, 1fr); gap: 32px; max-width: var(--max-w); margin: 0 auto; align-items: start; }
+        
+        /* UPDATED: Beautiful 2x2 Grid to completely eliminate jumping */
+        .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 48px; max-width: 1000px; margin: 0 auto; align-items: start; }
         
         /* Desktop side-by-side Premium Card */
         .featured-card summary { flex-direction: row; }
@@ -304,9 +306,9 @@
                     <div class="featured-text-wrap">
                         <span style="font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 8px;">Premium Flagship Service</span>
                         <h3 style="font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk); font-weight: 500; line-height: 1.1; margin-bottom: 12px;">Citizenship by Descent</h3>
-                       <p style="font-family: var(--sans); font-size: 1rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px;">
-    Reconnect with your roots and experience the true freedom of the island. Securing your Jamaican citizenship is your gateway to an official passport—granting you the unlimited right to live, work, and relax on our beautiful, warm shores without restriction. We handle the entire complex process securely from the ground.
-</p>
+                        <p style="font-family: var(--sans); font-size: 1rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px;">
+                            Reconnect with your roots and experience the true freedom of the island. Securing your Jamaican citizenship is your gateway to an official passport—granting you the unlimited right to live, work, and relax on our beautiful, warm shores without restriction. We handle the entire complex process securely from the ground.
+                        </p>
                         <div class="learn-more-text" style="font-family: var(--sans); font-size: 0.85rem; font-weight: 600; color: var(--brand-mid); text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; gap: 8px; margin-top: auto;">
                             Learn More & View Pricing <i class="fa-solid fa-chevron-down"></i>
                         </div>
@@ -318,7 +320,7 @@
                         <div style="background: var(--bg-light); padding: 24px; border-radius: 8px; text-align: center; border: 1px solid rgba(0,0,0,0.05); flex: 1; min-width: 200px;">
                             <span style="font-family: var(--sans); font-size: 0.8rem; color: var(--text-mid); text-transform: uppercase; letter-spacing: 0.1em;">Base Proxy Fee</span>
                             <div style="font-family: var(--serif); font-size: 2.5rem; color: var(--brand-drk); font-weight: 500; margin: 4px 0;">$295<span style="font-size: 1rem; font-family: var(--sans); color: var(--text-mid);"> USD</span></div>
-                            <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--text-mid);">*Excludes government fees</span>
+                            <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--text-mid); font-style: italic;">*Excludes government fees</span>
                         </div>
                         
                         <div style="flex: 2; min-width: 250px; display: grid; gap: 16px;">
@@ -343,11 +345,11 @@
 
         <!-- TARGETED SOLUTIONS HEADER -->
         <div class="enter d1" style="text-align: center; margin: 72px 0 48px; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 56px;">
-            <span style="font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 8px;">Targeted Solutions</span>
-            <h3 style="font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk); font-weight: 400; margin: 0;">Explore Standard Services</h3>
+            <span style="font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 8px;">Overseas & Diaspora Clients</span>
+            <h3 style="font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk); font-weight: 400; margin: 0;">Explore Remote Services</h3>
         </div>
 
-        <!-- 4-CARD EXPANDABLE GRID -->
+       <!-- 4-CARD EXPANDABLE GRID -->
         <div class="cards-grid">
             
             <!-- Card 1: Passport -->
@@ -359,21 +361,30 @@
                     <h3 class="card-question">Need help renewing a Jamaican passport?</h3>
                 </summary>
                 <div class="minimal-card-content">
-                    <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px;">Guidance for online renewals, payment gateway rescues, and secure manual processing for damaged documents.</p>
+                    <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px;">Clear guidance and on-the-ground help for online renewals, fixing payment errors, and hand-delivering physical applications.</p>
                     
-                    <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">Eligibility</span>
-                    <ul style="font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; list-style-type: none; padding-left: 0; margin-bottom: 16px;">
-                        <li><strong>👤 Adults:</strong> Digital renewals & rescues.</li>
-                        <li><strong>👨‍👩‍👧 Minors/Name Changes:</strong> Manual proxy.</li>
-                        <li><strong>⚠️ Damaged Books:</strong> Physical compliance proxy.</li>
-                    </ul>
+                    <div style="margin-bottom: 20px;">
+                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">What We Can Handle</span>
+                        <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 8px;">
+                            <div><strong>Adults:</strong> Standard online renewals and fixing stuck online payments.</div>
+                            <div><strong>Minors & Name Changes:</strong> We physically take your printed application into the passport office.</div>
+                            <div><strong>Damaged Books:</strong> In-person handling, since the government must physically inspect damaged passports.</div>
+                        </div>
+                    </div>
                     
-                    <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">Pricing Packages</span>
-                    <ul style="font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; list-style-type: none; padding-left: 0; margin-bottom: 24px;">
-                        <li><strong>💻 Portal Rescue: $115 USD</strong></li>
-                        <li><strong>🏛️ Standard Proxy: $145 USD</strong></li>
-                        <li><strong>🚨 Penalty Proxy: $185 USD</strong></li>
-                    </ul>
+                    <div style="margin-bottom: 20px;">
+                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">Pricing Packages</span>
+                        <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 12px;">
+                            <div><strong>Fix Online Application Errors: $115 USD</strong><br>If your overseas card was blocked or your application is locked, we take over and finish the payment securely from Jamaica.</div>
+                            <div><strong>Standard In-Person Submission: $145 USD</strong><br>We act as your representative to physically hand-deliver your application to the passport office.</div>
+                            <div><strong>Lost or Damaged Passports: $185 USD</strong><br>Specialized in-person handling for complicated cases or passports that require government penalty fees.</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 24px; padding: 12px 16px; background: rgba(193, 154, 91, 0.08); border-left: 3px solid var(--gold); border-radius: 4px;">
+                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Government Fees</span>
+                        <span style="font-family: var(--sans); font-size: 0.85rem; color: var(--brand-drk); font-weight: 500;">*Your only additional cost is the official PICA agency fee.</span>
+                    </div>
                     
                     <a href="register.html" class="btn-action">Begin Secure Registration</a>
                 </div>
@@ -388,19 +399,28 @@
                     <h3 class="card-question">Looking for official birth, marriage, or death certificates?</h3>
                 </summary>
                 <div class="minimal-card-content">
-                    <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px;">Secure sourcing and application management for official Birth, Marriage, and Death Certificates from the RGD.</p>
+                    <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px;">We locate your records, handle the application, and retrieve your official printed certificates from the RGD.</p>
                     
-                    <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">Service Overview</span>
-                    <ul style="font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; list-style-type: none; padding-left: 0; margin-bottom: 16px;">
-                        <li><strong>📜 Standard Records:</strong> Birth, Marriage, and Death.</li>
-                        <li><strong>🔎 Deep Searches:</strong> Outtamany registry lineage retrieval.</li>
-                    </ul>
+                    <div style="margin-bottom: 20px;">
+                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">What We Can Handle</span>
+                        <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 8px;">
+                            <div><strong>Standard Records:</strong> Certified copies of Birth, Marriage, and Death certificates.</div>
+                            <div><strong>Ancestry & Lineage:</strong> Physical searches at the registry for older, missing family records.</div>
+                        </div>
+                    </div>
 
-                    <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">Pricing Packages</span>
-                    <ul style="font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; list-style-type: none; padding-left: 0; margin-bottom: 24px;">
-                        <li><strong>💻 Digital Search: $85 USD</strong></li>
-                        <li><strong>🏛️ Physical Search: $150 USD</strong></li>
-                    </ul>
+                    <div style="margin-bottom: 20px;">
+                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">Pricing Packages</span>
+                        <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 12px;">
+                            <div><strong>Standard Online Application: $85 USD</strong><br>We process your application through the RGD system and retrieve the official printed certificates.</div>
+                            <div><strong>Deep Registry Search: $150 USD</strong><br>Manual, on-the-ground searches through the archives to locate hard-to-find family records and deliver the copies.</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 24px; padding: 12px 16px; background: rgba(193, 154, 91, 0.08); border-left: 3px solid var(--gold); border-radius: 4px;">
+                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Government Fees</span>
+                        <span style="font-family: var(--sans); font-size: 0.85rem; color: var(--brand-drk); font-weight: 500;">*Your only additional cost is the official RGD certificate fee.</span>
+                    </div>
                     
                     <a href="register.html" class="btn-action">Begin Secure Registration</a>
                 </div>
@@ -415,18 +435,27 @@
                     <h3 class="card-question">Applying for a TRN or tax registration from overseas?</h3>
                 </summary>
                 <div class="minimal-card-content">
-                    <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px;">Secure remote TRN application management. We handle form auditing, local agent submission, and ID delivery.</p>
+                    <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px;">We review your paperwork, walk it into the local tax office, and ensure your physical ID is processed and delivered.</p>
                     
-                    <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">Service Overview</span>
-                    <ul style="font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; list-style-type: none; padding-left: 0; margin-bottom: 16px;">
-                        <li><strong>🆔 Personal TRN:</strong> Remote applications and renewals.</li>
-                        <li><strong>🏢 Tax Registration:</strong> Local agent submission for filings.</li>
-                    </ul>
+                    <div style="margin-bottom: 20px;">
+                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">What We Can Handle</span>
+                        <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 8px;">
+                            <div><strong>Personal TRN:</strong> Remote applications and renewals for individuals living overseas.</div>
+                            <div><strong>Business Registration:</strong> We physically submit the tax paperwork for your business or entity.</div>
+                        </div>
+                    </div>
 
-                    <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">Pricing Package</span>
-                    <ul style="font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; list-style-type: none; padding-left: 0; margin-bottom: 24px;">
-                        <li><strong>🏛️ Proxy Service: $95 USD</strong><br>Includes form auditing, submission, and handling.</li>
-                    </ul>
+                    <div style="margin-bottom: 20px;">
+                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">Pricing Package</span>
+                        <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 12px;">
+                            <div><strong>Complete Application Processing: $95 USD</strong><br>We manage the entire process—from checking your forms to walking them into the tax office—ensuring your physical TRN card is delivered to you.</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 24px; padding: 12px 16px; background: rgba(193, 154, 91, 0.08); border-left: 3px solid var(--gold); border-radius: 4px;">
+                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Government Fees</span>
+                        <span style="font-family: var(--sans); font-size: 0.85rem; color: var(--brand-drk); font-weight: 500;">*Your only additional cost is the official TAJ processing fee (if applicable).</span>
+                    </div>
                     
                     <a href="register.html" class="btn-action">Begin Secure Registration</a>
                 </div>
@@ -441,19 +470,28 @@
                     <h3 class="card-question">Require a police record, driving abstract, or vehicle clearance?</h3>
                 </summary>
                 <div class="minimal-card-content">
-                    <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px;">Complete proxy management for paperless TAJ vehicle renewals, Police Records, and Driving Abstracts.</p>
+                    <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px;">We handle the local legwork for background checks, driving records, and tax office vehicle renewals.</p>
                     
-                    <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">Service Overview</span>
-                    <ul style="font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; list-style-type: none; padding-left: 0; margin-bottom: 16px;">
-                        <li><strong>🚔 Legal:</strong> Police Records and Driving Abstracts.</li>
-                        <li><strong>🚗 Vehicles:</strong> eMVRC ticket clearing and tax office renewals.</li>
-                    </ul>
+                    <div style="margin-bottom: 20px;">
+                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">What We Can Handle</span>
+                        <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 8px;">
+                            <div><strong>Legal Documents:</strong> Background checks and official driving records (abstracts).</div>
+                            <div><strong>Vehicles:</strong> Clearing traffic tickets and renewing vehicle registration at the tax office.</div>
+                        </div>
+                    </div>
 
-                    <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">Pricing Packages</span>
-                    <ul style="font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; list-style-type: none; padding-left: 0; margin-bottom: 24px;">
-                        <li><strong>🚔 Driving Abstracts / Police Records: $140 USD</strong></li>
-                        <li><strong>🚗 Vehicle (eMVRC): $35 USD</strong></li>
-                    </ul>
+                    <div style="margin-bottom: 20px;">
+                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">Pricing Packages</span>
+                        <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 12px;">
+                            <div><strong>Police & Driving Records: $140 USD</strong><br>We physically go to the necessary offices to apply for, retrieve, and mail your official driving abstract or police record.</div>
+                            <div><strong>Vehicle Renewals: $35 USD</strong><br>We handle your tax office vehicle renewals and ticket clearing, securing your updated physical documents.</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 24px; padding: 12px 16px; background: rgba(193, 154, 91, 0.08); border-left: 3px solid var(--gold); border-radius: 4px;">
+                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Government Fees</span>
+                        <span style="font-family: var(--sans); font-size: 0.85rem; color: var(--brand-drk); font-weight: 500;">*Your only additional cost is the official station, medical, or TAJ agency fee.</span>
+                    </div>
                     
                     <a href="register.html" class="btn-action">Begin Secure Registration</a>
                 </div>
@@ -598,16 +636,40 @@
 </footer>
 
 <script>
+// 1. Animation Observer (Handles the fade-in effect as you scroll)
 const io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.05 });
 document.querySelectorAll('.enter').forEach(el => io.observe(el));
 
+// 2. Navigation Scroll Effect (Makes the header background darken when scrolling)
 const nav = document.getElementById('sitenav'); 
 window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
 
+// 3. Mobile Hamburger Menu Toggle
 const hbg = document.getElementById('hbg');
 const navBar = document.getElementById('sitenav');
 hbg.addEventListener('click', () => { navBar.classList.toggle('open'); });
 document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { navBar.classList.remove('open'); }); });
+
+// 4. Accordion Effect + Smooth Scroll for Service Cards
+const serviceCards = document.querySelectorAll('.minimal-card');
+serviceCards.forEach(card => {
+    card.addEventListener('toggle', () => {
+        if (card.open) {
+            // Closes all other open cards instantly
+            serviceCards.forEach(otherCard => {
+                if (otherCard !== card) {
+                    otherCard.removeAttribute('open');
+                }
+            });
+            
+            // Delays for a split second to let the browser adjust, then glides smoothly to the card
+            setTimeout(() => {
+                const y = card.getBoundingClientRect().top + window.scrollY - 120;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }, 60);
+        }
+    });
+});
 </script>
 </body>
 </html>
