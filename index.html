@@ -29,7 +29,7 @@
        DESIGN TOKENS (Institutional Style)
      ═══════════════════════════════════════════ */
    :root {
-    --bg-light:   #EAECE9;
+        --bg-light:   #EAECE9;
         --ivory:      #FFFFFF;
         
         --brand-drk:  #1E2B1D; 
@@ -62,6 +62,12 @@
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
     .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    /* ═══════════════════════════════════════════
+       RESPONSIVE TOGGLE CLASSES (Mobile Smart)
+     ═══════════════════════════════════════════ */
+    .desktop-only { display: none; }
+    .mobile-only { display: block; }
 
     /* ═══════════════════════════════════════════
        NAV
@@ -151,6 +157,12 @@
         .nav-links { display: flex !important; flex-direction: row; position: static; background: transparent; padding: 0; box-shadow: none; border: none; }
         .nav-links a { font-size: 0.75rem; padding: 8px 16px; }
         .cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; max-width: var(--max-w); margin: 0 auto; align-items: start; }
+        
+        /* Desktop visibility overrides */
+        .desktop-only { display: block; }
+        .mobile-only { display: none; }
+        .process-desktop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-bottom: 48px; }
+        .addons-desktop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 24px; }
     }
     </style>
 </head>
@@ -191,7 +203,31 @@
             <p style="font-family: var(--sans); font-size: 1.05rem; color: var(--text-mid); margin-top: 16px; line-height: 1.6;">When dealing with government identities, compliance is non-negotiable. We have designed a completely hands-off, highly secure workflow to protect your data from discovery to delivery.</p>
         </div>
         
-        <div class="process-grid enter d2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-bottom: 48px;">
+        <!-- MOBILE PROCESS ACCORDION (Hidden on Desktop) -->
+        <div class="mobile-only enter d2" style="margin-bottom: 32px;">
+            <div style="background: var(--bg-light); border-radius: 8px; padding: 0 20px;">
+                <details class="card-acc">
+                    <summary style="padding: 20px 0;">View Our 3-Step Process <i class="fa-solid fa-chevron-down"></i></summary>
+                    <div class="card-acc-content" style="border-top: 1px solid rgba(0,0,0,0.05); padding-top: 20px;">
+                        <div style="margin-bottom: 24px;">
+                            <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Step 01 &mdash; Secure Registration</span>
+                            <p style="font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); line-height: 1.5;">Select your service via our encrypted portal. Your personal data and vital records are handled with absolute confidentiality.</p>
+                        </div>
+                        <div style="margin-bottom: 24px;">
+                            <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Step 02 &mdash; Direct Processing</span>
+                            <p style="font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); line-height: 1.5;">Our local team works directly with PICA, RGD, and TAJ to handle the manual legwork and ensure exact regulatory compliance.</p>
+                        </div>
+                        <div style="margin-bottom: 8px;">
+                            <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Step 03 &mdash; Protected Dispatch</span>
+                            <p style="font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); line-height: 1.5;">Once finalized, your official documents are strictly secured and dispatched via trusted global couriers directly to your door.</p>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- DESKTOP PROCESS GRID (Hidden on Mobile) -->
+        <div class="desktop-only process-desktop-grid enter d2">
             <!-- Step 1 -->
             <div style="border-top: 2px solid var(--gold); padding-top: 24px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
@@ -224,8 +260,8 @@
         </div>
 
         <div class="enter d3" style="text-align: center;">
-    <a href="about.html" class="btn-gold" style="background: var(--brand-mid); color: #fff; border: none; padding: 16px 48px; box-shadow: 0 8px 24px rgba(0,0,0,0.1);">Learn More About Our Team</a>
-</div>
+            <a href="about.html" class="btn-gold" style="background: var(--brand-mid); color: #fff; border: none; padding: 16px 48px; box-shadow: 0 8px 24px rgba(0,0,0,0.1);">Learn More About Our Team</a>
+        </div>
 
     </div>
 </section>
@@ -256,7 +292,25 @@
                     </div>
                 </div>
 
-                <div style="border-top: 1px solid rgba(0,0,0,0.08); padding-top: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
+                <!-- MOBILE ADD-ONS ACCORDION (Hidden on Desktop) -->
+                <div class="mobile-only" style="border-top: 1px solid rgba(0,0,0,0.08); margin-top: 16px; padding-top: 8px;">
+                    <details class="card-acc">
+                        <summary>View Optional Add-Ons <i class="fa-solid fa-chevron-down"></i></summary>
+                        <div class="card-acc-content">
+                            <div style="margin-bottom: 16px;">
+                                <strong style="font-family: var(--sans); font-size: 0.95rem; color: var(--brand-drk); display: block; margin-bottom: 4px;"><i class="fa-solid fa-magnifying-glass" style="color: var(--gold); margin-right: 6px;"></i> RGD Lineage Retrieval</strong>
+                                <p style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.5;">Missing your grandparent's birth certificate? We will run the local Outtamany registry search and secure the physical documents required before filing.</p>
+                            </div>
+                            <div style="margin-bottom: 8px;">
+                                <strong style="font-family: var(--sans); font-size: 0.95rem; color: var(--brand-drk); display: block; margin-bottom: 4px;"><i class="fa-regular fa-calendar-check" style="color: var(--gold); margin-right: 6px;"></i> Consulate Passport Booking</strong>
+                                <p style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.5;">Once you receive your Citizenship, we will audit your first-time passport form and secure your mandatory biometric appointment at your local overseas Consulate.</p>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- DESKTOP ADD-ONS GRID (Hidden on Mobile) -->
+                <div class="desktop-only addons-desktop-grid">
                     <div>
                         <h4 style="font-family: var(--sans); font-size: 0.9rem; color: var(--brand-drk); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;"><i class="fa-solid fa-magnifying-glass" style="color: var(--gold); margin-right: 6px;"></i> Optional Add-On 1</h4>
                         <strong style="font-family: var(--sans); font-size: 1rem; color: var(--brand-drk); display: block; margin-bottom: 4px;">RGD Lineage Retrieval</strong>
