@@ -50,7 +50,7 @@
 
         /* Centered Minimalist Container */
         .form-wrapper { 
-            max-width: 650px; /* Narrower container for a sleek, focused look */
+            max-width: 650px; 
             margin: 60px auto 100px; 
             padding: 0 20px; 
             text-align: center; 
@@ -68,24 +68,35 @@
         .portal-header h1 { font-family: var(--serif); font-size: 2.8rem; color: var(--brand-drk); margin-top: 0; margin-bottom: 12px; line-height: 1.1; }
         .portal-header p { font-family: var(--sans); color: #555; font-size: 1.1rem; max-width: 500px; margin: 0 auto; line-height: 1.6; }
         
-        /* Vault Frame around the Google Form */
-        .embed-container { 
+        /* The New Launch Box (Replacing the broken iFrame) */
+        .launch-box { 
             background: #fff; 
             border-radius: 12px; 
             box-shadow: 0 24px 48px rgba(30,43,29,0.08), 0 4px 12px rgba(0,0,0,0.04); 
-            overflow: hidden; 
             border: 1px solid rgba(30,43,29,0.1); 
             border-top: 8px solid var(--brand-drk);
+            padding: 48px 24px;
+            margin-bottom: 24px; 
             position: relative;
-            margin-bottom: 24px; /* Space between form and security pledge */
         }
         
         /* Gold Accent Line */
-        .embed-container::before {
+        .launch-box::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold);
         }
 
-        iframe { width: 100%; display: block; background: transparent; }
+        .launch-box i.main-icon { font-size: 3.5rem; color: var(--gold); margin-bottom: 20px; display: block; }
+        .launch-box h2 { font-family: var(--serif); font-size: 1.8rem; color: var(--brand-drk); margin: 0 0 12px 0; }
+        .launch-box p { font-family: var(--sans); font-size: 1rem; color: #555; line-height: 1.6; margin: 0 auto 32px auto; max-width: 450px; }
+        
+        .btn-launch { 
+            display: inline-flex; align-items: center; justify-content: center; gap: 12px; 
+            padding: 18px 36px; background: var(--gold); color: #fff; 
+            border-radius: 4px; font-family: var(--sans); font-size: 0.9rem; font-weight: 600; 
+            letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; 
+            transition: 0.3s; box-shadow: 0 4px 12px rgba(193, 154, 91, 0.3); width: 100%; max-width: 320px;
+        }
+        .btn-launch:hover { background: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(193, 154, 91, 0.4); }
 
         /* Security Pledge Box */
         .security-pledge {
@@ -93,7 +104,7 @@
             background: rgba(30,43,29,0.04); border: 1px solid rgba(30,43,29,0.08);
             padding: 20px; border-radius: 12px; text-align: left;
         }
-        .security-pledge i { font-size: 1.8rem; color: var(--gold); }
+        .security-pledge i { font-size: 1.8rem; color: var(--gold); flex-shrink: 0; }
         .security-pledge strong { display: block; color: var(--brand-drk); font-size: 1rem; margin-bottom: 4px; }
         .security-pledge p { margin: 0; color: #666; font-size: 0.85rem; line-height: 1.4; }
 
@@ -101,6 +112,7 @@
         @media (max-width: 600px) {
             .portal-nav { padding: 16px 20px; flex-direction: column; gap: 16px; }
             .portal-header h1 { font-size: 2.2rem; }
+            .launch-box { padding: 32px 20px; }
             .security-pledge { flex-direction: column; text-align: center; gap: 12px; }
         }
     </style>
@@ -108,7 +120,7 @@
 <body>
 
     <nav class="portal-nav">
-        <a href="index.html" class="nav-logo">Docu-Hub <em>Operations</em></a>
+        <a href="index.html" class="nav-logo-name">Docu-Hub <em>Operations</em></a>
         <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left" style="margin-right: 6px;"></i> Return</a>
     </nav>
 
@@ -118,20 +130,18 @@
                 <i class="fa-solid fa-lock"></i> Encrypted Intake Gateway
             </div>
             <h1>Initialize Your File</h1>
-            <p>Complete the secure intake form below to route your request and documents to the vetting desk.</p>
+            <p>Complete the secure intake form to route your request and documents to the vetting desk.</p>
         </div>
         
-        <div class="embed-container">
-            <!-- Adjusted height to your snug 400px fit -->
-            <iframe 
-                src="https://docs.google.com/forms/d/e/1FAIpQLSeeZdgthrriuwiMPUiNhu5eQnAWjxEtM-Ti6sMXqvZ_U6NHkw/viewform?embedded=true" 
-                width="100%" 
-                height="400" 
-                frameborder="0" 
-                marginheight="0" 
-                marginwidth="0">
-                Loading…
-            </iframe>
+        <!-- The New Direct Link Box -->
+        <div class="launch-box">
+            <i class="fa-solid fa-file-shield main-icon"></i>
+            <h2>Secure Form Portal</h2>
+            <p>To ensure your file uploads process perfectly without browser interruptions, our encrypted registration form will open safely in a new tab.</p>
+            
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeZdgthrriuwiMPUiNhu5eQnAWjxEtM-Ti6sMXqvZ_U6NHkw/viewform" target="_blank" rel="noopener" class="btn-launch">
+                Launch Secure Form <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
         </div>
 
         <div class="security-pledge">
