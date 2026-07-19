@@ -19,21 +19,16 @@
     :root {
         --bg-light:   #F9F9F8; 
         --ivory:      #FFFFFF;
-        
         --brand-drk:  #1E2B1D; 
         --brand-mid:  #3A4F38;
-        
         --gold:       #C19A5B; 
         --gold-lt:    #DAB87F;
-        
         --text-dark:  #111410; 
         --text-mid:   #4A4F48; 
-
         --serif:      'Playfair Display', Georgia, serif; 
         --sans:       'Jost', Arial, sans-serif; 
-
-        --nav-h: 75px;
-        --max-w: 1200px;
+        --nav-h:      75px;
+        --max-w:      1200px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -60,11 +55,9 @@
     .nav-logo-name { font-family: var(--serif); font-size: 1.4rem; color: #fff; letter-spacing: 0.05em; display: block; z-index: 950; }
     .nav-logo-name em { color: var(--gold-lt); font-style: normal; }
     
-    .nav-links { display: none; list-style: none; align-items: center; gap: 8px; }
+    .nav-links { display: none; list-style: none; align-items: center; gap: 16px; }
     .nav-links a { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 8px 16px; border-radius: 4px; }
     .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
-    .nav-btn { background: var(--gold)!important; color: #fff!important; font-weight: 500; }
-    .nav-btn:hover { background: var(--gold-lt)!important; }
 
     .hamburger { display: flex; flex-direction: column; gap: 6px; background: none; border: none; padding: 5px; cursor: pointer; z-index: 950; }
     .hamburger span { width: 24px; height: 2px; background: #fff; transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
@@ -82,21 +75,21 @@
        INSTITUTIONAL HEADER
      ═══════════════════════════════════════════ */
     .about-header { padding: calc(var(--nav-h) + 60px) 0 60px; background: var(--brand-drk); color: #fff; text-align: center; }
-    .about-header h1 { font-family: var(--serif); font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 400; margin-bottom: 16px; }
+    .about-header h1 { font-family: var(--serif); font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 400; margin-bottom: 16px; line-height: 1.1; }
     .about-header p { font-family: var(--sans); font-size: 1.1rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase; }
 
     /* ═══════════════════════════════════════════
        MISSION & LEADERSHIP SECTION
      ═══════════════════════════════════════════ */
     .bio-section { padding: 100px 0; background: var(--ivory); }
-    .bio-text h2 { font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk); margin-bottom: 24px; }
+    .bio-text h2 { font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk); margin-bottom: 24px; line-height: 1.2; }
     .bio-text p { font-family: var(--sans); font-size: 1.05rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 20px; }
     
     .btn-outline { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: transparent; color: var(--brand-drk); border: 1px solid var(--brand-drk); border-radius: 4px; font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; transition: 0.3s; margin-top: 16px; }
     .btn-outline:hover { background: var(--brand-drk); color: #fff; }
 
     /* ═══════════════════════════════════════════
-       OPERATIONAL PILLARS (The Linstead Advantage)
+       OPERATIONAL PILLARS
      ═══════════════════════════════════════════ */
     .pillars-section { padding: 100px 0; background: var(--bg-light); }
     .pillars-grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 48px; }
@@ -113,16 +106,14 @@
     .f-logo { font-family: var(--serif); font-size: 1.5rem; color: #fff; margin-bottom: 16px; display: block; letter-spacing: 0.05em; }
     .f-logo em { color: var(--gold); font-style: normal; }
 
- /* ═══════════════════════════════════════════
-       WIDESCREEN DESKTOP OVERRIDE GRID (3 Columns Flat)
+    /* ═══════════════════════════════════════════
+       WIDESCREEN DESKTOP OVERRIDE GRID
      ═══════════════════════════════════════════ */
     @media (min-width: 900px) {
-        /* Header Fixes */
         .hamburger { display: none !important; } 
         .nav-links { display: flex !important; flex-direction: row; position: static; background: transparent; padding: 0; box-shadow: none; border: none; }
         .nav-links a { font-size: 0.75rem; padding: 8px 16px; }
 
-        /* Grid Layouts */
         .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; max-width: var(--max-w); margin: 0 auto; }
         .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
         .security-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
@@ -132,14 +123,14 @@
 </head>
 <body>
 
+<!-- SYNCED NAVIGATION -->
 <nav class="site-nav" id="sitenav">
     <div class="nav-inner">
         <a href="index.html" class="nav-logo-name">Docu-Hub <em>Jamaica</em></a>
         <ul class="nav-links">
             <li><a href="index.html#services">Services</a></li>
-            <li><a href="index.html#faq">Portal FAQs</a></li>
-            <li><a href="#" style="color: var(--gold-lt);">About Us</a></li>
-            <li><a href="contact.html" class="nav-btn">Contact Us</a></li>
+            <li><a href="about.html" style="color: var(--gold-lt);">About Us</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
         </ul>
         <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
     </div>
@@ -152,11 +143,10 @@
     </div>
 </header>
 
-<!-- MISSION & LEADERSHIP Profile (Optimized Side-by-Side Viewport Layout) -->
+<!-- MISSION & LEADERSHIP SECTION -->
 <section class="bio-section">
     <div class="wrap" style="max-width: var(--max-w); margin: 0 auto; padding: 0 24px;">
         
-        <!-- Inline Structural Style to guarantee clean desktop distribution -->
         <style>
             .premium-bio-grid { display: flex; flex-direction: column; gap: 40px; width: 100%; }
             @media (min-width: 900px) {
@@ -171,11 +161,9 @@
 
         <div class="premium-bio-grid">
             
-            <!-- COLUMN 1: PORTRAIT (Left on Desktop, Centered Top on Mobile) -->
             <div class="bio-img enter d1" style="width: 100%; max-width: 350px; margin: 0 auto;">
                 <div style="position: relative; border-radius: 8px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.1); background: var(--bg-light);">
                     <img src="assets/laura-profile.webp" alt="Laura Clarke - Managing Director" style="width: 100%; height: auto; display: block; aspect-ratio: 4/5; object-fit: cover;">
-                    <!-- Elegant Name Overlay -->
                     <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(30, 43, 29, 0.95), transparent); padding: 40px 24px 24px;">
                         <span style="font-family: var(--sans); font-weight: 600; font-size: 1.2rem; display: block; color: #fff;">Laura Clarke</span>
                         <span style="font-family: var(--sans); font-size: 0.85rem; color: var(--gold-lt); letter-spacing: 0.08em; text-transform: uppercase;">Managing Director</span>
@@ -183,16 +171,17 @@
                 </div>
             </div>
             
-            <!-- COLUMN 2: TEXT NARRATIVE (Right on Desktop, Fluid Bottom on Mobile) -->
+            <!-- SIMPLIFIED, PUNCHIER BIO -->
             <div class="bio-text enter d2" style="display: flex; flex-direction: column; justify-content: center;">
                 <h2>Financial-Grade Security in a Stressed System</h2>
                 <p>Navigating public sector bureaucracy from overseas is an exercise in profound frustration. When digital government portals stall, bank cards fail at checkout, or strict policies require the physical surrender of irreplaceable original records, the diaspora is often left completely in the dark.</p>
-                <p>Docu-Hub Operations Services (Registered Business # 15602/2025) was established to eliminate this exact operational friction. Leveraging 14 years of corporate banking experience, Managing Director Laura Clarke built this proxy service on the strict pillars of financial-grade data security, regulatory compliance, and premium client service.</p>
-                <p>Operating out of our central operations base in Linstead, St. Catherine, we maintain direct compliance interfaces with the Passport, Immigration and Citizenship Agency (PICA), the Registrar General's Department (RGD), and Tax Administration Jamaica (TAJ). We treat your personal data and identity records with the absolute discretion they demand.</p>
                 
-                <!-- Institutional OIC Pending Verification Block -->
+                <p>Docu-Hub Operations Services (Registered Business # 15602/2025) was established to eliminate this exact operational friction. Leveraging 14 years of corporate banking experience, Managing Director Laura Clarke built this proxy service on the strict pillars of financial-grade data security, regulatory compliance, and premium client service.</p>
+                
+                <p>Operating from our secure base in Linstead, St. Catherine, we maintain direct, on-the-ground interfaces with the Passport, Immigration and Citizenship Agency (PICA), the Registrar General's Department (RGD), and Tax Administration Jamaica (TAJ). Your personal data is handled with absolute discretion.</p>
+                
                 <p style="border-left: 2px solid var(--gold); padding-left: 16px; font-style: italic; color: var(--brand-mid); margin-bottom: 20px;">
-                    In alignment with our structural commitment to security, Docu-Hub operates in explicit compliance with the Jamaican Data Protection Act. Our data controller profile was officially established and account-verified within the Office of the Information Commissioner (OIC) system on December 5, 2025. In strict accordance with active regulatory guidance, we maintain uncompromised, authorized on-the-ground operations under full penalty immunity while the government registry platform undergoes administrative infrastructure updates.
+                    In alignment with our structural commitment to security, Docu-Hub operates in explicit compliance with the Jamaican Data Protection Act. Our data controller profile was officially established and account-verified within the Office of the Information Commissioner (OIC) system on December 5, 2025. 
                 </p>
                 
                 <div style="margin-top: 12px;">
@@ -206,7 +195,7 @@
     </div>
 </section>
 
-<!-- THE 3 OPERATIONAL PILLARS -->
+<!-- SIMPLIFIED OPERATIONAL PILLARS -->
 <section class="pillars-section">
     <div class="wrap">
         <div style="text-align: center; max-width: 600px; margin: 0 auto 32px;">
@@ -216,48 +205,47 @@
         
         <div class="pillars-grid enter d1">
             
-            <!-- Pillar 1: The Linstead Logistics Hub -->
             <div class="pillar-card">
                 <i class="fa-solid fa-compass"></i>
                 <h3>The Linstead Transit Advantage</h3>
-                <p>Our operations desk is strategically headquartered in Linstead. This geographic placement provides us with rapid highway corridor access to both the RGD Central Repository in Twickenham Park (Spanish Town) and the primary PICA/TAJ head offices in corporate Kingston. Our premium in-person fees cover dedicated physical travel times, fuel infrastructure, and toll logistics for multiple agency runs.</p>
+                <p>Our operations desk is strategically headquartered in Linstead, providing rapid highway corridor access to both the RGD Central Repository in Twickenham Park and the primary PICA/TAJ head offices in corporate Kingston. This strategic positioning allows our team to execute multiple agency filings safely and efficiently.</p>
             </div>
 
-            <!-- Pillar 2: Asset Chain of Custody -->
             <div class="pillar-card">
                 <i class="fa-solid fa-vault"></i>
                 <h3>High-Security Asset Protection</h3>
-                <p>When government policies demand that you mail your original birth certificates, marriage licenses, or expired books, standard shipping channels carry immense psychological stress. Docu-Hub maintains a closed loop, documented chain of custody. Your vital records are physically protected, tracked at every checkpoint, and securely returned to your door via globally trusted courier partners (DHL).</p>
+                <p>Mailing original birth certificates and expired passports internationally carries immense psychological stress. Docu-Hub maintains a documented chain of custody. Your vital records are physically protected, tracked at every checkpoint, and securely returned to your door via globally trusted couriers.</p>
             </div>
 
-            <!-- Pillar 3: Gateway Resolution Curation -->
             <div class="pillar-card">
                 <i class="fa-solid fa-gears"></i>
                 <h3>Direct Agency Interface</h3>
-                <p>We do not guess. Because we operate natively inside Jamaica, we bypass generic international email loops. If your passport draft is locked, your foreign visa card fails due to regional security blocks, or your vital record requires a manual paper ledger search, we step in locally to execute immediate transaction rescues and secure compliance verification.</p>
+                <p>We do not guess. Because we operate natively inside Jamaica, we bypass generic international email loops. If your passport draft is locked, a payment gateway fails, or a complex lineage trace requires a manual ledger search, we step in locally to execute immediate resolution.</p>
             </div>
 
         </div>
     </div>
 </section>
 
-<footer class="site-footer">
+<!-- SYNCED FOOTER WITH CONTACT ID -->
+<footer class="site-footer" id="contact">
     <div class="wrap footer-grid">
         <div>
             <span class="f-logo">Docu-Hub <em>Operations Services</em></span>
             <p style="font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 300px;">Providing highly secure, on-the-ground document processing, records retrieval, and compliance for the Jamaican diaspora.</p>
         </div>
         <div>
-            <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt);">QUICK LINKS</h4>
+            <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt); letter-spacing: 0.05em;">QUICK LINKS</h4>
             <ul style="list-style: none; display: grid; gap: 8px;">
-                <li><a href="index.html#services" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">All Proxy Services</a></li>
-                <li><a href="index.html#faq" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Portal Troubleshooting</a></li>
+                <li><a href="index.html#services" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Our Core Services</a></li>
+                <li><a href="index.html#faq-resources" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Portal Help & FAQs</a></li>
+                <li><a href="resource.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Checklists & Guides</a></li>
                 <li><a href="about.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">About Docu-Hub</a></li>
             </ul>
         </div>
         <div>
-            <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt);">SECURE CONTACT</h4>
-            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px;"><i class="fa-regular fa-calendar-check" style="color: var(--gold); margin-right: 8px;"></i> <a href="contact.html">Book Consultation</a></p>
+            <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt); letter-spacing: 0.05em;">SECURE CONTACT</h4>
+            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px;"><i class="fa-regular fa-calendar-check" style="color: var(--gold); margin-right: 8px;"></i> <a href="https://calendar.app.google/mCXiJ2GLF15mLMV48" target="_blank" rel="noopener">Book Consultation</a></p>
             <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px;"><i class="fa-regular fa-envelope" style="color: var(--gold); margin-right: 8px;"></i> <a href="mailto:admin@dhubservices.com">admin@dhubservices.com</a></p>
             <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 8px;"></i> Linstead, Jamaica</p>
         </div>
@@ -266,7 +254,6 @@
         <p style="font-family: var(--sans); font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-bottom: 4px;">Registered Jamaican Business Entity: # 15602/2025</p>
         <p style="font-family: var(--sans); font-size: 0.75rem; color: var(--gold-lt); margin-bottom: 12px; letter-spacing: 0.03em;">OIC Data Controller Status: Application Initiated & Account Verified (Dec 2025)</p>
         
-        <!-- Secure Legal Compliance Link Row -->
         <p style="font-family: var(--sans); font-size: 0.75rem; margin-bottom: 12px;">
             <a href="privacy.html" style="color: rgba(255,255,255,0.5); text-decoration: none; margin-right: 16px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 2px; transition: 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Privacy Policy</a>
             <a href="legal-notice.html" style="color: rgba(255,255,255,0.5); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 2px; transition: 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Terms & Legal Notice</a>
