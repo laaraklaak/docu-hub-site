@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Docu-Hub Jamaica &mdash; Secure Document Concierge</title>
     <meta name="description" content="Reliable, secure Jamaican document concierge services. Confidential on-the-ground processing for passports, vital records, TRN applications, and official clearances.">
     <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -79,13 +79,10 @@
     .nav-logo-name { font-family: var(--serif); font-size: 1.4rem; color: #fff; letter-spacing: 0.05em; display: block; z-index: 950; }
     .nav-logo-name em { color: var(--gold-lt); font-style: normal; }
     
-    .nav-links { display: none; list-style: none; align-items: center; gap: 8px; }
+    .nav-links { display: none; list-style: none; align-items: center; gap: 16px; }
     .nav-links a { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 8px 16px; border-radius: 4px; }
     .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
     
-    .nav-btn { background: var(--gold)!important; color: #fff!important; font-weight: 600; }
-    .nav-btn:hover { background: var(--gold-lt)!important; box-shadow: 0 4px 12px rgba(193, 154, 91, 0.4); }
-
     .hamburger { display: flex; flex-direction: column; gap: 6px; background: none; border: none; padding: 5px; cursor: pointer; z-index: 950; }
     .hamburger span { width: 24px; height: 2px; background: #fff; transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
 
@@ -111,8 +108,8 @@
         padding: 0 20px;
     }
     .hero-eyebrow { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-lt); margin-bottom: 24px; }
-    .hero-title { font-family: var(--serif); font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 400; line-height: 1.1; max-width: 800px; margin-bottom: 24px; }
-    .hero-desc { font-family: var(--sans); font-size: clamp(1rem, 3vw, 1.2rem); max-width: 600px; color: rgba(255,255,255,0.9); margin-bottom: 40px; }
+    .hero-title { font-family: var(--serif); font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 400; line-height: 1.1; max-width: 800px; margin: 0 auto 24px auto; }
+    .hero-desc { font-family: var(--sans); font-size: clamp(1rem, 3vw, 1.2rem); max-width: 600px; color: rgba(255,255,255,0.9); margin: 0 auto 40px auto; }
     
     .btn-gold { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 36px; background: var(--gold); color: #fff; border-radius: 4px; font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; cursor: pointer; border: none; text-decoration: none; }
     .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
@@ -124,7 +121,6 @@
     .section-header { text-align: center; margin-bottom: 64px; }
     .section-header h2 { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 400; color: var(--brand-drk); }
     
-    /* Widened the gap to 80px for a more breathable mobile layout */
     .cards-grid { display: grid; grid-template-columns: 1fr; gap: 80px; width: 100%; max-width: 600px; margin: 0 auto; align-items: start; }
     
     .btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 16px; background: var(--brand-mid); color: #fff; border-radius: 4px; border: none; font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; cursor: pointer; text-decoration: none; }
@@ -157,9 +153,8 @@
     }
     .minimal-card[open] summary::after { content: '\2212'; background: var(--brand-drk); color: #fff; }
 
-    /* Increased standard card image height to 250px */
     .minimal-card .card-img-wrap { height: 250px; width: 100%; position: relative; }
-  .minimal-card .card-img-wrap img { width: 100%; height: 100%; object-fit: contain; background: var(--bg-light); padding: 24px; }
+    .minimal-card .card-img-wrap img { width: 100%; height: 100%; object-fit: contain; background: var(--bg-light); padding: 24px; }
     .minimal-card .card-question { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--brand-drk); margin: 16px 20px; padding-right: 40px; line-height: 1.4; }
     
     .minimal-card-content { padding: 0 24px 24px; animation: fadeIn 0.4s ease; border-top: 1px solid rgba(0,0,0,0.05); margin-top: 16px; padding-top: 24px; }
@@ -177,10 +172,8 @@
         
         .process-desktop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-bottom: 48px; }
         
-        /* UPDATED: Beautiful 2x2 Grid to completely eliminate jumping */
-        .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 48px; max-width: 1000px; margin: 0 auto; align-items: start; }
+        .cards-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1200px; margin: 0 auto; align-items: start; }
         
-        /* Desktop side-by-side Premium Card */
         .featured-card summary { flex-direction: row; }
         .featured-img-wrap { width: 50%; min-height: 100%; }
         .featured-text-wrap { width: 50%; padding: 48px 40px; }
@@ -193,13 +186,14 @@
 <nav class="site-nav" id="sitenav">
     <div class="nav-inner">
         <a href="#" class="nav-logo-name">Docu-Hub <em>Jamaica</em></a>
+        
+        <!-- REDUCED & CLEANED UP NAVIGATION -->
         <ul class="nav-links">
-            <li><a href="#process">How It Works</a></li>
             <li><a href="#services">Services</a></li>
-            <li><a href="#faq-resources">Portal FAQs</a></li>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="register.html" class="nav-btn">Begin Registration</a></li>
+            <li><a href="#contact">Contact Us</a></li>
         </ul>
+        
         <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
     </div>
 </nav>
@@ -296,7 +290,7 @@
             <h2>Select A Service</h2>
         </div>
 
-        <!-- PREMIUM FEATURED SERVICE: CITIZENSHIP -->
+        <!-- PREMIUM FEATURED SERVICE: CITIZENSHIP (UNTOUCHED) -->
         <div class="enter d1 featured-wrapper">
             <details class="featured-card">
                 <summary>
@@ -345,152 +339,115 @@
 
         <!-- TARGETED SOLUTIONS HEADER -->
         <div class="enter d1" style="text-align: center; margin: 72px 0 48px; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 56px;">
-            <span style="font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 8px;">Overseas & Diaspora Clients</span>
+            <span style="font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 8px;">Core Service Pillars</span>
             <h3 style="font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk); font-weight: 400; margin: 0;">Explore Remote Services</h3>
         </div>
 
-       <!-- 4-CARD EXPANDABLE GRID -->
+       <!-- REDESIGNED 3-PILLAR ACCORDION GRID -->
         <div class="cards-grid">
             
-            <!-- Card 1: Passport -->
+            <!-- Pillar 1: Passport (PICA) -->
             <details class="minimal-card enter d1">
                 <summary>
                     <div class="card-img-wrap">
                         <img src="assets/pica.webp" loading="lazy" alt="Passport Renewal">
                     </div>
-                    <h3 class="card-question">Need help renewing a Jamaican passport?</h3>
+                    <h3 class="card-question">Need help renewing a Jamaican passport? (PICA)</h3>
                 </summary>
                 <div class="minimal-card-content">
-                    <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px;">Clear guidance and on-the-ground help for online renewals, fixing payment errors, and hand-delivering physical applications.</p>
+                    <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px;">We pre-fill forms, verify photo and signature compliance before submission, and manage the portal to ensure zero rejection delays.</p>
                     
                     <div style="margin-bottom: 20px;">
                         <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">What We Can Handle</span>
                         <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 8px;">
-                            <div><strong>Adults:</strong> Standard online renewals and fixing stuck online payments.</div>
-                            <div><strong>Minors & Name Changes:</strong> We physically take your printed application into the passport office.</div>
-                            <div><strong>Damaged Books:</strong> In-person handling, since the government must physically inspect damaged passports.</div>
+                            <div><strong>Adults:</strong> Standard remote application coordination and proxy assistance for renewals.</div>
+                            <div><strong>Minors:</strong> Comprehensive pre-vetting and secure physical submission handling.</div>
                         </div>
                     </div>
                     
                     <div style="margin-bottom: 20px;">
                         <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">Pricing Packages</span>
                         <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 12px;">
-                            <div><strong>Fix Online Application Errors: $115 USD</strong><br>If your overseas card was blocked or your application is locked, we take over and finish the payment securely from Jamaica.</div>
-                            <div><strong>Standard In-Person Submission: $145 USD</strong><br>We act as your representative to physically hand-deliver your application to the passport office.</div>
-                            <div><strong>Lost or Damaged Passports: $185 USD</strong><br>Specialized in-person handling for complicated cases or passports that require government penalty fees.</div>
+                            <div><strong>Standard Proxy Renewal: $145 USD</strong><br>Complete end-to-end handling where we act as your proxy to submit and clear your passport tracking.</div>
+                            <div><strong>Portal Error & Gateway Fixes: $115 USD</strong><br>If your overseas card was blocked or your application is stuck in processing, we take over to finalize it locally.</div>
                         </div>
                     </div>
 
                     <div style="margin-bottom: 24px; padding: 12px 16px; background: rgba(193, 154, 91, 0.08); border-left: 3px solid var(--gold); border-radius: 4px;">
-                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Government Fees</span>
-                        <span style="font-family: var(--sans); font-size: 0.85rem; color: var(--brand-drk); font-weight: 500;">*Your only additional cost is the official PICA agency fee.</span>
+                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Government & Courier Fees</span>
+                        <span style="font-family: var(--sans); font-size: 0.85rem; color: var(--brand-drk); font-weight: 500;">*Excludes official PICA agency charges and final secure home delivery fees.</span>
                     </div>
                     
                     <a href="register.html" class="btn-action">Begin Secure Registration</a>
                 </div>
             </details>
 
-            <!-- Card 2: Vital Records -->
+            <!-- Pillar 2: Vital Records (RGD) -->
             <details class="minimal-card enter d2">
                 <summary>
                     <div class="card-img-wrap">
                         <img src="assets/rgd-new.webp" loading="lazy" alt="Vital Records">
                     </div>
-                    <h3 class="card-question">Looking for official birth, marriage, or death certificates?</h3>
+                    <h3 class="card-question">Looking for official birth, marriage, or death certificates? (RGD)</h3>
                 </summary>
                 <div class="minimal-card-content">
-                    <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px;">We locate your records, handle the application, and retrieve your official printed certificates from the RGD.</p>
+                    <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px;">We handle deep database searches and application submissions, sparing you the hassle of tracking down archived family records.</p>
                     
                     <div style="margin-bottom: 20px;">
                         <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">What We Can Handle</span>
                         <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 8px;">
-                            <div><strong>Standard Records:</strong> Certified copies of Birth, Marriage, and Death certificates.</div>
-                            <div><strong>Ancestry & Lineage:</strong> Physical searches at the registry for older, missing family records.</div>
+                            <div><strong>Vital Certificates:</strong> Search, registry tracking, and retrieval for Birth, Marriage, and Death records.</div>
+                            <div><strong>Registry Lookups:</strong> Tracking down older registry books or complex genealogical records safely.</div>
                         </div>
                     </div>
 
                     <div style="margin-bottom: 20px;">
                         <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">Pricing Packages</span>
                         <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 12px;">
-                            <div><strong>Standard Online Application: $85 USD</strong><br>We process your application through the RGD system and retrieve the official printed certificates.</div>
-                            <div><strong>Deep Registry Search: $150 USD</strong><br>Manual, on-the-ground searches through the archives to locate hard-to-find family records and deliver the copies.</div>
+                            <div><strong>Standard Certificate Retrieval: $85 USD</strong><br>We process your application through the official system, monitor the file, and secure the clean prints.</div>
+                            <div><strong>Deep Archive Search: $150 USD</strong><br>On-the-ground research inside historical registries for damaged, missing, or un-indexed records.</div>
                         </div>
                     </div>
 
                     <div style="margin-bottom: 24px; padding: 12px 16px; background: rgba(193, 154, 91, 0.08); border-left: 3px solid var(--gold); border-radius: 4px;">
                         <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Government Fees</span>
-                        <span style="font-family: var(--sans); font-size: 0.85rem; color: var(--brand-drk); font-weight: 500;">*Your only additional cost is the official RGD certificate fee.</span>
+                        <span style="font-family: var(--sans); font-size: 0.85rem; color: var(--brand-drk); font-weight: 500;">*Your only additional cost is the standard RGD registry production fee.</span>
                     </div>
                     
                     <a href="register.html" class="btn-action">Begin Secure Registration</a>
                 </div>
             </details>
             
-            <!-- Card 3: TRN Applications -->
+            <!-- Pillar 3: Tax & Vehicle (TAJ) -->
             <details class="minimal-card enter d3">
                 <summary>
                     <div class="card-img-wrap">
                         <img src="assets/taj-card.webp" loading="lazy" alt="TRN Registration">
                     </div>
-                    <h3 class="card-question">Applying for a TRN or tax registration from overseas?</h3>
+                    <h3 class="card-question">Need to manage your TRN or vehicle licensing from abroad? (TAJ)</h3>
                 </summary>
                 <div class="minimal-card-content">
-                    <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px;">We review your paperwork, walk it into the local tax office, and ensure your physical ID is processed and delivered.</p>
+                    <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px;">We monitor and update your TAJ portal requirements so your local driving privileges and tax affairs remain active for your next visit.</p>
                     
                     <div style="margin-bottom: 20px;">
                         <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">What We Can Handle</span>
                         <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 8px;">
-                            <div><strong>Personal TRN:</strong> Remote applications and renewals for individuals living overseas.</div>
-                            <div><strong>Business Registration:</strong> We physically submit the tax paperwork for your business or entity.</div>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 20px;">
-                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">Pricing Package</span>
-                        <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 12px;">
-                            <div><strong>Complete Application Processing: $95 USD</strong><br>We manage the entire process—from checking your forms to walking them into the tax office—ensuring your physical TRN card is delivered to you.</div>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 24px; padding: 12px 16px; background: rgba(193, 154, 91, 0.08); border-left: 3px solid var(--gold); border-radius: 4px;">
-                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Government Fees</span>
-                        <span style="font-family: var(--sans); font-size: 0.85rem; color: var(--brand-drk); font-weight: 500;">*Your only additional cost is the official TAJ processing fee (if applicable).</span>
-                    </div>
-                    
-                    <a href="register.html" class="btn-action">Begin Secure Registration</a>
-                </div>
-            </details>
-
-            <!-- Card 4: Vehicle Licensing -->
-            <details class="minimal-card enter d4">
-                <summary>
-                    <div class="card-img-wrap">
-                        <img src="assets/motor-vehicle.webp" loading="lazy" alt="Vehicle Registration">
-                    </div>
-                    <h3 class="card-question">Require a police record, driving abstract, or vehicle clearance?</h3>
-                </summary>
-                <div class="minimal-card-content">
-                    <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px;">We handle the local legwork for background checks, driving records, and tax office vehicle renewals.</p>
-                    
-                    <div style="margin-bottom: 20px;">
-                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">What We Can Handle</span>
-                        <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 8px;">
-                            <div><strong>Legal Documents:</strong> Background checks and official driving records (abstracts).</div>
-                            <div><strong>Vehicles:</strong> Clearing traffic tickets and renewing vehicle registration at the tax office.</div>
+                            <div><strong>Tax Registrations:</strong> Remote TRN setup and administrative compliance updates.</div>
+                            <div><strong>Vehicle Compliance:</strong> Local processing for tax office motor vehicle renewals and queries.</div>
                         </div>
                     </div>
 
                     <div style="margin-bottom: 20px;">
                         <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">Pricing Packages</span>
                         <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 12px;">
-                            <div><strong>Police & Driving Records: $140 USD</strong><br>We physically go to the necessary offices to apply for, retrieve, and mail your official driving abstract or police record.</div>
-                            <div><strong>Vehicle Renewals: $35 USD</strong><br>We handle your tax office vehicle renewals and ticket clearing, securing your updated physical documents.</div>
+                            <div><strong>TRN Portal Compliance: $95 USD</strong><br>We manage your complete overseas TRN application submission directly into the tax department.</div>
+                            <div><strong>Motor Vehicle Renewal Proxy: $35 USD</strong><br>We execute local administrative handling for your vehicle licensing or certificate requirements at the tax desk.</div>
                         </div>
                     </div>
 
                     <div style="margin-bottom: 24px; padding: 12px 16px; background: rgba(193, 154, 91, 0.08); border-left: 3px solid var(--gold); border-radius: 4px;">
-                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Government Fees</span>
-                        <span style="font-family: var(--sans); font-size: 0.85rem; color: var(--brand-drk); font-weight: 500;">*Your only additional cost is the official station, medical, or TAJ agency fee.</span>
+                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Tax Office Fees</span>
+                        <span style="font-family: var(--sans); font-size: 0.85rem; color: var(--brand-drk); font-weight: 500;">*Official government licensing or renewal balances are billed exactly at cost.</span>
                     </div>
                     
                     <a href="register.html" class="btn-action">Begin Secure Registration</a>
@@ -592,7 +549,8 @@
     }
 </style>
 
-<footer class="site-footer" style="background: #111; color: #fff; padding: 40px 0 20px;">
+<!-- ADDED id="contact" TO THE FOOTER -->
+<footer class="site-footer" id="contact" style="background: #111; color: #fff; padding: 40px 0 20px;">
     
     <div class="wrap f-cta-row">
         <h2 style="font-family: var(--serif); font-size: 2.2rem; color: #fff; margin: 0; line-height: 1;">Ready to Start?</h2>
@@ -608,10 +566,19 @@
         <div>
             <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt); letter-spacing: 0.05em;">QUICK LINKS</h4>
             <ul style="list-style: none; display: grid; gap: 10px; padding: 0;">
-                <li><a href="#services" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">All Proxy Services</a></li>
-                <li><a href="#faq-resources" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Portal Troubleshooting</a></li>
+                
+                <!-- Simplified to Core Services -->
+                <li><a href="#services" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Our Core Services</a></li>
+                
+                <!-- Simplified to match the section title (Will work perfectly on the live/published site!) -->
+                <li><a href="#faq-resources" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Portal Help & FAQs</a></li>
+                
+                <!-- Restored your active resources page -->
                 <li><a href="resource.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Checklists & Guides</a></li>
+                
+                <!-- Cleaned up About page link -->
                 <li><a href="about.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">About Docu-Hub</a></li>
+                
             </ul>
         </div>
         <div>
