@@ -36,19 +36,17 @@
   .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
 
   /* ═══════════════════════════════════════════
-     SITE NAV (Inherited from Index)
+     SITE NAV
    ═══════════════════════════════════════════ */
   .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.98); box-shadow: 0 4px 20px rgba(0,0,0,0.3); border-bottom: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
   .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; position: relative; }
   .nav-logo-name { font-family: var(--serif); font-size: 1.4rem; color: #fff; letter-spacing: 0.05em; display: block; z-index: 950; }
   .nav-logo-name em { color: var(--gold-lt); font-style: normal; }
   
-  .nav-links { display: none; list-style: none; align-items: center; gap: 8px; }
+  .nav-links { display: none; list-style: none; align-items: center; gap: 16px; }
   .nav-links a { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 8px 16px; border-radius: 4px; }
   .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
-  .nav-btn { background: var(--gold)!important; color: #fff!important; font-weight: 500; }
-  .nav-btn:hover { background: var(--gold-lt)!important; }
-
+  
   .hamburger { display: flex; flex-direction: column; gap: 6px; background: none; border: none; padding: 5px; cursor: pointer; z-index: 950; }
   .hamburger span { width: 24px; height: 2px; background: #fff; transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
 
@@ -68,15 +66,22 @@
   /* ═══════════════════════════════════════════
      CHECKLIST CONTENT AREA
    ═══════════════════════════════════════════ */
-  .page-header { max-width: 900px; margin: 60px auto 40px; padding: 0 24px; text-align: center; }
-  .page-header h1 { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3rem); font-weight: 400; color: var(--brand-drk); margin-bottom: 10px; }
-  .page-header p { font-size: 1.05rem; color: var(--text-mid); }
+  .page-header { max-width: 900px; margin: 60px auto 30px; padding: 0 24px; text-align: center; }
+  .page-header h1 { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400; color: var(--brand-drk); margin-bottom: 12px; line-height: 1.1; }
+  .page-header p { font-size: 1.1rem; color: var(--text-mid); line-height: 1.6; max-width: 700px; margin: 0 auto; }
 
   .main-content { max-width: 900px; margin: 0 auto; padding: 0 24px 100px; }
   
-  /* Accordion Design mapped to Brand Colors */
-  .accordion-item { border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; background-color: var(--ivory); margin-bottom: 20px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
-  .accordion-item { scroll-margin-top: 100px; }
+  /* Done-For-You Banner */
+  .dfy-banner { background: rgba(193, 154, 91, 0.1); border: 1px solid rgba(193, 154, 91, 0.3); border-left: 4px solid var(--gold); border-radius: 8px; padding: 24px 32px; margin-bottom: 48px; display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+  .dfy-banner h3 { font-family: var(--serif); font-size: 1.6rem; color: var(--brand-drk); margin: 0; }
+  .dfy-banner p { font-size: 0.95rem; color: var(--text-mid); margin: 0; line-height: 1.5; }
+  .dfy-banner .btn-gold { display: inline-flex; background: var(--brand-drk); color: #fff; padding: 12px 24px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; border-radius: 4px; transition: 0.3s; }
+  .dfy-banner .btn-gold:hover { background: var(--gold); }
+  @media (min-width: 768px) { .dfy-banner { flex-direction: row; justify-content: space-between; align-items: center; } }
+
+  /* Accordion Design */
+  .accordion-item { border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; background-color: var(--ivory); margin-bottom: 20px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.02); scroll-margin-top: 100px; }
   .accordion-header { width: 100%; background: none; border: none; padding: 24px 30px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; transition: background-color 0.2s ease; }
   .accordion-header:hover { background-color: var(--bg-light); }
   .accordion-title { font-family: var(--serif); font-size: 1.4rem; font-weight: 600; color: var(--brand-drk); margin: 0; }
@@ -86,6 +91,10 @@
 
   .accordion-content { max-height: 0; opacity: 0; overflow: hidden; padding: 0 30px; transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease; }
   .accordion-item.active .accordion-content { max-height: 3500px; opacity: 1; padding: 0 30px 30px 30px; }
+
+  /* Inner Bailout Callout */
+  .skip-hassle-box { background: var(--bg-light); padding: 16px 20px; border-radius: 6px; margin-bottom: 24px; font-size: 0.9rem; color: var(--brand-drk); display: flex; align-items: center; gap: 12px; }
+  .skip-hassle-box i { color: var(--gold); font-size: 1.4rem; }
 
   .checklist-group { margin-bottom: 35px; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 25px; }
   .checklist-group:first-child { border-top: none; padding-top: 10px; }
@@ -97,7 +106,7 @@
   .check-item label { font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; }
   .check-item strong { color: var(--brand-drk); font-weight: 600; }
 
-  /* Print Button mapped to Brand */
+  /* Print Button */
   .print-btn { display: inline-block; background-color: var(--gold); color: #fff; border: none; padding: 14px 28px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 4px; cursor: pointer; margin-top: 10px; transition: 0.3s ease; }
   .print-btn:hover { background-color: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
 
@@ -111,7 +120,7 @@
   @media (min-width: 900px) { .video-grid { grid-template-columns: repeat(3, 1fr); } }
 
   /* ═══════════════════════════════════════════
-     FOOTER (Inherited from Index)
+     FOOTER
    ═══════════════════════════════════════════ */
   .site-footer { background: #111; color: #fff; padding: 60px 0 30px; }
   .footer-grid { display: grid; grid-template-columns: 1fr; gap: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 30px; }
@@ -122,7 +131,7 @@
   /* Print Stylesheet */
   @media print {
     body { background-color: #fff; padding-top: 0; }
-    .site-nav, .page-header, .accordion-header, .print-btn, .site-footer, #audio-guides { display: none !important; }
+    .site-nav, .page-header, .dfy-banner, .accordion-header, .print-btn, .skip-hassle-box, .site-footer, #audio-guides { display: none !important; }
     .accordion-content { max-height: none !important; opacity: 1 !important; padding: 0 !important; }
     .accordion-item { border: none !important; margin: 0 !important; box-shadow: none !important; }
     .checklist-group { page-break-inside: avoid; }
@@ -137,10 +146,8 @@
           <a href="index.html" class="nav-logo-name">Docu-Hub <em>Jamaica</em></a>
           <ul class="nav-links">
               <li><a href="index.html#services">Services</a></li>
-              <li><a href="index.html#faq">Portal FAQs</a></li>
-              <li><a href="resource.html">Resources</a></li>
               <li><a href="about.html">About Us</a></li>
-              <li><a href="contact.html" class="nav-btn">Contact Us</a></li>
+              <li><a href="index.html#contact">Contact Us</a></li>
           </ul>
           <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
       </div>
@@ -148,13 +155,22 @@
 
   <!-- PAGE HEADER -->
   <header class="page-header">
-    <h1>Interactive Operational Checklists</h1>
-    <p>Official resources and document preparation guides.</p>
+    <h1>Government Compliance Checklists</h1>
+    <p>The exact protocols required by Jamaican agencies. Navigate the bureaucracy yourself, or let our Concierge team bypass the red tape for you.</p>
   </header>
 
   <!-- CHECKLIST CONTENT -->
   <main class="main-content">
     
+    <!-- DONE FOR YOU BANNER -->
+    <div class="dfy-banner">
+        <div>
+            <h3>Feeling Overwhelmed?</h3>
+            <p>One missing stamp or incorrect ink color can cause months of delays. Skip the paperwork and let our experts execute your file flawlessly.</p>
+        </div>
+        <a href="register.html" class="btn-gold">Begin Secure Registration</a>
+    </div>
+
     <!-- MASTER ACCORDION: CITIZENSHIP & WORKFLOW -->
     <div class="accordion-item" id="citizenship"> 
       <button class="accordion-header" onclick="toggleAccordion(this)">
@@ -163,19 +179,24 @@
       </button>
 
       <div class="accordion-content">
+        <div class="skip-hassle-box">
+            <i class="fa-solid fa-bolt"></i>
+            <div><strong>The Docu-Hub Advantage:</strong> Finding your grandparents' vintage birth certificates is notoriously difficult. Our on-the-ground team runs deep archive searches inside the RGD to secure the proof you need before filing.</div>
+        </div>
+        
         <p style="color: var(--text-mid); margin-bottom: 25px;">
-          Complete each phase sequentially. All government reviews require physical, un-laminated, original documentation.[cite: 7]
+          Complete each phase sequentially. All government reviews require physical, un-laminated, original documentation.
         </p>
 
         <div class="checklist-group">
           <h4>Part 1: Lineage Verification & Document Retrieval</h4>
           <div class="check-item">
             <input type="checkbox" id="pt1_1">
-            <label for="pt1_1"><strong>Document Inventory:</strong> I have my original long-form birth certificate and the original Jamaican birth certificate of my parent/grandparent.[cite: 7]</label>
+            <label for="pt1_1"><strong>Document Inventory:</strong> I have my original long-form birth certificate and the original Jamaican birth certificate of my parent/grandparent.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="pt1_2">
-            <label for="pt1_2"><strong>Outtamany Search (If Documents Missing):</strong> If my ancestor's certificate is missing and the entry number is unknown, I have interviewed relatives to secure the required search clues: childhood district/parish, primary school name, sibling names, and parents' names.[cite: 7]</label>
+            <label for="pt1_2"><strong>Outtamany Search (If Documents Missing):</strong> If my ancestor's certificate is missing and the entry number is unknown, I have interviewed relatives to secure the required search clues: childhood district/parish, primary school name, sibling names, and parents' names.</label>
           </div>
         </div>
 
@@ -183,27 +204,27 @@
           <h4>Part 2: Establishing Citizenship by Descent</h4>
           <div class="check-item">
             <input type="checkbox" id="pt2_1">
-            <label for="pt2_1"><strong>The Original Forms:</strong> Completed Application for Jamaican Citizenship by Descent form, filled out in blue/black ink with no white-out.[cite: 7]</label>
+            <label for="pt2_1"><strong>The Original Forms:</strong> Completed Application for Jamaican Citizenship by Descent form, filled out in blue/black ink with no white-out.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="pt2_2">
-            <label for="pt2_2"><strong>Identity Link:</strong> The original long-form birth certificate of the applicant alongside the original birth certificate of the Jamaican ancestor.[cite: 7]</label>
+            <label for="pt2_2"><strong>Identity Link:</strong> The original long-form birth certificate of the applicant alongside the original birth certificate of the Jamaican ancestor.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="pt2_3">
-            <label for="pt2_3"><strong>Name Consistency Audit:</strong> I have verified side-by-side that the names match perfectly across both certificates. (If a parent's name has a spelling variation or middle name discrepancy, a Marriage Certificate, Deed Poll, or legal bridge document is attached).[cite: 7]</label>
+            <label for="pt2_3"><strong>Name Consistency Audit:</strong> I have verified side-by-side that the names match perfectly across both certificates. (If a parent's name has a spelling variation or middle name discrepancy, a Marriage Certificate, Deed Poll, or legal bridge document is attached).</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="pt2_4">
-            <label for="pt2_4"><strong>Applicant's ID:</strong> A valid, unexpired government photo ID (Passport or Driver’s License).[cite: 7]</label>
+            <label for="pt2_4"><strong>Applicant's ID:</strong> A valid, unexpired government photo ID (Passport or Driver’s License).</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="pt2_5">
-            <label for="pt2_5"><strong>Photographs:</strong> Two recent passport-sized photos. If submitting via mail/dropbox, one photo has been properly certified on the back by a Notary Public without smudging the front face.[cite: 7]</label>
+            <label for="pt2_5"><strong>Photographs:</strong> Two recent passport-sized photos. If submitting via mail/dropbox, one photo has been properly certified on the back by a Notary Public without smudging the front face.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="pt2_6">
-            <label for="pt2_6"><strong>Payment Compliance:</strong> An International Money Order or Bank Draft for the exact application fee made out to PICA or the respective consulate (no cash, no personal checks).[cite: 7]</label>
+            <label for="pt2_6"><strong>Payment Compliance:</strong> An International Money Order or Bank Draft for the exact application fee made out to PICA or the respective consulate (no cash, no personal checks).</label>
           </div>
         </div>
 
@@ -211,19 +232,19 @@
           <h4>Part 3: The First-Time Passport Application</h4>
           <div class="check-item">
             <input type="checkbox" id="pt3_1">
-            <label for="pt3_1"><strong>Citizenship Document:</strong> The brand-new physical Certificate of Jamaican Citizenship received from PICA is in hand.[cite: 7]</label>
+            <label for="pt3_1"><strong>Citizenship Document:</strong> The brand-new physical Certificate of Jamaican Citizenship received from PICA is in hand.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="pt3_2">
-            <label for="pt3_2"><strong>Consulate Jurisdiction:</strong> The in-person biometric appointment has been scheduled at the specific consulate office responsible for my current state of residence.[cite: 7]</label>
+            <label for="pt3_2"><strong>Consulate Jurisdiction:</strong> The in-person biometric appointment has been scheduled at the specific consulate office responsible for my current state of residence.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="pt3_3">
-            <label for="pt3_3"><strong>Untouched Photos:</strong> Two passport-sized photographs on a matte finish. These photos have <u>NOT</u> been stamped or signed by a notary, as they will be verified in person by the consulate officer.[cite: 7]</label>
+            <label for="pt3_3"><strong>Untouched Photos:</strong> Two passport-sized photographs on a matte finish. These photos have <u>NOT</u> been stamped or signed by a notary, as they will be verified in person by the consulate officer.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="pt3_4">
-            <label for="pt3_4"><strong>In-Person ID & Fees:</strong> Original ID is present, and payment has been secured exclusively via a Certified Check or Money Order matching the consulate's exact fee matrix.[cite: 7]</label>
+            <label for="pt3_4"><strong>In-Person ID & Fees:</strong> Original ID is present, and payment has been secured exclusively via a Certified Check or Money Order matching the consulate's exact fee matrix.</label>
           </div>
         </div>
 
@@ -240,22 +261,22 @@
 
       <div class="accordion-content">
         <p style="color: var(--text-mid); margin-bottom: 25px;">
-          <strong>Strictly In-Person Appointment:</strong> Because this is your first Jamaican passport, biometric laws require you to appear in person to have your live photograph and fingerprints captured. You cannot use a proxy or mail in this application.[cite: 8]
+          <strong>Strictly In-Person Appointment:</strong> Because this is your first Jamaican passport, biometric laws require you to appear in person to have your live photograph and fingerprints captured. You cannot use a proxy or mail in this application.
         </p>
 
         <div class="checklist-group">
           <h4>Part 1: The Core Requirements</h4>
           <div class="check-item">
             <input type="checkbox" id="ftp_1_1">
-            <label for="ftp_1_1"><strong>Book the Appointment:</strong> Ensure you have booked a formal appointment at your designated PICA office or Embassy/Consulate jurisdiction.[cite: 8]</label>
+            <label for="ftp_1_1"><strong>Book the Appointment:</strong> Ensure you have booked a formal appointment at your designated PICA office or Embassy/Consulate jurisdiction.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="ftp_1_2">
-            <label for="ftp_1_2"><strong>The Official Form:</strong> Complete the Jamaican Passport Application Form in blue or black ink. Do not use white-out.[cite: 8]</label>
+            <label for="ftp_1_2"><strong>The Official Form:</strong> Complete the Jamaican Passport Application Form in blue or black ink. Do not use white-out.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="ftp_1_3">
-            <label for="ftp_1_3"><strong>The Signature Box Warning:</strong> Do not sign the biometric signature box at home. Leave it empty until you are standing directly in front of the officer. The signature is scanned by a computer; if your pen touches the boundary lines of the box, the machine will reject it.[cite: 8]</label>
+            <label for="ftp_1_3"><strong>The Signature Box Warning:</strong> Do not sign the biometric signature box at home. Leave it empty until you are standing directly in front of the officer. The signature is scanned by a computer; if your pen touches the boundary lines of the box, the machine will reject it.</label>
           </div>
         </div>
 
@@ -263,15 +284,15 @@
           <h4>Part 2: The Physical Documents</h4>
           <div class="check-item">
             <input type="checkbox" id="ftp_2_1">
-            <label for="ftp_2_1"><strong>Proof of Citizenship:</strong> Your original Jamaican Birth Certificate, Adoption Certificate, or your physical Certificate of Jamaican Citizenship. (No photocopies or laminations).[cite: 8]</label>
+            <label for="ftp_2_1"><strong>Proof of Citizenship:</strong> Your original Jamaican Birth Certificate, Adoption Certificate, or your physical Certificate of Jamaican Citizenship. (No photocopies or laminations).</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="ftp_2_2">
-            <label for="ftp_2_2"><strong>Valid Photo ID:</strong> An original, valid government-issued ID (e.g., Driver's License, National ID, or another country's passport).[cite: 8]</label>
+            <label for="ftp_2_2"><strong>Valid Photo ID:</strong> An original, valid government-issued ID (e.g., Driver's License, National ID, or another country's passport).</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="ftp_2_3">
-            <label for="ftp_2_3"><strong>The Application Fee:</strong> Check your specific location's fee. Consulates require a Certified Check or Money Order. PICA Jamaica accepts cash, debit, or credit.[cite: 8]</label>
+            <label for="ftp_2_3"><strong>The Application Fee:</strong> Check your specific location's fee. Consulates require a Certified Check or Money Order. PICA Jamaica accepts cash, debit, or credit.</label>
           </div>
         </div>
 
@@ -279,15 +300,15 @@
           <h4>Part 3: Photographs & Certification</h4>
           <div class="check-item">
             <input type="checkbox" id="ftp_3_1">
-            <label for="ftp_3_1"><strong>The Photographs:</strong> Two identical, color passport-sized photographs taken on a matte finish against a plain background.[cite: 8]</label>
+            <label for="ftp_3_1"><strong>The Photographs:</strong> Two identical, color passport-sized photographs taken on a matte finish against a plain background.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="ftp_3_2">
-            <label for="ftp_3_2"><strong>Consulate Overseas Rule:</strong> If visiting a Consulate Overseas, do not have a Notary sign your photos or Section G in advance. The Consular Officer will officially certify them during your appointment.[cite: 8]</label>
+            <label for="ftp_3_2"><strong>Consulate Overseas Rule:</strong> If visiting a Consulate Overseas, do not have a Notary sign your photos or Section G in advance. The Consular Officer will officially certify them during your appointment.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="ftp_3_3">
-            <label for="ftp_3_3"><strong>PICA Office Local Rule:</strong> If visiting a PICA Office in Jamaica, you must have an eligible certifier (e.g., a Justice of the Peace) sign Section G and the back of one photograph before you arrive.[cite: 8]</label>
+            <label for="ftp_3_3"><strong>PICA Office Local Rule:</strong> If visiting a PICA Office in Jamaica, you must have an eligible certifier (e.g., a Justice of the Peace) sign Section G and the back of one photograph before you arrive.</label>
           </div>
         </div>
 
@@ -303,48 +324,53 @@
       </button>
 
       <div class="accordion-content">
+        <div class="skip-hassle-box">
+            <i class="fa-solid fa-bolt"></i>
+            <div><strong>The Docu-Hub Advantage:</strong> You are fully eligible to bypass the line. Sign an authorization letter, and our team will physically submit your name change request at PICA headquarters on your behalf.</div>
+        </div>
+
         <p style="color: var(--text-mid); margin-bottom: 25px;">
-          <strong>Proxy & Mail-In Eligible:</strong> If you already hold an adult Jamaican passport and need to update your legal name due to marriage, divorce, or a Deed Poll, you do not need to appear in person. You can authorize DocuHub Operations Services to submit this application at the PICA headquarters in Jamaica on your behalf.[cite: 8]
+          <strong>Proxy & Mail-In Eligible:</strong> If you already hold an adult Jamaican passport and need to update your legal name due to marriage, divorce, or a Deed Poll, you do not need to appear in person.
         </p>
 
         <div class="checklist-group">
           <h4>Part 1: The Core Identity & Name Change Documents</h4>
           <div class="check-item">
             <input type="checkbox" id="nc_1_1">
-            <label for="nc_1_1"><strong>Proof of Citizenship:</strong> Your original Jamaican Birth Certificate, Adoption Certificate, or Certificate of Jamaican Citizenship.[cite: 8]</label>
+            <label for="nc_1_1"><strong>Proof of Citizenship:</strong> Your original Jamaican Birth Certificate, Adoption Certificate, or Certificate of Jamaican Citizenship.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="nc_1_2">
-            <label for="nc_1_2"><strong>The Bridge Document:</strong> You must submit the original legal document that proves the name change (e.g., Original Marriage Certificate, Deed Poll, or Divorce Decree). PICA will return this original document to you with your new passport.[cite: 8]</label>
+            <label for="nc_1_2"><strong>The Bridge Document:</strong> You must submit the original legal document that proves the name change (e.g., Original Marriage Certificate, Deed Poll, or Divorce Decree). PICA will return this original document to you with your new passport.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="nc_1_3">
-            <label for="nc_1_3"><strong>The Current Passport:</strong> You must submit your current Jamaican passport so it can be officially canceled and replaced.[cite: 8]</label>
+            <label for="nc_1_3"><strong>The Current Passport:</strong> You must submit your current Jamaican passport so it can be officially canceled and replaced.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="nc_1_4">
-            <label for="nc_1_4"><strong>The Official Form:</strong> Complete the standard Jamaican Passport Application Form using your new legal name.[cite: 8]</label>
+            <label for="nc_1_4"><strong>The Official Form:</strong> Complete the standard Jamaican Passport Application Form using your new legal name.</label>
           </div>
         </div>
 
         <div class="checklist-group">
           <h4>Part 2: The Proxy Protocol (DocuHub Submission)</h4>
-          <p style="color: var(--text-mid); font-size: 0.9rem; margin-bottom: 15px;">Because you are not appearing in person, your application must be heavily certified before you courier it to our office.[cite: 8]</p>
+          <p style="color: var(--text-mid); font-size: 0.9rem; margin-bottom: 15px;">Because you are not appearing in person, your application must be heavily certified before you courier it to our office.</p>
           <div class="check-item">
             <input type="checkbox" id="nc_2_1">
-            <label for="nc_2_1"><strong>Notarized Authorization Letter:</strong> A formally typed letter stating: "I, [Your Full Name], authorize DocuHub Operations Services to submit my passport renewal and name change application, and to collect my new passport and original supporting documents on my behalf." You must sign this in the physical presence of a Notary Public, who will then stamp it.[cite: 8]</label>
+            <label for="nc_2_1"><strong>Notarized Authorization Letter:</strong> A formally typed letter stating: "I, [Your Full Name], authorize DocuHub Operations Services to submit my passport renewal and name change application, and to collect my new passport and original supporting documents on my behalf." You must sign this in the physical presence of a Notary Public, who will then stamp it.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="nc_2_2">
-            <label for="nc_2_2"><strong>Fully Certified Application:</strong> A Notary Public in your home country must sign and stamp Section G of your application form.[cite: 8]</label>
+            <label for="nc_2_2"><strong>Fully Certified Application:</strong> A Notary Public in your home country must sign and stamp Section G of your application form.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="nc_2_3">
-            <label for="nc_2_3"><strong>Certified Photographs:</strong> Provide two passport-sized photographs. The Notary Public must certify the back of ONE photograph.[cite: 8]</label>
+            <label for="nc_2_3"><strong>Certified Photographs:</strong> Provide two passport-sized photographs. The Notary Public must certify the back of ONE photograph.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="nc_2_4">
-            <label for="nc_2_4"><strong>Secure Courier Shipment:</strong> Courier your complete package (Original Birth Certificate, Current Passport, Original Bridge Document, Certified Form, Photos, Notarized Letter, and Application Fee) directly to the DocuHub office via a secure, tracked service like FedEx or DHL.[cite: 8]</label>
+            <label for="nc_2_4"><strong>Secure Courier Shipment:</strong> Courier your complete package (Original Birth Certificate, Current Passport, Original Bridge Document, Certified Form, Photos, Notarized Letter, and Application Fee) directly to the DocuHub office via a secure, tracked service like FedEx or DHL.</label>
           </div>
         </div>
 
@@ -355,28 +381,33 @@
     <!-- CHECKLIST 3 ACCORDION: LOST OR DAMAGED PASSPORT -->
     <div class="accordion-item" id="lost-damaged">
       <button class="accordion-header" onclick="toggleAccordion(this)">
-        <h3 class="accordion-title">Protocol for Replacing a Lost or Damaged Passport (Overseas)</h3>
+        <h3 class="accordion-title">Protocol for Replacing a Lost or Damaged Passport</h3>
         <span class="icon">+</span>
       </button>
 
       <div class="accordion-content">
+        <div class="skip-hassle-box">
+            <i class="fa-solid fa-bolt"></i>
+            <div><strong>The Docu-Hub Advantage:</strong> Overseas police often refuse to issue reports for accidental household damage. We bypass this issue entirely by assisting you in drafting a localized Statutory Declaration that PICA legally accepts.</div>
+        </div>
+
         <p style="color: var(--text-mid); margin-bottom: 15px;">
-          The Passport, Immigration and Citizenship Agency (PICA) has strict security protocols for replacing passports that are not standard renewals. Please read carefully to determine which path applies to your situation.[cite: 9]
+          The Passport, Immigration and Citizenship Agency (PICA) has strict security protocols for replacing passports that are not standard renewals. Please read carefully to determine which path applies to your situation.
         </p>
         <p style="color: var(--text-mid); font-size: 0.9rem; margin-bottom: 25px; line-height: 1.5;">
-          <strong>What constitutes a "Damaged" Passport?</strong> A passport is legally considered damaged and invalid if it has been washed or submerged in water, defaced or torn, written in or altered by anyone other than an official immigration officer, or subjected to heat/sun damage that causes the lamination to peel.[cite: 9]
+          <strong>What constitutes a "Damaged" Passport?</strong> A passport is legally considered damaged and invalid if it has been washed or submerged in water, defaced or torn, written in or altered by anyone other than an official immigration officer, or subjected to heat/sun damage that causes the lamination to peel.
         </p>
 
         <div class="checklist-group">
           <h4>Part 1: The Circumstance Proof (Choose A or B)</h4>
-          <p style="color: var(--text-mid); font-size: 0.9rem; margin-bottom: 15px;">To authorize a replacement, PICA must legally verify what happened to the previous document.[cite: 9]</p>
+          <p style="color: var(--text-mid); font-size: 0.9rem; margin-bottom: 15px;">To authorize a replacement, PICA must legally verify what happened to the previous document.</p>
           <div class="check-item">
             <input type="checkbox" id="ld_1_1">
-            <label for="ld_1_1"><strong>A. The "Lost or Stolen" Protocol:</strong> If you cannot physically find the passport, you must visit your local police precinct, file a formal lost/stolen report, and submit the original official report (or printout with the incident number).[cite: 9]</label>
+            <label for="ld_1_1"><strong>A. The "Lost or Stolen" Protocol:</strong> If you cannot physically find the passport, you must visit your local police precinct, file a formal lost/stolen report, and submit the original official report (or printout with the incident number).</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="ld_1_2">
-            <label for="ld_1_2"><strong>B. The "Damaged" Protocol & Affidavit Workaround:</strong> If you have the damaged book, you must submit it. Because overseas police often refuse reports for accidental household damage, you must write a formal Personal Affidavit (Statutory Declaration) detailing how, when, and where it happened, and sign it before a Notary Public.[cite: 9]</label>
+            <label for="ld_1_2"><strong>B. The "Damaged" Protocol & Affidavit Workaround:</strong> If you have the damaged book, you must submit it. Because overseas police often refuse reports for accidental household damage, you must write a formal Personal Affidavit (Statutory Declaration) detailing how, when, and where it happened, and sign it before a Notary Public.</label>
           </div>
         </div>
 
@@ -384,23 +415,23 @@
           <h4>Part 2: The Core Application Documents</h4>
           <div class="check-item">
             <input type="checkbox" id="ld_2_1">
-            <label for="ld_2_1"><strong>The Book:</strong> The Damaged Passport itself (if applicable).[cite: 9]</label>
+            <label for="ld_2_1"><strong>The Book:</strong> The Damaged Passport itself (if applicable).</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="ld_2_2">
-            <label for="ld_2_2"><strong>The Official Forms:</strong> A fully completed Jamaican Passport Application Form filled in blue or black ink with no white-out.[cite: 9]</label>
+            <label for="ld_2_2"><strong>The Official Forms:</strong> A fully completed Jamaican Passport Application Form filled in blue or black ink with no white-out.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="ld_2_3">
-            <label for="ld_2_3"><strong>Proof of Citizenship:</strong> Your original Jamaican Birth Certificate, Adoption Certificate, or Certificate of Jamaican Citizenship. (No photocopies).[cite: 9]</label>
+            <label for="ld_2_3"><strong>Proof of Citizenship:</strong> Your original Jamaican Birth Certificate, Adoption Certificate, or Certificate of Jamaican Citizenship. (No photocopies).</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="ld_2_4">
-            <label for="ld_2_4"><strong>Valid Photo ID:</strong> An original, valid governmentID (e.g., US/Canadian Driver's License, PR Card, or Electoral ID).[cite: 9]</label>
+            <label for="ld_2_4"><strong>Valid Photo ID:</strong> An original, valid governmentID (e.g., US/Canadian Driver's License, PR Card, or Electoral ID).</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="ld_2_5">
-            <label for="ld_2_5"><strong>Name Change Chain:</strong> If your current name differs from your birth certificate, you must provide the original Marriage Certificate, Deed Poll, or Divorce Decree.[cite: 9]</label>
+            <label for="ld_2_5"><strong>Name Change Chain:</strong> If your current name differs from your birth certificate, you must provide the original Marriage Certificate, Deed Poll, or Divorce Decree.</label>
           </div>
         </div>
 
@@ -408,15 +439,15 @@
           <h4>Part 3: Photographs & Certification</h4>
           <div class="check-item">
             <input type="checkbox" id="ld_3_1">
-            <label for="ld_3_1"><strong>The Photographs:</strong> Two identical, recent, color passport-sized photographs taken on a matte finish against a plain background.[cite: 9]</label>
+            <label for="ld_3_1"><strong>The Photographs:</strong> Two identical, recent, color passport-sized photographs taken on a matte finish against a plain background.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="ld_3_2">
-            <label for="ld_3_2"><strong>Mail/Dropbox Rule:</strong> Section G of the form and the back of ONE photo must be certified by a Notary Public or Consular Officer.[cite: 9]</label>
+            <label for="ld_3_2"><strong>Mail/Dropbox Rule:</strong> Section G of the form and the back of ONE photo must be certified by a Notary Public or Consular Officer.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="ld_3_3">
-            <label for="ld_3_3"><strong>In-Person Rule:</strong> If applying directly at the Consulate, do not notarize photos in advance; the Consular Officer handles validation live.[cite: 9]</label>
+            <label for="ld_3_3"><strong>In-Person Rule:</strong> If applying directly at the Consulate, do not notarize photos in advance; the Consular Officer handles validation live.</label>
           </div>
         </div>
 
@@ -424,28 +455,28 @@
           <h4>Part 4: Fees and Submission</h4>
           <div class="check-item">
             <input type="checkbox" id="ld_4_1">
-            <label for="ld_4_1"><strong>The Replacement Fee:</strong> The fee for replacing a Lost or Damaged passport is higher than a standard renewal. Include a Certified Check or International Money Order payable to the Consulate General of Jamaica or PICA.[cite: 9]</label>
+            <label for="ld_4_1"><strong>The Replacement Fee:</strong> The fee for replacing a Lost or Damaged passport is higher than a standard renewal. Include a Certified Check or International Money Order payable to the Consulate General of Jamaica or PICA.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="ld_4_2">
-            <label for="ld_4_2"><strong>Return Mail:</strong> If not picking up in person, include a prepaid, self-addressed courier envelope (e.g., FedEx).[cite: 9]</label>
+            <label for="ld_4_2"><strong>Return Mail:</strong> If not picking up in person, include a prepaid, self-addressed courier envelope (e.g., FedEx).</label>
           </div>
         </div>
 
         <div class="checklist-group">
           <h4>Part 5: The Proxy Protocol (Submission via DocuHub)</h4>
-          <p style="color: var(--text-mid); font-size: 0.9rem; margin-bottom: 15px;">If you wish to bypass processing delays, you can authorize DocuHub Operations Services to act as your agent. We will physically submit your file to PICA headquarters in Jamaica and courier the new passport back to you.[cite: 9]</p>
+          <p style="color: var(--text-mid); font-size: 0.9rem; margin-bottom: 15px;">If you wish to bypass processing delays, you can authorize DocuHub Operations Services to act as your agent. We will physically submit your file to PICA headquarters in Jamaica and courier the new passport back to you.</p>
           <div class="check-item">
             <input type="checkbox" id="ld_5_1">
-            <label for="ld_5_1"><strong>The Letter of Authorization:</strong> A formally typed letter stating: "I, [Your Full Name], authorize DocuHub Operations Services to submit my passport application and collect my new passport and original supporting documents on my behalf." Sign this in front of a Notary Public to have it stamped.[cite: 9]</label>
+            <label for="ld_5_1"><strong>The Letter of Authorization:</strong> A formally typed letter stating: "I, [Your Full Name], authorize DocuHub Operations Services to submit my passport application and collect my new passport and original supporting documents on my behalf." Sign this in front of a Notary Public to have it stamped.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="ld_5_2">
-            <label for="ld_5_2"><strong>Fully Certified Application:</strong> Because you will not be appearing in person, Section G of your application form and the back of ONE of your photographs MUST be signed and stamped by a Notary Public in your home country before shipping.[cite: 9]</label>
+            <label for="ld_5_2"><strong>Fully Certified Application:</strong> Because you will not be appearing in person, Section G of your application form and the back of ONE of your photographs MUST be signed and stamped by a Notary Public in your home country before shipping.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="ld_5_3">
-            <label for="ld_5_3"><strong>Secure Courier Shipment:</strong> Securely courier your complete package (Original Forms, Original Birth Certificate, Damaged Passport/Police Report, Notarized Photos, and Notarized Authorization Letter) directly to the DocuHub office via FedEx or DHL with a tracking number.[cite: 9]</label>
+            <label for="ld_5_3"><strong>Secure Courier Shipment:</strong> Securely courier your complete package (Original Forms, Original Birth Certificate, Damaged Passport/Police Report, Notarized Photos, and Notarized Authorization Letter) directly to the DocuHub office via FedEx or DHL with a tracking number.</label>
           </div>
         </div>
 
@@ -493,15 +524,19 @@
               <p style="font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 300px;">Providing highly secure, on-the-ground document processing, records retrieval, and compliance for the Jamaican diaspora.</p>
           </div>
           <div>
-              <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt);">QUICK LINKS</h4>
+              <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt); letter-spacing: 0.05em;">QUICK LINKS</h4>
               <ul style="list-style: none; display: grid; gap: 8px;">
-                  <li><a href="index.html#services" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">All Proxy Services</a></li>
-                  <li><a href="index.html#faq" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Portal Troubleshooting</a></li>
+                  
+                  <!-- Updated Footer Links to Match the Clean Homepage Setup -->
+                  <li><a href="index.html#services" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Our Core Services</a></li>
+                  <li><a href="index.html#faq-resources" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Portal Help & FAQs</a></li>
+                  <li><a href="resource.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Checklists & Guides</a></li>
                   <li><a href="about.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">About Docu-Hub</a></li>
+
               </ul>
           </div>
           <div>
-              <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt);">SECURE CONTACT</h4>
+              <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt); letter-spacing: 0.05em;">SECURE CONTACT</h4>
               <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px;"><i class="fa-regular fa-calendar-check" style="color: var(--gold); margin-right: 8px;"></i> <a href="https://calendar.app.google/mCXiJ2GLF15mLMV48" target="_blank" rel="noopener">Book Consultation</a></p>
               <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px;"><i class="fa-regular fa-envelope" style="color: var(--gold); margin-right: 8px;"></i> <a href="mailto:admin@dhubservices.com">admin@dhubservices.com</a></p>
               <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 8px;"></i> Linstead, Jamaica</p>
