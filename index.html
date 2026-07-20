@@ -491,86 +491,100 @@
     </div>
 </section>
 
-<!-- COMBINED FAQ & YOUTUBE SPOTLIGHT -->
+<!-- COMBINED FAQ & HORIZONTAL RESOURCE BANNER -->
 <section class="faq-resource-section" id="faq-resources" style="padding: var(--space-max) 0; background: var(--ivory);">
     <style>
-        .split-grid { display: grid; grid-template-columns: 1fr; gap: 5.6rem; align-items: start; }
-        @media (min-width: 900px) { .split-grid { grid-template-columns: 1.3fr 1fr; gap: var(--space-xxxl); } }
+        /* New 2-Column FAQ Grid */
+        .faq-grid { display: grid; grid-template-columns: 1fr; gap: 0 var(--space-xxl); align-items: start; }
+        @media (min-width: 900px) { .faq-grid { grid-template-columns: 1fr 1fr; } }
+        
         .tight-faq { border-bottom: 0.1rem solid var(--border-light); }
         .tight-faq summary { font-family: var(--sans); font-size: 1.6rem; font-weight: 500; color: var(--brand-drk); padding: 2.0rem 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
         .tight-faq summary::-webkit-details-marker { display: none; }
-        .tight-faq summary::after { content: '\002B'; font-size: 1.9rem; font-weight: 300; color: var(--gold); }
+        .tight-faq summary::after { content: '\002B'; font-size: 1.9rem; font-weight: 300; color: var(--gold); flex-shrink: 0; margin-left: 1.6rem; }
         .tight-faq[open] summary::after { content: '\2212'; }
         .tight-faq .faq-answer { padding-bottom: var(--space-md); font-family: var(--sans); font-size: 1.4rem; line-height: 1.6; color: var(--text-mid); animation: fadeIn 0.4s ease; }
+
+        /* Sleek Horizontal Resource Banner */
+        .hz-resource-banner { 
+            background: var(--brand-drk); padding: var(--space-xl) var(--space-xxl); 
+            border-radius: 1.2rem; box-shadow: var(--shadow-deep); 
+            display: flex; flex-direction: column; gap: var(--space-md); 
+            align-items: center; text-align: center; margin-top: var(--space-xxl);
+            border-top: 0.4rem solid var(--gold);
+        }
+        @media (min-width: 900px) { 
+            .hz-resource-banner { flex-direction: row; text-align: left; justify-content: space-between; } 
+        }
     </style>
 
     <div class="wrap">
-        <div class="split-grid">
+        
+        <!-- Center-Aligned Header -->
+        <div class="enter d1" style="text-align: center; margin-bottom: var(--space-xl); max-width: 70.0rem; margin-left: auto; margin-right: auto;">
+            <h2 style="font-family: var(--serif); font-size: 3.8rem; color: var(--brand-drk); margin-bottom: var(--space-xs);">Portal Help & FAQs</h2>
+            <p style="font-family: var(--sans); color: var(--text-mid); font-size: 1.6rem;">Quick fixes and insider knowledge for the most common PICA and TAJ government portal errors.</p>
+        </div>
+
+        <!-- Space-Saving 2-Column FAQ Layout -->
+        <div class="faq-grid enter d2">
             
-            <!-- LEFT COLUMN: FAQs -->
-            <div class="faq-column enter d1">
-                <div style="margin-bottom: var(--space-lg);">
-                    <h2 style="font-family: var(--serif); font-size: 3.8rem; color: var(--brand-drk); margin-bottom: var(--space-xs);">Portal Help & FAQs</h2>
-                    <p style="font-family: var(--sans); color: var(--text-mid); font-size: 1.5rem;">Quick fixes for the most common Jamaican government portal errors.</p>
-                </div>
+            <!-- LEFT COLUMN: TAJ Focus -->
+            <div class="faq-col-left">
+                <details class="tight-faq">
+                    <summary>The TAJ portal keeps blocking my vehicle renewal, but won't say why.</summary>
+                    <div class="faq-answer">
+                        <p>If the portal blocks your payment without a specific error code, 90% of the time it is caused by an outstanding traffic ticket. The TAJ system will not show you your tickets directly.</p>
+                        <p style="margin-top: var(--space-xs);"><strong>The Fix:</strong> You must visit the separate <a href="https://trafficticketlookup.gov.jm/" target="_blank" rel="noopener" style="color: var(--brand-drk); font-weight: 600; text-decoration: underline;">Traffic Ticket Lookup portal</a> to check your license status and clear your name before TAJ will accept your payment.</p>
+                    </div>
+                </details>
 
-                <div class="faq-container">
-                    <details class="tight-faq">
-                        <summary>Why is my overseas bank card saying "Transaction Failed"?</summary>
-                        <div class="faq-answer">
-                            <p>Overseas banks frequently flag the PICA portal's 3D Secure protocol as fraud and block it instantly to protect you.</p>
-                            <p style="margin-top: var(--space-xs);"><strong>The Fix:</strong> Begin registration with us. We will step in as your proxy and process the payment securely via local Jamaican channels.</p>
-                        </div>
-                    </details>
-
-                    <details class="tight-faq">
-                        <summary>My application draft is "locked" and won't let me pay.</summary>
-                        <div class="faq-answer">
-                            <p>If a payment fails, the system automatically locks your draft for 1 to 2 hours to prevent duplicate charges.</p>
-                            <p style="margin-top: var(--space-xs);"><strong>The Fix:</strong> Wait 2 hours, log back in, and try again. If it remains locked, we can execute a manual gateway rescue for you.</p>
-                        </div>
-                    </details>
-
-                    <details class="tight-faq">
-                        <summary>Can I renew a damaged, washed, or torn passport online?</summary>
-                        <div class="faq-answer">
-                            <p><strong>No.</strong> PICA strictly prohibits online renewals for damaged books because the agency must physically inspect and apply a cancellation stamp.</p>
-                            <p style="margin-top: var(--space-xs);"><strong>The Fix:</strong> You must submit a physical mail-in application. We coordinate this strict manual protocol safely from your location.</p>
-                        </div>
-                    </details>
-                </div>
+                <details class="tight-faq">
+                    <summary>I have my paper Certificate of Fitness, but TAJ says it's invalid.</summary>
+                    <div class="faq-answer">
+                        <p>The TAJ portal relies on a live digital sync. Even if you have the physical paper, your insurance broker or the Island Traffic Authority (ITA) must digitally upload your active dates to the central database.</p>
+                        <p style="margin-top: var(--space-xs);"><strong>The Fix:</strong> Contact your insurance broker to ensure they have pushed your active policy dates to the national database. If the digital dates don't match exactly, the portal remains locked.</p>
+                    </div>
+                </details>
             </div>
 
-            <!-- RIGHT COLUMN: RESOURCES (Checklists + Mini YouTube) -->
-            <div class="resource-column enter d2" style="position: sticky; top: 12.0rem; display: flex; flex-direction: column; gap: 2.0rem;">
-                
-                <!-- Primary Call to Action: The Checklists -->
-                <div style="background: var(--brand-drk); padding: 4.0rem var(--space-lg); border-radius: 1.2rem; box-shadow: var(--shadow-deep); text-align: left; border-left: 0.4rem solid var(--gold);">
-                    <span style="font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 1.2rem;"><i class="fa-solid fa-list-check" style="margin-right: 0.6rem;"></i> Free Resources</span>
-                    <h3 style="font-family: var(--serif); font-size: 2.9rem; color: #fff; font-weight: 500; margin-bottom: 1.2rem; line-height: 1.2;">Preparation Checklists</h3>
-                    <p style="font-family: var(--sans); font-size: 1.5rem; color: rgba(255,255,255,0.8); margin-bottom: var(--space-md); line-height: 1.6;">
-                        Not ready to book a proxy yet? Download our official operational checklists to see exactly what forms, stamps, and ID you need to prepare your own file without errors.
-                    </p>
-                    <a href="resource.html" class="btn-gold" style="padding: 1.4rem var(--space-md); width: 100%; text-align: center; justify-content: center; font-size: 1.4rem;">Access Checklists & Guides</a>
-                </div>
-
-                <!-- Secondary Call to Action: Mini YouTube Banner -->
-                <a href="https://www.youtube.com/@LauraClarke_dhub" target="_blank" rel="noopener" style="background: var(--bg-light); padding: 2.0rem var(--space-md); border-radius: 1.2rem; border: 0.1rem solid var(--border-light); display: flex; align-items: center; justify-content: space-between; gap: var(--space-sm); text-decoration: none; transition: 0.3s; box-shadow: var(--shadow-soft);">
-                    <div>
-                        <h4 style="font-family: var(--sans); font-size: 1.5rem; color: var(--brand-drk); margin: 0 0 0.4rem 0; font-weight: 600;"><i class="fa-brands fa-youtube" style="color: #FF0000; margin-right: 0.6rem;"></i> Prefer to watch?</h4>
-                        <p style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); margin: 0;">Video guides & portal breakdowns.</p>
+            <!-- RIGHT COLUMN: PICA & Payment Focus -->
+            <div class="faq-col-right">
+                <details class="tight-faq">
+                    <summary>Why is my overseas bank card saying "Transaction Failed"?</summary>
+                    <div class="faq-answer">
+                        <p>Overseas banks frequently flag the PICA and TAJ portals' 3D-Secure gateways as fraud and block them instantly to protect you. If you try more than 3 times, the portals may lock your draft entirely.</p>
+                        <p style="margin-top: var(--space-xs);"><strong>The Fix:</strong> Begin registration with us. We will step in as your proxy and process the payment securely via local Jamaican channels.</p>
                     </div>
-                    <div style="width: 3.6rem; height: 3.6rem; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; color: var(--brand-drk); box-shadow: var(--shadow-soft);">
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </div>
-                </a>
+                </details>
 
+                <details class="tight-faq">
+                    <summary>Can I renew a damaged, washed, or torn passport online?</summary>
+                    <div class="faq-answer">
+                        <p><strong>No.</strong> PICA strictly prohibits online renewals for damaged books because the agency must physically inspect and apply a cancellation stamp.</p>
+                        <p style="margin-top: var(--space-xs);"><strong>The Fix:</strong> You must submit a physical mail-in application. We coordinate this strict manual protocol safely from your location.</p>
+                    </div>
+                </details>
             </div>
 
         </div>
+
+        <!-- Horizontal Free Resources Banner -->
+        <div class="hz-resource-banner enter d3">
+            <div style="max-width: 60.0rem;">
+                <span style="font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 0.8rem;"><i class="fa-solid fa-list-check" style="margin-right: 0.6rem;"></i> Free Resources</span>
+                <h3 style="font-family: var(--serif); font-size: 2.6rem; color: #fff; font-weight: 500; margin-bottom: 0.8rem; line-height: 1.2;">Preparation Checklists</h3>
+                <p style="font-family: var(--sans); font-size: 1.5rem; color: rgba(255,255,255,0.8); margin: 0; line-height: 1.5;">
+                    Not ready to book a proxy yet? Download our official operational checklists to see exactly what forms, stamps, and ID you need to prepare your own file without errors.
+                </p>
+            </div>
+            <div>
+                <a href="resource.html" class="btn-gold" style="white-space: nowrap; padding: 1.6rem 3.2rem;">Access Checklists & Guides</a>
+            </div>
+        </div>
+
     </div>
 </section>
-
 <!-- DEDICATED FOOTER STYLES -->
 <style>
     .f-cta-row { display: flex; flex-direction: column; gap: 2.0rem; text-align: center; align-items: center; border-bottom: 0.1rem solid var(--border-glass); padding-bottom: 3.0rem; margin-bottom: 3.0rem; }
