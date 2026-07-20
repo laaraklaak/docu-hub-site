@@ -128,12 +128,30 @@
   .f-logo em { color: var(--gold); font-style: normal; }
   @media (min-width: 900px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr; } }
 
-  /* Print Stylesheet */
+  /* ═══════════════════════════════════════════
+     EXPERT PRINT STYLES (Isolates single sections)
+   ═══════════════════════════════════════════ */
   @media print {
     body { background-color: #fff; padding-top: 0; }
-    .site-nav, .page-header, .dfy-banner, .accordion-header, .print-btn, .skip-hassle-box, .site-footer, #audio-guides { display: none !important; }
-    .accordion-content { max-height: none !important; opacity: 1 !important; padding: 0 !important; }
-    .accordion-item { border: none !important; margin: 0 !important; box-shadow: none !important; }
+    
+    /* Hide all global UI elements that shouldn't print */
+    .site-nav, .page-header, .dfy-banner, .print-btn, .skip-hassle-box, .site-footer, #audio-guides, .icon { display: none !important; }
+    
+    /* When printing, hide ALL accordions by default */
+    body.print-mode .accordion-item { display: none !important; }
+    
+    /* ONLY show the single accordion that was clicked */
+    body.print-mode .accordion-item.print-target { 
+        display: block !important; 
+        border: none !important; 
+        margin: 0 !important; 
+        box-shadow: none !important; 
+    }
+    
+    /* Ensure the title and contents of the target are visible and clean */
+    body.print-mode .accordion-item.print-target .accordion-header { padding: 0 0 20px 0 !important; border: none !important; }
+    body.print-mode .accordion-item.print-target .accordion-content { max-height: none !important; opacity: 1 !important; padding: 0 !important; display: block !important; }
+    
     .checklist-group { page-break-inside: avoid; }
   }
 </style>
@@ -248,7 +266,8 @@
           </div>
         </div>
 
-        <button class="print-btn" onclick="window.print()">Download / Save as PDF</button>
+        <!-- UPDATED PRINT SCRIPT CALL -->
+        <button class="print-btn" onclick="printSpecificSection(this)">Download / Save as PDF</button>
       </div>
     </div>
 
@@ -312,7 +331,8 @@
           </div>
         </div>
 
-        <button class="print-btn" onclick="window.print()">Print Checklist</button>
+        <!-- UPDATED PRINT SCRIPT CALL -->
+        <button class="print-btn" onclick="printSpecificSection(this)">Print Checklist</button>
       </div>
     </div>
 
@@ -374,7 +394,8 @@
           </div>
         </div>
 
-        <button class="print-btn" onclick="window.print()">Print Checklist</button>
+        <!-- UPDATED PRINT SCRIPT CALL -->
+        <button class="print-btn" onclick="printSpecificSection(this)">Print Checklist</button>
       </div>
     </div>
 
@@ -480,7 +501,8 @@
           </div>
         </div>
 
-        <button class="print-btn" onclick="window.print()">Print Protocol</button>
+        <!-- UPDATED PRINT SCRIPT CALL -->
+        <button class="print-btn" onclick="printSpecificSection(this)">Print Protocol</button>
       </div>
     </div>
 
@@ -555,7 +577,8 @@
           </div>
         </div>
 
-        <button class="print-btn" onclick="window.print()">Print Protocol</button>
+        <!-- UPDATED PRINT SCRIPT CALL -->
+        <button class="print-btn" onclick="printSpecificSection(this)">Print Protocol</button>
       </div>
     </div>
 
@@ -602,7 +625,6 @@
               <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt); letter-spacing: 0.05em;">QUICK LINKS</h4>
               <ul style="list-style: none; display: grid; gap: 8px;">
                   
-                  <!-- Updated Footer Links to Match the Clean Homepage Setup -->
                   <li><a href="index.html#services" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Our Core Services</a></li>
                   <li><a href="index.html#faq-resources" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Portal Help & FAQs</a></li>
                   <li><a href="resource.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Checklists & Guides</a></li>
@@ -636,7 +658,26 @@
       item.classList.toggle('active');
     }
 
-    // 2. The Auto-Open "Deep Link" magic for YouTube
+    // 2. THE NEW EXPERT PRINT FUNCTION
+    function printSpecificSection(buttonElement) {
+        // Find the specific accordion the user clicked
+        const accordionItem = buttonElement.closest('.accordion-item');
+        
+        if (accordionItem) {
+            // Add custom classes to trigger our expert print CSS rules
+            document.body.classList.add('print-mode');
+            accordionItem.classList.add('print-target');
+            
+            // Trigger the browser's print dialog
+            window.print();
+            
+            // Remove the custom classes immediately so the website returns to normal
+            document.body.classList.remove('print-mode');
+            accordionItem.classList.remove('print-target');
+        }
+    }
+
+    // 3. The Auto-Open "Deep Link" magic for YouTube
     document.addEventListener("DOMContentLoaded", () => {
       const hash = window.location.hash; 
       
@@ -651,7 +692,7 @@
       }
     });
 
-    // 3. Mobile Menu Toggle
+    // 4. Mobile Menu Toggle
     const hbg = document.getElementById('hbg');
     const navBar = document.getElementById('sitenav');
     hbg.addEventListener('click', () => { navBar.classList.toggle('open'); });
