@@ -29,39 +29,59 @@
        DESIGN TOKENS (Institutional Style)
      ═══════════════════════════════════════════ */
     :root {
+        /* Colors */
         --bg-light:   #EAECE9;
         --ivory:      #FFFFFF;
-        
         --brand-drk:  #1E2B1D; 
         --brand-mid:  #3A4F38;
-        
         --gold:       #C19A5B; 
         --gold-lt:    #DAB87F;
-        
         --text-dark:  #111410; 
         --text-mid:   #4A4F48; 
 
+        /* Typography */
         --serif:      'Playfair Display', Georgia, serif; 
         --sans:       'Jost', Arial, sans-serif; 
 
-        --nav-h: 75px;
-        --max-w: 1200px;
+        /* Layout */
+        --nav-h:      7.5rem;
+        --max-w:      120.0rem;
+
+        /* Spacing Tokens (1rem = 10px) */
+        --space-xs:   0.8rem;  /* 8px */
+        --space-sm:   1.6rem;  /* 16px */
+        --space-md:   2.4rem;  /* 24px */
+        --space-lg:   3.2rem;  /* 32px */
+        --space-xl:   4.8rem;  /* 48px */
+        --space-xxl:  6.4rem;  /* 64px */
+        --space-xxxl: 8.0rem;  /* 80px */
+        --space-max:  10.0rem; /* 100px */
+
+        /* Elevation & Border Tokens */
+        --border-light: rgba(0, 0, 0, 0.05);
+        --border-glass: rgba(255, 255, 255, 0.1);
+        --shadow-soft:  0 0.4rem 1.5rem rgba(0, 0, 0, 0.02);
+        --shadow-md:    0 1.2rem 4.0rem rgba(0, 0, 0, 0.05);
+        --shadow-deep:  0 1.6rem 4.8rem rgba(0, 0, 0, 0.09);
+        --shadow-nav:   0 0.4rem 2.0rem rgba(0, 0, 0, 0.3);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    
+    /* Global 62.5% trick sets 1rem to 10px */
+    html { scroll-behavior: smooth; font-size: 62.5%; }
 
-    body { font-family: var(--sans); background: var(--bg-light); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+    body { font-family: var(--sans); font-size: 1.6rem; background: var(--bg-light); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
     a { text-decoration: none; color: inherit; transition: 0.3s ease; }
     img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
     /* Animations */
-    .enter { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+    .enter { opacity: 0; transform: translateY(2.0rem); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
     .enter.in { opacity: 1; transform: none; }
     .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; } .d4 { transition-delay: 0.4s; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(1.0rem); } to { opacity: 1; transform: translateY(0); } }
 
-    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--space-md); }
 
     /* ═══════════════════════════════════════════
        RESPONSIVE TOGGLE CLASSES (Mobile Smart)
@@ -72,27 +92,27 @@
     /* ═══════════════════════════════════════════
        NAV
      ═══════════════════════════════════════════ */
-    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
-    .site-nav.scrolled { background: rgba(30, 43, 29, 0.98); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; position: relative; }
+    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.9); backdrop-filter: blur(1.2rem); border-bottom: 0.1rem solid var(--border-glass); transition: 0.3s; }
+    .site-nav.scrolled { background: rgba(30, 43, 29, 0.98); box-shadow: var(--shadow-nav); }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--space-md); height: 100%; display: flex; align-items: center; justify-content: space-between; position: relative; }
     
-    .nav-logo-name { font-family: var(--serif); font-size: 1.4rem; color: #fff; letter-spacing: 0.05em; display: block; z-index: 950; }
+    .nav-logo-name { font-family: var(--serif); font-size: 2.2rem; color: #fff; letter-spacing: 0.05em; display: block; z-index: 950; }
     .nav-logo-name em { color: var(--gold-lt); font-style: normal; }
     
-    .nav-links { display: none; list-style: none; align-items: center; gap: 16px; }
-    .nav-links a { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 8px 16px; border-radius: 4px; }
+    .nav-links { display: none; list-style: none; align-items: center; gap: var(--space-sm); }
+    .nav-links a { font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: var(--space-xs) var(--space-sm); border-radius: 0.4rem; }
     .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
     
-    .hamburger { display: flex; flex-direction: column; gap: 6px; background: none; border: none; padding: 5px; cursor: pointer; z-index: 950; }
-    .hamburger span { width: 24px; height: 2px; background: #fff; transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
+    .hamburger { display: flex; flex-direction: column; gap: 0.6rem; background: none; border: none; padding: 0.5rem; cursor: pointer; z-index: 950; }
+    .hamburger span { width: 2.4rem; height: 0.2rem; background: #fff; transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
 
     @media (max-width: 899px) {
-        .nav-links { display: none; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: rgba(30, 43, 29, 0.98); backdrop-filter: blur(16px); padding: 32px 24px; gap: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); box-shadow: 0 12px 30px rgba(0,0,0,0.25); text-align: center; }
+        .nav-links { display: none; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: rgba(30, 43, 29, 0.98); backdrop-filter: blur(1.6rem); padding: var(--space-lg) var(--space-md); gap: var(--space-sm); border-bottom: 0.1rem solid var(--border-glass); box-shadow: var(--shadow-md); text-align: center; }
         .site-nav.open .nav-links { display: flex; animation: fadeIn 0.3s ease-out forwards; }
-        .nav-links a { font-size: 0.9rem; padding: 12px; display: block; width: 100%; }
-        .site-nav.open .hamburger span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .nav-links a { font-size: 1.4rem; padding: 1.2rem; display: block; width: 100%; }
+        .site-nav.open .hamburger span:nth-child(1) { transform: translateY(0.8rem) rotate(45deg); }
         .site-nav.open .hamburger span:nth-child(2) { opacity: 0; }
-        .site-nav.open .hamburger span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        .site-nav.open .hamburger span:nth-child(3) { transform: translateY(-0.8rem) rotate(-45deg); }
     }
 
     /* ═══════════════════════════════════════════
@@ -101,63 +121,63 @@
     .hero-bank {
         position: relative;
         height: 80vh; 
-        min-height: 500px;
+        min-height: 50.0rem;
         display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
         background: linear-gradient(rgba(30, 43, 29, 0.65), rgba(30, 43, 29, 0.85)), url('assets/concierge.webp') center/cover no-repeat;
         color: #fff;
-        padding: 0 20px;
+        padding: 0 2.0rem;
     }
-    .hero-eyebrow { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-lt); margin-bottom: 24px; }
-    .hero-title { font-family: var(--serif); font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 400; line-height: 1.1; max-width: 800px; margin: 0 auto 24px auto; }
-    .hero-desc { font-family: var(--sans); font-size: clamp(1rem, 3vw, 1.2rem); max-width: 600px; color: rgba(255,255,255,0.9); margin: 0 auto 40px auto; }
+    .hero-eyebrow { font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-lt); margin-bottom: var(--space-md); }
+    .hero-title { font-family: var(--serif); font-size: clamp(4.0rem, 8vw, 7.2rem); font-weight: 400; line-height: 1.1; max-width: 80.0rem; margin: 0 auto var(--space-md) auto; }
+    .hero-desc { font-family: var(--sans); font-size: clamp(1.6rem, 3vw, 1.9rem); max-width: 60.0rem; color: rgba(255,255,255,0.9); margin: 0 auto 4.0rem auto; }
     
-    .btn-gold { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 36px; background: var(--gold); color: #fff; border-radius: 4px; font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; cursor: pointer; border: none; text-decoration: none; }
-    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+    .btn-gold { display: inline-flex; align-items: center; justify-content: center; gap: 1.0rem; padding: var(--space-sm) 3.6rem; background: var(--gold); color: #fff; border-radius: 0.4rem; font-family: var(--sans); font-size: 1.3rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; cursor: pointer; border: none; text-decoration: none; }
+    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-0.2rem); box-shadow: var(--shadow-nav); }
 
     /* ═══════════════════════════════════════════
        EXPANDABLE IMAGE TILES & PREMIUM CARD
      ═══════════════════════════════════════════ */
-    .services-section { padding: 100px 0 60px; background: var(--bg-light); }
-    .section-header { text-align: center; margin-bottom: 64px; }
-    .section-header h2 { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 400; color: var(--brand-drk); }
+    .services-section { padding: var(--space-max) 0 var(--space-xxl); background: var(--bg-light); }
+    .section-header { text-align: center; margin-bottom: var(--space-xxl); }
+    .section-header h2 { font-family: var(--serif); font-size: clamp(3.5rem, 5vw, 4.8rem); font-weight: 400; color: var(--brand-drk); }
     
-    .cards-grid { display: grid; grid-template-columns: 1fr; gap: 80px; width: 100%; max-width: 600px; margin: 0 auto; align-items: start; }
+    .cards-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-xxxl); width: 100%; max-width: 60.0rem; margin: 0 auto; align-items: start; }
     
-    .btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 16px; background: var(--brand-mid); color: #fff; border-radius: 4px; border: none; font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; cursor: pointer; text-decoration: none; }
-    .btn-action:hover { background: var(--brand-drk); transform: translateY(-2px); }
+    .btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 0.8rem; width: 100%; padding: var(--space-sm); background: var(--brand-mid); color: #fff; border-radius: 0.4rem; border: none; font-family: var(--sans); font-size: 1.3rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; cursor: pointer; text-decoration: none; }
+    .btn-action:hover { background: var(--brand-drk); transform: translateY(-0.2rem); }
 
     /* Featured Premium Card */
-    .featured-wrapper { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 16px 48px rgba(0,0,0,0.09); margin-bottom: 72px; border-left: 6px solid var(--gold); transition: 0.3s; }
+    .featured-wrapper { background: #fff; border-radius: 1.2rem; overflow: hidden; box-shadow: var(--shadow-deep); margin-bottom: 7.2rem; border-left: 0.6rem solid var(--gold); transition: 0.3s; }
     .featured-card summary { cursor: pointer; display: flex; flex-direction: column; list-style: none; }
     .featured-card summary::-webkit-details-marker { display: none; }
-    .featured-img-wrap { width: 100%; min-height: 260px; position: relative; }
+    .featured-img-wrap { width: 100%; min-height: 26.0rem; position: relative; }
     .featured-img-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .featured-text-wrap { padding: 32px 24px; display: flex; flex-direction: column; justify-content: center; flex: 1; }
+    .featured-text-wrap { padding: var(--space-lg) var(--space-md); display: flex; flex-direction: column; justify-content: center; flex: 1; }
     
-    .featured-dropdown { padding: 0 24px 32px; animation: fadeIn 0.4s ease; }
+    .featured-dropdown { padding: 0 var(--space-md) var(--space-lg); animation: fadeIn 0.4s ease; }
     .featured-card[open] summary .learn-more-text i { transform: rotate(180deg); }
     .learn-more-text i { transition: 0.3s; }
 
     /* Minimal Standard Cards */
-    .minimal-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.05); width: 100%; transition: 0.3s; }
+    .minimal-card { background: #fff; border-radius: 1.2rem; overflow: hidden; box-shadow: var(--shadow-md); width: 100%; transition: 0.3s; }
     .minimal-card summary { cursor: pointer; list-style: none; position: relative; display: block; }
     .minimal-card summary::-webkit-details-marker { display: none; }
     
     .minimal-card summary::after {
-        content: '\002B'; position: absolute; bottom: 20px; right: 20px;
+        content: '\002B'; position: absolute; bottom: 2.0rem; right: 2.0rem;
         background: var(--bg-light); color: var(--brand-drk);
-        width: 32px; height: 32px; border-radius: 50%;
+        width: 3.2rem; height: 3.2rem; border-radius: 50%;
         display: flex; align-items: center; justify-content: center;
-        font-family: var(--sans); font-size: 1.4rem; font-weight: 300;
+        font-family: var(--sans); font-size: 2.2rem; font-weight: 300;
         z-index: 3; transition: 0.3s;
     }
     .minimal-card[open] summary::after { content: '\2212'; background: var(--brand-drk); color: #fff; }
 
-    .minimal-card .card-img-wrap { height: 250px; width: 100%; position: relative; }
-    .minimal-card .card-img-wrap img { width: 100%; height: 100%; object-fit: contain; background: var(--bg-light); padding: 24px; }
-    .minimal-card .card-question { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--brand-drk); margin: 16px 20px; padding-right: 40px; line-height: 1.4; }
+    .minimal-card .card-img-wrap { height: 25.0rem; width: 100%; position: relative; }
+    .minimal-card .card-img-wrap img { width: 100%; height: 100%; object-fit: contain; background: var(--bg-light); padding: var(--space-md); }
+    .minimal-card .card-question { font-family: var(--serif); font-size: 1.8rem; font-weight: 600; color: var(--brand-drk); margin: var(--space-sm) 2.0rem; padding-right: 4.0rem; line-height: 1.4; }
     
-    .minimal-card-content { padding: 0 24px 24px; animation: fadeIn 0.4s ease; border-top: 1px solid rgba(0,0,0,0.05); margin-top: 16px; padding-top: 24px; }
+    .minimal-card-content { padding: 0 var(--space-md) var(--space-md); animation: fadeIn 0.4s ease; border-top: 0.1rem solid var(--border-light); margin-top: var(--space-sm); padding-top: var(--space-md); }
 
    /* ═══════════════════════════════════════════
        WIDESCREEN DESKTOP OVERRIDE GRID
@@ -165,19 +185,19 @@
     @media (min-width: 900px) {
         .hamburger { display: none !important; } 
         .nav-links { display: flex !important; flex-direction: row; position: static; background: transparent; padding: 0; box-shadow: none; border: none; }
-        .nav-links a { font-size: 0.75rem; padding: 8px 16px; }
+        .nav-links a { font-size: 1.2rem; padding: var(--space-xs) var(--space-sm); }
         
         .desktop-only { display: block; }
         .mobile-only { display: none; }
         
-        .process-desktop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-bottom: 48px; }
+        .process-desktop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(28.0rem, 1fr)); gap: 4.0rem; margin-bottom: var(--space-xl); }
         
-        .cards-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1200px; margin: 0 auto; align-items: start; }
+        .cards-grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); max-width: 120.0rem; margin: 0 auto; align-items: start; }
         
         .featured-card summary { flex-direction: row; }
         .featured-img-wrap { width: 50%; min-height: 100%; }
-        .featured-text-wrap { width: 50%; padding: 48px 40px; }
-        .featured-dropdown { padding: 0 40px 40px; margin-left: 50%; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 32px; }
+        .featured-text-wrap { width: 50%; padding: var(--space-xl) 4.0rem; }
+        .featured-dropdown { padding: 0 4.0rem 4.0rem; margin-left: 50%; border-top: 0.1rem solid var(--border-light); padding-top: var(--space-lg); }
     }
     </style>
 </head>
@@ -187,7 +207,6 @@
     <div class="nav-inner">
         <a href="#" class="nav-logo-name">Docu-Hub <em>Jamaica</em></a>
         
-        <!-- REDUCED & CLEANED UP NAVIGATION -->
         <ul class="nav-links">
             <li><a href="#services">Services</a></li>
             <li><a href="about.html">About Us</a></li>
@@ -209,34 +228,34 @@
 </section>
 
 <!-- COMBINED SECURE PROCESS SECTION -->
-<section class="secure-process-section" id="process" style="padding: 100px 0; background: var(--ivory);">
+<section class="secure-process-section" id="process" style="padding: var(--space-max) 0; background: var(--ivory);">
     <div class="wrap">
         
-        <div class="section-header enter d1" style="text-align: center; margin-bottom: 56px; max-width: 800px; margin-left: auto; margin-right: auto;">
-            <i class="fa-solid fa-shield-check" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 16px;"></i>
-            <h2 style="font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 400; color: var(--brand-drk);">Our Secure Concierge Process</h2>
-            <p style="font-family: var(--sans); font-size: 1.05rem; color: var(--text-mid); margin-top: 16px; line-height: 1.6;">When dealing with government identities, compliance is non-negotiable. We have designed a completely hands-off, highly secure workflow to protect your data from discovery to delivery.</p>
+        <div class="section-header enter d1" style="text-align: center; margin-bottom: 5.6rem; max-width: 80.0rem; margin-left: auto; margin-right: auto;">
+            <i class="fa-solid fa-shield-check" style="font-size: 4.0rem; color: var(--gold); margin-bottom: var(--space-sm);"></i>
+            <h2 style="font-family: var(--serif); font-size: clamp(3.5rem, 5vw, 4.8rem); font-weight: 400; color: var(--brand-drk);">Our Secure Concierge Process</h2>
+            <p style="font-family: var(--sans); font-size: 1.7rem; color: var(--text-mid); margin-top: var(--space-sm); line-height: 1.6;">When dealing with government identities, compliance is non-negotiable. We have designed a completely hands-off, highly secure workflow to protect your data from discovery to delivery.</p>
         </div>
         
         <!-- MOBILE PROCESS ACCORDION (Hidden on Desktop) -->
-        <div class="mobile-only enter d2" style="margin-bottom: 32px;">
-            <div style="background: var(--bg-light); border-radius: 8px; padding: 0 20px;">
+        <div class="mobile-only enter d2" style="margin-bottom: var(--space-lg);">
+            <div style="background: var(--bg-light); border-radius: 0.8rem; padding: 0 2.0rem;">
                 <details class="card-acc" style="list-style: none;">
-                    <summary style="padding: 20px 0; cursor: pointer; list-style: none; font-family: var(--sans); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand-drk); display: flex; justify-content: space-between; align-items: center;">
+                    <summary style="padding: 2.0rem 0; cursor: pointer; list-style: none; font-family: var(--sans); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand-drk); display: flex; justify-content: space-between; align-items: center;">
                         View Our 3-Step Process <i class="fa-solid fa-chevron-down" style="color: var(--gold);"></i>
                     </summary>
-                    <div class="card-acc-content" style="border-top: 1px solid rgba(0,0,0,0.05); padding-top: 20px; padding-bottom: 20px; animation: fadeIn 0.4s ease;">
-                        <div style="margin-bottom: 24px;">
-                            <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Step 01 &mdash; Secure Registration</span>
-                            <p style="font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); line-height: 1.5;">Select your service via our encrypted portal. Your personal data and vital records are handled with absolute confidentiality.</p>
+                    <div class="card-acc-content" style="border-top: 0.1rem solid var(--border-light); padding-top: 2.0rem; padding-bottom: 2.0rem; animation: fadeIn 0.4s ease;">
+                        <div style="margin-bottom: var(--space-md);">
+                            <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.4rem;">Step 01 &mdash; Secure Registration</span>
+                            <p style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.5;">Select your service via our encrypted portal. Your personal data and vital records are handled with absolute confidentiality.</p>
                         </div>
-                        <div style="margin-bottom: 24px;">
-                            <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Step 02 &mdash; Direct Processing</span>
-                            <p style="font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); line-height: 1.5;">Our local team works directly with PICA, RGD, and TAJ to handle the manual legwork and ensure exact regulatory compliance.</p>
+                        <div style="margin-bottom: var(--space-md);">
+                            <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.4rem;">Step 02 &mdash; Direct Processing</span>
+                            <p style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.5;">Our local team works directly with PICA, RGD, and TAJ to handle the manual legwork and ensure exact regulatory compliance.</p>
                         </div>
-                        <div style="margin-bottom: 8px;">
-                            <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Step 03 &mdash; Protected Dispatch</span>
-                            <p style="font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); line-height: 1.5;">Once finalized, your official documents are strictly secured and dispatched via trusted global couriers directly to your door.</p>
+                        <div style="margin-bottom: var(--space-xs);">
+                            <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.4rem;">Step 03 &mdash; Protected Dispatch</span>
+                            <p style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.5;">Once finalized, your official documents are strictly secured and dispatched via trusted global couriers directly to your door.</p>
                         </div>
                     </div>
                 </details>
@@ -246,38 +265,38 @@
         <!-- DESKTOP PROCESS GRID (Hidden on Mobile) -->
         <div class="desktop-only process-desktop-grid enter d2">
             <!-- Step 1 -->
-            <div style="border-top: 2px solid var(--gold); padding-top: 24px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                    <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">Step 01</span>
-                    <i class="fa-solid fa-lock" style="color: var(--brand-drk); font-size: 1.2rem; opacity: 0.3;"></i>
+            <div style="border-top: 0.2rem solid var(--gold); padding-top: var(--space-md);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem;">
+                    <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">Step 01</span>
+                    <i class="fa-solid fa-lock" style="color: var(--brand-drk); font-size: 1.9rem; opacity: 0.3;"></i>
                 </div>
-                <h3 style="font-family: var(--serif); font-size: 1.6rem; color: var(--brand-drk); margin-bottom: 12px;">Secure Registration</h3>
-                <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6;">Select your service via our encrypted portal. Your personal data and vital records are handled with absolute confidentiality.</p>
+                <h3 style="font-family: var(--serif); font-size: 2.6rem; color: var(--brand-drk); margin-bottom: 1.2rem;">Secure Registration</h3>
+                <p style="font-family: var(--sans); font-size: 1.5rem; color: var(--text-mid); line-height: 1.6;">Select your service via our encrypted portal. Your personal data and vital records are handled with absolute confidentiality.</p>
             </div>
             
             <!-- Step 2 -->
-            <div style="border-top: 2px solid var(--brand-drk); padding-top: 24px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                    <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">Step 02</span>
-                    <i class="fa-solid fa-building-columns" style="color: var(--brand-drk); font-size: 1.2rem; opacity: 0.3;"></i>
+            <div style="border-top: 0.2rem solid var(--brand-drk); padding-top: var(--space-md);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem;">
+                    <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">Step 02</span>
+                    <i class="fa-solid fa-building-columns" style="color: var(--brand-drk); font-size: 1.9rem; opacity: 0.3;"></i>
                 </div>
-                <h3 style="font-family: var(--serif); font-size: 1.6rem; color: var(--brand-drk); margin-bottom: 12px;">Direct Agency Processing</h3>
-                <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6;">Our local team works directly with PICA, RGD, and TAJ to handle the manual legwork and ensure exact regulatory compliance.</p>
+                <h3 style="font-family: var(--serif); font-size: 2.6rem; color: var(--brand-drk); margin-bottom: 1.2rem;">Direct Agency Processing</h3>
+                <p style="font-family: var(--sans); font-size: 1.5rem; color: var(--text-mid); line-height: 1.6;">Our local team works directly with PICA, RGD, and TAJ to handle the manual legwork and ensure exact regulatory compliance.</p>
             </div>
 
             <!-- Step 3 -->
-            <div style="border-top: 2px solid var(--brand-drk); padding-top: 24px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                    <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">Step 03</span>
-                    <i class="fa-solid fa-plane-departure" style="color: var(--brand-drk); font-size: 1.2rem; opacity: 0.3;"></i>
+            <div style="border-top: 0.2rem solid var(--brand-drk); padding-top: var(--space-md);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem;">
+                    <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">Step 03</span>
+                    <i class="fa-solid fa-plane-departure" style="color: var(--brand-drk); font-size: 1.9rem; opacity: 0.3;"></i>
                 </div>
-                <h3 style="font-family: var(--serif); font-size: 1.6rem; color: var(--brand-drk); margin-bottom: 12px;">Protected Global Dispatch</h3>
-                <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6;">Once finalized, your official documents are strictly secured and dispatched via trusted global couriers directly to your door.</p>
+                <h3 style="font-family: var(--serif); font-size: 2.6rem; color: var(--brand-drk); margin-bottom: 1.2rem;">Protected Global Dispatch</h3>
+                <p style="font-family: var(--sans); font-size: 1.5rem; color: var(--text-mid); line-height: 1.6;">Once finalized, your official documents are strictly secured and dispatched via trusted global couriers directly to your door.</p>
             </div>
         </div>
 
         <div class="enter d3" style="text-align: center;">
-            <a href="about.html" class="btn-gold" style="background: var(--brand-mid); color: #fff; border: none; padding: 16px 48px; box-shadow: 0 8px 24px rgba(0,0,0,0.1);">Learn More About Our Team</a>
+            <a href="about.html" class="btn-gold" style="background: var(--brand-mid); color: #fff; border: none; padding: var(--space-sm) var(--space-xl); box-shadow: var(--shadow-md);">Learn More About Our Team</a>
         </div>
 
     </div>
@@ -290,7 +309,7 @@
             <h2>Select A Service</h2>
         </div>
 
-        <!-- PREMIUM FEATURED SERVICE: CITIZENSHIP (UNTOUCHED) -->
+        <!-- PREMIUM FEATURED SERVICE: CITIZENSHIP -->
         <div class="enter d1 featured-wrapper">
             <details class="featured-card">
                 <summary>
@@ -298,38 +317,38 @@
                         <img src="assets/jamaican.JPG" loading="lazy" alt="Jamaican Citizenship by Descent">
                     </div>
                     <div class="featured-text-wrap">
-                        <span style="font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 8px;">Premium Flagship Service</span>
-                        <h3 style="font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk); font-weight: 500; line-height: 1.1; margin-bottom: 12px;">Citizenship by Descent</h3>
-                        <p style="font-family: var(--sans); font-size: 1rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px;">
+                        <span style="font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: var(--space-xs);">Premium Flagship Service</span>
+                        <h3 style="font-family: var(--serif); font-size: 3.5rem; color: var(--brand-drk); font-weight: 500; line-height: 1.1; margin-bottom: 1.2rem;">Citizenship by Descent</h3>
+                        <p style="font-family: var(--sans); font-size: 1.6rem; color: var(--text-mid); line-height: 1.6; margin-bottom: var(--space-md);">
                             Reconnect with your roots and experience the true freedom of the island. Securing your Jamaican citizenship is your gateway to an official passport—granting you the unlimited right to live, work, and relax on our beautiful, warm shores without restriction. We handle the entire complex process securely from the ground.
                         </p>
-                        <div class="learn-more-text" style="font-family: var(--sans); font-size: 0.85rem; font-weight: 600; color: var(--brand-mid); text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; gap: 8px; margin-top: auto;">
+                        <div class="learn-more-text" style="font-family: var(--sans); font-size: 1.4rem; font-weight: 600; color: var(--brand-mid); text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; gap: var(--space-xs); margin-top: auto;">
                             Learn More & View Pricing <i class="fa-solid fa-chevron-down"></i>
                         </div>
                     </div>
                 </summary>
                 
                 <div class="featured-dropdown">
-                    <div style="display: flex; flex-wrap: wrap; gap: 32px;">
-                        <div style="background: var(--bg-light); padding: 24px; border-radius: 8px; text-align: center; border: 1px solid rgba(0,0,0,0.05); flex: 1; min-width: 200px;">
-                            <span style="font-family: var(--sans); font-size: 0.8rem; color: var(--text-mid); text-transform: uppercase; letter-spacing: 0.1em;">Base Proxy Fee</span>
-                            <div style="font-family: var(--serif); font-size: 2.5rem; color: var(--brand-drk); font-weight: 500; margin: 4px 0;">$295<span style="font-size: 1rem; font-family: var(--sans); color: var(--text-mid);"> USD</span></div>
-                            <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--text-mid); font-style: italic;">*Excludes government fees</span>
+                    <div style="display: flex; flex-wrap: wrap; gap: var(--space-lg);">
+                        <div style="background: var(--bg-light); padding: var(--space-md); border-radius: 0.8rem; text-align: center; border: 0.1rem solid var(--border-light); flex: 1; min-width: 20.0rem;">
+                            <span style="font-family: var(--sans); font-size: 1.3rem; color: var(--text-mid); text-transform: uppercase; letter-spacing: 0.1em;">Base Proxy Fee</span>
+                            <div style="font-family: var(--serif); font-size: 4.0rem; color: var(--brand-drk); font-weight: 500; margin: 0.4rem 0;">$295<span style="font-size: 1.6rem; font-family: var(--sans); color: var(--text-mid);"> USD</span></div>
+                            <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--text-mid); font-style: italic;">*Excludes government fees</span>
                         </div>
                         
-                        <div style="flex: 2; min-width: 250px; display: grid; gap: 16px;">
+                        <div style="flex: 2; min-width: 25.0rem; display: grid; gap: var(--space-sm);">
                             <div>
-                                <strong style="font-family: var(--sans); font-size: 0.95rem; color: var(--brand-drk); display: block; margin-bottom: 4px;"><i class="fa-solid fa-magnifying-glass" style="color: var(--gold); margin-right: 6px;"></i> RGD Lineage Retrieval Add-On</strong>
-                                <p style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.5; margin:0;">Missing your grandparent's birth certificate? We will run the local Outtamany registry search and secure the physical documents required before filing.</p>
+                                <strong style="font-family: var(--sans); font-size: 1.5rem; color: var(--brand-drk); display: block; margin-bottom: 0.4rem;"><i class="fa-solid fa-magnifying-glass" style="color: var(--gold); margin-right: 0.6rem;"></i> RGD Lineage Retrieval Add-On</strong>
+                                <p style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.5; margin:0;">Missing your grandparent's birth certificate? We will run the local Outtamany registry search and secure the physical documents required before filing.</p>
                             </div>
                             <div>
-                                <strong style="font-family: var(--sans); font-size: 0.95rem; color: var(--brand-drk); display: block; margin-bottom: 4px;"><i class="fa-regular fa-calendar-check" style="color: var(--gold); margin-right: 6px;"></i> Consulate Booking Add-On</strong>
-                                <p style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.5; margin:0;">Once you receive your Citizenship, we audit your passport form and secure your mandatory biometric appointment at your overseas Consulate.</p>
+                                <strong style="font-family: var(--sans); font-size: 1.5rem; color: var(--brand-drk); display: block; margin-bottom: 0.4rem;"><i class="fa-regular fa-calendar-check" style="color: var(--gold); margin-right: 0.6rem;"></i> Consulate Booking Add-On</strong>
+                                <p style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.5; margin:0;">Once you receive your Citizenship, we audit your passport form and secure your mandatory biometric appointment at your overseas Consulate.</p>
                             </div>
                         </div>
                     </div>
-                    <div style="margin-top: 32px;">
-                        <a href="register.html" class="btn-action" style="width: auto; padding: 16px 48px; background: var(--brand-drk); display: inline-block;">
+                    <div style="margin-top: var(--space-lg);">
+                        <a href="register.html" class="btn-action" style="width: auto; padding: var(--space-sm) 4.8rem; background: var(--brand-drk); display: inline-block;">
                             Begin Secure Registration
                         </a>
                     </div>
@@ -338,9 +357,9 @@
         </div>
 
         <!-- TARGETED SOLUTIONS HEADER -->
-        <div class="enter d1" style="text-align: center; margin: 72px 0 48px; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 56px;">
-            <span style="font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 8px;">Core Service Pillars</span>
-            <h3 style="font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk); font-weight: 400; margin: 0;">Explore Remote Services</h3>
+        <div class="enter d1" style="text-align: center; margin: 7.2rem 0 var(--space-xl); border-top: 0.1rem solid var(--border-light); padding-top: 5.6rem;">
+            <span style="font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: var(--space-xs);">Core Service Pillars</span>
+            <h3 style="font-family: var(--serif); font-size: 3.5rem; color: var(--brand-drk); font-weight: 400; margin: 0;">Explore Remote Services</h3>
         </div>
 
        <!-- REDESIGNED 3-PILLAR ACCORDION GRID -->
@@ -355,27 +374,27 @@
                     <h3 class="card-question">Need help renewing a Jamaican passport? (PICA)</h3>
                 </summary>
                 <div class="minimal-card-content">
-                    <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px;">We pre-fill forms, verify photo and signature compliance before submission, and manage the portal to ensure zero rejection delays.</p>
+                    <p style="font-family: var(--sans); font-size: 1.5rem; color: var(--text-mid); line-height: 1.6; margin-bottom: var(--space-md);">We pre-fill forms, verify photo and signature compliance before submission, and manage the portal to ensure zero rejection delays.</p>
                     
-                    <div style="margin-bottom: 20px;">
-                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">What We Can Handle</span>
-                        <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 8px;">
+                    <div style="margin-bottom: 2.0rem;">
+                        <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: var(--space-xs);">What We Can Handle</span>
+                        <div style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 0.8rem;">
                             <div><strong>Adults:</strong> Standard remote application coordination and proxy assistance for renewals.</div>
                             <div><strong>Minors:</strong> Comprehensive pre-vetting and secure physical submission handling.</div>
                         </div>
                     </div>
                     
-                    <div style="margin-bottom: 20px;">
-                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">Pricing Packages</span>
-                        <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 12px;">
+                    <div style="margin-bottom: 2.0rem;">
+                        <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: var(--space-xs);">Pricing Packages</span>
+                        <div style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 1.2rem;">
                             <div><strong>Standard Proxy Renewal: $145 USD</strong><br>Complete end-to-end handling where we act as your proxy to submit and clear your passport tracking.</div>
                             <div><strong>Portal Error & Gateway Fixes: $115 USD</strong><br>If your overseas card was blocked or your application is stuck in processing, we take over to finalize it locally.</div>
                         </div>
                     </div>
 
-                    <div style="margin-bottom: 24px; padding: 12px 16px; background: rgba(193, 154, 91, 0.08); border-left: 3px solid var(--gold); border-radius: 4px;">
-                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Government & Courier Fees</span>
-                        <span style="font-family: var(--sans); font-size: 0.85rem; color: var(--brand-drk); font-weight: 500;">*Excludes official PICA agency charges and final secure home delivery fees.</span>
+                    <div style="margin-bottom: var(--space-md); padding: 1.2rem var(--space-sm); background: rgba(193, 154, 91, 0.08); border-left: 0.3rem solid var(--gold); border-radius: 0.4rem;">
+                        <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.4rem;">Government & Courier Fees</span>
+                        <span style="font-family: var(--sans); font-size: 1.4rem; color: var(--brand-drk); font-weight: 500;">*Excludes official PICA agency charges and final secure home delivery fees.</span>
                     </div>
                     
                     <a href="register.html" class="btn-action">Begin Secure Registration</a>
@@ -391,27 +410,27 @@
                     <h3 class="card-question">Looking for official birth, marriage, or death certificates? (RGD)</h3>
                 </summary>
                 <div class="minimal-card-content">
-                    <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px;">We handle deep database searches and application submissions, sparing you the hassle of tracking down archived family records.</p>
+                    <p style="font-family: var(--sans); font-size: 1.5rem; color: var(--text-mid); line-height: 1.6; margin-bottom: var(--space-md);">We handle deep database searches and application submissions, sparing you the hassle of tracking down archived family records.</p>
                     
-                    <div style="margin-bottom: 20px;">
-                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">What We Can Handle</span>
-                        <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 8px;">
+                    <div style="margin-bottom: 2.0rem;">
+                        <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: var(--space-xs);">What We Can Handle</span>
+                        <div style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 0.8rem;">
                             <div><strong>Vital Certificates:</strong> Search, registry tracking, and retrieval for Birth, Marriage, and Death records.</div>
                             <div><strong>Registry Lookups:</strong> Tracking down older registry books or complex genealogical records safely.</div>
                         </div>
                     </div>
 
-                    <div style="margin-bottom: 20px;">
-                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">Pricing Packages</span>
-                        <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 12px;">
+                    <div style="margin-bottom: 2.0rem;">
+                        <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: var(--space-xs);">Pricing Packages</span>
+                        <div style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 1.2rem;">
                             <div><strong>Standard Certificate Retrieval: $85 USD</strong><br>We process your application through the official system, monitor the file, and secure the clean prints.</div>
                             <div><strong>Deep Archive Search: $150 USD</strong><br>On-the-ground research inside historical registries for damaged, missing, or un-indexed records.</div>
                         </div>
                     </div>
 
-                    <div style="margin-bottom: 24px; padding: 12px 16px; background: rgba(193, 154, 91, 0.08); border-left: 3px solid var(--gold); border-radius: 4px;">
-                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Government Fees</span>
-                        <span style="font-family: var(--sans); font-size: 0.85rem; color: var(--brand-drk); font-weight: 500;">*Your only additional cost is the standard RGD registry production fee.</span>
+                    <div style="margin-bottom: var(--space-md); padding: 1.2rem var(--space-sm); background: rgba(193, 154, 91, 0.08); border-left: 0.3rem solid var(--gold); border-radius: 0.4rem;">
+                        <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.4rem;">Government Fees</span>
+                        <span style="font-family: var(--sans); font-size: 1.4rem; color: var(--brand-drk); font-weight: 500;">*Your only additional cost is the standard RGD registry production fee.</span>
                     </div>
                     
                     <a href="register.html" class="btn-action">Begin Secure Registration</a>
@@ -427,27 +446,27 @@
                     <h3 class="card-question">Need to manage your TRN or vehicle licensing from abroad? (TAJ)</h3>
                 </summary>
                 <div class="minimal-card-content">
-                    <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px;">We monitor and update your TAJ portal requirements so your local driving privileges and tax affairs remain active for your next visit.</p>
+                    <p style="font-family: var(--sans); font-size: 1.5rem; color: var(--text-mid); line-height: 1.6; margin-bottom: var(--space-md);">We monitor and update your TAJ portal requirements so your local driving privileges and tax affairs remain active for your next visit.</p>
                     
-                    <div style="margin-bottom: 20px;">
-                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">What We Can Handle</span>
-                        <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 8px;">
+                    <div style="margin-bottom: 2.0rem;">
+                        <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: var(--space-xs);">What We Can Handle</span>
+                        <div style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 0.8rem;">
                             <div><strong>Tax Registrations:</strong> Remote TRN setup and administrative compliance updates.</div>
                             <div><strong>Vehicle Compliance:</strong> Local processing for tax office motor vehicle renewals and queries.</div>
                         </div>
                     </div>
 
-                    <div style="margin-bottom: 20px;">
-                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">Pricing Packages</span>
-                        <div style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 12px;">
+                    <div style="margin-bottom: 2.0rem;">
+                        <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: var(--space-xs);">Pricing Packages</span>
+                        <div style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 1.2rem;">
                             <div><strong>TRN Portal Compliance: $95 USD</strong><br>We manage your complete overseas TRN application submission directly into the tax department.</div>
                             <div><strong>Motor Vehicle Renewal Proxy: $35 USD</strong><br>We execute local administrative handling for your vehicle licensing or certificate requirements at the tax desk.</div>
                         </div>
                     </div>
 
-                    <div style="margin-bottom: 24px; padding: 12px 16px; background: rgba(193, 154, 91, 0.08); border-left: 3px solid var(--gold); border-radius: 4px;">
-                        <span style="font-family: var(--sans); font-size: 0.75rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Tax Office Fees</span>
-                        <span style="font-family: var(--sans); font-size: 0.85rem; color: var(--brand-drk); font-weight: 500;">*Official government licensing or renewal balances are billed exactly at cost.</span>
+                    <div style="margin-bottom: var(--space-md); padding: 1.2rem var(--space-sm); background: rgba(193, 154, 91, 0.08); border-left: 0.3rem solid var(--gold); border-radius: 0.4rem;">
+                        <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.4rem;">Tax Office Fees</span>
+                        <span style="font-family: var(--sans); font-size: 1.4rem; color: var(--brand-drk); font-weight: 500;">*Official government licensing or renewal balances are billed exactly at cost.</span>
                     </div>
                     
                     <a href="register.html" class="btn-action">Begin Secure Registration</a>
@@ -459,30 +478,30 @@
 </section>
 
 <!-- LOCAL YARD CLIENTS CATCH-ALL -->
-<section class="catchall-section" style="background: var(--brand-drk); padding: 80px 0; color: #fff; text-align: center;">
-    <div class="wrap enter d1" style="max-width: 800px; margin: 0 auto;">
-        <h2 style="font-family: var(--serif); font-size: clamp(2rem, 4vw, 2.6rem); margin-bottom: 16px; font-weight: 400;">Don't see your service or based locally in Jamaica?</h2>
-        <p style="font-family: var(--sans); font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-bottom: 32px; line-height: 1.7;">
+<section class="catchall-section" style="background: var(--brand-drk); padding: var(--space-xxxl) 0; color: #fff; text-align: center;">
+    <div class="wrap enter d1" style="max-width: 80.0rem; margin: 0 auto;">
+        <h2 style="font-family: var(--serif); font-size: clamp(3.2rem, 4vw, 4.2rem); margin-bottom: var(--space-sm); font-weight: 400;">Don't see your service or based locally in Jamaica?</h2>
+        <p style="font-family: var(--sans); font-size: 1.8rem; color: rgba(255,255,255,0.8); margin-bottom: var(--space-lg); line-height: 1.7;">
             You don't have to navigate the bureaucracy or stand in long lines alone. Whether you are a local professional needing rapid document retrieval or someone with a unique administrative challenge, Docu-Hub is here to handle the legwork.
         </p>
-        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-            <a href="https://calendar.app.google/mCXiJ2GLF15mLMV48" target="_blank" rel="noopener" class="btn-gold" style="padding: 16px 36px; border-radius: 4px;">Book A Consultation</a>
-            <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-gold" style="background: transparent; border: 1px solid var(--gold); color: var(--gold-lt);">Chat on WhatsApp</a>
+        <div style="display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap;">
+            <a href="https://calendar.app.google/mCXiJ2GLF15mLMV48" target="_blank" rel="noopener" class="btn-gold" style="padding: var(--space-sm) 3.6rem; border-radius: 0.4rem;">Book A Consultation</a>
+            <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="btn-gold" style="background: transparent; border: 0.1rem solid var(--gold); color: var(--gold-lt);">Chat on WhatsApp</a>
         </div>
     </div>
 </section>
 
 <!-- COMBINED FAQ & YOUTUBE SPOTLIGHT -->
-<section class="faq-resource-section" id="faq-resources" style="padding: 100px 0; background: var(--ivory);">
+<section class="faq-resource-section" id="faq-resources" style="padding: var(--space-max) 0; background: var(--ivory);">
     <style>
-        .split-grid { display: grid; grid-template-columns: 1fr; gap: 56px; align-items: start; }
-        @media (min-width: 900px) { .split-grid { grid-template-columns: 1.3fr 1fr; gap: 80px; } }
-        .tight-faq { border-bottom: 1px solid rgba(0,0,0,0.1); }
-        .tight-faq summary { font-family: var(--sans); font-size: 1rem; font-weight: 500; color: var(--brand-drk); padding: 20px 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        .split-grid { display: grid; grid-template-columns: 1fr; gap: 5.6rem; align-items: start; }
+        @media (min-width: 900px) { .split-grid { grid-template-columns: 1.3fr 1fr; gap: var(--space-xxxl); } }
+        .tight-faq { border-bottom: 0.1rem solid var(--border-light); }
+        .tight-faq summary { font-family: var(--sans); font-size: 1.6rem; font-weight: 500; color: var(--brand-drk); padding: 2.0rem 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
         .tight-faq summary::-webkit-details-marker { display: none; }
-        .tight-faq summary::after { content: '\002B'; font-size: 1.2rem; font-weight: 300; color: var(--gold); }
+        .tight-faq summary::after { content: '\002B'; font-size: 1.9rem; font-weight: 300; color: var(--gold); }
         .tight-faq[open] summary::after { content: '\2212'; }
-        .tight-faq .faq-answer { padding-bottom: 24px; font-family: var(--sans); font-size: 0.9rem; line-height: 1.6; color: var(--text-mid); animation: fadeIn 0.4s ease; }
+        .tight-faq .faq-answer { padding-bottom: var(--space-md); font-family: var(--sans); font-size: 1.4rem; line-height: 1.6; color: var(--text-mid); animation: fadeIn 0.4s ease; }
     </style>
 
     <div class="wrap">
@@ -490,9 +509,9 @@
             
             <!-- LEFT COLUMN: FAQs -->
             <div class="faq-column enter d1">
-                <div style="margin-bottom: 32px;">
-                    <h2 style="font-family: var(--serif); font-size: 2.4rem; color: var(--brand-drk); margin-bottom: 8px;">Portal Help & FAQs</h2>
-                    <p style="font-family: var(--sans); color: var(--text-mid); font-size: 0.95rem;">Quick fixes for the most common Jamaican government portal errors.</p>
+                <div style="margin-bottom: var(--space-lg);">
+                    <h2 style="font-family: var(--serif); font-size: 3.8rem; color: var(--brand-drk); margin-bottom: var(--space-xs);">Portal Help & FAQs</h2>
+                    <p style="font-family: var(--sans); color: var(--text-mid); font-size: 1.5rem;">Quick fixes for the most common Jamaican government portal errors.</p>
                 </div>
 
                 <div class="faq-container">
@@ -500,7 +519,7 @@
                         <summary>Why is my overseas bank card saying "Transaction Failed"?</summary>
                         <div class="faq-answer">
                             <p>Overseas banks frequently flag the PICA portal's 3D Secure protocol as fraud and block it instantly to protect you.</p>
-                            <p style="margin-top: 8px;"><strong>The Fix:</strong> Begin registration with us. We will step in as your proxy and process the payment securely via local Jamaican channels.</p>
+                            <p style="margin-top: var(--space-xs);"><strong>The Fix:</strong> Begin registration with us. We will step in as your proxy and process the payment securely via local Jamaican channels.</p>
                         </div>
                     </details>
 
@@ -508,7 +527,7 @@
                         <summary>My application draft is "locked" and won't let me pay.</summary>
                         <div class="faq-answer">
                             <p>If a payment fails, the system automatically locks your draft for 1 to 2 hours to prevent duplicate charges.</p>
-                            <p style="margin-top: 8px;"><strong>The Fix:</strong> Wait 2 hours, log back in, and try again. If it remains locked, we can execute a manual gateway rescue for you.</p>
+                            <p style="margin-top: var(--space-xs);"><strong>The Fix:</strong> Wait 2 hours, log back in, and try again. If it remains locked, we can execute a manual gateway rescue for you.</p>
                         </div>
                     </details>
 
@@ -516,32 +535,32 @@
                         <summary>Can I renew a damaged, washed, or torn passport online?</summary>
                         <div class="faq-answer">
                             <p><strong>No.</strong> PICA strictly prohibits online renewals for damaged books because the agency must physically inspect and apply a cancellation stamp.</p>
-                            <p style="margin-top: 8px;"><strong>The Fix:</strong> You must submit a physical mail-in application. We coordinate this strict manual protocol safely from your location.</p>
+                            <p style="margin-top: var(--space-xs);"><strong>The Fix:</strong> You must submit a physical mail-in application. We coordinate this strict manual protocol safely from your location.</p>
                         </div>
                     </details>
                 </div>
             </div>
 
             <!-- RIGHT COLUMN: RESOURCES (Checklists + Mini YouTube) -->
-            <div class="resource-column enter d2" style="position: sticky; top: 120px; display: flex; flex-direction: column; gap: 20px;">
+            <div class="resource-column enter d2" style="position: sticky; top: 12.0rem; display: flex; flex-direction: column; gap: 2.0rem;">
                 
                 <!-- Primary Call to Action: The Checklists -->
-                <div style="background: var(--brand-drk); padding: 40px 32px; border-radius: 12px; box-shadow: 0 16px 40px rgba(30,43,29,0.2); text-align: left; border-left: 4px solid var(--gold);">
-                    <span style="font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 12px;"><i class="fa-solid fa-list-check" style="margin-right: 6px;"></i> Free Resources</span>
-                    <h3 style="font-family: var(--serif); font-size: 1.8rem; color: #fff; font-weight: 500; margin-bottom: 12px; line-height: 1.2;">Preparation Checklists</h3>
-                    <p style="font-family: var(--sans); font-size: 0.95rem; color: rgba(255,255,255,0.8); margin-bottom: 24px; line-height: 1.6;">
+                <div style="background: var(--brand-drk); padding: 4.0rem var(--space-lg); border-radius: 1.2rem; box-shadow: var(--shadow-deep); text-align: left; border-left: 0.4rem solid var(--gold);">
+                    <span style="font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 1.2rem;"><i class="fa-solid fa-list-check" style="margin-right: 0.6rem;"></i> Free Resources</span>
+                    <h3 style="font-family: var(--serif); font-size: 2.9rem; color: #fff; font-weight: 500; margin-bottom: 1.2rem; line-height: 1.2;">Preparation Checklists</h3>
+                    <p style="font-family: var(--sans); font-size: 1.5rem; color: rgba(255,255,255,0.8); margin-bottom: var(--space-md); line-height: 1.6;">
                         Not ready to book a proxy yet? Download our official operational checklists to see exactly what forms, stamps, and ID you need to prepare your own file without errors.
                     </p>
-                    <a href="resource.html" class="btn-gold" style="padding: 14px 24px; width: 100%; text-align: center; justify-content: center; font-size: 0.85rem;">Access Checklists & Guides</a>
+                    <a href="resource.html" class="btn-gold" style="padding: 1.4rem var(--space-md); width: 100%; text-align: center; justify-content: center; font-size: 1.4rem;">Access Checklists & Guides</a>
                 </div>
 
                 <!-- Secondary Call to Action: Mini YouTube Banner -->
-                <a href="https://www.youtube.com/@LauraClarke_dhub" target="_blank" rel="noopener" style="background: var(--bg-light); padding: 20px 24px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: space-between; gap: 16px; text-decoration: none; transition: 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
+                <a href="https://www.youtube.com/@LauraClarke_dhub" target="_blank" rel="noopener" style="background: var(--bg-light); padding: 2.0rem var(--space-md); border-radius: 1.2rem; border: 0.1rem solid var(--border-light); display: flex; align-items: center; justify-content: space-between; gap: var(--space-sm); text-decoration: none; transition: 0.3s; box-shadow: var(--shadow-soft);">
                     <div>
-                        <h4 style="font-family: var(--sans); font-size: 0.95rem; color: var(--brand-drk); margin: 0 0 4px 0; font-weight: 600;"><i class="fa-brands fa-youtube" style="color: #FF0000; margin-right: 6px;"></i> Prefer to watch?</h4>
-                        <p style="font-family: var(--sans); font-size: 0.85rem; color: var(--text-mid); margin: 0;">Video guides & portal breakdowns.</p>
+                        <h4 style="font-family: var(--sans); font-size: 1.5rem; color: var(--brand-drk); margin: 0 0 0.4rem 0; font-weight: 600;"><i class="fa-brands fa-youtube" style="color: #FF0000; margin-right: 0.6rem;"></i> Prefer to watch?</h4>
+                        <p style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); margin: 0;">Video guides & portal breakdowns.</p>
                     </div>
-                    <div style="width: 36px; height: 36px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; color: var(--brand-drk); box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <div style="width: 3.6rem; height: 3.6rem; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; color: var(--brand-drk); box-shadow: var(--shadow-soft);">
                         <i class="fa-solid fa-arrow-right"></i>
                     </div>
                 </a>
@@ -554,9 +573,9 @@
 
 <!-- DEDICATED FOOTER STYLES -->
 <style>
-    .f-cta-row { display: flex; flex-direction: column; gap: 20px; text-align: center; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 30px; margin-bottom: 30px; }
-    .f-links-grid { display: grid; grid-template-columns: 1fr; gap: 40px; margin-bottom: 30px; text-align: center; }
-    .f-legal-row { display: flex; flex-direction: column; gap: 16px; align-items: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; }
+    .f-cta-row { display: flex; flex-direction: column; gap: 2.0rem; text-align: center; align-items: center; border-bottom: 0.1rem solid var(--border-glass); padding-bottom: 3.0rem; margin-bottom: 3.0rem; }
+    .f-links-grid { display: grid; grid-template-columns: 1fr; gap: 4.0rem; margin-bottom: 3.0rem; text-align: center; }
+    .f-legal-row { display: flex; flex-direction: column; gap: var(--space-sm); align-items: center; border-top: 0.1rem solid var(--border-glass); padding-top: 2.0rem; text-align: center; }
 
     @media (min-width: 900px) {
         .f-cta-row { flex-direction: row; justify-content: space-between; text-align: left; }
@@ -566,53 +585,46 @@
 </style>
 
 <!-- ADDED id="contact" TO THE FOOTER -->
-<footer class="site-footer" id="contact" style="background: #111; color: #fff; padding: 40px 0 20px;">
+<footer class="site-footer" id="contact" style="background: #111; color: #fff; padding: 4.0rem 0 2.0rem;">
     
     <div class="wrap f-cta-row">
-        <h2 style="font-family: var(--serif); font-size: 2.2rem; color: #fff; margin: 0; line-height: 1;">Ready to Start?</h2>
+        <h2 style="font-family: var(--serif); font-size: 3.5rem; color: #fff; margin: 0; line-height: 1;">Ready to Start?</h2>
         <!-- Form Link Button -->
-        <a href="register.html" class="btn-gold" style="font-size: 0.95rem; padding: 14px 40px; border-radius: 4px; white-space: nowrap;">Begin Secure Registration</a>
+        <a href="register.html" class="btn-gold" style="font-size: 1.5rem; padding: 1.4rem 4.0rem; border-radius: 0.4rem; white-space: nowrap;">Begin Secure Registration</a>
     </div>
 
     <div class="wrap f-links-grid">
         <div>
-            <span class="f-logo" style="margin-bottom: 12px; display: block; font-family: var(--serif); font-size: 1.5rem; letter-spacing: 0.05em;">Docu-Hub <em style="color: var(--gold); font-style: normal;">Operations Services</em></span>
-            <p style="font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 350px;">Providing highly secure, on-the-ground document processing, records retrieval, and compliance for the Jamaican diaspora.</p>
+            <span class="f-logo" style="margin-bottom: 1.2rem; display: block; font-family: var(--serif); font-size: 2.4rem; letter-spacing: 0.05em;">Docu-Hub <em style="color: var(--gold); font-style: normal;">Operations Services</em></span>
+            <p style="font-family: var(--sans); font-size: 1.4rem; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 35.0rem;">Providing highly secure, on-the-ground document processing, records retrieval, and compliance for the Jamaican diaspora.</p>
         </div>
         <div>
-            <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt); letter-spacing: 0.05em;">QUICK LINKS</h4>
-            <ul style="list-style: none; display: grid; gap: 10px; padding: 0;">
+            <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: var(--space-sm); color: var(--gold-lt); letter-spacing: 0.05em;">QUICK LINKS</h4>
+            <ul style="list-style: none; display: grid; gap: 1.0rem; padding: 0;">
                 
-                <!-- Simplified to Core Services -->
-                <li><a href="#services" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Our Core Services</a></li>
-                
-                <!-- Simplified to match the section title (Will work perfectly on the live/published site!) -->
-                <li><a href="#faq-resources" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Portal Help & FAQs</a></li>
-                
-                <!-- Restored your active resources page -->
-                <li><a href="resource.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Checklists & Guides</a></li>
-                
-                <!-- Cleaned up About page link -->
-                <li><a href="about.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">About Docu-Hub</a></li>
+                <li><a href="#services" style="color: rgba(255,255,255,0.7); font-size: 1.4rem;">Our Core Services</a></li>
+                <li><a href="#faq-resources" style="color: rgba(255,255,255,0.7); font-size: 1.4rem;">Portal Help & FAQs</a></li>
+                <li><a href="resource.html" style="color: rgba(255,255,255,0.7); font-size: 1.4rem;">Checklists & Guides</a></li>
+                <li><a href="about.html" style="color: rgba(255,255,255,0.7); font-size: 1.4rem;">About Docu-Hub</a></li>
                 
             </ul>
         </div>
         <div>
-            <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt); letter-spacing: 0.05em;">SECURE CONTACT</h4>
-            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 10px;"><i class="fa-regular fa-calendar-check" style="color: var(--gold); margin-right: 8px;"></i> <a href="https://calendar.app.google/mCXiJ2GLF15mLMV48" target="_blank" rel="noopener">Book Consultation</a></p>
-            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 10px;"><i class="fa-regular fa-envelope" style="color: var(--gold); margin-right: 8px;"></i> <a href="mailto:admin@dhubservices.com">admin@dhubservices.com</a></p>
-            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 8px;"></i> Linstead, Jamaica</p>
+            <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: var(--space-sm); color: var(--gold-lt); letter-spacing: 0.05em;">SECURE CONTACT</h4>
+            <p style="color: rgba(255,255,255,0.7); font-size: 1.4rem; margin-bottom: 1.0rem;"><i class="fa-regular fa-calendar-check" style="color: var(--gold); margin-right: 0.8rem;"></i> <a href="https://calendar.app.google/mCXiJ2GLF15mLMV48" target="_blank" rel="noopener">Book Consultation</a></p>
+            <p style="color: rgba(255,255,255,0.7); font-size: 1.4rem; margin-bottom: 1.0rem;"><i class="fa-regular fa-envelope" style="color: var(--gold); margin-right: 0.8rem;"></i> <a href="mailto:admin@dhubservices.com">admin@dhubservices.com</a></p>
+            <p style="color: rgba(255,255,255,0.7); font-size: 1.4rem;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 0.8rem;"></i> Linstead, Jamaica</p>
         </div>
     </div>
 
     <div class="wrap f-legal-row">
-        <div style="font-family: var(--sans); font-size: 0.75rem; color: rgba(255,255,255,0.6);">
-            <p style="margin-bottom: 6px;">Registered Business Entity: #15602/2025 <span style="margin: 0 8px; color: var(--gold-lt); display: inline-block;">|</span> OIC Data Controller Verified (Dec 2025)</p>
+        <div style="font-family: var(--sans); font-size: 1.2rem; color: rgba(255,255,255,0.6);">
+            <p style="margin-bottom: 0.6rem;">Registered Business Entity: #15602/2025 <span style="margin: 0 0.8rem; color: var(--gold-lt); display: inline-block;">|</span> OIC Data Controller Verified (Dec 2025)</p>
             <p style="color: rgba(255,255,255,0.4);">&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
         </div>
         
-        <div style="font-family: var(--sans); font-size: 0.75rem;">
-            <a href="privacy.html" style="color: rgba(255,255,255,0.5); text-decoration: none; margin-right: 16px; transition: 0.3s;">Privacy Policy</a>
+        <div style="font-family: var(--sans); font-size: 1.2rem;">
+            <a href="privacy.html" style="color: rgba(255,255,255,0.5); text-decoration: none; margin-right: var(--space-sm); transition: 0.3s;">Privacy Policy</a>
             <a href="legal-notice.html" style="color: rgba(255,255,255,0.5); text-decoration: none; transition: 0.3s;">Terms & Legal Notice</a>
         </div>
     </div>
