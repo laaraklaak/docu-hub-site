@@ -46,19 +46,14 @@
 
     .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
 
-    /* ═══════════════════════════════════════════
-       NAV
-     ═══════════════════════════════════════════ */
+    /* NAV */
     .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.98); border-bottom: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
     .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; position: relative; }
-    
     .nav-logo-name { font-family: var(--serif); font-size: 1.4rem; color: #fff; letter-spacing: 0.05em; display: block; z-index: 950; }
     .nav-logo-name em { color: var(--gold-lt); font-style: normal; }
-    
     .nav-links { display: none; list-style: none; align-items: center; gap: 16px; }
     .nav-links a { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 8px 16px; border-radius: 4px; }
     .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
-
     .hamburger { display: flex; flex-direction: column; gap: 6px; background: none; border: none; padding: 5px; cursor: pointer; z-index: 950; }
     .hamburger span { width: 24px; height: 2px; background: #fff; transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
 
@@ -71,16 +66,12 @@
         .site-nav.open .hamburger span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
     }
 
-    /* ═══════════════════════════════════════════
-       INSTITUTIONAL HEADER
-     ═══════════════════════════════════════════ */
+    /* INSTITUTIONAL HEADER */
     .about-header { padding: calc(var(--nav-h) + 60px) 0 60px; background: var(--brand-drk); color: #fff; text-align: center; }
     .about-header h1 { font-family: var(--serif); font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 400; margin-bottom: 16px; line-height: 1.1; }
     .about-header p { font-family: var(--sans); font-size: 1.1rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase; }
 
-    /* ═══════════════════════════════════════════
-       MISSION & LEADERSHIP SECTION
-     ═══════════════════════════════════════════ */
+    /* MISSION & LEADERSHIP SECTION */
     .bio-section { padding: 100px 0; background: var(--ivory); }
     .bio-text h2 { font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk); margin-bottom: 24px; line-height: 1.2; }
     .bio-text p { font-family: var(--sans); font-size: 1.05rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 20px; }
@@ -88,9 +79,7 @@
     .btn-outline { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: transparent; color: var(--brand-drk); border: 1px solid var(--brand-drk); border-radius: 4px; font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; transition: 0.3s; margin-top: 16px; }
     .btn-outline:hover { background: var(--brand-drk); color: #fff; }
 
-    /* ═══════════════════════════════════════════
-       OPERATIONAL PILLARS
-     ═══════════════════════════════════════════ */
+    /* OPERATIONAL PILLARS */
     .pillars-section { padding: 100px 0; background: var(--bg-light); }
     .pillars-grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 48px; }
     .pillar-card { background: #fff; padding: 40px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
@@ -98,25 +87,20 @@
     .pillar-card h3 { font-family: var(--serif); font-size: 1.4rem; color: var(--brand-drk); margin-bottom: 12px; }
     .pillar-card p { font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; }
 
-    /* ═══════════════════════════════════════════
-       FOOTER
-     ═══════════════════════════════════════════ */
+    /* FOOTER */
     .site-footer { background: #111; color: #fff; padding: 60px 0 30px; }
     .footer-grid { display: grid; grid-template-columns: 1fr; gap: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 30px; }
     .f-logo { font-family: var(--serif); font-size: 1.5rem; color: #fff; margin-bottom: 16px; display: block; letter-spacing: 0.05em; }
     .f-logo em { color: var(--gold); font-style: normal; }
 
-    /* ═══════════════════════════════════════════
-       WIDESCREEN DESKTOP OVERRIDE GRID
-     ═══════════════════════════════════════════ */
+    /* WIDESCREEN DESKTOP OVERRIDE GRID */
     @media (min-width: 900px) {
         .hamburger { display: none !important; } 
         .nav-links { display: flex !important; flex-direction: row; position: static; background: transparent; padding: 0; box-shadow: none; border: none; }
         .nav-links a { font-size: 0.75rem; padding: 8px 16px; }
 
         .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; max-width: var(--max-w); margin: 0 auto; }
-        .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-        .security-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+        .pillars-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; } /* Perfect 2x2 Layout */
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; }
     }
     </style>
@@ -139,7 +123,7 @@
 <header class="about-header">
     <div class="wrap">
         <h1>Operational Governance</h1>
-        <p>Your Secure On-The-Ground Proxy in Jamaica</p>
+        <p>A Foundation Built on Financial-Grade Compliance</p>
     </div>
 </header>
 
@@ -163,25 +147,25 @@
             
             <div class="bio-img enter d1" style="width: 100%; max-width: 350px; margin: 0 auto;">
                 <div style="position: relative; border-radius: 8px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.1); background: var(--bg-light);">
-                    <img src="assets/laura-profile.webp" alt="Laura Clarke - Managing Director" style="width: 100%; height: auto; display: block; aspect-ratio: 4/5; object-fit: cover;">
+                    <!-- PROFILE IMAGE -->
+                    <img src="assets/laura-profile.webp" alt="Laura Clark - Managing Director" style="width: 100%; height: auto; display: block; aspect-ratio: 4/5; object-fit: cover;">
                     <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(30, 43, 29, 0.95), transparent); padding: 40px 24px 24px;">
-                        <span style="font-family: var(--sans); font-weight: 600; font-size: 1.2rem; display: block; color: #fff;">Laura Clarke</span>
+                        <span style="font-family: var(--sans); font-weight: 600; font-size: 1.2rem; display: block; color: #fff;">Laura Clark</span>
                         <span style="font-family: var(--sans); font-size: 0.85rem; color: var(--gold-lt); letter-spacing: 0.08em; text-transform: uppercase;">Managing Director</span>
                     </div>
                 </div>
             </div>
             
-            <!-- SIMPLIFIED, PUNCHIER BIO -->
             <div class="bio-text enter d2" style="display: flex; flex-direction: column; justify-content: center;">
-                <h2>Financial-Grade Security in a Stressed System</h2>
-                <p>Navigating public sector bureaucracy from overseas is an exercise in profound frustration. When digital government portals stall, bank cards fail at checkout, or strict policies require the physical surrender of irreplaceable original records, the diaspora is often left completely in the dark.</p>
+                <h2>Serious Business Requires Serious Meticulousness</h2>
+                <p>Navigating public sector bureaucracy from overseas shouldn't feel like a gamble. When digital government portals stall, policies shift, or strict protocols require original records, the diaspora is often left completely in the dark, relying on informal proxy runners.</p>
                 
-                <p>Docu-Hub Operations Services (Registered Business # 15602/2025) was established to eliminate this exact operational friction. Leveraging 14 years of corporate banking experience, Managing Director Laura Clarke built this proxy service on the strict pillars of financial-grade data security, regulatory compliance, and premium client service.</p>
+                <p>Docu-Hub Operations Services (Registered Business # 15602/2025) was established to completely eliminate that uncertainty. Leveraging 14 years of strict corporate banking experience at National Commercial Bank (NCB), Managing Director Laura Clarke built this proxy service on the absolute pillars of compliance, accuracy, and rigorous protocol.</p>
                 
-                <p>Operating from our secure base in Linstead, St. Catherine, we maintain direct, on-the-ground interfaces with the Passport, Immigration and Citizenship Agency (PICA), the Registrar General's Department (RGD), and Tax Administration Jamaica (TAJ). Your personal data is handled with absolute discretion.</p>
+                <p>In the banking sector, there is no room for guesswork. A single misplaced signature or overlooked verification means a failed transaction. We apply that exact, zero-tolerance standard to your vital records and legal identities. We keep our eyes open, we adhere strictly to government regulations, and we focus obsessively on getting it right the first time.</p>
                 
                 <p style="border-left: 2px solid var(--gold); padding-left: 16px; font-style: italic; color: var(--brand-mid); margin-bottom: 20px;">
-                    In alignment with our structural commitment to security, Docu-Hub operates in explicit compliance with the Jamaican Data Protection Act. Our data controller profile was officially established and account-verified within the Office of the Information Commissioner (OIC) system on December 5, 2025. 
+                    Our commitment to security is structural. Docu-Hub operates in explicit compliance with the Jamaican Data Protection Act. Our data controller profile was officially verified within the Office of the Information Commissioner (OIC) system on December 5, 2025. 
                 </p>
                 
                 <div style="margin-top: 12px;">
@@ -195,32 +179,38 @@
     </div>
 </section>
 
-<!-- SIMPLIFIED OPERATIONAL PILLARS -->
+<!-- MINDSET & PROTOCOL PILLARS -->
 <section class="pillars-section">
     <div class="wrap">
         <div style="text-align: center; max-width: 600px; margin: 0 auto 32px;">
-            <h2 style="font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk);">Our Operational Blueprints</h2>
-            <p style="font-family: var(--sans); color: var(--text-mid); margin-top: 12px;">Why serious international clients reserve their files on our calendar.</p>
+            <h2 style="font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk);">Our Operational Mindset</h2>
+            <p style="font-family: var(--sans); color: var(--text-mid); margin-top: 12px;">Why serious international clients trust us to handle their identities.</p>
         </div>
         
         <div class="pillars-grid enter d1">
             
             <div class="pillar-card">
-                <i class="fa-solid fa-compass"></i>
-                <h3>The Linstead Transit Advantage</h3>
-                <p>Our operations desk is strategically headquartered in Linstead, providing rapid highway corridor access to both the RGD Central Repository in Twickenham Park and the primary PICA/TAJ head offices in corporate Kingston. This strategic positioning allows our team to execute multiple agency filings safely and efficiently.</p>
+                <i class="fa-solid fa-scale-balanced"></i>
+                <h3>The Banking Standard</h3>
+                <p>Rooted in corporate financial compliance, we do not cut corners. Every passport renewal, TAJ filing, and registry trace undergoes a rigorous pre-audit before submission. We verify stamps, check form logic, and ensure total regulatory adherence so you never face a rejection delay.</p>
+            </div>
+
+            <div class="pillar-card">
+                <i class="fa-solid fa-flask"></i>
+                <h3>Transparent Protocol Testing</h3>
+                <p>We refuse to make empty promises about government timelines. For shifting regulations or highly complex filings, we launch internal Pilot Programs first. By actively testing and mapping the system, we ensure that what we sell on our platform is exactly what we can deliver efficiently.</p>
             </div>
 
             <div class="pillar-card">
                 <i class="fa-solid fa-vault"></i>
                 <h3>High-Security Asset Protection</h3>
-                <p>Mailing original birth certificates and expired passports internationally carries immense psychological stress. Docu-Hub maintains a documented chain of custody. Your vital records are physically protected, tracked at every checkpoint, and securely returned to your door via globally trusted couriers.</p>
+                <p>Mailing original birth certificates and expired passports internationally requires immense trust. Docu-Hub maintains a documented, iron-clad chain of custody. Your vital records are physically protected, logged at every checkpoint, and securely returned via globally trusted couriers.</p>
             </div>
 
             <div class="pillar-card">
-                <i class="fa-solid fa-gears"></i>
-                <h3>Direct Agency Interface</h3>
-                <p>We do not guess. Because we operate natively inside Jamaica, we bypass generic international email loops. If your passport draft is locked, a payment gateway fails, or a complex lineage trace requires a manual ledger search, we step in locally to execute immediate resolution.</p>
+                <i class="fa-solid fa-handshake-angle"></i>
+                <h3>End-to-End Accountability</h3>
+                <p>Because we operate natively inside Jamaica, we bypass generic email loops. If an agency system fails or a complex lineage trace requires a manual ledger intervention, we step in on the ground to execute an immediate resolution. We own the process until the document is in your hands.</p>
             </div>
 
         </div>
