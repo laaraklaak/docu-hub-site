@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Docu-Hub | Interactive Checklists</title>
-<meta name="description" content="Downloadable operational checklists and guides for Jamaican citizenship and document retrieval.">
+<title>Docu-Hub | Interactive Compliance Checklists & Podcast</title>
+<meta name="description" content="Downloadable operational checklists, guides, and podcast breakdowns for Jamaican citizenship, vital record corrections, and document retrieval.">
 
 <!-- Official Docu-Hub Fonts & Icons -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,7 +90,7 @@
   .accordion-item.active .icon { transform: rotate(45deg); }
 
   .accordion-content { max-height: 0; opacity: 0; overflow: hidden; padding: 0 30px; transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease; }
-  .accordion-item.active .accordion-content { max-height: 3500px; opacity: 1; padding: 0 30px 30px 30px; }
+  .accordion-item.active .accordion-content { max-height: 4500px; opacity: 1; padding: 0 30px 30px 30px; }
 
   /* Inner Bailout Callout */
   .skip-hassle-box { background: var(--bg-light); padding: 16px 20px; border-radius: 6px; margin-bottom: 24px; font-size: 0.9rem; color: var(--brand-drk); display: flex; align-items: center; gap: 12px; }
@@ -110,14 +110,94 @@
   .print-btn { display: inline-block; background-color: var(--gold); color: #fff; border: none; padding: 14px 28px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 4px; cursor: pointer; margin-top: 10px; transition: 0.3s ease; }
   .print-btn:hover { background-color: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
 
-  /* Resource Library Video Grid Styles */
-  .video-grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 24px; }
-  .video-card { background: var(--bg-light); padding: 32px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
-  .video-card h4 { font-family: var(--sans); font-size: 1.1rem; color: var(--brand-drk); margin-bottom: 12px; font-weight: 600; }
-  .video-card p { font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); margin-bottom: 20px; line-height: 1.6; }
-  .responsive-iframe { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; background: #000; }
-  .responsive-iframe iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-  @media (min-width: 900px) { .video-grid { grid-template-columns: repeat(3, 1fr); } }
+  /* ═══════════════════════════════════════════
+     PODCAST SPOTLIGHT CARD (YOUTUBE)
+   ═══════════════════════════════════════════ */
+  .podcast-card-wrapper {
+      background: #111811;
+      border: 1px solid rgba(193, 154, 91, 0.4);
+      border-left: 6px solid var(--gold);
+      border-radius: 12px;
+      padding: 36px 32px;
+      color: #fff;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+      margin-top: 60px;
+  }
+  .podcast-header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(193, 154, 91, 0.15);
+      color: var(--gold-lt);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+  }
+  .podcast-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      align-items: center;
+  }
+  .podcast-info h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      color: #fff;
+      margin-bottom: 12px;
+      line-height: 1.2;
+  }
+  .podcast-info p {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+      margin-bottom: 24px;
+  }
+  .podcast-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+  }
+  .btn-yt {
+      background: #FF0000;
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
+  }
+  .btn-yt:hover { background: #CC0000; transform: translateY(-2px); }
+  .btn-outline-gold {
+      background: transparent;
+      color: var(--gold-lt);
+      border: 1px solid var(--gold);
+      padding: 12px 22px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
+  }
+  .btn-outline-gold:hover { background: rgba(193, 154, 91, 0.15); color: #fff; }
+
+  @media (min-width: 850px) {
+      .podcast-grid {
+          grid-template-columns: 1fr 1fr;
+      }
+  }
 
   /* ═══════════════════════════════════════════
      FOOTER
@@ -135,7 +215,7 @@
     body { background-color: #fff; padding-top: 0; }
     
     /* Hide all global UI elements that shouldn't print */
-    .site-nav, .page-header, .dfy-banner, .print-btn, .skip-hassle-box, .site-footer, #audio-guides, .icon { display: none !important; }
+    .site-nav, .page-header, .dfy-banner, .print-btn, .skip-hassle-box, .site-footer, .podcast-card-wrapper, .icon { display: none !important; }
     
     /* When printing, hide ALL accordions by default */
     body.print-mode .accordion-item { display: none !important; }
@@ -174,7 +254,7 @@
   <!-- PAGE HEADER -->
   <header class="page-header">
     <h1>Government Compliance Checklists</h1>
-    <p>The exact protocols required by Jamaican agencies. Navigate the bureaucracy yourself, or let our Concierge team bypass the red tape for you.</p>
+    <p>The exact protocols required by Jamaican agencies. Navigate the bureaucracy yourself using our step-by-step guides, or let our Concierge team execute the proxy filing for you.</p>
   </header>
 
   <!-- CHECKLIST CONTENT -->
@@ -257,12 +337,174 @@
           </div>
         </div>
 
-        <!-- UPDATED PRINT SCRIPT CALL -->
         <button class="print-btn" onclick="printSpecificSection(this)">Download / Save as PDF</button>
       </div>
     </div>
 
-    <!-- CHECKLIST 1 ACCORDION: FIRST-TIME PASSPORT -->
+    <!-- NEW ACCORDION 1: NIRA CORRECTION OF ERROR (COE) -->
+    <div class="accordion-item" id="correction-of-error">
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        <h3 class="accordion-title">Protocol: NIRA (RGD) Birth Certificate Correction of Error</h3>
+        <span class="icon">+</span>
+      </button>
+
+      <div class="accordion-content">
+        <div class="skip-hassle-box">
+            <i class="fa-solid fa-bolt"></i>
+            <div><strong>The Docu-Hub Advantage:</strong> Don't let a 10-page packet intimidate you. You only complete Page 1 & Page 2. If you don't have time to handle JP witnessing, audit early proof, or track file movement at NIRA, our proxy team manages the entire submission for you.</div>
+        </div>
+
+        <p style="color: var(--text-mid); margin-bottom: 25px;">
+          <strong>No Lawyer Required:</strong> Used to fix misspelled names, wrong birth dates, or gender typos on official Jamaican birth certificates under the Births and Deaths Registration Act.
+        </p>
+
+        <div class="checklist-group">
+          <h4>Part 1: Pre-Application Requirements</h4>
+          <div class="check-item">
+            <input type="checkbox" id="coe_1_1">
+            <label for="coe_1_1"><strong>Current Flawed Certificate:</strong> I have my original paper birth certificate showing the exact error.</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="coe_1_2">
+            <label for="coe_1_2"><strong>Early-Life Supporting Proof:</strong> I have secured at least ONE early document showing the correct spelling/date (Childhood Immunization Card, First Primary School Record, or Christening Certificate).</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="coe_1_3">
+            <label for="coe_1_3"><strong>Eligible Declarant:</strong> A family member at least 10 years older than the applicant is available to sign the sworn statement.</label>
+          </div>
+        </div>
+
+        <div class="checklist-group">
+          <h4>Part 2: Completing the Form Packet</h4>
+          <div class="check-item">
+            <input type="checkbox" id="coe_2_1">
+            <label for="coe_2_1"><strong>Page 1 (Baseline Snapshot):</strong> Fill in the child's details exactly as they currently appear on the flawed birth paper, plus current delivery address.</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="coe_2_2">
+            <label for="coe_2_2"><strong>Page 2 (Statutory Declaration):</strong> Fill in Box A (What is wrong) and Box B (What it should properly read). <u>Do not sign beforehand.</u></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="coe_2_3">
+            <label for="coe_2_3"><strong>Justice of the Peace (JP) Execution:</strong> The Declarant must sign Page 2 live in the physical presence of a JP or Notary Public, who will affix their official seal.</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="coe_2_4">
+            <label for="coe_2_4"><strong>Page 10 (Maternal Schedule):</strong> Mother or declarant lists all children born to the mother in chronological order of birth.</label>
+          </div>
+        </div>
+
+        <button class="print-btn" onclick="printSpecificSection(this)">Print Protocol</button>
+      </div>
+    </div>
+
+    <!-- NEW ACCORDION 2: ADDITION OF FATHER'S NAME -->
+    <div class="accordion-item" id="addition-of-father">
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        <h3 class="accordion-title">Protocol: Addition of Father's Particulars (Both Parents Alive)</h3>
+        <span class="icon">+</span>
+      </button>
+
+      <div class="accordion-content">
+        <div class="skip-hassle-box">
+            <i class="fa-solid fa-bolt"></i>
+            <div><strong>The Docu-Hub Advantage:</strong> Leaving a father's line blank threatens family land, inheritance, and foreign citizenship rights. If both parents are willing to sign, our concierge team coordinates JP execution and manages the administrative filing directly with NIRA.</div>
+        </div>
+
+        <p style="color: var(--text-mid); margin-bottom: 25px;">
+          <strong>Straightforward 3-Page Status Form:</strong> Used to officially add a father's name to a birth certificate when both biological parents are alive and mutually agreeable.
+        </p>
+
+        <div class="checklist-group">
+          <h4>Part 1: The Prerequisites</h4>
+          <div class="check-item">
+            <input type="checkbox" id="af_1_1">
+            <label for="af_1_1"><strong>Both Parents Living:</strong> Both mother and father are alive and willing to sign sworn declarations.</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="af_1_2">
+            <label for="af_1_2"><strong>Original Birth Certificate:</strong> Current birth paper showing the blank father's section.</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="af_1_3">
+            <label for="af_1_3"><strong>Valid Photo IDs:</strong> Current government IDs for both mother and father.</label>
+          </div>
+        </div>
+
+        <div class="checklist-group">
+          <h4>Part 2: 3-Page Form Execution</h4>
+          <div class="check-item">
+            <input type="checkbox" id="af_2_1">
+            <label for="af_2_1"><strong>Page 1 (Baseline & Applicant):</strong> Capture current birth certificate details and applicant contact information.</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="af_2_2">
+            <label for="af_2_2"><strong>Page 2 (Mother's Declaration):</strong> Mother signs her paternity confirmation in front of a Justice of the Peace (JP) or Notary.</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="af_2_3">
+            <label for="af_2_3"><strong>Page 3 (Father's Acknowledgement):</strong> Father signs his legal acknowledgement in front of a Justice of the Peace (JP) or Notary.</label>
+          </div>
+        </div>
+
+        <button class="print-btn" onclick="printSpecificSection(this)">Print Protocol</button>
+      </div>
+    </div>
+
+    <!-- NEW ACCORDION 3: DECEASED PARENT PATHWAY -->
+    <div class="accordion-item" id="deceased-parent">
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        <h3 class="accordion-title">Protocol: Adding a Parent After Passing (Death Certs vs Court Orders)</h3>
+        <span class="icon">+</span>
+      </button>
+
+      <div class="accordion-content">
+        <div class="skip-hassle-box">
+            <i class="fa-solid fa-bolt"></i>
+            <div><strong>The Docu-Hub Advantage:</strong> NIRA strictly blocks administrative forms if a father is deceased. We evaluate your case immediately to determine whether you qualify for the simple administrative route or need affidavit/DNA preparation for a Family Court Order.</div>
+        </div>
+
+        <p style="color: var(--text-mid); margin-bottom: 25px;">
+          <strong>Know Your Exact Legal Path:</strong> Jamaican registry law applies two completely different standards depending on which parent has passed away.
+        </p>
+
+        <div class="checklist-group">
+          <h4>Path A: Deceased Mother (Administrative Route)</h4>
+          <div class="check-item">
+            <input type="checkbox" id="dp_1_1">
+            <label for="dp_1_1"><strong>3-Page Status Application:</strong> Completed and signed by the surviving biological father before a JP.</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="dp_1_2">
+            <label for="dp_1_2"><strong>Mother's Death Certificate:</strong> Official certified copy attached and filed directly at NIRA/RGD offices (No court required).</label>
+          </div>
+        </div>
+
+        <div class="checklist-group">
+          <h4>Path B: Deceased Father (Judicial / Family Court Route)</h4>
+          <div class="check-item">
+            <input type="checkbox" id="dp_2_1">
+            <label for="dp_2_1"><strong>Understand NIRA Rules:</strong> Acknowledge that NIRA cannot accept death certificates or status forms for deceased fathers.</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="dp_2_2">
+            <label for="dp_2_2"><strong>Court Petition:</strong> Apply for a Declaration of Paternity in the Family Court or Supreme Court under the Status of Children Act.</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="dp_2_3">
+            <label for="dp_2_3"><strong>Evidence Gathering:</strong> Collect sworn witness affidavits from family members confirming lifetime recognition, or obtain DNA test results from paternal relatives.</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="dp_2_4">
+            <label for="dp_2_4"><strong>Registry Update:</strong> Present the signed Court Order to NIRA to issue the updated birth certificate.</label>
+          </div>
+        </div>
+
+        <button class="print-btn" onclick="printSpecificSection(this)">Print Protocol</button>
+      </div>
+    </div>
+
+    <!-- EXISTING ACCORDION 1: FIRST-TIME PASSPORT -->
     <div class="accordion-item" id="first-time-passport">
       <button class="accordion-header" onclick="toggleAccordion(this)">
         <h3 class="accordion-title">Checklist: First-Time Jamaican Passport Applicant</h3>
@@ -286,7 +528,7 @@
           </div>
           <div class="check-item">
             <input type="checkbox" id="ftp_1_3">
-            <label for="ftp_1_3"><strong>The Signature Box Warning:</strong> Do not sign the biometric signature box at home. Leave it empty until you are standing directly in front of the officer. The signature is scanned by a computer; if your pen touches the boundary lines of the box, the machine will reject it.</label>
+            <label for="ftp_1_3"><strong>The Signature Box Warning:</strong> Do not sign the biometric signature box at home. Leave it empty until you are standing directly in front of the officer.</label>
           </div>
         </div>
 
@@ -322,12 +564,11 @@
           </div>
         </div>
 
-        <!-- UPDATED PRINT SCRIPT CALL -->
         <button class="print-btn" onclick="printSpecificSection(this)">Print Checklist</button>
       </div>
     </div>
 
-    <!-- CHECKLIST 2 ACCORDION: NAME CHANGE -->
+    <!-- EXISTING ACCORDION 2: NAME CHANGE -->
     <div class="accordion-item" id="name-change">
       <button class="accordion-header" onclick="toggleAccordion(this)">
         <h3 class="accordion-title">Checklist: Name Change on an Existing Adult Passport</h3>
@@ -352,45 +593,39 @@
           </div>
           <div class="check-item">
             <input type="checkbox" id="nc_1_2">
-            <label for="nc_1_2"><strong>The Bridge Document:</strong> You must submit the original legal document that proves the name change (e.g., Original Marriage Certificate, Deed Poll, or Divorce Decree). PICA will return this original document to you with your new passport.</label>
+            <label for="nc_1_2"><strong>The Bridge Document:</strong> Original Marriage Certificate, Deed Poll, or Divorce Decree.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="nc_1_3">
-            <label for="nc_1_3"><strong>The Current Passport:</strong> You must submit your current Jamaican passport so it can be officially canceled and replaced.</label>
+            <label for="nc_1_3"><strong>The Current Passport:</strong> Submit your current Jamaican passport for official cancellation and replacement.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="nc_1_4">
-            <label for="nc_1_4"><strong>The Official Form:</strong> Complete the standard Jamaican Passport Application Form using your new legal name.</label>
+            <label for="nc_1_4"><strong>The Official Form:</strong> Complete standard application under your new legal name.</label>
           </div>
         </div>
 
         <div class="checklist-group">
           <h4>Part 2: The Proxy Protocol (DocuHub Submission)</h4>
-          <p style="color: var(--text-mid); font-size: 0.9rem; margin-bottom: 15px;">Because you are not appearing in person, your application must be heavily certified before you courier it to our office.</p>
           <div class="check-item">
             <input type="checkbox" id="nc_2_1">
-            <label for="nc_2_1"><strong>Notarized Authorization Letter:</strong> A formally typed letter stating: "I, [Your Full Name], authorize DocuHub Operations Services to submit my passport renewal and name change application, and to collect my new passport and original supporting documents on my behalf." You must sign this in the physical presence of a Notary Public, who will then stamp it.</label>
+            <label for="nc_2_1"><strong>Notarized Authorization Letter:</strong> Stating Docu-Hub is authorized to submit and collect documents on your behalf.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="nc_2_2">
-            <label for="nc_2_2"><strong>Fully Certified Application:</strong> A Notary Public in your home country must sign and stamp Section G of your application form.</label>
+            <label for="nc_2_2"><strong>Fully Certified Application:</strong> Notary Public signs and stamps Section G.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="nc_2_3">
-            <label for="nc_2_3"><strong>Certified Photographs:</strong> Provide two passport-sized photographs. The Notary Public must certify the back of ONE photograph.</label>
-          </div>
-          <div class="check-item">
-            <input type="checkbox" id="nc_2_4">
-            <label for="nc_2_4"><strong>Secure Courier Shipment:</strong> Courier your complete package (Original Birth Certificate, Current Passport, Original Bridge Document, Certified Form, Photos, Notarized Letter, and Application Fee) directly to the DocuHub office via a secure, tracked service like FedEx or DHL.</label>
+            <label for="nc_2_3"><strong>Certified Photographs:</strong> One photo certified on back by Notary Public.</label>
           </div>
         </div>
 
-        <!-- UPDATED PRINT SCRIPT CALL -->
         <button class="print-btn" onclick="printSpecificSection(this)">Print Checklist</button>
       </div>
     </div>
 
-    <!-- CHECKLIST 3 ACCORDION: LOST OR DAMAGED PASSPORT -->
+    <!-- EXISTING ACCORDION 3: LOST OR DAMAGED PASSPORT -->
     <div class="accordion-item" id="lost-damaged">
       <button class="accordion-header" onclick="toggleAccordion(this)">
         <h3 class="accordion-title">Protocol for Replacing a Lost or Damaged Passport</h3>
@@ -403,101 +638,27 @@
             <div><strong>The Docu-Hub Advantage:</strong> Overseas police often refuse to issue reports for accidental household damage. We bypass this issue entirely by assisting you in drafting a localized Statutory Declaration that PICA legally accepts.</div>
         </div>
 
-        <p style="color: var(--text-mid); margin-bottom: 15px;">
-          The Passport, Immigration and Citizenship Agency (PICA) has strict security protocols for replacing passports that are not standard renewals. Please read carefully to determine which path applies to your situation.
-        </p>
-        <p style="color: var(--text-mid); font-size: 0.9rem; margin-bottom: 25px; line-height: 1.5;">
-          <strong>What constitutes a "Damaged" Passport?</strong> A passport is legally considered damaged and invalid if it has been washed or submerged in water, defaced or torn, written in or altered by anyone other than an official immigration officer, or subjected to heat/sun damage that causes the lamination to peel.
+        <p style="color: var(--text-mid); margin-bottom: 25px;">
+          <strong>Lost or Damaged Protocol:</strong> Covers statutory declarations, elevated replacement fees, and proxy submission protocols.
         </p>
 
         <div class="checklist-group">
-          <h4>Part 1: The Circumstance Proof (Choose A or B)</h4>
-          <p style="color: var(--text-mid); font-size: 0.9rem; margin-bottom: 15px;">To authorize a replacement, PICA must legally verify what happened to the previous document.</p>
+          <h4>Part 1: Proof of Circumstance</h4>
           <div class="check-item">
             <input type="checkbox" id="ld_1_1">
-            <label for="ld_1_1"><strong>A. The "Lost or Stolen" Protocol:</strong> If you cannot physically find the passport, you must visit your local police precinct, file a formal lost/stolen report, and submit the original official report (or printout with the incident number).</label>
+            <label for="ld_1_1"><strong>Lost/Stolen:</strong> Official Police Report with incident number.</label>
           </div>
           <div class="check-item">
             <input type="checkbox" id="ld_1_2">
-            <label for="ld_1_2"><strong>B. The "Damaged" Protocol & Affidavit Workaround:</strong> If you have the damaged book, you must submit it. Because overseas police often refuse reports for accidental household damage, you must write a formal Personal Affidavit (Statutory Declaration) detailing how, when, and where it happened, and sign it before a Notary Public.</label>
+            <label for="ld_1_2"><strong>Damaged Book:</strong> Damaged passport + Notarized Statutory Declaration explaining circumstance.</label>
           </div>
         </div>
 
-        <div class="checklist-group">
-          <h4>Part 2: The Core Application Documents</h4>
-          <div class="check-item">
-            <input type="checkbox" id="ld_2_1">
-            <label for="ld_2_1"><strong>The Book:</strong> The Damaged Passport itself (if applicable).</label>
-          </div>
-          <div class="check-item">
-            <input type="checkbox" id="ld_2_2">
-            <label for="ld_2_2"><strong>The Official Forms:</strong> A fully completed Jamaican Passport Application Form filled in blue or black ink with no white-out.</label>
-          </div>
-          <div class="check-item">
-            <input type="checkbox" id="ld_2_3">
-            <label for="ld_2_3"><strong>Proof of Citizenship:</strong> Your original Jamaican Birth Certificate, Adoption Certificate, or Certificate of Jamaican Citizenship. (No photocopies).</label>
-          </div>
-          <div class="check-item">
-            <input type="checkbox" id="ld_2_4">
-            <label for="ld_2_4"><strong>Valid Photo ID:</strong> An original, valid governmentID (e.g., US/Canadian Driver's License, PR Card, or Electoral ID).</label>
-          </div>
-          <div class="check-item">
-            <input type="checkbox" id="ld_2_5">
-            <label for="ld_2_5"><strong>Name Change Chain:</strong> If your current name differs from your birth certificate, you must provide the original Marriage Certificate, Deed Poll, or Divorce Decree.</label>
-          </div>
-        </div>
-
-        <div class="checklist-group">
-          <h4>Part 3: Photographs & Certification</h4>
-          <div class="check-item">
-            <input type="checkbox" id="ld_3_1">
-            <label for="ld_3_1"><strong>The Photographs:</strong> Two identical, recent, color passport-sized photographs taken on a matte finish against a plain background.</label>
-          </div>
-          <div class="check-item">
-            <input type="checkbox" id="ld_3_2">
-            <label for="ld_3_2"><strong>Mail/Dropbox Rule:</strong> Section G of the form and the back of ONE photo must be certified by a Notary Public or Consular Officer.</label>
-          </div>
-          <div class="check-item">
-            <input type="checkbox" id="ld_3_3">
-            <label for="ld_3_3"><strong>In-Person Rule:</strong> If applying directly at the Consulate, do not notarize photos in advance; the Consular Officer handles validation live.</label>
-          </div>
-        </div>
-
-        <div class="checklist-group">
-          <h4>Part 4: Fees and Submission</h4>
-          <div class="check-item">
-            <input type="checkbox" id="ld_4_1">
-            <label for="ld_4_1"><strong>The Replacement Fee:</strong> The fee for replacing a Lost or Damaged passport is higher than a standard renewal. Include a Certified Check or International Money Order payable to the Consulate General of Jamaica or PICA.</label>
-          </div>
-          <div class="check-item">
-            <input type="checkbox" id="ld_4_2">
-            <label for="ld_4_2"><strong>Return Mail:</strong> If not picking up in person, include a prepaid, self-addressed courier envelope (e.g., FedEx).</label>
-          </div>
-        </div>
-
-        <div class="checklist-group">
-          <h4>Part 5: The Proxy Protocol (Submission via DocuHub)</h4>
-          <p style="color: var(--text-mid); font-size: 0.9rem; margin-bottom: 15px;">If you wish to bypass processing delays, you can authorize DocuHub Operations Services to act as your agent. We will physically submit your file to PICA headquarters in Jamaica and courier the new passport back to you.</p>
-          <div class="check-item">
-            <input type="checkbox" id="ld_5_1">
-            <label for="ld_5_1"><strong>The Letter of Authorization:</strong> A formally typed letter stating: "I, [Your Full Name], authorize DocuHub Operations Services to submit my passport application and collect my new passport and original supporting documents on my behalf." Sign this in front of a Notary Public to have it stamped.</label>
-          </div>
-          <div class="check-item">
-            <input type="checkbox" id="ld_5_2">
-            <label for="ld_5_2"><strong>Fully Certified Application:</strong> Because you will not be appearing in person, Section G of your application form and the back of ONE of your photographs MUST be signed and stamped by a Notary Public in your home country before shipping.</label>
-          </div>
-          <div class="check-item">
-            <input type="checkbox" id="ld_5_3">
-            <label for="ld_5_3"><strong>Secure Courier Shipment:</strong> Securely courier your complete package (Original Forms, Original Birth Certificate, Damaged Passport/Police Report, Notarized Photos, and Notarized Authorization Letter) directly to the DocuHub office via FedEx or DHL with a tracking number.</label>
-          </div>
-        </div>
-
-        <!-- UPDATED PRINT SCRIPT CALL -->
         <button class="print-btn" onclick="printSpecificSection(this)">Print Protocol</button>
       </div>
     </div>
 
-    <!-- CHECKLIST 4 ACCORDION: TAJ MOTOR VEHICLE RENEWAL -->
+    <!-- EXISTING ACCORDION 4: TAJ MOTOR VEHICLE RENEWAL -->
     <div class="accordion-item" id="motor-vehicle">
       <button class="accordion-header" onclick="toggleAccordion(this)">
         <h3 class="accordion-title">Protocol: TAJ Motor Vehicle License Renewal (eMVRC)</h3>
@@ -510,107 +671,59 @@
             <div><strong>The Docu-Hub Advantage:</strong> Busy professionals and diaspora clients use our desk to skip the tax office lines entirely. If your foreign bank card is blocked by the TAJ portal, or you need outstanding tickets cleared manually, our proxy team executes the renewal locally on your behalf.</div>
         </div>
 
-        <p style="color: var(--text-mid); margin-bottom: 25px;">
-          The Tax Administration Jamaica (TAJ) portal allows for online vehicle registration renewals, but the system relies on exact cross-agency data matching. A single outstanding ticket or data entry error will lock you out.
-        </p>
-
-      <div class="checklist-group">
-          <h4>Part 1: The Pre-Requisite Checks (The Dealbreakers)</h4>
-          <p style="color: var(--text-mid); font-size: 0.9rem; margin-bottom: 15px;">Before logging into the TAJ portal, you must verify these three elements. If any of these fail, the system will not allow you to proceed.</p>
-          
+        <div class="checklist-group">
+          <h4>Part 1: Pre-Requisites</h4>
           <div class="check-item">
             <input type="checkbox" id="taj_1_1">
-            <label for="taj_1_1">
-                <strong>Traffic Ticket Clearance:</strong> I have verified that there are absolutely zero outstanding traffic tickets attached to my driver's license. <br>
-                <span style="font-size: 0.85rem; color: var(--gold); display: block; margin-top: 4px;">
-                    <em>Note: The TAJ portal does not show you your tickets; it only blocks your payment. You must check your status on the separate official portal here:</em> 
-                    <a href="https://trafficticketlookup.gov.jm/" target="_blank" rel="noopener" style="color: var(--brand-drk); font-weight: 600; text-decoration: underline;">trafficticketlookup.gov.jm</a>
-                </span>
-            </label>
+            <label for="taj_1_1"><strong>Ticket Clearance:</strong> Verified zero outstanding traffic tickets at <a href="https://trafficticketlookup.gov.jm/" target="_blank" rel="noopener" style="color: var(--brand-drk); font-weight: 600; text-decoration: underline;">trafficticketlookup.gov.jm</a>.</label>
           </div>
-          
           <div class="check-item">
             <input type="checkbox" id="taj_1_2">
-            <label for="taj_1_2"><strong>Valid Fitness Certificate:</strong> The vehicle possesses a current, unexpired Certificate of Fitness from the Island Traffic Authority (ITA). (The TAJ system digitally checks this database).</label>
-          </div>
-          
-          <div class="check-item">
-            <input type="checkbox" id="taj_1_3">
-            <label for="taj_1_3"><strong>Valid Insurance Cover:</strong> I possess a valid Motor Vehicle Insurance Cover Note or Certificate. The dates on the insurance must be active and accurately uploaded by the insurance company to the central database.</label>
+            <label for="taj_1_2"><strong>Active Fitness & Insurance:</strong> Current ITA Fitness and active insurance uploaded to database.</label>
           </div>
         </div>
 
-        <div class="checklist-group">
-          <h4>Part 2: Portal Data Entry & Execution</h4>
-          <div class="check-item">
-            <input type="checkbox" id="taj_2_1">
-            <label for="taj_2_1"><strong>TRN Verification:</strong> I have my exact Tax Registration Number (TRN) and the Branch Number ready for input.</label>
-          </div>
-          <div class="check-item">
-            <input type="checkbox" id="taj_2_2">
-            <label for="taj_2_2"><strong>Exact Data Matching:</strong> I have double-checked that the Chassis Number, Engine Number, and License Plate Number I am typing into the portal match my previous registration certificate perfectly. (A single typo will trigger a rejection).</label>
-          </div>
-          <div class="check-item">
-            <input type="checkbox" id="taj_2_3">
-            <label for="taj_2_3"><strong>Payment Gateway Readiness:</strong> If applying from overseas, I am aware that the TAJ 3D-Secure payment gateway often flags foreign credit cards for fraud. (If your card is blocked, do not attempt it more than 3 times, or your TAJ account may be temporarily locked).</label>
-          </div>
-        </div>
-
-        <div class="checklist-group">
-          <h4>Part 3: Post-Approval & Printing</h4>
-          <div class="check-item">
-            <input type="checkbox" id="taj_3_1">
-            <label for="taj_3_1"><strong>The eMVRC Printout:</strong> Once approved, I have successfully downloaded the electronic Motor Vehicle Registration Certificate (eMVRC).</label>
-          </div>
-          <div class="check-item">
-            <input type="checkbox" id="taj_3_2">
-            <label for="taj_3_2"><strong>Vehicle Placement:</strong> The printed eMVRC has been physically placed inside the vehicle, as it must be presented to law enforcement upon request.</label>
-          </div>
-        </div>
-
-        <!-- UPDATED PRINT SCRIPT CALL -->
         <button class="print-btn" onclick="printSpecificSection(this)">Print Protocol</button>
       </div>
     </div>
 
-    <!-- DONE FOR YOU BANNER (MOVED TO BOTTOM) -->
+    <!-- DONE FOR YOU BANNER -->
     <div class="dfy-banner" style="margin-top: 40px; margin-bottom: 0;">
         <div>
-            <h3>Feeling Overwhelmed?</h3>
-            <p>One missing stamp or incorrect ink color can cause months of delays. Skip the paperwork and let our experts execute your file flawlessly.</p>
+            <h3>Feeling Overwhelmed by Bureaucracy?</h3>
+            <p>One missing stamp or incorrect ink color can cause months of registry delays. Skip the lines and let our expert proxy team execute your file flawlessly.</p>
         </div>
         <a href="register.html" class="btn-gold">Begin Secure Registration</a>
     </div>
 
-    <!-- AUDIO MASTERCLASSES SECTION -->
-    <div style="margin-top: 80px; border-top: 2px solid var(--gold); padding-top: 60px;" id="audio-guides">
-      <h2 style="font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk); font-weight: 400; text-align: center; margin-bottom: 8px;">Compliance Audio Briefings</h2>
-      <p style="text-align: center; color: var(--text-mid); margin-bottom: 40px; font-family: var(--sans);">Listen to our deep-dive portal breakdowns and compliance strategies.</p>
-
-      <div class="video-grid">
-          <div class="video-card">
-              <h4>1. The Online Passport Blueprint</h4>
-              <p>An authoritative audio guide mapping out the 3-gateway security protocols and regional 3D-Secure payment blocks on the PICA portal.</p>
-              <div class="responsive-iframe">
-                  <iframe src="https://www.youtube.com/embed/SiL3kjTFa4Q?si=eXndcYozJvFEGvtZ" loading="lazy" title="Online Passport Renewal Masterclass" allowfullscreen></iframe>
-              </div>
-          </div>
-          <div class="video-card">
-              <h4>2. eMVRC & Vehicle Compliance</h4>
-              <p>A masterclass detailing outstanding traffic ticket clearances, TRN validation loops, and digital registration certificate distribution.</p>
-              <div class="responsive-iframe">
-                  <iframe src="https://www.youtube.com/embed/jpS-mIde1Ro?si=OtzW4_La_TffGgxk" loading="lazy" title="Motor Vehicle Compliance Masterclass" allowfullscreen></iframe>
-              </div>
-          </div>
-          <div class="video-card">
-              <h4>3. Cross-Agency Multi-Portals</h4>
-              <p>A strategic audio layout tracking how to manage multiple complex compliance requests across different agency dashboards simultaneously.</p>
-              <div class="responsive-iframe">
-                  <iframe src="https://www.youtube.com/embed/X_vP65ETG2U" loading="lazy" title="Multi-Portal Navigation Masterclass" allowfullscreen></iframe>
-              </div>
+    
+    <!-- REDESIGNED PODCAST SPOTLIGHT CARD (YOUTUBE PODCAST) -->
+<div class="podcast-card-wrapper" id="audio-guides">
+  <div class="podcast-header-badge">
+      <i class="fa-solid fa-podcast"></i> Featured Podcast Series
+  </div>
+  <div class="podcast-grid">
+      <div class="podcast-info">
+          <h3>Straight Talk, Real Documents</h3>
+          <p>
+              Demystifying Jamaican vital records, NIRA forms, PICA portal errors, and diaspora compliance. Join us as we open up official government applications step-by-step so you never have to guess.
+          </p>
+          <div class="podcast-actions">
+              <!-- UPDATED: Direct playlist link -->
+              <a href="https://www.youtube.com/playlist?list=PLBfZYWn_pMn8" target="_blank" rel="noopener" class="btn-yt">
+                  <i class="fa-brands fa-youtube"></i> Watch Playlist on YouTube
+              </a>
+              <a href="https://calendar.app.google/mCXiJ2GLF15mLMV48" target="_blank" rel="noopener" class="btn-outline-gold">
+                  <i class="fa-regular fa-calendar-check"></i> Book Case Review
+              </a>
           </div>
       </div>
-    </div>
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+          <!-- UPDATED: Embedded playlist player -->
+          <iframe src="https://www.youtube.com/embed/videoseries?list=PLBfZYWn_pMn8" style="position: absolute; top:0; left:0; width:100%; height:100%; border:none;" loading="lazy" title="Straight Talk Real Documents Podcast" allowfullscreen></iframe>
+      </div>
+  </div>
+</div>
 
   </main>
 
@@ -624,12 +737,10 @@
           <div>
               <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt); letter-spacing: 0.05em;">QUICK LINKS</h4>
               <ul style="list-style: none; display: grid; gap: 8px;">
-                  
                   <li><a href="index.html#services" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Our Core Services</a></li>
                   <li><a href="index.html#faq-resources" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Portal Help & FAQs</a></li>
                   <li><a href="resource.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Checklists & Guides</a></li>
                   <li><a href="about.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">About Docu-Hub</a></li>
-
               </ul>
           </div>
           <div>
@@ -652,35 +763,27 @@
   </footer>
 
   <script>
-    // 1. The normal click-to-open function
+    // 1. Normal click-to-open function
     function toggleAccordion(button) {
       const item = button.parentElement;
       item.classList.toggle('active');
     }
 
-    // 2. THE NEW EXPERT PRINT FUNCTION
+    // 2. EXPERT PRINT FUNCTION (Prints only target section)
     function printSpecificSection(buttonElement) {
-        // Find the specific accordion the user clicked
         const accordionItem = buttonElement.closest('.accordion-item');
-        
         if (accordionItem) {
-            // Add custom classes to trigger our expert print CSS rules
             document.body.classList.add('print-mode');
             accordionItem.classList.add('print-target');
-            
-            // Trigger the browser's print dialog
             window.print();
-            
-            // Remove the custom classes immediately so the website returns to normal
             document.body.classList.remove('print-mode');
             accordionItem.classList.remove('print-target');
         }
     }
 
-    // 3. The Auto-Open "Deep Link" magic for YouTube
+    // 3. Auto-Open "Deep Link" magic for YouTube & Nav anchors
     document.addEventListener("DOMContentLoaded", () => {
       const hash = window.location.hash; 
-      
       if (hash) {
         const targetAccordion = document.querySelector(hash);
         if (targetAccordion) {
