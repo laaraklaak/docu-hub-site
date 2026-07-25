@@ -109,14 +109,14 @@
     .section-header { text-align: center; margin-bottom: var(--space-xxl); }
     .section-header h2 { font-family: var(--serif); font-size: clamp(3.5rem, 5vw, 4.8rem); font-weight: 400; color: var(--brand-drk); }
     
-    /* Using auto-fit so it looks perfect whether there are 2 cards or 3 cards */
-    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(32.0rem, 1fr)); gap: var(--space-xxxl); width: 100%; max-width: 100.0rem; margin: 0 auto; align-items: start; justify-content: center; }
+    /* Perfect 2x2 Grid Layout for Desktop */
+    .cards-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-lg); width: 100%; max-width: 100.0rem; margin: 0 auto; align-items: stretch; }
     
-    .btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 0.8rem; width: 100%; padding: var(--space-sm); background: var(--brand-mid); color: #fff; border-radius: 0.4rem; border: none; font-family: var(--sans); font-size: 1.3rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; cursor: pointer; text-decoration: none; }
+    .btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 0.8rem; width: 100%; padding: var(--space-sm); background: var(--brand-mid); color: #fff; border-radius: 0.4rem; border: none; font-family: var(--sans); font-size: 1.3rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; cursor: pointer; text-decoration: none; margin-top: auto; }
     .btn-action:hover { background: var(--brand-drk); transform: translateY(-0.2rem); }
 
     /* Featured Premium Card */
-    .featured-wrapper { background: #fff; border-radius: 1.2rem; overflow: hidden; box-shadow: var(--shadow-deep); margin-bottom: 7.2rem; border-left: 0.6rem solid var(--brand-mid); transition: 0.3s; max-width: 100.0rem; margin-left: auto; margin-right: auto; }
+    .featured-wrapper { background: #fff; border-radius: 1.2rem; overflow: hidden; box-shadow: var(--shadow-deep); margin-bottom: var(--space-xl); border-left: 0.6rem solid var(--brand-mid); transition: 0.3s; max-width: 100.0rem; margin-left: auto; margin-right: auto; }
     .featured-card summary { cursor: pointer; display: flex; flex-direction: column; list-style: none; }
     .featured-card summary::-webkit-details-marker { display: none; }
     .featured-img-wrap { width: 100%; min-height: 26.0rem; position: relative; }
@@ -127,20 +127,34 @@
     .learn-more-text i { transition: 0.3s; }
 
     /* Minimal Standard Cards */
-    .minimal-card { background: #fff; border-radius: 1.2rem; overflow: hidden; box-shadow: var(--shadow-md); width: 100%; transition: 0.3s; border-top: 0.4rem solid transparent; }
+    .minimal-card { background: #fff; border-radius: 1.2rem; overflow: hidden; box-shadow: var(--shadow-md); width: 100%; transition: 0.3s; border-top: 0.4rem solid transparent; display: flex; flex-direction: column; }
     .minimal-card.pilot-card { border-top-color: #B57327; } /* Warm amber accent for pilot cards */
     .minimal-card summary { cursor: pointer; list-style: none; position: relative; display: block; }
     .minimal-card summary::-webkit-details-marker { display: none; }
     .minimal-card summary::after { content: '\002B'; position: absolute; bottom: 2.0rem; right: 2.0rem; background: var(--bg-light); color: var(--brand-drk); width: 3.2rem; height: 3.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--sans); font-size: 2.2rem; font-weight: 300; z-index: 3; transition: 0.3s; }
     .minimal-card[open] summary::after { content: '\2212'; background: var(--brand-drk); color: #fff; }
-    .minimal-card .card-img-wrap { height: 25.0rem; width: 100%; position: relative; }
+    .minimal-card .card-img-wrap { height: 22.0rem; width: 100%; position: relative; }
     .minimal-card .card-img-wrap img { width: 100%; height: 100%; object-fit: contain; background: var(--bg-light); padding: var(--space-md); }
     .minimal-card .card-question { font-family: var(--serif); font-size: 1.8rem; font-weight: 600; color: var(--brand-drk); margin: var(--space-sm) 2.0rem; padding-right: 4.0rem; line-height: 1.4; }
-    .minimal-card-content { padding: 0 var(--space-md) var(--space-md); animation: fadeIn 0.4s ease; border-top: 0.1rem solid var(--border-light); margin-top: var(--space-sm); padding-top: var(--space-md); }
+    .minimal-card-content { padding: 0 var(--space-md) var(--space-md); animation: fadeIn 0.4s ease; border-top: 0.1rem solid var(--border-light); margin-top: auto; padding-top: var(--space-md); }
 
     /* Resource Links */
     .resource-deep-link { font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 0.8rem; margin-bottom: var(--space-md); border-bottom: 0.1rem solid var(--gold); padding-bottom: 0.4rem; transition: 0.3s; text-decoration: none; }
     .resource-deep-link:hover { color: var(--gold); border-bottom-color: var(--brand-drk); }
+
+    /* Essentials Banner Callout */
+    .essentials-banner-inner {
+        background: #fff;
+        border-radius: 1.2rem;
+        padding: var(--space-lg) var(--space-xl);
+        border-left: 0.5rem solid var(--gold);
+        box-shadow: var(--shadow-md);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+        align-items: flex-start;
+        justify-content: space-between;
+    }
 
     /* ═══════════════════════════════════════════
        FLOATING RESOURCE BADGE
@@ -183,13 +197,16 @@
         .desktop-only { display: block; }
         .mobile-only { display: none; }
         .process-desktop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(28.0rem, 1fr)); gap: 4.0rem; margin-bottom: var(--space-xl); }
-        .cards-grid { gap: var(--space-lg); max-width: 100.0rem; }
+        
+        /* Forces 2-Column Grid for Symmetrical 2x2 Layout */
+        .cards-grid { grid-template-columns: repeat(2, 1fr); }
         
         /* Layout for Featured Card */
         .featured-card summary { flex-direction: row; }
-        .featured-img-wrap { width: 50%; height: auto; } /* Fix applied here */
+        .featured-img-wrap { width: 50%; height: auto; }
         .featured-text-wrap { width: 50%; padding: var(--space-xl) 4.0rem; }
         .featured-dropdown { padding: 0 4.0rem 4.0rem; margin-left: 50%; border-top: 0.1rem solid var(--border-light); padding-top: var(--space-lg); }
+        .essentials-banner-inner { flex-direction: row; align-items: center; }
     }
 
     /* Centers the badge at the bottom of the screen on mobile phones */
@@ -215,6 +232,7 @@
         <a href="#" class="nav-logo-name">Docu-Hub <em>Jamaica</em></a>
         <ul class="nav-links">
             <li><a href="#services">Services</a></li>
+            <li><a href="essentials.html">Essentials</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="contact.html">Contact Us</a></li>
         </ul>
@@ -276,17 +294,17 @@
 </section>
 
 <!-- ========================================== -->
-<!-- SECTION 1: SIGNATURE SERVICES              -->
+<!-- SERVICES SECTION (BALANCED 2x2 GRID)        -->
 <!-- ========================================== -->
 <section class="services-section" id="services">
     <div class="wrap">
         
         <div class="section-header enter d1">
-            <span style="font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brand-mid); font-weight: 600; display: block; margin-bottom: var(--space-xs);">Mastered & Fully Operational</span>
-            <h2>Signature Services</h2>
+            <span style="font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brand-mid); font-weight: 600; display: block; margin-bottom: var(--space-xs);">Operational & Concierge Services</span>
+            <h2>Document Concierge Offerings</h2>
         </div>
 
-        <!-- NEW FEATURED STAR: PICA PASSPORT RENEWALS -->
+        <!-- FEATURED FLAGSHIP CARD: PASSPORT RENEWALS -->
         <div class="enter d1 featured-wrapper">
             <details class="featured-card">
                 <summary>
@@ -307,7 +325,7 @@
                 
                 <div class="featured-dropdown">
                     <a href="resource.html#first-time-passport" class="resource-deep-link">
-                        <i class="fa-regular fa-folder-open" style="color: var(--gold);"></i> View Exact Documents & Rules Required
+                        <i class="fa-regular fa-folder-open" style="color: var(--gold);"></i> View Exact Documents &amp; Rules Required
                     </a>
                     
                     <div style="display: flex; flex-wrap: wrap; gap: var(--space-lg); margin-bottom: var(--space-lg);">
@@ -327,10 +345,10 @@
             </details>
         </div>
 
-        <!-- GRID FOR REMAINING SIGNATURE SERVICES (TAJ & Standard RGD) -->
+        <!-- PERFECTLY SYMMETRICAL 2x2 GRID (4 CARDS) -->
         <div class="cards-grid">
             
-            <!-- Standard TAJ -->
+            <!-- Card 1: Standard TAJ -->
             <details class="minimal-card enter d1">
                 <summary>
                     <div class="card-img-wrap">
@@ -348,7 +366,7 @@
                     <div style="margin-bottom: 2.0rem;">
                         <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: var(--space-xs);">All-Inclusive Pricing</span>
                         <div style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.6;">
-                            <strong>Motor Vehicle Portal Renewal: $125 USD (Standard Car)</strong><br>Complete all-inclusive Signature Service. Includes our concierge proxy handling and official 1-year TAJ road tax. Digital certificates (eMVRC) are emailed directly to you.<br><br>
+                            <strong>Motor Vehicle Portal Renewal: $125 USD (Standard Car)</strong><br>Complete signature service. Includes concierge proxy handling and official 1-year TAJ road tax. Digital eMVRC sent directly to you.<br><br>
                             <em>Other tiers: Small Cars ($105 USD) | Large SUVs/V8s ($230 USD)</em>
                         </div>
                     </div>
@@ -357,7 +375,7 @@
                 </div>
             </details>
 
-            <!-- Standard RGD -->
+            <!-- Card 2: Standard RGD -->
             <details class="minimal-card enter d2">
                 <summary>
                     <div class="card-img-wrap">
@@ -375,7 +393,7 @@
                     <div style="margin-bottom: 2.0rem;">
                         <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: var(--space-xs);">All-Inclusive Pricing</span>
                         <div style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.6;">
-                            <strong>Standard Certificate Retrieval: $130 USD</strong><br>Fully operational service for Birth and Death certificates. We process your application, monitor the file, and secure the clean prints. Includes RGD production fees and DHL international delivery.
+                            <strong>Standard Certificate Retrieval: $130 USD</strong><br>Fully operational service for Birth and Death certificates. We process your application, monitor the file, and secure the clean prints. Includes RGD fees and DHL delivery.
                         </div>
                     </div>
                     
@@ -383,119 +401,71 @@
                 </div>
             </details>
 
-        </div>
-    </div>
-</section>
-
-<!-- ========================================== -->
-<!-- SECTION 2: PILOT PROGRAMS & TRIALS         -->
-<!-- ========================================== -->
-<section class="services-section" style="background: #fff; padding: var(--space-xxxl) 0 var(--space-max);">
-    <div class="wrap">
-        
-        <div class="section-header enter d1">
-            <span style="font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; color: #B57327; font-weight: 600; display: block; margin-bottom: var(--space-xs);">
-                <i class="fa-solid fa-flask" style="margin-right: 0.4rem;"></i> Transparent Agency Testing
-            </span>
-            <h2>Pilot Programs & Introductory Trials</h2>
-            <p style="font-family: var(--sans); font-size: 1.7rem; color: var(--text-mid); max-width: 75.0rem; margin: 1.6rem auto 0; line-height: 1.6;">
-                Government agencies frequently update internal processing portals, physical registry archives, and turnaround frameworks. Our Pilot Programs allow select clients to access complex administrative services at a <strong>significantly reduced concierge rate</strong> while we rigorously benchmark live processing times on the ground.
-            </p>
-        </div>
-
-        <!-- PILOT EXPECTATIONS BOX -->
-        <div class="enter d2" style="background: var(--bg-light); border-radius: 1.2rem; padding: var(--space-lg); max-width: 90.0rem; margin: 0 auto var(--space-xxl) auto; border-left: 0.4rem solid #B57327; box-shadow: var(--shadow-soft);">
-            <h4 style="font-family: var(--serif); font-size: 2.0rem; color: var(--brand-drk); margin-bottom: 1.2rem;">What to Expect as a Pilot Client:</h4>
-            <ul style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.6; display: grid; gap: 1.0rem; padding-left: 2.0rem;">
-                <li><strong>100% Application Accuracy:</strong> We guarantee total compliance on our end—every form, fee, and supporting document is pre-audited before submission.</li>
-                <li><strong>Waived Concierge Fees:</strong> You pay official government costs plus a reduced administrative fee in exchange for flexible processing timelines.</li>
-                <li><strong>Active Milestone Tracking:</strong> You receive direct operational updates as we physically track your file through the agency's internal queues.</li>
-            </ul>
-        </div>
-
-        <div class="cards-grid">
-            
-            <!-- Citizenship Pilot -->
-            <details class="minimal-card pilot-card enter d1">
+            <!-- Card 3: Citizenship Pilot (Compact) -->
+            <details class="minimal-card pilot-card enter d3">
                 <summary>
                     <div class="card-img-wrap">
                         <img src="assets/jamaican.JPG" loading="lazy" alt="Jamaican Citizenship by Descent">
                     </div>
-                    <h3 class="card-question">Citizenship by Descent</h3>
+                    <h3 class="card-question">Applying for Citizenship by Descent? (Pilot Service)</h3>
                 </summary>
                 <div class="minimal-card-content">
-                    <div style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.6; margin-bottom: var(--space-md);">
-                        <strong style="color: var(--brand-drk); display: block; margin-bottom: 0.4rem;">What’s Involved:</strong>
-                        <p style="margin-bottom: 1.2rem;">Securing citizenship requires multi-agency alignment between PICA, local archives, and consular offices. We handle the heavy backend lifting: verifying original genealogical records, formatting foreign birth certificates, pre-auditing official PICA declarations, and navigating submission queues.</p>
-                        
-                        <strong style="color: var(--brand-drk); display: block; margin-bottom: 0.4rem;">Why it's in Pilot:</strong>
-                        <p>Agency processing speeds for physical citizenship approvals fluctuate based on archival verification queues. As a pilot client, you receive a <strong>waived proxy markup</strong> while we track physical file movement from submission to final certification.</p>
-                    </div>
-                    
+                    <p style="font-family: var(--sans); font-size: 1.5rem; color: var(--text-mid); line-height: 1.6; margin-bottom: var(--space-md);">We handle the heavy backend lifting: verifying original genealogical records, formatting foreign birth certificates, and pre-auditing PICA declarations.</p>
+
                     <div style="margin-bottom: 2.0rem; padding-left: 1.2rem; border-left: 0.2rem solid #B57327;">
                         <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: var(--space-xs);">Pilot Pricing</span>
                         <div style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.6;">
-                            <strong>All-Inclusive Package: $305 USD</strong><br><em>Currently testing manual timelines.</em> Includes PICA application fees, DHL delivery, and optional Consulate Booking.
+                            <strong>All-Inclusive Citizenship Package: $305 USD</strong><br>Includes PICA application fees, DHL international doorstep delivery, and optional Consulate Booking.
                         </div>
                     </div>
+                    
                     <a href="register.html" class="btn-action" style="background: #B57327;">Inquire About Pilot Slot</a>
                 </div>
             </details>
 
-            <!-- RGD Deep Search Pilot -->
-            <details class="minimal-card pilot-card enter d2">
+            <!-- Card 4: TRN & Archival Deep Search Pilot (Compact) -->
+            <details class="minimal-card pilot-card enter d4">
                 <summary>
                     <div class="card-img-wrap">
-                        <img src="assets/rgd-new.webp" loading="lazy" alt="RGD Deep Search">
+                        <img src="assets/motor-vehicle.webp" loading="lazy" alt="TRN & Archival Search">
                     </div>
-                    <h3 class="card-question">Marriage Records & Archival Deep Search</h3>
+                    <h3 class="card-question">Need an overseas TRN or marriage record lookup?</h3>
                 </summary>
                 <div class="minimal-card-content">
-                    <div style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.6; margin-bottom: var(--space-md);">
-                        <strong style="color: var(--brand-drk); display: block; margin-bottom: 0.4rem;">What’s Involved:</strong>
-                        <p style="margin-bottom: 1.2rem;">Un-indexed or historical marriage records often require manual lookup inside older, physical registry volumes at the Registrar General's Department (RGD). We perform the preliminary record mapping, cross-reference parish ledgers, and lodge formal search requisitions on the ground.</p>
-                        
-                        <strong style="color: var(--brand-drk); display: block; margin-bottom: 0.4rem;">Why it's in Pilot:</strong>
-                        <p>Physical archive searches depend entirely on registry book condition and manual clerk lookups. We offer this service under flexible timeline expectations so we can accurately establish current search-to-print completion rates.</p>
-                    </div>
-                    
+                    <p style="font-family: var(--sans); font-size: 1.5rem; color: var(--text-mid); line-height: 1.6; margin-bottom: var(--space-md);">We pre-audit notarized documents for TAJ Tax Registration Numbers (TRN) and conduct manual deep-searches for historical marriage ledgers at RGD.</p>
+
                     <div style="margin-bottom: 2.0rem; padding-left: 1.2rem; border-left: 0.2rem solid #B57327;">
                         <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: var(--space-xs);">Pilot Pricing</span>
                         <div style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.6;">
-                            <strong>Deep Archive Search: $220 USD</strong><br><em>Currently testing manual timelines.</em> Includes official RGD deep search fees and DHL international delivery.
+                            <strong>1. TRN Registration Proxy: $185 USD</strong><br>
+                            <strong>2. Archival Deep Search: $220 USD</strong><br>Includes official agency search fees and secure DHL delivery.
                         </div>
                     </div>
+                    
                     <a href="register.html" class="btn-action" style="background: #B57327;">Inquire About Pilot Slot</a>
                 </div>
             </details>
 
-            <!-- TAJ TRN Pilot -->
-            <details class="minimal-card pilot-card enter d3">
-                <summary>
-                    <div class="card-img-wrap">
-                        <img src="assets/motor-vehicle.webp" loading="lazy" alt="TRN Registration">
-                    </div>
-                    <h3 class="card-question">Overseas TRN Registration Proxy</h3>
-                </summary>
-                <div class="minimal-card-content">
-                    <div style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.6; margin-bottom: var(--space-md);">
-                        <strong style="color: var(--brand-drk); display: block; margin-bottom: 0.4rem;">What’s Involved:</strong>
-                        <p style="margin-bottom: 1.2rem;">Obtaining a Tax Registration Number from abroad involves strict identity verification under TAJ regulations. We pre-audit your notarized passport copies, format your official TP01 application, submit the file directly to Tax Administration Jamaica, and monitor card printing.</p>
-                        
-                        <strong style="color: var(--brand-drk); display: block; margin-bottom: 0.4rem;">Why it's in Pilot:</strong>
-                        <p>While application entry is rapid, actual card printing and international dispatch schedules vary at the tax department. Pilot participation guarantees exact form compliance while we benchmark card release windows.</p>
-                    </div>
-                    
-                    <div style="margin-bottom: 2.0rem; padding-left: 1.2rem; border-left: 0.2rem solid #B57327;">
-                        <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: var(--space-xs);">Pilot Pricing</span>
-                        <div style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.6;">
-                            <strong>TRN Proxy Registration: $185 USD</strong><br><em>Currently tracking processing speeds.</em> Includes secure DHL doorstep delivery of your official TRN card.
-                        </div>
-                    </div>
-                    <a href="register.html" class="btn-action" style="background: #B57327;">Inquire About Pilot Slot</a>
-                </div>
-            </details>
+        </div>
+    </div>
+</section>
 
+<!-- CURATED TRAVEL & SECURITY ESSENTIALS BANNER -->
+<section class="essentials-banner-section" style="padding: var(--space-xl) 0; background: var(--bg-light); border-top: 0.1rem solid var(--border-light);">
+    <div class="wrap enter d1">
+        <div class="essentials-banner-inner">
+            <div style="max-width: 65.0rem;">
+                <span style="font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brand-mid); font-weight: 600; display: block; margin-bottom: 0.6rem;">
+                    <i class="fa-solid fa-suitcase-rolling" style="color: var(--gold); margin-right: 0.6rem;"></i> Curated Gear &amp; Tools
+                </span>
+                <h3 style="font-family: var(--serif); font-size: 2.8rem; color: var(--brand-drk); font-weight: 500; margin-bottom: 0.8rem;">Preparing for an Errand Day or Flight Abroad?</h3>
+                <p style="font-family: var(--sans); font-size: 1.5rem; color: var(--text-mid); line-height: 1.6;">
+                    Explore our expert-curated selection of RFID document safes, power banks with built-in cables, wearable cooling fans, and luggage trackers engineered to survive hot lines and protect your vital identity.
+                </p>
+            </div>
+            <a href="essentials.html" class="btn-gold" style="white-space: nowrap; font-size: 1.2rem; padding: 1.2rem 2.8rem; background: var(--brand-drk);">
+                Explore Travel Essentials <i class="fa-solid fa-arrow-right" style="margin-left: 0.6rem; color: var(--gold-lt);"></i>
+            </a>
         </div>
     </div>
 </section>
@@ -609,8 +579,9 @@
             <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: var(--space-sm); color: var(--gold-lt); letter-spacing: 0.05em;">QUICK LINKS</h4>
             <ul style="list-style: none; display: grid; gap: 1.0rem; padding: 0;">
                 <li><a href="#services" style="color: rgba(255,255,255,0.7); font-size: 1.4rem;">Our Core Services</a></li>
-                <li><a href="#faq-resources" style="color: rgba(255,255,255,0.7); font-size: 1.4rem;">Portal Help & FAQs</a></li>
-                <li><a href="resource.html" style="color: rgba(255,255,255,0.7); font-size: 1.4rem;">Checklists & Guides</a></li>
+                <li><a href="essentials.html" style="color: rgba(255,255,255,0.7); font-size: 1.4rem;">Travel &amp; Security Essentials</a></li>
+                <li><a href="#faq-resources" style="color: rgba(255,255,255,0.7); font-size: 1.4rem;">Portal Help &amp; FAQs</a></li>
+                <li><a href="resource.html" style="color: rgba(255,255,255,0.7); font-size: 1.4rem;">Checklists &amp; Guides</a></li>
                 <li><a href="about.html" style="color: rgba(255,255,255,0.7); font-size: 1.4rem;">About Docu-Hub</a></li>
             </ul>
         </div>
@@ -629,7 +600,7 @@
         </div>
         <div style="font-family: var(--sans); font-size: 1.2rem;">
             <a href="privacy.html" style="color: rgba(255,255,255,0.5); text-decoration: none; margin-right: var(--space-sm); transition: 0.3s;">Privacy Policy</a>
-            <a href="legal-notice.html" style="color: rgba(255,255,255,0.5); text-decoration: none; transition: 0.3s;">Terms & Legal Notice</a>
+            <a href="legal-notice.html" style="color: rgba(255,255,255,0.5); text-decoration: none; transition: 0.3s;">Terms &amp; Legal Notice</a>
         </div>
     </div>
 </footer>
