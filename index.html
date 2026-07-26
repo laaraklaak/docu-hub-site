@@ -45,6 +45,9 @@
         --space-xxxl: 8.0rem;
         --space-max:  10.0rem;
 
+        /* INCREASED Dynamic Section Padding for Maximum Whitespace */
+        --section-pad: clamp(10.0rem, 12vh, 16.0rem) 0;
+
         /* Elevation & Border Tokens */
         --border-light: rgba(0, 0, 0, 0.05);
         --border-glass: rgba(255, 255, 255, 0.1);
@@ -104,25 +107,24 @@
     .btn-gold { display: inline-flex; align-items: center; justify-content: center; gap: 1.0rem; padding: var(--space-sm) 3.6rem; background: var(--gold); color: #fff; border-radius: 0.4rem; font-family: var(--sans); font-size: 1.3rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; cursor: pointer; border: none; text-decoration: none; }
     .btn-gold:hover { background: var(--gold-lt); transform: translateY(-0.2rem); box-shadow: var(--shadow-nav); }
 
-    /* SERVICES LAYOUT */
-    .services-section { padding: var(--space-max) 0 var(--space-xxl); background: var(--bg-light); }
-    .section-header { text-align: center; margin-bottom: var(--space-xxl); }
+    /* SERVICES & SECTIONS GENERIC */
+    .section-header { text-align: center; margin-bottom: clamp(6.4rem, 8vh, 8.0rem); }
     .section-header h2 { font-family: var(--serif); font-size: clamp(3.5rem, 5vw, 4.8rem); font-weight: 400; color: var(--brand-drk); }
     
-    /* Perfect 2x2 Grid Layout for Desktop */
-    .cards-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-lg); width: 100%; max-width: 100.0rem; margin: 0 auto; align-items: stretch; }
+    /* INCREASED GRID GAP FOR CARDS */
+    .cards-grid { display: grid; grid-template-columns: 1fr; gap: clamp(4.0rem, 6vw, 6.4rem); width: 100%; max-width: 100.0rem; margin: 0 auto; align-items: stretch; }
     
     .btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 0.8rem; width: 100%; padding: var(--space-sm); background: var(--brand-mid); color: #fff; border-radius: 0.4rem; border: none; font-family: var(--sans); font-size: 1.3rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; cursor: pointer; text-decoration: none; margin-top: auto; }
     .btn-action:hover { background: var(--brand-drk); transform: translateY(-0.2rem); }
 
     /* Featured Premium Card */
-    .featured-wrapper { background: #fff; border-radius: 1.2rem; overflow: hidden; box-shadow: var(--shadow-deep); margin-bottom: var(--space-xl); border-left: 0.6rem solid var(--brand-mid); transition: 0.3s; max-width: 100.0rem; margin-left: auto; margin-right: auto; }
+    .featured-wrapper { background: #fff; border-radius: 1.2rem; overflow: hidden; box-shadow: var(--shadow-deep); margin-bottom: clamp(6.4rem, 8vh, 8.0rem); border-left: 0.6rem solid var(--brand-mid); transition: 0.3s; max-width: 100.0rem; margin-left: auto; margin-right: auto; }
     .featured-card summary { cursor: pointer; display: flex; flex-direction: column; list-style: none; }
     .featured-card summary::-webkit-details-marker { display: none; }
     .featured-img-wrap { width: 100%; min-height: 26.0rem; position: relative; }
     .featured-img-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .featured-text-wrap { padding: var(--space-lg) var(--space-md); display: flex; flex-direction: column; justify-content: center; flex: 1; }
-    .featured-dropdown { padding: 0 var(--space-md) var(--space-lg); animation: fadeIn 0.4s ease; }
+    .featured-text-wrap { padding: clamp(3.2rem, 5vw, 4.8rem) clamp(2.4rem, 4vw, 3.2rem); display: flex; flex-direction: column; justify-content: center; flex: 1; }
+    .featured-dropdown { padding: 0 clamp(2.4rem, 4vw, 3.2rem) clamp(3.2rem, 5vw, 4.8rem); animation: fadeIn 0.4s ease; }
     .featured-card[open] summary .learn-more-text i { transform: rotate(180deg); }
     .learn-more-text i { transition: 0.3s; }
 
@@ -135,8 +137,8 @@
     .minimal-card[open] summary::after { content: '\2212'; background: var(--brand-drk); color: #fff; }
     .minimal-card .card-img-wrap { height: 22.0rem; width: 100%; position: relative; }
     .minimal-card .card-img-wrap img { width: 100%; height: 100%; object-fit: contain; background: var(--bg-light); padding: var(--space-md); }
-    .minimal-card .card-question { font-family: var(--serif); font-size: 1.8rem; font-weight: 600; color: var(--brand-drk); margin: var(--space-sm) 2.0rem; padding-right: 4.0rem; line-height: 1.4; }
-    .minimal-card-content { padding: 0 var(--space-md) var(--space-md); animation: fadeIn 0.4s ease; border-top: 0.1rem solid var(--border-light); margin-top: auto; padding-top: var(--space-md); }
+    .minimal-card .card-question { font-family: var(--serif); font-size: 2.0rem; font-weight: 600; color: var(--brand-drk); margin: var(--space-md) 2.4rem; padding-right: 4.0rem; line-height: 1.4; }
+    .minimal-card-content { padding: 0 clamp(2.4rem, 4vw, 3.2rem) clamp(2.4rem, 4vw, 3.2rem); animation: fadeIn 0.4s ease; border-top: 0.1rem solid var(--border-light); margin-top: auto; padding-top: var(--space-md); }
 
     /* Resource Links */
     .resource-deep-link { font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 0.8rem; margin-bottom: var(--space-md); border-bottom: 0.1rem solid var(--gold); padding-bottom: 0.4rem; transition: 0.3s; text-decoration: none; }
@@ -146,12 +148,12 @@
     .essentials-banner-inner {
         background: #fff;
         border-radius: 1.2rem;
-        padding: var(--space-lg) var(--space-xl);
+        padding: clamp(3.2rem, 5vw, 4.8rem);
         border-left: 0.5rem solid var(--gold);
         box-shadow: var(--shadow-md);
         display: flex;
         flex-direction: column;
-        gap: var(--space-md);
+        gap: var(--space-lg);
         align-items: flex-start;
         justify-content: space-between;
     }
@@ -196,7 +198,7 @@
         .nav-links a { font-size: 1.2rem; padding: var(--space-xs) var(--space-sm); }
         .desktop-only { display: block; }
         .mobile-only { display: none; }
-        .process-desktop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(28.0rem, 1fr)); gap: 4.0rem; margin-bottom: var(--space-xl); }
+        .process-desktop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(28.0rem, 1fr)); gap: 6.4rem; }
         .cards-grid { grid-template-columns: repeat(2, 1fr); }
         .featured-card summary { flex-direction: row; }
         .featured-img-wrap { width: 50%; height: auto; }
@@ -227,7 +229,7 @@
         <a href="#" class="nav-logo-name">Docu-Hub <em>Jamaica</em></a>
         <ul class="nav-links">
             <li><a href="#services">Services</a></li>
-            <li><a href="#knowledge-hub">Guides &amp; Podcast</a></li>
+            <li><a href="#podcast">Podcast</a></li>
             <li><a href="essentials.html">Essentials</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="contact.html">Contact Us</a></li>
@@ -247,16 +249,16 @@
 </section>
 
 <!-- SECURE PROCESS -->
-<section class="secure-process-section" id="process" style="padding: var(--space-max) 0; background: var(--ivory);">
+<section class="secure-process-section" id="process" style="padding: var(--section-pad); background: var(--ivory);">
     <div class="wrap">
-        <div class="section-header enter d1" style="text-align: center; margin-bottom: 5.6rem; max-width: 80.0rem; margin-left: auto; margin-right: auto;">
+        <div class="section-header enter d1" style="max-width: 80.0rem; margin-left: auto; margin-right: auto;">
             <i class="fa-solid fa-shield-check" style="font-size: 4.0rem; color: var(--gold); margin-bottom: var(--space-sm);"></i>
-            <h2 style="font-family: var(--serif); font-size: clamp(3.5rem, 5vw, 4.8rem); font-weight: 400; color: var(--brand-drk);">Our Secure Concierge Process</h2>
+            <h2>Our Secure Concierge Process</h2>
             <p style="font-family: var(--sans); font-size: 1.7rem; color: var(--text-mid); margin-top: var(--space-sm); line-height: 1.6;">When dealing with government identities, compliance is non-negotiable. We have designed a completely hands-off, highly secure workflow to protect your data from discovery to delivery.</p>
         </div>
         
         <!-- DESKTOP PROCESS GRID -->
-        <div class="desktop-only process-desktop-grid enter d2">
+        <div class="desktop-only process-desktop-grid enter d2" style="margin-bottom: clamp(6.4rem, 8vh, 8.0rem);">
             <div style="border-top: 0.2rem solid var(--gold); padding-top: var(--space-md);">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem;">
                     <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">Step 01</span>
@@ -292,7 +294,7 @@
 <!-- ========================================== -->
 <!-- SERVICES SECTION                           -->
 <!-- ========================================== -->
-<section class="services-section" id="services">
+<section class="services-section" id="services" style="padding: var(--section-pad); background: var(--bg-light);">
     <div class="wrap">
         
         <div class="section-header enter d1">
@@ -300,26 +302,28 @@
             <h2>Document Concierge Offerings</h2>
         </div>
 
-        <!-- FEATURED FLAGSHIP CARD: PASSPORT RENEWALS -->
+        <!-- FEATURED FLAGSHIP CARD: PASSPORT RENEWALS (CONDENSED) -->
         <div class="enter d1 featured-wrapper">
-            <details class="featured-card">
+            <details class="featured-card custom-details">
                 <summary>
                     <div class="featured-img-wrap">
                         <img src="assets/pica.webp" loading="lazy" alt="Jamaican Passport Renewals">
                     </div>
                     <div class="featured-text-wrap">
                         <span style="font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brand-mid); font-weight: 600; display: block; margin-bottom: var(--space-xs);"><i class="fa-solid fa-star" style="color: var(--gold); margin-right: 0.4rem;"></i> Signature Flagship Service</span>
-                        <h3 style="font-family: var(--serif); font-size: 3.5rem; color: var(--brand-drk); font-weight: 500; line-height: 1.1; margin-bottom: 1.2rem;">Jamaican Passport Renewals (PICA)</h3>
-                        <p style="font-family: var(--sans); font-size: 1.6rem; color: var(--text-mid); line-height: 1.6; margin-bottom: var(--space-md);">
-                            We handle standard digital renewals and complex physical proxies. We pre-fill all documentation, execute strict photo and signature compliance audits before submission, and manage the official portal to guarantee zero rejection delays.
-                        </p>
+                        <h3 style="font-family: var(--serif); font-size: clamp(2.4rem, 3.5vw, 3.5rem); color: var(--brand-drk); font-weight: 500; line-height: 1.2; margin-bottom: 2.0rem;">Need to renew your Jamaican Passport? (PICA)</h3>
+                        
                         <div class="learn-more-text" style="font-family: var(--sans); font-size: 1.4rem; font-weight: 600; color: var(--brand-mid); text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; gap: var(--space-xs); margin-top: auto;">
-                            View Renewal Packages <i class="fa-solid fa-chevron-down"></i>
+                            View Packages &amp; Details <i class="fa-solid fa-chevron-down"></i>
                         </div>
                     </div>
                 </summary>
                 
                 <div class="featured-dropdown">
+                    <!-- Description moved inside dropdown to save mobile space -->
+                    <p style="font-family: var(--sans); font-size: 1.5rem; color: var(--text-mid); line-height: 1.6; margin-bottom: var(--space-md);">
+                        We handle standard digital renewals and complex physical proxies. We pre-fill all documentation, execute strict photo and signature compliance audits before submission, and manage the official portal to guarantee zero rejection delays.
+                    </p>
                     <a href="resource.html#first-time-passport" class="resource-deep-link">
                         <i class="fa-regular fa-folder-open" style="color: var(--gold);"></i> View Exact Documents &amp; Rules Required
                     </a>
@@ -345,7 +349,7 @@
         <div class="cards-grid">
             
             <!-- Card 1: Standard TAJ -->
-            <details class="minimal-card enter d1">
+            <details class="minimal-card custom-details enter d1">
                 <summary>
                     <div class="card-img-wrap">
                         <img src="assets/motor-vehicle.webp" loading="lazy" alt="Motor Vehicle Renewals">
@@ -372,7 +376,7 @@
             </details>
 
             <!-- Card 2: Standard RGD -->
-            <details class="minimal-card enter d2">
+            <details class="minimal-card custom-details enter d2">
                 <summary>
                     <div class="card-img-wrap">
                         <img src="assets/rgd-new.webp" loading="lazy" alt="Vital Records">
@@ -398,7 +402,7 @@
             </details>
 
             <!-- Card 3: Citizenship Pilot -->
-            <details class="minimal-card pilot-card enter d3">
+            <details class="minimal-card custom-details pilot-card enter d3">
                 <summary>
                     <div class="card-img-wrap">
                         <img src="assets/jamaican.JPG" loading="lazy" alt="Jamaican Citizenship by Descent">
@@ -420,7 +424,7 @@
             </details>
 
             <!-- Card 4: TRN & Archival Search -->
-            <details class="minimal-card pilot-card enter d4">
+            <details class="minimal-card custom-details pilot-card enter d4">
                 <summary>
                     <div class="card-img-wrap">
                         <img src="assets/motor-vehicle.webp" loading="lazy" alt="TRN & Archival Search">
@@ -441,110 +445,60 @@
                     <a href="register.html" class="btn-action" style="background: #B57327;">Inquire About Pilot Slot</a>
                 </div>
             </details>
-
         </div>
     </div>
 </section>
 
 <!-- ========================================== -->
-<!-- 1. COMPLEX CASES (MUTED DARK: #222C21)    -->
+<!-- COMPLEX CASES (WIDE FLOATING IMAGE CARD)   -->
 <!-- ========================================== -->
-<section class="catchall-section" id="complex-cases" style="background: #222C21; border-top: 0.1rem solid rgba(255,255,255,0.06); border-bottom: 0.1rem solid rgba(0,0,0,0.05); padding: 6.4rem 0; color: #fff; text-align: center;">
-    <div class="wrap enter d1" style="max-width: 80.0rem; margin: 0 auto;">
-        <div style="display: inline-flex; align-items: center; gap: 0.8rem; background: rgba(255, 255, 255, 0.06); color: var(--gold-lt); padding: 0.5rem 1.4rem; border-radius: 2.0rem; font-family: var(--sans); font-size: 1.1rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2.0rem; border: 0.1rem solid rgba(218, 184, 127, 0.2);">
-            <i class="fa-solid fa-scale-balanced" style="font-size: 1.0rem;"></i> Custom &amp; Local Processing
-        </div>
-        <h2 style="font-family: var(--serif); font-size: clamp(3.0rem, 3.8vw, 3.8rem); margin-bottom: 1.6rem; font-weight: 400; color: #fff;">Have a Complex Case or Based Locally in Jamaica?</h2>
-        <p style="font-family: var(--sans); font-size: 1.6rem; color: rgba(255,255,255,0.8); margin-bottom: 3.2rem; line-height: 1.65;">
-            You don't have to navigate the bureaucracy or stand in long lines alone. Whether you need a custom document retrieval, a registry audit, or want our proxy team to execute your application on the ground, Docu-Hub is here to handle the legwork.
-        </p>
-        <div style="display: flex; gap: 1.6rem; justify-content: center; flex-wrap: wrap;">
-            <a href="register.html" class="btn-gold" style="padding: 1.4rem 3.2rem; border-radius: 0.4rem; font-size: 1.2rem;">Begin Secure Registration</a>
-            <a href="https://calendar.app.google/mCXiJ2GLF15mLMV48" target="_blank" rel="noopener" class="btn-gold" style="background: transparent; border: 0.1rem solid rgba(218, 184, 127, 0.4); color: var(--gold-lt); padding: 1.4rem 3.2rem; font-size: 1.2rem;">Book A Consultation</a>
-        </div>
-    </div>
-</section>
-
-<!-- ========================================== -->
-<!-- 2. DEMYSTIFYING GOVERNMENT FORMS (LIGHT SECTION) -->
-<!-- ========================================== -->
-<section class="knowledge-hub-section" id="knowledge-hub" style="padding: var(--space-max) 0; background: var(--ivory); border-top: 0.1rem solid var(--border-light);">
-    <div class="wrap">
+<section id="complex-cases" style="background: var(--bg-light); padding-bottom: var(--section-pad);">
+    <div class="wrap enter d1">
         
-        <div class="section-header enter d1" style="text-align: center; margin-bottom: 4.8rem; max-width: 80.0rem; margin-left: auto; margin-right: auto;">
-            <span style="font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: var(--space-xs);">Official Knowledge &amp; Identity Hub</span>
-            <h2 style="font-family: var(--serif); font-size: clamp(3.5rem, 5vw, 4.8rem); font-weight: 400; color: var(--brand-drk);">Demystifying Jamaican Government Forms</h2>
-            <p style="font-family: var(--sans); font-size: 1.6rem; color: var(--text-mid); margin-top: var(--space-sm); line-height: 1.6;">
-                Don't let clerical errors or missing details freeze your family heritage. Explore our step-by-step guides to understand the process yourself, or hire Docu-Hub to execute the proxy filing on the ground in Jamaica.
-            </p>
-        </div>
-
-        <!-- 3-CARD RESOURCE GRID -->
-        <div class="cards-grid enter d2" style="grid-template-columns: repeat(auto-fit, minmax(28.0rem, 1fr));">
+        <!-- The Floating Card Container (Max-width locked to match the grid above) -->
+        <div style="position: relative; max-width: 100.0rem; margin: 0 auto; border-radius: 1.2rem; overflow: hidden; box-shadow: var(--shadow-md); padding: clamp(4.8rem, 8vw, 8.0rem) 2.4rem; text-align: center; background: linear-gradient(rgba(255, 255, 255, 0.92), rgba(234, 236, 233, 0.96)), url('assets/consultation-desk.webp') center/cover no-repeat; border-top: 0.4rem solid var(--brand-drk);">
             
-            <!-- CARD 1: CORRECTION OF ERROR -->
-            <div style="background: var(--bg-light); border: 0.1rem solid var(--border-light); border-top: 0.4rem solid var(--gold); border-radius: 1.2rem; padding: 3.2rem 2.4rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--shadow-soft); transition: 0.3s;">
-                <div>
-                    <div style="color: var(--gold); font-size: 2.4rem; margin-bottom: 1.6rem;"><i class="fa-solid fa-file-pen"></i></div>
-                    <h3 style="font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk); margin-bottom: 1.0rem;">Birth Certificate Typo &amp; Name Correction</h3>
-                    <p style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 2.4rem;">
-                        Open up the 10-page NIRA Correction of Error packet. Learn why you only complete 2 pages, how JP witnessing works, and why your childhood immunization card is your best proof.
-                    </p>
+            <!-- Content Wrapper (Sits above the background image) -->
+            <div style="position: relative; z-index: 2; max-width: 80.0rem; margin: 0 auto;">
+                
+                <div style="display: inline-flex; align-items: center; gap: 0.8rem; background: rgba(193, 154, 91, 0.15); color: var(--brand-drk); padding: 0.5rem 1.4rem; border-radius: 2.0rem; font-family: var(--sans); font-size: 1.1rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2.4rem;">
+                    <i class="fa-solid fa-scale-balanced" style="color: var(--gold);"></i> Custom &amp; Local Processing
                 </div>
-                <a href="resource.html#correction-of-error" class="resource-deep-link" style="margin-bottom: 0;">
-                    View Step-by-Step Guide <i class="fa-solid fa-arrow-right" style="color: var(--gold);"></i>
-                </a>
-            </div>
-
-            <!-- CARD 2: ADDITION OF FATHER -->
-            <div style="background: var(--bg-light); border: 0.1rem solid var(--border-light); border-top: 0.4rem solid var(--brand-mid); border-radius: 1.2rem; padding: 3.2rem 2.4rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--shadow-soft); transition: 0.3s;">
-                <div>
-                    <div style="color: var(--brand-mid); font-size: 2.4rem; margin-bottom: 1.6rem;"><i class="fa-solid fa-user-plus"></i></div>
-                    <h3 style="font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk); margin-bottom: 1.0rem;">Adding Father's Name (Status Application)</h3>
-                    <p style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 2.4rem;">
-                        Leaving a father's line blank threatens family land, pensions, and foreign citizenship rights. Complete the 3-page status application while both parents are alive.
-                    </p>
+                
+                <h2 style="font-family: var(--serif); font-size: clamp(2.8rem, 3.8vw, 4.0rem); margin-bottom: 1.6rem; font-weight: 500; color: var(--brand-drk); line-height: 1.2;">
+                    Have a Complex Case or Based Locally in Jamaica?
+                </h2>
+                
+                <p style="font-family: var(--sans); font-size: 1.6rem; color: var(--text-mid); margin-bottom: 4.0rem; line-height: 1.65;">
+                    You don't have to navigate the bureaucracy or stand in long lines alone. Whether you need a custom document retrieval, a registry audit, or want our proxy team to execute your application on the ground, Docu-Hub is here to handle the legwork.
+                </p>
+                
+                <div style="display: flex; gap: 1.6rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="register.html" class="btn-action" style="width: auto; padding: 1.4rem 3.2rem; border-radius: 0.4rem; font-size: 1.2rem; background: var(--brand-drk);">Begin Secure Registration</a>
+                    <a href="https://calendar.app.google/mCXiJ2GLF15mLMV48" target="_blank" rel="noopener" class="btn-action" style="width: auto; background: rgba(255,255,255,0.7); border: 0.1rem solid var(--brand-drk); color: var(--brand-drk); padding: 1.4rem 3.2rem; font-size: 1.2rem;">Book A Consultation</a>
                 </div>
-                <a href="resource.html#addition-of-father" class="resource-deep-link" style="margin-bottom: 0;">
-                    View Step-by-Step Guide <i class="fa-solid fa-arrow-right" style="color: var(--gold);"></i>
-                </a>
-            </div>
 
-            <!-- CARD 3: DECEASED PARENT PATHWAY -->
-            <div style="background: var(--bg-light); border: 0.1rem solid var(--border-light); border-top: 0.4rem solid var(--brand-drk); border-radius: 1.2rem; padding: 3.2rem 2.4rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--shadow-soft); transition: 0.3s;">
-                <div>
-                    <div style="color: var(--brand-drk); font-size: 2.4rem; margin-bottom: 1.6rem;"><i class="fa-solid fa-scale-balanced"></i></div>
-                    <h3 style="font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk); margin-bottom: 1.0rem;">Deceased Parents &amp; Death Certificates</h3>
-                    <p style="font-family: var(--sans); font-size: 1.4rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 2.4rem;">
-                        Can you use a death certificate at NIRA? Understand why mother deceased allows administrative updates, while father deceased requires a Family Court Order.
-                    </p>
-                </div>
-                <a href="resource.html#deceased-parent" class="resource-deep-link" style="margin-bottom: 0;">
-                    View Step-by-Step Guide <i class="fa-solid fa-arrow-right" style="color: var(--gold);"></i>
-                </a>
             </div>
-
         </div>
-
+        
     </div>
 </section>
-
 <!-- ========================================== -->
-<!-- PODCAST SPOTLIGHT WITH EMBEDDED PLAYER (MUTED DARK: #222C21) -->
+<!-- PODCAST SPOTLIGHT & EMBEDDED PLAYER        -->
 <!-- ========================================== -->
-<section class="podcast-section" id="podcast" style="padding: 6.4rem 0; background: #222C21; color: #fff; border-top: 0.1rem solid rgba(255, 255, 255, 0.06); border-bottom: 0.1rem solid rgba(0,0,0,0.05);">
+<section class="podcast-section" id="podcast" style="padding: var(--section-pad); background: #222C21; color: #fff; border-top: 0.1rem solid rgba(255, 255, 255, 0.06); border-bottom: 0.1rem solid rgba(0,0,0,0.05);">
     <div class="wrap enter d1">
         <style>
             .podcast-embed-grid {
                 display: grid;
                 grid-template-columns: 1fr;
-                gap: 3.2rem;
+                gap: clamp(4.0rem, 6vw, 6.4rem);
                 align-items: center;
                 background: rgba(0, 0, 0, 0.18);
                 border: 0.1rem solid rgba(255, 255, 255, 0.08);
                 border-left: 0.4rem solid var(--gold);
                 border-radius: 1.2rem;
-                padding: 3.2rem;
+                padding: clamp(3.2rem, 5vw, 4.8rem);
             }
             @media (min-width: 900px) {
                 .podcast-embed-grid {
@@ -555,25 +509,25 @@
 
         <div class="podcast-embed-grid">
             <!-- LEFT COLUMN: TEXT & ACTIONS -->
-            <div style="display: flex; flex-direction: column; gap: 1.6rem;">
+            <div style="display: flex; flex-direction: column; gap: 2.0rem;">
                 <div style="display: inline-flex; align-items: center; gap: 0.8rem; background: rgba(255, 255, 255, 0.06); color: var(--gold-lt); padding: 0.5rem 1.4rem; border-radius: 2.0rem; font-family: var(--sans); font-size: 1.1rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; width: max-content; border: 0.1rem solid rgba(218, 184, 127, 0.2);">
                     <i class="fa-solid fa-podcast"></i> Featured Video Series
                 </div>
                 
                 <div>
-                    <h3 style="font-family: var(--serif); font-size: clamp(2.4rem, 3vw, 3.2rem); color: #fff; margin-bottom: 1.0rem; font-weight: 400; line-height: 1.2;">
+                    <h3 style="font-family: var(--serif); font-size: clamp(2.4rem, 3vw, 3.2rem); color: #fff; margin-bottom: 1.2rem; font-weight: 400; line-height: 1.2;">
                         Straight Talk, Real Documents
                     </h3>
                     <p style="font-family: var(--sans); font-size: 1.5rem; color: rgba(255, 255, 255, 0.8); line-height: 1.6;">
-                        Watch our step-by-step walkthroughs demystifying NIRA forms, Jamaican birth certificate additions, and registry rules—no legal jargon required.
+                        Watch our step-by-step walkthroughs demystifying NIRA forms, Birth Certificate name corrections, adding a father's name, and handling deceased parent updates. We break down the exact forms and registry rules—no legal jargon required.
                     </p>
                 </div>
 
-                <div style="display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 0.8rem;">
-                    <a href="resource.html" class="btn-gold" style="padding: 1.2rem 2.4rem; font-size: 1.2rem;">
+                <div style="display: flex; flex-wrap: wrap; gap: 1.6rem; margin-top: 0.8rem;">
+                    <a href="resource.html" class="btn-gold" style="padding: 1.4rem 2.8rem; font-size: 1.2rem;">
                         <i class="fa-regular fa-folder-open"></i> Read Written Guides
                     </a>
-                    <a href="https://www.youtube.com/playlist?list=PLBfZYWn_pMn8" target="_blank" rel="noopener" class="btn-gold" style="background: transparent; border: 0.1rem solid rgba(218, 184, 127, 0.4); color: var(--gold-lt); padding: 1.2rem 2.4rem; font-size: 1.2rem;">
+                    <a href="https://www.youtube.com/playlist?list=PLBfZYWn_pMn8" target="_blank" rel="noopener" class="btn-gold" style="background: transparent; border: 0.1rem solid rgba(218, 184, 127, 0.4); color: var(--gold-lt); padding: 1.4rem 2.8rem; font-size: 1.2rem;">
                         <i class="fa-brands fa-youtube"></i> Open in YouTube
                     </a>
                 </div>
@@ -594,23 +548,28 @@
     </div>
 </section>
 <!-- ========================================== -->
-<!-- 4. PREPARING FOR FLIGHT ABROAD (LIGHT SECTION) -->
+<!-- PREPARING FOR FLIGHT ABROAD (IMAGE CARD)   -->
 <!-- ========================================== -->
-<section class="essentials-banner-section" style="padding: var(--space-xl) 0; background: var(--bg-light); border-top: 0.1rem solid var(--border-light);">
+<section class="essentials-banner-section" style="padding: var(--section-pad); background: var(--bg-light); border-top: 0.1rem solid var(--border-light);">
     <div class="wrap enter d1">
-        <div class="essentials-banner-inner">
-            <div style="max-width: 65.0rem;">
-                <span style="font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brand-mid); font-weight: 600; display: block; margin-bottom: 0.6rem;">
+        
+        <!-- Essentials Banner Inner with Frosted Glass Background & 100rem Max Width -->
+        <div class="essentials-banner-inner" style="max-width: 100.0rem; margin: 0 auto; background: linear-gradient(rgba(255, 255, 255, 0.92), rgba(234, 236, 233, 0.96)), url('assets/travel-essentials.webp') center/cover no-repeat; position: relative;">
+            
+            <div style="max-width: 65.0rem; position: relative; z-index: 2;">
+                <span style="font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brand-mid); font-weight: 600; display: block; margin-bottom: 0.8rem;">
                     <i class="fa-solid fa-suitcase-rolling" style="color: var(--gold); margin-right: 0.6rem;"></i> Curated Gear &amp; Tools
                 </span>
-                <h3 style="font-family: var(--serif); font-size: 2.8rem; color: var(--brand-drk); font-weight: 500; margin-bottom: 0.8rem;">Preparing for an Errand Day or Flight Abroad?</h3>
+                <h3 style="font-family: var(--serif); font-size: 2.8rem; color: var(--brand-drk); font-weight: 500; margin-bottom: 1.2rem;">Preparing for an Errand Day or Flight Abroad?</h3>
                 <p style="font-family: var(--sans); font-size: 1.5rem; color: var(--text-mid); line-height: 1.6;">
                     Explore our expert-curated selection of RFID document safes, power banks with built-in cables, wearable cooling fans, and luggage trackers engineered to survive hot lines and protect your vital identity.
                 </p>
             </div>
-            <a href="essentials.html" class="btn-gold" style="white-space: nowrap; font-size: 1.2rem; padding: 1.2rem 2.8rem; background: var(--brand-drk);">
+            
+            <a href="essentials.html" class="btn-gold" style="white-space: nowrap; font-size: 1.2rem; padding: 1.4rem 3.2rem; background: var(--brand-drk); position: relative; z-index: 2;">
                 Explore Travel Essentials <i class="fa-solid fa-arrow-right" style="margin-left: 0.6rem; color: var(--gold-lt);"></i>
             </a>
+            
         </div>
     </div>
 </section>
@@ -619,45 +578,45 @@
 <!-- 5. CLEAN FOOTER (UNIFIED DARK: #111811)    -->
 <!-- ========================================== -->
 <style>
-    .f-links-grid { display: grid; grid-template-columns: 1fr; gap: 4.0rem; margin-bottom: 3.0rem; text-align: center; }
-    .f-legal-row { display: flex; flex-direction: column; gap: var(--space-sm); align-items: center; border-top: 0.1rem solid var(--border-glass); padding-top: 2.0rem; text-align: center; }
+    .f-links-grid { display: grid; grid-template-columns: 1fr; gap: 4.8rem; margin-bottom: 4.0rem; text-align: center; }
+    .f-legal-row { display: flex; flex-direction: column; gap: var(--space-md); align-items: center; border-top: 0.1rem solid var(--border-glass); padding-top: 3.2rem; text-align: center; }
     @media (min-width: 900px) {
         .f-links-grid { grid-template-columns: 2fr 1fr 1fr; text-align: left; }
         .f-legal-row { flex-direction: row; justify-content: space-between; align-items: flex-end; text-align: left; }
     }
 </style>
 
-<footer class="site-footer" id="contact" style="background: #111811; color: #fff; padding: 5.0rem 0 2.0rem; border-top: 0.1rem solid rgba(255,255,255,0.08);">
+<footer class="site-footer" id="contact" style="background: #111811; color: #fff; padding: clamp(8.0rem, 10vh, 12.0rem) 0 3.2rem; border-top: 0.1rem solid rgba(255,255,255,0.08);">
     <div class="wrap f-links-grid">
         <div>
-            <span class="f-logo" style="margin-bottom: 1.2rem; display: block; font-family: var(--serif); font-size: 2.4rem; letter-spacing: 0.05em;">Docu-Hub <em style="color: var(--gold); font-style: normal;">Operations Services</em></span>
+            <span class="f-logo" style="margin-bottom: 1.6rem; display: block; font-family: var(--serif); font-size: 2.4rem; letter-spacing: 0.05em;">Docu-Hub <em style="color: var(--gold); font-style: normal;">Operations Services</em></span>
             <p style="font-family: var(--sans); font-size: 1.4rem; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 35.0rem;">Providing highly secure, on-the-ground document processing, records retrieval, and compliance for the Jamaican diaspora.</p>
         </div>
         <div>
-            <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: var(--space-sm); color: var(--gold-lt); letter-spacing: 0.05em;">QUICK LINKS</h4>
-            <ul style="list-style: none; display: grid; gap: 1.0rem; padding: 0;">
+            <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: 1.6rem; color: var(--gold-lt); letter-spacing: 0.05em;">QUICK LINKS</h4>
+            <ul style="list-style: none; display: grid; gap: 1.2rem; padding: 0;">
                 <li><a href="#services" style="color: rgba(255,255,255,0.7); font-size: 1.4rem;">Our Core Services</a></li>
-                <li><a href="#knowledge-hub" style="color: rgba(255,255,255,0.7); font-size: 1.4rem;">Guides &amp; Podcast</a></li>
+                <li><a href="#podcast" style="color: rgba(255,255,255,0.7); font-size: 1.4rem;">Guides &amp; Podcast</a></li>
                 <li><a href="essentials.html" style="color: rgba(255,255,255,0.7); font-size: 1.4rem;">Travel &amp; Security Essentials</a></li>
                 <li><a href="resource.html" style="color: rgba(255,255,255,0.7); font-size: 1.4rem;">Checklists &amp; Guides</a></li>
                 <li><a href="about.html" style="color: rgba(255,255,255,0.7); font-size: 1.4rem;">About Docu-Hub</a></li>
             </ul>
         </div>
         <div>
-            <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: var(--space-sm); color: var(--gold-lt); letter-spacing: 0.05em;">SECURE CONTACT</h4>
-            <p style="color: rgba(255,255,255,0.7); font-size: 1.4rem; margin-bottom: 1.0rem;"><i class="fa-regular fa-calendar-check" style="color: var(--gold); margin-right: 0.8rem;"></i> <a href="https://calendar.app.google/mCXiJ2GLF15mLMV48" target="_blank" rel="noopener">Book Consultation</a></p>
-            <p style="color: rgba(255,255,255,0.7); font-size: 1.4rem; margin-bottom: 1.0rem;"><i class="fa-regular fa-envelope" style="color: var(--gold); margin-right: 0.8rem;"></i> <a href="mailto:admin@dhubservices.com">admin@dhubservices.com</a></p>
+            <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: 1.6rem; color: var(--gold-lt); letter-spacing: 0.05em;">SECURE CONTACT</h4>
+            <p style="color: rgba(255,255,255,0.7); font-size: 1.4rem; margin-bottom: 1.2rem;"><i class="fa-regular fa-calendar-check" style="color: var(--gold); margin-right: 0.8rem;"></i> <a href="https://calendar.app.google/mCXiJ2GLF15mLMV48" target="_blank" rel="noopener">Book Consultation</a></p>
+            <p style="color: rgba(255,255,255,0.7); font-size: 1.4rem; margin-bottom: 1.2rem;"><i class="fa-regular fa-envelope" style="color: var(--gold); margin-right: 0.8rem;"></i> <a href="mailto:admin@dhubservices.com">admin@dhubservices.com</a></p>
             <p style="color: rgba(255,255,255,0.7); font-size: 1.4rem;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 0.8rem;"></i> Linstead, Jamaica</p>
         </div>
     </div>
 
     <div class="wrap f-legal-row">
         <div style="font-family: var(--sans); font-size: 1.2rem; color: rgba(255,255,255,0.6);">
-            <p style="margin-bottom: 0.6rem;">Registered Business Entity: #15602/2025 <span style="margin: 0 0.8rem; color: var(--gold-lt); display: inline-block;">|</span> OIC Data Controller Verified (Dec 2025)</p>
+            <p style="margin-bottom: 0.8rem;">Registered Business Entity: #15602/2025 <span style="margin: 0 0.8rem; color: var(--gold-lt); display: inline-block;">|</span> OIC Data Controller Verified (Dec 2025)</p>
             <p style="color: rgba(255,255,255,0.4);">&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
         </div>
         <div style="font-family: var(--sans); font-size: 1.2rem;">
-            <a href="privacy.html" style="color: rgba(255,255,255,0.5); text-decoration: none; margin-right: var(--space-sm); transition: 0.3s;">Privacy Policy</a>
+            <a href="privacy.html" style="color: rgba(255,255,255,0.5); text-decoration: none; margin-right: var(--space-md); transition: 0.3s;">Privacy Policy</a>
             <a href="legal-notice.html" style="color: rgba(255,255,255,0.5); text-decoration: none; transition: 0.3s;">Terms &amp; Legal Notice</a>
         </div>
     </div>
@@ -679,12 +638,13 @@ const navBar = document.getElementById('sitenav');
 hbg.addEventListener('click', () => { navBar.classList.toggle('open'); });
 document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { navBar.classList.remove('open'); }); });
 
-const serviceCards = document.querySelectorAll('.minimal-card');
-serviceCards.forEach(card => {
+/* Enhanced Accordion Toggle: Ensures only one detailed section is open at a time */
+const detailCards = document.querySelectorAll('.custom-details');
+detailCards.forEach(card => {
     card.addEventListener('toggle', () => {
         if (card.open) {
-            serviceCards.forEach(otherCard => {
-                if (otherCard !== card) {
+            detailCards.forEach(otherCard => {
+                if (otherCard !== card && otherCard.parentNode === card.parentNode) {
                     otherCard.removeAttribute('open');
                 }
             });
