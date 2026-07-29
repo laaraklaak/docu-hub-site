@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us &middot; Docu-Hub Jamaica</title>
+    <title>Start Here &middot; Docu-Hub Jamaica</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
@@ -23,6 +23,7 @@
         --sans:       'Jost', Arial, sans-serif; 
         --nav-h: 75px;
         --max-w: 1200px;
+        --border-glass: rgba(255, 255, 255, 0.1);
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -58,48 +59,40 @@
     .contact-header h1 { font-family: var(--serif); font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 400; margin-bottom: 16px; }
     .contact-header p { font-family: var(--sans); font-size: 1.1rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase; }
 
-    /* Layout Content */
+    /* Single Column Layout */
     .contact-content { padding: 80px 0; }
-    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 64px; align-items: start; }
+    .contact-flow { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 64px; }
     
-    /* Instructions Column */
-    .steps-box h2 { font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk); margin-bottom: 16px; }
-    .steps-box > p { font-family: var(--sans); font-size: 1.05rem; color: var(--text-mid); margin-bottom: 40px; }
+    /* Instructions Section */
+    .steps-box h2 { font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk); margin-bottom: 16px; text-align: center; }
+    .steps-box > p { font-family: var(--sans); font-size: 1.1rem; color: var(--text-mid); margin-bottom: 48px; text-align: center; max-width: 600px; margin-left: auto; margin-right: auto; }
     
-    .step-item { display: flex; gap: 24px; margin-bottom: 32px; }
-    .step-num { background: var(--brand-mid); color: #fff; font-family: var(--sans); font-weight: 600; font-size: 1.1rem; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 2px solid var(--gold-lt); }
-    .step-text h3 { font-family: var(--serif); font-size: 1.3rem; color: var(--brand-drk); margin-bottom: 8px; }
-    .step-text p { font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; }
+    .step-item { display: flex; gap: 24px; margin-bottom: 40px; background: #fff; padding: 32px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.04); }
+    .step-num { background: var(--brand-mid); color: #fff; font-family: var(--sans); font-weight: 600; font-size: 1.2rem; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 2px solid var(--gold-lt); }
+    .step-text h3 { font-family: var(--serif); font-size: 1.5rem; color: var(--brand-drk); margin-bottom: 8px; }
+    .step-text p { font-family: var(--sans); font-size: 1rem; color: var(--text-mid); line-height: 1.6; }
 
-    /* Action Column */
-    .booking-box { background: var(--ivory); padding: 40px; border-radius: 8px; box-shadow: 0 12px 40px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.05); text-align: center; }
-    .booking-box i.main-icon { font-size: 2.5rem; color: var(--gold); margin-bottom: 20px; display: block; }
-    .booking-box h3 { font-family: var(--serif); font-size: 1.8rem; color: var(--brand-drk); margin-bottom: 12px; }
-    .booking-box p { font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); margin-bottom: 32px; max-width: 400px; margin-left: auto; margin-right: auto; }
+    /* Action Box */
+    .booking-box { background: var(--ivory); padding: 60px 40px; border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.05); text-align: center; }
+    .booking-box i.main-icon { font-size: 3rem; color: var(--gold); margin-bottom: 24px; display: block; }
+    .booking-box h3 { font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk); margin-bottom: 16px; }
+    .booking-box p { font-family: var(--sans); font-size: 1.05rem; color: var(--text-mid); margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.6; }
     
-    .btn-booking { display: inline-flex; align-items: center; justify-content: center; gap: 12px; width: 100%; max-width: 340px; padding: 18px; background: var(--gold); color: #fff; border-radius: 4px; font-family: var(--sans); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; box-shadow: 0 4px 12px rgba(193, 154, 91, 0.3); }
-    .btn-booking:hover { background: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(193, 154, 91, 0.4); }
+    .btn-booking { display: inline-flex; align-items: center; justify-content: center; gap: 12px; width: 100%; max-width: 400px; padding: 20px; background: var(--brand-drk); color: #fff; border-radius: 4px; font-family: var(--sans); font-size: 1rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; box-shadow: 0 4px 12px rgba(30, 43, 29, 0.3); margin: 0 auto; }
+    .btn-booking:hover { background: var(--brand-mid); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(30, 43, 29, 0.4); }
 
-    .btn-whatsapp { display: inline-flex; align-items: center; justify-content: center; gap: 12px; width: 100%; max-width: 340px; padding: 18px; background: #25D366; color: #fff; border-radius: 4px; font-family: var(--sans); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; margin-top: 16px; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2); }
-    .btn-whatsapp:hover { background: #20ba5a; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); }
-
-    .divider { margin: 32px auto; height: 1px; background: rgba(0,0,0,0.08); width: 80%; }
-
-    .fallback-email { font-family: var(--sans); font-size: 0.9rem; color: var(--text-mid); }
-    .fallback-email a { color: var(--brand-mid); font-weight: 600; text-decoration: underline; }
-
-    /* Footer */
-    .site-footer { background: #111; color: #fff; padding: 60px 0 30px; margin-top: 60px; }
-    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 30px; }
-    .f-logo { font-family: var(--serif); font-size: 1.5rem; color: #fff; margin-bottom: 16px; display: block; letter-spacing: 0.05em; }
+    /* Unified Footer Styles */
+    .f-links-grid { display: grid; grid-template-columns: 1fr; gap: 40px; margin-bottom: 40px; text-align: center; }
+    .f-legal-row { display: flex; flex-direction: column; gap: 24px; align-items: center; border-top: 1px solid var(--border-glass); padding-top: 32px; text-align: center; }
+    .f-logo { font-family: var(--serif); font-size: 2rem; color: #fff; margin-bottom: 16px; display: block; letter-spacing: 0.05em; }
     .f-logo em { color: var(--gold); font-style: normal; }
     
     @media (min-width: 900px) {
         .hamburger { display: none !important; } 
         .nav-links { display: flex !important; flex-direction: row; position: static; background: transparent; padding: 0; box-shadow: none; border: none; }
         .nav-links a { font-size: 0.75rem; padding: 8px 16px; }
-        .contact-grid { grid-template-columns: 1.2fr 0.8fr; gap: 80px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; }
+        .f-links-grid { grid-template-columns: 2fr 1fr 1fr; text-align: left; }
+        .f-legal-row { flex-direction: row; justify-content: space-between; align-items: flex-end; text-align: left; }
     }
     </style>
 </head>
@@ -111,8 +104,10 @@
         <a href="index.html" class="nav-logo-name">Docu-Hub <em>Jamaica</em></a>
         <ul class="nav-links">
             <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#podcast">Podcast</a></li>
+            <li><a href="essentials.html">Essentials</a></li>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="#" style="color: var(--gold-lt);" class="nav-btn">Contact Us</a></li>
+            <li><a href="#" style="color: var(--gold-lt);" class="nav-btn">Start Here</a></li>
         </ul>
         <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
     </div>
@@ -120,15 +115,15 @@
 
 <header class="contact-header">
     <div class="wrap">
-        <h1>Get in Touch</h1>
-        <p>Skip the lines. We handle the rest.</p>
+        <h1>Start Here</h1>
+        <p>Strictly vetted, highly secure document processing.</p>
     </div>
 </header>
 
 <section class="contact-content">
-    <div class="wrap contact-grid">
+    <div class="wrap contact-flow">
         
-        <!-- Simplified, Plain-English Instructions -->
+        <!-- Simplified, Top-to-Bottom Instructions -->
         <div class="steps-box">
             <h2>How Our Service Works</h2>
             <p>We designed our process to be as simple and stress-free as possible. No confusing government jargon, and no waiting in lines.</p>
@@ -137,7 +132,7 @@
                 <div class="step-num">1</div>
                 <div class="step-text">
                     <h3>Submit Your Request</h3>
-                    <p>Click "Begin Secure Registration" to fill out our simple intake form. Tell us exactly what document or service you need help with.</p>
+                    <p>Click "Open Secure Intake Portal" to fill out our initial form. Tell us exactly what document or service you need help with.</p>
                 </div>
             </div>
 
@@ -158,68 +153,55 @@
             </div>
         </div>
 
-        <!-- The Clear Action Box -->
+        <!-- The Strict Single Action Box -->
         <div class="booking-box">
+            <i class="fa-solid fa-lock main-icon"></i>
+            <h3>Begin Your Application</h3>
+            <p>To ensure regulatory compliance and strict data security, all service requests must be initiated through our encrypted portal. We do not accept documents via email or direct message.</p>
             
-            <!-- Option 1: Ready to go -->
-            <i class="fa-solid fa-file-shield main-icon"></i>
-            <h3>Ready to start?</h3>
-            <p>Complete our secure intake form to instantly route your request to our vetting desk.</p>
             <a href="register.html" class="btn-booking">
-                Begin Secure Registration <i class="fa-solid fa-arrow-right"></i>
+                Open Secure Intake Portal <i class="fa-solid fa-arrow-right"></i>
             </a>
-
-            <div class="divider"></div>
-
-            <!-- Option 2: Need help -->
-            <h3 style="font-size: 1.4rem;">Have questions?</h3>
-            <p style="margin-bottom: 16px;">Not sure what you need? Send us a direct message and we will guide you through it.</p>
-            <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I%20saw%20your%20services%20on%20Docu-Hub%20and%20I%20have%20a%20question." target="_blank" rel="noopener" class="btn-whatsapp">
-                <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
-            </a>
-
-            <div class="fallback-email" style="margin-top: 32px;">
-                <p>Or email our sorting desk at:<br>
-                <i class="fa-regular fa-envelope"></i> <a href="mailto:admin@dhubservices.com">admin@dhubservices.com</a></p>
-            </div>
         </div>
 
     </div>
 </section>
 
-<!-- SYNCED FOOTER -->
-<footer class="site-footer">
-    <div class="wrap footer-grid">
+<!-- SYNCED FOOTER (SCRUBBED) -->
+<footer class="site-footer" id="contact" style="background: #111811; color: #fff; padding: 80px 0 32px; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 0;">
+    <div class="wrap f-links-grid">
         <div>
-            <span class="f-logo">Docu-Hub <em>Operations Services</em></span>
-            <p style="font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 300px;">Providing highly secure, on-the-ground document processing, records retrieval, and compliance for the Jamaican diaspora.</p>
+            <span class="f-logo" style="margin-bottom: 16px; display: block; font-family: var(--serif); font-size: 24px; letter-spacing: 0.05em;">Docu-Hub <em style="color: var(--gold); font-style: normal;">Operations Services</em></span>
+            <p style="font-family: var(--sans); font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 350px;">Providing highly secure, on-the-ground document processing, records retrieval, and compliance for the Jamaican diaspora.</p>
         </div>
         <div>
-            <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt); letter-spacing: 0.05em;">QUICK LINKS</h4>
-            <ul style="list-style: none; display: grid; gap: 8px;">
-                <li><a href="index.html#services" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Our Core Services</a></li>
-                <li><a href="index.html#faq-resources" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Portal Help & FAQs</a></li>
-                <li><a href="resource.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Checklists & Guides</a></li>
-                <li><a href="about.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">About Docu-Hub</a></li>
+            <h4 style="font-family: var(--sans); font-size: 13px; margin-bottom: 16px; color: var(--gold-lt); letter-spacing: 0.05em;">QUICK LINKS</h4>
+            <ul style="list-style: none; display: grid; gap: 12px; padding: 0;">
+                <li><a href="index.html#services" style="color: rgba(255,255,255,0.7); font-size: 14px;">Our Core Services</a></li>
+                <li><a href="index.html#podcast" style="color: rgba(255,255,255,0.7); font-size: 14px;">Guides &amp; Podcast</a></li>
+                <li><a href="essentials.html" style="color: rgba(255,255,255,0.7); font-size: 14px;">Travel &amp; Security Essentials</a></li>
+                <li><a href="resource.html" style="color: rgba(255,255,255,0.7); font-size: 14px;">Checklists &amp; Guides</a></li>
+                <li><a href="about.html" style="color: rgba(255,255,255,0.7); font-size: 14px;">About Docu-Hub</a></li>
             </ul>
         </div>
         <div>
-            <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt); letter-spacing: 0.05em;">SECURE CONTACT</h4>
-            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px;"><i class="fa-brands fa-whatsapp" style="color: var(--gold); margin-right: 8px;"></i> <a href="https://wa.me/18765612614" target="_blank">Message Operations</a></p>
-            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px;"><i class="fa-regular fa-envelope" style="color: var(--gold); margin-right: 8px;"></i> <a href="mailto:admin@dhubservices.com">admin@dhubservices.com</a></p>
-            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 8px;"></i> Linstead, Jamaica</p>
+            <!-- NO CONTACT INFO HERE -->
+            <h4 style="font-family: var(--sans); font-size: 13px; margin-bottom: 16px; color: var(--gold-lt); letter-spacing: 0.05em;">SECURE INTAKE</h4>
+            <p style="color: rgba(255,255,255,0.7); font-size: 14px; margin-bottom: 12px;">All operations are initiated strictly through our encrypted digital desk.</p>
+            <p style="color: rgba(255,255,255,0.7); font-size: 14px; margin-bottom: 12px;"><i class="fa-solid fa-file-shield" style="color: var(--gold); margin-right: 8px;"></i> <a href="register.html">Open Client Portal</a></p>
+            <p style="color: rgba(255,255,255,0.7); font-size: 14px;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 8px;"></i> Linstead, Jamaica</p>
         </div>
     </div>
-    <div class="wrap" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; margin-top: 24px;">
-        <p style="font-family: var(--sans); font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-bottom: 4px;">Registered Jamaican Business Entity: # 15602/2025</p>
-        <p style="font-family: var(--sans); font-size: 0.75rem; color: var(--gold-lt); margin-bottom: 12px; letter-spacing: 0.03em;">OIC Data Controller Status: Application Initiated & Account Verified (Dec 2025)</p>
-        
-        <p style="font-family: var(--sans); font-size: 0.75rem; margin-bottom: 12px;">
-            <a href="privacy.html" style="color: rgba(255,255,255,0.5); text-decoration: none; margin-right: 16px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 2px; transition: 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Privacy Policy</a>
-            <a href="legal-notice.html" style="color: rgba(255,255,255,0.5); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 2px; transition: 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Terms & Legal Notice</a>
-        </p>
-        
-        <p style="font-family: var(--sans); font-size: 0.7rem; color: rgba(255,255,255,0.4);">&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
+
+    <div class="wrap f-legal-row">
+        <div style="font-family: var(--sans); font-size: 12px; color: rgba(255,255,255,0.6);">
+            <p style="margin-bottom: 8px;">Registered Business Entity: #15602/2025 <span style="margin: 0 8px; color: var(--gold-lt); display: inline-block;">|</span> OIC Data Controller Verified (Dec 2025)</p>
+            <p style="color: rgba(255,255,255,0.4);">&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
+        </div>
+        <div style="font-family: var(--sans); font-size: 12px;">
+            <a href="privacy.html" style="color: rgba(255,255,255,0.5); text-decoration: none; margin-right: 24px; transition: 0.3s;">Privacy Policy</a>
+            <a href="legal-notice.html" style="color: rgba(255,255,255,0.5); text-decoration: none; transition: 0.3s;">Terms &amp; Legal Notice</a>
+        </div>
     </div>
 </footer>
 
