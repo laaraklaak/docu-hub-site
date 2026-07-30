@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 1. Character Encoding & Responsive Viewport -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+    <!-- 2. Primary Page Title & Description -->
+    <title>Services &amp; Document Checklists &mdash; Docu-Hub Jamaica</title>
+    <meta name="description" content="Comprehensive pre-qualification criteria, required document checklists, and intake links for Jamaican Passports, TAJ Vehicle Renewals, RGD Vital Records, and NIS Services.">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+    <!-- 3. Indexing Metadata -->
+    <link rel="canonical" href="https://dhubservices.com/services.html">
+    <meta name="robots" content="index, follow">
+
+    <!-- 4. Google Fonts & CSS Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+    /* ═══════════════════════════════════════════
+       DESIGN TOKENS (Institutional Minimalist)
+     ═══════════════════════════════════════════ */
+    :root {
+        --bg-light:   #EAECE9;
+        --ivory:      #FFFFFF;
+        --brand-drk:  #1E2B1D; 
+        --brand-mid:  #3A4F38;
+        --gold:       #C19A5B; 
+        --gold-lt:    #DAB87F;
+        --text-dark:  #111410; 
+        --text-mid:   #4A4F48; 
+
+        --serif:      'Playfair Display', Georgia, serif; 
+        --sans:       'Jost', Arial, sans-serif; 
+
+        --nav-h:      7.5rem;
+        --max-w:      110.0rem;
+
+        --space-xs:   0.8rem;
+        --space-sm:   1.6rem;
+        --space-md:   2.4rem;
+        --space-lg:   3.2rem;
+        --space-xl:   4.8rem;
+
+        --section-pad: clamp(6.4rem, 10vh, 10.0rem) 0;
+
+        --border-light: rgba(0, 0, 0, 0.08);
+        --border-glass: rgba(255, 255, 255, 0.1);
+        --shadow-soft:  0 0.4rem 1.5rem rgba(0, 0, 0, 0.02);
+        --shadow-md:    0 1.2rem 3.5rem rgba(0, 0, 0, 0.05);
+        --shadow-nav:   0 0.4rem 2.0rem rgba(0, 0, 0, 0.25);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 62.5%; }
+    body { font-family: var(--sans); font-size: 1.6rem; background: var(--bg-light); color: var(--text-dark); line-height: 1.65; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; transition: 0.3s ease; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--space-md); }
+
+    /* NAVIGATION */
+    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.95); backdrop-filter: blur(1.2rem); border-bottom: 0.1rem solid var(--border-glass); }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--space-md); height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo-name { font-family: var(--serif); font-size: 2.2rem; color: #fff; letter-spacing: 0.05em; }
+    .nav-logo-name em { color: var(--gold-lt); font-style: normal; }
+    .nav-links { display: none; list-style: none; align-items: center; gap: var(--space-md); }
+    .nav-links a { font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: var(--space-xs) var(--space-sm); border-radius: 0.4rem; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; background: rgba(255,255,255,0.1); }
+
+    .hamburger { display: flex; flex-direction: column; gap: 0.6rem; background: none; border: none; padding: 0.5rem; cursor: pointer; z-index: 950; }
+    .hamburger span { width: 2.4rem; height: 0.2rem; background: #fff; }
+
+    @media (max-width: 899px) {
+        .nav-links { display: none; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: rgba(30, 43, 29, 0.98); padding: var(--space-lg) var(--space-md); gap: var(--space-sm); text-align: center; }
+        .site-nav.open .nav-links { display: flex; }
+        .nav-links a { font-size: 1.4rem; padding: 1.2rem; display: block; }
+    }
+
+    /* SUB-PAGE HERO BANNER */
+    .page-hero {
+        padding-top: calc(var(--nav-h) + 4.8rem);
+        padding-bottom: 4.8rem;
+        background: var(--brand-drk);
+        color: #fff;
+        text-align: center;
+        border-bottom: 0.3rem solid var(--gold);
+    }
+    .page-hero h1 { font-family: var(--serif); font-size: clamp(3.2rem, 5vw, 4.8rem); font-weight: 400; margin-bottom: 1.2rem; }
+    .page-hero p { font-family: var(--sans); font-size: clamp(1.5rem, 2vw, 1.8rem); color: rgba(255,255,255,0.85); max-width: 65.0rem; margin: 0 auto; font-weight: 300; }
+
+    /* FULL-WIDTH ALTERNATING AGENCY SECTIONS */
+    .agency-section { padding: var(--section-pad); border-bottom: 0.1rem solid var(--border-light); }
+    .agency-section:nth-child(even) { background: var(--ivory); }
+    .agency-section:nth-child(odd) { background: var(--bg-light); }
+
+    .agency-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.6rem; margin-bottom: 3.2rem; border-bottom: 0.2rem solid var(--gold); padding-bottom: 1.6rem; }
+    .agency-title { font-family: var(--serif); font-size: clamp(2.8rem, 4vw, 3.6rem); color: var(--brand-drk); font-weight: 500; }
+    .agency-tag { font-family: var(--sans); font-size: 1.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(193, 154, 91, 0.15); color: var(--brand-drk); padding: 0.6rem 1.6rem; border-radius: 2.0rem; }
+
+    /* 2-COLUMN SERVICE DETAIL LAYOUT */
+    .details-grid-2col {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3.2rem;
+        margin-bottom: 4.0rem;
+    }
+
+    .detail-box {
+        background: rgba(255, 255, 255, 0.6);
+        border: 0.1rem solid var(--border-light);
+        border-radius: 0.8rem;
+        padding: 2.4rem;
+        box-shadow: var(--shadow-soft);
+    }
+    .agency-section:nth-child(even) .detail-box { background: var(--bg-light); }
+
+    .box-title {
+        font-family: var(--serif);
+        font-size: 2.0rem;
+        color: var(--brand-drk);
+        margin-bottom: 1.6rem;
+        display: flex;
+        align-items: center;
+        gap: 1.0rem;
+        border-bottom: 0.1rem solid var(--border-light);
+        padding-bottom: 0.8rem;
+    }
+
+    .box-title i { color: var(--gold); font-size: 1.8rem; }
+
+    .check-list { list-style: none; padding: 0; display: grid; gap: 1.2rem; }
+    .check-list li {
+        font-family: var(--sans);
+        font-size: 1.45rem;
+        color: var(--text-mid);
+        line-height: 1.6;
+        display: grid;
+        grid-template-columns: 2.0rem 1fr;
+        gap: 1.0rem;
+        align-items: start;
+    }
+    .check-list li i { color: var(--brand-mid); font-size: 1.4rem; margin-top: 0.3rem; }
+
+    /* RESOURCE LINKS & CTA BAR */
+    .cta-resource-bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2.0rem;
+        background: var(--brand-drk);
+        color: #fff;
+        padding: 2.4rem clamp(2.4rem, 4vw, 3.6rem);
+        border-radius: 0.8rem;
+    }
+
+    .resource-links { display: flex; flex-wrap: wrap; gap: 1.6rem; }
+    .link-item {
+        font-family: var(--sans);
+        font-size: 1.3rem;
+        color: var(--gold-lt);
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        transition: 0.3s;
+    }
+    .link-item:hover { color: #fff; }
+
+    .btn-intake {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+        padding: 1.4rem 3.2rem;
+        background: var(--gold);
+        color: #fff;
+        border-radius: 0.4rem;
+        font-family: var(--sans);
+        font-size: 1.2rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        transition: 0.3s;
+    }
+    .btn-intake:hover { background: var(--gold-lt); transform: translateY(-0.1rem); }
+
+    @media (min-width: 800px) {
+        .details-grid-2col { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 900px) {
+        .hamburger { display: none !important; } 
+        .nav-links { display: flex !important; flex-direction: row; position: static; background: transparent; padding: 0; box-shadow: none; border: none; }
+    }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="site-nav" id="sitenav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo-name">Docu-Hub <em>Jamaica</em></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html" class="active">Services &amp; Checklists</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<!-- PAGE HERO BANNER -->
+<section class="page-hero">
+    <div class="wrap">
+        <h1>Service Requirements &amp; Checklists</h1>
+        <p>Review the exact qualification criteria and document prerequisites below before opening your secure intake form.</p>
+    </div>
+</section>
+
+<!-- ========================================== -->
+<!-- AGENCY 1: PICA (PASSPORTS)                 -->
+<!-- ========================================== -->
+<section class="agency-section" id="pica">
+    <div class="wrap">
+        
+        <div class="agency-header">
+            <h2 class="agency-title">1. Passport Renewal &amp; Name Change (PICA)</h2>
+            <span class="agency-tag">PICA Agency Proxy</span>
+        </div>
+
+        <div class="details-grid-2col">
+            <!-- Box 1: Qualification & Prerequisites -->
+            <div class="detail-box">
+                <h3 class="box-title"><i class="fa-solid fa-clipboard-check"></i> Qualification &amp; Client Prerequisites</h3>
+                <ul class="check-list">
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Eligibility:</strong> Adult Jamaican passport holders renewing an expired/expiring passport or applying for a legal name update.</span></li>
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Photos:</strong> Two (2) identical passport photos meeting strict PICA specs (white background, no glare, unmounted).</span></li>
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Legal Name Change:</strong> Original certified Marriage Certificate or Deed Poll (if updating name from current passport).</span></li>
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Primary ID &amp; TRN:</strong> Valid government-issued photo ID and Jamaican Tax Registration Number.</span></li>
+                </ul>
+            </div>
+
+            <!-- Box 2: What Docu-Hub Handles -->
+            <div class="detail-box">
+                <h3 class="box-title"><i class="fa-solid fa-shield-halved"></i> What Docu-Hub Handles For You</h3>
+                <ul class="check-list">
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Pre-Submission Audit:</strong> Complete verification of photo dimensions, legal spelling, and document certification.</span></li>
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Portal &amp; Form Execution:</strong> Pre-filling and lodging all official electronic PICA filings to prevent portal errors.</span></li>
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Physical Proxy Submission:</strong> In-person delivery of original notarized documents at PICA Kingston for legal updates.</span></li>
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Tracked Dispatch:</strong> Continuous tracking and secure doorstep delivery of your finalized passport.</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ACTION & RESOURCE BAR -->
+        <div class="cta-resource-bar">
+            <div class="resource-links">
+                <a href="https://www.youtube.com/playlist?list=PLBfZYWn_pMn8" target="_blank" rel="noopener" class="link-item">
+                    <i class="fa-brands fa-youtube"></i> Watch Video Walkthrough
+                </a>
+            </div>
+            <a href="https://dhubservices.com" class="btn-intake">
+                Begin PICA Application &rarr;
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ========================================== -->
+<!-- AGENCY 2: TAJ (MOTOR VEHICLE)              -->
+<!-- ========================================== -->
+<section class="agency-section" id="taj">
+    <div class="wrap">
+        
+        <div class="agency-header">
+            <h2 class="agency-title">2. Motor Vehicle License Renewal (TAJ)</h2>
+            <span class="agency-tag">TAJ Licensing Proxy</span>
+        </div>
+
+        <div class="details-grid-2col">
+            <!-- Box 1: Prerequisites -->
+            <div class="detail-box">
+                <h3 class="box-title"><i class="fa-solid fa-clipboard-check"></i> Qualification &amp; Client Prerequisites</h3>
+                <ul class="check-list">
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Eligibility:</strong> Registered owners of private motor vehicles requiring road tax renewal via Tax Administration Jamaica.</span></li>
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Fitness Certificate:</strong> Active, valid Fitness Certificate recorded in the TAJ database.</span></li>
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Insurance Cover Note:</strong> Active Jamaican motor vehicle insurance policy covering the renewal period.</span></li>
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Vehicle Details:</strong> Title number, registration number, and owner's TRN.</span></li>
+                </ul>
+            </div>
+
+            <!-- Box 2: What Docu-Hub Handles -->
+            <div class="detail-box">
+                <h3 class="box-title"><i class="fa-solid fa-shield-halved"></i> What Docu-Hub Handles For You</h3>
+                <ul class="check-list">
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Compliance Verification:</strong> Pre-checking fitness and insurance alignment in the database before submitting payment.</span></li>
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Tax Processing:</strong> Direct payment processing of official 1-year or 6-month TAJ road tax fees.</span></li>
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Digital eMVRC Dispatch:</strong> Transmitting your official electronic Motor Vehicle Registration Certificate via email in under an hour upon clearance.</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ACTION & RESOURCE BAR -->
+        <div class="cta-resource-bar">
+            <div class="resource-links">
+                <a href="https://www.youtube.com/playlist?list=PLBfZYWn_pMn8" target="_blank" rel="noopener" class="link-item">
+                    <i class="fa-brands fa-youtube"></i> Watch TAJ Renewal Guide
+                </a>
+            </div>
+            <a href="https://dhubservices.com" class="btn-intake">
+                Renew Vehicle License &rarr;
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ========================================== -->
+<!-- AGENCY 3: RGD (VITAL RECORDS)              -->
+<!-- ========================================== -->
+<section class="agency-section" id="rgd">
+    <div class="wrap">
+        
+        <div class="agency-header">
+            <h2 class="agency-title">3. Vital Records Search &amp; Retrieval (RGD)</h2>
+            <span class="agency-tag">RGD Search Suite</span>
+        </div>
+
+        <div class="details-grid-2col">
+            <!-- Box 1: Prerequisites -->
+            <div class="detail-box">
+                <h3 class="box-title"><i class="fa-solid fa-clipboard-check"></i> Qualification &amp; Client Prerequisites</h3>
+                <ul class="check-list">
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Eligibility:</strong> Individuals seeking official certified copies of Jamaican birth, marriage, or death certificates.</span></li>
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Key Details:</strong> Full name at birth/event, approximate date of event, parish, and parents' full names.</span></li>
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Authorization:</strong> Signed authorization form if requesting records on behalf of a family member.</span></li>
+                </ul>
+            </div>
+
+            <!-- Box 2: What Docu-Hub Handles -->
+            <div class="detail-box">
+                <h3 class="box-title"><i class="fa-solid fa-shield-halved"></i> What Docu-Hub Handles For You</h3>
+                <ul class="check-list">
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Registry Search:</strong> Conducting online and manual archival ledger lookups at the Registrar General's Department.</span></li>
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Application Monitoring:</strong> Following up directly with RGD officers to resolve entry mismatches or spelling discrepancies.</span></li>
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Sealed Courier Delivery:</strong> Securing clean, official prints and dispatching via signature-required international shipping.</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ACTION & RESOURCE BAR -->
+        <div class="cta-resource-bar">
+            <div class="resource-links">
+                <a href="https://www.youtube.com/playlist?list=PLBfZYWn_pMn8" target="_blank" rel="noopener" class="link-item">
+                    <i class="fa-brands fa-youtube"></i> Watch RGD Search Guide
+                </a>
+            </div>
+            <a href="https://dhubservices.com" class="btn-intake">
+                Request RGD Search &rarr;
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ========================================== -->
+<!-- AGENCY 4: NIS (NATIONAL INSURANCE)         -->
+<!-- ========================================== -->
+<section class="agency-section" id="nis">
+    <div class="wrap">
+        
+        <div class="agency-header">
+            <h2 class="agency-title">4. NIS Verification &amp; Form Guidance</h2>
+            <span class="agency-tag">NIS Guidance Proxy</span>
+        </div>
+
+        <div class="details-grid-2col">
+            <!-- Box 1: Prerequisites -->
+            <div class="detail-box">
+                <h3 class="box-title"><i class="fa-solid fa-clipboard-check"></i> Qualification &amp; Client Prerequisites</h3>
+                <ul class="check-list">
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Eligibility:</strong> Jamaican workers local or abroad tracking contribution records, voluntary status, or preparing benefit claims.</span></li>
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Information Required:</strong> Full legal name, NIS number (if known), TRN, date of birth, and employer history details.</span></li>
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Funeral Grants:</strong> Official death certificate and relationship proof to the deceased contributor.</span></li>
+                </ul>
+            </div>
+
+            <!-- Box 2: What Docu-Hub Handles -->
+            <div class="detail-box">
+                <h3 class="box-title"><i class="fa-solid fa-shield-halved"></i> What Docu-Hub Handles For You</h3>
+                <ul class="check-list">
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Record Retrieval:</strong> Liaising with NIS offices to pull and verify official contribution history statements.</span></li>
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Voluntary Contribution Setup:</strong> Structuring required documentation for overseas Jamaicans maintaining active benefit status.</span></li>
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Form Preparation:</strong> Meticulous prep and pre-auditing of Funeral Grant forms to prevent agency rejection.</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ACTION & RESOURCE BAR -->
+        <div class="cta-resource-bar">
+            <div class="resource-links">
+                <a href="https://www.youtube.com/playlist?list=PLBfZYWn_pMn8" target="_blank" rel="noopener" class="link-item">
+                    <i class="fa-brands fa-youtube"></i> Watch NIS Guidance Video
+                </a>
+            </div>
+            <a href="https://dhubservices.com" class="btn-intake">
+                Inquire NIS Support &rarr;
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER SECTION -->
+<footer class="site-footer" style="background: #111811; color: #fff; padding: clamp(6.4rem, 8vh, 10.0rem) 0 3.2rem; border-top: 0.1rem solid rgba(255,255,255,0.08);">
+    <div class="wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(25.0rem, 1fr)); gap: 4.8rem; margin-bottom: 4.0rem;">
+        <div>
+            <span style="font-family: var(--serif); font-size: 2.4rem; letter-spacing: 0.05em; display: block; margin-bottom: 1.6rem;">Docu-Hub <em style="color: var(--gold); font-style: normal;">Operations Services</em></span>
+            <p style="font-family: var(--sans); font-size: 1.4rem; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 35.0rem;">Providing highly secure, on-the-ground document processing, records retrieval, and administrative proxy services for the Jamaican diaspora.</p>
+        </div>
+        <div>
+            <h4 style="font-family: var(--sans); font-size: 1.2rem; margin-bottom: 1.6rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase;">Quick Navigation</h4>
+            <ul style="list-style: none; display: grid; gap: 1.0rem; padding: 0;">
+                <li><a href="index.html" style="color: rgba(255,255,255,0.7); font-size: 1.4rem;">Homepage</a></li>
+                <li><a href="services.html" style="color: rgba(255,255,255,0.7); font-size: 1.4rem;">Services &amp; Checklists</a></li>
+                <li><a href="about.html" style="color: rgba(255,255,255,0.7); font-size: 1.4rem;">About Docu-Hub</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 style="font-family: var(--sans); font-size: 1.2rem; margin-bottom: 1.6rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase;">Secure Client Intake</h4>
+            <p style="color: rgba(255,255,255,0.7); font-size: 1.4rem; margin-bottom: 1.2rem;">Initiate an inquiry or access your secure portal directly online.</p>
+            <p style="color: rgba(255,255,255,0.7); font-size: 1.4rem; margin-bottom: 1.0rem;"><a href="https://dhubservices.com" style="color: var(--gold-lt);">Open Client Portal &rarr;</a></p>
+            <p style="color: rgba(255,255,255,0.7); font-size: 1.4rem;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 0.8rem;"></i> Linstead, Jamaica</p>
+        </div>
+    </div>
+
+    <div class="wrap" style="display: flex; flex-direction: column; gap: 1.6rem; align-items: center; border-top: 0.1rem solid var(--border-glass); padding-top: 3.2rem; text-align: center;">
+        <div style="font-family: var(--sans); font-size: 1.2rem; color: rgba(255,255,255,0.6);">
+            <p style="margin-bottom: 0.6rem;">Registered Business Entity: #15602/2025 | OIC Data Controller Verified</p>
+            <p style="color: rgba(255,255,255,0.4);">&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Mobile Hamburger Toggle
+const hbg = document.getElementById('hbg');
+const navBar = document.getElementById('sitenav');
+hbg.addEventListener('click', () => { navBar.classList.toggle('open'); });
+document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { navBar.classList.remove('open'); }); });
+</script>
+</body>
+</html>
