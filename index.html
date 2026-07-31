@@ -108,9 +108,10 @@
     }
     </script>
 
-    <!-- 6. Google Fonts & CSS Stylesheets -->
+    <!-- 6. Google Fonts & CSS Stylesheets (UPDATED FOR HIGH READABILITY) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -158,7 +159,7 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 62.5%; }
-    body { font-family: var(--sans); font-size: 1.6rem; background: var(--bg-light); color: var(--text-dark); line-height: 1.65; overflow-x: hidden; }
+    body { font-family: var(--sans); font-size: 1.6rem; background: var(--bg-light); color: var(--text-dark); line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
     a { text-decoration: none; color: inherit; transition: 0.3s ease; }
     img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
@@ -177,7 +178,7 @@
     .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.92); backdrop-filter: blur(1.2rem); border-bottom: 0.1rem solid var(--border-glass); transition: 0.3s; }
     .site-nav.scrolled { background: rgba(30, 43, 29, 0.98); box-shadow: var(--shadow-nav); }
     .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--space-md); height: 100%; display: flex; align-items: center; justify-content: space-between; position: relative; }
-    .nav-logo-name { font-family: var(--serif); font-size: clamp(1.6rem, 2.2vw, 2.2rem); color: #fff; letter-spacing: 0.03em; display: block; z-index: 950; }
+    .nav-logo-name { font-family: var(--serif); font-size: clamp(1.6rem, 2.2vw, 2.2rem); font-weight: 600; color: #fff; letter-spacing: 0.03em; display: block; z-index: 950; }
     .nav-logo-name em { color: var(--gold-lt); font-style: normal; }
     .nav-links { display: none; list-style: none; align-items: center; gap: var(--space-md); }
     .nav-links a { font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: var(--space-xs) var(--space-sm); border-radius: 0.4rem; }
@@ -201,14 +202,14 @@
         color: #fff; padding: 0 2.0rem;
     }
     .hero-eyebrow { font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-lt); margin-bottom: var(--space-sm); }
-    .hero-title { font-family: var(--serif); font-size: clamp(3.8rem, 7vw, 6.4rem); font-weight: 400; line-height: 1.15; max-width: 82.0rem; margin: 0 auto var(--space-md) auto; }
+    .hero-title { font-family: var(--serif); font-size: clamp(3.8rem, 7vw, 6.4rem); font-weight: 600; line-height: 1.15; max-width: 82.0rem; margin: 0 auto var(--space-md) auto; }
     .hero-desc { font-family: var(--sans); font-size: clamp(1.5rem, 2.5vw, 1.8rem); max-width: 62.0rem; color: rgba(255,255,255,0.88); margin: 0 auto 3.6rem auto; font-weight: 300; }
     .btn-gold { display: inline-flex; align-items: center; justify-content: center; gap: 1.0rem; padding: var(--space-sm) 3.6rem; background: var(--gold); color: #fff; border-radius: 0.4rem; font-family: var(--sans); font-size: 1.2rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; transition: 0.3s; cursor: pointer; border: none; text-decoration: none; }
     .btn-gold:hover { background: var(--gold-lt); transform: translateY(-0.2rem); box-shadow: var(--shadow-nav); }
 
     /* SECTION HEADERS */
     .section-header { text-align: center; margin-bottom: clamp(4.8rem, 7vh, 7.2rem); }
-    .section-header h2 { font-family: var(--serif); font-size: clamp(3.2rem, 4.5vw, 4.4rem); font-weight: 400; color: var(--brand-drk); }
+    .section-header h2 { font-family: var(--serif); font-size: clamp(3.2rem, 4.5vw, 4.4rem); font-weight: 600; color: var(--brand-drk); }
     
     /* 2x2 CORE SERVICES GRID */
     .cards-grid-2x2 { 
@@ -233,7 +234,7 @@
     }
     .service-card:hover { transform: translateY(-0.3rem); box-shadow: var(--shadow-deep); }
     
-    /* IMAGE WRAPPER ON CARDS */
+    /* ALWAYS VISIBLE IMAGE HEADER ON CARDS */
     .card-img-header {
         width: 100%;
         height: 22.0rem;
@@ -246,7 +247,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        opacity: 0.9;
+        opacity: 0.95;
         transition: transform 0.6s ease;
     }
     .service-card:hover .card-img-header img {
@@ -255,20 +256,20 @@
     }
 
     /* INCREASED WHITESPACE FOR CARD SUMMARY */
-    .service-card summary { 
+    .custom-details summary { 
         cursor: pointer; 
         list-style: none; 
         position: relative; 
         padding: 3.2rem 3.2rem 2.4rem 3.2rem; 
     }
-    .service-card summary::-webkit-details-marker { display: none; }
+    .custom-details summary::-webkit-details-marker { display: none; }
     
     .card-badge { font-family: var(--sans); font-size: 1.1rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: var(--space-xs); }
-    .card-title { font-family: var(--serif); font-size: clamp(2.2rem, 3vw, 2.8rem); font-weight: 500; color: var(--brand-drk); line-height: 1.25; margin-bottom: 1.2rem; }
+    .card-title { font-family: var(--serif); font-size: clamp(2.2rem, 3vw, 2.8rem); font-weight: 600; color: var(--brand-drk); line-height: 1.25; margin-bottom: 1.2rem; }
     .card-snippet { font-family: var(--sans); font-size: 1.45rem; color: var(--text-mid); line-height: 1.6; }
     
     .toggle-indicator { display: inline-flex; align-items: center; gap: 0.6rem; font-family: var(--sans); font-size: 1.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brand-mid); margin-top: 1.6rem; transition: 0.3s; }
-    .service-card[open] .toggle-indicator i { transform: rotate(180deg); }
+    .custom-details[open] .toggle-indicator i { transform: rotate(180deg); }
 
     .service-card-body { padding: 0 var(--space-lg) var(--space-lg) var(--space-lg); border-top: 0.1rem solid var(--border-light); margin-top: 0.8rem; padding-top: var(--space-md); animation: fadeIn 0.4s ease; }
 
@@ -322,7 +323,7 @@
     /* FAQ ACCORDION STYLES */
     .faq-container { max-width: 90.0rem; margin: 0 auto; display: grid; gap: 2.0rem; }
     .faq-item { background: #fff; border-radius: 0.8rem; box-shadow: var(--shadow-soft); border-left: 0.3rem solid var(--gold); overflow: hidden; }
-    .faq-item summary { padding: 2.0rem 2.4rem; cursor: pointer; list-style: none; font-family: var(--serif); font-size: clamp(1.8rem, 2.5vw, 2.2rem); color: var(--brand-drk); font-weight: 500; display: flex; justify-content: space-between; align-items: center; }
+    .faq-item summary { padding: 2.0rem 2.4rem; cursor: pointer; list-style: none; font-family: var(--serif); font-size: clamp(1.8rem, 2.5vw, 2.2rem); color: var(--brand-drk); font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
     .faq-item summary::-webkit-details-marker { display: none; }
     .faq-item summary::after { content: '\002B'; font-family: var(--sans); font-size: 2.2rem; color: var(--gold); transition: transform 0.3s ease; }
     .faq-item[open] summary::after { content: '\2212'; color: var(--brand-drk); }
@@ -400,24 +401,24 @@
         <div class="desktop-only process-desktop-grid enter d2">
             <div style="border-top: 0.2rem solid var(--gold); padding-top: var(--space-md);">
                 <span style="font-family: var(--sans); font-size: 1.1rem; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.8rem;">Step 01</span>
-                <h3 style="font-family: var(--serif); font-size: 2.4rem; color: var(--brand-drk); margin-bottom: 1.0rem;">Secure Registration</h3>
+                <h3 style="font-family: var(--serif); font-size: 2.4rem; font-weight: 600; color: var(--brand-drk); margin-bottom: 1.0rem;">Secure Registration</h3>
                 <p style="font-family: var(--sans); font-size: 1.45rem; color: var(--text-mid);">Initiate your request via our encrypted intake portal. Your documents and identity data are held under strict privacy protocols.</p>
             </div>
             <div style="border-top: 0.2rem solid var(--brand-drk); padding-top: var(--space-md);">
                 <span style="font-family: var(--sans); font-size: 1.1rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.8rem;">Step 02</span>
-                <h3 style="font-family: var(--serif); font-size: 2.4rem; color: var(--brand-drk); margin-bottom: 1.0rem;">Direct Agency Processing</h3>
+                <h3 style="font-family: var(--serif); font-size: 2.4rem; font-weight: 600; color: var(--brand-drk); margin-bottom: 1.0rem;">Direct Agency Processing</h3>
                 <p style="font-family: var(--sans); font-size: 1.45rem; color: var(--text-mid);">Our local proxy team pre-audits your submissions and coordinates directly with PICA, TAJ, RGD, and NIS to ensure compliance.</p>
             </div>
             <div style="border-top: 0.2rem solid var(--brand-drk); padding-top: var(--space-md);">
                 <span style="font-family: var(--sans); font-size: 1.1rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.8rem;">Step 03</span>
-                <h3 style="font-family: var(--serif); font-size: 2.4rem; color: var(--brand-drk); margin-bottom: 1.0rem;">Protected Global Dispatch</h3>
+                <h3 style="font-family: var(--serif); font-size: 2.4rem; font-weight: 600; color: var(--brand-drk); margin-bottom: 1.0rem;">Protected Global Dispatch</h3>
                 <p style="font-family: var(--sans); font-size: 1.45rem; color: var(--text-mid);">Official physical records are transmitted securely via signature-required international courier or secure digital dispatch.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- CORE 4 SERVICES SHOWCASE (2x2 GRID) -->
+<!-- CORE 4 SERVICES SHOWCASE (2x2 GRID WITH ALWAYS-VISIBLE IMAGES) -->
 <section class="services-section" id="services" style="padding: var(--section-pad); background: var(--bg-light);">
     <div class="wrap">
         
@@ -430,144 +431,152 @@
         <div class="cards-grid-2x2 enter d2">
             
             <!-- PILLAR 1: PICA (PASSPORTS) -->
-            <details class="service-card custom-details">
+            <div class="service-card">
                 <div class="card-img-header">
                     <img src="assets/pica.webp" loading="lazy" alt="Jamaican Passport Services PICA">
                 </div>
-                <summary>
-                    <span class="card-badge">PICA Services</span>
-                    <h3 class="card-title">Passport Renewal &amp; Name Change</h3>
-                    <p class="card-snippet">Pre-audit verification, application pre-filling, and proxy submission for adult passport renewals and legal name updates.</p>
-                    <div class="toggle-indicator">View Details <i class="fa-solid fa-chevron-down"></i></div>
-                </summary>
-                <div class="service-card-body">
-                    <div class="service-details-grid">
-                        <div class="service-detail-row">
-                            <div class="detail-label">Online Renewal</div>
-                            <div class="detail-desc">Fast guidance and photo compliance checks for adult renewals.</div>
+                <details class="custom-details">
+                    <summary>
+                        <span class="card-badge">PICA Services</span>
+                        <h3 class="card-title">Passport Renewal &amp; Name Change</h3>
+                        <p class="card-snippet">Pre-audit verification, application pre-filling, and proxy submission for adult passport renewals and legal name updates.</p>
+                        <div class="toggle-indicator">View Details <i class="fa-solid fa-chevron-down"></i></div>
+                    </summary>
+                    <div class="service-card-body">
+                        <div class="service-details-grid">
+                            <div class="service-detail-row">
+                                <div class="detail-label">Online Renewal</div>
+                                <div class="detail-desc">Fast guidance and photo compliance checks for adult renewals.</div>
+                            </div>
+                            <div class="service-detail-row">
+                                <div class="detail-label">Legal Name Change</div>
+                                <div class="detail-desc">Updates due to marriage or deed poll requiring physical proxy submission.</div>
+                            </div>
+                            <div class="service-detail-row">
+                                <div class="detail-label">Pre-Submission Audit</div>
+                                <div class="detail-desc">Eliminates rejection risk before filing with PICA.</div>
+                            </div>
                         </div>
-                        <div class="service-detail-row">
-                            <div class="detail-label">Legal Name Change</div>
-                            <div class="detail-desc">Updates due to marriage or deed poll requiring physical proxy submission.</div>
-                        </div>
-                        <div class="service-detail-row">
-                            <div class="detail-label">Pre-Submission Audit</div>
-                            <div class="detail-desc">Eliminates rejection risk before filing with PICA.</div>
-                        </div>
+                        
+                        <a href="services.html#pica" class="bridge-link">
+                            View Full Requirements &amp; Checklists &rarr;
+                        </a>
+                        
+                        <a href="https://dhubservices.com" class="btn-action">Start PICA Application</a>
                     </div>
-                    
-                    <a href="services.html#pica" class="bridge-link">
-                        View Full Requirements &amp; Checklists &rarr;
-                    </a>
-                    
-                    <a href="https://dhubservices.com" class="btn-action">Start PICA Application</a>
-                </div>
-            </details>
+                </details>
+            </div>
 
             <!-- PILLAR 2: TAJ (MOTOR VEHICLE) -->
-            <details class="service-card custom-details">
+            <div class="service-card">
                 <div class="card-img-header">
                     <img src="assets/motor-vehicle.webp" loading="lazy" alt="Motor Vehicle License Renewal TAJ">
                 </div>
-                <summary>
-                    <span class="card-badge">TAJ Services</span>
-                    <h3 class="card-title">Motor Vehicle License Renewal</h3>
-                    <p class="card-snippet">Rapid processing and compliance verification for private motor vehicle license renewals via Tax Administration Jamaica.</p>
-                    <div class="toggle-indicator">View Details <i class="fa-solid fa-chevron-down"></i></div>
-                </summary>
-                <div class="service-card-body">
-                    <div class="service-details-grid">
-                        <div class="service-detail-row">
-                            <div class="detail-label">Private Vehicle Renewals</div>
-                            <div class="detail-desc">Rapid online verification and road tax payment.</div>
+                <details class="custom-details">
+                    <summary>
+                        <span class="card-badge">TAJ Services</span>
+                        <h3 class="card-title">Motor Vehicle License Renewal</h3>
+                        <p class="card-snippet">Rapid processing and compliance verification for private motor vehicle license renewals via Tax Administration Jamaica.</p>
+                        <div class="toggle-indicator">View Details <i class="fa-solid fa-chevron-down"></i></div>
+                    </summary>
+                    <div class="service-card-body">
+                        <div class="service-details-grid">
+                            <div class="service-detail-row">
+                                <div class="detail-label">Private Vehicle Renewals</div>
+                                <div class="detail-desc">Rapid online verification and road tax payment.</div>
+                            </div>
+                            <div class="service-detail-row">
+                                <div class="detail-label">Digital Delivery</div>
+                                <div class="detail-desc">Receive your official digital eMVRC directly via email in under an hour upon clearance.</div>
+                            </div>
+                            <div class="service-detail-row">
+                                <div class="detail-label">Zero Line Waiting</div>
+                                <div class="detail-desc">Complete hands-off management of your vehicle status.</div>
+                            </div>
                         </div>
-                        <div class="service-detail-row">
-                            <div class="detail-label">Digital Delivery</div>
-                            <div class="detail-desc">Receive your official digital eMVRC directly via email in under an hour upon clearance.</div>
-                        </div>
-                        <div class="service-detail-row">
-                            <div class="detail-label">Zero Line Waiting</div>
-                            <div class="detail-desc">Complete hands-off management of your vehicle status.</div>
-                        </div>
+                        
+                        <a href="services.html#taj" class="bridge-link">
+                            View Vehicle Checklists &rarr;
+                        </a>
+                        
+                        <a href="https://dhubservices.com" class="btn-action">Renew Vehicle License</a>
                     </div>
-                    
-                    <a href="services.html#taj" class="bridge-link">
-                        View Vehicle Checklists &rarr;
-                    </a>
-                    
-                    <a href="https://dhubservices.com" class="btn-action">Renew Vehicle License</a>
-                </div>
-            </details>
+                </details>
+            </div>
 
             <!-- PILLAR 3: RGD (VITAL RECORDS) -->
-            <details class="service-card custom-details">
+            <div class="service-card">
                 <div class="card-img-header">
                     <img src="assets/rgd-new.webp" loading="lazy" alt="RGD Vital Records Search and Retrieval">
                 </div>
-                <summary>
-                    <span class="card-badge">RGD Services</span>
-                    <h3 class="card-title">Records Search &amp; Certificates</h3>
-                    <p class="card-snippet">Official Registrar General's Department searches and retrievals for birth, marriage, and death records.</p>
-                    <div class="toggle-indicator">View Details <i class="fa-solid fa-chevron-down"></i></div>
-                </summary>
-                <div class="service-card-body">
-                    <div class="service-details-grid">
-                        <div class="service-detail-row">
-                            <div class="detail-label">Full Search Suite</div>
-                            <div class="detail-desc">Birth, marriage, and death certificate retrievals.</div>
+                <details class="custom-details">
+                    <summary>
+                        <span class="card-badge">RGD Services</span>
+                        <h3 class="card-title">Records Search &amp; Certificates</h3>
+                        <p class="card-snippet">Official Registrar General's Department searches and retrievals for birth, marriage, and death records.</p>
+                        <div class="toggle-indicator">View Details <i class="fa-solid fa-chevron-down"></i></div>
+                    </summary>
+                    <div class="service-card-body">
+                        <div class="service-details-grid">
+                            <div class="service-detail-row">
+                                <div class="detail-label">Full Search Suite</div>
+                                <div class="detail-desc">Birth, marriage, and death certificate retrievals.</div>
+                            </div>
+                            <div class="service-detail-row">
+                                <div class="detail-label">Archival Lookups</div>
+                                <div class="detail-desc">Deep registry searches for hard-to-find genealogical entries.</div>
+                            </div>
+                            <div class="service-detail-row">
+                                <div class="detail-label">Secure Dispatch</div>
+                                <div class="detail-desc">Official sealed certificates shipped safely to your residence.</div>
+                            </div>
                         </div>
-                        <div class="service-detail-row">
-                            <div class="detail-label">Archival Lookups</div>
-                            <div class="detail-desc">Deep registry searches for hard-to-find genealogical entries.</div>
-                        </div>
-                        <div class="service-detail-row">
-                            <div class="detail-label">Secure Dispatch</div>
-                            <div class="detail-desc">Official sealed certificates shipped safely to your residence.</div>
-                        </div>
+                        
+                        <a href="services.html#rgd" class="bridge-link">
+                            View Registry Search Guides &rarr;
+                        </a>
+                        
+                        <a href="https://dhubservices.com" class="btn-action">Request RGD Search</a>
                     </div>
-                    
-                    <a href="services.html#rgd" class="bridge-link">
-                        View Registry Search Guides &rarr;
-                    </a>
-                    
-                    <a href="https://dhubservices.com" class="btn-action">Request RGD Search</a>
-                </div>
-            </details>
+                </details>
+            </div>
 
             <!-- PILLAR 4: NIS (INSURANCE SCHEME) -->
-            <details class="service-card custom-details">
+            <div class="service-card">
                 <div class="card-img-header">
                     <img src="assets/nis.png" loading="lazy" alt="National Insurance Scheme NIS Jamaica">
                 </div>
-                <summary>
-                    <span class="card-badge">NIS Services</span>
-                    <h3 class="card-title">Account Verification &amp; Form Prep</h3>
-                    <p class="card-snippet">Dedicated guidance for National Insurance Scheme record retrievals, voluntary contributions, and claim preparation.</p>
-                    <div class="toggle-indicator">View Details <i class="fa-solid fa-chevron-down"></i></div>
-                </summary>
-                <div class="service-card-body">
-                    <div class="service-details-grid">
-                        <div class="service-detail-row">
-                            <div class="detail-label">Contribution Statements</div>
-                            <div class="detail-desc">Tracking down official NIS numbers and contribution histories.</div>
+                <details class="custom-details">
+                    <summary>
+                        <span class="card-badge">NIS Services</span>
+                        <h3 class="card-title">Account Verification &amp; Form Prep</h3>
+                        <p class="card-snippet">Dedicated guidance for National Insurance Scheme record retrievals, voluntary contributions, and claim preparation.</p>
+                        <div class="toggle-indicator">View Details <i class="fa-solid fa-chevron-down"></i></div>
+                    </summary>
+                    <div class="service-card-body">
+                        <div class="service-details-grid">
+                            <div class="service-detail-row">
+                                <div class="detail-label">Contribution Statements</div>
+                                <div class="detail-desc">Tracking down official NIS numbers and contribution histories.</div>
+                            </div>
+                            <div class="service-detail-row">
+                                <div class="detail-label">Voluntary Contributions</div>
+                                <div class="detail-desc">Assistance for diaspora members maintaining active NIS status.</div>
+                            </div>
+                            <div class="service-detail-row">
+                                <div class="detail-label">Funeral Grant Form Prep</div>
+                                <div class="detail-desc">Guidance and accurate form completion for benefit claims.</div>
+                            </div>
                         </div>
-                        <div class="service-detail-row">
-                            <div class="detail-label">Voluntary Contributions</div>
-                            <div class="detail-desc">Assistance for diaspora members maintaining active NIS status.</div>
-                        </div>
-                        <div class="service-detail-row">
-                            <div class="detail-label">Funeral Grant Form Prep</div>
-                            <div class="detail-desc">Guidance and accurate form completion for benefit claims.</div>
-                        </div>
+                        
+                        <a href="services.html#nis" class="bridge-link">
+                            View NIS Checklists &rarr;
+                        </a>
+                        
+                        <a href="https://dhubservices.com" class="btn-action">Inquire NIS Services</a>
                     </div>
-                    
-                    <a href="services.html#nis" class="bridge-link">
-                        View NIS Checklists &rarr;
-                    </a>
-                    
-                    <a href="https://dhubservices.com" class="btn-action">Inquire NIS Services</a>
-                </div>
-            </details>
+                </details>
+            </div>
 
         </div>
     </div>
@@ -615,7 +624,7 @@
 <footer class="site-footer" id="contact" style="background: #111811; color: #fff; padding: clamp(6.4rem, 8vh, 10.0rem) 0 3.2rem; border-top: 0.1rem solid rgba(255,255,255,0.08);">
     <div class="wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(25.0rem, 1fr)); gap: 4.8rem; margin-bottom: 4.0rem;">
         <div>
-            <span style="font-family: var(--serif); font-size: 2.4rem; letter-spacing: 0.05em; display: block; margin-bottom: 1.6rem;">Docu-Hub <em style="color: var(--gold); font-style: normal;">Operations Services</em></span>
+            <span style="font-family: var(--serif); font-size: 2.4rem; font-weight: 600; letter-spacing: 0.05em; display: block; margin-bottom: 1.6rem;">Docu-Hub <em style="color: var(--gold); font-style: normal;">Operations Services</em></span>
             <p style="font-family: var(--sans); font-size: 1.4rem; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 35.0rem;">Providing highly secure, on-the-ground document processing, records retrieval, and administrative proxy services for the Jamaican diaspora.</p>
         </div>
         <div>
@@ -665,7 +674,7 @@ detailCards.forEach(card => {
     card.addEventListener('toggle', () => {
         if (card.open) {
             detailCards.forEach(otherCard => {
-                if (otherCard !== card && otherCard.parentNode === card.parentNode) {
+                if (otherCard !== card) {
                     otherCard.removeAttribute('open');
                 }
             });
