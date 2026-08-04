@@ -113,9 +113,6 @@
 
     .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 2.4rem; }
 
-    .desktop-only { display: none; }
-    .mobile-only { display: block; }
-
     /* NAVIGATION */
     .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.95); backdrop-filter: blur(1.2rem); border-bottom: 0.1rem solid var(--border-glass); transition: 0.3s; }
     .site-nav.scrolled { background: rgba(30, 43, 29, 0.99); box-shadow: var(--shadow-nav); }
@@ -202,12 +199,19 @@
     .section-header { text-align: center; margin-bottom: clamp(6.4rem, 8vh, 8.0rem); }
     .section-header h2 { font-family: var(--sans); font-size: clamp(2.8rem, 4vw, 3.8rem); font-weight: 700; color: var(--brand-drk); letter-spacing: -0.01em; }
     
+    /* 3-STEP PROCESS GRID (Fixed Mobile Visibility) */
+    .process-grid { 
+        display: grid; 
+        grid-template-columns: 1fr; /* Stacks vertically on mobile */
+        gap: 4.8rem; 
+        margin-top: 3.2rem;
+    }
+    
     /* 2x2 CORE SERVICES GRID (Scotiabank Style) */
     .cards-grid-2x2 { 
         display: grid; 
         grid-template-columns: 1fr; 
-        /* MASSIVE GAP FOR MOBILE to ensure cards are completely visually separated */
-        gap: clamp(8.0rem, 10vw, 9.6rem); 
+        gap: clamp(4.0rem, 6vw, 6.4rem); 
         width: 100%; 
         max-width: 105.0rem; 
         margin: 0 auto; 
@@ -258,14 +262,12 @@
     .faq-item[open] summary::after { content: '\2212'; color: var(--brand-drk); }
     .faq-content-blocked { padding: 0 2.4rem 2.8rem 2.4rem; font-family: var(--sans); font-size: 1.6rem; color: var(--text-mid); line-height: 1.7; animation: fadeIn 0.3s ease; }
 
-    /* PROCESS DESKTOP GRID */
+    /* DESKTOP RESPONSIVE BEHAVIOR */
     @media (min-width: 900px) {
         .hamburger { display: none !important; } 
         .nav-links { display: flex !important; flex-direction: row; position: static; background: transparent; padding: 0; box-shadow: none; border: none; }
-        .desktop-only { display: block; }
-        .mobile-only { display: none; }
-        .process-desktop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6.4rem; }
-        .cards-grid-2x2 { grid-template-columns: repeat(2, 1fr); gap: 6.4rem; } /* Standard desktop gap */
+        .process-grid { grid-template-columns: repeat(3, 1fr); gap: 6.4rem; }
+        .cards-grid-2x2 { grid-template-columns: repeat(2, 1fr); }
     }
     </style>
 </head>
@@ -309,7 +311,8 @@
             <p style="font-family: var(--sans); font-size: 1.7rem; color: var(--text-mid); margin-top: 1.6rem;">A streamlined, confidential 3-step workflow designed to protect your documents from submission to final delivery.</p>
         </div>
         
-        <div class="desktop-only process-desktop-grid enter d2">
+        <!-- FIXED: Removed "desktop-only" so it shows up on mobile perfectly -->
+        <div class="process-grid enter d2">
             <div style="border-top: 0.2rem solid var(--gold); padding-top: 3.2rem;">
                 <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1.2rem;">Step 01</span>
                 <h3 style="font-family: var(--sans); font-size: 2.2rem; font-weight: 700; color: var(--brand-drk); margin-bottom: 1.2rem;">Digital Intake</h3>
