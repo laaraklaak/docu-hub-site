@@ -52,7 +52,7 @@
         { "@type": "Country", "name": "United Kingdom" },
         { "@type": "Country", "name": "Canada" }
       ],
-      "email": "admin@dhubservices.com",
+      "email": "admin@dochubservices.com",
       "priceRange": "$115 - $165 USD"
     }
     </script>
@@ -79,7 +79,8 @@
         --sans:       'Jost', Arial, sans-serif; 
         --nav-h:      7.5rem;
         --max-w:      115.0rem;
-        --section-pad: 12.0rem 0;
+        /* Fluid padding adapts beautifully on mobile to preserve whitespace */
+        --section-pad: clamp(6.4rem, 10vh, 12.0rem) 0;
         --border-light: rgba(0, 0, 0, 0.06);
         --border-glass: rgba(255, 255, 255, 0.1);
         --shadow-soft:  0 0.4rem 2.0rem rgba(0, 0, 0, 0.03);
@@ -98,6 +99,7 @@
     .enter { opacity: 0; transform: translateY(2.0rem); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
     .enter.in { opacity: 1; transform: none; }
     .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
     .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 2.4rem; }
 
@@ -144,12 +146,21 @@
     .hero-desc { font-size: clamp(1.5rem, 2vw, 1.6rem); color: rgba(255,255,255,0.85); margin-bottom: 3.2rem; font-weight: 400; line-height: 1.7; }
 
     /* HEADERS */
-    .section-header { text-align: center; margin-bottom: clamp(6.4rem, 8vh, 8.0rem); }
+    .section-header { text-align: center; margin-bottom: clamp(4.0rem, 6vh, 6.4rem); }
     .section-header h2 { font-size: clamp(2.8rem, 4vw, 3.8rem); font-weight: 700; color: var(--brand-drk); letter-spacing: -0.01em; }
     
-    /* 3-STEP GRID */
-    .process-grid { display: grid; grid-template-columns: 1fr; gap: 4.8rem; margin-top: 3.2rem; }
-    
+    /* DROPDOWN STEPS */
+    .step-dropdown { background: #fff; border-radius: 0.8rem; box-shadow: var(--shadow-md); border-left: 0.4rem solid var(--brand-drk); overflow: hidden; transition: box-shadow 0.3s ease; margin-bottom: 2.4rem; }
+    .step-dropdown:hover { box-shadow: var(--shadow-deep); }
+    .step-dropdown[open] { border-left-color: var(--gold); }
+    .step-dropdown summary { padding: 2.4rem; cursor: pointer; list-style: none; font-size: clamp(1.8rem, 2.5vw, 2.2rem); color: var(--brand-drk); font-weight: 700; display: flex; align-items: center; justify-content: space-between; letter-spacing: -0.01em; }
+    .step-dropdown summary::-webkit-details-marker { display: none; }
+    .step-dropdown summary .title-wrap { display: flex; align-items: center; gap: 1.6rem; }
+    .step-dropdown summary .step-indicator { font-size: 1.2rem; font-family: var(--sans); color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
+    .step-dropdown summary::after { content: '\002B'; font-size: 2.4rem; color: var(--brand-drk); transition: transform 0.3s ease; }
+    .step-dropdown[open] summary::after { content: '\2212'; color: var(--gold); }
+    .step-dropdown p { padding: 0 2.4rem 3.2rem 2.4rem; font-size: 1.6rem; color: var(--text-mid); line-height: 1.7; animation: fadeIn 0.3s ease; }
+
     /* 3-COLUMN CORE SERVICES GRID */
     .cards-grid-3col { display: grid; grid-template-columns: 1fr; gap: clamp(3.2rem, 4vw, 4.8rem); width: 100%; max-width: var(--max-w); margin: 0 auto; }
 
@@ -190,22 +201,20 @@
     @media (min-width: 900px) {
         .hamburger { display: none !important; } 
         .nav-links { display: flex !important; flex-direction: row; position: static; background: transparent; padding: 0; box-shadow: none; border: none; }
-        .process-grid { grid-template-columns: repeat(3, 1fr); gap: 6.4rem; }
         .cards-grid-3col { grid-template-columns: repeat(3, 1fr); }
     }
     </style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
 <nav class="site-nav" id="sitenav">
     <div class="nav-inner">
         <a href="#" class="nav-logo-name">Docu-Hub <em>Operations Services</em></a>
         <ul class="nav-links">
             <li><a href="#top">Home</a></li>
             <li><a href="#services">Services</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
         <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
     </div>
@@ -234,22 +243,38 @@
             <p style="font-family: var(--sans); font-size: 1.7rem; color: var(--text-mid); margin-top: 1.6rem;">A streamlined, confidential 3-step workflow designed to protect your documents from submission to final delivery.</p>
         </div>
         
-        <div class="process-grid enter d2">
-            <div style="border-top: 0.2rem solid var(--gold); padding-top: 3.2rem;">
-                <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1.2rem;">Step 01</span>
-                <h3 style="font-family: var(--sans); font-size: 2.2rem; font-weight: 700; color: var(--brand-drk); margin-bottom: 1.2rem;">Digital Intake</h3>
-                <p style="font-family: var(--sans); font-size: 1.55rem; color: var(--text-mid); line-height: 1.6;">Initiate your request online. For strict agencies like the NIS, we professionally audit and prepare your forms before you print and sign.</p>
-            </div>
-            <div style="border-top: 0.2rem solid var(--brand-drk); padding-top: 3.2rem;">
-                <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1.2rem;">Step 02</span>
-                <h3 style="font-family: var(--sans); font-size: 2.2rem; font-weight: 700; color: var(--brand-drk); margin-bottom: 1.2rem;">Agency Processing</h3>
-                <p style="font-family: var(--sans); font-size: 1.55rem; color: var(--text-mid); line-height: 1.6;">Our local team lodges your applications, stands in line, and tracks progress directly with PICA, RGD, or the MLSS.</p>
-            </div>
-            <div style="border-top: 0.2rem solid var(--brand-drk); padding-top: 3.2rem;">
-                <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1.2rem;">Step 03</span>
-                <h3 style="font-family: var(--sans); font-size: 2.2rem; font-weight: 700; color: var(--brand-drk); margin-bottom: 1.2rem;">Secure Delivery</h3>
-                <p style="font-family: var(--sans); font-size: 1.55rem; color: var(--text-mid); line-height: 1.6;">Final official records and passports are sealed and sent back to you globally via signature-required international courier.</p>
-            </div>
+        <div class="process-accordion enter d2" style="max-width: 80.0rem; margin: 4.8rem auto 0;">
+            
+            <details class="step-dropdown" open>
+                <summary>
+                    <div class="title-wrap">
+                        <span class="step-indicator">Step 01</span>
+                        Digital Intake
+                    </div>
+                </summary>
+                <p>Initiate your request online. For strict agencies like the NIS, we professionally audit and prepare your forms before you print and sign.</p>
+            </details>
+
+            <details class="step-dropdown">
+                <summary>
+                    <div class="title-wrap">
+                        <span class="step-indicator">Step 02</span>
+                        Agency Processing
+                    </div>
+                </summary>
+                <p>Our local team lodges your applications, stands in line, and tracks progress directly with PICA, RGD, or the MLSS.</p>
+            </details>
+
+            <details class="step-dropdown">
+                <summary>
+                    <div class="title-wrap">
+                        <span class="step-indicator">Step 03</span>
+                        Secure Delivery
+                    </div>
+                </summary>
+                <p>Final official records and passports are sealed and sent back to you globally via signature-required international courier.</p>
+            </details>
+
         </div>
     </div>
 </section>
@@ -305,9 +330,9 @@
 
         <!-- Custom Consultation Catch-All -->
         <div class="consultation-banner enter d3">
-            <h3>Have a Complex or Unlisted Request?</h3>
-            <p>Not seeing the exact service you need? We evaluate unique, difficult, or highly specific administrative requests on a case-by-case basis. Reach out to discuss your situation.</p>
-            <a href="mailto:admin@dhubservices.com?subject=Custom Consultation Inquiry" class="btn-gold-solid">Request a Private Consultation <i class="fa-solid fa-envelope" style="margin-left: 0.5rem;"></i></a>
+            <h3>Need Help With an Unlisted Request?</h3>
+            <p>Not seeing the exact document service you need? We handle complex and unique administrative tasks in Jamaica on a case-by-case basis. Contact us to discuss your specific situation.</p>
+            <a href="mailto:admin@dochubservices.com?subject=Custom Consultation Inquiry" class="btn-gold-solid">Request a Private Consultation <i class="fa-solid fa-envelope" style="margin-left: 0.5rem;"></i></a>
         </div>
 
     </div>
@@ -370,7 +395,7 @@
             <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: 2.4rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase;">Direct Contact</h4>
             <ul style="list-style: none; display: grid; gap: 1.6rem; padding: 0; margin-bottom: 2.4rem;">
                 <li>
-                    <a href="mailto:admin@dhubservices.com" style="display: inline-flex; align-items: center; gap: 1.0rem; color: #fff; font-size: 1.5rem; text-decoration: none; transition: color 0.3s;">
+                    <a href="mailto:admin@dochubservices.com" style="display: inline-flex; align-items: center; gap: 1.0rem; color: #fff; font-size: 1.5rem; text-decoration: none; transition: color 0.3s;">
                         <i class="fa-solid fa-envelope" style="color: var(--gold-lt);"></i> admin@dochubservices.com
                     </a>
                 </li>
