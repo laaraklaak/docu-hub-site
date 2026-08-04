@@ -2,56 +2,221 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy &middot; Docu-Hub Jamaica</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Privacy & Cookie Policy &mdash; Docu-Hub Operations</title>
+    <meta name="description" content="Read the Docu-Hub Operations Privacy and Cookie Policy. Learn how we secure, manage, and protect your sensitive data and documents.">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        :root { --bg-light: #F9F9F8; --ivory: #FFFFFF; --brand-drk: #1E2B1D; --brand-mid: #3A4F38; --gold: #C19A5B; --gold-lt: #DAB87F; --text-dark: #111410; --text-mid: #4A4F48; --serif: 'Playfair Display', Georgia, serif; --sans: 'Jost', Arial, sans-serif; --nav-h: 75px; --max-w: 800px; }
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: var(--sans); background: var(--bg-light); color: var(--text-dark); line-height: 1.7; padding-bottom: 80px; }
-        .legal-header { padding: 60px 0; background: var(--brand-drk); color: #fff; text-align: center; margin-bottom: 60px; }
-        .legal-header h1 { font-family: var(--serif); font-size: 2.5rem; font-weight: 400; margin-bottom: 8px; }
-        .legal-header p { font-family: var(--sans); font-size: 0.9rem; color: var(--gold-lt); text-transform: uppercase; letter-spacing: 0.1em; }
-        .content-box { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; background: var(--ivory); padding: 48px; border-radius: 8px; box-shadow: 0 4px 30px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.04); }
-        h2 { font-family: var(--serif); font-size: 1.6rem; color: var(--brand-drk); margin: 32px 0 16px; font-weight: 500; }
-        p { color: var(--text-mid); margin-bottom: 20px; font-size: 1.05rem; }
-        ul { margin-bottom: 20px; padding-left: 20px; color: var(--text-mid); }
-        ul li { margin-bottom: 8px; font-size: 1rem; }
-        .back-home { display: inline-block; margin-bottom: 32px; font-family: var(--sans); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--brand-mid); text-decoration: none; }
-        .back-home:hover { color: var(--gold); }
+    :root {
+        --bg-light:   #EAECE9;
+        --ivory:      #FDFBF7;
+        --brand-drk:  #1E2B1D; 
+        --brand-mid:  #3A4F38;
+        --gold:       #C19A5B; 
+        --gold-lt:    #DAB87F;
+        --text-dark:  #111410; 
+        --text-mid:   #3f463e; 
+        --sans:       'Jost', Arial, sans-serif; 
+        --nav-h:      7.5rem;
+        --section-pad: clamp(8.0rem, 10vh, 12.0rem) 0;
+        --border-light: rgba(0, 0, 0, 0.06);
+        --border-glass: rgba(255, 255, 255, 0.1);
+        --shadow-soft:  0 0.4rem 2.0rem rgba(0, 0, 0, 0.03);
+        --shadow-md:    0 0.8rem 2.4rem rgba(0, 0, 0, 0.05);
+        --shadow-nav:   0 0.4rem 2.0rem rgba(0, 0, 0, 0.20);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 62.5%; }
+    body { font-family: var(--sans); font-size: 1.6rem; font-weight: 500; background: var(--bg-light); color: var(--text-dark); line-height: 1.65; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; transition: 0.3s ease; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .wrap { max-width: 90.0rem; margin: 0 auto; padding: 0 2.4rem; }
+
+    /* NAVIGATION */
+    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.95); backdrop-filter: blur(1.2rem); border-bottom: 0.1rem solid var(--border-glass); transition: 0.3s; }
+    .nav-inner { max-width: 115.0rem; margin: 0 auto; padding: 0 2.4rem; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo-name { font-family: var(--sans); font-size: clamp(1.8rem, 2.2vw, 2.4rem); font-weight: 700; color: #fff; letter-spacing: 0.02em; display: block; }
+    .nav-logo-name em { color: var(--gold-lt); font-style: italic; font-weight: 500; }
+    .nav-links { display: none; list-style: none; align-items: center; gap: 2.4rem; }
+    .nav-links a { font-size: 1.3rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 0.8rem 1.6rem; border-radius: 0.4rem; }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+    .hamburger { display: flex; flex-direction: column; gap: 0.6rem; background: none; border: none; padding: 0.5rem; cursor: pointer; z-index: 950; }
+    .hamburger span { width: 2.4rem; height: 0.2rem; background: #fff; }
+
+    /* DEDICATED HERO */
+    .service-hero { padding-top: calc(var(--nav-h) + 6.4rem); padding-bottom: 6.4rem; background: var(--brand-drk); color: #fff; text-align: center; border-bottom: 0.4rem solid var(--gold); }
+    .service-hero h1 { font-size: clamp(3.2rem, 5vw, 4.8rem); font-weight: 700; margin-bottom: 1.6rem; letter-spacing: -0.01em; }
+    .service-hero p { font-size: clamp(1.6rem, 2vw, 1.8rem); color: rgba(255,255,255,0.85); max-width: 70.0rem; margin: 0 auto; line-height: 1.7; }
+
+    /* LEGAL CONTENT STYLING */
+    .legal-content { background: #fff; padding: clamp(4.0rem, 6vw, 8.0rem) clamp(2.4rem, 5vw, 6.4rem); border-radius: 0.8rem; box-shadow: var(--shadow-md); margin: -3.2rem auto 8.0rem; position: relative; z-index: 10; border-top: 0.4rem solid var(--gold); }
+    
+    .last-updated { font-size: 1.3rem; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 3.2rem; border-bottom: 0.1rem solid var(--border-light); padding-bottom: 1.6rem; }
+
+    .legal-section { margin-bottom: 4.8rem; }
+    .legal-section:last-child { margin-bottom: 0; }
+    
+    .legal-section h2 { font-size: 2.4rem; color: var(--brand-drk); font-weight: 700; margin-bottom: 1.6rem; display: flex; align-items: center; gap: 1.2rem; }
+    .legal-section h2 i { color: var(--brand-mid); font-size: 2.0rem; }
+    
+    .legal-section p { font-size: 1.6rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1.6rem; }
+    .legal-section ul { margin-left: 2.4rem; margin-bottom: 2.4rem; }
+    .legal-section li { font-size: 1.6rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 0.8rem; list-style-type: disc; }
+    .legal-section strong { color: var(--brand-drk); }
+
+    .highlight-box { background: rgba(193, 154, 91, 0.1); border-left: 0.4rem solid var(--gold); padding: 2.4rem; margin: 2.4rem 0; border-radius: 0 0.8rem 0.8rem 0; }
+    .highlight-box p { margin-bottom: 0; font-size: 1.5rem; font-style: italic; color: var(--brand-drk); }
+
+    @media (min-width: 900px) { .hamburger { display: none !important; } .nav-links { display: flex !important; } }
     </style>
 </head>
 <body>
-    <header class="legal-header">
-        <h1>Data Privacy Policy</h1>
-        <p>Docu-Hub Operations Services &middot; Registration # 15602/2025</p>
-    </header>
-    <main class="content-box">
-        <a href="index.html" class="back-home">&larr; Return to Portal Overview</a>
-        <p><em>Last Updated: July 2026</em></p>
-        <p>At Docu-Hub Operations Services, we treat your personal document governance with the strict risk infrastructure acquired over a 14-year background in corporate banking compliance. This Privacy Policy outlines our uncompromising protocols regarding the collection, handling, and erasure of sensitive identification data managed under proxy authority.</p>
+
+<!-- NAVIGATION -->
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo-name">Docu-Hub <em>Operations</em></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="passports.html">Passports</a></li>
+            <li><a href="vital-records.html">Vital Records</a></li>
+            <li><a href="nis.html">NIS Services</a></li>
+        </ul>
+        <button class="hamburger"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<!-- DEDICATED HERO -->
+<section class="service-hero">
+    <div class="wrap">
+        <h1>Privacy &amp; Cookie Policy</h1>
+        <p>Transparency and security are the foundations of our agency. Learn how we manage, protect, and utilize your data.</p>
+    </div>
+</section>
+
+<!-- LEGAL CONTENT -->
+<main class="wrap">
+    <div class="legal-content">
+        <span class="last-updated">Last Updated: August 2026 | Applies to Global Applicants</span>
+
+        <div class="legal-section">
+            <h2><i class="fa-solid fa-shield-halved"></i> 1. Introduction & Scope</h2>
+            <p>At Docu-Hub Operations Services ("we," "us," or "our"), we understand that you are entrusting us with your most sensitive personal and legal documents. This Privacy Policy governs how we collect, use, protect, and delete your data when you use our website or engage our proxy services in Jamaica.</p>
+            <p>Our operations comply with the <strong>Jamaican Data Protection Act (DPA)</strong>, ensuring that your Personally Identifiable Information (PII) is handled with the highest standard of legal security.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2><i class="fa-solid fa-folder-open"></i> 2. Information We Collect</h2>
+            <p>To successfully navigate Jamaican government agencies (PICA, RGD, MLSS) on your behalf, we must collect specific information. This includes:</p>
+            <ul>
+                <li><strong>Identity Data:</strong> Full legal name, date of birth, place of birth, and Mother's Maiden Name.</li>
+                <li><strong>Government Identifiers:</strong> Tax Registration Number (TRN), Passport Numbers, and National Insurance Scheme (NIS) Numbers.</li>
+                <li><strong>Documentary Evidence:</strong> Scanned digital copies or physical originals of Birth Certificates, Marriage Certificates, Deed Polls, and Affidavits.</li>
+                <li><strong>Contact Information:</strong> Your current overseas residential address, email address, and phone number for dispatch and communication.</li>
+            </ul>
+        </div>
+
+        <div class="legal-section">
+            <h2><i class="fa-solid fa-lock"></i> 3. How We Use Your Information</h2>
+            <p>We operate on a strict policy of data minimalism. Your information is <strong>never sold, traded, or rented to third parties.</strong> Your data is used exclusively for the following purposes:</p>
+            <ul>
+                <li>To pre-fill and submit official government applications to PICA, RGD, or the MLSS.</li>
+                <li>To conduct authorized manual ledger searches at Jamaican administrative offices.</li>
+                <li>To communicate with you regarding application status or required clarifications.</li>
+                <li>To facilitate the secure DHL courier dispatch of your final printed records.</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <p>"Your digital footprint and uploaded documents are used solely to facilitate your specific service request. We do not retain unneeded data once your proxy job is successfully completed."</p>
+            </div>
+        </div>
+
+        <div class="legal-section">
+            <h2><i class="fa-solid fa-server"></i> 4. Data Security & Storage</h2>
+            <p>We implement robust physical and digital security measures to protect your documents against unauthorized access. Digital uploads provided during our Intake Process are stored on encrypted, secure servers. Any physical documents mailed to our St. Catherine office are held in secure, locked filing systems accessible only by authorized proxy agents.</p>
+            <p>Once your final documents are couriered back to you and the job is marked as "Completed," we routinely purge your digital scans and temporary intake data from our active systems to prevent long-term exposure.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2><i class="fa-solid fa-cookie-bite"></i> 5. Cookie Policy</h2>
+            <p>Cookies are small text files placed on your device when you visit our website. They act as a short-term memory for the site, allowing us to ensure the platform functions efficiently. We do not use cookies to spy on you or access files on your device.</p>
+            <ul>
+                <li><strong>Strictly Necessary Cookies:</strong> These are essential for the website to function. They allow you to navigate the site, interact with our service hubs, and securely transition to our digital intake forms.</li>
+                <li><strong>Performance & Analytics:</strong> We may use anonymous tools to count visits and traffic sources. This helps us understand which services are most in demand across the diaspora, allowing us to allocate our proxy resources effectively. This data is entirely aggregated and anonymous.</li>
+            </ul>
+            <p>You can manage or disable cookies through your browser settings, though doing so may affect the functionality of our website.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2><i class="fa-solid fa-user-check"></i> 6. Your Rights & Contact</h2>
+            <p>Under data protection guidelines, you have the right to request access to the personal data we hold about you, request corrections to any inaccuracies, or request the premature deletion of your intake files (though doing so may halt an active government application).</p>
+            <p>If you have any questions regarding how your data is handled, please contact our Data Controller at:</p>
+            <p><strong>Email:</strong> admin@dhubservices.com<br><strong>Location:</strong> Linstead, St. Catherine, Jamaica</p>
+        </div>
+
+    </div>
+</main>
+
+<!-- CLEAN, UNIFIED FOOTER SECTION -->
+<footer class="site-footer" id="contact" style="background: #111811; color: #fff; padding: clamp(8.0rem, 10vh, 12.0rem) 0 4.0rem; border-top: 0.1rem solid rgba(255,255,255,0.08);">
+    <div class="wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(25.0rem, 1fr)); gap: 6.4rem; margin-bottom: 6.4rem;">
+        <div>
+            <span style="font-family: var(--sans); font-size: 2.6rem; font-weight: 700; letter-spacing: 0.02em; display: block; margin-bottom: 1.6rem;">Docu-Hub <em style="color: var(--gold); font-style: italic; font-weight: 500;">Operations</em></span>
+            <p style="font-family: var(--sans); font-size: 1.5rem; color: rgba(255,255,255,0.7); line-height: 1.6; max-width: 35.0rem;">Providing highly secure, on-the-ground document processing, records retrieval, and administrative assistance for the Jamaican diaspora.</p>
+        </div>
         
-        <h2>1. Information We Collect Under Proxy</h2>
-        <p>To execute document procurement at local Jamaican administrative agencies (PICA, RGD, TAJ), we collect explicitly authorized files including:</p>
-        <ul>
-            <li>Full legal names, historical address coordinates, and digital contact lines.</li>
-            <li>Digitized scans or physical source documents of national identity books, expired passports, or civil registries.</li>
-            <li>Notarized statutory declarations or powers of attorney permitting on-the-ground representation.</li>
-        </ul>
+        <div>
+            <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: 2.4rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase;">Quick Links</h4>
+            <ul style="list-style: none; display: grid; gap: 1.6rem; padding: 0;">
+                <li><a href="passports.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">PICA Passport Services</a></li>
+                <li><a href="vital-records.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">RGD Vital Records</a></li>
+                <li><a href="nis.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">NIS Tracking &amp; Claims</a></li>
+                <li><a href="about.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">About The Agency</a></li>
+            </ul>
+        </div>
+        
+        <div>
+            <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: 2.4rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase;">Direct Contact</h4>
+            <ul style="list-style: none; display: grid; gap: 1.6rem; padding: 0; margin-bottom: 2.4rem;">
+                <li>
+                    <a href="mailto:admin@dhubservices.com" style="display: inline-flex; align-items: center; gap: 1.0rem; color: #fff; font-size: 1.5rem; text-decoration: none; transition: color 0.3s;">
+                        <i class="fa-solid fa-envelope" style="color: var(--gold-lt);"></i> admin@dhubservices.com
+                    </a>
+                </li>
+                <li>
+                    <a href="https://wa.me/18760000000" target="_blank" style="display: inline-flex; align-items: center; gap: 1.0rem; color: #25D366; font-size: 1.5rem; font-weight: 600; text-decoration: none; transition: opacity 0.3s;">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 2.0rem;"></i> Chat on WhatsApp
+                    </a>
+                </li>
+            </ul>
+            <p style="color: rgba(255,255,255,0.8); font-size: 1.5rem;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 0.8rem;"></i> Linstead, St. Catherine, Jamaica</p>
+        </div>
+    </div>
 
-        <h2>2. Data Containment & Chain of Custody</h2>
-        <p>We do not store identity indices for secondary commercial extraction or marketing profiling. Your files reside strictly inside an offline secure loop:</p>
-        <ul>
-            <li><strong>Digital Files:</strong> Scan images used for gateway transaction diagnostics are contained inside encrypted sandboxes and are completely purged from local storage arrays within 7 days of delivery confirmation.</li>
-            <li><strong>Physical Records:</strong> Vital birth certificates or manual tracking sheets are held inside safe repositories at our Linstead headquarters and are never left unattended at agency runs.</li>
-        </ul>
+    <div class="wrap" style="display: flex; flex-direction: column; gap: 1.6rem; align-items: center; border-top: 0.1rem solid var(--border-glass); padding-top: 3.2rem; text-align: center;">
+        <div style="font-family: var(--sans); font-size: 1.3rem; color: rgba(255,255,255,0.5);">
+            <p style="margin-bottom: 0.6rem;">Registered with the Companies Office of Jamaica (COJ): #15602/2025 | OIC Data Controller Verified</p>
+            <p style="color: rgba(255,255,255,0.3); margin-bottom: 1.6rem;">&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
+            
+            <div style="display: flex; gap: 2.4rem; justify-content: center; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                <a href="privacy.html" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Privacy Policy</a>
+                <a href="terms.html" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
 
-        <h2>3. Third-Party Dispatch Security</h2>
-        <p>We completely bypass local generic postal systems. Physical record dispatch is executed exclusively via tracked global courier partnerships (DHL). Tracking registries are issued immediately to the client to preserve a transparent, uncompromised loop.</p>
-
-     <h2>4. Alignment with the Jamaican Data Protection Act</h2>
-        <p>Our operational framework strictly mirrors the rules mandated under the Jamaican Data Protection Act. Docu-Hub Operations Services has officially established its data governance anchor within the Office of the Information Commissioner (OIC) system (Portal Account Status: Verified December 5, 2025 | Registration Submission Pending OIC Platform System Updates). In strict accordance with official OIC guidance, we maintain authorized on-the-ground operations with full penalty immunity while the regulatory gateway undergoes its administrative overhaul.</p>
-    </main>
+<script>
+// Mobile Hamburger Toggle
+const hbg = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+hbg.addEventListener('click', () => { navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex'; });
+</script>
 </body>
 </html>
