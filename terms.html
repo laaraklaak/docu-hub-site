@@ -2,431 +2,204 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Engagement | Docu-Hub Operations Services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Terms of Service &mdash; Docu-Hub Operations</title>
+    <meta name="description" content="Read the Docu-Hub Operations Terms of Service. Understand our service agreements, fee structures, and processing liabilities.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=Jost:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
     <style>
-    /* ═══════════════════════════
-       DESIGN TOKENS
-    ═══════════════════════════ */
     :root {
-        --cream:      #FAF7F2;
-        --cream-deep: #EEE7D9;
-        --ivory:      #FFFDF9;
-        --sage:       #6D9067;
-        --sage-lt:    #B8CEB3;
-        --sage-deep:  #3A6235;   
-        --gold:       #B8880A;   
-        --gold-lt:    #DFB040;
-        --gold-pale:  #F5EDCF;
-        --warm-dark:  #1C1208;   
-        --warm-mid:   #3D3122;   
-        --warm-soft:  #7A6A56;
-        --ink:        #100D06;   
-
-        --serif-display: 'DM Serif Display', Georgia, serif;
-        --serif-body:    'Cormorant Garamond', Georgia, serif;
-        --sans:          'Jost', system-ui, sans-serif;
-
-        --nav-h: 68px;
-        --max-w: 1180px;
-        --doc-w: 800px;
+        --bg-light:   #EAECE9;
+        --ivory:      #FDFBF7;
+        --brand-drk:  #1E2B1D; 
+        --brand-mid:  #3A4F38;
+        --gold:       #C19A5B; 
+        --gold-lt:    #DAB87F;
+        --text-dark:  #111410; 
+        --text-mid:   #3f463e; 
+        --sans:       'Jost', Arial, sans-serif; 
+        --nav-h:      7.5rem;
+        --section-pad: clamp(8.0rem, 10vh, 12.0rem) 0;
+        --border-light: rgba(0, 0, 0, 0.06);
+        --border-glass: rgba(255, 255, 255, 0.1);
+        --shadow-soft:  0 0.4rem 2.0rem rgba(0, 0, 0, 0.03);
+        --shadow-md:    0 0.8rem 2.4rem rgba(0, 0, 0, 0.05);
+        --shadow-nav:   0 0.4rem 2.0rem rgba(0, 0, 0, 0.20);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; font-size: 62.5%; }
+    body { font-family: var(--sans); font-size: 1.6rem; font-weight: 500; background: var(--bg-light); color: var(--text-dark); line-height: 1.65; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; transition: 0.3s ease; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .wrap { max-width: 90.0rem; margin: 0 auto; padding: 0 2.4rem; }
 
-    body {
-        font-family: var(--sans);
-        background: var(--cream);
-        color: var(--ink);
-        overflow-x: hidden;
-        -webkit-font-smoothing: antialiased;
-        padding-top: var(--nav-h);
-    }
-    a { text-decoration: none; color: inherit; transition: color 0.2s; }
+    /* NAVIGATION */
+    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.95); backdrop-filter: blur(1.2rem); border-bottom: 0.1rem solid var(--border-glass); transition: 0.3s; }
+    .nav-inner { max-width: 115.0rem; margin: 0 auto; padding: 0 2.4rem; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo-name { font-family: var(--sans); font-size: clamp(1.8rem, 2.2vw, 2.4rem); font-weight: 700; color: #fff; letter-spacing: 0.02em; display: block; }
+    .nav-logo-name em { color: var(--gold-lt); font-style: italic; font-weight: 500; }
+    .nav-links { display: none; list-style: none; align-items: center; gap: 2.4rem; }
+    .nav-links a { font-size: 1.3rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 0.8rem 1.6rem; border-radius: 0.4rem; }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+    .hamburger { display: flex; flex-direction: column; gap: 0.6rem; background: none; border: none; padding: 0.5rem; cursor: pointer; z-index: 950; }
+    .hamburger span { width: 2.4rem; height: 0.2rem; background: #fff; }
+
+    /* DEDICATED HERO */
+    .service-hero { padding-top: calc(var(--nav-h) + 6.4rem); padding-bottom: 6.4rem; background: var(--brand-drk); color: #fff; text-align: center; border-bottom: 0.4rem solid var(--gold); }
+    .service-hero h1 { font-size: clamp(3.2rem, 5vw, 4.8rem); font-weight: 700; margin-bottom: 1.6rem; letter-spacing: -0.01em; }
+    .service-hero p { font-size: clamp(1.6rem, 2vw, 1.8rem); color: rgba(255,255,255,0.85); max-width: 70.0rem; margin: 0 auto; line-height: 1.7; }
+
+    /* LEGAL CONTENT STYLING */
+    .legal-content { background: #fff; padding: clamp(4.0rem, 6vw, 8.0rem) clamp(2.4rem, 5vw, 6.4rem); border-radius: 0.8rem; box-shadow: var(--shadow-md); margin: -3.2rem auto 8.0rem; position: relative; z-index: 10; border-top: 0.4rem solid var(--gold); }
     
-    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
+    .last-updated { font-size: 1.3rem; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 3.2rem; border-bottom: 0.1rem solid var(--border-light); padding-bottom: 1.6rem; }
 
-    /* ═══════════════════════════
-       NAV
-    ═══════════════════════════ */
-    .site-nav {
-        position: fixed; top: 0; left: 0; right: 0; z-index: 900;
-        height: var(--nav-h);
-        background: rgba(250,247,242,0.94);
-        backdrop-filter: blur(16px);
-        border-bottom: 1px solid rgba(196,154,60,0.2);
-    }
-    .nav-inner {
-        max-width: var(--max-w); margin: 0 auto; padding: 0 20px;
-        height: 100%; display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-logo { display: flex; flex-direction: column; gap: 2px; }
-    .nav-logo-name {
-        font-family: var(--serif-display);
-        font-size: 1.1rem; font-weight: 400;
-        color: var(--warm-dark); letter-spacing: 0.04em;
-    }
-    .nav-logo-name em { color: var(--gold); font-style: normal; }
-    .nav-logo-sub {
-        font-family: var(--sans);
-        font-size: 0.55rem; font-weight: 300;
-        letter-spacing: 0.28em; text-transform: uppercase;
-        color: var(--warm-soft);
-    }
-
-    .nav-links { display: none; list-style: none; align-items: center; gap: 2px; }
-    .nav-links a {
-        font-family: var(--sans);
-        font-size: 0.72rem; font-weight: 400;
-        letter-spacing: 0.14em; text-transform: uppercase;
-        color: var(--warm-mid); padding: 8px 14px; border-radius: 30px;
-    }
-    .nav-links a:hover { color: var(--warm-dark); background: var(--gold-pale); }
-    .nav-wa {
-        background: var(--sage-deep) !important;
-        color: #fff !important;
-        padding: 10px 22px !important;
-        border-radius: 30px !important;
-        margin-left: 10px;
-        display: flex; align-items: center; gap: 7px;
-    }
-
-    .hamburger {
-        display: flex; flex-direction: column; justify-content: center;
-        gap: 5px; background: none; border: none; cursor: pointer;
-        padding: 6px; width: 40px; height: 40px;
-    }
-    .hamburger span {
-        display: block; width: 22px; height: 1.5px;
-        background: var(--warm-mid); border-radius: 2px;
-    }
-
-    /* ═══════════════════════════
-       LEGAL HERO
-    ═══════════════════════════ */
-    .legal-hero {
-        background: var(--warm-dark);
-        padding: 80px 20px 120px;
-        text-align: center;
-        position: relative;
-    }
-    .legal-eyebrow {
-        font-family: var(--sans);
-        font-size: 0.62rem; font-weight: 400;
-        letter-spacing: 0.32em; text-transform: uppercase;
-        color: var(--gold-lt);
-        margin-bottom: 16px;
-        display: block;
-    }
-    .legal-title {
-        font-family: var(--serif-display);
-        font-size: clamp(2.2rem, 6vw, 3.8rem);
-        color: #ffffff;
-        font-weight: 400; line-height: 1.1;
-        margin-bottom: 12px;
-    }
-    .legal-title em { font-style: italic; color: var(--gold-lt); }
-
-    /* ═══════════════════════════
-       DOCUMENT BODY
-    ═══════════════════════════ */
-    .document-wrapper {
-        background: var(--ivory);
-        max-width: var(--doc-w);
-        margin: -60px auto 80px;
-        position: relative;
-        z-index: 10;
-        border-radius: 8px;
-        box-shadow: 0 20px 40px rgba(28, 18, 8, 0.08);
-        padding: 48px 32px;
-        border: 1px solid rgba(196,154,60,0.15);
-    }
-
-    .doc-meta {
-        text-align: center;
-        border-bottom: 1px solid var(--cream-deep);
-        padding-bottom: 24px;
-        margin-bottom: 40px;
-        position: relative;
-    }
-    .doc-meta h1 {
-        font-family: var(--serif-display);
-        font-size: 2rem; color: var(--warm-dark);
-        margin-bottom: 8px;
-    }
-    .doc-meta p {
-        font-family: var(--sans);
-        font-size: 0.65rem; font-weight: 400;
-        letter-spacing: 0.2em; text-transform: uppercase;
-        color: var(--warm-soft);
-    }
-
-    .print-btn {
-        display: inline-flex; align-items: center; gap: 6px;
-        background: var(--cream); border: 1px solid rgba(196,154,60,0.3); color: var(--warm-dark);
-        padding: 8px 16px; border-radius: 4px; font-family: var(--sans); font-size: 0.7rem; font-weight: 500; cursor: pointer; transition: 0.2s;
-        text-transform: uppercase; letter-spacing: 0.1em; margin-top: 16px;
-    }
-    .print-btn:hover { background: var(--gold-pale); }
-
-    .doc-content {
-        font-family: var(--serif-body);
-        font-size: 1.15rem;
-        line-height: 1.8;
-        color: var(--warm-mid);
-    }
-    .doc-content h2 {
-        font-family: var(--serif-display);
-        font-size: 1.6rem; color: var(--warm-dark);
-        margin-top: 48px; margin-bottom: 16px;
-        padding-bottom: 8px;
-        border-bottom: 1px solid var(--cream-deep);
-        display: flex; align-items: center; gap: 12px;
-    }
-    .doc-content h2 i { color: var(--gold); font-size: 1.2rem; }
+    .legal-section { margin-bottom: 4.8rem; }
+    .legal-section:last-child { margin-bottom: 0; }
     
-    .doc-content p { margin-bottom: 20px; }
-    .doc-content ul { margin-bottom: 24px; padding-left: 20px; }
-    .doc-content li { margin-bottom: 8px; }
-    .doc-content strong { font-weight: 600; color: var(--ink); }
-
-    .preamble {
-        font-size: 1.25rem; color: var(--navy-deep); font-weight: 500; font-family: var(--serif-display); font-style: italic; margin-bottom: 16px;
-    }
-
-    /* Special Callout Boxes */
-    .compliance-box {
-        background: rgba(197,212,192,0.15);
-        border: 1px solid rgba(92,122,87,0.3);
-        padding: 24px; border-radius: 6px;
-        margin: 32px 0;
-        font-family: var(--sans); font-size: 0.95rem;
-        color: var(--sage-deep); line-height: 1.6;
-    }
+    .legal-section h2 { font-size: 2.4rem; color: var(--brand-drk); font-weight: 700; margin-bottom: 1.6rem; display: flex; align-items: center; gap: 1.2rem; }
+    .legal-section h2 i { color: var(--brand-mid); font-size: 2.0rem; }
     
-    .auth-box {
-        margin-top: 50px; text-align: center; padding: 32px; border-top: 1px solid var(--cream-deep);
-    }
-    .auth-seal {
-        display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: var(--warm-dark); color: var(--gold-lt); border-radius: 50%; font-family: var(--serif-display); font-size: 1.8rem; margin-bottom: 16px;
-    }
+    .legal-section p { font-size: 1.6rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1.6rem; }
+    .legal-section ul { margin-left: 2.4rem; margin-bottom: 2.4rem; }
+    .legal-section li { font-size: 1.6rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 0.8rem; list-style-type: disc; }
+    .legal-section strong { color: var(--brand-drk); }
 
-    /* ═══════════════════════════
-       FOOTER
-    ═══════════════════════════ */
-    .site-footer {
-        background: var(--warm-dark);
-        padding: 64px 20px 32px;
-        color: rgba(250,247,242,0.6);
-        border-top: 1px solid rgba(255,255,255,0.05);
-    }
-    .footer-grid {
-        max-width: var(--max-w); margin: 0 auto;
-        display: grid; grid-template-columns: 1fr; gap: 40px;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-        padding-bottom: 40px; margin-bottom: 24px;
-    }
-    .f-logo {
-        font-family: var(--serif-display);
-        font-size: 1.1rem; color: #ffffff;
-        letter-spacing: 0.04em; display: block; margin-bottom: 4px;
-    }
-    .f-logo em { font-style: normal; color: var(--gold-lt); }
-    .f-tag {
-        font-family: var(--sans);
-        font-size: 0.55rem; letter-spacing: 0.26em; text-transform: uppercase;
-        color: var(--gold-lt); display: block; margin-bottom: 16px;
-    }
-    .f-desc {
-        font-family: var(--serif-body);
-        font-size: 0.9rem; font-style: italic; line-height: 1.6; max-width: 280px;
-    }
-    .footer-col-title {
-        font-family: var(--sans); font-size: 0.62rem; font-weight: 400;
-        letter-spacing: 0.22em; text-transform: uppercase;
-        color: rgba(255,255,255,0.5); margin-bottom: 16px;
-    }
-    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-links a {
-        font-family: var(--sans); font-size: 0.82rem; font-weight: 300;
-        color: rgba(255,255,255,0.78);
-    }
-    .footer-links a:hover { color: var(--gold-lt); }
-    .footer-contact p {
-        display: flex; align-items: center; gap: 10px;
-        font-family: var(--sans); font-size: 0.82rem; font-weight: 300; margin-bottom: 12px;
-    }
-    .footer-contact i { color: var(--gold-lt); width: 16px; font-size: 0.85rem; }
-    .footer-bottom {
-        max-width: var(--max-w); margin: 0 auto;
-        display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px;
-    }
-    .footer-bottom p {
-        font-family: var(--sans); font-size: 0.7rem; font-weight: 300; color: rgba(255,255,255,0.42);
-    }
+    .highlight-box { background: rgba(193, 154, 91, 0.1); border-left: 0.4rem solid var(--gold); padding: 2.4rem; margin: 2.4rem 0; border-radius: 0 0.8rem 0.8rem 0; }
+    .highlight-box p { margin-bottom: 0; font-size: 1.5rem; font-style: italic; color: var(--brand-drk); }
 
-    /* ═══════════════════════════
-       RESPONSIVE & PRINT
-    ═══════════════════════════ */
-    @media print {
-        .site-nav, .legal-hero, .site-footer, .print-btn { display: none !important; }
-        body { background: white; padding: 0; color: black; }
-        .document-wrapper { box-shadow: none; margin: 0; padding: 0; border: none; }
-        .doc-content { font-size: 12pt; }
-        h2 { page-break-after: avoid; }
-    }
-
-    @media (min-width: 900px) {
-        .hamburger { display: none; }
-        .nav-links { display: flex; }
-        .nav-inner { padding: 0 28px; }
-
-        .legal-hero { padding: 100px 20px 140px; }
-        .document-wrapper { padding: 64px 80px; }
-        .print-btn { position: absolute; right: 0; top: 0; margin-top: 0; }
-
-        .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; }
-        .footer-bottom { flex-direction: row; justify-content: space-between; text-align: left; }
-    }
+    @media (min-width: 900px) { .hamburger { display: none !important; } .nav-links { display: flex !important; } }
     </style>
 </head>
 <body>
 
-<nav class="site-nav" id="sitenav">
+<!-- NAVIGATION -->
+<nav class="site-nav">
     <div class="nav-inner">
-        <a href="index.html" class="nav-logo">
-            <span class="nav-logo-name">Docu<em>-</em>Hub</span>
-            <span class="nav-logo-sub">Operations Services</span>
-        </a>
+        <a href="index.html" class="nav-logo-name">Docu-Hub <em>Operations</em></a>
         <ul class="nav-links">
-            <li><a href="index.html#keepsakes">Keepsakes &amp; Memorial</a></li>
-            <li><a href="index.html#concierge">Concierge</a></li>
-            <li>
-                <a href="https://wa.me/18765612614" target="_blank" rel="noopener" class="nav-wa">
-                    <i class="fa-brands fa-whatsapp"></i> WhatsApp Laura
-                </a>
-            </li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="passports.html">Passports</a></li>
+            <li><a href="vital-records.html">Vital Records</a></li>
+            <li><a href="nis.html">NIS Services</a></li>
         </ul>
-        <button class="hamburger" id="hbg" aria-label="Open menu">
-            <span></span><span></span><span></span>
-        </button>
+        <button class="hamburger"><span></span><span></span><span></span></button>
     </div>
 </nav>
 
-<section class="legal-hero">
-    <span class="legal-eyebrow">Service Agreement</span>
-    <h1 class="legal-title">Terms of <em>Engagement</em></h1>
+<!-- DEDICATED HERO -->
+<section class="service-hero">
+    <div class="wrap">
+        <h1>Terms of Service</h1>
+        <p>By engaging Docu-Hub Operations Services, you agree to the following operational, financial, and legal protocols.</p>
+    </div>
 </section>
 
-<div class="wrap">
-    <div class="document-wrapper">
-        
-        <div class="doc-meta">
-            <h1>Terms of Engagement</h1>
-            <p>Document ID: DH-POL-2026-03 &nbsp;|&nbsp; Last Verified: April 2026</p>
-            <button onclick="window.print()" class="print-btn"><i class="fa-solid fa-print"></i> Print Copy</button>
+<!-- LEGAL CONTENT -->
+<main class="wrap">
+    <div class="legal-content">
+        <span class="last-updated">Last Updated: August 2026 | Document ID: DH-TOS-2026</span>
+
+        <div class="legal-section">
+            <p><strong>Preamble:</strong> By engaging with Docu-Hub Operations Services ("The Agency") for proxy representation or document retrieval, you ("The Client") agree to be bound by the following terms. These terms constitute a legally binding agreement regulating the processing of government documents.</p>
         </div>
 
-        <div class="doc-content">
-
-            <p class="preamble">Preamble</p>
-            <p>By engaging with Docu-Hub Operations Services ("The Agency") for creative commissions or concierge logistics, you ("The Client") agree to be bound by the following terms. These terms constitute a legally binding agreement regulating the processing of government documents and the curation of bespoke prints.</p>
-
+        <div class="legal-section">
             <h2><i class="fa-solid fa-building-user"></i> 1. Scope of Services & Identity</h2>
-            <p><strong>1.1 No Government Affiliation:</strong> Docu-Hub Operations Services is a private administrative logistics firm and design studio. We are not an extension of the Passport, Immigration & Citizenship Agency (PICA), Tax Administration Jamaica (TAJ), or any other government department.</p>
-            <p><strong>1.2 Authorized Proxy:</strong> For Concierge Logistics, engaging our services appoints Docu-Hub as your "Authorized Bearer" or "Proxy" to navigate bureaucracy and transact business with government bodies exclusively on your behalf.</p>
-            <p><strong>1.3 Curation Studio:</strong> Under our Keepsakes division, Docu-Hub acts as an independent design studio curating custom physical prints and memorial layouts based on client instructions.</p>
+            <p><strong>1.1 No Government Affiliation:</strong> Docu-Hub Operations Services is a private administrative logistics firm. We are not an extension of, nor affiliated with, the Passport, Immigration & Citizenship Agency (PICA), the Registrar General's Department (RGD), the Ministry of Labour and Social Security (MLSS), or any other Jamaican government department.</p>
+            <p><strong>1.2 Authorized Proxy:</strong> Engaging our services appoints Docu-Hub as your "Authorized Bearer" or "Proxy." You grant us the authority to navigate bureaucracy, stand in line, and transact business with government bodies exclusively on your behalf to fulfill your specific service request.</p>
+        </div>
 
+        <div class="legal-section">
             <h2><i class="fa-solid fa-file-invoice-dollar"></i> 2. Fees & Financial Policy</h2>
-            <p><strong>2.1 Administrative Service Fees:</strong> For Concierge Logistics, our Service Fee compensates the Agency for professional time, pre-submission audits, and logistical execution (e.g., waiting in lines at TAJ). This fee is <strong>strictly non-refundable</strong> once our administrative processes have commenced.</p>
-            <p><strong>2.2 Keepsakes & Custom Designs:</strong> Purchases of custom-printed invitations, memorial booklets, and tribute cards are final. Because these physical products are uniquely printed with client-specific data and photography, we cannot issue refunds once printing production begins.</p>
-            <p><strong>2.3 Statutory/Government Fees:</strong> Statutory fees (e.g., eMVRC renewal costs) are collected as "Client Funds" and paid directly to the relevant government agency. Docu-Hub bears no liability for government funds withheld due to rejected applications.</p>
+            <p><strong>2.1 Administrative Service Fees:</strong> Our listed fees compensate the Agency for professional time, pre-submission audits, digital formatting, and logistical execution (e.g., physical walk-ins at government offices). Because this work begins immediately upon intake, our service fees are <strong>strictly non-refundable</strong> once our administrative processes have commenced.</p>
+            <p><strong>2.2 Statutory/Government Fees:</strong> Statutory fees (such as official PICA renewal costs or RGD search fees) are collected as "Client Funds" and paid directly to the relevant government agency. Docu-Hub bears no liability for government funds withheld or forfeited due to applications rejected by the State.</p>
+            <p><strong>2.3 Courier Fees:</strong> Quoted prices generally include standard local processing. Final dispatch of physical documents via international courier (e.g., DHL) to diaspora clients may incur separate, clearly stated shipping fees depending on the destination country.</p>
+        </div>
 
+        <div class="legal-section">
             <h2><i class="fa-solid fa-clipboard-check"></i> 3. Client Obligations & Warranties</h2>
-            <p><strong>3.1 Application Accuracy:</strong> The Client is solely responsible for the accuracy of all biographic and vehicle information provided via our intake procedures. Docu-Hub is not liable for government rejections caused by incorrect or omitted legal information.</p>
-            <p><strong>3.2 Curation Content:</strong> For Keepsakes and Memorials, the Client warrants they have the legal right to use all provided photographs, family histories, and text. Docu-Hub is not liable for copyright infringement claims arising from client-supplied curatorial materials.</p>
-            <p><strong>3.3 Proof Approval:</strong> For bespoke printing, the Client will be provided a digital proof. Once the proof is approved by the Client, Docu-Hub is not responsible for typos, layout errors, or omissions discovered in the final physical print.</p>
+            <p><strong>3.1 Application Accuracy:</strong> The Client is solely responsible for the accuracy of all biographic, demographic, and historical information provided via our digital intake procedures. Docu-Hub is not liable for government rejections, delays, or misprinted records caused by incorrect or omitted legal information provided by the Client.</p>
+            <p><strong>3.2 Timely Provision of Documents:</strong> Certain services (e.g., NIS claims or surrendering a damaged passport) legally require wet-signed, original documents. The Client agrees to courier these required physical documents to our Jamaican office in a timely manner. The Agency is not responsible for delays caused by the Client's failure to provide required evidence.</p>
+        </div>
 
-            <h2><i class="fa-solid fa-shield-halved"></i> 4. Compliance & Data Privacy</h2>
-            <div class="compliance-box">
-                <strong>Notice of Compliance:</strong> In adherence to the <em>Proceeds of Crime Act (POCA)</em> and <em>Jamaica Data Protection Act (JDPA)</em>, sensitive administrative records handled during Concierge Logistics are permanently purged from our operational servers thirty (30) days following the successful delivery of your documents. Please refer to our <a href="privacy.html" style="color: var(--sage-deep); font-weight: 700; text-decoration: underline;">Privacy Policy</a> for complete details.
-            </div>
-
-            <h2><i class="fa-solid fa-triangle-exclamation"></i> 5. Limitation of Liability</h2>
-            <p>Docu-Hub Operations Services shall not be held liable for delays, losses, or damages resulting from factors outside our direct control, including but not limited to:</p>
+        <div class="legal-section">
+            <h2><i class="fa-solid fa-triangle-exclamation"></i> 4. Limitation of Liability</h2>
+            <p>Docu-Hub Operations Services acts strictly as an intermediary and logistics provider. We shall not be held liable for delays, losses, or damages resulting from factors outside our direct control, including but not limited to:</p>
             <ul>
-                <li><strong>Government Delays:</strong> System outages, backlogs, or slow processing times by issuing authorities (e.g., TAJ systems being offline).</li>
-                <li><strong>Courier Delays:</strong> Delays caused by third-party delivery services when returning finalized documents or delivering physical keepsakes.</li>
-                <li><strong>Print Variations:</strong> Slight variations in color calibration between digital proofs viewed on mobile devices and the final ink applied to physical stationery.</li>
-                <li><strong>Acts of God:</strong> Hurricanes, strikes, extreme weather events, or national emergencies preventing the execution of logistics.</li>
+                <li><strong>Government Delays:</strong> System outages, national backlogs, strikes, or unusually slow processing times by issuing authorities (e.g., RGD archival searches taking longer than anticipated).</li>
+                <li><strong>Government Rejections:</strong> Final approval of any passport, certificate, or pension claim rests solely with the Jamaican Government. We do not guarantee approval.</li>
+                <li><strong>Courier Delays or Loss:</strong> Delays or loss of physical documents caused by third-party delivery services (e.g., DHL, FedEx) when returning finalized documents.</li>
+                <li><strong>Acts of God:</strong> Hurricanes, extreme weather events, or national emergencies preventing the execution of logistical operations.</li>
             </ul>
+        </div>
+        
+        <div class="highlight-box">
+            <p>"We guarantee professional, timely, and secure execution of our proxy duties, but we cannot override or expedite strict Jamaican government protocols or systemic national delays."</p>
+        </div>
 
-            <div class="auth-box">
-                <div class="auth-seal">DH</div>
-                <p style="font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; color: var(--warm-soft); margin-bottom: 4px;">Administered By</p>
-                <p style="font-family: var(--serif-display); font-size: 1.4rem; color: var(--warm-dark); font-style: italic; margin: 0;">Docu-Hub Operations Services</p>
+    </div>
+</main>
+
+<!-- CLEAN, UNIFIED FOOTER SECTION -->
+<footer class="site-footer" id="contact" style="background: #111811; color: #fff; padding: clamp(8.0rem, 10vh, 12.0rem) 0 4.0rem; border-top: 0.1rem solid rgba(255,255,255,0.08);">
+    <div class="wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(25.0rem, 1fr)); gap: 6.4rem; margin-bottom: 6.4rem;">
+        <div>
+            <span style="font-family: var(--sans); font-size: 2.6rem; font-weight: 700; letter-spacing: 0.02em; display: block; margin-bottom: 1.6rem;">Docu-Hub <em style="color: var(--gold); font-style: italic; font-weight: 500;">Operations</em></span>
+            <p style="font-family: var(--sans); font-size: 1.5rem; color: rgba(255,255,255,0.7); line-height: 1.6; max-width: 35.0rem;">Providing highly secure, on-the-ground document processing, records retrieval, and administrative assistance for the Jamaican diaspora.</p>
+        </div>
+        
+        <div>
+            <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: 2.4rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase;">Quick Links</h4>
+            <ul style="list-style: none; display: grid; gap: 1.6rem; padding: 0;">
+                <li><a href="passports.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">PICA Passport Services</a></li>
+                <li><a href="vital-records.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">RGD Vital Records</a></li>
+                <li><a href="nis.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">NIS Tracking &amp; Claims</a></li>
+                <li><a href="about.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">About The Agency</a></li>
+            </ul>
+        </div>
+        
+        <div>
+            <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: 2.4rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase;">Direct Contact</h4>
+            <ul style="list-style: none; display: grid; gap: 1.6rem; padding: 0; margin-bottom: 2.4rem;">
+                <li>
+                    <a href="mailto:admin@dhubservices.com" style="display: inline-flex; align-items: center; gap: 1.0rem; color: #fff; font-size: 1.5rem; text-decoration: none; transition: color 0.3s;">
+                        <i class="fa-solid fa-envelope" style="color: var(--gold-lt);"></i> admin@dhubservices.com
+                    </a>
+                </li>
+                <li>
+                    <a href="https://wa.me/18760000000" target="_blank" style="display: inline-flex; align-items: center; gap: 1.0rem; color: #25D366; font-size: 1.5rem; font-weight: 600; text-decoration: none; transition: opacity 0.3s;">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 2.0rem;"></i> Chat on WhatsApp
+                    </a>
+                </li>
+            </ul>
+            <p style="color: rgba(255,255,255,0.8); font-size: 1.5rem;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 0.8rem;"></i> Linstead, St. Catherine, Jamaica</p>
+        </div>
+    </div>
+
+    <div class="wrap" style="display: flex; flex-direction: column; gap: 1.6rem; align-items: center; border-top: 0.1rem solid var(--border-glass); padding-top: 3.2rem; text-align: center;">
+        <div style="font-family: var(--sans); font-size: 1.3rem; color: rgba(255,255,255,0.5);">
+            <p style="margin-bottom: 0.6rem;">Registered with the Companies Office of Jamaica (COJ): #15602/2025 | OIC Data Controller Verified</p>
+            <p style="color: rgba(255,255,255,0.3); margin-bottom: 1.6rem;">&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
+            
+            <div style="display: flex; gap: 2.4rem; justify-content: center; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                <a href="privacy.html" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Privacy Policy</a>
+                <a href="terms.html" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Terms of Service</a>
             </div>
-
         </div>
-    </div>
-</div>
-
-<footer class="site-footer">
-    <div class="footer-grid">
-        <div>
-            <a href="index.html" class="f-logo">Docu-Hub Operations Services</a>
-            <span class="f-tag">Curation · Keepsakes · Concierge</span>
-            <p class="f-desc">Bridging tactile elegance with digital simplicity, crafted in Jamaica.</p>
-        </div>
-        <div>
-            <h4 class="footer-col-title">Services</h4>
-            <ul class="footer-links">
-                <li><a href="index.html#keepsakes">Keepsakes &amp; Memorial</a></li>
-                <li><a href="index.html#concierge">Concierge Logistics</a></li>
-            </ul>
-        </div>
-        <div>
-            <h4 class="footer-col-title">Studio</h4>
-            <ul class="footer-links">
-                <li><a href="index.html#studio">About Laura</a></li>
-                <li><a href="privacy.html">Privacy Policy</a></li>
-                <li><a href="terms.html">Terms of Service</a></li>
-            </ul>
-        </div>
-        <div class="footer-contact">
-            <h4 class="footer-col-title">Direct Inquiries</h4>
-            <p><i class="fa-brands fa-whatsapp"></i>
-                <a href="https://wa.me/18765612614" target="_blank" rel="noopener" style="color:inherit;">+1 (876) 561-2614</a>
-            </p>
-            <p><i class="fa-solid fa-location-dot"></i> Linstead, St. Catherine, Jamaica</p>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
-        <p>Designed for Bespoke Print &amp; Digital Experiences.</p>
     </div>
 </footer>
 
 <script>
-// Mobile nav toggle
-const hbg = document.getElementById('hbg');
-const drawer = document.getElementById('drawer');
-function closeNav() {
-    drawer.classList.remove('open'); hbg.classList.remove('open');
-    document.body.style.overflow = '';
-}
-hbg.addEventListener('click', () => {
-    const isOpen = drawer.classList.toggle('open');
-    hbg.classList.toggle('open', isOpen);
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-});
+// Mobile Hamburger Toggle
+const hbg = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+hbg.addEventListener('click', () => { navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex'; });
 </script>
-
 </body>
 </html>
