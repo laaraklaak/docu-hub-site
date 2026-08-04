@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Jamaican Passport Services &mdash; Docu-Hub Operations</title>
+    <meta name="description" content="Expert assistance for Jamaican passport renewals, name changes, and replacing damaged passports. Explore our checklists and educational guides.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+    :root {
+        --bg-light:   #EAECE9;
+        --ivory:      #FDFBF7;
+        --brand-drk:  #1E2B1D; 
+        --brand-mid:  #3A4F38;
+        --gold:       #C19A5B; 
+        --gold-lt:    #DAB87F;
+        --text-dark:  #111410; 
+        --text-mid:   #3f463e; 
+        --sans:       'Jost', Arial, sans-serif; 
+        --nav-h:      7.5rem;
+        --section-pad: clamp(8.0rem, 10vh, 12.0rem) 0;
+        --border-light: rgba(0, 0, 0, 0.06);
+        --border-glass: rgba(255, 255, 255, 0.1);
+        --shadow-soft:  0 0.4rem 2.0rem rgba(0, 0, 0, 0.03);
+        --shadow-md:    0 0.8rem 2.4rem rgba(0, 0, 0, 0.05);
+        --shadow-nav:   0 0.4rem 2.0rem rgba(0, 0, 0, 0.20);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 62.5%; }
+    body { font-family: var(--sans); font-size: 1.6rem; font-weight: 500; background: var(--bg-light); color: var(--text-dark); line-height: 1.65; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; transition: 0.3s ease; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .wrap { max-width: 105.0rem; margin: 0 auto; padding: 0 2.4rem; }
+
+    /* NAVIGATION */
+    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.95); backdrop-filter: blur(1.2rem); border-bottom: 0.1rem solid var(--border-glass); transition: 0.3s; }
+    .nav-inner { max-width: 115.0rem; margin: 0 auto; padding: 0 2.4rem; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo-name { font-family: var(--sans); font-size: clamp(1.8rem, 2.2vw, 2.4rem); font-weight: 700; color: #fff; letter-spacing: 0.02em; display: block; }
+    .nav-logo-name em { color: var(--gold-lt); font-style: italic; font-weight: 500; }
+    .nav-links { display: none; list-style: none; align-items: center; gap: 2.4rem; }
+    .nav-links a { font-size: 1.3rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 0.8rem 1.6rem; border-radius: 0.4rem; }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+    .hamburger { display: flex; flex-direction: column; gap: 0.6rem; background: none; border: none; padding: 0.5rem; cursor: pointer; z-index: 950; }
+    .hamburger span { width: 2.4rem; height: 0.2rem; background: #fff; }
+
+    /* DEDICATED HERO */
+    .service-hero { padding-top: calc(var(--nav-h) + 6.4rem); padding-bottom: 6.4rem; background: var(--brand-drk); color: #fff; text-align: center; border-bottom: 0.4rem solid var(--gold); }
+    .service-tag { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold-lt); font-weight: 700; display: block; margin-bottom: 1.6rem; }
+    .service-hero h1 { font-size: clamp(3.2rem, 5vw, 4.8rem); font-weight: 700; margin-bottom: 1.6rem; letter-spacing: -0.01em; }
+    .service-hero p { font-size: clamp(1.6rem, 2vw, 1.8rem); color: rgba(255,255,255,0.85); max-width: 70.0rem; margin: 0 auto; line-height: 1.7; }
+
+    /* TRIAGE / PATH SECTION */
+    .path-section { padding: 8.0rem 0 4.0rem; background: var(--ivory); }
+    .path-header { text-align: center; margin-bottom: 4.8rem; max-width: 75.0rem; margin-left: auto; margin-right: auto; }
+    .path-header h2 { font-size: clamp(2.8rem, 4vw, 3.6rem); color: var(--brand-drk); font-weight: 700; letter-spacing: -0.01em; margin-bottom: 1.6rem; }
+    
+    .details-grid-2col { display: grid; grid-template-columns: 1fr; gap: 3.2rem; margin-bottom: 3.2rem; }
+    
+    .detail-box { background: #fff; border: 0.1rem solid var(--border-light); border-radius: 0.8rem; padding: 4.0rem 3.6rem; box-shadow: var(--shadow-md); }
+    .detail-box.accent-box { border-top: 0.4rem solid var(--brand-mid); }
+    .detail-box.gold-box { border-top: 0.4rem solid var(--gold); }
+    
+    .box-title { font-size: 2.2rem; font-weight: 700; color: var(--brand-drk); margin-bottom: 2.4rem; display: flex; align-items: center; gap: 1.2rem; border-bottom: 0.1rem solid var(--border-light); padding-bottom: 1.6rem; }
+    .box-title i { color: var(--gold); font-size: 2.0rem; }
+    .accent-box .box-title i { color: var(--brand-mid); }
+    
+    .check-list { list-style: none; display: grid; gap: 1.6rem; }
+    .check-list li { font-size: 1.6rem; color: var(--text-mid); line-height: 1.65; display: grid; grid-template-columns: 2.0rem 1fr; gap: 1.2rem; align-items: start; }
+    .check-list li i { color: var(--brand-mid); font-size: 1.6rem; margin-top: 0.4rem; }
+    .check-list li i.fa-xmark { color: #d32f2f; }
+    .check-list li i.fa-circle-exclamation { color: var(--gold); }
+
+    /* MANDATORY DOCS FULL WIDTH */
+    .mandatory-docs { background: #fff; border: 0.1rem solid var(--border-light); border-radius: 0.8rem; padding: 4.0rem 3.6rem; box-shadow: var(--shadow-md); margin-bottom: 4.8rem; }
+    .mandatory-docs .box-title { justify-content: center; border-bottom: none; padding-bottom: 0; margin-bottom: 3.2rem; }
+    .docs-grid { display: grid; grid-template-columns: 1fr; gap: 2.4rem; }
+    .doc-item { background: var(--bg-light); padding: 2.4rem; border-radius: 0.4rem; display: flex; gap: 1.6rem; align-items: flex-start; }
+    .doc-item i { font-size: 2.4rem; color: var(--brand-mid); }
+    .doc-item h4 { font-size: 1.8rem; color: var(--brand-drk); margin-bottom: 0.4rem; }
+    .doc-item p { font-size: 1.5rem; color: var(--text-mid); line-height: 1.6; }
+
+    /* EXPLORATORY / EDUCATIONAL SECTION */
+    .education-section { padding: 8.0rem 0; background: var(--bg-light); border-top: 0.1rem solid var(--border-light); }
+    .edu-header { text-align: center; margin-bottom: 4.8rem; }
+    .edu-header h2 { font-size: clamp(2.8rem, 4vw, 3.6rem); color: var(--brand-drk); font-weight: 700; letter-spacing: -0.01em; }
+    .edu-container { max-width: 80.0rem; margin: 0 auto; background: #fff; padding: clamp(3.2rem, 5vw, 6.4rem); border-radius: 0.8rem; box-shadow: var(--shadow-md); border-left: 0.4rem solid var(--gold); }
+    
+    .edu-container h3 { font-size: 2.2rem; color: var(--brand-drk); margin-bottom: 1.6rem; }
+    .edu-container p { font-size: 1.7rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 2.4rem; }
+    
+    .article-highlight { background: rgba(193, 154, 91, 0.1); border-left: 0.4rem solid var(--gold); padding: 2.4rem; margin: 3.2rem 0; border-radius: 0 0.8rem 0.8rem 0; }
+    .article-highlight p { margin-bottom: 0; font-size: 1.6rem; font-style: italic; color: var(--brand-drk); }
+
+    /* DOCUMENT DROPDOWN */
+    .doc-dropdown { background: var(--bg-light); border-radius: 0.8rem; border: 0.1rem solid var(--border-light); margin: 3.2rem 0; overflow: hidden; transition: 0.3s; }
+    .doc-dropdown summary { padding: 2.0rem 2.4rem; font-size: 1.6rem; font-weight: 700; color: var(--brand-drk); cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; }
+    .doc-dropdown summary::-webkit-details-marker { display: none; }
+    .doc-dropdown summary::after { content: '\002B'; font-size: 2.4rem; color: var(--gold); }
+    .doc-dropdown[open] summary::after { content: '\2212'; color: var(--brand-drk); }
+    .doc-preview { padding: 3.2rem; background: #fff; border-top: 0.1rem solid var(--border-light); font-family: 'Courier New', Courier, monospace; font-size: 1.4rem; color: #333; white-space: pre-wrap; overflow-x: auto; }
+    .doc-preview .fill-blank { color: #d32f2f; background: rgba(211,47,47,0.05); padding: 0.2rem 0.4rem; }
+
+    /* MASSIVE BOTTOM CTA */
+    .bottom-cta-section { padding: 10.0rem 0; background: var(--brand-drk); color: #fff; text-align: center; }
+    .bottom-cta-section h2 { font-size: clamp(3.0rem, 4vw, 4.0rem); margin-bottom: 1.6rem; color: #fff; }
+    .bottom-cta-section p { font-size: 1.8rem; color: rgba(255,255,255,0.8); max-width: 60.0rem; margin: 0 auto 4.0rem; }
+    .btn-massive { display: inline-flex; align-items: center; justify-content: center; gap: 1.2rem; padding: 2.0rem 4.8rem; background: var(--gold); color: var(--brand-drk); border-radius: 0.6rem; font-size: 1.5rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; box-shadow: 0 0.8rem 2.4rem rgba(0,0,0,0.2); }
+    .btn-massive:hover { background: var(--gold-lt); transform: translateY(-0.3rem); }
+    .pricing-note { display: block; margin-top: 2.4rem; font-size: 1.4rem; color: rgba(255,255,255,0.6); }
+
+    @media (min-width: 800px) { 
+        .details-grid-2col { grid-template-columns: 1fr 1fr; } 
+        .docs-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 900px) { .hamburger { display: none !important; } .nav-links { display: flex !important; } }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo-name">Docu-Hub <em>Operations</em></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="passports.html" class="active">Passports</a></li>
+            <li><a href="vital-records.html">Vital Records</a></li>
+            <li><a href="nis.html">NIS Services</a></li>
+        </ul>
+        <button class="hamburger"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<!-- DEDICATED HERO -->
+<section class="service-hero">
+    <div class="wrap">
+        <span class="service-tag">PICA Agency Proxy</span>
+        <h1>Jamaican Passport Services</h1>
+        <p>Explore the requirements for standard online renewals, complex name changes, and replacing lost or damaged documents from overseas.</p>
+    </div>
+</section>
+
+<!-- 1. THE TRIAGE / PATH SECTION -->
+<section class="path-section">
+    <div class="wrap">
+        
+        <div class="path-header">
+            <span style="color: var(--brand-mid); font-size: 1.2rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;">Determine Your Pathway</span>
+            <h2>Which process applies to you?</h2>
+        </div>
+
+        <div class="details-grid-2col">
+            <!-- PATH A: ONLINE -->
+            <div class="detail-box accent-box">
+                <h3 class="box-title"><i class="fa-solid fa-laptop"></i> Standard Online Renewal</h3>
+                <p style="font-size: 1.5rem; color: var(--text-mid); margin-bottom: 2.4rem;">You qualify for the streamlined online portal processing if <strong>ALL</strong> of the following apply to you:</p>
+                <ul class="check-list">
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Adult Applicant:</strong> You are 18 years or older.</span></li>
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Exact Same Name:</strong> You are not making any legal name changes.</span></li>
+                    <li><i class="fa-solid fa-check"></i> <span><strong>Physical Book in Hand:</strong> Your current/expired passport is in your possession.</span></li>
+                    <li><i class="fa-solid fa-xmark"></i> <span><strong>Not Damaged:</strong> The book is not water-logged, torn, or defaced.</span></li>
+                </ul>
+            </div>
+            
+            <!-- PATH B: PROXY WALK-IN -->
+            <div class="detail-box gold-box">
+                <h3 class="box-title"><i class="fa-solid fa-building-user"></i> Physical Proxy Walk-in</h3>
+                <p style="font-size: 1.5rem; color: var(--text-mid); margin-bottom: 2.4rem;">You require our on-the-ground physical walk-in submission if <strong>ANY</strong> of the following apply to you:</p>
+                <ul class="check-list">
+                    <li><i class="fa-solid fa-circle-exclamation"></i> <span><strong>Minors & Transitions:</strong> You are applying for a minor, or transitioning a minor's passport to an adult passport.</span></li>
+                    <li><i class="fa-solid fa-circle-exclamation"></i> <span><strong>Name Changes:</strong> You are updating your name due to Marriage, Divorce, or Deed Poll.</span></li>
+                    <li><i class="fa-solid fa-circle-exclamation"></i> <span><strong>Lost or Stolen:</strong> You do not have the previous passport (requires police report).</span></li>
+                    <li><i class="fa-solid fa-circle-exclamation"></i> <span><strong>Damaged Book:</strong> Your passport was washed, torn, or severely altered.</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MANDATORY DOCUMENTS FOR ALL -->
+        <div class="mandatory-docs">
+            <h3 class="box-title"><i class="fa-solid fa-folder-open"></i> Mandatory Documents Required for ALL Applications</h3>
+            <div class="docs-grid">
+                <div class="doc-item">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <div>
+                        <h4>Proof of Citizenship</h4>
+                        <p>Your Original Jamaican Birth Certificate, Adoption Certificate, or Citizenship Certificate. This is strictly required to prove identity.</p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <i class="fa-solid fa-camera"></i>
+                    <div>
+                        <h4>Two Passport Photos</h4>
+                        <p>Photos must meet exact PICA specifications: crisp white background, no glare, no glasses, unmounted, and taken within the last 6 months.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- 2. THE EDUCATIONAL SCENARIO -->
+<section class="education-section">
+    <div class="wrap">
+        <div class="edu-header">
+            <span style="color: var(--brand-mid); font-size: 1.2rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;">Educational Scenario</span>
+            <h2>What if my passport is damaged?</h2>
+        </div>
+        
+        <div class="edu-container">
+            <p>It happens to the best of us. A jacket gets tossed into the washing machine without checking the pockets. Pulling out a water-logged or damaged passport is never a great feeling.</p>
+            
+            <p>While it is certainly <strong>nothing to panic over</strong>, it is also not something to take lightly. Leaving a damaged or lost passport unaddressed carries risks: it leaves you vulnerable to identity theft, and it can leave you hustling at the last minute during a travel emergency.</p>
+            
+            <h3>Understanding the Replacement Process</h3>
+            <p>Replacing a damaged passport is slightly different from a standard renewal. Under Jamaican law, the physical integrity of a travel document must be verified. If you attempt to log onto the PICA online portal to replace it, your application will likely hit a roadblock.</p>
+            
+            <div class="article-highlight">
+                <p>"A damaged passport requires physical intervention and a sworn explanation to ensure the damage was purely accidental."</p>
+            </div>
+            
+            <p><strong>The Solution is Simple:</strong> The process requires a formal Affidavit—sworn before a Justice of the Peace or Notary Public—explaining exactly how the damage occurred. Then, the damaged book itself must be physically surrendered to a PICA office in Jamaica.</p>
+            
+            <details class="doc-dropdown">
+                <summary>Learn More: See what an official Affidavit looks like</summary>
+                <div class="doc-preview">REPUBLIC OF <span class="fill-blank">[Insert Country of Residence]</span>
+PROVINCE/STATE OF <span class="fill-blank">[Insert State/Province]</span>
+
+<strong>AFFIDAVIT REGARDING DAMAGED JAMAICAN PASSPORT</strong>
+
+I, <span class="fill-blank">[CLIENT FULL LEGAL NAME]</span>, being duly sworn, make oath and say as follows:
+
+1. THAT my address is <span class="fill-blank">[Client's Full Overseas Residential Address]</span>.
+2. THAT I am the lawful holder of Jamaican Passport Number <span class="fill-blank">[Insert Number]</span>.
+3. THAT the aforementioned passport has been severely damaged and is no longer fit for travel. 
+4. THAT the damage occurred under the following circumstances: 
+   <span class="fill-blank">[EXPLANATION: e.g., "My passport was accidentally placed in a washing machine..."]</span>
+5. THAT the damage was entirely accidental and was not the result of fraudulent intent.
+6. THAT I am surrendering the damaged passport book to PICA.
+
+SIGNATURE OF DEPONENT: _________________________________________
+
+SWORN before me this _______ day of _______________, 20____.
+_________________________________________
+<strong>Signature of Notary Public</strong></div>
+            </details>
+
+            <p>If you live overseas, there is no need to book a flight just to handle this paperwork. At Docu-Hub, we provide you with the exact affidavit template to sign in your home country, and our team acts as your proxy to physically surrender the damaged book at PICA on your behalf.</p>
+        </div>
+    </div>
+</section>
+
+<!-- 3. THE FINAL CTA -->
+<section class="bottom-cta-section">
+    <div class="wrap">
+        <h2>Ready to proceed?</h2>
+        <p>Whether it is a standard renewal or a complex replacement, our team is ready to secure your documents.</p>
+        
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeZdgthrriuwiMPUiNhu5eQnAWjxEtM-Ti6sMXqvZ_U6NHkw/viewform" target="_blank" class="btn-massive">
+            Start Your Application <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <span class="pricing-note">Standard PICA Processing starts at $145 USD</span>
+    </div>
+</section>
+
+<!-- CLEAN, UNIFIED FOOTER SECTION -->
+<footer class="site-footer" id="contact" style="background: #111811; color: #fff; padding: clamp(8.0rem, 10vh, 12.0rem) 0 4.0rem; border-top: 0.1rem solid rgba(255,255,255,0.08);">
+    <div class="wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(25.0rem, 1fr)); gap: 6.4rem; margin-bottom: 6.4rem;">
+        <div>
+            <span style="font-family: var(--sans); font-size: 2.6rem; font-weight: 700; letter-spacing: 0.02em; display: block; margin-bottom: 1.6rem;">Docu-Hub <em style="color: var(--gold); font-style: italic; font-weight: 500;">Operations</em></span>
+            <p style="font-family: var(--sans); font-size: 1.5rem; color: rgba(255,255,255,0.7); line-height: 1.6; max-width: 35.0rem;">Providing highly secure, on-the-ground document processing, records retrieval, and administrative assistance for the Jamaican diaspora.</p>
+        </div>
+        
+        <div>
+            <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: 2.4rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase;">Quick Links</h4>
+            <ul style="list-style: none; display: grid; gap: 1.6rem; padding: 0;">
+                <li><a href="passports.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">PICA Passport Services</a></li>
+                <li><a href="vital-records.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">RGD Vital Records</a></li>
+                <li><a href="nis.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">NIS Tracking &amp; Claims</a></li>
+                <li><a href="about.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">About The Agency</a></li>
+            </ul>
+        </div>
+        
+        <div>
+            <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: 2.4rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase;">Direct Contact</h4>
+            <ul style="list-style: none; display: grid; gap: 1.6rem; padding: 0; margin-bottom: 2.4rem;">
+                <li>
+                    <a href="mailto:admin@dhubservices.com" style="display: inline-flex; align-items: center; gap: 1.0rem; color: #fff; font-size: 1.5rem; text-decoration: none; transition: color 0.3s;">
+                        <i class="fa-solid fa-envelope" style="color: var(--gold-lt);"></i> admin@dhubservices.com
+                    </a>
+                </li>
+                <li>
+                    <a href="https://wa.me/18760000000" target="_blank" style="display: inline-flex; align-items: center; gap: 1.0rem; color: #25D366; font-size: 1.5rem; font-weight: 600; text-decoration: none; transition: opacity 0.3s;">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 2.0rem;"></i> Chat on WhatsApp
+                    </a>
+                </li>
+            </ul>
+            <p style="color: rgba(255,255,255,0.8); font-size: 1.5rem;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 0.8rem;"></i> Linstead, St. Catherine, Jamaica</p>
+        </div>
+    </div>
+
+    <div class="wrap" style="display: flex; flex-direction: column; gap: 1.6rem; align-items: center; border-top: 0.1rem solid var(--border-glass); padding-top: 3.2rem; text-align: center;">
+        <div style="font-family: var(--sans); font-size: 1.3rem; color: rgba(255,255,255,0.5);">
+            <p style="margin-bottom: 0.6rem;">Registered with the Companies Office of Jamaica (COJ): #15602/2025 | OIC Data Controller Verified</p>
+            <p style="color: rgba(255,255,255,0.3); margin-bottom: 1.6rem;">&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
+            
+            <div style="display: flex; gap: 2.4rem; justify-content: center; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                <a href="privacy.html" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Privacy Policy</a>
+                <a href="terms.html" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Mobile Hamburger Toggle
+const hbg = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+hbg.addEventListener('click', () => { navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex'; });
+</script>
+</body>
+</html>
