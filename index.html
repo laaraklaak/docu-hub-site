@@ -7,7 +7,7 @@
 
     <!-- 2. Primary Page Title & Description -->
     <title>Docu-Hub Operations Services &mdash; Secure Document Assistance</title>
-    <meta name="description" content="Reliable, secure Jamaican document assistance. Confidential on-the-ground processing for passports, vital records, TRN applications, and vehicle renewals.">
+    <meta name="description" content="Reliable, secure Jamaican document assistance. Confidential on-the-ground processing for passports, vital records, NIS tracking, and vehicle renewals.">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
@@ -20,7 +20,7 @@
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Docu-Hub Operations Services &mdash; Secure Document Assistance">
-    <meta property="og:description" content="Expert on-the-ground representation for Jamaicans worldwide. Confidential processing for PICA passports, RGD records, and TRN applications.">
+    <meta property="og:description" content="Expert on-the-ground representation for Jamaicans worldwide. Confidential processing for PICA passports, RGD records, and NIS services.">
     <meta property="og:url" content="https://dhubservices.com/">
     <meta property="og:site_name" content="Docu-Hub Operations Services">
     <meta property="og:image" content="https://dhubservices.com/assets/concierge.webp">
@@ -34,7 +34,7 @@
       "url": "https://dhubservices.com/",
       "logo": "https://dhubservices.com/assets/apple-touch-icon.png",
       "image": "https://dhubservices.com/assets/concierge.webp",
-      "description": "On-the-ground document assistance in Jamaica handling PICA passport renewals, RGD birth/death certificates, and TAJ vehicle/TRN services.",
+      "description": "On-the-ground document assistance in Jamaica handling PICA passport renewals, RGD birth/death certificates, and TAJ vehicle renewals.",
       "identifier": "15602/2025",
       "address": {
         "@type": "PostalAddress",
@@ -86,8 +86,8 @@
         --nav-h:      7.5rem;
         --max-w:      115.0rem;
 
-        /* Section Padding - Expanded for Airy Feel */
-        --section-pad: 12.0rem 0;
+        /* Section Padding - Expanded for Airy Feel (Minimum 100px on mobile) */
+        --section-pad: clamp(10.0rem, 12vh, 14.0rem) 0;
 
         /* Borders & Shadows (Softened) */
         --border-light: rgba(0, 0, 0, 0.06);
@@ -112,9 +112,6 @@
     @keyframes fadeIn { from { opacity: 0; transform: translateY(1.0rem); } to { opacity: 1; transform: translateY(0); } }
 
     .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 2.4rem; }
-
-    .desktop-only { display: none; }
-    .mobile-only { display: block; }
 
     /* NAVIGATION */
     .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.95); backdrop-filter: blur(1.2rem); border-bottom: 0.1rem solid var(--border-glass); transition: 0.3s; }
@@ -202,11 +199,18 @@
     .section-header { text-align: center; margin-bottom: clamp(6.4rem, 8vh, 8.0rem); }
     .section-header h2 { font-family: var(--sans); font-size: clamp(2.8rem, 4vw, 3.8rem); font-weight: 700; color: var(--brand-drk); letter-spacing: -0.01em; }
     
-    /* 2x2 CORE SERVICES GRID (Scotiabank Style) */
+    /* PROCESS GRID (Now fully responsive for mobile) */
+    .process-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 5.6rem; /* Wide gap on mobile so steps are distinct */
+    }
+
+    /* 2x2 CORE SERVICES GRID */
     .cards-grid-2x2 { 
         display: grid; 
         grid-template-columns: 1fr; 
-        gap: clamp(4.0rem, 6vw, 6.4rem); 
+        gap: clamp(5.6rem, 8vw, 8.0rem); /* Substantially increased gap on mobile */
         width: 100%; 
         max-width: 105.0rem; 
         margin: 0 auto; 
@@ -231,7 +235,8 @@
 
     .service-card-body { 
         display: flex; flex-direction: column; flex-grow: 1;
-        padding: 4.0rem 3.6rem; 
+        /* Balanced padding to give mobile breathing room without squishing text */
+        padding: clamp(3.2rem, 6vw, 4.0rem) clamp(2.4rem, 5vw, 3.6rem); 
     }
     
     .card-badge { font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 1.2rem; }
@@ -241,7 +246,7 @@
     
     .service-pricing-tag {
         font-family: var(--sans); font-size: 1.8rem; font-weight: 700; color: var(--brand-drk);
-        margin-bottom: 3.2rem; display: flex; align-items: center; gap: 1.0rem;
+        margin-bottom: 3.2rem; display: flex; align-items: center; gap: 1.0rem; flex-wrap: wrap;
     }
     .service-pricing-tag span { font-size: 1.3rem; font-weight: 600; color: var(--brand-mid); text-transform: uppercase; letter-spacing: 0.05em; background: rgba(193, 154, 91, 0.1); padding: 0.4rem 0.8rem; border-radius: 0.4rem; }
 
@@ -257,13 +262,11 @@
     .faq-item[open] summary::after { content: '\2212'; color: var(--brand-drk); }
     .faq-content-blocked { padding: 0 2.4rem 2.8rem 2.4rem; font-family: var(--sans); font-size: 1.6rem; color: var(--text-mid); line-height: 1.7; animation: fadeIn 0.3s ease; }
 
-    /* PROCESS DESKTOP GRID */
+    /* DESKTOP QUERIES */
     @media (min-width: 900px) {
         .hamburger { display: none !important; } 
         .nav-links { display: flex !important; flex-direction: row; position: static; background: transparent; padding: 0; box-shadow: none; border: none; }
-        .desktop-only { display: block; }
-        .mobile-only { display: none; }
-        .process-desktop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6.4rem; }
+        .process-grid { grid-template-columns: repeat(3, 1fr); gap: 6.4rem; }
         .cards-grid-2x2 { grid-template-columns: repeat(2, 1fr); }
     }
     </style>
@@ -308,7 +311,8 @@
             <p style="font-family: var(--sans); font-size: 1.7rem; color: var(--text-mid); margin-top: 1.6rem;">A streamlined, confidential 3-step workflow designed to protect your documents from submission to final delivery.</p>
         </div>
         
-        <div class="desktop-only process-desktop-grid enter d2">
+        <!-- Process Grid (Now Responsive - Stacks on Mobile) -->
+        <div class="process-grid enter d2">
             <div style="border-top: 0.2rem solid var(--gold); padding-top: 3.2rem;">
                 <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1.2rem;">Step 01</span>
                 <h3 style="font-family: var(--sans); font-size: 2.2rem; font-weight: 700; color: var(--brand-drk); margin-bottom: 1.2rem;">Digital Intake</h3>
@@ -317,7 +321,7 @@
             <div style="border-top: 0.2rem solid var(--brand-drk); padding-top: 3.2rem;">
                 <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1.2rem;">Step 02</span>
                 <h3 style="font-family: var(--sans); font-size: 2.2rem; font-weight: 700; color: var(--brand-drk); margin-bottom: 1.2rem;">Agency Processing</h3>
-                <p style="font-family: var(--sans); font-size: 1.55rem; color: var(--text-mid); line-height: 1.6;">Our local team lodges your applications, stands in line, and tracks progress directly with PICA, TAJ, or RGD.</p>
+                <p style="font-family: var(--sans); font-size: 1.55rem; color: var(--text-mid); line-height: 1.6;">Our local team lodges your applications, stands in line, and tracks progress directly with PICA, TAJ, RGD, or NIS.</p>
             </div>
             <div style="border-top: 0.2rem solid var(--brand-drk); padding-top: 3.2rem;">
                 <span style="font-family: var(--sans); font-size: 1.2rem; color: var(--brand-drk); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1.2rem;">Step 03</span>
@@ -372,7 +376,6 @@
                 </div>
             </div>
 
-             <!-- UPDATED: STRICTLY NIS -->
             <div class="service-card">
                 <div class="card-img-header"><img src="assets/nis.png" loading="lazy" alt="National Insurance Scheme NIS Jamaica"></div>
                 <div class="service-card-body">
@@ -401,7 +404,7 @@
             <details class="faq-item">
                 <summary>I live overseas. Do I have to mail my physical original documents?</summary>
                 <div class="faq-content-blocked">
-                    <p>For most services (like TRN or standard RGD renewals), no. We only require certified high-resolution uploads via our secure client portal. If a specific agency demands a physical original (e.g., an expired passport for PICA), we will provide you with secure routing instructions to ensure its safety.</p>
+                    <p>For most services (like NIS tracking or standard RGD renewals), no. We only require certified high-resolution uploads via our secure client portal. If a specific agency demands a physical original (e.g., an expired passport for PICA), we will provide you with secure routing instructions to ensure its safety.</p>
                 </div>
             </details>
 
@@ -413,7 +416,7 @@
             </details>
 
             <details class="faq-item">
-                <summary>My situation is complex (e.g., lost passport or old TRN). Can you still help?</summary>
+                <summary>My situation is complex (e.g., lost passport or unregistered birth). Can you still help?</summary>
                 <div class="faq-content-blocked">
                     <p>Yes. While our homepage highlights our most common services, we regularly handle complex and non-standard administrative matters. Simply select the most relevant service and reach out to us for a custom assessment of your case.</p>
                 </div>
@@ -423,7 +426,7 @@
     </div>
 </section>
 
-<!-- FOOTER SECTION (Updated Contact Area & Registration Info) -->
+<!-- FOOTER SECTION -->
 <footer class="site-footer" id="contact" style="background: #111811; color: #fff; padding: clamp(8.0rem, 10vh, 12.0rem) 0 4.0rem; border-top: 0.1rem solid rgba(255,255,255,0.08);">
     <div class="wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(25.0rem, 1fr)); gap: 6.4rem; margin-bottom: 6.4rem;">
         <div>
@@ -453,7 +456,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="https://wa.me/18765612614" target="_blank" style="display: inline-flex; align-items: center; gap: 1.0rem; color: #25D366; font-size: 1.5rem; font-weight: 600; text-decoration: none; transition: opacity 0.3s;">
+                    <a href="https://wa.me/18760000000" target="_blank" style="display: inline-flex; align-items: center; gap: 1.0rem; color: #25D366; font-size: 1.5rem; font-weight: 600; text-decoration: none; transition: opacity 0.3s;">
                         <i class="fa-brands fa-whatsapp" style="font-size: 2.0rem;"></i> Chat on WhatsApp
                     </a>
                 </li>
@@ -462,7 +465,6 @@
         </div>
     </div>
 
-    <!-- UPDATED: Explicitly states Companies Office of Jamaica -->
     <div class="wrap" style="display: flex; flex-direction: column; gap: 1.6rem; align-items: center; border-top: 0.1rem solid var(--border-glass); padding-top: 3.2rem; text-align: center;">
         <div style="font-family: var(--sans); font-size: 1.3rem; color: rgba(255,255,255,0.5);">
             <p style="margin-bottom: 0.6rem;">Registered with the Companies Office of Jamaica (COJ): #15602/2025 | OIC Data Controller Verified</p>
