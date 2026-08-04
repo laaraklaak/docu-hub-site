@@ -1,15 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- 1. Character Encoding & Responsive Viewport -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us &mdash; Docu-Hub Jamaica</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+    <!-- 2. Primary Page Title & Description -->
+    <title>About The Agency &mdash; Docu-Hub Operations Services</title>
     <meta name="description" content="Learn about Docu-Hub's strict document security protocols, direct agency interfaces, and secure proxy operations based in Jamaica.">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
+    <!-- 3. Indexing & AI Search (GEO) Metadata -->
+    <link rel="canonical" href="https://dhubservices.com/about.html">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+    <!-- 4. Open Graph / Social & AI Link Previews -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="About The Agency &mdash; Docu-Hub Operations">
+    <meta property="og:description" content="A foundation built on financial-grade compliance. Learn why the diaspora trusts us with their sensitive documents.">
+    <meta property="og:url" content="https://dhubservices.com/about.html">
+    <meta property="og:site_name" content="Docu-Hub Operations Services">
+    <meta property="og:image" content="https://dhubservices.com/assets/concierge.webp">
+
+    <!-- 5. Structured Data (JSON-LD) for AI Search Engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Docu-Hub Operations Services",
+      "url": "https://dhubservices.com/",
+      "logo": "https://dhubservices.com/assets/apple-touch-icon.png",
+      "image": "https://dhubservices.com/assets/laura-profile.webp",
+      "description": "Elite proxy document assistance in Jamaica handling PICA passports, RGD certificates, and NIS claims for the global diaspora.",
+      "identifier": "15602/2025",
+      "founder": {
+        "@type": "Person",
+        "name": "Laura Clarke",
+        "jobTitle": "Managing Director"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Linstead",
+        "addressRegion": "St. Catherine",
+        "addressCountry": "JM"
+      }
+    }
+    </script>
+
+    <!-- 6. Google Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -17,162 +61,155 @@
        DESIGN TOKENS (Institutional Style)
      ═══════════════════════════════════════════ */
     :root {
-        --bg-light:   #F9F9F8; 
-        --ivory:      #FFFFFF;
+        --bg-light:   #EAECE9;
+        --ivory:      #FDFBF7;
         --brand-drk:  #1E2B1D; 
         --brand-mid:  #3A4F38;
         --gold:       #C19A5B; 
         --gold-lt:    #DAB87F;
         --text-dark:  #111410; 
-        --text-mid:   #4A4F48; 
-        --serif:      'Playfair Display', Georgia, serif; 
+        --text-mid:   #3f463e; 
         --sans:       'Jost', Arial, sans-serif; 
-        --nav-h:      75px;
-        --max-w:      1200px;
+        --nav-h:      7.5rem;
+        --section-pad: clamp(8.0rem, 10vh, 12.0rem) 0;
+        --border-light: rgba(0, 0, 0, 0.06);
+        --border-glass: rgba(255, 255, 255, 0.1);
+        --shadow-soft:  0 0.4rem 2.0rem rgba(0, 0, 0, 0.03);
+        --shadow-md:    0 0.8rem 2.4rem rgba(0, 0, 0, 0.05);
+        --shadow-nav:   0 0.4rem 2.0rem rgba(0, 0, 0, 0.20);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body { font-family: var(--sans); background: var(--bg-light); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+    html { scroll-behavior: smooth; font-size: 62.5%; }
+    body { font-family: var(--sans); font-size: 1.6rem; font-weight: 500; background: var(--bg-light); color: var(--text-dark); line-height: 1.65; overflow-x: hidden; }
     a { text-decoration: none; color: inherit; transition: 0.3s ease; }
     img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .wrap { max-width: 105.0rem; margin: 0 auto; padding: 0 2.4rem; }
 
     /* Animations */
-    .enter { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+    .enter { opacity: 0; transform: translateY(2.0rem); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
     .enter.in { opacity: 1; transform: none; }
-    .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; }
 
-    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
-
-    /* NAV */
-    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.98); border-bottom: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; position: relative; }
-    .nav-logo-name { font-family: var(--serif); font-size: 1.4rem; color: #fff; letter-spacing: 0.05em; display: block; z-index: 950; }
-    .nav-logo-name em { color: var(--gold-lt); font-style: normal; }
-    .nav-links { display: none; list-style: none; align-items: center; gap: 16px; }
-    .nav-links a { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 8px 16px; border-radius: 4px; }
-    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
-    .hamburger { display: flex; flex-direction: column; gap: 6px; background: none; border: none; padding: 5px; cursor: pointer; z-index: 950; }
-    .hamburger span { width: 24px; height: 2px; background: #fff; transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
+    /* NAVIGATION */
+    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.95); backdrop-filter: blur(1.2rem); border-bottom: 0.1rem solid var(--border-glass); transition: 0.3s; }
+    .nav-inner { max-width: 115.0rem; margin: 0 auto; padding: 0 2.4rem; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo-name { font-family: var(--sans); font-size: clamp(1.8rem, 2.2vw, 2.4rem); font-weight: 700; color: #fff; letter-spacing: 0.02em; display: block; }
+    .nav-logo-name em { color: var(--gold-lt); font-style: italic; font-weight: 500; }
+    .nav-links { display: none; list-style: none; align-items: center; gap: 2.4rem; }
+    .nav-links a { font-size: 1.3rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 0.8rem 1.6rem; border-radius: 0.4rem; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; background: rgba(255,255,255,0.1); }
+    .hamburger { display: flex; flex-direction: column; gap: 0.6rem; background: none; border: none; padding: 0.5rem; cursor: pointer; z-index: 950; }
+    .hamburger span { width: 2.4rem; height: 0.2rem; background: #fff; }
 
     @media (max-width: 899px) {
-        .nav-links { display: none; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: rgba(30, 43, 29, 0.98); backdrop-filter: blur(16px); padding: 32px 24px; gap: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; }
-        .site-nav.open .nav-links { display: flex; animation: fadeIn 0.3s ease-out forwards; }
-        .nav-links a { font-size: 0.9rem; padding: 12px; display: block; width: 100%; }
-        .site-nav.open .hamburger span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .nav-links { display: none; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: rgba(30, 43, 29, 0.98); backdrop-filter: blur(1.6rem); padding: 3.2rem 2.4rem; gap: 1.6rem; box-shadow: var(--shadow-md); text-align: center; }
+        .site-nav.open .nav-links { display: flex; }
+        .nav-links a { font-size: 1.4rem; padding: 1.2rem; display: block; width: 100%; }
+        .site-nav.open .hamburger span:nth-child(1) { transform: translateY(0.8rem) rotate(45deg); }
         .site-nav.open .hamburger span:nth-child(2) { opacity: 0; }
-        .site-nav.open .hamburger span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        .site-nav.open .hamburger span:nth-child(3) { transform: translateY(-0.8rem) rotate(-45deg); }
     }
 
-    /* INSTITUTIONAL HEADER */
-    .about-header { padding: calc(var(--nav-h) + 60px) 0 60px; background: var(--brand-drk); color: #fff; text-align: center; }
-    .about-header h1 { font-family: var(--serif); font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 400; margin-bottom: 16px; line-height: 1.1; }
-    .about-header p { font-family: var(--sans); font-size: 1.1rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase; }
+    /* DEDICATED HERO */
+    .service-hero { padding-top: calc(var(--nav-h) + 6.4rem); padding-bottom: 6.4rem; background: var(--brand-drk); color: #fff; text-align: center; border-bottom: 0.4rem solid var(--gold); }
+    .service-tag { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold-lt); font-weight: 700; display: block; margin-bottom: 1.6rem; }
+    .service-hero h1 { font-size: clamp(3.2rem, 5vw, 4.8rem); font-weight: 700; margin-bottom: 1.6rem; letter-spacing: -0.01em; }
+    .service-hero p { font-size: clamp(1.6rem, 2vw, 1.8rem); color: rgba(255,255,255,0.85); max-width: 70.0rem; margin: 0 auto; line-height: 1.7; }
 
-    /* MISSION & LEADERSHIP SECTION */
-    .bio-section { padding: 100px 0; background: var(--ivory); }
-    .bio-text h2 { font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk); margin-bottom: 24px; line-height: 1.2; }
-    .bio-text p { font-family: var(--sans); font-size: 1.05rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 20px; }
+    /* BIO SECTION */
+    .bio-section { padding: var(--section-pad); background: var(--ivory); }
+    .premium-bio-grid { display: flex; flex-direction: column; gap: 4.8rem; width: 100%; align-items: center; }
     
-    .btn-outline { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: transparent; color: var(--brand-drk); border: 1px solid var(--brand-drk); border-radius: 4px; font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; transition: 0.3s; margin-top: 16px; }
-    .btn-outline:hover { background: var(--brand-drk); color: #fff; }
+    .bio-img { width: 100%; max-width: 35.0rem; position: relative; border-radius: 0.8rem; overflow: hidden; box-shadow: var(--shadow-md); background: var(--brand-drk); }
+    .bio-img img { width: 100%; height: auto; display: block; aspect-ratio: 4/5; object-fit: cover; opacity: 0.95; }
+    .bio-img-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(30, 43, 29, 0.95), transparent); padding: 4.0rem 2.4rem 2.4rem; }
+    .bio-name { font-size: 2.2rem; font-weight: 700; color: #fff; display: block; letter-spacing: -0.01em; line-height: 1.2; }
+    .bio-title { font-size: 1.2rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; }
 
-    /* OPERATIONAL PILLARS */
-    .pillars-section { padding: 100px 0; background: var(--bg-light); }
-    .pillars-grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 48px; }
-    .pillar-card { background: #fff; padding: 40px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
-    .pillar-card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 24px; display: block; }
-    .pillar-card h3 { font-family: var(--serif); font-size: 1.4rem; color: var(--brand-drk); margin-bottom: 12px; }
-    .pillar-card p { font-family: var(--sans); font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; }
+    .bio-text { display: flex; flex-direction: column; justify-content: center; max-width: 65.0rem; }
+    .bio-text h2 { font-size: clamp(2.6rem, 4vw, 3.4rem); color: var(--brand-drk); font-weight: 700; margin-bottom: 2.4rem; line-height: 1.2; letter-spacing: -0.01em; }
+    .bio-text p { font-size: 1.6rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 2.0rem; }
+    .compliance-quote { border-left: 0.4rem solid var(--gold); padding: 1.6rem 2.4rem; background: rgba(193, 154, 91, 0.05); border-radius: 0 0.8rem 0.8rem 0; font-style: italic; color: var(--brand-drk); font-weight: 500; margin: 3.2rem 0; }
+    
+    .btn-ghost-dark { display: inline-flex; align-items: center; justify-content: center; gap: 0.8rem; padding: 1.4rem 2.8rem; background: transparent; color: var(--brand-drk); border: 2px solid var(--brand-drk); border-radius: 0.4rem; font-size: 1.3rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; width: max-content; }
+    .btn-ghost-dark:hover { background: var(--brand-drk); color: #fff; }
 
-    /* FOOTER */
-    .site-footer { background: #111; color: #fff; padding: 60px 0 30px; }
-    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 30px; }
-    .f-logo { font-family: var(--serif); font-size: 1.5rem; color: #fff; margin-bottom: 16px; display: block; letter-spacing: 0.05em; }
-    .f-logo em { color: var(--gold); font-style: normal; }
+    /* PILLARS SECTION */
+    .pillars-section { padding: var(--section-pad); background: var(--bg-light); border-top: 0.1rem solid var(--border-light); }
+    .pillars-header { text-align: center; margin-bottom: 4.8rem; max-width: 65.0rem; margin-left: auto; margin-right: auto; }
+    .pillars-header h2 { font-size: clamp(2.8rem, 4vw, 3.6rem); color: var(--brand-drk); font-weight: 700; letter-spacing: -0.01em; margin-bottom: 1.2rem; }
+    .pillars-header p { font-size: 1.7rem; color: var(--text-mid); }
 
-    /* WIDESCREEN DESKTOP OVERRIDE GRID */
-    @media (min-width: 900px) {
+    .pillars-grid-2x2 { display: grid; grid-template-columns: 1fr; gap: 3.2rem; }
+    .pillar-card { background: #fff; padding: 4.0rem; border-radius: 0.8rem; border: 0.1rem solid var(--border-light); box-shadow: var(--shadow-md); transition: 0.3s; border-top: 0.4rem solid var(--gold); }
+    .pillar-card:hover { transform: translateY(-0.3rem); box-shadow: var(--shadow-nav); }
+    .pillar-card i { font-size: 2.8rem; color: var(--gold); margin-bottom: 2.4rem; display: block; }
+    .pillar-card h3 { font-size: 2.0rem; font-weight: 700; color: var(--brand-drk); margin-bottom: 1.2rem; }
+    .pillar-card p { font-size: 1.55rem; color: var(--text-mid); line-height: 1.65; }
+
+    @media (min-width: 900px) { 
         .hamburger { display: none !important; } 
-        .nav-links { display: flex !important; flex-direction: row; position: static; background: transparent; padding: 0; box-shadow: none; border: none; }
-        .nav-links a { font-size: 0.75rem; padding: 8px 16px; }
-
-        .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; max-width: var(--max-w); margin: 0 auto; }
-        .pillars-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; } /* Perfect 2x2 Layout */
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; }
+        .nav-links { display: flex !important; } 
+        .premium-bio-grid { flex-direction: row; align-items: center; justify-content: space-between; gap: 6.4rem; }
+        .pillars-grid-2x2 { grid-template-columns: 1fr 1fr; gap: 4.8rem; }
     }
     </style>
 </head>
 <body>
 
-<!-- SYNCED NAVIGATION -->
+<!-- NAVIGATION -->
 <nav class="site-nav" id="sitenav">
     <div class="nav-inner">
-        <a href="index.html" class="nav-logo-name">Docu-Hub <em>Jamaica</em></a>
+        <a href="index.html" class="nav-logo-name">Docu-Hub <em>Operations</em></a>
         <ul class="nav-links">
-            <li><a href="services.html">Services</a></li>
-            <li><a href="about.html" style="color: var(--gold-lt);">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="passport.html">Passports</a></li>
+            <li><a href="vital.html">Vital Records</a></li>
+            <li><a href="nis.html">NIS Services</a></li>
+            <li><a href="about.html" class="active" style="color: var(--gold-lt);">About Us</a></li>
         </ul>
         <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
     </div>
 </nav>
 
-<header class="about-header">
+<!-- DEDICATED HERO -->
+<section class="service-hero">
     <div class="wrap">
-        <h1>Operational Governance</h1>
-        <p>A Foundation Built on Financial-Grade Compliance</p>
+        <span class="service-tag">Operational Governance</span>
+        <h1>About The Agency</h1>
+        <p>A Foundation Built on Financial-Grade Compliance &amp; Security.</p>
     </div>
-</header>
+</section>
 
 <!-- MISSION & LEADERSHIP SECTION -->
 <section class="bio-section">
-    <div class="wrap" style="max-width: var(--max-w); margin: 0 auto; padding: 0 24px;">
-        
-        <style>
-            .premium-bio-grid { display: flex; flex-direction: column; gap: 40px; width: 100%; }
-            @media (min-width: 900px) {
-                .premium-bio-grid {
-                    display: grid !important;
-                    grid-template-columns: 350px 1fr !important;
-                    gap: 64px !important;
-                    align-items: start !important;
-                }
-            }
-        </style>
-
+    <div class="wrap">
         <div class="premium-bio-grid">
             
-            <div class="bio-img enter d1" style="width: 100%; max-width: 350px; margin: 0 auto;">
-                <div style="position: relative; border-radius: 8px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.1); background: var(--bg-light);">
-                    <!-- PROFILE IMAGE -->
-                    <img src="assets/laura-profile.webp" alt="Laura Clarke - Managing Director" style="width: 100%; height: auto; display: block; aspect-ratio: 4/5; object-fit: cover;">
-                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(30, 43, 29, 0.95), transparent); padding: 40px 24px 24px;">
-                        <span style="font-family: var(--sans); font-weight: 600; font-size: 1.2rem; display: block; color: #fff;">Laura Clarke</span>
-                        <span style="font-family: var(--sans); font-size: 0.85rem; color: var(--gold-lt); letter-spacing: 0.08em; text-transform: uppercase;">Managing Director</span>
-                    </div>
+            <div class="bio-img enter d1">
+                <img src="assets/laura-profile.webp" alt="Laura Clarke - Managing Director">
+                <div class="bio-img-overlay">
+                    <span class="bio-name">Laura Clarke</span>
+                    <span class="bio-title">Managing Director</span>
                 </div>
             </div>
             
-            <div class="bio-text enter d2" style="display: flex; flex-direction: column; justify-content: center;">
+            <div class="bio-text enter d2">
                 <h2>Serious Business Requires Serious Meticulousness</h2>
-                <p>Navigating public sector bureaucracy from overseas shouldn't feel like a gamble. When digital government portals stall, policies shift, or strict protocols require original records, the diaspora is often left completely in the dark, relying on informal proxy runners.</p>
+                <p>Navigating public sector bureaucracy from overseas shouldn't feel like a gamble. When digital government portals stall, policies shift, or strict protocols require original records, the diaspora is often left completely in the dark, forced to rely on informal proxy runners.</p>
                 
-                <p>Docu-Hub Operations Services (Registered Business # 15602/2025) was established to completely eliminate that uncertainty. Leveraging 14 years of strict corporate banking experience at National Commercial Bank (NCB), Managing Director Laura Clarke built this proxy service on the absolute pillars of compliance, accuracy, and rigorous protocol.</p>
+                <p>Docu-Hub Operations Services was established to completely eliminate that uncertainty. Leveraging 14 years of strict corporate banking experience at National Commercial Bank (NCB), Managing Director Laura Clarke built this proxy service on the absolute pillars of compliance, accuracy, and rigorous protocol.</p>
                 
                 <p>In the banking sector, there is no room for guesswork. A single misplaced signature or overlooked verification means a failed transaction. We apply that exact, zero-tolerance standard to your vital records and legal identities. We keep our eyes open, we adhere strictly to government regulations, and we focus obsessively on getting it right the first time.</p>
                 
-                <p style="border-left: 2px solid var(--gold); padding-left: 16px; font-style: italic; color: var(--brand-mid); margin-bottom: 20px;">
-                    Our commitment to security is structural. Docu-Hub operates in explicit compliance with the Jamaican Data Protection Act. Our data controller profile was officially verified within the Office of the Information Commissioner (OIC) system on December 5, 2025. 
-                </p>
-                
-                <div style="margin-top: 12px;">
-                    <a href="https://www.linkedin.com/in/docuhubservices/?skipRedirect=true#:~:text=www.linkedin.com/in/docuhubservices" target="_blank" class="btn-outline" style="margin-top: 0;">
-                        <i class="fa-brands fa-linkedin-in"></i> Verify Professional Profile
-                    </a>
+                <div class="compliance-quote">
+                    <p>Our commitment to security is structural. Docu-Hub operates in explicit compliance with the Jamaican Data Protection Act. Our data controller profile was officially verified within the Office of the Information Commissioner (OIC) system on December 5, 2025.</p>
                 </div>
+                
+                <a href="https://www.linkedin.com/in/docuhubservices/?skipRedirect=true#:~:text=www.linkedin.com/in/docuhubservices" target="_blank" rel="noopener" class="btn-ghost-dark">
+                    <i class="fa-brands fa-linkedin-in"></i> Verify Professional Profile
+                </a>
             </div>
 
         </div>
@@ -182,12 +219,13 @@
 <!-- MINDSET & PROTOCOL PILLARS -->
 <section class="pillars-section">
     <div class="wrap">
-        <div style="text-align: center; max-width: 600px; margin: 0 auto 32px;">
-            <h2 style="font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk);">Our Operational Mindset</h2>
-            <p style="font-family: var(--sans); color: var(--text-mid); margin-top: 12px;">Why serious international clients trust us to handle their identities.</p>
+        
+        <div class="pillars-header enter d1">
+            <h2>Our Operational Mindset</h2>
+            <p>Why serious international clients trust us to handle their identities.</p>
         </div>
         
-        <div class="pillars-grid enter d1">
+        <div class="pillars-grid-2x2 enter d2">
             
             <div class="pillar-card">
                 <i class="fa-solid fa-scale-balanced"></i>
@@ -210,61 +248,71 @@
             <div class="pillar-card">
                 <i class="fa-solid fa-handshake-angle"></i>
                 <h3>End-to-End Accountability</h3>
-                <p>Because we operate natively inside Jamaica, we bypass generic email loops. If an agency system fails or a complex lineage trace requires a manual ledger intervention, we step in on the ground to execute an immediate resolution. We own the process until the document is in your hands.</p>
+                <p>Because we operate natively inside Jamaica, we bypass generic email loops. If an agency system fails or a complex lineage trace requires a manual ledger intervention, we step in on the ground to execute an immediate resolution. We own the process until the document is securely in your hands.</p>
             </div>
 
         </div>
     </div>
 </section>
 
-<!-- SYNCED FOOTER WITH CONTACT ID -->
-<footer class="site-footer" id="contact">
-    <div class="wrap footer-grid">
+<!-- CLEAN, UNIFIED FOOTER SECTION -->
+<footer class="site-footer" id="contact" style="background: #111811; color: #fff; padding: clamp(8.0rem, 10vh, 12.0rem) 0 4.0rem; border-top: 0.1rem solid rgba(255,255,255,0.08);">
+    <div class="wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(25.0rem, 1fr)); gap: 6.4rem; margin-bottom: 6.4rem;">
         <div>
-            <span class="f-logo">Docu-Hub <em>Operations Services</em></span>
-            <p style="font-family: var(--sans); font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 300px;">Providing highly secure, on-the-ground document processing, records retrieval, and compliance for the Jamaican diaspora.</p>
+            <span style="font-family: var(--sans); font-size: 2.6rem; font-weight: 700; letter-spacing: 0.02em; display: block; margin-bottom: 1.6rem;">Docu-Hub <em style="color: var(--gold); font-style: italic; font-weight: 500;">Operations</em></span>
+            <p style="font-family: var(--sans); font-size: 1.5rem; color: rgba(255,255,255,0.7); line-height: 1.6; max-width: 35.0rem;">Providing highly secure, on-the-ground document processing, records retrieval, and administrative assistance for the Jamaican diaspora.</p>
         </div>
+        
         <div>
-            <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt); letter-spacing: 0.05em;">QUICK LINKS</h4>
-            <ul style="list-style: none; display: grid; gap: 8px;">
-                <li><a href="index.html#services" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Our Core Services</a></li>
-                <li><a href="index.html#faq-resources" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Portal Help & FAQs</a></li>
-                <li><a href="resource.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Checklists & Guides</a></li>
-                <li><a href="about.html" style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">About Docu-Hub</a></li>
+            <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: 2.4rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase;">Quick Links</h4>
+            <ul style="list-style: none; display: grid; gap: 1.6rem; padding: 0;">
+                <li><a href="passports.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">PICA Passport Services</a></li>
+                <li><a href="vital-records.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">RGD Vital Records</a></li>
+                <li><a href="nis.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">NIS Tracking &amp; Claims</a></li>
+                <li><a href="about.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">About The Agency</a></li>
             </ul>
         </div>
+        
         <div>
-            <h4 style="font-family: var(--sans); font-size: 0.8rem; margin-bottom: 16px; color: var(--gold-lt); letter-spacing: 0.05em;">SECURE CONTACT</h4>
-            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px;"><i class="fa-regular fa-calendar-check" style="color: var(--gold); margin-right: 8px;"></i> <a href="https://calendar.app.google/mCXiJ2GLF15mLMV48" target="_blank" rel="noopener">Book Consultation</a></p>
-            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px;"><i class="fa-regular fa-envelope" style="color: var(--gold); margin-right: 8px;"></i> <a href="mailto:admin@dhubservices.com">admin@dhubservices.com</a></p>
-            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 8px;"></i> Linstead, Jamaica</p>
+            <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: 2.4rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase;">Direct Contact</h4>
+            <ul style="list-style: none; display: grid; gap: 1.6rem; padding: 0; margin-bottom: 2.4rem;">
+                <li>
+                    <a href="mailto:admin@dhubservices.com" style="display: inline-flex; align-items: center; gap: 1.0rem; color: #fff; font-size: 1.5rem; text-decoration: none; transition: color 0.3s;">
+                        <i class="fa-solid fa-envelope" style="color: var(--gold-lt);"></i> admin@dochubservices.com
+                    </a>
+                </li>
+                <li>
+                    <a href="https://wa.me/18765612614" target="_blank" style="display: inline-flex; align-items: center; gap: 1.0rem; color: #25D366; font-size: 1.5rem; font-weight: 600; text-decoration: none; transition: opacity 0.3s;">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 2.0rem;"></i> Chat on WhatsApp
+                    </a>
+                </li>
+            </ul>
+            <p style="color: rgba(255,255,255,0.8); font-size: 1.5rem;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 0.8rem;"></i> Linstead, St. Catherine, Jamaica</p>
         </div>
     </div>
-    <div class="wrap" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; margin-top: 24px;">
-        <p style="font-family: var(--sans); font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-bottom: 4px;">Registered Jamaican Business Entity: # 15602/2025</p>
-        <p style="font-family: var(--sans); font-size: 0.75rem; color: var(--gold-lt); margin-bottom: 12px; letter-spacing: 0.03em;">OIC Data Controller Status: Application Initiated & Account Verified (Dec 2025)</p>
-        
-        <p style="font-family: var(--sans); font-size: 0.75rem; margin-bottom: 12px;">
-            <a href="privacy.html" style="color: rgba(255,255,255,0.5); text-decoration: none; margin-right: 16px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 2px; transition: 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Privacy Policy</a>
-            <a href="legal-notice.html" style="color: rgba(255,255,255,0.5); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 2px; transition: 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Terms & Legal Notice</a>
-        </p>
-        
-        <p style="font-family: var(--sans); font-size: 0.7rem; color: rgba(255,255,255,0.4);">&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
+
+    <div class="wrap" style="display: flex; flex-direction: column; gap: 1.6rem; align-items: center; border-top: 0.1rem solid var(--border-glass); padding-top: 3.2rem; text-align: center;">
+        <div style="font-family: var(--sans); font-size: 1.3rem; color: rgba(255,255,255,0.5);">
+            <p style="margin-bottom: 0.6rem;">Registered with the Companies Office of Jamaica (COJ): #15602/2025 | OIC Data Controller Verified</p>
+            <p style="color: rgba(255,255,255,0.3); margin-bottom: 1.6rem;">&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
+            
+            <div style="display: flex; gap: 2.4rem; justify-content: center; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                <a href="privacy.html" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Privacy Policy</a>
+                <a href="terms.html" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Terms of Service</a>
+            </div>
+        </div>
     </div>
 </footer>
 
 <script>
-// Fade-in effect observer
+// Intersection Observer for Smooth Scroll Animations
 const io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.05 });
 document.querySelectorAll('.enter').forEach(el => io.observe(el));
 
-// MOBILE NAV ACCORDION ENGINE
-const hbg = document.getElementById('hbg');
-const navBar = document.getElementById('sitenav');
-
-hbg.addEventListener('click', () => {
-    navBar.classList.toggle('open');
-});
+// Mobile Hamburger Toggle
+const hbg = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+hbg.addEventListener('click', () => { navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex'; });
 </script>
 </body>
 </html>
