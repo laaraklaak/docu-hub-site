@@ -79,8 +79,7 @@
         --sans:       'Jost', Arial, sans-serif; 
         --nav-h:      7.5rem;
         --max-w:      115.0rem;
-        /* Fluid padding adapts beautifully on mobile to preserve whitespace */
-        --section-pad: clamp(6.4rem, 10vh, 12.0rem) 0;
+        --section-pad: clamp(8.0rem, 10vh, 12.0rem) 0;
         --border-light: rgba(0, 0, 0, 0.06);
         --border-glass: rgba(255, 255, 255, 0.1);
         --shadow-soft:  0 0.4rem 2.0rem rgba(0, 0, 0, 0.03);
@@ -99,7 +98,7 @@
     .enter { opacity: 0; transform: translateY(2.0rem); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
     .enter.in { opacity: 1; transform: none; }
     .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(1.0rem); } to { opacity: 1; transform: translateY(0); } }
 
     .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 2.4rem; }
 
@@ -127,11 +126,11 @@
     }
 
     /* BUTTONS */
-    .btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 1.0rem; padding: 1.4rem 3.6rem; background: transparent; color: var(--gold-lt); border: 2px solid var(--gold-lt); border-radius: 0.4rem; font-size: 1.3rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
+    .btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 1.0rem; padding: 1.4rem 3.6rem; background: transparent; color: var(--gold-lt); border: 0.2rem solid var(--gold-lt); border-radius: 0.4rem; font-size: 1.3rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
     .btn-ghost:hover { background: var(--gold-lt); color: var(--brand-drk); box-shadow: var(--shadow-nav); }
 
-    .btn-ghost-dark { display: inline-flex; align-items: center; justify-content: center; gap: 0.8rem; width: 100%; padding: 1.4rem 2.4rem; background: transparent; color: var(--brand-drk); border: 2px solid var(--brand-drk); border-radius: 0.4rem; font-size: 1.3rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
-    .btn-ghost-dark:hover { background: var(--brand-drk); color: #fff; }
+    .btn-gold-solid { display: inline-flex; align-items: center; justify-content: center; gap: 1.0rem; padding: 1.4rem 3.2rem; background: var(--gold); color: var(--brand-drk); border-radius: 0.4rem; font-size: 1.3rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; transition: 0.3s; border: none; cursor: pointer; }
+    .btn-gold-solid:hover { background: var(--gold-lt); transform: translateY(-0.2rem); }
 
     /* HERO */
     .hero-bank { position: relative; height: 75vh; min-height: 55.0rem; display: flex; align-items: center; overflow: hidden; }
@@ -146,47 +145,58 @@
     .hero-desc { font-size: clamp(1.5rem, 2vw, 1.6rem); color: rgba(255,255,255,0.85); margin-bottom: 3.2rem; font-weight: 400; line-height: 1.7; }
 
     /* HEADERS */
-    .section-header { text-align: center; margin-bottom: clamp(4.0rem, 6vh, 6.4rem); }
+    .section-header { text-align: center; margin-bottom: clamp(4.8rem, 8vh, 6.4rem); }
     .section-header h2 { font-size: clamp(2.8rem, 4vw, 3.8rem); font-weight: 700; color: var(--brand-drk); letter-spacing: -0.01em; }
     
-    /* DROPDOWN STEPS */
-    .step-dropdown { background: #fff; border-radius: 0.8rem; box-shadow: var(--shadow-md); border-left: 0.4rem solid var(--brand-drk); overflow: hidden; transition: box-shadow 0.3s ease; margin-bottom: 2.4rem; }
+    /* HOW IT WORKS ACCORDION (Mobile Friendly Workflow) */
+    .process-accordion { max-width: 80.0rem; margin: 0 auto 3.2rem auto; display: flex; flex-direction: column; gap: 2.4rem; }
+    .step-dropdown { background: #fff; border-radius: 0.8rem; box-shadow: var(--shadow-md); overflow: hidden; transition: box-shadow 0.3s; border-left: 0.4rem solid var(--brand-drk); }
     .step-dropdown:hover { box-shadow: var(--shadow-deep); }
     .step-dropdown[open] { border-left-color: var(--gold); }
-    .step-dropdown summary { padding: 2.4rem; cursor: pointer; list-style: none; font-size: clamp(1.8rem, 2.5vw, 2.2rem); color: var(--brand-drk); font-weight: 700; display: flex; align-items: center; justify-content: space-between; letter-spacing: -0.01em; }
+    .step-dropdown summary { padding: 2.4rem 3.2rem; cursor: pointer; list-style: none; font-size: 1.8rem; font-weight: 700; color: var(--brand-drk); display: flex; align-items: center; justify-content: space-between; gap: 1.6rem; }
     .step-dropdown summary::-webkit-details-marker { display: none; }
-    .step-dropdown summary .title-wrap { display: flex; align-items: center; gap: 1.6rem; }
-    .step-dropdown summary .step-indicator { font-size: 1.2rem; font-family: var(--sans); color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
-    .step-dropdown summary::after { content: '\002B'; font-size: 2.4rem; color: var(--brand-drk); transition: transform 0.3s ease; }
-    .step-dropdown[open] summary::after { content: '\2212'; color: var(--gold); }
-    .step-dropdown p { padding: 0 2.4rem 3.2rem 2.4rem; font-size: 1.6rem; color: var(--text-mid); line-height: 1.7; animation: fadeIn 0.3s ease; }
+    .step-summary-inner { display: flex; align-items: center; gap: 1.6rem; }
+    .step-badge { background: var(--brand-drk); color: #fff; font-size: 1.3rem; font-weight: 700; width: 3.2rem; height: 3.2rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; flex-shrink: 0; transition: background 0.3s; }
+    .step-dropdown[open] .step-badge { background: var(--gold); }
+    .step-dropdown summary::after { content: '\002B'; font-size: 2.4rem; color: var(--gold); flex-shrink: 0; transition: transform 0.3s; }
+    .step-dropdown[open] summary::after { content: '\2212'; color: var(--brand-drk); }
+    .step-content { padding: 0 3.2rem 3.2rem calc(3.2rem + 1.6rem + 3.2rem); font-size: 1.6rem; color: var(--text-mid); line-height: 1.7; animation: fadeIn 0.3s ease; }
+    
+    @media (max-width: 600px) {
+        .step-dropdown summary { padding: 2.0rem; }
+        .step-content { padding: 0 2.0rem 2.4rem 2.0rem; }
+    }
+    
+    /* ═══════════════════════════════════════════
+       MOBILE-FIRST SPACIOUS SERVICE CARDS
+       Ensures each card demands full screen presence
+       with ample breathing room.
+     ═══════════════════════════════════════════ */
+    .cards-grid-3col { display: grid; grid-template-columns: 1fr; gap: 9.6rem; width: 100%; max-width: var(--max-w); margin: 0 auto; }
 
-    /* 3-COLUMN CORE SERVICES GRID */
-    .cards-grid-3col { display: grid; grid-template-columns: 1fr; gap: clamp(3.2rem, 4vw, 4.8rem); width: 100%; max-width: var(--max-w); margin: 0 auto; }
-
-    .service-card { background: #fff; border-radius: 0.8rem; overflow: hidden; box-shadow: var(--shadow-md); border-top: 0.4rem solid var(--gold); display: flex; flex-direction: column; transition: 0.3s ease; }
+    .service-card { background: #fff; border-radius: 1.2rem; overflow: hidden; box-shadow: var(--shadow-md); border-top: 0.6rem solid var(--gold); display: flex; flex-direction: column; transition: 0.3s ease; }
     .service-card:hover { transform: translateY(-0.3rem); box-shadow: var(--shadow-deep); }
     
-    .card-img-header { width: 100%; height: 24.0rem; position: relative; overflow: hidden; background: var(--brand-drk); }
+    .card-img-header { width: 100%; height: 28.0rem; position: relative; overflow: hidden; background: var(--brand-drk); }
     .card-img-header img { opacity: 0.95; transition: transform 0.6s ease; }
     .service-card:hover .card-img-header img { transform: scale(1.05); opacity: 1; }
 
-    .service-card-body { display: flex; flex-direction: column; flex-grow: 1; padding: 4.0rem 3.2rem; }
-    .card-badge { font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 1.2rem; }
-    .card-title { font-size: clamp(2.0rem, 2.5vw, 2.4rem); font-weight: 700; color: var(--brand-drk); line-height: 1.25; margin-bottom: 1.6rem; letter-spacing: -0.01em; }
-    .card-snippet { font-size: 1.6rem; color: var(--text-mid); line-height: 1.65; margin-bottom: 2.8rem; }
+    .service-card-body { display: flex; flex-direction: column; flex-grow: 1; padding: 4.8rem 3.2rem; }
+    .card-badge { font-size: 1.3rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 2.0rem; }
+    .card-title { font-size: clamp(2.4rem, 6vw, 2.8rem); font-weight: 700; color: var(--brand-drk); line-height: 1.25; margin-bottom: 2.4rem; letter-spacing: -0.01em; }
+    .card-snippet { font-size: 1.7rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 4.0rem; }
     
-    .service-pricing-tag { font-size: 1.6rem; font-weight: 700; color: var(--brand-drk); margin-bottom: 3.2rem; display: flex; align-items: center; gap: 1.0rem; }
-    .service-pricing-tag span { font-size: 1.2rem; font-weight: 600; color: var(--brand-mid); text-transform: uppercase; letter-spacing: 0.05em; background: rgba(193, 154, 91, 0.1); padding: 0.4rem 0.8rem; border-radius: 0.4rem; }
-    .service-card-body .btn-ghost-dark { margin-top: auto; }
+    .service-pricing-tag { font-size: 1.8rem; font-weight: 700; color: var(--brand-drk); margin-bottom: 4.8rem; display: flex; align-items: center; gap: 1.2rem; }
+    .service-pricing-tag span { font-size: 1.3rem; font-weight: 600; color: var(--brand-mid); text-transform: uppercase; letter-spacing: 0.05em; background: rgba(193, 154, 91, 0.1); padding: 0.6rem 1.0rem; border-radius: 0.4rem; }
+    
+    .btn-ghost-dark { display: inline-flex; align-items: center; justify-content: center; gap: 0.8rem; width: 100%; padding: 1.8rem 2.4rem; background: transparent; color: var(--brand-drk); border: 0.2rem solid var(--brand-drk); border-radius: 0.4rem; font-size: 1.4rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; margin-top: auto; }
+    .btn-ghost-dark:hover { background: var(--brand-drk); color: #fff; }
 
     /* CUSTOM CONSULTATION BANNER */
     .consultation-banner { background: var(--brand-drk); border-radius: 0.8rem; padding: 4.8rem; text-align: center; color: #fff; margin-top: 6.4rem; box-shadow: var(--shadow-md); position: relative; overflow: hidden; }
     .consultation-banner::before { content: ''; position: absolute; top: 0; left: 0; width: 0.4rem; height: 100%; background: var(--gold); }
     .consultation-banner h3 { font-size: 2.4rem; font-weight: 700; margin-bottom: 1.6rem; letter-spacing: -0.01em; }
     .consultation-banner p { font-size: 1.6rem; color: rgba(255,255,255,0.8); max-width: 65.0rem; margin: 0 auto 3.2rem; line-height: 1.6; }
-    .btn-gold-solid { display: inline-flex; align-items: center; gap: 1.0rem; padding: 1.4rem 3.2rem; background: var(--gold); color: var(--brand-drk); border-radius: 0.4rem; font-size: 1.3rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; transition: 0.3s; }
-    .btn-gold-solid:hover { background: var(--gold-lt); transform: translateY(-0.2rem); }
 
     /* FAQ ACCORDION */
     .faq-container { max-width: 90.0rem; margin: 0 auto; display: grid; gap: 2.0rem; }
@@ -198,23 +208,34 @@
     .faq-item[open] summary::after { content: '\2212'; color: var(--brand-drk); }
     .faq-content-blocked { padding: 0 2.4rem 2.8rem 2.4rem; font-size: 1.6rem; color: var(--text-mid); line-height: 1.7; animation: fadeIn 0.3s ease; }
 
+    /* DESKTOP OVERRIDES */
     @media (min-width: 900px) {
         .hamburger { display: none !important; } 
         .nav-links { display: flex !important; flex-direction: row; position: static; background: transparent; padding: 0; box-shadow: none; border: none; }
-        .cards-grid-3col { grid-template-columns: repeat(3, 1fr); }
+        
+        /* Revert cards to a tighter horizontal layout for desktop */
+        .cards-grid-3col { grid-template-columns: repeat(3, 1fr); gap: 4.8rem; }
+        .card-img-header { height: 24.0rem; }
+        .service-card-body { padding: 4.0rem 3.2rem; }
+        .card-badge { margin-bottom: 1.6rem; }
+        .card-title { margin-bottom: 1.6rem; font-size: 2.4rem; }
+        .card-snippet { margin-bottom: 3.2rem; font-size: 1.6rem; }
+        .service-pricing-tag { margin-bottom: 4.0rem; }
+        .btn-ghost-dark { padding: 1.4rem 2.4rem; font-size: 1.3rem; }
     }
     </style>
 </head>
 <body>
 
+<!-- NAVIGATION -->
 <nav class="site-nav" id="sitenav">
     <div class="nav-inner">
         <a href="#" class="nav-logo-name">Docu-Hub <em>Operations Services</em></a>
         <ul class="nav-links">
             <li><a href="#top">Home</a></li>
             <li><a href="#services">Services</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
         <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
     </div>
@@ -235,44 +256,50 @@
     </div>
 </section>
 
-<!-- SECURE PROCESS SECTION -->
+<!-- SECURE PROCESS SECTION (DROPDOWN) -->
 <section class="secure-process-section" id="process" style="padding: var(--section-pad); background: var(--ivory);">
     <div class="wrap">
         <div class="section-header enter d1" style="max-width: 75.0rem; margin-left: auto; margin-right: auto;">
             <h2>How Our Service Works</h2>
-            <p style="font-family: var(--sans); font-size: 1.7rem; color: var(--text-mid); margin-top: 1.6rem;">A streamlined, confidential 3-step workflow designed to protect your documents from submission to final delivery.</p>
+            <p style="font-family: var(--sans); font-size: 1.7rem; color: var(--text-mid); margin-top: 1.6rem;">A streamlined, confidential workflow designed to protect your documents from submission to final delivery.</p>
         </div>
         
-        <div class="process-accordion enter d2" style="max-width: 80.0rem; margin: 4.8rem auto 0;">
+        <div class="process-accordion enter d2">
             
             <details class="step-dropdown" open>
                 <summary>
-                    <div class="title-wrap">
-                        <span class="step-indicator">Step 01</span>
+                    <div class="step-summary-inner">
+                        <span class="step-badge">1</span>
                         Digital Intake
                     </div>
                 </summary>
-                <p>Initiate your request online. For strict agencies like the NIS, we professionally audit and prepare your forms before you print and sign.</p>
+                <div class="step-content">
+                    Initiate your request online. For strict agencies like the NIS or RGD, our local team will professionally audit and pre-fill your required forms before you ever have to print, sign, or visit a notary.
+                </div>
             </details>
-
+            
             <details class="step-dropdown">
                 <summary>
-                    <div class="title-wrap">
-                        <span class="step-indicator">Step 02</span>
+                    <div class="step-summary-inner">
+                        <span class="step-badge">2</span>
                         Agency Processing
                     </div>
                 </summary>
-                <p>Our local team lodges your applications, stands in line, and tracks progress directly with PICA, RGD, or the MLSS.</p>
+                <div class="step-content">
+                    Once all prerequisites are verified and received, our on-the-ground proxy agents physically lodge your applications, stand in the administrative lines, and track the progress directly with the government agency.
+                </div>
             </details>
-
+            
             <details class="step-dropdown">
                 <summary>
-                    <div class="title-wrap">
-                        <span class="step-indicator">Step 03</span>
+                    <div class="step-summary-inner">
+                        <span class="step-badge">3</span>
                         Secure Delivery
                     </div>
                 </summary>
-                <p>Final official records and passports are sealed and sent back to you globally via signature-required international courier.</p>
+                <div class="step-content">
+                    Upon successful issuance, your final official printed records (like renewed passports or certificates) are securely sealed and dispatched globally via a signature-required international courier.
+                </div>
             </details>
 
         </div>
@@ -332,7 +359,7 @@
         <div class="consultation-banner enter d3">
             <h3>Need Help With an Unlisted Request?</h3>
             <p>Not seeing the exact document service you need? We handle complex and unique administrative tasks in Jamaica on a case-by-case basis. Contact us to discuss your specific situation.</p>
-            <a href="mailto:admin@dochubservices.com?subject=Custom Consultation Inquiry" class="btn-gold-solid">Request a Private Consultation <i class="fa-solid fa-envelope" style="margin-left: 0.5rem;"></i></a>
+            <a href="mailto:admin@dochubservices.com?subject=Custom Consultation Inquiry" class="btn-gold-solid">Request a Private Consultation <i class="fa-solid fa-arrow-right" style="margin-left: 0.5rem;"></i></a>
         </div>
 
     </div>
@@ -374,7 +401,7 @@
 </section>
 
 <!-- CLEAN, UNIFIED FOOTER SECTION -->
-<footer class="site-footer" id="contact" style="background: #111811; color: #fff; padding: clamp(8.0rem, 10vh, 12.0rem) 0 4.0rem; border-top: 0.1rem solid rgba(255,255,255,0.08);">
+<footer class="site-footer" style="background: #111811; color: #fff; padding: clamp(8.0rem, 10vh, 12.0rem) 0 4.0rem; border-top: 0.1rem solid rgba(255,255,255,0.08);">
     <div class="wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(25.0rem, 1fr)); gap: 6.4rem; margin-bottom: 6.4rem;">
         <div>
             <span style="font-family: var(--sans); font-size: 2.6rem; font-weight: 700; letter-spacing: 0.02em; display: block; margin-bottom: 1.6rem;">Docu-Hub <em style="color: var(--gold); font-style: italic; font-weight: 500;">Operations</em></span>
