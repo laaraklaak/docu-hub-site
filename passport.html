@@ -23,12 +23,10 @@
         --text-mid:   #3f463e; 
         --sans:       'Jost', Arial, sans-serif; 
         --nav-h:      7.5rem;
-        --section-pad: clamp(8.0rem, 10vh, 12.0rem) 0;
-        --border-light: rgba(0, 0, 0, 0.06);
+        --border-light: rgba(0, 0, 0, 0.08);
         --border-glass: rgba(255, 255, 255, 0.1);
         --shadow-soft:  0 0.4rem 2.0rem rgba(0, 0, 0, 0.03);
-        --shadow-md:    0 0.8rem 2.4rem rgba(0, 0, 0, 0.05);
-        --shadow-nav:   0 0.4rem 2.0rem rgba(0, 0, 0, 0.20);
+        --shadow-md:    0 0.8rem 2.4rem rgba(0, 0, 0, 0.06);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -55,69 +53,69 @@
     .service-hero h1 { font-size: clamp(3.2rem, 5vw, 4.8rem); font-weight: 700; margin-bottom: 1.6rem; letter-spacing: -0.01em; }
     .service-hero p { font-size: clamp(1.6rem, 2vw, 1.8rem); color: rgba(255,255,255,0.85); max-width: 70.0rem; margin: 0 auto; line-height: 1.7; }
 
-    /* TRIAGE / PATH SECTION (CHECKLISTS) */
+    /* TRIAGE / PATH SECTION (ACCORDIONS) */
     .path-section { padding: 8.0rem 0 4.0rem; background: var(--ivory); }
     .path-header { text-align: center; margin-bottom: 4.8rem; max-width: 75.0rem; margin-left: auto; margin-right: auto; }
     .path-header h2 { font-size: clamp(2.8rem, 4vw, 3.6rem); color: var(--brand-drk); font-weight: 700; letter-spacing: -0.01em; margin-bottom: 1.6rem; }
     
-    .details-grid-2col { display: grid; grid-template-columns: 1fr; gap: 3.2rem; margin-bottom: 3.2rem; }
+    .accordion-container { max-width: 85.0rem; margin: 0 auto 4.8rem; }
     
-    .detail-box { background: #fff; border: 0.1rem solid var(--border-light); border-radius: 0.8rem; padding: 4.0rem 3.6rem; box-shadow: var(--shadow-md); display: flex; flex-direction: column; }
-    .detail-box.accent-box { border-top: 0.4rem solid var(--brand-mid); }
-    .detail-box.gold-box { border-top: 0.4rem solid var(--gold); }
+    .path-accordion { background: #fff; border: 0.1rem solid var(--border-light); border-radius: 0.8rem; margin-bottom: 1.6rem; box-shadow: var(--shadow-soft); overflow: hidden; transition: 0.3s; }
+    .path-accordion summary { padding: 2.4rem 3.2rem; font-size: 1.8rem; font-weight: 700; color: var(--brand-drk); cursor: pointer; display: flex; align-items: center; justify-content: space-between; list-style: none; user-select: none; }
+    .path-accordion summary::-webkit-details-marker { display: none; }
+    .summary-content { display: flex; align-items: center; gap: 1.6rem; }
+    .summary-content i { font-size: 2.2rem; color: var(--brand-mid); width: 2.4rem; text-align: center; }
+    .path-accordion summary::after { content: '\002B'; font-size: 2.4rem; color: var(--gold); transition: transform 0.3s ease; }
+    .path-accordion[open] summary::after { content: '\2212'; transform: rotate(180deg); color: var(--brand-drk); }
+    .path-accordion[open] summary { background: var(--bg-light); border-bottom: 0.1rem solid var(--border-light); }
     
-    .box-title { font-size: 2.2rem; font-weight: 700; color: var(--brand-drk); margin-bottom: 2.4rem; display: flex; align-items: center; gap: 1.2rem; border-bottom: 0.1rem solid var(--border-light); padding-bottom: 1.6rem; }
-    .box-title i { color: var(--gold); font-size: 2.0rem; }
-    .accent-box .box-title i { color: var(--brand-mid); }
-    
-    .check-list { list-style: none; display: grid; gap: 1.6rem; margin-top: auto; }
+    .accordion-body { padding: 3.2rem; border-top: 0.4rem solid var(--gold); }
+    .path-accordion:nth-child(even) .accordion-body { border-top-color: var(--brand-mid); }
+
+    .check-list { list-style: none; display: grid; gap: 1.6rem; }
     .check-list li { font-size: 1.6rem; color: var(--text-mid); line-height: 1.65; display: grid; grid-template-columns: 2.0rem 1fr; gap: 1.2rem; align-items: start; }
     .check-list li i { color: var(--brand-mid); font-size: 1.6rem; margin-top: 0.4rem; }
     .check-list li i.fa-xmark { color: #d32f2f; }
     .check-list li i.fa-circle-exclamation, .check-list li i.fa-triangle-exclamation { color: var(--gold); }
 
     /* MANDATORY DOCS FULL WIDTH */
-    .mandatory-docs { background: #fff; border: 0.1rem solid var(--border-light); border-radius: 0.8rem; padding: 4.0rem 3.6rem; box-shadow: var(--shadow-md); margin-bottom: 4.8rem; }
-    .mandatory-docs .box-title { justify-content: center; border-bottom: none; padding-bottom: 0; margin-bottom: 3.2rem; }
+    .mandatory-docs { max-width: 85.0rem; margin: 0 auto 4.8rem; background: #fff; border: 0.1rem solid var(--border-light); border-radius: 0.8rem; padding: 4.0rem 3.6rem; box-shadow: var(--shadow-md); }
+    .box-title { font-size: 2.2rem; font-weight: 700; color: var(--brand-drk); display: flex; align-items: center; justify-content: center; gap: 1.2rem; margin-bottom: 3.2rem; }
+    .box-title i { color: var(--brand-mid); font-size: 2.4rem; }
     .docs-grid { display: grid; grid-template-columns: 1fr; gap: 2.4rem; }
     .doc-item { background: var(--bg-light); padding: 2.4rem; border-radius: 0.4rem; display: flex; gap: 1.6rem; align-items: flex-start; }
     .doc-item i { font-size: 2.4rem; color: var(--brand-mid); }
     .doc-item h4 { font-size: 1.8rem; color: var(--brand-drk); margin-bottom: 0.4rem; }
     .doc-item p { font-size: 1.5rem; color: var(--text-mid); line-height: 1.6; }
 
-    /* MASSIVE CTA (MOVED UP) */
+    /* MASSIVE CTA */
     .bottom-cta-section { padding: 8.0rem 0; background: var(--brand-drk); color: #fff; text-align: center; }
     .bottom-cta-section h2 { font-size: clamp(3.0rem, 4vw, 4.0rem); margin-bottom: 1.6rem; color: #fff; }
     .bottom-cta-section p { font-size: 1.8rem; color: rgba(255,255,255,0.8); max-width: 60.0rem; margin: 0 auto 4.0rem; }
     .btn-massive { display: inline-flex; align-items: center; justify-content: center; gap: 1.2rem; padding: 2.0rem 4.8rem; background: var(--gold); color: var(--brand-drk); border-radius: 0.6rem; font-size: 1.5rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; box-shadow: 0 0.8rem 2.4rem rgba(0,0,0,0.2); }
     .btn-massive:hover { background: var(--gold-lt); transform: translateY(-0.3rem); }
-    .pricing-note { display: block; margin-top: 2.4rem; font-size: 1.4rem; color: rgba(255,255,255,0.6); }
 
-    /* EXPLORATORY / EDUCATIONAL SECTION (MOVED DOWN) */
-    .education-section { padding: 8.0rem 0; background: var(--bg-light); border-top: 0.1rem solid var(--border-light); }
-    .edu-header { text-align: center; margin-bottom: 4.8rem; }
-    .edu-header h2 { font-size: clamp(2.8rem, 4vw, 3.6rem); color: var(--brand-drk); font-weight: 700; letter-spacing: -0.01em; }
-    .edu-container { max-width: 80.0rem; margin: 0 auto; background: #fff; padding: clamp(3.2rem, 5vw, 6.4rem); border-radius: 0.8rem; box-shadow: var(--shadow-md); border-left: 0.4rem solid var(--gold); }
+    /* INSIGHTS & BLOGS GRID */
+    .insights-section { padding: 8.0rem 0; background: var(--bg-light); border-top: 0.1rem solid var(--border-light); }
+    .insights-header { text-align: center; margin-bottom: 4.8rem; }
+    .insights-header h2 { font-size: clamp(2.8rem, 4vw, 3.6rem); color: var(--brand-drk); font-weight: 700; letter-spacing: -0.01em; }
     
-    .edu-container h3 { font-size: 2.2rem; color: var(--brand-drk); margin-bottom: 1.6rem; }
-    .edu-container p { font-size: 1.7rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 2.4rem; }
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(30.0rem, 1fr)); gap: 3.2rem; }
     
-    .article-highlight { background: rgba(193, 154, 91, 0.1); border-left: 0.4rem solid var(--gold); padding: 2.4rem; margin: 3.2rem 0; border-radius: 0 0.8rem 0.8rem 0; }
-    .article-highlight p { margin-bottom: 0; font-size: 1.6rem; font-style: italic; color: var(--brand-drk); }
+    .blog-card { background: #fff; border-radius: 0.8rem; overflow: hidden; border: 0.1rem solid var(--border-light); box-shadow: var(--shadow-soft); display: flex; flex-direction: column; transition: 0.3s; }
+    .blog-card:hover { transform: translateY(-0.5rem); box-shadow: var(--shadow-md); border-color: var(--gold); }
+    
+    .blog-img-placeholder { height: 20.0rem; background: var(--brand-drk); display: flex; align-items: center; justify-content: center; border-bottom: 0.4rem solid var(--gold); }
+    .blog-img-placeholder i { font-size: 4.8rem; color: rgba(255,255,255,0.2); }
+    
+    .blog-body { padding: 3.2rem 2.4rem; display: flex; flex-direction: column; flex-grow: 1; }
+    .blog-tag-sm { font-size: 1.2rem; color: var(--brand-mid); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 1.2rem; }
+    .blog-body h3 { font-size: 2.0rem; font-weight: 700; color: var(--brand-drk); margin-bottom: 1.6rem; line-height: 1.3; }
+    .blog-body p { font-size: 1.5rem; color: var(--text-mid); margin-bottom: 2.4rem; flex-grow: 1; }
+    .read-more { font-size: 1.4rem; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 0.8rem; transition: 0.3s; }
+    .blog-card:hover .read-more { color: var(--brand-mid); }
 
-    /* DOCUMENT DROPDOWN */
-    .doc-dropdown { background: var(--bg-light); border-radius: 0.8rem; border: 0.1rem solid var(--border-light); margin: 3.2rem 0; overflow: hidden; transition: 0.3s; }
-    .doc-dropdown summary { padding: 2.0rem 2.4rem; font-size: 1.6rem; font-weight: 700; color: var(--brand-drk); cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; }
-    .doc-dropdown summary::-webkit-details-marker { display: none; }
-    .doc-dropdown summary::after { content: '\002B'; font-size: 2.4rem; color: var(--gold); }
-    .doc-dropdown[open] summary::after { content: '\2212'; color: var(--brand-drk); }
-    .doc-preview { padding: 3.2rem; background: #fff; border-top: 0.1rem solid var(--border-light); font-family: 'Courier New', Courier, monospace; font-size: 1.4rem; color: #333; white-space: pre-wrap; overflow-x: auto; }
-    .doc-preview .fill-blank { color: #d32f2f; background: rgba(211,47,47,0.05); padding: 0.2rem 0.4rem; }
-
-    @media (min-width: 800px) { 
-        .details-grid-2col { grid-template-columns: 1fr 1fr; } 
-        .docs-grid { grid-template-columns: 1fr 1fr; }
-    }
+    @media (min-width: 800px) { .docs-grid { grid-template-columns: 1fr 1fr; } }
     @media (min-width: 900px) { .hamburger { display: none !important; } .nav-links { display: flex !important; } }
     </style>
 </head>
@@ -146,7 +144,7 @@
     </div>
 </section>
 
-<!-- 1. THE CHECKLISTS SECTION -->
+<!-- 1. THE CHECKLISTS SECTION (NOW CLEAN ACCORDIONS) -->
 <section class="path-section">
     <div class="wrap">
         
@@ -155,72 +153,96 @@
             <h2>Which process applies to you?</h2>
         </div>
 
-        <div class="details-grid-2col">
+        <div class="accordion-container">
             
             <!-- PATH 1: ONLINE -->
-            <div class="detail-box accent-box">
-                <h3 class="box-title"><i class="fa-solid fa-laptop"></i> Standard Online Renewal</h3>
-                <p style="font-size: 1.5rem; color: var(--text-mid); margin-bottom: 2.4rem;">You qualify for the streamlined online portal processing if <strong>ALL</strong> of the following apply to you:</p>
-                <ul class="check-list">
-                    <li><i class="fa-solid fa-check"></i> <span><strong>Adult Applicant:</strong> You are 18 years or older.</span></li>
-                    <li><i class="fa-solid fa-check"></i> <span><strong>Exact Same Name:</strong> You are not making any legal name changes.</span></li>
-                    <li><i class="fa-solid fa-check"></i> <span><strong>Physical Book in Hand:</strong> Your current/expired passport is in your possession.</span></li>
-                    <li><i class="fa-solid fa-xmark"></i> <span><strong>Not Damaged:</strong> The book is not water-logged, torn, or defaced.</span></li>
-                </ul>
-            </div>
+            <details class="path-accordion">
+                <summary>
+                    <div class="summary-content">
+                        <i class="fa-solid fa-laptop"></i> Standard Online Renewal
+                    </div>
+                </summary>
+                <div class="accordion-body">
+                    <p style="font-size: 1.6rem; color: var(--text-mid); margin-bottom: 2.4rem;">You qualify for the streamlined online portal processing if <strong>ALL</strong> of the following apply to you:</p>
+                    <ul class="check-list">
+                        <li><i class="fa-solid fa-check"></i> <span><strong>Adult Applicant:</strong> You are 18 years or older.</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span><strong>Exact Same Name:</strong> You are not making any legal name changes.</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span><strong>Physical Book in Hand:</strong> Your current/expired passport is in your possession.</span></li>
+                        <li><i class="fa-solid fa-xmark"></i> <span><strong>Not Damaged:</strong> The book is not water-logged, torn, or defaced.</span></li>
+                    </ul>
+                </div>
+            </details>
             
             <!-- PATH 2: NAME CHANGES / MINORS -->
-            <div class="detail-box gold-box">
-                <h3 class="box-title"><i class="fa-solid fa-building-user"></i> Name Changes & Minors</h3>
-                <p style="font-size: 1.5rem; color: var(--text-mid); margin-bottom: 2.4rem;">You require our physical walk-in proxy service if you fall into these categories:</p>
-                <ul class="check-list">
-                    <li><i class="fa-solid fa-circle-exclamation"></i> <span><strong>Minors & Transitions:</strong> Applying for a minor, or transitioning a minor's passport to an adult passport.</span></li>
-                    <li><i class="fa-solid fa-circle-exclamation"></i> <span><strong>Marriage/Divorce:</strong> Updating your name using a Marriage Certificate or Divorce Decree.</span></li>
-                    <li><i class="fa-solid fa-circle-exclamation"></i> <span><strong>Deed Poll:</strong> Updating your name via an official RGD Deed Poll document.</span></li>
-                </ul>
-            </div>
+            <details class="path-accordion">
+                <summary>
+                    <div class="summary-content">
+                        <i class="fa-solid fa-building-user"></i> Name Changes & Minors
+                    </div>
+                </summary>
+                <div class="accordion-body">
+                    <p style="font-size: 1.6rem; color: var(--text-mid); margin-bottom: 2.4rem;">You require our physical walk-in proxy service if you fall into these categories:</p>
+                    <ul class="check-list">
+                        <li><i class="fa-solid fa-circle-exclamation"></i> <span><strong>Minors & Transitions:</strong> Applying for a minor, or transitioning a minor's passport to an adult passport.</span></li>
+                        <li><i class="fa-solid fa-circle-exclamation"></i> <span><strong>Marriage/Divorce:</strong> Updating your name using a Marriage Certificate or Divorce Decree.</span></li>
+                        <li><i class="fa-solid fa-circle-exclamation"></i> <span><strong>Deed Poll:</strong> Updating your name via an official RGD Deed Poll document.</span></li>
+                    </ul>
+                </div>
+            </details>
 
             <!-- PATH 3: LOST OR STOLEN -->
-            <div class="detail-box accent-box">
-                <h3 class="box-title"><i class="fa-solid fa-shield-halved"></i> Lost or Stolen Passport</h3>
-                <p style="font-size: 1.5rem; color: var(--text-mid); margin-bottom: 2.4rem;">If your passport is completely lost or stolen overseas, PICA requires strict protocols to protect your identity:</p>
-                <ul class="check-list">
-                    <li><i class="fa-solid fa-triangle-exclamation"></i> <span><strong>Police Report:</strong> You must immediately obtain an official report from your local precinct.</span></li>
-                    <li><i class="fa-solid fa-triangle-exclamation"></i> <span><strong>ID Verification:</strong> You must provide valid government photo ID (Driver's License, State ID).</span></li>
-                    <li><i class="fa-solid fa-triangle-exclamation"></i> <span><strong>Specialized Form:</strong> The PICA application must detail exactly how the book was lost.</span></li>
-                    <li><i class="fa-solid fa-triangle-exclamation"></i> <span><strong>Higher Fees:</strong> Replacing a lost/stolen book carries a penalty fee.</span></li>
-                </ul>
-            </div>
+            <details class="path-accordion">
+                <summary>
+                    <div class="summary-content">
+                        <i class="fa-solid fa-shield-halved"></i> Lost or Stolen Passport
+                    </div>
+                </summary>
+                <div class="accordion-body">
+                    <p style="font-size: 1.6rem; color: var(--text-mid); margin-bottom: 2.4rem;">If your passport is completely lost or stolen overseas, PICA requires strict protocols to protect your identity:</p>
+                    <ul class="check-list">
+                        <li><i class="fa-solid fa-triangle-exclamation"></i> <span><strong>Police Report:</strong> You must immediately obtain an official report from your local precinct.</span></li>
+                        <li><i class="fa-solid fa-triangle-exclamation"></i> <span><strong>ID Verification:</strong> You must provide valid government photo ID (Driver's License, State ID).</span></li>
+                        <li><i class="fa-solid fa-triangle-exclamation"></i> <span><strong>Specialized Form:</strong> The PICA application must detail exactly how the book was lost.</span></li>
+                        <li><i class="fa-solid fa-triangle-exclamation"></i> <span><strong>Higher Fees:</strong> Replacing a lost/stolen book carries a penalty fee.</span></li>
+                    </ul>
+                </div>
+            </details>
 
             <!-- PATH 4: DAMAGED BOOK -->
-            <div class="detail-box gold-box">
-                <h3 class="box-title"><i class="fa-solid fa-book-skull"></i> Damaged Passport</h3>
-                <p style="font-size: 1.5rem; color: var(--text-mid); margin-bottom: 2.4rem;">If your passport was washed, torn, or the data page is unreadable, it is invalid for travel. You will need:</p>
-                <ul class="check-list">
-                    <li><i class="fa-solid fa-circle-exclamation"></i> <span><strong>Surrender the Book:</strong> You MUST keep and physically submit the damaged passport.</span></li>
-                    <li><i class="fa-solid fa-circle-exclamation"></i> <span><strong>Sworn Affidavit:</strong> A signed, notarized statement explaining exactly how the damage occurred.</span></li>
-                    <li><i class="fa-solid fa-circle-exclamation"></i> <span><strong>Proxy Walk-in:</strong> Damaged passports cannot be renewed online; they must be evaluated in person.</span></li>
-                </ul>
-            </div>
+            <details class="path-accordion">
+                <summary>
+                    <div class="summary-content">
+                        <i class="fa-solid fa-book-skull"></i> Damaged Passport
+                    </div>
+                </summary>
+                <div class="accordion-body">
+                    <p style="font-size: 1.6rem; color: var(--text-mid); margin-bottom: 2.4rem;">If your passport was washed, torn, or the data page is unreadable, it is invalid for travel. You will need:</p>
+                    <ul class="check-list">
+                        <li><i class="fa-solid fa-circle-exclamation"></i> <span><strong>Surrender the Book:</strong> You MUST keep and physically submit the damaged passport.</span></li>
+                        <li><i class="fa-solid fa-circle-exclamation"></i> <span><strong>Sworn Affidavit:</strong> A signed, notarized statement explaining exactly how the damage occurred.</span></li>
+                        <li><i class="fa-solid fa-circle-exclamation"></i> <span><strong>Proxy Walk-in:</strong> Damaged passports cannot be renewed online; they must be evaluated in person.</span></li>
+                    </ul>
+                </div>
+            </details>
 
         </div>
 
         <!-- MANDATORY DOCUMENTS FOR ALL -->
         <div class="mandatory-docs">
-            <h3 class="box-title"><i class="fa-solid fa-folder-open"></i> Mandatory Documents Required for ALL Applications</h3>
+            <h3 class="box-title"><i class="fa-solid fa-folder-open"></i> Required For All Applications</h3>
             <div class="docs-grid">
                 <div class="doc-item">
                     <i class="fa-solid fa-file-signature"></i>
                     <div>
                         <h4>Proof of Citizenship</h4>
-                        <p>Your Original Jamaican Birth Certificate, Adoption Certificate, or Citizenship Certificate. This is strictly required to prove identity.</p>
+                        <p>Your Original Jamaican Birth Certificate, Adoption Certificate, or Citizenship Certificate. Required to prove identity.</p>
                     </div>
                 </div>
                 <div class="doc-item">
                     <i class="fa-solid fa-camera"></i>
                     <div>
                         <h4>Two Passport Photos</h4>
-                        <p>Photos must meet exact PICA specifications: crisp white background, no glare, no glasses, unmounted, and taken within the last 6 months.</p>
+                        <p>Photos must meet exact PICA specs: crisp white background, no glare, unmounted, and taken within 6 months.</p>
                     </div>
                 </div>
             </div>
@@ -229,7 +251,7 @@
     </div>
 </section>
 
-<!-- 2. THE CALL TO ACTION (MOVED UP FOR BETTER CONVERSION) -->
+<!-- 2. THE CALL TO ACTION (CENTERED & FOCUSED) -->
 <section class="bottom-cta-section">
     <div class="wrap">
         <h2>Ready to start your application?</h2>
@@ -238,57 +260,58 @@
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeZdgthrriuwiMPUiNhu5eQnAWjxEtM-Ti6sMXqvZ_U6NHkw/viewform" target="_blank" class="btn-massive">
             Start Your Application <i class="fa-solid fa-arrow-right"></i>
         </a>
-        <span class="pricing-note">Standard PICA Processing starts at $145 USD</span>
     </div>
 </section>
 
-<!-- 3. THE EDUCATIONAL BLOG SECTION (MOVED DOWN FOR SEO & DEEP READING) -->
-<section class="education-section">
+<!-- 3. THE BLOG/INSIGHTS GRID -->
+<section class="insights-section">
     <div class="wrap">
-        <div class="edu-header">
+        <div class="insights-header">
             <span style="color: var(--brand-mid); font-size: 1.2rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;">Docu-Hub Insights</span>
-            <h2>What if my passport is damaged?</h2>
+            <h2>Travel Security & Document Guides</h2>
         </div>
         
-        <div class="edu-container">
-            <p>It happens to the best of us. A jacket gets tossed into the washing machine without checking the pockets. Pulling out a water-logged or damaged passport is never a great feeling.</p>
+        <div class="blog-grid">
             
-            <p>While it is certainly <strong>nothing to panic over</strong>, it is also not something to take lightly. Leaving a damaged or lost passport unaddressed carries risks: it leaves you vulnerable to identity theft, and it can leave you hustling at the last minute during a travel emergency.</p>
-            
-            <h3>Understanding the Replacement Process</h3>
-            <p>Replacing a damaged passport is slightly different from a standard renewal. Under Jamaican law, the physical integrity of a travel document must be verified. If you attempt to log onto the PICA online portal to replace it, your application will likely hit a roadblock.</p>
-            
-            <div class="article-highlight">
-                <p>"A damaged passport requires physical intervention and a sworn explanation to ensure the damage was purely accidental."</p>
-            </div>
-            
-            <p><strong>The Solution is Simple:</strong> The process requires a formal Affidavit—sworn before a Justice of the Peace or Notary Public—explaining exactly how the damage occurred. Then, the damaged book itself must be physically surrendered to a PICA office in Jamaica.</p>
-            
-            <details class="doc-dropdown">
-                <summary>Learn More: See what an official Affidavit looks like</summary>
-                <div class="doc-preview">REPUBLIC OF <span class="fill-blank">[Insert Country of Residence]</span>
-PROVINCE/STATE OF <span class="fill-blank">[Insert State/Province]</span>
+            <!-- BLOG CARD 1: HEAT DAMAGE -->
+            <a href="heat-damage-article.html" class="blog-card">
+                <div class="blog-img-placeholder">
+                    <i class="fa-solid fa-temperature-arrow-up"></i>
+                </div>
+                <div class="blog-body">
+                    <span class="blog-tag-sm">Security Warning</span>
+                    <h3>The Plastic Bag Trap: Is Heat Secretly Destroying Your Passport?</h3>
+                    <p>Wrapping your e-passport in a plastic bag to prevent water damage might actually be melting the biometric chip inside. Learn how to test it at home.</p>
+                    <span class="read-more">Read Full Article <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </a>
 
-<strong>AFFIDAVIT REGARDING DAMAGED JAMAICAN PASSPORT</strong>
+            <!-- BLOG CARD 2: TORN/WASHED PASSPORT -->
+            <a href="#contact" class="blog-card">
+                <div class="blog-img-placeholder">
+                    <i class="fa-solid fa-droplet-slash"></i>
+                </div>
+                <div class="blog-body">
+                    <span class="blog-tag-sm">Emergency Protocol</span>
+                    <h3>What If My Passport Gets Washed or Torn?</h3>
+                    <p>Accidents happen. If your passport went through the washing machine or got defaced, here is exactly what you need to do before your next flight.</p>
+                    <span class="read-more">Read Full Article <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </a>
 
-I, <span class="fill-blank">[CLIENT FULL LEGAL NAME]</span>, being duly sworn, make oath and say as follows:
+            <!-- BLOG CARD 3: LOST OVERSEAS -->
+            <a href="#contact" class="blog-card">
+                <div class="blog-img-placeholder">
+                    <i class="fa-solid fa-passport"></i>
+                </div>
+                <div class="blog-body">
+                    <span class="blog-tag-sm">Travel Advice</span>
+                    <h3>Lost Your Jamaican Passport Overseas?</h3>
+                    <p>Don't panic. Discover the step-by-step protocol for filing police reports abroad and securing a proxy replacement without flying home.</p>
+                    <span class="read-more">Read Full Article <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </a>
 
-1. THAT my address is <span class="fill-blank">[Client's Full Overseas Residential Address]</span>.
-2. THAT I am the lawful holder of Jamaican Passport Number <span class="fill-blank">[Insert Number]</span>.
-3. THAT the aforementioned passport has been severely damaged and is no longer fit for travel. 
-4. THAT the damage occurred under the following circumstances: 
-   <span class="fill-blank">[EXPLANATION: e.g., "My passport was accidentally placed in a washing machine..."]</span>
-5. THAT the damage was entirely accidental and was not the result of fraudulent intent.
-6. THAT I am surrendering the damaged passport book to PICA.
-
-SIGNATURE OF DEPONENT: _________________________________________
-
-SWORN before me this _______ day of _______________, 20____.
-_________________________________________
-<strong>Signature of Notary Public</strong></div>
-            </details>
-
-            <p>If you live overseas, there is no need to book a flight just to handle this paperwork. At Docu-Hub, we provide you with the exact affidavit template to sign in your home country, and our team acts as your proxy to physically surrender the damaged book at PICA on your behalf.</p>
         </div>
     </div>
 </section>
