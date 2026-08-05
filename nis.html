@@ -55,28 +55,38 @@
     .service-hero h1 { font-size: clamp(3.2rem, 5vw, 4.8rem); font-weight: 700; margin-bottom: 1.6rem; letter-spacing: -0.01em; }
     .service-hero p { font-size: clamp(1.6rem, 2vw, 1.8rem); color: rgba(255,255,255,0.85); max-width: 70.0rem; margin: 0 auto; line-height: 1.7; }
 
-    /* PATH SECTION */
+    /* PATH SECTION (ACCORDIONS) */
     .path-section { padding: 8.0rem 0 4.0rem; background: var(--ivory); }
     .path-header { text-align: center; margin-bottom: 4.8rem; max-width: 75.0rem; margin-left: auto; margin-right: auto; }
     .path-header h2 { font-size: clamp(2.8rem, 4vw, 3.6rem); color: var(--brand-drk); font-weight: 700; letter-spacing: -0.01em; margin-bottom: 1.6rem; }
     
-    .details-grid-2col { display: grid; grid-template-columns: 1fr; gap: 3.2rem; margin-bottom: 3.2rem; }
-    
-    .detail-box { background: #fff; border: 0.1rem solid var(--border-light); border-radius: 0.8rem; padding: 4.0rem 3.6rem; box-shadow: var(--shadow-md); }
-    .detail-box.accent-box { border-top: 0.4rem solid var(--brand-mid); }
-    .detail-box.gold-box { border-top: 0.4rem solid var(--gold); }
-    
-    .box-title { font-size: 2.2rem; font-weight: 700; color: var(--brand-drk); margin-bottom: 2.4rem; display: flex; align-items: center; gap: 1.2rem; border-bottom: 0.1rem solid var(--border-light); padding-bottom: 1.6rem; }
-    .box-title i { color: var(--gold); font-size: 2.0rem; }
-    .accent-box .box-title i { color: var(--brand-mid); }
+    .accordion-container { max-width: 85.0rem; margin: 0 auto 4.8rem; }
+    .path-accordion { background: #fff; border: 0.1rem solid var(--border-light); border-radius: 0.8rem; margin-bottom: 1.6rem; box-shadow: var(--shadow-soft); overflow: hidden; transition: 0.3s; }
+    .path-accordion summary { padding: 2.4rem 3.2rem; font-size: 1.8rem; font-weight: 700; color: var(--brand-drk); cursor: pointer; display: flex; align-items: center; justify-content: space-between; list-style: none; user-select: none; }
+    .path-accordion summary::-webkit-details-marker { display: none; }
+    .summary-content { display: flex; align-items: center; gap: 1.6rem; }
+    .summary-content i { font-size: 2.2rem; color: var(--brand-mid); width: 2.4rem; text-align: center; }
+    .path-accordion summary::after { content: '\002B'; font-size: 2.4rem; color: var(--gold); transition: transform 0.3s ease; }
+    .path-accordion[open] summary::after { content: '\2212'; transform: rotate(180deg); color: var(--brand-drk); }
+    .path-accordion[open] summary { background: var(--bg-light); border-bottom: 0.1rem solid var(--border-light); }
+    .accordion-body { padding: 3.2rem; border-top: 0.4rem solid var(--gold); }
+    .path-accordion:nth-child(even) .accordion-body { border-top-color: var(--brand-mid); }
     
     .check-list { list-style: none; display: grid; gap: 1.6rem; }
     .check-list li { font-size: 1.6rem; color: var(--text-mid); line-height: 1.65; display: grid; grid-template-columns: 2.0rem 1fr; gap: 1.2rem; align-items: start; }
     .check-list li i { color: var(--brand-mid); font-size: 1.6rem; margin-top: 0.4rem; }
 
+    /* ACCORDION ACTION BAR & BUTTON */
+    .accordion-cta-bar { margin-top: 3.2rem; border-top: 0.1rem solid var(--border-light); padding-top: 2.4rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.6rem; }
+    .accordion-pricing { font-size: 1.5rem; font-weight: 600; color: var(--text-mid); }
+    .accordion-pricing strong { color: var(--brand-drk); }
+    .btn-accordion { display: inline-flex; align-items: center; justify-content: center; gap: 1.2rem; padding: 1.4rem 3.2rem; background: var(--gold); color: var(--brand-drk); border-radius: 0.4rem; font-size: 1.3rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; box-shadow: 0 0.4rem 1.6rem rgba(0,0,0,0.1); }
+    .btn-accordion:hover { background: var(--gold-lt); transform: translateY(-0.2rem); }
+
     /* IMPORTANT PROTOCOL BOX */
-    .protocol-box { background: rgba(193, 154, 91, 0.1); border: 0.1rem solid var(--gold); border-left: 0.6rem solid var(--gold); border-radius: 0.8rem; padding: 4.0rem 3.6rem; margin-bottom: 4.8rem; }
-    .protocol-box .box-title { border-bottom: none; padding-bottom: 0; margin-bottom: 1.6rem; color: var(--brand-drk); }
+    .protocol-box { max-width: 85.0rem; margin: 0 auto 4.8rem; background: rgba(193, 154, 91, 0.1); border: 0.1rem solid var(--gold); border-left: 0.6rem solid var(--gold); border-radius: 0.8rem; padding: 4.0rem 3.6rem; }
+    .protocol-box .box-title { border-bottom: none; padding-bottom: 0; margin-bottom: 1.6rem; color: var(--brand-drk); font-size: 2.2rem; font-weight: 700; display: flex; align-items: center; gap: 1.2rem; }
+    .protocol-box .box-title i { color: var(--gold); font-size: 2.4rem; }
     .protocol-text { font-size: 1.6rem; color: var(--brand-drk); margin-bottom: 2.4rem; line-height: 1.7; }
     
     .workflow-steps { display: grid; grid-template-columns: 1fr; gap: 1.6rem; }
@@ -86,23 +96,14 @@
     .workflow-step strong { color: var(--brand-drk); }
 
     /* MANDATORY DOCS FULL WIDTH */
-    .mandatory-docs { background: #fff; border: 0.1rem solid var(--border-light); border-top: 0.4rem solid var(--brand-drk); border-radius: 0.8rem; padding: 4.0rem 3.6rem; box-shadow: var(--shadow-md); margin-bottom: 4.8rem; }
-    .mandatory-docs .box-title { justify-content: center; border-bottom: none; padding-bottom: 0; margin-bottom: 3.2rem; color: var(--brand-drk); }
-    .mandatory-docs .box-title i { color: var(--brand-drk); }
+    .mandatory-docs { max-width: 85.0rem; margin: 0 auto 4.8rem; background: #fff; border: 0.1rem solid var(--border-light); border-top: 0.4rem solid var(--brand-drk); border-radius: 0.8rem; padding: 4.0rem 3.6rem; box-shadow: var(--shadow-md); }
+    .mandatory-docs .box-title { justify-content: center; border-bottom: none; padding-bottom: 0; margin-bottom: 3.2rem; color: var(--brand-drk); font-size: 2.2rem; font-weight: 700; display: flex; align-items: center; gap: 1.2rem; }
+    .mandatory-docs .box-title i { color: var(--brand-drk); font-size: 2.4rem; }
     .docs-grid { display: grid; grid-template-columns: 1fr; gap: 2.4rem; }
     .doc-item { background: var(--bg-light); padding: 2.4rem; border-radius: 0.4rem; display: flex; gap: 1.6rem; align-items: flex-start; }
     .doc-item i { font-size: 2.4rem; color: var(--brand-mid); }
     .doc-item h4 { font-size: 1.8rem; color: var(--brand-drk); margin-bottom: 0.4rem; }
     .doc-item p { font-size: 1.5rem; color: var(--text-mid); line-height: 1.6; }
-
-    /* THE AUDIT PROCESS */
-    .audit-full-width { background: #fff; border: 0.1rem solid var(--border-light); border-top: 0.4rem solid var(--gold); border-radius: 0.8rem; padding: 4.0rem 3.6rem; box-shadow: var(--shadow-md); margin-bottom: 3.2rem; }
-    .audit-full-width .box-title { justify-content: flex-start; border-bottom: 0.1rem solid var(--border-light); padding-bottom: 1.6rem; margin-bottom: 2.4rem; }
-    .audit-full-width .box-title i { color: var(--gold); }
-    
-    .audit-list-2col { list-style: none; display: grid; grid-template-columns: 1fr; gap: 2.4rem; }
-    .audit-list-2col li { font-size: 1.6rem; color: var(--text-mid); line-height: 1.65; display: grid; grid-template-columns: 2.0rem 1fr; gap: 1.2rem; align-items: start; }
-    .audit-list-2col li i { color: var(--brand-mid); font-size: 1.8rem; margin-top: 0.2rem; }
 
     /* EXPLORATORY / EDUCATIONAL SECTION */
     .education-section { padding: 8.0rem 0; background: var(--bg-light); border-top: 0.1rem solid var(--border-light); }
@@ -126,16 +127,7 @@
     .doc-preview ul { margin-left: 2.0rem; margin-top: 1.2rem; }
     .doc-preview li { margin-bottom: 0.8rem; }
 
-    /* MASSIVE BOTTOM CTA */
-    .bottom-cta-section { padding: 10.0rem 0; background: var(--brand-drk); color: #fff; text-align: center; }
-    .bottom-cta-section h2 { font-size: clamp(3.0rem, 4vw, 4.0rem); margin-bottom: 1.6rem; color: #fff; }
-    .bottom-cta-section p { font-size: 1.8rem; color: rgba(255,255,255,0.8); max-width: 60.0rem; margin: 0 auto 4.0rem; }
-    .btn-massive { display: inline-flex; align-items: center; justify-content: center; gap: 1.2rem; padding: 2.0rem 4.8rem; background: var(--gold); color: var(--brand-drk); border-radius: 0.6rem; font-size: 1.5rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; box-shadow: 0 0.8rem 2.4rem rgba(0,0,0,0.2); }
-    .btn-massive:hover { background: var(--gold-lt); transform: translateY(-0.3rem); }
-    .pricing-note { display: block; margin-top: 2.4rem; font-size: 1.4rem; color: rgba(255,255,255,0.6); }
-
     @media (min-width: 800px) { 
-        .details-grid-2col { grid-template-columns: 1fr 1fr; } 
         .docs-grid { grid-template-columns: 1fr 1fr; }
         .workflow-steps { grid-template-columns: 1fr 1fr; }
     }
@@ -176,27 +168,51 @@
             <h2>Which process applies to you?</h2>
         </div>
 
-        <div class="details-grid-2col">
+        <div class="accordion-container">
+            
             <!-- PATH A: RECORD TRACKING -->
-            <div class="detail-box accent-box">
-                <h3 class="box-title"><i class="fa-solid fa-file-waveform"></i> Contribution Tracking &amp; Updates</h3>
-                <p style="font-size: 1.5rem; color: var(--text-mid); margin-bottom: 2.4rem;">Select this option if you need to gather information before filing a claim, or if you simply need proof of registration:</p>
-                <ul class="check-list">
-                    <li><i class="fa-solid fa-check"></i> <span><strong>Contribution History Check:</strong> Liaising with NIS offices to pull your exact history of paid contributions over the years.</span></li>
-                    <li><i class="fa-solid fa-check"></i> <span><strong>Voluntary Status Setup:</strong> Structuring documents to maintain active benefit status and pay contributions from overseas.</span></li>
-                </ul>
-            </div>
+            <details class="path-accordion">
+                <summary>
+                    <div class="summary-content">
+                        <i class="fa-solid fa-file-waveform"></i> Contribution Tracking &amp; Updates
+                    </div>
+                </summary>
+                <div class="accordion-body">
+                    <p style="font-size: 1.5rem; color: var(--text-mid); margin-bottom: 2.4rem;">Select this option if you need to gather information before filing a claim, or if you simply need proof of registration:</p>
+                    <ul class="check-list">
+                        <li><i class="fa-solid fa-check"></i> <span><strong>Contribution History Check:</strong> Liaising with NIS offices to pull your exact history of paid contributions over the years.</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span><strong>Voluntary Status Setup:</strong> Structuring documents to maintain active benefit status and pay contributions from overseas.</span></li>
+                    </ul>
+                    
+                    <div class="accordion-cta-bar">
+                        <div class="accordion-pricing"><i class="fa-solid fa-circle-info" style="color: var(--gold); margin-right: 0.8rem;"></i> Tracking Proxy from <strong>$165 USD</strong></div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeZdgthrriuwiMPUiNhu5eQnAWjxEtM-Ti6sMXqvZ_U6NHkw/viewform" target="_blank" class="btn-accordion">Start Tracking Inquiry <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </details>
             
             <!-- PATH B: CLAIMS PREPARATION -->
-            <div class="detail-box gold-box">
-                <h3 class="box-title"><i class="fa-solid fa-hand-holding-dollar"></i> Benefit Claims Preparation</h3>
-                <p style="font-size: 1.5rem; color: var(--text-mid); margin-bottom: 2.4rem;">Select this option if you are actively preparing to submit a claim to the Ministry of Labour and Social Security:</p>
-                <ul class="check-list">
-                    <li><i class="fa-solid fa-check"></i> <span><strong>Retirement Pension Claims:</strong> Meticulous prep and pre-auditing of forms for those who have reached retirement age.</span></li>
-                    <li><i class="fa-solid fa-check"></i> <span><strong>Funeral Grants:</strong> Preparation of the specific documentation required to claim the grant for a deceased contributor.</span></li>
-                    <li><i class="fa-solid fa-check"></i> <span><strong>Claim Form Auditing:</strong> We review your completed paperwork to ensure all fields and stamps meet strict MLSS requirements before submission.</span></li>
-                </ul>
-            </div>
+            <details class="path-accordion">
+                <summary>
+                    <div class="summary-content">
+                        <i class="fa-solid fa-hand-holding-dollar"></i> Benefit Claims Preparation
+                    </div>
+                </summary>
+                <div class="accordion-body">
+                    <p style="font-size: 1.5rem; color: var(--text-mid); margin-bottom: 2.4rem;">Select this option if you are actively preparing to submit a claim to the Ministry of Labour and Social Security:</p>
+                    <ul class="check-list">
+                        <li><i class="fa-solid fa-check"></i> <span><strong>Retirement Pension Claims:</strong> Meticulous prep and pre-auditing of forms for those who have reached retirement age.</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span><strong>Funeral Grants:</strong> Preparation of the specific documentation required to claim the grant for a deceased contributor.</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span><strong>Claim Form Auditing:</strong> We review your completed paperwork to ensure all fields and stamps meet strict MLSS requirements before submission.</span></li>
+                    </ul>
+                    
+                    <div class="accordion-cta-bar">
+                        <div class="accordion-pricing"><i class="fa-solid fa-circle-info" style="color: var(--gold); margin-right: 0.8rem;"></i> Claims Proxy from <strong>$165 USD</strong></div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeZdgthrriuwiMPUiNhu5eQnAWjxEtM-Ti6sMXqvZ_U6NHkw/viewform" target="_blank" class="btn-accordion">Start Claims Prep <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </details>
+
         </div>
 
         <!-- THE WET SIGNATURE PROTOCOL WARNING -->
@@ -286,19 +302,6 @@
 
             <p>Docu-Hub Operations takes the frustration out of the MLSS system. We conduct the ground-level inquiries, verify your eligibility, and meticulously prepare your claim forms so that when they are submitted, they are processed correctly.</p>
         </div>
-    </div>
-</section>
-
-<!-- 3. THE FINAL CTA -->
-<section class="bottom-cta-section">
-    <div class="wrap">
-        <h2>Ready to track your NIS records?</h2>
-        <p>Take control of your contributions and ensure your claims are properly prepared.</p>
-        
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeZdgthrriuwiMPUiNhu5eQnAWjxEtM-Ti6sMXqvZ_U6NHkw/viewform" target="_blank" class="btn-massive">
-            Start Your Inquiry <i class="fa-solid fa-arrow-right"></i>
-        </a>
-        <span class="pricing-note">In-person NIS Proxy Services start at $165 USD</span>
     </div>
 </section>
 
