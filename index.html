@@ -61,6 +61,7 @@
     <!-- 7. Google Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Added Playfair Display for the new blog/featured headers -->
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -78,7 +79,6 @@
         --text-dark:  #111410; 
         --text-mid:   #3f463e; 
         --sans:       'Jost', Arial, sans-serif; 
-        --serif:      'Playfair Display', Georgia, serif;
         --nav-h:      7.5rem;
         --max-w:      115.0rem;
         --section-pad: clamp(8.0rem, 10vh, 12.0rem) 0;
@@ -150,21 +150,9 @@
     .section-header { text-align: center; margin-bottom: clamp(4.8rem, 8vh, 6.4rem); }
     .section-header h2 { font-size: clamp(2.8rem, 4vw, 3.8rem); font-weight: 700; color: var(--brand-drk); letter-spacing: -0.01em; }
     
-    /* FEATURED SERVICE (PASSPORTS) */
-    .featured-service { padding: var(--section-pad); background: var(--ivory); }
-    .fs-grid { display: grid; grid-template-columns: 1fr; gap: 4.8rem; align-items: center; }
-    .fs-image { width: 100%; height: 40.0rem; border-radius: 0.4rem; overflow: hidden; box-shadow: var(--shadow-md); }
-    .fs-content h2 { font-family: var(--serif); font-size: clamp(3.2rem, 4vw, 4.4rem); color: var(--brand-drk); font-weight: 600; margin-bottom: 2.4rem; line-height: 1.2; }
-    .fs-content p { font-size: 1.8rem; color: var(--text-mid); margin-bottom: 3.2rem; line-height: 1.6; }
-    .fs-btn { display: inline-flex; align-items: center; justify-content: center; gap: 1.2rem; padding: 1.6rem 3.2rem; border: 0.2rem solid var(--brand-drk); color: var(--brand-drk); font-size: 1.3rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; transition: 0.3s; }
-    .fs-btn:hover { background: var(--brand-drk); color: #fff; }
-
     /* ═══════════════════════════════════════════
        MOBILE-FIRST SPACIOUS SERVICE CARDS
-       Ensures each card demands full screen presence
-       with ample breathing room.
      ═══════════════════════════════════════════ */
-    .services-section { padding: var(--section-pad); background: var(--bg-light); border-top: 0.1rem solid var(--border-light); }
     .cards-grid-3col { display: grid; grid-template-columns: 1fr; gap: 9.6rem; width: 100%; max-width: var(--max-w); margin: 0 auto; }
 
     .service-card { background: #fff; border-radius: 1.2rem; overflow: hidden; box-shadow: var(--shadow-md); border-top: 0.6rem solid var(--gold); display: flex; flex-direction: column; transition: 0.3s ease; }
@@ -182,7 +170,7 @@
     .service-pricing-tag { font-size: 1.8rem; font-weight: 700; color: var(--brand-drk); margin-bottom: 4.8rem; display: flex; align-items: center; gap: 1.2rem; }
     .service-pricing-tag span { font-size: 1.3rem; font-weight: 600; color: var(--brand-mid); text-transform: uppercase; letter-spacing: 0.05em; background: rgba(193, 154, 91, 0.1); padding: 0.6rem 1.0rem; border-radius: 0.4rem; }
     
-    .btn-ghost-dark { display: inline-flex; align-items: center; justify-content: center; gap: 0.8rem; width: 100%; padding: 1.8rem 2.4rem; background: transparent; color: var(--brand-drk); border: 0.2rem solid var(--brand-drk); border-radius: 0.4rem; font-size: 1.4rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; margin-top: auto; }
+    .btn-ghost-dark { display: inline-flex; align-items: center; justify-content: center; gap: 0.8rem; width: 100%; padding: 1.8rem 2.4rem; background: transparent; color: var(--brand-drk); border: 0.2rem solid var(--brand-drk); border-radius: 0.4rem; font-size: 1.4rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; margin-top: auto; cursor: pointer; }
     .btn-ghost-dark:hover { background: var(--brand-drk); color: #fff; }
 
     /* CUSTOM CONSULTATION BANNER */
@@ -191,35 +179,11 @@
     .consultation-banner h3 { font-size: 2.4rem; font-weight: 700; margin-bottom: 1.6rem; letter-spacing: -0.01em; }
     .consultation-banner p { font-size: 1.6rem; color: rgba(255,255,255,0.8); max-width: 65.0rem; margin: 0 auto 3.2rem; line-height: 1.6; }
 
-    /* HOMEPAGE INSIGHTS (BLOGS) */
-    .home-insights { padding: var(--section-pad); background: var(--ivory); border-top: 0.1rem solid var(--border-light); }
-    .home-insights-header { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 5.6rem; }
-    .home-insights-tag { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--gold); font-weight: 700; margin-bottom: 1.6rem; }
-    .home-insights-title { font-family: var(--serif); font-size: clamp(3.2rem, 4vw, 4.4rem); color: var(--brand-drk); font-weight: 600; margin-bottom: 2.4rem; line-height: 1.2; }
-    
-    .home-blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(30.0rem, 1fr)); gap: 3.2rem; margin-bottom: 4.8rem; }
-    
-    .home-blog-card { background: #fff; border-radius: 0.4rem; overflow: hidden; border: 0.1rem solid var(--border-light); box-shadow: var(--shadow-soft); display: flex; flex-direction: column; transition: transform 0.4s ease, box-shadow 0.4s ease; }
+    /* NEW ADDITIONS: Featured & Blogs */
     .home-blog-card:hover { transform: translateY(-0.8rem); box-shadow: var(--shadow-md); border-color: var(--gold); }
-    
-    .h-blog-img { height: 22.0rem; background-size: cover; background-position: center; border-bottom: 0.3rem solid var(--gold); }
-    .img-1 { background-image: url('https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=800&auto=format&fit=crop'); }
-    .img-2 { background-image: url('https://images.unsplash.com/photo-1584441405886-bc91be61e56a?q=80&w=800&auto=format&fit=crop'); }
-    .img-3 { background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800&auto=format&fit=crop'); }
-    
-    .h-blog-body { padding: 3.2rem 2.4rem; display: flex; flex-direction: column; flex-grow: 1; }
-    .h-blog-meta { font-size: 1.1rem; color: var(--brand-mid); text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; margin-bottom: 1.6rem; }
-    .h-blog-body h3 { font-family: var(--serif); font-size: 2.2rem; font-weight: 600; color: var(--brand-drk); margin-bottom: 1.6rem; line-height: 1.3; }
-    .h-blog-body p { font-size: 1.6rem; color: var(--text-mid); margin-bottom: 2.4rem; flex-grow: 1; line-height: 1.6; }
-    .h-read-more { font-size: 1.3rem; font-weight: 700; color: var(--brand-drk); text-transform: uppercase; letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 0.8rem; transition: color 0.3s; border-bottom: 0.1rem solid transparent; padding-bottom: 0.4rem; align-self: flex-start; }
     .home-blog-card:hover .h-read-more { color: var(--gold); border-bottom-color: var(--gold); }
 
-    .home-insights-footer { text-align: center; }
-    .btn-outline-gold { display: inline-block; border: 0.2rem solid var(--gold); color: var(--brand-drk); padding: 1.6rem 4.0rem; font-family: var(--sans); font-size: 1.3rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; transition: 0.3s; background: transparent; }
-    .btn-outline-gold:hover { background: var(--gold); color: var(--brand-drk); }
-
     /* FAQ ACCORDION */
-    .faq-section { padding: var(--section-pad); background: var(--bg-light); border-top: 0.1rem solid var(--border-light); }
     .faq-container { max-width: 90.0rem; margin: 0 auto; display: grid; gap: 2.0rem; }
     .faq-item { background: #fff; border-radius: 0.8rem; box-shadow: var(--shadow-md); border-left: 0.4rem solid var(--gold); overflow: hidden; transition: box-shadow 0.3s; }
     .faq-item:hover { box-shadow: var(--shadow-deep); }
@@ -230,11 +194,12 @@
     .faq-content-blocked { padding: 0 2.4rem 2.8rem 2.4rem; font-size: 1.6rem; color: var(--text-mid); line-height: 1.7; animation: fadeIn 0.3s ease; }
 
     /* DESKTOP OVERRIDES */
-    @media (min-width: 800px) { .fs-grid { grid-template-columns: 1fr 1fr; } }
     @media (min-width: 900px) {
         .hamburger { display: none !important; } 
         .nav-links { display: flex !important; flex-direction: row; position: static; background: transparent; padding: 0; box-shadow: none; border: none; }
         
+        .fs-grid { grid-template-columns: 1fr 1fr; } /* Added for new Featured block */
+
         /* Revert cards to a tighter horizontal layout for desktop */
         .cards-grid-3col { grid-template-columns: repeat(3, 1fr); gap: 4.8rem; }
         .card-img-header { height: 24.0rem; }
@@ -263,7 +228,7 @@
     </div>
 </nav>
 
-<!-- HERO SECTION (Left Aligned) -->
+<!-- HERO SECTION -->
 <section class="hero-bank" id="top">
     <div class="hero-bg-image"></div>
     <div class="hero-gradient-overlay"></div>
@@ -278,25 +243,24 @@
     </div>
 </section>
 
-<!-- FEATURED SERVICE (PASSPORTS) -->
-<section id="featured" class="featured-service enter d2">
-    <div class="wrap fs-grid">
-        <div class="fs-image">
-            <img src="assets/passport.webp" alt="Jamaican Passport">
+<!-- FEATURED SERVICE (COMPLEX PASSPORTS) -->
+<section id="featured" class="featured-service" style="padding: var(--section-pad); background: var(--ivory);">
+    <div class="wrap fs-grid" style="display: grid; gap: 4.8rem; align-items: center;">
+        <div class="fs-image" style="width: 100%; height: 40.0rem; border-radius: 0.8rem; overflow: hidden; box-shadow: var(--shadow-md);">
+            <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=2070&auto=format&fit=crop" alt="Jamaican Passport Flatlay" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
-        <div class="fs-content">
-            <span style="font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--gold); font-weight: 700; display: block; margin-bottom: 1.6rem;">Featured Service</span>
-            <h2>Complex PICA Passport Replacements</h2>
-            <p>Don't let a lost, washed, or damaged passport ruin your travel plans. While standard renewals can be done online, complex replacements require an in-person, physical surrender of documents at PICA headquarters.</p>
-            <p>Our proxy team securely acts on your behalf, navigating the strict legal affidavits and walking your application directly to the processing desk.</p>
-            <br>
-            <a href="passport.html" class="fs-btn">Determine Your Pathway <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="fs-content enter d2">
+            <span style="font-family: var(--sans); font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--gold); font-weight: 700; margin-bottom: 1.6rem; display: block;">Featured Service</span>
+            <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(3.2rem, 4vw, 4.4rem); color: var(--brand-drk); font-weight: 600; margin-bottom: 2.4rem; line-height: 1.2;">Complex PICA Passport Replacements</h2>
+            <p style="font-size: 1.7rem; color: var(--text-mid); margin-bottom: 2.4rem; line-height: 1.7;">Don't let a lost, washed, or damaged passport ruin your travel plans. While standard renewals can be done online, complex replacements require an in-person, physical surrender of documents at PICA headquarters.</p>
+            <p style="font-size: 1.7rem; color: var(--text-mid); margin-bottom: 3.2rem; line-height: 1.7;">Our proxy team securely acts on your behalf, navigating the strict legal affidavits and walking your application directly to the processing desk.</p>
+            <a href="passport.html" class="btn-ghost-dark" style="display: inline-flex; width: auto; align-items: center; justify-content: center; gap: 0.8rem; padding: 1.6rem 3.2rem; border: 0.2rem solid var(--brand-drk); color: var(--brand-drk); font-size: 1.3rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; transition: 0.3s; border-radius: 0.4rem;">Determine Your Pathway <i class="fa-solid fa-arrow-right"></i></a>
         </div>
     </div>
 </section>
 
 <!-- THE 3 PILLAR SERVICES SHOWCASE -->
-<section class="services-section" id="services">
+<section class="services-section" id="services" style="padding: var(--section-pad); background: var(--bg-light);">
     <div class="wrap">
         
         <div class="section-header enter d1">
@@ -306,15 +270,15 @@
 
         <div class="cards-grid-3col enter d2">
             
-            <!-- Pillar 1: Passports -->
+            <!-- Pillar 1: Passports (Standard Only) -->
             <div class="service-card">
                 <div class="card-img-header"><img src="assets/pica.webp" loading="lazy" alt="Jamaican Passport Services PICA"></div>
                 <div class="service-card-body">
                     <span class="card-badge">Passports & Citizenship</span>
-                    <h3 class="card-title">PICA Passport Services</h3>
-                    <p class="card-snippet">Assistance for adult passport renewals, legal name changes, and surrendering damaged/washed passports securely.</p>
+                    <h3 class="card-title">Standard Online Renewals</h3>
+                    <p class="card-snippet">Streamlined assistance for simple adult passport renewals that do not require legal name changes or physical surrender.</p>
                     <div class="service-pricing-tag">$145 USD <span>Starting Online</span></div>
-                    <a href="passport.html" class="btn-ghost-dark">View Hub &amp; Checklists</a>
+                    <a href="passport.html" class="btn-ghost-dark">View Requirements</a>
                 </div>
             </div>
 
@@ -326,19 +290,19 @@
                     <h3 class="card-title">Certificates &amp; Updates</h3>
                     <p class="card-snippet">Official RGD searches for birth, marriage, and death records, plus complex legal updates like adding a father's name.</p>
                     <div class="service-pricing-tag">$115 USD <span>Starting Search</span></div>
-                    <a href="vital.html" class="btn-ghost-dark">View Hub &amp; Checklists</a>
+                    <a href="vital.html" class="btn-ghost-dark">View Requirements</a>
                 </div>
             </div>
 
-            <!-- Pillar 3: Motor Vehicle / TAJ -->
+            <!-- Pillar 3: NIS -->
             <div class="service-card">
-                <div class="card-img-header"><img src="assets/taj.webp" loading="lazy" alt="Motor Vehicle Registration TAJ Jamaica"></div>
+                <div class="card-img-header"><img src="assets/nis.png" loading="lazy" alt="National Insurance Scheme NIS Jamaica"></div>
                 <div class="service-card-body">
-                    <span class="card-badge">Motor Vehicle & TAJ</span>
-                    <h3 class="card-title">Tax Administration (TAJ)</h3>
-                    <p class="card-snippet">Proxy assistance for Motor Vehicle Registration renewals and retrieving official documents from Tax Administration Jamaica.</p>
-                    <div class="service-pricing-tag">$85 USD <span>Flat Processing Fee</span></div>
-                    <a href="taj.html" class="btn-ghost-dark">View Hub &amp; Checklists</a>
+                    <span class="card-badge">National Insurance (NIS)</span>
+                    <h3 class="card-title">NIS Records &amp; Pensions</h3>
+                    <p class="card-snippet">Contribution history tracking, voluntary setup, and strategic preparation for complex retirement and funeral claims.</p>
+                    <div class="service-pricing-tag">$165 USD <span>Starting Proxy</span></div>
+                    <a href="nis.html" class="btn-ghost-dark">View Requirements</a>
                 </div>
             </div>
 
@@ -355,58 +319,53 @@
 </section>
 
 <!-- INSIGHTS & BLOGS GRID -->
-<section class="home-insights enter d1">
+<section class="home-insights" style="padding: var(--section-pad); background: var(--bg-light); border-top: 0.1rem solid var(--border-light);">
     <div class="wrap">
-        <div class="home-insights-header">
-            <span class="home-insights-tag">Expert Advisory</span>
-            <h2 class="home-insights-title">Travel Security & Document Insights</h2>
+        <div class="home-insights-header enter d1" style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 5.6rem;">
+            <span style="font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--gold); font-weight: 700; margin-bottom: 1.6rem;">Expert Advisory</span>
+            <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(3.2rem, 4vw, 4.4rem); color: var(--brand-drk); font-weight: 600; margin-bottom: 2.4rem; line-height: 1.2;">Travel Security & Document Insights</h2>
         </div>
         
-        <div class="home-blog-grid">
-            
-            <!-- ARTICLE 1 -->
-            <a href="heat-damage-article.html" class="home-blog-card">
-                <div class="h-blog-img img-1"></div>
-                <div class="h-blog-body">
-                    <span class="h-blog-meta">Security Warning</span>
-                    <h3>The Plastic Bag Trap: Is Heat Destroying Your Passport?</h3>
-                    <p>Wrapping your e-passport in plastic to prevent water damage might actually be melting the biometric chip. Learn the smartphone test.</p>
-                    <span class="h-read-more">Read Advisory <i class="fa-solid fa-arrow-right"></i></span>
+        <div class="home-blog-grid enter d2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(30.0rem, 1fr)); gap: 3.2rem; margin-bottom: 4.8rem;">
+            <!-- Article 1 -->
+            <a href="heat-damage-article.html" class="home-blog-card" style="background: #fff; border-radius: 0.8rem; overflow: hidden; border: 0.1rem solid var(--border-light); box-shadow: var(--shadow-soft); display: flex; flex-direction: column; transition: transform 0.4s ease, box-shadow 0.4s ease;">
+                <div style="height: 22.0rem; background: url('https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=800&auto=format&fit=crop') center/cover; border-bottom: 0.3rem solid var(--gold);"></div>
+                <div style="padding: 3.2rem 2.4rem; display: flex; flex-direction: column; flex-grow: 1;">
+                    <span style="font-size: 1.1rem; color: var(--brand-mid); text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; margin-bottom: 1.6rem;">Security Warning</span>
+                    <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 2.2rem; font-weight: 600; color: var(--brand-drk); margin-bottom: 1.6rem; line-height: 1.3;">The Plastic Bag Trap: Is Heat Destroying Your Passport?</h3>
+                    <p style="font-size: 1.6rem; color: var(--text-mid); margin-bottom: 2.4rem; flex-grow: 1; line-height: 1.6;">Wrapping your e-passport in plastic to prevent water damage might actually be melting the biometric chip. Learn the smartphone test.</p>
+                    <span class="h-read-more" style="font-size: 1.3rem; font-weight: 700; color: var(--brand-drk); text-transform: uppercase; letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 0.8rem; transition: color 0.3s; padding-bottom: 0.4rem; border-bottom: 0.1rem solid transparent;">Read Advisory <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
             </a>
-
-            <!-- ARTICLE 2 -->
-            <a href="washed-article.html" class="home-blog-card">
-                <div class="h-blog-img img-2"></div>
-                <div class="h-blog-body">
-                    <span class="h-blog-meta">Emergency Protocol</span>
-                    <h3>What to Do If Your Passport Gets Washed or Torn</h3>
-                    <p>Accidents happen. Discover why you cannot renew a damaged passport online and the exact legal steps required to replace it.</p>
-                    <span class="h-read-more">Read Advisory <i class="fa-solid fa-arrow-right"></i></span>
+            <!-- Article 2 -->
+            <a href="washed-passport-article.html" class="home-blog-card" style="background: #fff; border-radius: 0.8rem; overflow: hidden; border: 0.1rem solid var(--border-light); box-shadow: var(--shadow-soft); display: flex; flex-direction: column; transition: transform 0.4s ease, box-shadow 0.4s ease;">
+                <div style="height: 22.0rem; background: url('https://images.unsplash.com/photo-1584441405886-bc91be61e56a?q=80&w=800&auto=format&fit=crop') center/cover; border-bottom: 0.3rem solid var(--gold);"></div>
+                <div style="padding: 3.2rem 2.4rem; display: flex; flex-direction: column; flex-grow: 1;">
+                    <span style="font-size: 1.1rem; color: var(--brand-mid); text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; margin-bottom: 1.6rem;">Emergency Protocol</span>
+                    <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 2.2rem; font-weight: 600; color: var(--brand-drk); margin-bottom: 1.6rem; line-height: 1.3;">What to Do If Your Passport Gets Washed or Torn</h3>
+                    <p style="font-size: 1.6rem; color: var(--text-mid); margin-bottom: 2.4rem; flex-grow: 1; line-height: 1.6;">Accidents happen. Discover why you cannot renew a damaged passport online and the exact legal steps required to replace it.</p>
+                    <span class="h-read-more" style="font-size: 1.3rem; font-weight: 700; color: var(--brand-drk); text-transform: uppercase; letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 0.8rem; transition: color 0.3s; padding-bottom: 0.4rem; border-bottom: 0.1rem solid transparent;">Read Advisory <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
             </a>
-
-            <!-- ARTICLE 3 -->
-            <a href="lost-article.html" class="home-blog-card">
-                <div class="h-blog-img img-3"></div>
-                <div class="h-blog-body">
-                    <span class="h-blog-meta">Travel Advice</span>
-                    <h3>Lost Your Jamaican Passport While Overseas?</h3>
-                    <p>Don't panic. Follow this step-by-step protocol for filing police reports abroad and securing a proxy replacement.</p>
-                    <span class="h-read-more">Read Advisory <i class="fa-solid fa-arrow-right"></i></span>
+            <!-- Article 3 -->
+            <a href="lost-passport-article.html" class="home-blog-card" style="background: #fff; border-radius: 0.8rem; overflow: hidden; border: 0.1rem solid var(--border-light); box-shadow: var(--shadow-soft); display: flex; flex-direction: column; transition: transform 0.4s ease, box-shadow 0.4s ease;">
+                <div style="height: 22.0rem; background: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800&auto=format&fit=crop') center/cover; border-bottom: 0.3rem solid var(--gold);"></div>
+                <div style="padding: 3.2rem 2.4rem; display: flex; flex-direction: column; flex-grow: 1;">
+                    <span style="font-size: 1.1rem; color: var(--brand-mid); text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; margin-bottom: 1.6rem;">Travel Advice</span>
+                    <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 2.2rem; font-weight: 600; color: var(--brand-drk); margin-bottom: 1.6rem; line-height: 1.3;">Lost Your Jamaican Passport While Overseas?</h3>
+                    <p style="font-size: 1.6rem; color: var(--text-mid); margin-bottom: 2.4rem; flex-grow: 1; line-height: 1.6;">Don't panic. Follow this step-by-step protocol for filing police reports abroad and securing a proxy replacement.</p>
+                    <span class="h-read-more" style="font-size: 1.3rem; font-weight: 700; color: var(--brand-drk); text-transform: uppercase; letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 0.8rem; transition: color 0.3s; padding-bottom: 0.4rem; border-bottom: 0.1rem solid transparent;">Read Advisory <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
             </a>
-
         </div>
-
-        <div class="home-insights-footer">
-            <a href="passport.html" class="btn-outline-gold">Explore All Articles</a>
+        <div style="text-align: center; margin-top: 2.4rem;">
+            <a href="passport.html" class="btn-ghost-dark" style="border-color: var(--gold); border-width: 0.2rem; width: auto;">Explore All Articles</a>
         </div>
     </div>
 </section>
 
 <!-- FAQ SECTION -->
-<section class="faq-section" id="faq">
+<section class="faq-section" id="faq" style="padding: var(--section-pad); background: var(--ivory);">
     <div class="wrap">
         <div class="section-header enter d1">
             <span style="font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 1.2rem;">Addressing Your Concerns</span>
