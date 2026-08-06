@@ -1,74 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- 1. Character Encoding & Responsive Viewport -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-
-    <!-- 2. Primary Page Title & Description -->
-    <title>Docu-Hub Operations Services &mdash; Secure Document Assistance</title>
-    <meta name="description" content="Elite on-the-ground document assistance in Jamaica for the diaspora. Confidential processing for PICA passports, RGD vital records, and NIS pensions.">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link rel="apple-touch-icon" href="assets/heros.png">
-
-    <!-- 3. Indexing & AI Search (GEO) Metadata -->
-    <link rel="canonical" href="https://dhubservices.com/">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large">
-
-    <!-- 4. Open Graph / Social & AI Link Previews -->
-    <meta property="og:locale" content="en_US">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Docu-Hub Operations Services &mdash; Secure Document Assistance">
-    <meta property="og:description" content="Expert proxy representation for Jamaicans worldwide. Confidential processing for Passports, Vital Records, and NIS services.">
-    <meta property="og:url" content="https://dhubservices.com/">
-    <meta property="og:site_name" content="Docu-Hub Operations Services">
-    <meta property="og:image" content="https://dhubservices.com/assets/concierge.webp">
-
-    <!-- 5. Structured Data (JSON-LD) for AI Search Engines -->
-    <meta name="p:domain_verify" content="e3535e6305964ef227e4afe43774fc23"/>
+    <title>Docu-Hub Operations | Jamaican Proxy Administrative Services</title>
+    <meta name="description" content="Secure, on-the-ground document processing and administrative proxy services in Jamaica for the diaspora. We handle Passports, RGD Vital Records, and NIS Claims.">
+    
+    <!-- AI & SEO SCHEMA DATA -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
-      "name": "Docu-Hub Operations Services",
-      "url": "https://dhubservices.com/",
-      "logo": "https://dhubservices.com/assets/apple-touch-icon.png",
-      "image": "https://dhubservices.com/assets/concierge.webp",
-      "description": "Elite proxy document assistance in Jamaica handling PICA passports, RGD certificates, and NIS claims for the global diaspora.",
-      "identifier": "15602/2025",
+      "name": "Docu-Hub Operations",
+      "description": "On-the-ground administrative proxy services for the Jamaican diaspora, specializing in PICA Passports, RGD Vital Records, and NIS processing.",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Linstead",
         "addressRegion": "St. Catherine",
         "addressCountry": "JM"
       },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "18.1347",
-        "longitude": "-77.0305"
-      },
-      "areaServed": [
-        { "@type": "Country", "name": "United States" },
-        { "@type": "Country", "name": "United Kingdom" },
-        { "@type": "Country", "name": "Canada" }
-      ],
       "email": "admin@dochubservices.com",
-      "priceRange": "$115 - $165 USD"
+      "url": "https://www.dochubservices.com",
+      "areaServed": ["US", "GB", "CA", "JM"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Proxy Services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Jamaican Passport Services (PICA)" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vital Records Retrieval (RGD)" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "NIS Pension & Claims Processing" } }
+        ]
+      }
     }
     </script>
 
-    <!-- 7. Google Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Added Playfair Display for the new blog/featured headers -->
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-    /* ═══════════════════════════════════════════
-       DESIGN TOKENS (Institutional Style)
-     ═══════════════════════════════════════════ */
     :root {
         --bg-light:   #EAECE9;
         --ivory:      #FDFBF7;
@@ -79,328 +50,259 @@
         --text-dark:  #111410; 
         --text-mid:   #3f463e; 
         --sans:       'Jost', Arial, sans-serif; 
+        --serif:      'Playfair Display', Georgia, serif;
         --nav-h:      7.5rem;
-        --max-w:      115.0rem;
-        --section-pad: clamp(8.0rem, 10vh, 12.0rem) 0;
-        --border-light: rgba(0, 0, 0, 0.06);
+        --border-light: rgba(0, 0, 0, 0.08);
         --border-glass: rgba(255, 255, 255, 0.1);
         --shadow-soft:  0 0.4rem 2.0rem rgba(0, 0, 0, 0.03);
-        --shadow-md:    0 0.8rem 2.4rem rgba(0, 0, 0, 0.05);
-        --shadow-deep:  0 1.2rem 3.2rem rgba(0, 0, 0, 0.08);
+        --shadow-md:    0 1.2rem 3.2rem rgba(0, 0, 0, 0.08);
         --shadow-nav:   0 0.4rem 2.0rem rgba(0, 0, 0, 0.20);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 62.5%; }
-    body { font-family: var(--sans); font-size: 1.6rem; font-weight: 500; background: var(--bg-light); color: var(--text-dark); line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--sans); font-size: 1.6rem; font-weight: 500; background: var(--ivory); color: var(--text-dark); line-height: 1.65; overflow-x: hidden; }
     a { text-decoration: none; color: inherit; transition: 0.3s ease; }
     img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .wrap { max-width: 115.0rem; margin: 0 auto; padding: 0 2.4rem; }
 
-    /* Animations */
-    .enter { opacity: 0; transform: translateY(2.0rem); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
-    .enter.in { opacity: 1; transform: none; }
-    .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(1.0rem); } to { opacity: 1; transform: translateY(0); } }
-
-    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 2.4rem; }
-
-    /* NAVIGATION */
-    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.95); backdrop-filter: blur(1.2rem); border-bottom: 0.1rem solid var(--border-glass); transition: 0.3s; }
-    .site-nav.scrolled { background: rgba(30, 43, 29, 0.99); box-shadow: var(--shadow-nav); }
-    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 2.4rem; height: 100%; display: flex; align-items: center; justify-content: space-between; }
-    
+    /* GLOBAL NAVIGATION */
+    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.98); backdrop-filter: blur(1.2rem); border-bottom: 0.1rem solid var(--border-glass); transition: 0.3s; }
+    .nav-inner { max-width: 115.0rem; margin: 0 auto; padding: 0 2.4rem; height: 100%; display: flex; align-items: center; justify-content: space-between; }
     .nav-logo-name { font-family: var(--sans); font-size: clamp(1.8rem, 2.2vw, 2.4rem); font-weight: 700; color: #fff; letter-spacing: 0.02em; }
     .nav-logo-name em { color: var(--gold-lt); font-style: italic; font-weight: 500; }
-    
+
     .nav-links { display: none; list-style: none; align-items: center; gap: 2.4rem; }
-    .nav-links a { font-size: 1.3rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 0.8rem 1.6rem; border-radius: 0.4rem; }
-    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+    .nav-links > li > a { font-size: 1.3rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 0.8rem 1.6rem; border-radius: 0.4rem; display: flex; align-items: center; gap: 0.8rem; }
+    .nav-links > li > a:hover, .nav-links > li > a.active { color: #fff; background: rgba(255,255,255,0.1); }
+
+    .has-dropdown { position: relative; }
+    .dropdown-menu { position: absolute; top: 100%; left: 0; background: var(--brand-drk); min-width: 26.0rem; padding: 1.6rem 0; border-radius: 0 0 0.8rem 0.8rem; box-shadow: var(--shadow-nav); border: 0.1rem solid var(--border-glass); border-top: none; opacity: 0; visibility: hidden; transform: translateY(1.0rem); transition: all 0.3s ease; list-style: none; }
+    .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown-menu li a { display: block; padding: 1.2rem 2.4rem; font-size: 1.4rem; color: rgba(255,255,255,0.85); text-transform: none; letter-spacing: 0.05em; font-weight: 500; transition: 0.3s; }
+    .dropdown-menu li a:hover { color: var(--gold-lt); background: rgba(255,255,255,0.05); padding-left: 2.8rem; }
+
     .hamburger { display: flex; flex-direction: column; gap: 0.6rem; background: none; border: none; padding: 0.5rem; cursor: pointer; z-index: 950; }
     .hamburger span { width: 2.4rem; height: 0.2rem; background: #fff; transition: 0.3s; }
 
     @media (max-width: 899px) {
-        .nav-links { display: none; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: rgba(30, 43, 29, 0.98); backdrop-filter: blur(1.6rem); padding: 3.2rem 2.4rem; gap: 1.6rem; box-shadow: var(--shadow-md); text-align: center; }
+        .nav-links { display: none; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: var(--brand-drk); padding: 3.2rem 2.4rem; gap: 1.6rem; box-shadow: var(--shadow-nav); border-bottom: 0.1rem solid var(--border-glass); }
         .site-nav.open .nav-links { display: flex; }
-        .nav-links a { font-size: 1.4rem; padding: 1.2rem; display: block; width: 100%; }
+        .nav-links > li { width: 100%; }
+        .nav-links > li > a { width: 100%; justify-content: space-between; padding: 1.4rem 1.6rem; font-size: 1.4rem; }
+        .dropdown-menu { position: static; box-shadow: none; border: none; background: rgba(255,255,255,0.03); border-radius: 0.4rem; margin-top: 0.8rem; padding: 0.8rem 0; display: none; opacity: 1; visibility: visible; transform: none; }
+        .has-dropdown.mobile-open .dropdown-menu { display: block; }
+        .has-dropdown.mobile-open .dropdown-toggle i { transform: rotate(180deg); color: var(--gold-lt); }
+        .dropdown-toggle i { transition: transform 0.3s ease; }
+        .dropdown-menu li a { padding: 1.2rem 1.6rem 1.2rem 3.2rem; font-size: 1.5rem; }
         .site-nav.open .hamburger span:nth-child(1) { transform: translateY(0.8rem) rotate(45deg); }
         .site-nav.open .hamburger span:nth-child(2) { opacity: 0; }
         .site-nav.open .hamburger span:nth-child(3) { transform: translateY(-0.8rem) rotate(-45deg); }
     }
+    @media (min-width: 900px) { .hamburger { display: none !important; } .nav-links { display: flex !important; } }
 
-    /* BUTTONS */
-    .btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 1.0rem; padding: 1.4rem 3.6rem; background: transparent; color: var(--gold-lt); border: 0.2rem solid var(--gold-lt); border-radius: 0.4rem; font-size: 1.3rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
-    .btn-ghost:hover { background: var(--gold-lt); color: var(--brand-drk); box-shadow: var(--shadow-nav); }
-
-    .btn-gold-solid { display: inline-flex; align-items: center; justify-content: center; gap: 1.0rem; padding: 1.4rem 3.2rem; background: var(--gold); color: var(--brand-drk); border-radius: 0.4rem; font-size: 1.3rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; transition: 0.3s; border: none; cursor: pointer; }
-    .btn-gold-solid:hover { background: var(--gold-lt); transform: translateY(-0.2rem); }
-
-    /* HERO */
-    .hero-bank { position: relative; height: 75vh; min-height: 55.0rem; display: flex; align-items: center; overflow: hidden; }
-    .hero-bg-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('assets/heros.png') center/cover no-repeat; z-index: 1; animation: kenBurnsZoom 25s infinite alternate ease-in-out; }
-    @keyframes kenBurnsZoom { 0% { transform: scale(1.0); } 100% { transform: scale(1.12); } }
-    .hero-gradient-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(30, 43, 29, 0.95) 5%, rgba(30, 43, 29, 0.6) 45%, rgba(30, 43, 29, 0.1)); z-index: 2; }
-
-    .hero-inner { width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 2.4rem; z-index: 3; position: relative; }
-    .hero-text-box { width: 100%; max-width: 50.0rem; }
-    .hero-eyebrow { font-size: 1.2rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-lt); margin-bottom: 1.6rem; font-weight: 600; }
-    .hero-title { font-size: clamp(3.0rem, 4vw, 4.2rem); font-weight: 700; line-height: 1.2; margin-bottom: 2.0rem; letter-spacing: -0.01em; color: #fff; }
-    .hero-desc { font-size: clamp(1.5rem, 2vw, 1.6rem); color: rgba(255,255,255,0.85); margin-bottom: 3.2rem; font-weight: 400; line-height: 1.7; }
-
-    /* HEADERS */
-    .section-header { text-align: center; margin-bottom: clamp(4.8rem, 8vh, 6.4rem); }
-    .section-header h2 { font-size: clamp(2.8rem, 4vw, 3.8rem); font-weight: 700; color: var(--brand-drk); letter-spacing: -0.01em; }
+    /* HOME HERO SECTION */
+    .home-hero { position: relative; padding: calc(var(--nav-h) + 10.0rem) 0 10.0rem; background: var(--brand-drk); color: #fff; min-height: 85vh; display: flex; align-items: center; overflow: hidden; }
+    .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(30, 43, 29, 0.95) 0%, rgba(30, 43, 29, 0.85) 50%, rgba(30, 43, 29, 0.4) 100%), url('assets/jamaica-hero-bg.webp') center/cover no-repeat; z-index: 1; }
     
-    /* ═══════════════════════════════════════════
-       MOBILE-FIRST SPACIOUS SERVICE CARDS
-     ═══════════════════════════════════════════ */
-    .cards-grid-3col { display: grid; grid-template-columns: 1fr; gap: 9.6rem; width: 100%; max-width: var(--max-w); margin: 0 auto; }
-
-    .service-card { background: #fff; border-radius: 1.2rem; overflow: hidden; box-shadow: var(--shadow-md); border-top: 0.6rem solid var(--gold); display: flex; flex-direction: column; transition: 0.3s ease; }
-    .service-card:hover { transform: translateY(-0.3rem); box-shadow: var(--shadow-deep); }
+    .hero-content { position: relative; z-index: 2; max-width: 70.0rem; }
+    .hero-badge { display: inline-block; padding: 0.6rem 1.6rem; background: rgba(193, 154, 91, 0.15); border: 0.1rem solid var(--gold); border-radius: 3.0rem; color: var(--gold-lt); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 2.4rem; }
+    .home-hero h1 { font-family: var(--serif); font-size: clamp(3.8rem, 5vw, 6.4rem); font-weight: 600; line-height: 1.1; margin-bottom: 2.4rem; letter-spacing: -0.01em; }
+    .home-hero p { font-size: clamp(1.6rem, 2vw, 2.0rem); color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 4.0rem; font-weight: 400; }
     
-    .card-img-header { width: 100%; height: 28.0rem; position: relative; overflow: hidden; background: var(--brand-drk); }
-    .card-img-header img { opacity: 0.95; transition: transform 0.6s ease; }
-    .service-card:hover .card-img-header img { transform: scale(1.05); opacity: 1; }
+    .hero-btn-group { display: flex; flex-wrap: wrap; gap: 1.6rem; }
+    .btn-main { display: inline-flex; align-items: center; justify-content: center; gap: 1.2rem; padding: 1.8rem 3.6rem; background: var(--gold); color: var(--brand-drk); border-radius: 0.4rem; font-size: 1.4rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; }
+    .btn-main:hover { background: var(--gold-lt); transform: translateY(-0.2rem); box-shadow: 0 0.8rem 2.4rem rgba(0,0,0,0.2); }
 
-    .service-card-body { display: flex; flex-direction: column; flex-grow: 1; padding: 4.8rem 3.2rem; }
-    .card-badge { font-size: 1.3rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 2.0rem; }
-    .card-title { font-size: clamp(2.4rem, 6vw, 2.8rem); font-weight: 700; color: var(--brand-drk); line-height: 1.25; margin-bottom: 2.4rem; letter-spacing: -0.01em; }
-    .card-snippet { font-size: 1.7rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 4.0rem; }
+    /* TRUST BAR */
+    .trust-bar { background: #fff; border-bottom: 0.1rem solid var(--border-light); padding: 2.4rem 0; }
+    .trust-inner { display: flex; flex-wrap: wrap; justify-content: center; gap: 3.2rem 6.4rem; align-items: center; text-align: center; font-size: 1.3rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brand-mid); }
+    .trust-item { display: flex; align-items: center; gap: 1.2rem; }
+    .trust-item i { font-size: 2.0rem; color: var(--gold); }
+
+    /* SERVICES GRID SECTION */
+    .services-section { padding: 10.0rem 0; background: var(--bg-light); }
+    .section-header { text-align: center; margin-bottom: 6.4rem; max-width: 70.0rem; margin-left: auto; margin-right: auto; }
+    .section-header span { display: block; color: var(--brand-mid); font-size: 1.3rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.2rem; }
+    .section-header h2 { font-family: var(--serif); font-size: clamp(3.2rem, 4vw, 4.4rem); color: var(--brand-drk); font-weight: 600; line-height: 1.2; }
     
-    .service-pricing-tag { font-size: 1.8rem; font-weight: 700; color: var(--brand-drk); margin-bottom: 4.8rem; display: flex; align-items: center; gap: 1.2rem; }
-    .service-pricing-tag span { font-size: 1.3rem; font-weight: 600; color: var(--brand-mid); text-transform: uppercase; letter-spacing: 0.05em; background: rgba(193, 154, 91, 0.1); padding: 0.6rem 1.0rem; border-radius: 0.4rem; }
+    .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(32.0rem, 1fr)); gap: 3.2rem; }
     
-    .btn-ghost-dark { display: inline-flex; align-items: center; justify-content: center; gap: 0.8rem; width: 100%; padding: 1.8rem 2.4rem; background: transparent; color: var(--brand-drk); border: 0.2rem solid var(--brand-drk); border-radius: 0.4rem; font-size: 1.4rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; margin-top: auto; cursor: pointer; }
-    .btn-ghost-dark:hover { background: var(--brand-drk); color: #fff; }
+    .service-card { background: #fff; border-radius: 0.8rem; padding: 4.8rem 4.0rem; border: 0.1rem solid var(--border-light); border-top: 0.4rem solid var(--brand-drk); box-shadow: var(--shadow-soft); transition: 0.3s; display: flex; flex-direction: column; }
+    .service-card:hover { transform: translateY(-0.5rem); box-shadow: var(--shadow-md); border-top-color: var(--gold); }
+    
+    .service-icon { width: 6.4rem; height: 6.4rem; background: rgba(193, 154, 91, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 2.4rem; }
+    .service-icon i { font-size: 2.8rem; color: var(--gold); }
+    
+    .service-card h3 { font-size: 2.2rem; font-weight: 700; color: var(--brand-drk); margin-bottom: 1.6rem; }
+    .service-card p { font-size: 1.6rem; color: var(--text-mid); margin-bottom: 3.2rem; line-height: 1.6; flex-grow: 1; }
+    
+    .service-link { font-size: 1.4rem; font-weight: 700; color: var(--brand-drk); text-transform: uppercase; letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 0.8rem; transition: 0.3s; border-bottom: 0.2rem solid var(--gold); padding-bottom: 0.4rem; align-self: flex-start; }
+    .service-card:hover .service-link { color: var(--brand-mid); border-color: var(--brand-mid); gap: 1.2rem; }
 
-    /* CUSTOM CONSULTATION BANNER */
-    .consultation-banner { background: var(--brand-drk); border-radius: 0.8rem; padding: 4.8rem; text-align: center; color: #fff; margin-top: 6.4rem; box-shadow: var(--shadow-md); position: relative; overflow: hidden; }
-    .consultation-banner::before { content: ''; position: absolute; top: 0; left: 0; width: 0.4rem; height: 100%; background: var(--gold); }
-    .consultation-banner h3 { font-size: 2.4rem; font-weight: 700; margin-bottom: 1.6rem; letter-spacing: -0.01em; }
-    .consultation-banner p { font-size: 1.6rem; color: rgba(255,255,255,0.8); max-width: 65.0rem; margin: 0 auto 3.2rem; line-height: 1.6; }
+    /* WORKFLOW SECTION */
+    .workflow-section { padding: 10.0rem 0; background: #fff; }
+    .workflow-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(28.0rem, 1fr)); gap: 4.8rem; text-align: center; }
+    
+    .workflow-step { position: relative; }
+    .step-number { font-family: var(--serif); font-size: 8.0rem; font-weight: 700; color: rgba(193, 154, 91, 0.15); position: absolute; top: -4.0rem; left: 50%; transform: translateX(-50%); z-index: 1; }
+    .step-content { position: relative; z-index: 2; padding-top: 2.4rem; }
+    .step-content h4 { font-size: 2.0rem; color: var(--brand-drk); margin-bottom: 1.2rem; }
+    .step-content p { font-size: 1.6rem; color: var(--text-mid); line-height: 1.6; }
 
-    /* NEW ADDITIONS: Featured & Blogs */
-    .home-blog-card:hover { transform: translateY(-0.8rem); box-shadow: var(--shadow-md); border-color: var(--gold); }
-    .home-blog-card:hover .h-read-more { color: var(--gold); border-bottom-color: var(--gold); }
+    /* CTA BANNER */
+    .cta-banner { background: var(--brand-drk); padding: 8.0rem 0; text-align: center; border-top: 0.4rem solid var(--gold); }
+    .cta-banner h2 { font-family: var(--serif); font-size: clamp(2.8rem, 4vw, 4.0rem); color: #fff; margin-bottom: 2.4rem; }
+    .cta-banner p { font-size: 1.8rem; color: rgba(255,255,255,0.8); max-width: 65.0rem; margin: 0 auto 3.2rem; line-height: 1.6; }
 
-    /* FAQ ACCORDION */
-    .faq-container { max-width: 90.0rem; margin: 0 auto; display: grid; gap: 2.0rem; }
-    .faq-item { background: #fff; border-radius: 0.8rem; box-shadow: var(--shadow-md); border-left: 0.4rem solid var(--gold); overflow: hidden; transition: box-shadow 0.3s; }
-    .faq-item:hover { box-shadow: var(--shadow-deep); }
-    .faq-item summary { padding: 2.4rem; cursor: pointer; list-style: none; font-size: clamp(1.6rem, 2.5vw, 1.9rem); color: var(--brand-drk); font-weight: 700; display: flex; justify-content: space-between; align-items: center; letter-spacing: -0.01em; }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '\002B'; font-size: 2.4rem; color: var(--gold); transition: transform 0.3s ease; }
-    .faq-item[open] summary::after { content: '\2212'; color: var(--brand-drk); }
-    .faq-content-blocked { padding: 0 2.4rem 2.8rem 2.4rem; font-size: 1.6rem; color: var(--text-mid); line-height: 1.7; animation: fadeIn 0.3s ease; }
-
-    /* DESKTOP OVERRIDES */
-    @media (min-width: 900px) {
-        .hamburger { display: none !important; } 
-        .nav-links { display: flex !important; flex-direction: row; position: static; background: transparent; padding: 0; box-shadow: none; border: none; }
-        
-        .fs-grid { grid-template-columns: 1fr 1fr; } /* Added for new Featured block */
-
-        /* Revert cards to a tighter horizontal layout for desktop */
-        .cards-grid-3col { grid-template-columns: repeat(3, 1fr); gap: 4.8rem; }
-        .card-img-header { height: 24.0rem; }
-        .service-card-body { padding: 4.0rem 3.2rem; }
-        .card-badge { margin-bottom: 1.6rem; }
-        .card-title { margin-bottom: 1.6rem; font-size: 2.4rem; }
-        .card-snippet { margin-bottom: 3.2rem; font-size: 1.6rem; }
-        .service-pricing-tag { margin-bottom: 4.0rem; }
-        .btn-ghost-dark { padding: 1.4rem 2.4rem; font-size: 1.3rem; }
+    @media (max-width: 768px) {
+        .hero-bg { background: linear-gradient(rgba(30, 43, 29, 0.9), rgba(30, 43, 29, 0.9)), url('assets/jamaica-hero-bg.webp') center/cover no-repeat; }
+        .hero-content { text-align: center; margin: 0 auto; }
+        .hero-btn-group { justify-content: center; }
     }
     </style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
+<!-- GLOBAL NAVIGATION -->
 <nav class="site-nav" id="sitenav">
     <div class="nav-inner">
-        <a href="#" class="nav-logo-name">Docu-Hub <em>Operations Services</em></a>
-        <ul class="nav-links">
-            <li><a href="#top">Home</a></li>
-            <li><a href="#services">Services</a></li>
+        <a href="index.html" class="nav-logo-name">Docu-Hub <em>Operations</em></a>
+        
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            
+            <li class="has-dropdown">
+                <a href="#" class="dropdown-toggle" id="services-toggle" aria-haspopup="true" aria-expanded="false">
+                    Services <i class="fa-solid fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="passport.html">PICA Passport Services</a></li>
+                    <li><a href="vital.html">RGD Vital Records</a></li>
+                    <li><a href="nis.html">NIS Tracking &amp; Claims</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="insights.html">Insights</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
-        <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
+        
+        <button class="hamburger" id="hbg" aria-label="Toggle Navigation Menu">
+            <span></span><span></span><span></span>
+        </button>
     </div>
 </nav>
 
-<!-- HERO SECTION -->
-<section class="hero-bank" id="top">
-    <div class="hero-bg-image"></div>
-    <div class="hero-gradient-overlay"></div>
-    
-    <div class="hero-inner enter d1">
-        <div class="hero-text-box">
-            <p class="hero-eyebrow">Elite Proxy Representation</p>
-            <h1 class="hero-title">Secure &amp; Reliable Jamaican Document Help</h1>
-            <p class="hero-desc">We navigate government agencies, official record lookups, and administrative lines in Jamaica so you don't have to.</p>
-            <a href="#featured" class="btn-ghost">Explore Services</a>
-        </div>
-    </div>
-</section>
-
-<!-- FEATURED SERVICE (COMPLEX PASSPORTS) -->
-<section id="featured" class="featured-service" style="padding: var(--section-pad); background: var(--ivory);">
-    <div class="wrap fs-grid" style="display: grid; gap: 4.8rem; align-items: center;">
-        <div class="fs-image" style="width: 100%; height: 40.0rem; border-radius: 0.8rem; overflow: hidden; box-shadow: var(--shadow-md);">
-            <img src="assets/featured.png" alt="Jamaican Passport Flatlay" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-        <div class="fs-content enter d2">
-            <span style="font-family: var(--sans); font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--gold); font-weight: 700; margin-bottom: 1.6rem; display: block;">Featured Service</span>
-            <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(3.2rem, 4vw, 4.4rem); color: var(--brand-drk); font-weight: 600; margin-bottom: 2.4rem; line-height: 1.2;">Complex PICA Passport Replacements</h2>
-            <p style="font-size: 1.7rem; color: var(--text-mid); margin-bottom: 2.4rem; line-height: 1.7;">Don't let a lost, washed, or damaged passport ruin your travel plans. While standard renewals can be done online, complex replacements require an in-person, physical surrender of documents at PICA headquarters.</p>
-            <p style="font-size: 1.7rem; color: var(--text-mid); margin-bottom: 3.2rem; line-height: 1.7;">Our proxy team securely acts on your behalf, navigating the strict legal affidavits and walking your application directly to the processing desk.</p>
-            <a href="passport.html" class="btn-ghost-dark" style="display: inline-flex; width: auto; align-items: center; justify-content: center; gap: 0.8rem; padding: 1.6rem 3.2rem; border: 0.2rem solid var(--brand-drk); color: var(--brand-drk); font-size: 1.3rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; transition: 0.3s; border-radius: 0.4rem;">Determine Your Pathway <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-    </div>
-</section>
-
-<!-- THE 3 PILLAR SERVICES SHOWCASE -->
-<section class="services-section" id="services" style="padding: var(--section-pad); background: var(--bg-light);">
+<!-- HOME HERO -->
+<header class="home-hero">
+    <div class="hero-bg"></div>
     <div class="wrap">
-        
-        <div class="section-header enter d1">
-            <span style="font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brand-mid); font-weight: 600; display: block; margin-bottom: 1.2rem;">Our Core Focus Areas</span>
-            <h2>Proxy Services for Jamaicans Overseas</h2>
-        </div>
-
-        <div class="cards-grid-3col enter d2">
-            
-            <!-- Pillar 1: Passports (Standard Only) -->
-            <div class="service-card">
-                <div class="card-img-header"><img src="assets/pica.webp" loading="lazy" alt="Jamaican Passport Services PICA"></div>
-                <div class="service-card-body">
-                    <span class="card-badge">Passports & Citizenship</span>
-                    <h3 class="card-title">Standard Online Renewals</h3>
-                    <p class="card-snippet">Streamlined assistance for simple adult passport renewals that do not require legal name changes or physical surrender.</p>
-                    <div class="service-pricing-tag">$145 USD <span>Starting Online</span></div>
-                    <a href="passport.html" class="btn-ghost-dark">View Requirements</a>
-                </div>
+        <div class="hero-content">
+            <span class="hero-badge">Serving the Jamaican Diaspora</span>
+            <h1>Your On-The-Ground Administrative Proxy.</h1>
+            <p>Skip the flights, the international hold times, and the bureaucratic red tape. We securely navigate the physical government lines at PICA, RGD, and MLSS on your behalf.</p>
+            <div class="hero-btn-group">
+                <a href="#services" class="btn-main">Explore Our Services</a>
             </div>
-
-            <!-- Pillar 2: Vital Records -->
-            <div class="service-card">
-                <div class="card-img-header"><img src="assets/rgd-new.webp" loading="lazy" alt="RGD Vital Records Search and Retrieval"></div>
-                <div class="service-card-body">
-                    <span class="card-badge">Vital Records (RGD)</span>
-                    <h3 class="card-title">Certificates &amp; Updates</h3>
-                    <p class="card-snippet">Official RGD searches for birth, marriage, and death records, plus complex legal updates like adding a father's name.</p>
-                    <div class="service-pricing-tag">$115 USD <span>Starting Search</span></div>
-                    <a href="vital.html" class="btn-ghost-dark">View Requirements</a>
-                </div>
-            </div>
-
-            <!-- Pillar 3: NIS -->
-            <div class="service-card">
-                <div class="card-img-header"><img src="assets/nis-suite.png" loading="lazy" alt="National Insurance Scheme NIS Jamaica"></div>
-                <div class="service-card-body">
-                    <span class="card-badge">National Insurance (NIS)</span>
-                    <h3 class="card-title">NIS Records &amp; Pensions</h3>
-                    <p class="card-snippet">Contribution history tracking, voluntary setup, and strategic preparation for complex retirement and funeral claims.</p>
-                    <div class="service-pricing-tag">$165 USD <span>Starting Proxy</span></div>
-                    <a href="nis.html" class="btn-ghost-dark">View Requirements</a>
-                </div>
-            </div>
-
         </div>
-
-        <!-- Custom Consultation Catch-All -->
-        <div class="consultation-banner enter d3">
-            <h3>Need Help With an Unlisted Request?</h3>
-            <p>Not seeing the exact document service you need? We handle complex and unique administrative tasks in Jamaica on a case-by-case basis. Contact us to discuss your specific situation.</p>
-            <a href="mailto:admin@dochubservices.com?subject=Custom Consultation Inquiry" class="btn-gold-solid">Request a Private Consultation <i class="fa-solid fa-arrow-right" style="margin-left: 0.5rem;"></i></a>
-        </div>
-
     </div>
-</section>
+</header>
 
-<!-- INSIGHTS & BLOGS GRID -->
-<section class="home-insights" style="padding: var(--section-pad); background: var(--bg-light); border-top: 0.1rem solid var(--border-light);">
+<!-- TRUST BAR -->
+<div class="trust-bar">
+    <div class="wrap trust-inner">
+        <div class="trust-item"><i class="fa-solid fa-building-flag"></i> COJ Registered #15602/2025</div>
+        <div class="trust-item"><i class="fa-solid fa-user-shield"></i> OIC Data Controller Verified</div>
+        <div class="trust-item"><i class="fa-solid fa-plane-departure"></i> Supporting US, UK &amp; Canada</div>
+    </div>
+</div>
+
+<!-- SERVICES GRID -->
+<section id="services" class="services-section">
     <div class="wrap">
-        <div class="home-insights-header enter d1" style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 5.6rem;">
-            <span style="font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--gold); font-weight: 700; margin-bottom: 1.6rem;">Expert Advisory</span>
-            <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(3.2rem, 4vw, 4.4rem); color: var(--brand-drk); font-weight: 600; margin-bottom: 2.4rem; line-height: 1.2;">Travel Security & Document Insights</h2>
+        <div class="section-header">
+            <span>Our Expertise</span>
+            <h2>Dedicated Agency Solutions</h2>
         </div>
         
-        <div class="home-blog-grid enter d2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(30.0rem, 1fr)); gap: 3.2rem; margin-bottom: 4.8rem;">
-            <!-- Article 1 -->
-            <a href="heat-damage-article.html" class="home-blog-card" style="background: #fff; border-radius: 0.8rem; overflow: hidden; border: 0.1rem solid var(--border-light); box-shadow: var(--shadow-soft); display: flex; flex-direction: column; transition: transform 0.4s ease, box-shadow 0.4s ease;">
-                <div style="height: 22.0rem; background: url('assets/heat-damaged.png') center/cover; border-bottom: 0.3rem solid var(--gold);"></div>
-                <div style="padding: 3.2rem 2.4rem; display: flex; flex-direction: column; flex-grow: 1;">
-                    <span style="font-size: 1.1rem; color: var(--brand-mid); text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; margin-bottom: 1.6rem;">Security Warning</span>
-                    <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 2.2rem; font-weight: 600; color: var(--brand-drk); margin-bottom: 1.6rem; line-height: 1.3;">The Plastic Bag Trap: Is Heat Destroying Your Passport?</h3>
-                    <p style="font-size: 1.6rem; color: var(--text-mid); margin-bottom: 2.4rem; flex-grow: 1; line-height: 1.6;">Wrapping your e-passport in plastic to prevent water damage might actually be melting the biometric chip. Learn the smartphone test.</p>
-                    <span class="h-read-more" style="font-size: 1.3rem; font-weight: 700; color: var(--brand-drk); text-transform: uppercase; letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 0.8rem; transition: color 0.3s; padding-bottom: 0.4rem; border-bottom: 0.1rem solid transparent;">Read Advisory <i class="fa-solid fa-arrow-right"></i></span>
-                </div>
-            </a>
-            <!-- Article 2 -->
-            <a href="washed-passport-article.html" class="home-blog-card" style="background: #fff; border-radius: 0.8rem; overflow: hidden; border: 0.1rem solid var(--border-light); box-shadow: var(--shadow-soft); display: flex; flex-direction: column; transition: transform 0.4s ease, box-shadow 0.4s ease;">
-                <div style="height: 22.0rem; background: url('assets/water-damaged.png') center/cover; border-bottom: 0.3rem solid var(--gold);"></div>
-                <div style="padding: 3.2rem 2.4rem; display: flex; flex-direction: column; flex-grow: 1;">
-                    <span style="font-size: 1.1rem; color: var(--brand-mid); text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; margin-bottom: 1.6rem;">Emergency Protocol</span>
-                    <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 2.2rem; font-weight: 600; color: var(--brand-drk); margin-bottom: 1.6rem; line-height: 1.3;">What to Do If Your Passport Gets Washed or Torn</h3>
-                    <p style="font-size: 1.6rem; color: var(--text-mid); margin-bottom: 2.4rem; flex-grow: 1; line-height: 1.6;">Accidents happen. Discover why you cannot renew a damaged passport online and the exact legal steps required to replace it.</p>
-                    <span class="h-read-more" style="font-size: 1.3rem; font-weight: 700; color: var(--brand-drk); text-transform: uppercase; letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 0.8rem; transition: color 0.3s; padding-bottom: 0.4rem; border-bottom: 0.1rem solid transparent;">Read Advisory <i class="fa-solid fa-arrow-right"></i></span>
-                </div>
-            </a>
-            <!-- Article 3 -->
-            <a href="lost-passport-article.html" class="home-blog-card" style="background: #fff; border-radius: 0.8rem; overflow: hidden; border: 0.1rem solid var(--border-light); box-shadow: var(--shadow-soft); display: flex; flex-direction: column; transition: transform 0.4s ease, box-shadow 0.4s ease;">
-                <div style="height: 22.0rem; background: url('assets/lost-stolen.png') center/cover; border-bottom: 0.3rem solid var(--gold);"></div>
-                <div style="padding: 3.2rem 2.4rem; display: flex; flex-direction: column; flex-grow: 1;">
-                    <span style="font-size: 1.1rem; color: var(--brand-mid); text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; margin-bottom: 1.6rem;">Travel Advice</span>
-                    <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 2.2rem; font-weight: 600; color: var(--brand-drk); margin-bottom: 1.6rem; line-height: 1.3;">Lost Your Jamaican Passport While Overseas?</h3>
-                    <p style="font-size: 1.6rem; color: var(--text-mid); margin-bottom: 2.4rem; flex-grow: 1; line-height: 1.6;">Don't panic. Follow this step-by-step protocol for filing police reports abroad and securing a proxy replacement.</p>
-                    <span class="h-read-more" style="font-size: 1.3rem; font-weight: 700; color: var(--brand-drk); text-transform: uppercase; letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 0.8rem; transition: color 0.3s; padding-bottom: 0.4rem; border-bottom: 0.1rem solid transparent;">Read Advisory <i class="fa-solid fa-arrow-right"></i></span>
-                </div>
-            </a>
-        </div>
-        <div style="text-align: center; margin-top: 2.4rem;">
-            <a href="passport.html" class="btn-ghost-dark" style="border-color: var(--gold); border-width: 0.2rem; width: auto;">More Articles coming soon</a>
+        <div class="service-grid">
+            
+            <!-- PICA Card -->
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-passport"></i></div>
+                <h3>PICA Passports</h3>
+                <p>Comprehensive proxy processing for standard online renewals, complex minor applications, legal name changes, and replacing damaged or lost books.</p>
+                <a href="passport.html" class="service-link">View Passport Services <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <!-- RGD Card -->
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-file-signature"></i></div>
+                <h3>RGD Vital Records</h3>
+                <p>Expert archival retrieval and legal proxy amendments for Jamaican birth, marriage, and death certificates needed for international compliance.</p>
+                <a href="vital.html" class="service-link">View RGD Services <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <!-- NIS Card -->
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-building-columns"></i></div>
+                <h3>NIS &amp; Pensions</h3>
+                <p>Secure representation for tracking past MLSS contribution ledgers, setting up voluntary payments, and filing for overseas retirement benefits.</p>
+                <a href="nis.html" class="service-link">View NIS Services <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
         </div>
     </div>
 </section>
 
-<!-- FAQ SECTION -->
-<section class="faq-section" id="faq" style="padding: var(--section-pad); background: var(--ivory);">
+<!-- WORKFLOW SECTION -->
+<section class="workflow-section">
     <div class="wrap">
-        <div class="section-header enter d1">
-            <span style="font-family: var(--sans); font-size: 1.2rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 1.2rem;">Addressing Your Concerns</span>
-            <h2>Frequently Asked Questions</h2>
+        <div class="section-header">
+            <span>The Process</span>
+            <h2>How Proxy Lodgment Works</h2>
         </div>
-
-        <div class="faq-container enter d2">
+        
+        <div class="workflow-grid">
+            <div class="workflow-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Pre-Audit &amp; Prep</h4>
+                    <p>Select your service and complete our secure digital intake. We draft your complex government forms and audit your supporting documents for compliance.</p>
+                </div>
+            </div>
             
-            <details class="faq-item">
-                <summary>I live overseas. Do I have to mail my physical original documents?</summary>
-                <div class="faq-content-blocked">
-                    <p>It depends on the service. For standard RGD searches, high-resolution digital uploads are sufficient. However, for complex processes like an NIS Claim or surrendering a damaged passport, the Jamaican government strictly requires wet-signed original documents. We will guide you exactly on what needs to be securely couriered via DHL.</p>
+            <div class="workflow-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Physical Lodgment</h4>
+                    <p>Once you courier your signed originals to us, our dedicated agents queue in person and hand-deliver your application directly to the agency desk.</p>
                 </div>
-            </details>
-
-            <details class="faq-item">
-                <summary>What happens if my application is rejected by the government agency?</summary>
-                <div class="faq-content-blocked">
-                    <p>This is exactly why our Pre-Audit step exists. We meticulously audit your uploads and forms before submission to prevent rejections. If an agency still flags a document or requires additional proof, we act as your local representative to rectify the issue at the office without requiring you to restart the process from overseas.</p>
+            </div>
+            
+            <div class="workflow-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Secure Global Delivery</h4>
+                    <p>We monitor the processing timeline, retrieve your freshly issued documents, and dispatch them to your overseas address via signature-required courier.</p>
                 </div>
-            </details>
-
-            <details class="faq-item">
-                <summary>How do I know my documents are secure with you?</summary>
-                <div class="faq-content-blocked">
-                    <p>Docu-Hub Operations is legally registered with the Companies Office of Jamaica (COJ). We utilize secure intake portals, and any final printed records (like a Birth Certificate or Passport) are never sent via standard mail—they are exclusively dispatched via signature-required international couriers.</p>
-                </div>
-            </details>
-
+            </div>
         </div>
+    </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+    <div class="wrap">
+        <h2>Want to stay informed?</h2>
+        <p>Explore our Advisory Desk for expert guides on navigating Jamaican bureaucracy, travel security warnings, and document protection strategies.</p>
+        <a href="insights.html" class="btn-main" style="background: transparent; color: var(--gold); border: 0.1rem solid var(--gold);">Visit The Insights Desk</a>
     </div>
 </section>
 
 <!-- CLEAN, UNIFIED FOOTER SECTION -->
-<footer class="site-footer" style="background: #111811; color: #fff; padding: clamp(8.0rem, 10vh, 12.0rem) 0 4.0rem; border-top: 0.1rem solid rgba(255,255,255,0.08);">
+<footer class="site-footer" id="contact" style="background: #111811; color: #fff; padding: clamp(8.0rem, 10vh, 12.0rem) 0 4.0rem;">
     <div class="wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(25.0rem, 1fr)); gap: 6.4rem; margin-bottom: 6.4rem;">
         <div>
             <span style="font-family: var(--sans); font-size: 2.6rem; font-weight: 700; letter-spacing: 0.02em; display: block; margin-bottom: 1.6rem;">Docu-Hub <em style="color: var(--gold); font-style: italic; font-weight: 500;">Operations</em></span>
@@ -408,7 +310,7 @@
         </div>
         
         <div>
-            <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: 2.4rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase;">Service Hubs</h4>
+            <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: 2.4rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase;">Quick Links</h4>
             <ul style="list-style: none; display: grid; gap: 1.6rem; padding: 0;">
                 <li><a href="passport.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">PICA Passport Services</a></li>
                 <li><a href="vital.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">RGD Vital Records</a></li>
@@ -449,19 +351,25 @@
 </footer>
 
 <script>
-// Intersection Observer for Smooth Scroll Animations
-const io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.05 });
-document.querySelectorAll('.enter').forEach(el => io.observe(el));
-
-// Sticky Nav Scroll State
-const nav = document.getElementById('sitenav'); 
-window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
-
 // Mobile Hamburger Toggle
 const hbg = document.getElementById('hbg');
 const navBar = document.getElementById('sitenav');
-hbg.addEventListener('click', () => { navBar.classList.toggle('open'); });
-document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { navBar.classList.remove('open'); }); });
+
+if (hbg && navBar) {
+    hbg.addEventListener('click', () => { 
+        navBar.classList.toggle('open'); 
+    });
+}
+
+// Mobile Dropdown Toggle Logic
+const servicesToggle = document.getElementById('services-toggle');
+if (servicesToggle && window.innerWidth < 900) {
+    servicesToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        const parentLi = servicesToggle.closest('.has-dropdown');
+        parentLi.classList.toggle('mobile-open');
+    });
+}
 </script>
 </body>
 </html>
