@@ -101,18 +101,32 @@
     }
     @media (min-width: 900px) { .hamburger { display: none !important; } .nav-links { display: flex !important; } }
 
-    /* HOME HERO SECTION */
-    .home-hero { position: relative; padding: calc(var(--nav-h) + 10.0rem) 0 10.0rem; background: var(--brand-drk); color: #fff; min-height: 85vh; display: flex; align-items: center; overflow: hidden; }
-    .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(30, 43, 29, 0.95) 0%, rgba(30, 43, 29, 0.85) 50%, rgba(30, 43, 29, 0.4) 100%), url('assets/jamaica-hero-bg.webp') center/cover no-repeat; z-index: 1; }
+    /* REVISED HOME HERO SECTION (SPLIT LAYOUT) */
+    .home-hero { padding: calc(var(--nav-h) + 6.4rem) 0 8.0rem; background: var(--brand-drk); color: #fff; }
+    .hero-inner { display: flex; flex-direction: column; gap: 4.8rem; align-items: center; }
     
-    .hero-content { position: relative; z-index: 2; max-width: 70.0rem; }
-    .hero-badge { display: inline-block; padding: 0.6rem 1.6rem; background: rgba(193, 154, 91, 0.15); border: 0.1rem solid var(--gold); border-radius: 3.0rem; color: var(--gold-lt); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 2.4rem; }
-    .home-hero h1 { font-family: var(--serif); font-size: clamp(3.8rem, 5vw, 6.4rem); font-weight: 600; line-height: 1.1; margin-bottom: 2.4rem; letter-spacing: -0.01em; }
-    .home-hero p { font-size: clamp(1.6rem, 2vw, 2.0rem); color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 4.0rem; font-weight: 400; }
+    .hero-text { flex: 1; max-width: 60.0rem; text-align: left; }
+    .hero-badge { display: inline-block; padding: 0.6rem 1.6rem; background: rgba(193, 154, 91, 0.15); border: 0.1rem solid var(--gold); border-radius: 3.0rem; color: var(--gold-lt); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 2.0rem; }
     
-    .hero-btn-group { display: flex; flex-wrap: wrap; gap: 1.6rem; }
-    .btn-main { display: inline-flex; align-items: center; justify-content: center; gap: 1.2rem; padding: 1.8rem 3.6rem; background: var(--gold); color: var(--brand-drk); border-radius: 0.4rem; font-size: 1.4rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; }
+    /* Reduced sizes for Title and Description */
+    .home-hero h1 { font-family: var(--serif); font-size: clamp(3.2rem, 4vw, 4.8rem); font-weight: 600; line-height: 1.15; margin-bottom: 1.6rem; letter-spacing: -0.01em; }
+    .home-hero p { font-size: clamp(1.5rem, 1.5vw, 1.7rem); color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 3.2rem; font-weight: 400; }
+    
+    .hero-btn-group { display: flex; flex-wrap: wrap; gap: 1.6rem; justify-content: flex-start; }
+    
+    /* Reduced CTA Button size */
+    .btn-main { display: inline-flex; align-items: center; justify-content: center; gap: 1.0rem; padding: 1.4rem 2.8rem; background: var(--gold); color: var(--brand-drk); border-radius: 0.4rem; font-size: 1.3rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; }
     .btn-main:hover { background: var(--gold-lt); transform: translateY(-0.2rem); box-shadow: 0 0.8rem 2.4rem rgba(0,0,0,0.2); }
+
+    /* New dedicated Hero Image box on the right */
+    .hero-image { flex: 1; width: 100%; max-width: 55.0rem; border-radius: 0.8rem; overflow: hidden; border: 0.4rem solid var(--gold); box-shadow: var(--shadow-md); }
+    .hero-image img { width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 4/3; }
+
+    /* Desktop layout for Hero */
+    @media (min-width: 900px) {
+        .hero-inner { flex-direction: row; align-items: center; justify-content: space-between; }
+        .home-hero { padding: calc(var(--nav-h) + 10.0rem) 0 10.0rem; }
+    }
 
     /* TRUST BAR */
     .trust-bar { background: #fff; border-bottom: 0.1rem solid var(--border-light); padding: 2.4rem 0; }
@@ -120,22 +134,24 @@
     .trust-item { display: flex; align-items: center; gap: 1.2rem; }
     .trust-item i { font-size: 2.0rem; color: var(--gold); }
 
-    /* SERVICES GRID SECTION */
+    /* IMAGE-BASED SERVICES GRID SECTION */
     .services-section { padding: 10.0rem 0; background: var(--bg-light); }
     .section-header { text-align: center; margin-bottom: 6.4rem; max-width: 70.0rem; margin-left: auto; margin-right: auto; }
     .section-header span { display: block; color: var(--brand-mid); font-size: 1.3rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.2rem; }
     .section-header h2 { font-family: var(--serif); font-size: clamp(3.2rem, 4vw, 4.4rem); color: var(--brand-drk); font-weight: 600; line-height: 1.2; }
     
-    .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(32.0rem, 1fr)); gap: 3.2rem; }
+    .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(32.0rem, 1fr)); gap: clamp(3.2rem, 5vw, 4.8rem); }
     
-    .service-card { background: #fff; border-radius: 0.8rem; padding: 4.8rem 4.0rem; border: 0.1rem solid var(--border-light); border-top: 0.4rem solid var(--brand-drk); box-shadow: var(--shadow-soft); transition: 0.3s; display: flex; flex-direction: column; }
-    .service-card:hover { transform: translateY(-0.5rem); box-shadow: var(--shadow-md); border-top-color: var(--gold); }
+    .service-card { background: #fff; border-radius: 0.8rem; overflow: hidden; border: 0.1rem solid var(--border-light); box-shadow: var(--shadow-soft); transition: 0.3s; display: flex; flex-direction: column; }
+    .service-card:hover { transform: translateY(-0.5rem); box-shadow: var(--shadow-md); border-color: var(--gold); }
     
-    .service-icon { width: 6.4rem; height: 6.4rem; background: rgba(193, 154, 91, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 2.4rem; }
-    .service-icon i { font-size: 2.8rem; color: var(--gold); }
-    
-    .service-card h3 { font-size: 2.2rem; font-weight: 700; color: var(--brand-drk); margin-bottom: 1.6rem; }
-    .service-card p { font-size: 1.6rem; color: var(--text-mid); margin-bottom: 3.2rem; line-height: 1.6; flex-grow: 1; }
+    .card-img-box { width: 100%; height: 22.0rem; overflow: hidden; position: relative; border-bottom: 0.4rem solid var(--gold); }
+    .card-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .service-card:hover .card-img-box img { transform: scale(1.05); }
+
+    .card-content { padding: 4.0rem 3.2rem; display: flex; flex-direction: column; flex-grow: 1; }
+    .card-content h3 { font-size: 2.2rem; font-weight: 700; color: var(--brand-drk); margin-bottom: 1.6rem; }
+    .card-content p { font-size: 1.6rem; color: var(--text-mid); margin-bottom: 3.2rem; line-height: 1.6; flex-grow: 1; }
     
     .service-link { font-size: 1.4rem; font-weight: 700; color: var(--brand-drk); text-transform: uppercase; letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 0.8rem; transition: 0.3s; border-bottom: 0.2rem solid var(--gold); padding-bottom: 0.4rem; align-self: flex-start; }
     .service-card:hover .service-link { color: var(--brand-mid); border-color: var(--brand-mid); gap: 1.2rem; }
@@ -155,11 +171,6 @@
     .cta-banner h2 { font-family: var(--serif); font-size: clamp(2.8rem, 4vw, 4.0rem); color: #fff; margin-bottom: 2.4rem; }
     .cta-banner p { font-size: 1.8rem; color: rgba(255,255,255,0.8); max-width: 65.0rem; margin: 0 auto 3.2rem; line-height: 1.6; }
 
-    @media (max-width: 768px) {
-        .hero-bg { background: linear-gradient(rgba(30, 43, 29, 0.9), rgba(30, 43, 29, 0.9)), url('assets/jamaica-hero-bg.webp') center/cover no-repeat; }
-        .hero-content { text-align: center; margin: 0 auto; }
-        .hero-btn-group { justify-content: center; }
-    }
     </style>
 </head>
 <body>
@@ -194,11 +205,12 @@
     </div>
 </nav>
 
-<!-- HOME HERO -->
+<!-- REVISED HOME HERO (Split Layout) -->
 <header class="home-hero">
-    <div class="hero-bg"></div>
-    <div class="wrap">
-        <div class="hero-content">
+    <div class="wrap hero-inner">
+        
+        <!-- Text on the left -->
+        <div class="hero-text">
             <span class="hero-badge">Serving the Jamaican Diaspora</span>
             <h1>Your On-The-Ground Administrative Proxy.</h1>
             <p>Skip the flights, the international hold times, and the bureaucratic red tape. We securely navigate the physical government lines at PICA, RGD, and MLSS on your behalf.</p>
@@ -206,6 +218,12 @@
                 <a href="#services" class="btn-main">Explore Our Services</a>
             </div>
         </div>
+        
+        <!-- Image on the right -->
+        <div class="hero-image">
+            <img src="assets/jamaica-hero.webp" alt="Jamaican Proxy Services Team" loading="lazy">
+        </div>
+        
     </div>
 </header>
 
@@ -228,28 +246,40 @@
         
         <div class="service-grid">
             
-            <!-- PICA Card -->
+            <!-- PICA Image Card -->
             <div class="service-card">
-                <div class="service-icon"><i class="fa-solid fa-passport"></i></div>
-                <h3>PICA Passports</h3>
-                <p>Comprehensive proxy processing for standard online renewals, complex minor applications, legal name changes, and replacing damaged or lost books.</p>
-                <a href="passport.html" class="service-link">View Passport Services <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="card-img-box">
+                    <img src="assets/passport-service.webp" alt="Jamaican Passport Services" loading="lazy">
+                </div>
+                <div class="card-content">
+                    <h3>PICA Passports</h3>
+                    <p>Comprehensive proxy processing for standard online renewals, complex minor applications, legal name changes, and replacing damaged or lost books.</p>
+                    <a href="passport.html" class="service-link">View Passport Services <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
             </div>
 
-            <!-- RGD Card -->
+            <!-- RGD Image Card -->
             <div class="service-card">
-                <div class="service-icon"><i class="fa-solid fa-file-signature"></i></div>
-                <h3>RGD Vital Records</h3>
-                <p>Expert archival retrieval and legal proxy amendments for Jamaican birth, marriage, and death certificates needed for international compliance.</p>
-                <a href="vital.html" class="service-link">View RGD Services <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="card-img-box">
+                    <img src="assets/rgd-service.webp" alt="Jamaican Vital Records and Certificates" loading="lazy">
+                </div>
+                <div class="card-content">
+                    <h3>RGD Vital Records</h3>
+                    <p>Expert archival retrieval and legal proxy amendments for Jamaican birth, marriage, and death certificates needed for international compliance.</p>
+                    <a href="vital.html" class="service-link">View RGD Services <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
             </div>
 
-            <!-- NIS Card -->
+            <!-- NIS Image Card -->
             <div class="service-card">
-                <div class="service-icon"><i class="fa-solid fa-building-columns"></i></div>
-                <h3>NIS &amp; Pensions</h3>
-                <p>Secure representation for tracking past MLSS contribution ledgers, setting up voluntary payments, and filing for overseas retirement benefits.</p>
-                <a href="nis.html" class="service-link">View NIS Services <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="card-img-box">
+                    <img src="assets/nis-service.webp" alt="Jamaican NIS Pension and Claims" loading="lazy">
+                </div>
+                <div class="card-content">
+                    <h3>NIS &amp; Pensions</h3>
+                    <p>Secure representation for tracking past MLSS contribution ledgers, setting up voluntary payments, and filing for overseas retirement benefits.</p>
+                    <a href="nis.html" class="service-link">View NIS Services <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
             </div>
 
         </div>
@@ -292,7 +322,7 @@
     </div>
 </section>
 
-<!-- CTA BANNER -->
+<!-- CTA BANNER (LINKED TO INSIGHTS HUB) -->
 <section class="cta-banner">
     <div class="wrap">
         <h2>Want to stay informed?</h2>
