@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Vital Records Search & Retrieval (RGD) &mdash; Docu-Hub Operations</title>
-    <meta name="description" content="Secure retrieval, correction, and expedited processing for Jamaican birth, marriage, and death certificates via the RGD.">
+    <meta name="description" content="Expert proxy retrieval, deep archival searches, and legal corrections for Jamaican birth, marriage, and death certificates via the RGD.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,10 +24,10 @@
         --sans:       'Jost', Arial, sans-serif; 
         --nav-h:      7.5rem;
         --section-pad: clamp(8.0rem, 10vh, 12.0rem) 0;
-        --border-light: rgba(0, 0, 0, 0.06);
+        --border-light: rgba(0, 0, 0, 0.08);
         --border-glass: rgba(255, 255, 255, 0.1);
         --shadow-soft:  0 0.4rem 2.0rem rgba(0, 0, 0, 0.03);
-        --shadow-md:    0 0.8rem 2.4rem rgba(0, 0, 0, 0.05);
+        --shadow-md:    0 0.8rem 2.4rem rgba(0, 0, 0, 0.06);
         --shadow-nav:   0 0.4rem 2.0rem rgba(0, 0, 0, 0.20);
     }
 
@@ -38,16 +38,40 @@
     img { display: block; width: 100%; height: 100%; object-fit: cover; }
     .wrap { max-width: 105.0rem; margin: 0 auto; padding: 0 2.4rem; }
 
-    /* NAVIGATION */
-    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.95); backdrop-filter: blur(1.2rem); border-bottom: 0.1rem solid var(--border-glass); transition: 0.3s; }
+    /* GLOBAL NAVIGATION */
+    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.98); backdrop-filter: blur(1.2rem); border-bottom: 0.1rem solid var(--border-glass); transition: 0.3s; }
     .nav-inner { max-width: 115.0rem; margin: 0 auto; padding: 0 2.4rem; height: 100%; display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo-name { font-family: var(--sans); font-size: clamp(1.8rem, 2.2vw, 2.4rem); font-weight: 700; color: #fff; letter-spacing: 0.02em; display: block; }
+    .nav-logo-name { font-family: var(--sans); font-size: clamp(1.8rem, 2.2vw, 2.4rem); font-weight: 700; color: #fff; letter-spacing: 0.02em; }
     .nav-logo-name em { color: var(--gold-lt); font-style: italic; font-weight: 500; }
+
     .nav-links { display: none; list-style: none; align-items: center; gap: 2.4rem; }
-    .nav-links a { font-size: 1.3rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 0.8rem 1.6rem; border-radius: 0.4rem; }
-    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+    .nav-links > li > a { font-size: 1.3rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 0.8rem 1.6rem; border-radius: 0.4rem; display: flex; align-items: center; gap: 0.8rem; }
+    .nav-links > li > a:hover, .nav-links > li > a.active { color: #fff; background: rgba(255,255,255,0.1); }
+
+    .has-dropdown { position: relative; }
+    .dropdown-menu { position: absolute; top: 100%; left: 0; background: var(--brand-drk); min-width: 26.0rem; padding: 1.6rem 0; border-radius: 0 0 0.8rem 0.8rem; box-shadow: var(--shadow-nav); border: 0.1rem solid var(--border-glass); border-top: none; opacity: 0; visibility: hidden; transform: translateY(1.0rem); transition: all 0.3s ease; list-style: none; }
+    .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown-menu li a { display: block; padding: 1.2rem 2.4rem; font-size: 1.4rem; color: rgba(255,255,255,0.85); text-transform: none; letter-spacing: 0.05em; font-weight: 500; transition: 0.3s; }
+    .dropdown-menu li a:hover { color: var(--gold-lt); background: rgba(255,255,255,0.05); padding-left: 2.8rem; }
+
     .hamburger { display: flex; flex-direction: column; gap: 0.6rem; background: none; border: none; padding: 0.5rem; cursor: pointer; z-index: 950; }
-    .hamburger span { width: 2.4rem; height: 0.2rem; background: #fff; }
+    .hamburger span { width: 2.4rem; height: 0.2rem; background: #fff; transition: 0.3s; }
+
+    @media (max-width: 899px) {
+        .nav-links { display: none; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: var(--brand-drk); padding: 3.2rem 2.4rem; gap: 1.6rem; box-shadow: var(--shadow-nav); border-bottom: 0.1rem solid var(--border-glass); }
+        .site-nav.open .nav-links { display: flex; }
+        .nav-links > li { width: 100%; }
+        .nav-links > li > a { width: 100%; justify-content: space-between; padding: 1.4rem 1.6rem; font-size: 1.4rem; }
+        .dropdown-menu { position: static; box-shadow: none; border: none; background: rgba(255,255,255,0.03); border-radius: 0.4rem; margin-top: 0.8rem; padding: 0.8rem 0; display: none; opacity: 1; visibility: visible; transform: none; }
+        .has-dropdown.mobile-open .dropdown-menu { display: block; }
+        .has-dropdown.mobile-open .dropdown-toggle i { transform: rotate(180deg); color: var(--gold-lt); }
+        .dropdown-toggle i { transition: transform 0.3s ease; }
+        .dropdown-menu li a { padding: 1.2rem 1.6rem 1.2rem 3.2rem; font-size: 1.5rem; }
+        .site-nav.open .hamburger span:nth-child(1) { transform: translateY(0.8rem) rotate(45deg); }
+        .site-nav.open .hamburger span:nth-child(2) { opacity: 0; }
+        .site-nav.open .hamburger span:nth-child(3) { transform: translateY(-0.8rem) rotate(-45deg); }
+    }
+    @media (min-width: 900px) { .hamburger { display: none !important; } .nav-links { display: flex !important; } }
 
     /* DEDICATED HERO */
     .service-hero { padding-top: calc(var(--nav-h) + 6.4rem); padding-bottom: 6.4rem; background: var(--brand-drk); color: #fff; text-align: center; border-bottom: 0.4rem solid var(--gold); }
@@ -55,36 +79,52 @@
     .service-hero h1 { font-size: clamp(3.2rem, 5vw, 4.8rem); font-weight: 700; margin-bottom: 1.6rem; letter-spacing: -0.01em; }
     .service-hero p { font-size: clamp(1.6rem, 2vw, 1.8rem); color: rgba(255,255,255,0.85); max-width: 70.0rem; margin: 0 auto; line-height: 1.7; }
 
-    /* PATH SECTION (ACCORDIONS) */
-    .path-section { padding: 8.0rem 0 4.0rem; background: var(--ivory); }
+    /* PATHWAYS SECTION (ACCORDIONS) */
+    .path-section { padding: 8.0rem 0; background: var(--ivory); }
     .path-header { text-align: center; margin-bottom: 4.8rem; max-width: 75.0rem; margin-left: auto; margin-right: auto; }
     .path-header h2 { font-size: clamp(2.8rem, 4vw, 3.6rem); color: var(--brand-drk); font-weight: 700; letter-spacing: -0.01em; margin-bottom: 1.6rem; }
     
-    .accordion-container { max-width: 85.0rem; margin: 0 auto 4.8rem; }
-    .path-accordion { background: #fff; border: 0.1rem solid var(--border-light); border-radius: 0.8rem; margin-bottom: 1.6rem; box-shadow: var(--shadow-soft); overflow: hidden; transition: 0.3s; }
-    .path-accordion summary { padding: 2.4rem 3.2rem; font-size: 1.8rem; font-weight: 700; color: var(--brand-drk); cursor: pointer; display: flex; align-items: center; justify-content: space-between; list-style: none; user-select: none; }
+    .accordion-container { max-width: 90.0rem; margin: 0 auto; }
+    .path-accordion { background: #fff; border: 0.1rem solid var(--border-light); border-radius: 0.8rem; margin-bottom: 2.0rem; box-shadow: var(--shadow-soft); overflow: hidden; transition: 0.3s; }
+    .path-accordion summary { padding: 2.4rem 3.2rem; font-size: 1.9rem; font-weight: 700; color: var(--brand-drk); cursor: pointer; display: flex; align-items: center; justify-content: space-between; list-style: none; user-select: none; }
     .path-accordion summary::-webkit-details-marker { display: none; }
     .summary-content { display: flex; align-items: center; gap: 1.6rem; }
-    .summary-content i { font-size: 2.2rem; color: var(--brand-mid); width: 2.4rem; text-align: center; }
+    .summary-content i { font-size: 2.4rem; color: var(--brand-mid); width: 3.2rem; text-align: center; }
     .path-accordion summary::after { content: '\002B'; font-size: 2.4rem; color: var(--gold); transition: transform 0.3s ease; }
     .path-accordion[open] summary::after { content: '\2212'; transform: rotate(180deg); color: var(--brand-drk); }
     .path-accordion[open] summary { background: var(--bg-light); border-bottom: 0.1rem solid var(--border-light); }
-    .accordion-body { padding: 3.2rem; border-top: 0.4rem solid var(--gold); }
-    .path-accordion:nth-child(even) .accordion-body { border-top-color: var(--brand-mid); }
     
-    .check-list { list-style: none; display: grid; gap: 1.6rem; }
-    .check-list li { font-size: 1.6rem; color: var(--text-mid); line-height: 1.65; display: grid; grid-template-columns: 2.0rem 1fr; gap: 1.2rem; align-items: start; }
-    .check-list li i { color: var(--brand-mid); font-size: 1.6rem; margin-top: 0.4rem; }
+    .accordion-body { padding: 4.0rem 3.2rem; border-top: 0.4rem solid var(--gold); }
+    .path-accordion:nth-child(even) .accordion-body { border-top-color: var(--brand-mid); }
+    .accordion-body > p { font-size: 1.7rem; color: var(--text-mid); margin-bottom: 3.2rem; line-height: 1.7; }
+    
+    .service-detail-grid { display: grid; grid-template-columns: 1fr; gap: 3.2rem; margin-bottom: 3.2rem; }
+    .detail-block h4 { font-size: 1.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brand-drk); margin-bottom: 1.6rem; border-bottom: 0.1rem solid var(--border-light); padding-bottom: 0.8rem; }
+    
+    .check-list { list-style: none; display: grid; gap: 1.2rem; }
+    .check-list li { font-size: 1.5rem; color: var(--text-mid); line-height: 1.6; display: flex; gap: 1.2rem; align-items: flex-start; }
+    .check-list li i { color: var(--brand-mid); font-size: 1.4rem; margin-top: 0.5rem; }
 
-    /* ACCORDION ACTION BAR & BUTTON */
-    .accordion-cta-bar { margin-top: 3.2rem; border-top: 0.1rem solid var(--border-light); padding-top: 2.4rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.6rem; }
-    .accordion-pricing { font-size: 1.5rem; font-weight: 600; color: var(--text-mid); }
-    .accordion-pricing strong { color: var(--brand-drk); }
-    .btn-accordion { display: inline-flex; align-items: center; justify-content: center; gap: 1.2rem; padding: 1.4rem 3.2rem; background: var(--gold); color: var(--brand-drk); border-radius: 0.4rem; font-size: 1.3rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; box-shadow: 0 0.4rem 1.6rem rgba(0,0,0,0.1); }
-    .btn-accordion:hover { background: var(--gold-lt); transform: translateY(-0.2rem); }
+    .step-list { list-style: none; display: grid; gap: 1.6rem; counter-reset: custom-counter; }
+    .step-list li { font-size: 1.5rem; color: var(--text-mid); line-height: 1.6; display: flex; gap: 1.6rem; align-items: flex-start; position: relative; }
+    .step-list li::before { counter-increment: custom-counter; content: counter(custom-counter); background: var(--bg-light); color: var(--brand-drk); font-weight: 700; font-size: 1.3rem; width: 2.8rem; height: 2.8rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; flex-shrink: 0; border: 0.1rem solid var(--border-light); }
+
+    /* NEW COST BREAKDOWN ACTION BAR */
+    .accordion-cta-bar { margin-top: 4.0rem; background: var(--bg-light); border-radius: 0.6rem; padding: 2.4rem; border: 0.1rem solid var(--border-light); display: flex; flex-direction: column; gap: 2.4rem; }
+    
+    .cost-breakdown-row { display: flex; flex-wrap: wrap; gap: 2.4rem 4.8rem; padding-bottom: 2.4rem; border-bottom: 0.1rem solid var(--border-light); }
+    .cost-item { display: flex; flex-direction: column; }
+    .cost-item span { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: var(--brand-mid); margin-bottom: 0.4rem; }
+    .cost-item strong { font-size: 2.2rem; color: var(--brand-drk); line-height: 1; }
+    
+    .cta-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.6rem; }
+    .date-stamp { font-size: 1.3rem; color: var(--text-mid); font-style: italic; }
+    
+    .btn-accordion { display: inline-flex; align-items: center; justify-content: center; gap: 1.2rem; padding: 1.6rem 3.6rem; background: var(--brand-drk); color: #fff; border-radius: 0.4rem; font-size: 1.3rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; }
+    .btn-accordion:hover { background: var(--gold); color: var(--brand-drk); }
 
     /* MANDATORY DOCS FULL WIDTH */
-    .mandatory-docs { max-width: 85.0rem; margin: 0 auto 4.8rem; background: #fff; border: 0.1rem solid var(--border-light); border-top: 0.4rem solid var(--brand-drk); border-radius: 0.8rem; padding: 4.0rem 3.6rem; box-shadow: var(--shadow-md); }
+    .mandatory-docs { max-width: 90.0rem; margin: 4.8rem auto 0; background: #fff; border: 0.1rem solid var(--border-light); border-top: 0.4rem solid var(--brand-drk); border-radius: 0.8rem; padding: 4.0rem 3.6rem; box-shadow: var(--shadow-md); }
     .mandatory-docs .box-title { justify-content: center; border-bottom: none; padding-bottom: 0; margin-bottom: 3.2rem; color: var(--brand-drk); font-size: 2.2rem; font-weight: 700; display: flex; align-items: center; gap: 1.2rem; }
     .mandatory-docs .box-title i { color: var(--brand-drk); font-size: 2.4rem; }
     .docs-grid { display: grid; grid-template-columns: 1fr; gap: 2.4rem; }
@@ -93,57 +133,60 @@
     .doc-item h4 { font-size: 1.8rem; color: var(--brand-drk); margin-bottom: 0.4rem; }
     .doc-item p { font-size: 1.5rem; color: var(--text-mid); line-height: 1.6; }
 
-    /* THE AUDIT PROCESS */
-    .audit-full-width { max-width: 85.0rem; margin: 0 auto 3.2rem; background: #fff; border: 0.1rem solid var(--border-light); border-top: 0.4rem solid var(--gold); border-radius: 0.8rem; padding: 4.0rem 3.6rem; box-shadow: var(--shadow-md); }
-    .audit-full-width .box-title { justify-content: flex-start; border-bottom: 0.1rem solid var(--border-light); padding-bottom: 1.6rem; margin-bottom: 2.4rem; font-size: 2.2rem; font-weight: 700; color: var(--brand-drk); display: flex; align-items: center; gap: 1.2rem; }
-    .audit-full-width .box-title i { color: var(--gold); font-size: 2.0rem; }
-    
-    .audit-list-2col { list-style: none; display: grid; grid-template-columns: 1fr; gap: 2.4rem; }
-    .audit-list-2col li { font-size: 1.6rem; color: var(--text-mid); line-height: 1.65; display: grid; grid-template-columns: 2.0rem 1fr; gap: 1.2rem; align-items: start; }
-    .audit-list-2col li i { color: var(--brand-mid); font-size: 1.8rem; margin-top: 0.2rem; }
-
-    /* EXPLORATORY / EDUCATIONAL SECTION */
+    /* EDUCATIONAL ADVISORY SECTION */
     .education-section { padding: 8.0rem 0; background: var(--bg-light); border-top: 0.1rem solid var(--border-light); }
     .edu-header { text-align: center; margin-bottom: 4.8rem; }
     .edu-header h2 { font-size: clamp(2.8rem, 4vw, 3.6rem); color: var(--brand-drk); font-weight: 700; letter-spacing: -0.01em; }
     .edu-container { max-width: 80.0rem; margin: 0 auto; background: #fff; padding: clamp(3.2rem, 5vw, 6.4rem); border-radius: 0.8rem; box-shadow: var(--shadow-md); border-left: 0.4rem solid var(--gold); }
-    
     .edu-container h3 { font-size: 2.2rem; color: var(--brand-drk); margin-bottom: 1.6rem; }
     .edu-container p { font-size: 1.7rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 2.4rem; }
-    
     .article-highlight { background: rgba(193, 154, 91, 0.1); border-left: 0.4rem solid var(--gold); padding: 2.4rem; margin: 3.2rem 0; border-radius: 0 0.8rem 0.8rem 0; }
     .article-highlight p { margin-bottom: 0; font-size: 1.6rem; font-style: italic; color: var(--brand-drk); }
 
-    /* DOCUMENT DROPDOWN */
-    .doc-dropdown { background: var(--bg-light); border-radius: 0.8rem; border: 0.1rem solid var(--border-light); margin: 3.2rem 0; overflow: hidden; transition: 0.3s; }
-    .doc-dropdown summary { padding: 2.0rem 2.4rem; font-size: 1.6rem; font-weight: 700; color: var(--brand-drk); cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; }
-    .doc-dropdown summary::-webkit-details-marker { display: none; }
-    .doc-dropdown summary::after { content: '\002B'; font-size: 2.4rem; color: var(--gold); }
-    .doc-dropdown[open] summary::after { content: '\2212'; color: var(--brand-drk); }
-    .doc-preview { padding: 3.2rem; background: #fff; border-top: 0.1rem solid var(--border-light); font-size: 1.5rem; color: #333; }
-    .doc-preview ul { margin-left: 2.0rem; margin-top: 1.2rem; }
-    .doc-preview li { margin-bottom: 0.8rem; }
+    /* SLIM BLOG / INSIGHTS BANNER */
+    .slim-insights-banner { background: var(--brand-drk); color: #fff; padding: 4.8rem 2.4rem; border-top: 0.4rem solid var(--gold); border-bottom: 0.1rem solid var(--border-glass); }
+    .banner-inner { max-width: 105.0rem; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; gap: 2.4rem; }
+    .banner-text h3 { font-size: clamp(2.2rem, 3vw, 2.8rem); font-weight: 700; margin-bottom: 0.8rem; color: #fff; }
+    .banner-text p { font-size: 1.6rem; color: rgba(255,255,255,0.8); max-width: 65.0rem; line-height: 1.6; }
+    .btn-gold-banner { display: inline-flex; align-items: center; justify-content: center; gap: 1.0rem; padding: 1.6rem 3.2rem; background: var(--gold); color: var(--brand-drk); border-radius: 0.4rem; font-size: 1.3rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; flex-shrink: 0; }
+    .btn-gold-banner:hover { background: var(--gold-lt); transform: translateY(-0.2rem); }
 
     @media (min-width: 800px) { 
+        .service-detail-grid { grid-template-columns: 1fr 1fr; } 
         .docs-grid { grid-template-columns: 1fr 1fr; }
-        .audit-list-2col { grid-template-columns: 1fr 1fr; }
+        .banner-inner { flex-direction: row; text-align: left; }
     }
-    @media (min-width: 900px) { .hamburger { display: none !important; } .nav-links { display: flex !important; } }
     </style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
-<nav class="site-nav">
+<!-- GLOBAL NAVIGATION -->
+<nav class="site-nav" id="sitenav">
     <div class="nav-inner">
         <a href="index.html" class="nav-logo-name">Docu-Hub <em>Operations</em></a>
-        <ul class="nav-links">
+        
+        <ul class="nav-links" id="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="passport.html">Passports</a></li>
-            <li><a href="vital.html" class="active">Vital Records</a></li>
-            <li><a href="nis.html">NIS Services</a></li>
+            
+            <li class="has-dropdown">
+                <a href="#" class="dropdown-toggle active" id="services-toggle" aria-haspopup="true" aria-expanded="false">
+                    Services <i class="fa-solid fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="passport.html">PICA Passport Services</a></li>
+                    <li><a href="vital.html" class="active">RGD Vital Records</a></li>
+                    <li><a href="nis.html">NIS Tracking &amp; Claims</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="insights.html">Insights</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
-        <button class="hamburger"><span></span><span></span><span></span></button>
+        
+        <button class="hamburger" id="hbg" aria-label="Toggle Navigation Menu">
+            <span></span><span></span><span></span>
+        </button>
     </div>
 </nav>
 
@@ -152,45 +195,185 @@
     <div class="wrap">
         <span class="service-tag">RGD Search Suite</span>
         <h1>Vital Records Search &amp; Retrieval</h1>
-        <p>Expert retrieval, correction, and expedited processing for Jamaican birth, marriage, and death certificates.</p>
+        <p>Expert retrieval, deep archival searches, and legal corrections for Jamaican birth, marriage, and death certificates.</p>
     </div>
 </section>
 
-<!-- 1. THE TRIAGE / PATH SECTION -->
+<!-- 1. DETAILED SERVICE PATHWAYS -->
 <section class="path-section">
     <div class="wrap">
         
         <div class="path-header">
             <span style="color: var(--brand-mid); font-size: 1.2rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;">Determine Your Pathway</span>
-            <h2>Which process applies to you?</h2>
+            <h2>Select your required RGD service</h2>
         </div>
 
         <div class="accordion-container">
             
-            <!-- PATH A: STANDARD SEARCH -->
+            <!-- PATH 1: BIRTH CERTIFICATE -->
             <details class="path-accordion">
                 <summary>
                     <div class="summary-content">
-                        <i class="fa-solid fa-magnifying-glass"></i> Standard Record Search
+                        <i class="fa-solid fa-baby"></i> Birth Certificate Search &amp; Retrieval
                     </div>
                 </summary>
                 <div class="accordion-body">
-                    <p style="font-size: 1.5rem; color: var(--text-mid); margin-bottom: 2.4rem;">Select this option if you simply need official certified printed copies of an existing, perfectly correct record:</p>
-                    <ul class="check-list">
-                        <li><i class="fa-solid fa-check"></i> <span><strong>Birth Certificates:</strong> Securing fresh, certified copies for immigration or personal files.</span></li>
-                        <li><i class="fa-solid fa-check"></i> <span><strong>Marriage Certificates:</strong> Retrieving records of marriages registered in Jamaica.</span></li>
-                        <li><i class="fa-solid fa-check"></i> <span><strong>Death Certificates:</strong> Official documentation for estate settling and insurance claims.</span></li>
-                        <li><i class="fa-solid fa-check"></i> <span><strong>Genealogy Lookups:</strong> Manual archival searches for historical family documents.</span></li>
-                    </ul>
+                    <p>Secure fresh, certified copies of an existing birth record for immigration, passport renewals, or personal files. We handle both digital retrievals and manual archival ledger searches for older records.</p>
+                    
+                    <div class="service-detail-grid">
+                        <div class="detail-block">
+                            <h4>Required Information</h4>
+                            <ul class="check-list">
+                                <li><i class="fa-solid fa-signature"></i> Subject’s exact full name at birth</li>
+                                <li><i class="fa-solid fa-calendar-day"></i> Exact or approximate Date of Birth</li>
+                                <li><i class="fa-solid fa-location-dot"></i> Parish and specific location of birth (e.g., Victoria Jubilee Hospital or specific district)</li>
+                                <li><i class="fa-solid fa-person-dress"></i> Mother’s full maiden name</li>
+                                <li><i class="fa-solid fa-person"></i> Father’s full name (only if he was legally added to the original record)</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h4>The Search Workflow</h4>
+                            <ul class="step-list">
+                                <li>We cross-reference your provided details to ensure an accurate search query.</li>
+                                <li>If a digital record isn't immediately found, our proxy agents liaise with RGD clerks for a manual archival search.</li>
+                                <li>Any minor spelling discrepancies flagged by the RGD are resolved by us locally.</li>
+                                <li>Certified prints are sealed and dispatched internationally via courier.</li>
+                            </ul>
+                        </div>
+                    </div>
                     
                     <div class="accordion-cta-bar">
-                        <div class="accordion-pricing"><i class="fa-solid fa-circle-info" style="color: var(--gold); margin-right: 0.8rem;"></i> Standard Search from <strong>$115 USD</strong></div>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeZdgthrriuwiMPUiNhu5eQnAWjxEtM-Ti6sMXqvZ_U6NHkw/viewform" target="_blank" class="btn-accordion">Start Search Application <i class="fa-solid fa-arrow-right"></i></a>
+                        <div class="cost-breakdown-row">
+                            <div class="cost-item">
+                                <span>Docu-Hub Proxy Fee</span>
+                                <strong>$115 USD</strong>
+                            </div>
+                            <div class="cost-item">
+                                <span>RGD Gov Fee (Print)</span>
+                                <strong>~$35 USD</strong>
+                            </div>
+                            <div class="cost-item">
+                                <span>DHL Courier (Estimated)</span>
+                                <strong>$45 - $65 USD</strong>
+                            </div>
+                        </div>
+                        <div class="cta-row">
+                            <span class="date-stamp">* Government and Courier rates approximate as of August 2026.</span>
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeZdgthrriuwiMPUiNhu5eQnAWjxEtM-Ti6sMXqvZ_U6NHkw/viewform" target="_blank" class="btn-accordion">Start Birth Search <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
                     </div>
                 </div>
             </details>
-            
-            <!-- PATH B: CORRECTIONS & UPDATES -->
+
+            <!-- PATH 2: MARRIAGE CERTIFICATE -->
+            <details class="path-accordion">
+                <summary>
+                    <div class="summary-content">
+                        <i class="fa-solid fa-ring"></i> Marriage Certificate Search &amp; Retrieval
+                    </div>
+                </summary>
+                <div class="accordion-body">
+                    <p>Retrieve official, certified copies of marriage records registered anywhere in Jamaica for spousal sponsorship, name changes, or legal updates.</p>
+                    
+                    <div class="service-detail-grid">
+                        <div class="detail-block">
+                            <h4>Required Information</h4>
+                            <ul class="check-list">
+                                <li><i class="fa-solid fa-mars"></i> Groom’s full name</li>
+                                <li><i class="fa-solid fa-venus"></i> Bride’s full maiden name</li>
+                                <li><i class="fa-solid fa-calendar-day"></i> Exact or approximate Date of Marriage</li>
+                                <li><i class="fa-solid fa-location-dot"></i> Parish and exact location (e.g., specific Church, hotel, or Registrar's office)</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h4>The Search Workflow</h4>
+                            <ul class="step-list">
+                                <li>Submit the couple's details through our secure portal.</li>
+                                <li>Our team submits the targeted search request to the RGD.</li>
+                                <li>We follow up on delayed registrations from independent marriage officers if the record is pending.</li>
+                                <li>The certified marriage copy is retrieved and couriered globally.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-cta-bar">
+                        <div class="cost-breakdown-row">
+                            <div class="cost-item">
+                                <span>Docu-Hub Proxy Fee</span>
+                                <strong>$115 USD</strong>
+                            </div>
+                            <div class="cost-item">
+                                <span>RGD Gov Fee (Print)</span>
+                                <strong>~$35 USD</strong>
+                            </div>
+                            <div class="cost-item">
+                                <span>DHL Courier (Estimated)</span>
+                                <strong>$45 - $65 USD</strong>
+                            </div>
+                        </div>
+                        <div class="cta-row">
+                            <span class="date-stamp">* Government and Courier rates approximate as of August 2026.</span>
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeZdgthrriuwiMPUiNhu5eQnAWjxEtM-Ti6sMXqvZ_U6NHkw/viewform" target="_blank" class="btn-accordion">Start Marriage Search <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- PATH 3: DEATH CERTIFICATE -->
+            <details class="path-accordion">
+                <summary>
+                    <div class="summary-content">
+                        <i class="fa-solid fa-file-invoice"></i> Death Certificate Search &amp; Retrieval
+                    </div>
+                </summary>
+                <div class="accordion-body">
+                    <p>Secure official death records required for settling estates overseas, processing NIS funeral grants, or claiming international life insurance policies.</p>
+                    
+                    <div class="service-detail-grid">
+                        <div class="detail-block">
+                            <h4>Required Information</h4>
+                            <ul class="check-list">
+                                <li><i class="fa-solid fa-signature"></i> Full name of the deceased</li>
+                                <li><i class="fa-solid fa-calendar-day"></i> Exact or approximate Date of Death</li>
+                                <li><i class="fa-solid fa-location-dot"></i> Parish and specific place of death (e.g., hospital or district)</li>
+                                <li><i class="fa-solid fa-clock-rotate-left"></i> Age of the subject at the time of death (crucial for RGD verification)</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h4>The Search Workflow</h4>
+                            <ul class="step-list">
+                                <li>We initiate a priority search using the deceased's specific identifiers.</li>
+                                <li>If the RGD requires additional clarifying details (e.g., occupation), we act as your local liaison to provide it.</li>
+                                <li>We secure the certified pink copies required for legal estate matters.</li>
+                                <li>Records are securely sealed and dispatched via signature-required courier.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-cta-bar">
+                        <div class="cost-breakdown-row">
+                            <div class="cost-item">
+                                <span>Docu-Hub Proxy Fee</span>
+                                <strong>$115 USD</strong>
+                            </div>
+                            <div class="cost-item">
+                                <span>RGD Gov Fee (Print)</span>
+                                <strong>~$35 USD</strong>
+                            </div>
+                            <div class="cost-item">
+                                <span>DHL Courier (Estimated)</span>
+                                <strong>$45 - $65 USD</strong>
+                            </div>
+                        </div>
+                        <div class="cta-row">
+                            <span class="date-stamp">* Government and Courier rates approximate as of August 2026.</span>
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeZdgthrriuwiMPUiNhu5eQnAWjxEtM-Ti6sMXqvZ_U6NHkw/viewform" target="_blank" class="btn-accordion">Start Death Record Search <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- PATH 4: CORRECTIONS & UPDATES -->
             <details class="path-accordion">
                 <summary>
                     <div class="summary-content">
@@ -198,16 +381,48 @@
                     </div>
                 </summary>
                 <div class="accordion-body">
-                    <p style="font-size: 1.5rem; color: var(--text-mid); margin-bottom: 2.4rem;">Select this option if a record requires legal amendment or updating before it can be printed:</p>
-                    <ul class="check-list">
-                        <li><i class="fa-solid fa-check"></i> <span><strong>Father's Particulars:</strong> Adding a father's name to an existing birth certificate.</span></li>
-                        <li><i class="fa-solid fa-check"></i> <span><strong>Correction of Error:</strong> Fixing spelling mistakes in names, dates, or locations on the original ledger.</span></li>
-                        <li><i class="fa-solid fa-check"></i> <span><strong>Late Registration:</strong> Registering a birth or death that was never officially documented at the time.</span></li>
-                    </ul>
+                    <p>If a record contains spelling errors, is missing a father's name, or was never officially registered (Late Registration), the original ledger must be legally amended before a valid certificate can be printed.</p>
+                    
+                    <div class="service-detail-grid">
+                        <div class="detail-block">
+                            <h4>Legal Requirements</h4>
+                            <ul class="check-list">
+                                <li><i class="fa-solid fa-file-signature"></i> Signed statutory declarations from parents or corroborating relatives</li>
+                                <li><i class="fa-solid fa-id-card"></i> Valid government photo IDs for all declarants</li>
+                                <li><i class="fa-solid fa-scale-balanced"></i> Supporting documentary evidence (e.g., Marriage certificates or older siblings' records)</li>
+                                <li><i class="fa-solid fa-stamp"></i> All overseas signatures must be witnessed by a Notary Public</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h4>The Amendment Workflow</h4>
+                            <ul class="step-list">
+                                <li>We audit your specific case and draft the exact statutory declarations required by the RGD.</li>
+                                <li>You print, sign, notarize, and courier the physical declarations to Jamaica.</li>
+                                <li>Our proxy agents submit the amendment case and track its progress through the RGD legal department.</li>
+                                <li>Once the ledger is updated, a fresh, corrected certificate is printed and shipped to you.</li>
+                            </ul>
+                        </div>
+                    </div>
                     
                     <div class="accordion-cta-bar">
-                        <div class="accordion-pricing"><i class="fa-solid fa-circle-info" style="color: var(--gold); margin-right: 0.8rem;"></i> Corrections Proxy from <strong>$145 USD</strong></div>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeZdgthrriuwiMPUiNhu5eQnAWjxEtM-Ti6sMXqvZ_U6NHkw/viewform" target="_blank" class="btn-accordion">Start Correction Form <i class="fa-solid fa-arrow-right"></i></a>
+                        <div class="cost-breakdown-row">
+                            <div class="cost-item">
+                                <span>Docu-Hub Proxy Fee</span>
+                                <strong>$145 USD</strong>
+                            </div>
+                            <div class="cost-item">
+                                <span>RGD Amendment Fee</span>
+                                <strong>~$65 USD</strong>
+                            </div>
+                            <div class="cost-item">
+                                <span>DHL Courier (Estimated)</span>
+                                <strong>$45 - $65 USD</strong>
+                            </div>
+                        </div>
+                        <div class="cta-row">
+                            <span class="date-stamp">* Government and Courier rates approximate as of August 2026.</span>
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeZdgthrriuwiMPUiNhu5eQnAWjxEtM-Ti6sMXqvZ_U6NHkw/viewform" target="_blank" class="btn-accordion">Start Correction Request <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
                     </div>
                 </div>
             </details>
@@ -216,75 +431,58 @@
 
         <!-- MANDATORY DOCUMENTS FOR ALL -->
         <div class="mandatory-docs">
-            <h3 class="box-title"><i class="fa-solid fa-folder-open"></i> Information Required for Retrieval</h3>
+            <h3 class="box-title"><i class="fa-solid fa-folder-open"></i> Universal Core Requirements</h3>
             <div class="docs-grid">
                 <div class="doc-item">
-                    <i class="fa-solid fa-users"></i>
+                    <i class="fa-solid fa-user-lock"></i>
                     <div>
-                        <h4>Subject Details</h4>
-                        <p>The full name of the subject (at birth/marriage/death), the approximate date of the event, and the Parish where it occurred.</p>
+                        <h4>Valid Government ID</h4>
+                        <p>The person requesting the record must upload a copy of their valid government-issued photo ID (Passport, Driver's License, or State ID) to initiate the search.</p>
                     </div>
                 </div>
                 <div class="doc-item">
                     <i class="fa-solid fa-signature"></i>
                     <div>
-                        <h4>Signed Authorization</h4>
-                        <p>If you are requesting records on behalf of a family member, a signed authorization letter from the subject or next-of-kin is required.</p>
+                        <h4>Signed Authorization Form</h4>
+                        <p>Due to RGD privacy regulations, if you are requesting records on behalf of a family member, you must sign a formal Docu-Hub proxy authorization letter.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- THE AUDIT PROCESS -->
-        <div class="audit-full-width">
-            <h3 class="box-title"><i class="fa-solid fa-list-check"></i> How Docu-Hub Secures Your Records</h3>
-            <ul class="audit-list-2col">
-                <li><i class="fa-solid fa-check"></i> <span><strong>Pre-Search Verification:</strong> We cross-reference the dates and names you provide to ensure a targeted, accurate RGD search.</span></li>
-                <li><i class="fa-solid fa-check"></i> <span><strong>Manual Archival Lookups:</strong> For older records, our team liaises directly with RGD clerks for manual ledger searches.</span></li>
-                <li><i class="fa-solid fa-check"></i> <span><strong>Error Resolution:</strong> If the RGD flags a spelling mismatch, we intervene locally to resolve it without requiring you to restart the process.</span></li>
-                <li><i class="fa-solid fa-check"></i> <span><strong>Sealed Global Dispatch:</strong> Certified prints are retrieved in person, sealed, and dispatched internationally via signature-required courier.</span></li>
-            </ul>
-        </div>
-
     </div>
 </section>
 
-<!-- 2. THE EDUCATIONAL SCENARIO -->
+<!-- 2. EDUCATIONAL ADVISORY SECTION -->
 <section class="education-section">
     <div class="wrap">
         <div class="edu-header">
-            <span style="color: var(--brand-mid); font-size: 1.2rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;">Educational Scenario</span>
-            <h2>Why it matters if a Father's Name is missing on a Birth Certificate</h2>
+            <span style="color: var(--brand-mid); font-size: 1.2rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;">Service Advisory</span>
+            <h2>Why Missing Father's Names & Spelling Errors Matter</h2>
         </div>
         
         <div class="edu-container">
-            <p>It is not uncommon in Jamaica for a child to be registered without the father’s name on the official birth certificate, or for a name to be slightly misspelled. For day-to-day life on the island, this might never cause an issue.</p>
+            <p>It is not uncommon in Jamaica for a child to be registered without the father’s name on the official birth certificate, or for a name to be slightly misspelled on the ledger. For day-to-day life on the island, this might never cause an issue.</p>
             
-            <p>If you discover this omission on your record, <strong>there is absolutely no reason to panic.</strong> It is not a permanent roadblock; it is simply an administrative gap that can be addressed and fixed.</p>
-            
-            <h3>When does this become important?</h3>
-            <p>Addressing this becomes critical primarily for Jamaicans living in the diaspora. If you plan to sponsor a family member for immigration, or if you need to claim an inheritance overseas, foreign governments and estate lawyers require irrefutable, documentary proof of blood lineage. In these legal scenarios, an incomplete RGD birth certificate can halt your application.</p>
+            <p>However, addressing this becomes critical for Jamaicans living in the diaspora. If you plan to sponsor a family member for immigration, or if you need to claim an inheritance overseas, foreign governments and estate lawyers require irrefutable, documentary proof of blood lineage.</p>
             
             <div class="article-highlight">
-                <p>"A missing name or a misspelling is a common issue that has a clear, established legal remedy at the Registrar General's Department."</p>
+                <p>"A missing name or a misspelling is a common issue that has a clear, established legal remedy at the Registrar General's Department. Do not panic—it can be fixed."</p>
             </div>
             
-            <p><strong>The Solution:</strong> The RGD has specific processes known as the <em>Addition of Father's Particulars</em> or <em>Correction of Error</em>. It involves submitting specific statutory declarations to amend the original ledger. Once the ledger is updated, a new, fully correct certificate is printed.</p>
-            
-            <details class="doc-dropdown">
-                <summary>Learn More: Who needs to sign the declarations?</summary>
-                <div class="doc-preview">
-                    To add a father's name to a birth certificate, the RGD requires specific declarations depending on the situation:
-                    <ul>
-                        <li><strong>If both parents are alive:</strong> A joint statutory declaration signed by both the mother and the father acknowledging paternity.</li>
-                        <li><strong>If the father is deceased:</strong> A declaration from the mother, supported by a Death Certificate and corroborating affidavits from older paternal relatives.</li>
-                        <li><strong>If parents were married:</strong> A certified copy of the Marriage Certificate can be used to legitimize the birth entry.</li>
-                    </ul>
-                </div>
-            </details>
-
-            <p>Docu-Hub Operations addresses these exact scenarios. We help clients audit their supporting evidence, prepare the correct forms, and follow up directly with the RGD offices in Jamaica to ensure the ledger is properly updated.</p>
+            <p><strong>The Solution:</strong> Docu-Hub Operations addresses these exact scenarios. We help clients audit their supporting evidence, prepare the correct statutory declarations, and follow up directly with the RGD offices in Jamaica to ensure the ledger is properly updated and legally sound for international use.</p>
         </div>
+    </div>
+</section>
+
+<!-- 3. SLIM INSIGHTS BANNER -->
+<section class="slim-insights-banner">
+    <div class="banner-inner">
+        <div class="banner-text">
+            <h3>Want to Learn More About Document Security?</h3>
+            <p>Discover the risks of traveling with damaged passports, how to protect your vital records, and strategies for navigating Jamaican bureaucracy.</p>
+        </div>
+        <a href="insights.html" class="btn-gold-banner">Visit Insights Desk <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 </section>
 
@@ -299,7 +497,7 @@
         <div>
             <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: 2.4rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase;">Quick Links</h4>
             <ul style="list-style: none; display: grid; gap: 1.6rem; padding: 0;">
-                <li><a href="passports.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">PICA Passport Services</a></li>
+                <li><a href="passport.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">PICA Passport Services</a></li>
                 <li><a href="vital.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">RGD Vital Records</a></li>
                 <li><a href="nis.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">NIS Tracking &amp; Claims</a></li>
                 <li><a href="about.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">About The Agency</a></li>
@@ -310,7 +508,7 @@
             <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: 2.4rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase;">Direct Contact</h4>
             <ul style="list-style: none; display: grid; gap: 1.6rem; padding: 0; margin-bottom: 2.4rem;">
                 <li>
-                    <a href="mailto:admin@dhubservices.com" style="display: inline-flex; align-items: center; gap: 1.0rem; color: #fff; font-size: 1.5rem; text-decoration: none; transition: color 0.3s;">
+                    <a href="mailto:admin@dochubservices.com" style="display: inline-flex; align-items: center; gap: 1.0rem; color: #fff; font-size: 1.5rem; text-decoration: none; transition: color 0.3s;">
                         <i class="fa-solid fa-envelope" style="color: var(--gold-lt);"></i> admin@dochubservices.com
                     </a>
                 </li>
@@ -339,9 +537,24 @@
 
 <script>
 // Mobile Hamburger Toggle
-const hbg = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-hbg.addEventListener('click', () => { navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex'; });
+const hbg = document.getElementById('hbg');
+const navBar = document.getElementById('sitenav');
+
+if (hbg && navBar) {
+    hbg.addEventListener('click', () => { 
+        navBar.classList.toggle('open'); 
+    });
+}
+
+// Mobile Dropdown Toggle Logic
+const servicesToggle = document.getElementById('services-toggle');
+if (servicesToggle && window.innerWidth < 900) {
+    servicesToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        const parentLi = servicesToggle.closest('.has-dropdown');
+        parentLi.classList.toggle('mobile-open');
+    });
+}
 </script>
 </body>
 </html>
