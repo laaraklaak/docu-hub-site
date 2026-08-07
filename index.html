@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Docu-Hub Operations Services &mdash; Jamaican Document Guides &amp; On-Ground Proxy</title>
-    <meta name="description" content="Plain-English educational guides and on-the-ground proxy representation for Jamaican passports (PICA), vital records (RGD), and NIS pensions.">
+    <title>Docu-Hub Operations Services &mdash; Document Proxy for Jamaica & The Diaspora</title>
+    <meta name="description" content="Save yourself a trip to the agency. We handle the lines and paperwork at PICA, RGD, and NIS for Jamaicans locally and their families overseas.">
     
     <!-- Open Graph & Twitter Cards -->
-    <meta property="og:title" content="Docu-Hub Operations Services — Jamaican Document Guides & On-Ground Proxy">
-    <meta property="og:description" content="Plain-English guides and on-the-ground proxy representation for Jamaican passports, vital records, and NIS pensions.">
-    <meta property="og:image" content="https://dhubservices.com/assets/social-share.jpg"> <!-- 1200x630 image for WhatsApp/FB -->
+    <meta property="og:title" content="Docu-Hub Operations Services — Local Document Proxy">
+    <meta property="og:description" content="We stand in the lines at PICA, RGD, and NIS so you don't have to. Serving locals and overseas relatives.">
+    <meta property="og:image" content="https://dhubservices.com/assets/social-share.jpg"> 
     <meta property="og:url" content="https://dhubservices.com/index.html">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
@@ -18,7 +18,7 @@
     <link rel="apple-touch-icon" href="assets/heros.png">
     <link rel="canonical" href="https://dhubservices.com/index.html">
 
-    <!-- Schema.org Professional Service & Reviews Markup -->
+    <!-- Schema.org Professional Service Markup -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -27,7 +27,7 @@
       "url": "https://dhubservices.com",
       "logo": "https://dhubservices.com/assets/heros.png",
       "image": "https://dhubservices.com/assets/social-share.jpg",
-      "description": "Educational platform and on-the-ground proxy services for Jamaican PICA passports, RGD vital records, and NIS pensions.",
+      "description": "On-the-ground proxy services saving locals and overseas families time at PICA, RGD, and NIS.",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Linstead",
@@ -37,14 +37,9 @@
       "telephone": "+1-876-561-2614",
       "founder": {
         "@type": "Person",
-        "name": "Natasha Barrett"
+        "name": "Laura Clarke"
       },
-      "areaServed": ["Jamaica", "United States", "United Kingdom", "Canada"],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "reviewCount": "3"
-      }
+      "areaServed": ["Jamaica", "United States", "United Kingdom", "Canada"]
     }
     </script>
 
@@ -56,66 +51,88 @@
     
     <style>
     :root {
-        --bg-light: #EAECE9; 
-        --ivory: #FDFBF7; 
-        --brand-drk: #1E2B1D; 
-        --brand-mid: #3A4F38;
-        --gold: #C19A5B; 
-        --gold-lt: #DAB87F; 
-        --text-dark: #111410; 
-        --text-mid: #2c332b;
-        --sans: 'Jost', Arial, sans-serif; 
-        --serif: 'Playfair Display', Georgia, serif;
-        --nav-h: 7.5rem; 
-        --max-w: 110.0rem;
+        --bg-light: #EAECE9; --ivory: #FDFBF7; --brand-drk: #1E2B1D; --brand-mid: #3A4F38;
+        --gold: #C19A5B; --gold-lt: #DAB87F; --text-dark: #111410; --text-mid: #2c332b;
+        --sans: 'Jost', Arial, sans-serif; --serif: 'Playfair Display', Georgia, serif;
+        --nav-h: 7.5rem; --max-w: 110.0rem;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 62.5%; }
     body { font-family: var(--sans); font-size: 1.6rem; font-weight: 500; background: var(--bg-light); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; }
     a { text-decoration: none; color: inherit; transition: 0.3s ease; }
     
-    /* Global Navigation */
+    /* Global Navigation with Mobile Hamburger */
     .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.98); backdrop-filter: blur(1.2rem); border-bottom: 0.1rem solid rgba(255,255,255,0.1); }
-    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 2.4rem; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 2.4rem; height: 100%; display: flex; align-items: center; justify-content: space-between; position: relative; }
     .nav-logo-name { font-size: 2.2rem; font-weight: 700; color: #ffffff; }
     .nav-logo-name em { color: var(--gold-lt); font-style: italic; font-weight: 500; }
+    
     .nav-links { display: flex; gap: 2.4rem; align-items: center; list-style: none; }
-    .nav-links a { color: #ffffff; font-size: 1.5rem; font-weight: 600; }
+    .nav-links a { color: #ffffff; font-size: 1.5rem; font-weight: 600; transition: color 0.3s ease; }
     .nav-links a:hover { color: var(--gold-lt); }
 
-    /* Compact Hero Section */
-    .hero-section { padding: calc(var(--nav-h) + 4.8rem) 2.4rem 4.8rem; background: var(--brand-drk); color: #ffffff; text-align: center; border-bottom: 0.4rem solid var(--gold); }
+    .nav-toggle { display: none; }
+    .nav-toggle-label { display: none; font-size: 2.4rem; color: #ffffff; cursor: pointer; }
+
+    /* Redesigned Hero: Left-Aligned with Full Background Image */
+    .hero-section { 
+        padding: calc(var(--nav-h) + 8.0rem) 2.4rem 9.6rem; 
+        background: linear-gradient(to right, rgba(30, 43, 29, 0.95) 0%, rgba(30, 43, 29, 0.85) 40%, rgba(30, 43, 29, 0.3) 100%), url('assets/hero-bg.jpg') center/cover no-repeat;
+        background-color: var(--brand-drk);
+        color: #ffffff; 
+        text-align: left; 
+        border-bottom: 0.4rem solid var(--gold); 
+    }
+    .hero-content { max-width: var(--max-w); margin: 0 auto; }
     .hero-badge { font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-lt); background: rgba(193, 154, 91, 0.2); border: 0.1rem solid var(--gold); padding: 0.6rem 1.6rem; border-radius: 3.0rem; display: inline-block; margin-bottom: 1.6rem; font-weight: 700; }
-    .hero-section h1 { font-family: var(--serif); font-size: clamp(3.2rem, 5vw, 5.2rem); line-height: 1.2; margin-bottom: 1.6rem; color: #ffffff; }
-    .hero-section p { font-size: 1.8rem; color: rgba(255,255,255,0.85); max-width: 72.0rem; margin: 0 auto 2.4rem; font-weight: 400; }
+    .hero-section h1 { font-family: var(--serif); font-size: clamp(3.6rem, 5vw, 5.6rem); line-height: 1.15; margin-bottom: 2.0rem; color: #ffffff; max-width: 76.0rem; }
+    .hero-section p { font-size: 1.8rem; color: rgba(255,255,255,0.85); max-width: 60.0rem; font-weight: 400; margin-bottom: 0; line-height: 1.6; }
 
-    /* Main Content Container */
-    .magazine-container { max-width: var(--max-w); margin: -2.4rem auto 6.4rem; padding: 0 2.4rem; position: relative; z-index: 10; }
+    .magazine-container { max-width: var(--max-w); margin: -4.8rem auto 6.4rem; padding: 0 2.4rem; position: relative; z-index: 10; }
 
-    /* Featured Article Card - Redesigned with Image */
+    /* Featured Card */
     .featured-card { background: var(--ivory); border-radius: 1.2rem; overflow: hidden; box-shadow: 0 1.2rem 3.2rem rgba(0,0,0,0.08); border: 0.1rem solid rgba(0,0,0,0.06); margin-bottom: 5.6rem; display: flex; flex-wrap: wrap; }
     .featured-image { flex: 1 1 40.0rem; min-height: 35.0rem; background: url('assets/featured-rgd.jpg') center/cover no-repeat; background-color: var(--brand-mid); }
     .featured-content { flex: 1 1 40.0rem; padding: 4.8rem 4.0rem; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
     .featured-tag { font-size: 1.3rem; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.2rem; display: inline-block; }
-    .featured-title { font-family: var(--serif); font-size: clamp(2.6rem, 3.5vw, 3.6rem); color: var(--brand-drk); line-height: 1.3; margin-bottom: 1.6rem; }
+    .featured-title { font-family: var(--serif); font-size: clamp(2.4rem, 3.5vw, 3.2rem); color: var(--brand-drk); line-height: 1.3; margin-bottom: 1.6rem; }
     .featured-excerpt { font-size: 1.7rem; color: var(--text-mid); margin-bottom: 2.4rem; line-height: 1.7; }
     .btn-read-featured { display: inline-flex; align-items: center; gap: 1.0rem; padding: 1.4rem 2.8rem; background: var(--brand-drk); color: #ffffff; border-radius: 0.4rem; font-size: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; transition: 0.3s ease; border-bottom: 0.3rem solid var(--gold); }
     .btn-read-featured:hover { background: var(--brand-mid); transform: translateY(-0.2rem); }
 
-    /* Section Headers */
     .section-title { font-family: var(--serif); font-size: 2.8rem; color: var(--brand-drk); margin-bottom: 2.4rem; border-bottom: 0.2rem solid var(--gold); padding-bottom: 0.8rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.6rem; }
 
-    /* Grids */
-    .articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(30.0rem, 1fr)); gap: 3.2rem; margin-bottom: 5.6rem; }
-    .article-card { background: #ffffff; border-radius: 0.8rem; padding: 3.2rem 2.4rem; border: 0.1rem solid rgba(0,0,0,0.06); box-shadow: 0 0.4rem 1.6rem rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s ease; }
-    .article-card:hover { transform: translateY(-0.4rem); box-shadow: 0 0.8rem 2.4rem rgba(0,0,0,0.08); }
+    .articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(30.0rem, 1fr)); gap: 3.2rem; margin-bottom: 4.0rem; }
+    
+    /* Guide Cards */
+    .guide-card { background: #F3EFE6; border-radius: 0.8rem; padding: 3.2rem 2.4rem; border: 0.1rem solid var(--gold-lt); box-shadow: 0 0.4rem 1.6rem rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s ease; }
+    .guide-card:hover { transform: translateY(-0.4rem); box-shadow: 0 0.8rem 2.4rem rgba(0,0,0,0.08); }
+
+    /* Buttons */
+    .btn-gold-outline { display: inline-flex; align-items: center; gap: 1.0rem; padding: 1.4rem 3.2rem; background: transparent; color: var(--brand-drk); border-radius: 0.4rem; font-size: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border: 0.2rem solid var(--gold); transition: 0.3s ease; }
+    .btn-gold-outline:hover { background: var(--gold); }
+
+    .btn-gold { display: inline-flex; align-items: center; gap: 1.0rem; padding: 1.4rem 3.2rem; background: var(--gold); color: var(--brand-drk); border-radius: 0.4rem; font-size: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; transition: 0.3s ease; border: 0.2rem solid var(--gold); }
+    .btn-gold:hover { background: transparent; color: var(--gold); }
+
+    /* Center Button Wrapper */
+    .center-btn-wrapper { text-align: center; margin-bottom: 6.4rem; }
+
+    /* How It Works Cards */
+    .step-card { background: #ffffff; border-radius: 0.8rem; padding: 3.2rem 2.4rem; border: 0.1rem solid rgba(0,0,0,0.06); display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s ease; }
+    
     .card-tag { font-size: 1.2rem; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.8rem; display: block; }
     .card-title { font-family: var(--serif); font-size: 2.2rem; color: var(--brand-drk); line-height: 1.35; margin-bottom: 1.2rem; }
     .card-snippet { font-size: 1.5rem; color: var(--text-mid); margin-bottom: 2.0rem; line-height: 1.6; }
     .card-link { font-size: 1.4rem; font-weight: 700; color: var(--brand-drk); display: inline-flex; align-items: center; gap: 0.6rem; }
     .card-link:hover { color: var(--gold); }
 
-    /* Trust & On-Ground Reality Section */
+    .about-strip { display: flex; flex-wrap: wrap; gap: 4.0rem; align-items: center; background: var(--ivory); border-radius: 1.2rem; padding: 4.8rem 4.0rem; margin-bottom: 5.6rem; box-shadow: 0 0.4rem 1.6rem rgba(0,0,0,0.04); border: 0.1rem solid rgba(0,0,0,0.06); }
+    .about-strip img { width: 16.0rem; height: 16.0rem; border-radius: 50%; object-fit: cover; border: 0.3rem solid var(--gold); flex-shrink: 0; box-shadow: 0 0.8rem 2.4rem rgba(0,0,0,0.1); }
+    .about-text { flex: 1 1 30.0rem; }
+    .about-text h2 { font-family: var(--serif); font-size: 2.8rem; color: var(--brand-drk); margin-bottom: 0.8rem; }
+    .about-text p { font-size: 1.65rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 2.0rem; }
+
     .trust-strip { background: var(--brand-drk); color: #ffffff; padding: 4.8rem 3.2rem; border-radius: 0.8rem; text-align: center; border-top: 0.4rem solid var(--gold); margin-bottom: 5.6rem; }
     .trust-strip h2 { font-family: var(--serif); font-size: 2.8rem; margin-bottom: 1.6rem; color: #ffffff; }
     .trust-strip p { font-size: 1.65rem; color: #F0F2EE; max-width: 76.0rem; margin: 0 auto 2.4rem; line-height: 1.7; }
@@ -123,46 +140,52 @@
     .badge-pill:hover { background: rgba(255,255,255,0.2); }
     .disclaimer-text { font-size: 1.2rem; color: rgba(255,255,255,0.6); text-align: center; margin-top: 2.4rem; max-width: 80.0rem; margin-left: auto; margin-right: auto; line-height: 1.5; }
 
-    /* About / Founder Strip */
-    .about-strip { display: flex; flex-wrap: wrap; gap: 4.0rem; align-items: center; background: var(--ivory); border-radius: 1.2rem; padding: 4.8rem 4.0rem; margin-bottom: 5.6rem; box-shadow: 0 0.4rem 1.6rem rgba(0,0,0,0.04); border: 0.1rem solid rgba(0,0,0,0.06); }
-    .about-strip img { width: 16.0rem; height: 16.0rem; border-radius: 50%; object-fit: cover; border: 0.3rem solid var(--gold); flex-shrink: 0; box-shadow: 0 0.8rem 2.4rem rgba(0,0,0,0.1); }
-    .about-text { flex: 1 1 30.0rem; }
-    .about-text h2 { font-family: var(--serif); font-size: 2.8rem; color: var(--brand-drk); margin-bottom: 0.8rem; }
-    .about-text p { font-size: 1.65rem; color: var(--text-mid); line-height: 1.7; }
-
-    /* Soft Contact Banner */
     .consult-card { background: #F3EFE6; border-left: 0.6rem solid var(--gold); padding: 3.6rem 3.2rem; border-radius: 0 0.8rem 0.8rem 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2.4rem; }
+    .consult-text { flex: 1 1 40.0rem; }
     .consult-text h3 { font-family: var(--serif); font-size: 2.4rem; color: var(--brand-drk); margin-bottom: 0.8rem; }
     .consult-text p { font-size: 1.6rem; color: var(--text-mid); margin: 0; }
-    .btn-whatsapp-cta { display: inline-flex; align-items: center; gap: 1.0rem; padding: 1.4rem 2.8rem; background: #25D366; color: #ffffff; border-radius: 0.4rem; font-size: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; transition: 0.3s ease; box-shadow: 0 0.4rem 1.6rem rgba(37, 211, 102, 0.25); }
-    .btn-whatsapp-cta:hover { background: #1eb954; transform: translateY(-0.2rem); }
+    .consult-actions { display: flex; gap: 1.6rem; flex-wrap: wrap; align-items: center; }
+    .btn-whatsapp-cta { display: inline-flex; align-items: center; gap: 1.0rem; padding: 1.4rem 2.8rem; background: #25D366; color: #ffffff; border-radius: 0.4rem; font-size: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; transition: 0.3s ease; box-shadow: 0 0.4rem 1.6rem rgba(37, 211, 102, 0.25); border: 0.2rem solid #25D366;}
+    .btn-whatsapp-cta:hover { background: #1eb954; border-color: #1eb954; transform: translateY(-0.2rem); }
 
-    /* Floating Sticky WhatsApp Icon */
     .floating-whatsapp { position: fixed; bottom: 2.4rem; right: 2.4rem; z-index: 999; background: #25D366; color: #ffffff; width: 5.6rem; height: 5.6rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0.4rem 2.0rem rgba(0,0,0,0.3); transition: transform 0.3s ease; }
     .floating-whatsapp:hover { transform: scale(1.1); }
 
-    /* Expanded Footer */
     .site-footer { background: #111811; color: rgba(255,255,255,0.75); padding: 5.6rem 2.4rem 4.0rem; text-align: center; font-size: 1.3rem; border-top: 0.1rem solid rgba(255,255,255,0.08); }
     .footer-nav { max-width: var(--max-w); margin: 0 auto 3.2rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 3.2rem; }
     .footer-nav a { color: rgba(255,255,255,0.85); font-size: 1.4rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
     .footer-nav a:hover { color: var(--gold-lt); }
     .footer-disclaimer { max-width: 80.0rem; margin: 0 auto 2.4rem; font-size: 1.2rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
 
+    /* Mobile Responsive Adjustments */
     @media (max-width: 768px) {
-        .nav-links { display: none; /* Hide standard links on mobile, or implement hamburger */ }
+        .nav-toggle-label { display: block; }
+        .nav-links { position: absolute; top: 100%; left: 0; right: 0; background: var(--brand-drk); flex-direction: column; gap: 0; display: none; border-top: 0.1rem solid rgba(255,255,255,0.1); padding: 1.6rem 0; box-shadow: 0 1.2rem 2.4rem rgba(0,0,0,0.5); }
+        .nav-links li { width: 100%; text-align: center; }
+        .nav-links a { display: block; padding: 1.6rem 2.4rem; }
+        .nav-toggle:checked ~ .nav-links { display: flex; }
+        
+        .hero-section { text-align: center; padding: calc(var(--nav-h) + 4.0rem) 2.4rem 6.4rem; background: linear-gradient(to bottom, rgba(30, 43, 29, 0.95), rgba(30, 43, 29, 0.8)), url('assets/hero-bg.jpg') center/cover no-repeat; }
         .about-strip { justify-content: center; text-align: center; }
         .about-strip img { margin-bottom: 0; }
         .footer-nav { flex-direction: column; gap: 1.6rem; }
         .featured-image { min-height: 25.0rem; }
+        .consult-actions { justify-content: flex-start; }
     }
     </style>
 </head>
 <body>
 
-<!-- Navigation Header (Restored Links) -->
 <nav class="site-nav">
     <div class="nav-inner">
         <a href="index.html" class="nav-logo-name">Docu-Hub <em>Operations</em></a>
+        
+        <!-- Mobile Menu Toggle -->
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation menu">
+            <i class="fa-solid fa-bars"></i>
+        </label>
+        
         <ul class="nav-links">
             <li><a href="passport.html">Passports</a></li>
             <li><a href="vital.html">Vital Records</a></li>
@@ -173,90 +196,105 @@
     </div>
 </nav>
 
-<!-- Compact Hero Section -->
+<!-- Redesigned Hero: Background Image without immediate Buttons -->
 <header class="hero-section">
-    <span class="hero-badge"><i class="fa-solid fa-book-open" style="margin-right: 0.6rem;"></i> Educational Resource Center</span>
-    <h1>Demystifying Jamaican Government Paperwork</h1>
-    <p>Plain-English walkthroughs, institutional agency rules, and on-the-ground proxy support for PICA Passports, RGD Vital Records, and NIS Pensions.</p>
+    <div class="hero-content">
+        <span class="hero-badge"><i class="fa-solid fa-clock" style="margin-right: 0.6rem;"></i> Save Your Vacation Days</span>
+        <h1>Don't Waste Your Day in Agency Lines. Let Us Handle the Legwork.</h1>
+        <p>We handle the physical lodgments and follow-ups at PICA, RGD, and MLSS so local professionals don't have to miss work—and we provide the exact same proxy service for your family living overseas.</p>
+    </div>
 </header>
 
 <main class="magazine-container">
 
-    <!-- FEATURED ARTICLE CARD (Now split-layout with an image) -->
     <section class="featured-card">
         <div class="featured-image" aria-label="Close up of legal documents being signed"></div>
         <div class="featured-content">
             <span class="featured-tag"><i class="fa-solid fa-star" style="margin-right: 0.4rem;"></i> Featured Guide &bull; RGD Vital Records</span>
             <h2 class="featured-title">Why a Missing Father's Name Stops Overseas Visas &amp; How RGD Fixes It</h2>
-            <p class="featured-excerpt">Discovered a blank father's field on your Jamaican birth certificate during a US, UK, or Canadian visa application? Learn why foreign embassies flag this, what an RGD Status Declaration entails, and how to update your official record legally.</p>
-            <a href="missing-father-name-article.html" class="btn-read-featured">Read Full Guide <i class="fa-solid fa-arrow-right"></i></a>
+            <p class="featured-excerpt">Discovered a blank father's field on a Jamaican birth certificate during a visa application? Learn why embassies flag this, what an RGD Status Declaration entails, and how to update the record legally.</p>
+            <a href="why-missing-father-name-article.html" class="btn-read-featured">Read Full Guide <i class="fa-solid fa-arrow-right"></i></a>
         </div>
     </section>
 
-    <!-- SECONDARY GUIDES GRID -->
     <div class="section-title">
         Essential Document Walkthroughs
     </div>
 
     <section class="articles-grid">
-        <article class="article-card">
+        <article class="guide-card">
             <div>
                 <span class="card-tag">RGD Vital Records</span>
                 <h3 class="card-title">Fixing RGD Spelling Errors from Abroad</h3>
                 <p class="card-snippet">How to correct misspelled names, wrong birth dates, or missing middle names on Jamaican birth or marriage certificates.</p>
             </div>
-            <a href="fixing-rgd-spelling-errors-from-abroad.html" class="card-link">Read Guide <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="fixing-rgd-spelling-article.html" class="card-link">Read Guide <i class="fa-solid fa-arrow-right"></i></a>
         </article>
 
-        <article class="article-card">
+        <article class="guide-card">
             <div>
                 <span class="card-tag">PICA Passports</span>
                 <h3 class="card-title">Washed or Damaged Passport Rules</h3>
-                <p class="card-snippet">Why damaged Jamaican passports cannot be renewed online and what PICA requires for physical replacement.</p>
+                <p class="card-snippet">Why damaged passports cannot be renewed online and what PICA requires for physical replacement at the counter.</p>
             </div>
-            <a href="passport.html" class="card-link">Read Guide <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="washed-article.html" class="card-link">Read Guide <i class="fa-solid fa-arrow-right"></i></a>
         </article>
 
-        <article class="article-card">
+        <article class="guide-card">
             <div>
                 <span class="card-tag">NIS &amp; Pensions</span>
                 <h3 class="card-title">Auditing Missing NIS Contributions</h3>
                 <p class="card-snippet">How to request a central work history statement and submit formal inquiry cases for missing employer records.</p>
             </div>
-            <a href="nis.html" class="card-link">Read Guide <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="nis-pension-article.html" class="card-link">Read Guide <i class="fa-solid fa-arrow-right"></i></a>
         </article>
     </section>
 
-    <!-- HOW IT WORKS -->
+    <!-- NEW: "See All Guides" Button -->
+    <div class="center-btn-wrapper">
+        <a href="insights.html" class="btn-gold-outline">See All Guides &amp; Walkthroughs <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
     <div class="section-title">How Our Proxy Service Works</div>
-    <section class="articles-grid">
-        <article class="article-card" style="box-shadow: none; border-color: var(--gold-lt);">
+    <section class="articles-grid" style="margin-bottom: 6.4rem;">
+        <article class="step-card">
             <div>
                 <span class="card-tag"><i class="fa-solid fa-1"></i> Step 1</span>
                 <h3 class="card-title">Message Us</h3>
-                <p class="card-snippet">Send your situation via WhatsApp — voice note or text. No complicated forms to fill out first.</p>
+                <p class="card-snippet">Send your situation via WhatsApp — voice note or text. Let us know if the document is for you locally or a relative abroad.</p>
             </div>
         </article>
-        <article class="article-card" style="box-shadow: none; border-color: var(--gold-lt);">
+        <article class="step-card">
             <div>
                 <span class="card-tag"><i class="fa-solid fa-2"></i> Step 2</span>
                 <h3 class="card-title">We Confirm Scope &amp; Fee</h3>
-                <p class="card-snippet">You will get a clear quote and timeline based on your specific document issue before anything is submitted.</p>
+                <p class="card-snippet">You will get a clear quote and timeline based on the specific agency legwork required before anything is submitted.</p>
             </div>
         </article>
-        <article class="article-card" style="box-shadow: none; border-color: var(--gold-lt);">
+        <article class="step-card">
             <div>
                 <span class="card-tag"><i class="fa-solid fa-3"></i> Step 3</span>
                 <h3 class="card-title">We Handle the Ground Work</h3>
-                <p class="card-snippet">We handle the counter visits, lodgments, and tracking in Jamaica, sending updates directly to your phone.</p>
+                <p class="card-snippet">We handle the counter visits, lodgments, and tracking here in Jamaica, sending updates directly to your phone.</p>
             </div>
         </article>
     </section>
 
-    <!-- TRUST & ON-GROUND REALITY SECTION -->
+    <section class="about-strip">
+        <img src="assets/laura-clarke.jpg" alt="Laura Clarke, Founder of Docu-Hub Operations Services">
+        <div class="about-text">
+            <span class="featured-tag">Who's Handling Your Documents</span>
+            <h2>Hi, I'm Laura Clarke.</h2>
+            <p>I started Docu-Hub Operations right here in Linstead, St. Catherine, because I saw how much time hard-working Jamaicans were losing just standing in lines at government offices. You shouldn't have to take a day off work just to check an NIS record or lodge a passport renewal.</p>
+            <p>I act as your physical proxy on the ground. Once you see how much time and hassle we save you locally, you can confidently refer us to your family members living abroad who need the exact same reliable help back home.</p>
+            <!-- NEW: "Read My Full Story" Button -->
+            <a href="about.html" class="btn-read-featured" style="margin-top: 1.2rem;">Read My Full Story <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </section>
+
     <section class="trust-strip">
         <h2>Registered, On-The-Ground Representation</h2>
-        <p>Docu-Hub Operations Services bridges the gap between overseas families and local government offices by performing physical legwork, counter lodgments, and archival tracking right here in Jamaica.</p>
+        <p>Docu-Hub Operations Services bridges the gap between busy locals and overseas families by performing physical legwork, counter lodgments, and archival tracking right here in Jamaica.</p>
         <div>
             <span class="badge-pill"><i class="fa-solid fa-shield-halved" style="color: var(--gold);"></i> COJ Registered #15602/2025</span>
             <span class="badge-pill">
@@ -264,46 +302,38 @@
                     <i class="fa-solid fa-lock" style="color: var(--gold);"></i> OIC Data Controller Verified
                 </a>
             </span>
-            <span class="badge-pill"><i class="fa-solid fa-truck-fast" style="color: var(--gold);"></i> Tracked International Courier</span>
+            <span class="badge-pill"><i class="fa-solid fa-truck-fast" style="color: var(--gold);"></i> Tracked Courier Delivery</span>
         </div>
         <p class="disclaimer-text">
             Docu-Hub Operations Services is an independent, registered proxy service and is not affiliated with, endorsed by, or operating on behalf of PICA, RGD, or NIS.
         </p>
     </section>
 
-    <!-- ABOUT THE FOUNDER -->
-    <section class="about-strip">
-        <img src="assets/laura-clarke.jpg" alt="Laura Clarke, Founder of Docu-Hub Operations Services">
-        <div class="about-text">
-            <span class="featured-tag">Who's Handling Your Documents</span>
-            <h2>Hi, I'm Laura Clarke.</h2>
-            <p>I started Docu-Hub Operations because I saw how incredibly frustrating it is for Jamaicans living abroad to manage simple government paperwork from thousands of miles away. Based right here in Linstead, St. Catherine, I act as your physical proxy—standing in the lines, auditing the forms, and ensuring your sensitive documents are handled with the utmost security and care.</p>
-        </div>
-    </section>
-
- 
-    <!-- SOFT CONTACT BANNER -->
     <section class="consult-card">
         <div class="consult-text">
             <h3>Have a Specific Document Question?</h3>
-            <p>Skip the long queues and confusion. Send a direct message to discuss your situation.</p>
+            <p>Skip the long queues and confusion. Send a direct message or book a spot on our calendar to discuss your situation.</p>
         </div>
-        <a href="https://wa.me/18765612614?text=Hi%20Docu-Hub,%20I'm%20visiting%20your%20website%20and%20have%20a%20question%20about%20a%20Jamaican%20document." target="_blank" class="btn-whatsapp-cta" aria-label="Chat with us on WhatsApp">
-            <i class="fa-brands fa-whatsapp" style="font-size: 2.2rem;"></i> Ask a Proxy on WhatsApp
-        </a>
+        <div class="consult-actions">
+            <!-- Note: Replace booking.html with your actual Calendly or scheduling link -->
+            <a href="booking.html" class="btn-gold">
+                <i class="fa-regular fa-calendar-check" style="font-size: 2.0rem;"></i> Book a Spot
+            </a>
+            <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I'm%20visiting%20your%20website%20and%20need%20help%20with%20a%20document." target="_blank" class="btn-whatsapp-cta" aria-label="Chat with us on WhatsApp">
+                <i class="fa-brands fa-whatsapp" style="font-size: 2.0rem;"></i> Ask on WhatsApp
+            </a>
+        </div>
     </section>
 
 </main>
 
-<!-- FLOATING STICKY WHATSAPP BUTTON -->
-<a href="https://wa.me/18765612614?text=Hi%20Docu-Hub,%20I'm%20visiting%20your%20website%20and%20have%20a%20question." 
+<a href="https://wa.me/18765612614?text=Hi%20Laura,%20I'm%20visiting%20your%20website%20and%20have%20a%20question." 
    target="_blank" 
    class="floating-whatsapp" 
    aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp" style="font-size: 3.2rem;"></i>
 </a>
 
-<!-- EXPANDED SITE FOOTER -->
 <footer class="site-footer">
     <nav class="footer-nav" aria-label="Footer Navigation">
         <a href="about.html">About Us</a>
