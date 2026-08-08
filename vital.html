@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Vital Records Search & Retrieval (RGD) | Docu-Hub Operations</title>
-<meta name="description" content="Expert proxy retrieval, deep archival searches, and legal corrections for Jamaican birth, marriage, and death certificates via the RGD.">
+<title>RGD Vital Records | Docu-Hub Operations</title>
+<meta name="description" content="Strict readiness checklists and eligibility rules for Jamaican Birth, Marriage, and Death certificates, including archival searches and legal corrections.">
 
 <!-- ===== Security Headers ===== -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://images.unsplash.com data:; connect-src 'self';">
@@ -23,82 +22,104 @@
   --ink:#0f172a; --ink-soft:#1e293b; --slate:#475467; --line:#e2e8f0;
   --paper:#f5f7fb; --paper-deep:#e9eff8; --blue:#2563eb; --blue-deep:#1d4ed8;
   --brass:#b08a4e; --brass-deep:#8a6a37; --brass-tint:#faf3e6;
+  --danger-bg: #fef2f2; --danger-border: #ef4444; --danger-text: #991b1b;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
-h1,h2,h3,h4,.brand span,.eyebrow{font-family:"Fraunces",Georgia,serif}
+body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;}
+h1,h2,h3,.brand span,.step-badge,.eyebrow{font-family:"Fraunces",Georgia,serif}
 .container{width:min(1120px,calc(100% - 32px));margin:auto}
 a{-webkit-tap-highlight-color:transparent}
-:focus-visible{outline:2px solid var(--blue-deep);outline-offset:2px}
 
-/* Header & Nav (Master Template) */
-header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+/* Header & Nav */
+header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav{display:flex;justify-content:space-between;align-items:center;min-height:72px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:700;text-decoration:none;color:inherit}
 .brand span{font-size:1.02rem;font-weight:600;letter-spacing:-0.01em}
 .logo{width:38px;height:38px;border-radius:11px;background:var(--ink);color:var(--brass-tint);display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:600;font-size:.92rem;flex:none}
+
 .desktop-nav{display:none;gap:24px;align-items:center;}
 .desktop-nav a{text-decoration:none;color:var(--slate);font-weight:500;font-size:.96rem;transition:color 0.2s;}
-.desktop-nav a:hover, .desktop-nav a.active{color:var(--ink)}
+.desktop-nav a:hover{color:var(--ink)}
+
+.dropdown { position: relative; display: inline-block; }
+.dropbtn { background: none; border: none; color: var(--ink); font-weight: 700; font-size: 0.96rem; font-family: Inter, sans-serif; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+.dropdown-content { display: none; position: absolute; top: 100%; left: -16px; background-color: #fff; min-width: 220px; box-shadow: 0 12px 30px rgba(15,23,42,0.1); border: 1px solid var(--line); border-radius: 14px; padding: 8px 0; z-index: 40; }
+.dropdown-content a { color: var(--slate); padding: 10px 18px; text-decoration: none; display: block; font-size: 0.92rem; transition: background 0.15s, color 0.15s; font-weight: 500;}
+.dropdown-content a:hover { background-color: var(--paper); color: var(--ink); }
+.dropdown:hover .dropdown-content { display: block; }
+
 .menu{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);border:none;}
 .mobile-nav{display:grid;gap:2px;border-bottom:1px solid var(--line);background:#fff}
 .mobile-nav a{padding:14px 16px;text-decoration:none;color:var(--ink-soft);font-weight:500;border-top:1px solid var(--line)}
+.mobile-nav .mobile-sub{padding-left:28px; font-size:0.9rem; color:var(--slate);}
 .mobile-nav[hidden]{display:none}
 
-/* Hero */
-.hero{padding:64px 0 48px; text-align:center;}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;margin:auto;padding:8px 14px;border-radius:999px;background:var(--brass-tint);color:var(--brass-deep);font-size:.82rem;font-weight:600;border:1px solid #ecdcb8; margin-bottom:24px;}
-h1{margin:0 0 16px;font-weight:600;font-size:clamp(2.1rem,5vw,3.8rem);line-height:1.1;letter-spacing:-0.02em}
-.lead{margin:0 auto 32px;max-width:720px;color:var(--slate);font-size:1.1rem;line-height:1.7;}
+/* Hero Section */
+.article-hero { padding: 48px 0 32px; text-align: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: auto; padding: 8px 14px; border-radius: 999px; background: var(--brass-tint); color: var(--brass-deep); font-size: .82rem; font-weight: 600; border: 1px solid #ecdcb8; margin-bottom: 24px; }
+h1 { margin: 0 0 16px; font-family: "Fraunces", serif; font-weight: 600; font-size: clamp(2.1rem, 4vw, 3.2rem); line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); max-width: 900px; margin-left: auto; margin-right: auto; }
+.article-meta { font-size: 1.05rem; color: var(--slate); margin-bottom: 32px; max-width: 700px; margin-left: auto; margin-right: auto;}
 
-/* Accordion Checklists */
-.path-section { padding: 32px 0 64px; }
-.accordion-wrapper { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
-details.path-accordion { background: #fff; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: 0 4px 12px rgba(15,23,42,.03); transition: box-shadow 0.2s ease;}
-details.path-accordion:hover { box-shadow: 0 10px 24px rgba(15,23,42,.06); border-color: #cbd5e1; }
-summary { font-family: "Fraunces", serif; font-weight: 600; font-size: 1.35rem; padding: 24px 32px; cursor: pointer; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; margin: 0; }
-summary::-webkit-details-marker { display: none; }
-.summary-content { display: flex; align-items: center; gap: 16px; }
-.summary-content i { color: var(--blue); font-size: 1.6rem; width: 32px; text-align: center; }
-summary::after { content: '+'; color: var(--blue); font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 400; }
-details[open] summary { border-bottom: 1px solid var(--line); background: var(--paper); }
-details[open] summary::after { content: '−'; }
+/* Layout Structure */
+.content-grid { display: grid; gap: 32px; max-width: 1000px; margin: 0 auto 64px; }
 
-.accordion-body { padding: 32px; }
-.accordion-body > p { margin: 0 0 24px; color: var(--slate); font-size: 1.05rem; }
+/* ======== SIDE-BY-SIDE ALERTS ======== */
+.alerts-grid { display: grid; gap: 24px; }
 
-.service-detail-grid { display: grid; gap: 32px; margin-bottom: 32px; }
-.detail-block h4 { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); margin: 0 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
-.check-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
-.check-list li { font-size: 0.95rem; color: var(--slate); display: flex; gap: 12px; align-items: flex-start; }
-.check-list li i { color: var(--brass-deep); margin-top: 4px; font-size: 0.9rem; }
-.step-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; counter-reset: custom-counter; }
-.step-list li { font-size: 0.95rem; color: var(--slate); display: flex; gap: 16px; align-items: flex-start; }
-.step-list li::before { counter-increment: custom-counter; content: counter(custom-counter); background: var(--paper-deep); color: var(--blue-deep); font-weight: 700; font-size: 0.85rem; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%; flex-shrink: 0; }
+/* The Golden Rule Alert */
+.golden-rule { background: var(--paper-deep); border: 1px solid var(--blue); border-radius: 16px; padding: 24px 28px; display: flex; gap: 20px; align-items: flex-start; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.05); }
+.golden-rule i { font-size: 1.8rem; color: var(--blue-deep); margin-top: 2px; }
+.golden-rule h3 { color: var(--blue-deep); margin: 0 0 8px; font-size: 1.25rem; }
+.golden-rule p { color: var(--ink); font-size: 0.95rem; margin: 0; line-height: 1.6; }
+.golden-rule strong { font-weight: 700; color: var(--blue-deep); }
 
-.accordion-cta-bar { background: var(--paper); border-radius: 12px; padding: 24px; border: 1px solid var(--line); display: flex; flex-direction: column; gap: 16px; margin-top: 24px;}
+/* Privacy Check */
+.proxy-check { background: var(--ink); color: #fff; border-radius: 16px; padding: 24px 28px; display: flex; gap: 20px; align-items: flex-start; box-shadow: 0 4px 12px rgba(15,23,42,0.08); }
+.proxy-check i { font-size: 1.8rem; color: var(--brass); margin-top: 2px; }
+.proxy-check h3 { margin: 0 0 8px; font-size: 1.25rem; color: #fff; }
+.proxy-check p { margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; }
+/* ========================================= */
 
-/* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:12px;text-decoration:none;font-weight:600;font-size:.95rem;transition:transform .15s ease}
+/* Checklist Modules */
+.info-module { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 40px; box-shadow: 0 10px 30px rgba(15,23,42,.04); }
+.info-module h2 { font-family: "Fraunces", serif; font-size: 1.6rem; color: var(--ink); margin: 0 0 16px; display: flex; align-items: center; gap: 12px; }
+.info-module h2 i { color: var(--brass-deep); }
+.info-module > p { color: var(--slate); margin-top: 0; margin-bottom: 24px; font-size: 1.05rem; line-height: 1.6;}
+
+.checklist { list-style: none; padding: 0; margin: 0; }
+.checklist li { display: flex; gap: 16px; align-items: flex-start; font-size: 1.05rem; color: var(--slate); margin-bottom: 20px; line-height: 1.6; }
+.checklist li i { color: #10b981; font-size: 1.2rem; margin-top: 3px; }
+.checklist li strong { color: var(--ink); display: block; margin-bottom: 2px; }
+
+/* Grid for Scenarios */
+.scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+.scenario-card { background: var(--paper); border: 1px solid var(--line); padding: 24px; border-radius: 16px; }
+.scenario-card h3 { margin: 0 0 12px; font-size: 1.2rem; color: var(--ink); }
+.scenario-card ul { margin: 0; padding-left: 20px; color: var(--slate); font-size: 0.95rem; line-height: 1.6; }
+.scenario-card li { margin-bottom: 8px; }
+
+/* Warning Box */
+.callout-box { background: var(--warn-bg, #fff1f2); border-left: 4px solid var(--warn-border, #e11d48); padding: 24px; border-radius: 0 12px 12px 0; margin-top: 24px; }
+.callout-box h4 { margin: 0 0 8px; color: #9f1239; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; font-family: Inter, sans-serif;}
+.callout-box p { margin: 0; color: #881337; font-size: 0.95rem; line-height: 1.6; }
+
+/* Pricing Table */
+.pricing-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+.pricing-table th { background: var(--paper-deep); color: var(--ink); font-weight: 600; text-align: left; padding: 16px; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid var(--line); }
+.pricing-table td { padding: 16px; border-bottom: 1px solid var(--line); color: var(--slate); font-size: 1.05rem; }
+.pricing-table tr:last-child td { border-bottom: none; }
+.pricing-table strong { color: var(--ink); }
+.fee-note { font-size: 0.85rem; color: var(--slate); margin-top: 16px; text-align: right; font-style: italic; }
+
+/* Final CTA */
+.final{background:linear-gradient(135deg,var(--ink),var(--ink-soft));color:#fff;border-radius:28px;padding:48px 24px;text-align:center;display:grid;gap:18px;box-shadow:0 18px 60px rgba(15,23,42,.16); max-width:860px; margin: 0 auto;}
+.final h2{font-weight:600; margin:0; font-size:clamp(1.9rem,4vw,2.8rem)}
+.final p{color:#cbd5e1;margin:0 auto; max-width:560px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;border-radius:14px;text-decoration:none;font-weight:700;font-size:.98rem;transition:all .15s ease}
 .btn-primary{background:var(--ink);color:#fff}
 .btn-primary:hover{background:var(--ink-soft); transform: translateY(-2px);}
 
-/* Docs Block */
-.docs-box { max-width: 900px; margin: 48px auto 0; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 32px; box-shadow: 0 4px 12px rgba(15,23,42,.03); }
-.docs-box h3 { margin: 0 0 24px; font-size: 1.4rem; color: var(--ink); display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 16px;}
-.docs-grid { display: grid; gap: 24px; }
-.doc-item { display: flex; gap: 16px; align-items: flex-start; }
-.doc-item i { color: var(--blue); font-size: 1.6rem; margin-top: 4px;}
-.doc-item h4 { margin: 0 0 4px; font-size: 1.1rem; color: var(--ink); }
-.doc-item p { margin: 0; color: var(--slate); font-size: 0.95rem; }
-
-/* Final CTA */
-.final{background:linear-gradient(135deg,var(--ink),var(--ink-soft));color:#fff;border-radius:28px;padding:48px 24px;text-align:center;display:grid;gap:18px;box-shadow:0 18px 60px rgba(15,23,42,.16); max-width:860px; margin: 64px auto 0;}
-.final h2{font-weight:600; margin:0; font-size:clamp(1.9rem,4vw,2.8rem)}
-.final p{color:#cbd5e1;margin:0 auto; max-width:500px;}
-.final-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:auto}
-
-/* Footer (Master Template) */
+/* Footer */
 footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 .footer-grid{display:grid;gap:40px}
 .footer-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
@@ -107,17 +128,19 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 .footer-col a:hover{color:#fff}
 .footer-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:12px;color:#94a3b8;font-size:.85rem;line-height:1.6;}
 
-@media(min-width:800px){ 
-  .service-detail-grid { grid-template-columns: 1fr 1fr; }
-  .docs-grid { grid-template-columns: 1fr 1fr; }
-}
 @media(min-width:980px){
   .desktop-nav{display:flex}
   .menu{display:none}
   .mobile-nav{display:none !important}
+  .alerts-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid{grid-template-columns:1fr 1.5fr}
 }
-@media(max-width:767px){ .footer-cols{grid-template-columns:1fr 1fr;} }
+@media(max-width:767px){ 
+  .scenario-grid { grid-template-columns: 1fr; }
+  .golden-rule, .proxy-check { flex-direction: column; text-align: center; gap: 12px; align-items: center;}
+  .pricing-table th, .pricing-table td { padding: 12px 8px; font-size: 0.9rem; }
+  .footer-cols{grid-template-columns:1fr 1fr;} 
+}
 @media(max-width:480px){ .footer-cols{grid-template-columns:1fr;} }
 </style>
 </head>
@@ -129,13 +152,12 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
       <div class="logo">DH</div><span>Docu-Hub Operations</span>
     </a>
     
-    <!-- DESKTOP NAVIGATION WITH SERVICES DROPDOWN -->
     <nav class="desktop-nav">
       <div class="dropdown">
         <button class="dropbtn">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i></button>
         <div class="dropdown-content">
           <a href="passport.html">PICA Passports</a>
-          <a href="vital.html">RGD Vital Records</a>
+          <a href="vital.html" style="font-weight:700; color:var(--ink);">RGD Vital Records</a>
           <a href="nis.html">NIS Pensions</a>
           <a href="taj-renewal.html">TAJ Motor Vehicles</a>
         </div>
@@ -151,11 +173,10 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
     </button>
   </div>
   
-  <!-- MOBILE NAVIGATION DROPDOWN -->
   <nav class="mobile-nav" id="mobileNav" hidden>
     <a href="index.html#services" style="font-weight: 700; color: var(--ink);">Services</a>
     <a href="passport.html" class="mobile-sub">↳ PICA Passports</a>
-    <a href="vital.html" class="mobile-sub">↳ RGD Vital Records</a>
+    <a href="vital.html" class="mobile-sub" style="font-weight:700; color:var(--blue-deep);">↳ RGD Vital Records</a>
     <a href="nis.html" class="mobile-sub">↳ NIS Pensions</a>
     <a href="taj-renewal.html" class="mobile-sub">↳ TAJ Motor Vehicles</a>
     <a href="insights.html">Insights</a>
@@ -164,235 +185,164 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
     <a href="booking.html" style="font-weight: 700; color: var(--blue-deep);">Book Consultation</a>
   </nav>
 </header>
+
 <main>
-<section class="hero">
+<section class="article-hero">
   <div class="container">
-    <span class="eyebrow">RGD Search Suite</span>
-    <h1>Vital Records Search &amp; Retrieval</h1>
-    <p class="lead">Before we can conduct a deep archival search or correct an error on your ledger, we need specific historical information. Review the exact details you need to provide for each RGD service.</p>
+    <span class="eyebrow">RGD Agency Proxy</span>
+    <h1>Jamaican Vital Records</h1>
+    <p class="article-meta">Before booking a consultation for Birth, Marriage, or Death certificates, please review the strict rules below regarding entry numbers, archival searches, and privacy constraints.</p>
   </div>
 </section>
 
-<section class="path-section">
-  <div class="container">
-    <div class="accordion-wrapper">
-      
-      <!-- PATH 1 -->
-      <details class="path-accordion">
-          <summary>
-              <div class="summary-content"><i class="fa-solid fa-baby"></i> Birth Certificate Retrieval</div>
-          </summary>
-          <div class="accordion-body">
-              <p>Secure fresh, certified copies of an existing birth record for immigration, passport renewals, or personal files. We handle both digital retrievals and manual archival ledger searches for older records.</p>
-              
-              <div class="service-detail-grid">
-                  <div class="detail-block">
-                      <h4>Required Information</h4>
-                      <ul class="check-list">
-                          <li><i class="fa-solid fa-signature"></i> Subject’s exact full name at birth</li>
-                          <li><i class="fa-solid fa-calendar-day"></i> Exact or approximate Date of Birth</li>
-                          <li><i class="fa-solid fa-location-dot"></i> Parish and specific location of birth</li>
-                          <li><i class="fa-solid fa-person-dress"></i> Mother’s full maiden name</li>
-                          <li><i class="fa-solid fa-person"></i> Father’s full name (if legally on record)</li>
-                      </ul>
-                  </div>
-                  <div class="detail-block">
-                      <h4>The Search Workflow</h4>
-                      <ul class="step-list">
-                          <li>We cross-reference your details to ensure an accurate query.</li>
-                          <li>If not digital, our agents request a manual archival search.</li>
-                          <li>Minor spelling discrepancies are resolved by us locally.</li>
-                          <li>Certified prints are dispatched internationally via courier.</li>
-                      </ul>
-                  </div>
-              </div>
-              
-              <div class="accordion-cta-bar">
-                  <div style="display: flex; gap: 12px; align-items: flex-start;">
-                      <i class="fa-solid fa-circle-info" style="color: var(--blue); font-size: 1.2rem; margin-top: 2px;"></i>
-                      <p style="margin: 0; color: var(--slate); font-size: 0.95rem; line-height: 1.5;"><strong>Pricing Note:</strong> Because every document situation is unique, we do not use one-size-fits-all fees. We will provide a custom, flat-fee quote after a quick review of your specific case during consultation.</p>
-                  </div>
-                  <div style="margin-top: 8px;">
-                      <a href="booking.html" class="btn btn-primary"><i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book a Consultation</a>
-                  </div>
-              </div>
-          </div>
-      </details>
+<div class="container">
+  <div class="content-grid">
 
-      <!-- PATH 2 -->
-      <details class="path-accordion">
-          <summary>
-              <div class="summary-content"><i class="fa-solid fa-ring"></i> Marriage Certificate Retrieval</div>
-          </summary>
-          <div class="accordion-body">
-              <p>Retrieve official, certified copies of marriage records registered anywhere in Jamaica for spousal sponsorship, name changes, or legal updates in foreign jurisdictions.</p>
-              
-              <div class="service-detail-grid">
-                  <div class="detail-block">
-                      <h4>Required Information</h4>
-                      <ul class="check-list">
-                          <li><i class="fa-solid fa-mars"></i> Groom’s full name</li>
-                          <li><i class="fa-solid fa-venus"></i> Bride’s full maiden name</li>
-                          <li><i class="fa-solid fa-calendar-day"></i> Exact Date of Marriage</li>
-                          <li><i class="fa-solid fa-location-dot"></i> Parish and exact location (Church, etc.)</li>
-                      </ul>
-                  </div>
-                  <div class="detail-block">
-                      <h4>The Search Workflow</h4>
-                      <ul class="step-list">
-                          <li>Submit the couple's details through our secure portal.</li>
-                          <li>Our team submits the targeted search request to the RGD.</li>
-                          <li>We follow up on delayed registrations from marriage officers.</li>
-                          <li>The certified marriage copy is retrieved and couriered globally.</li>
-                      </ul>
-                  </div>
-              </div>
-              
-              <div class="accordion-cta-bar">
-                  <div style="display: flex; gap: 12px; align-items: flex-start;">
-                      <i class="fa-solid fa-circle-info" style="color: var(--blue); font-size: 1.2rem; margin-top: 2px;"></i>
-                      <p style="margin: 0; color: var(--slate); font-size: 0.95rem; line-height: 1.5;"><strong>Pricing Note:</strong> Because every document situation is unique, we do not use one-size-fits-all fees. We will provide a custom, flat-fee quote after a quick review of your specific case during consultation.</p>
-                  </div>
-                  <div style="margin-top: 8px;">
-                      <a href="booking.html" class="btn btn-primary"><i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book a Consultation</a>
-                  </div>
-              </div>
-          </div>
-      </details>
-
-      <!-- PATH 3 -->
-      <details class="path-accordion">
-          <summary>
-              <div class="summary-content"><i class="fa-solid fa-file-invoice"></i> Death Certificate Retrieval</div>
-          </summary>
-          <div class="accordion-body">
-              <p>Secure official death records required for settling estates overseas, processing NIS funeral grants, or claiming international life insurance policies.</p>
-              
-              <div class="service-detail-grid">
-                  <div class="detail-block">
-                      <h4>Required Information</h4>
-                      <ul class="check-list">
-                          <li><i class="fa-solid fa-signature"></i> Full name of the deceased</li>
-                          <li><i class="fa-solid fa-calendar-day"></i> Exact Date of Death</li>
-                          <li><i class="fa-solid fa-location-dot"></i> Parish and specific place of death</li>
-                          <li><i class="fa-solid fa-clock-rotate-left"></i> Age of the subject at time of death</li>
-                      </ul>
-                  </div>
-                  <div class="detail-block">
-                      <h4>The Search Workflow</h4>
-                      <ul class="step-list">
-                          <li>We initiate a priority search using specific identifiers.</li>
-                          <li>If RGD requires more details, we act as your local liaison.</li>
-                          <li>We secure the certified pink copies required for legal matters.</li>
-                          <li>Records are securely sealed and dispatched via courier.</li>
-                      </ul>
-                  </div>
-              </div>
-              
-              <div class="accordion-cta-bar">
-                  <div style="display: flex; gap: 12px; align-items: flex-start;">
-                      <i class="fa-solid fa-circle-info" style="color: var(--blue); font-size: 1.2rem; margin-top: 2px;"></i>
-                      <p style="margin: 0; color: var(--slate); font-size: 0.95rem; line-height: 1.5;"><strong>Pricing Note:</strong> Because every document situation is unique, we do not use one-size-fits-all fees. We will provide a custom, flat-fee quote after a quick review of your specific case during consultation.</p>
-                  </div>
-                  <div style="margin-top: 8px;">
-                      <a href="booking.html" class="btn btn-primary"><i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book a Consultation</a>
-                  </div>
-              </div>
-          </div>
-      </details>
-
-      <!-- PATH 4 -->
-      <details class="path-accordion">
-          <summary>
-              <div class="summary-content"><i class="fa-solid fa-file-pen"></i> Record Corrections &amp; Updates</div>
-          </summary>
-          <div class="accordion-body">
-              <p>If a record contains spelling errors, is missing a father's name, or was never officially registered (Late Registration), the original ledger must be legally amended before a valid certificate can be printed.</p>
-              
-              <div class="service-detail-grid">
-                  <div class="detail-block">
-                      <h4>Legal Requirements</h4>
-                      <ul class="check-list">
-                          <li><i class="fa-solid fa-file-signature"></i> Signed statutory declarations from parents</li>
-                          <li><i class="fa-solid fa-id-card"></i> Valid government photo IDs for declarants</li>
-                          <li><i class="fa-solid fa-scale-balanced"></i> Supporting documentary evidence</li>
-                          <li><i class="fa-solid fa-stamp"></i> Overseas signatures must be Notarized</li>
-                      </ul>
-                  </div>
-                  <div class="detail-block">
-                      <h4>The Amendment Workflow</h4>
-                      <ul class="step-list">
-                          <li>We draft the exact statutory declarations required.</li>
-                          <li>You print, notarize, and courier the declarations to Jamaica.</li>
-                          <li>Our proxy submits the case and tracks it through the RGD.</li>
-                          <li>A fresh, corrected certificate is printed and shipped.</li>
-                      </ul>
-                  </div>
-              </div>
-              
-              <div class="accordion-cta-bar">
-                  <div style="display: flex; gap: 12px; align-items: flex-start;">
-                      <i class="fa-solid fa-circle-info" style="color: var(--blue); font-size: 1.2rem; margin-top: 2px;"></i>
-                      <p style="margin: 0; color: var(--slate); font-size: 0.95rem; line-height: 1.5;"><strong>Pricing Note:</strong> Because every document situation is unique, we do not use one-size-fits-all fees. We will provide a custom, flat-fee quote after a quick review of your specific case during consultation.</p>
-                  </div>
-                  <div style="margin-top: 8px;">
-                      <a href="booking.html" class="btn btn-primary"><i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book a Consultation</a>
-                  </div>
-              </div>
-          </div>
-      </details>
-
-    </div>
-
-    <!-- MANDATORY DOCS -->
-    <div class="docs-box">
-      <h3><i class="fa-solid fa-folder-open"></i> Universal Core Requirements for Proxy</h3>
-      <div class="docs-grid">
-        <div class="doc-item">
-          <i class="fa-solid fa-user-lock"></i>
-          <div>
-            <h4>Valid Government ID</h4>
-            <p>The person requesting the record must upload a copy of their valid government-issued photo ID (Passport, Driver's License) to initiate the search.</p>
-          </div>
+    <!-- ======== SIDE-BY-SIDE ALERTS ======== -->
+    <div class="alerts-grid">
+      <!-- THE ENTRY NUMBER FORK -->
+      <div class="golden-rule">
+        <i class="fa-solid fa-file-invoice"></i>
+        <div>
+          <h3>Do you have your Entry Number?</h3>
+          <p>If you have an old copy of the certificate with the <strong>Entry Number</strong> (or the pink marriage slip), you qualify for the Fast Track application. If you do NOT have the Entry Number, a mandatory <strong>Archival Search</strong> must be conducted before a certificate can be requested.</p>
         </div>
-        <div class="doc-item">
-          <i class="fa-solid fa-signature"></i>
-          <div>
-            <h4>Signed Authorization Form</h4>
-            <p>Due to RGD privacy regulations, if you are requesting records on behalf of a family member, you must sign a formal Docu-Hub proxy authorization letter.</p>
-          </div>
+      </div>
+
+      <!-- PRIVACY & APPLICANT RULE -->
+      <div class="proxy-check">
+        <i class="fa-solid fa-user-shield"></i>
+        <div>
+          <h3>Applicant vs. Subject Rule</h3>
+          <p>RGD strictly enforces privacy laws. If you are not the person named on the certificate, you must provide your own valid ID, contact details, and a clear declaration of your exact relationship to the subject.</p>
         </div>
       </div>
     </div>
+    <!-- ===================================== -->
 
-    <!-- FINAL CTA -->
+    <!-- MODULE 1: THE MUST-HAVES BY RECORD TYPE -->
+    <div class="info-module">
+      <h2><i class="fa-solid fa-list-check"></i> Standard Certificate Requirements</h2>
+      <p>Whether you have the Entry Number or need us to conduct a search first, we must have the exact details below to initiate the RGD workflow:</p>
+      
+      <ul class="checklist">
+        <li>
+          <i class="fa-solid fa-baby"></i>
+          <div>
+            <strong>Birth Certificates</strong>
+            You must provide the exact Date of Birth, the Parish of Birth, and the Mother’s full maiden name at the time of birth.
+          </div>
+        </li>
+        <li>
+          <i class="fa-solid fa-rings-wedding"></i>
+          <div>
+            <strong>Marriage Certificates</strong>
+            You must provide the exact Date of Marriage, the specific Church/Venue and Parish, the Groom’s full name, the Bride’s maiden name, and ideally the Marriage Officer’s name.
+          </div>
+        </li>
+        <li>
+          <i class="fa-solid fa-book-skull"></i>
+          <div>
+            <strong>Death Certificates</strong>
+            You must provide the exact Date and Place of Death, the deceased’s full legal name, and the name of the person who registered the death (the informant).
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- MODULE 2: SCENARIOS & ELIGIBILITY -->
+    <div class="info-module">
+      <h2><i class="fa-solid fa-scale-balanced"></i> Legal Updates & Proxy Pickup</h2>
+      <p>Updates to vital records are strict legal proceedings. Review the realities of these complex scenarios below.</p>
+
+      <div class="scenario-grid">
+        
+        <!-- Correction of Error -->
+        <div class="scenario-card">
+          <h3>Correction of Error</h3>
+          <ul>
+            <li><strong>Old Official Evidence:</strong> You must provide at least two pieces of older official evidence showing the correct info (e.g., old clinic book, early school records).</li>
+            <li><strong>Independent Witness:</strong> A declaration from someone who is at least 10 years older than you and has known you since birth.</li>
+            <li>All photocopies must be certified by a Justice of the Peace (JP).</li>
+          </ul>
+        </div>
+
+        <!-- Adding a Father's Name -->
+        <div class="scenario-card">
+          <h3>Adding a Father’s Name (Status)</h3>
+          <ul>
+            <li>Requires the child’s Birth Entry Number and valid IDs for the parents.</li>
+            <li><strong>Physical Signatures:</strong> Parents must physically sign the 3-page PATAC form in the presence of a JP, Attorney, or Notary Public.</li>
+            <li><em>Note: If the mother is deceased, an original Death Certificate is required in place of her signature, and the father will sign the form as he normally would. (If the father is deceased, a Family Court Declaration of Paternity is required).</em></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="callout-box" style="background: var(--warn-bg); border-color: var(--warn-border);">
+        <h4 style="color: var(--warn-text);"><i class="fa-solid fa-signature"></i> Proxy Pickup Authorization Warning</h4>
+        <p style="color: var(--warn-text);">RGD is extremely strict with third-party collections. If Docu-Hub is picking up a physical certificate on your behalf, you must sign a Letter of Authorization. <strong>Your signature on that letter MUST perfectly match the signature on the valid ID you submit to us.</strong> If the signatures do not match, RGD will reject the proxy pickup.</p>
+      </div>
+    </div>
+
+    <!-- MODULE 3: RGD FEES & TIMELINES -->
+    <div class="info-module">
+      <h2><i class="fa-solid fa-money-bill-wave"></i> Official RGD Fees & Processing Times</h2>
+      <p>The table below lists the standard Jamaican government fees for certificates. If you do not have an Entry Number, you must factor in the mandatory Archival Search fee and additional time.</p>
+      
+      <div style="overflow-x: auto;">
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Service Type</th>
+              <th>Regular (4-6 Weeks)</th>
+              <th>Express (14 Days)</th>
+              <th>Express (7 Days)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Birth, Marriage, or Death Certificate</strong></td>
+              <td>$2,000 JMD</td>
+              <td>$3,000 JMD</td>
+              <td>$4,000 JMD</td>
+            </tr>
+            <tr style="background-color: var(--paper-deep);">
+              <td><strong>Mandatory Archival Search</strong> <br><span style="font-size: 0.85rem; font-weight: normal; color: var(--slate);">(Required if you do not have the Entry Number)</span></td>
+              <td colspan="3" style="text-align: center;"><strong>$1,500 JMD</strong><br><span style="font-size: 0.85rem; font-weight: normal; color: var(--slate);">(Adds 2-4 weeks to total processing time)</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fee-note">*Note: Docu-Hub Operations charges a separate flat-fee for our professional proxy preparation, submission, and collection services.</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="container" style="margin-bottom: 80px;">
     <div class="final">
-      <span class="eyebrow" style="margin:auto;background:rgba(176,138,78,.18);color:#f3d9a4;border-color:rgba(176,138,78,.35)">Ready to Begin?</span>
-      <h2>Do you have the required information?</h2>
-      <p>If you have all the necessary historical details listed in your checklist above, book a consultation to initiate your secure search process.</p>
-      <div class="final-actions">
-        <a class="btn" href="booking.html" style="background:#fff; color:var(--ink); min-height: 56px; padding: 0 32px; font-size: 1.1rem; border: none;">
-          <i class="fa-regular fa-calendar-days" style="margin-right: 10px; font-size: 1.4rem;"></i> Book a Consultation
+      <span class="eyebrow" style="margin:auto;background:rgba(176,138,78,.18);color:#f3d9a4;border-color:rgba(176,138,78,.35)">Connect Instantly</span>
+      <h2>Ready to search or apply?</h2>
+      <p>Whether you have your Entry Number ready or need us to conduct a deep archival search, book a consultation to begin your document retrieval process securely.</p>
+      <div style="margin-top: 12px;">
+        <a class="btn" href="booking.html" style="background:#fff; color:var(--ink); min-height: 56px; border: none;">
+          <i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book a Consultation
         </a>
       </div>
     </div>
-  </div>
-</section>
+</div>
 </main>
 
-<!-- UNIFIED 3-COLUMN FOOTER WITH PINTEREST -->
+<!-- UNIFIED 3-COLUMN FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-grid">
-      <!-- Brand Summary -->
       <div>
         <h3 style="margin:0 0 10px;color:#fff;font-family:'Fraunces',serif;font-weight:600">Docu-Hub Operations</h3>
         <p style="margin:0;color:#94a3b8">Independent administrative proxy and secure online application assistance for the Jamaican diaspora.</p>
       </div>
-      
-      <!-- 3-Column Sitemap -->
       <div class="footer-cols">
-        
         <div class="footer-col">
           <h4>Our Services</h4>
           <a href="passport.html">PICA Passports</a>
@@ -400,14 +350,12 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
           <a href="nis.html">NIS Pensions</a>
           <a href="taj-renewal.html">TAJ Motor Vehicles</a>
         </div>
-        
         <div class="footer-col">
           <h4>Company</h4>
           <a href="about.html">About Docu-Hub</a>
           <a href="insights.html">Guides &amp; Insights</a>
           <a href="faq.html">FAQ</a>
         </div>
-        
         <div class="footer-col">
           <h4>Legal &amp; Connect</h4>
           <a href="privacy.html">Privacy Policy</a>
@@ -422,11 +370,8 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
             <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn
           </a>
         </div>
-
       </div>
     </div>
-    
-    <!-- Bottom Legal Disclaimer & Registration Badges -->
     <div class="footer-bottom">
       <div>Disclaimer: Docu-Hub Operations Services is a private, registered administrative proxy service. We are not a government agency and are not affiliated with PICA, RGD, or MLSS/NIS.</div>
       <div><i class="fa-solid fa-building-shield" style="margin-right: 6px; color: var(--brass);"></i> Registered with the Companies Office of Jamaica (COJ): #15602/2025 | OIC Data Controller Verified.</div>
@@ -436,19 +381,13 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 </footer>
 
 <script>
-  // Mobile Navigation Toggle
-  var btn = document.getElementById('menuBtn');
-  var nav = document.getElementById('mobileNav');
-  btn.addEventListener('click', function(){
-    var isHidden = nav.hasAttribute('hidden');
-    if(isHidden){ 
-      nav.removeAttribute('hidden'); 
-      btn.setAttribute('aria-expanded','true'); 
-    } else { 
-      nav.setAttribute('hidden',''); 
-      btn.setAttribute('aria-expanded','false'); 
-    }
-  });
+var btn = document.getElementById('menuBtn');
+var nav = document.getElementById('mobileNav');
+btn.addEventListener('click', function(){
+var isHidden = nav.hasAttribute('hidden');
+if(isHidden){ nav.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); }
+else { nav.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); }
+});
 </script>
 
 </body>
