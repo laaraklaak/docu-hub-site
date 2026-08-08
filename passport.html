@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Jamaican Passport Services | Docu-Hub Operations</title>
-<meta name="description" content="Expert proxy assistance for Jamaican passport renewals, first-time adult transitions, minor applications, name changes, lost, and damaged passports.">
+<title>PICA Passport Services | Docu-Hub Operations</title>
+<meta name="description" content="Strict readiness checklists and eligibility rules for Jamaican passport renewals, lost passports, damaged passports, name changes, and first-time adult applications.">
 
 <!-- ===== Security Headers ===== -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://images.unsplash.com data:; connect-src 'self';">
@@ -23,82 +22,92 @@
   --ink:#0f172a; --ink-soft:#1e293b; --slate:#475467; --line:#e2e8f0;
   --paper:#f5f7fb; --paper-deep:#e9eff8; --blue:#2563eb; --blue-deep:#1d4ed8;
   --brass:#b08a4e; --brass-deep:#8a6a37; --brass-tint:#faf3e6;
+  --danger-bg: #fef2f2; --danger-border: #ef4444; --danger-text: #991b1b;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
-h1,h2,h3,h4,.brand span,.eyebrow{font-family:"Fraunces",Georgia,serif}
+body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;}
+h1,h2,h3,.brand span,.step-badge,.eyebrow{font-family:"Fraunces",Georgia,serif}
 .container{width:min(1120px,calc(100% - 32px));margin:auto}
 a{-webkit-tap-highlight-color:transparent}
-:focus-visible{outline:2px solid var(--blue-deep);outline-offset:2px}
 
-/* Header & Nav (Master Template) */
-header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+/* Header & Nav */
+header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav{display:flex;justify-content:space-between;align-items:center;min-height:72px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:700;text-decoration:none;color:inherit}
 .brand span{font-size:1.02rem;font-weight:600;letter-spacing:-0.01em}
 .logo{width:38px;height:38px;border-radius:11px;background:var(--ink);color:var(--brass-tint);display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:600;font-size:.92rem;flex:none}
+
 .desktop-nav{display:none;gap:24px;align-items:center;}
 .desktop-nav a{text-decoration:none;color:var(--slate);font-weight:500;font-size:.96rem;transition:color 0.2s;}
-.desktop-nav a:hover, .desktop-nav a.active{color:var(--ink)}
+.desktop-nav a:hover{color:var(--ink)}
+
+.dropdown { position: relative; display: inline-block; }
+.dropbtn { background: none; border: none; color: var(--ink); font-weight: 700; font-size: 0.96rem; font-family: Inter, sans-serif; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+.dropdown-content { display: none; position: absolute; top: 100%; left: -16px; background-color: #fff; min-width: 220px; box-shadow: 0 12px 30px rgba(15,23,42,0.1); border: 1px solid var(--line); border-radius: 14px; padding: 8px 0; z-index: 40; }
+.dropdown-content a { color: var(--slate); padding: 10px 18px; text-decoration: none; display: block; font-size: 0.92rem; transition: background 0.15s, color 0.15s; font-weight: 500;}
+.dropdown-content a:hover { background-color: var(--paper); color: var(--ink); }
+.dropdown:hover .dropdown-content { display: block; }
+
 .menu{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);border:none;}
 .mobile-nav{display:grid;gap:2px;border-bottom:1px solid var(--line);background:#fff}
 .mobile-nav a{padding:14px 16px;text-decoration:none;color:var(--ink-soft);font-weight:500;border-top:1px solid var(--line)}
+.mobile-nav .mobile-sub{padding-left:28px; font-size:0.9rem; color:var(--slate);}
 .mobile-nav[hidden]{display:none}
 
-/* Hero */
-.hero{padding:64px 0 48px; text-align:center;}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;margin:auto;padding:8px 14px;border-radius:999px;background:var(--brass-tint);color:var(--brass-deep);font-size:.82rem;font-weight:600;border:1px solid #ecdcb8; margin-bottom:24px;}
-h1{margin:0 0 16px;font-weight:600;font-size:clamp(2.1rem,5vw,3.8rem);line-height:1.1;letter-spacing:-0.02em}
-.lead{margin:0 auto 32px;max-width:720px;color:var(--slate);font-size:1.1rem;line-height:1.7;}
+/* Hero Section */
+.article-hero { padding: 48px 0 32px; text-align: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: auto; padding: 8px 14px; border-radius: 999px; background: var(--brass-tint); color: var(--brass-deep); font-size: .82rem; font-weight: 600; border: 1px solid #ecdcb8; margin-bottom: 24px; }
+h1 { margin: 0 0 16px; font-family: "Fraunces", serif; font-weight: 600; font-size: clamp(2.1rem, 4vw, 3.2rem); line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); max-width: 900px; margin-left: auto; margin-right: auto; }
+.article-meta { font-size: 1.05rem; color: var(--slate); margin-bottom: 32px; max-width: 700px; margin-left: auto; margin-right: auto;}
 
-/* Accordion Checklists */
-.path-section { padding: 32px 0 64px; }
-.accordion-wrapper { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
-details.path-accordion { background: #fff; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: 0 4px 12px rgba(15,23,42,.03); transition: box-shadow 0.2s ease;}
-details.path-accordion:hover { box-shadow: 0 10px 24px rgba(15,23,42,.06); border-color: #cbd5e1; }
-summary { font-family: "Fraunces", serif; font-weight: 600; font-size: 1.35rem; padding: 24px 32px; cursor: pointer; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; margin: 0; }
-summary::-webkit-details-marker { display: none; }
-.summary-content { display: flex; align-items: center; gap: 16px; }
-.summary-content i { color: var(--blue); font-size: 1.6rem; width: 32px; text-align: center; }
-summary::after { content: '+'; color: var(--blue); font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 400; }
-details[open] summary { border-bottom: 1px solid var(--line); background: var(--paper); }
-details[open] summary::after { content: '−'; }
+/* Layout Structure */
+.content-grid { display: grid; gap: 32px; max-width: 1000px; margin: 0 auto 64px; }
 
-.accordion-body { padding: 32px; }
-.accordion-body > p { margin: 0 0 24px; color: var(--slate); font-size: 1.05rem; }
+/* ======== SIDE-BY-SIDE ALERTS ======== */
+.alerts-grid { display: grid; gap: 24px; }
 
-.service-detail-grid { display: grid; gap: 32px; margin-bottom: 32px; }
-.detail-block h4 { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); margin: 0 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
-.check-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
-.check-list li { font-size: 0.95rem; color: var(--slate); display: flex; gap: 12px; align-items: flex-start; }
-.check-list li i { color: var(--brass-deep); margin-top: 4px; font-size: 0.9rem; }
-.step-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; counter-reset: custom-counter; }
-.step-list li { font-size: 0.95rem; color: var(--slate); display: flex; gap: 16px; align-items: flex-start; }
-.step-list li::before { counter-increment: custom-counter; content: counter(custom-counter); background: var(--paper-deep); color: var(--blue-deep); font-weight: 700; font-size: 0.85rem; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%; flex-shrink: 0; }
+/* The Golden Rule Alert (Toned Down) */
+.golden-rule { background: var(--danger-bg); border: 1px solid var(--danger-border); border-radius: 16px; padding: 24px 28px; display: flex; gap: 20px; align-items: flex-start; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.05); }
+.golden-rule i { font-size: 1.8rem; color: var(--danger-border); margin-top: 2px; }
+.golden-rule h3 { color: var(--danger-text); margin: 0 0 8px; font-size: 1.25rem; }
+.golden-rule p { color: #7f1d1d; font-size: 0.95rem; margin: 0; line-height: 1.6; }
+.golden-rule strong { font-weight: 700; background: #fee2e2; padding: 2px 6px; border-radius: 4px;}
 
-.accordion-cta-bar { background: var(--paper); border-radius: 12px; padding: 24px; border: 1px solid var(--line); display: flex; flex-direction: column; gap: 16px; margin-top: 24px;}
+/* Proxy Reality Check */
+.proxy-check { background: var(--ink); color: #fff; border-radius: 16px; padding: 24px 28px; display: flex; gap: 20px; align-items: flex-start; box-shadow: 0 4px 12px rgba(15,23,42,0.08); }
+.proxy-check i { font-size: 1.8rem; color: var(--brass); margin-top: 2px; }
+.proxy-check h3 { margin: 0 0 8px; font-size: 1.25rem; color: #fff; }
+.proxy-check p { margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; }
+/* ========================================= */
 
-/* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:12px;text-decoration:none;font-weight:600;font-size:.95rem;transition:transform .15s ease}
+/* Checklist Modules */
+.info-module { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 40px; box-shadow: 0 10px 30px rgba(15,23,42,.04); }
+.info-module h2 { font-family: "Fraunces", serif; font-size: 1.6rem; color: var(--ink); margin: 0 0 16px; display: flex; align-items: center; gap: 12px; }
+.info-module h2 i { color: var(--brass-deep); }
+.info-module > p { color: var(--slate); margin-top: 0; margin-bottom: 24px; font-size: 1.05rem; line-height: 1.6;}
+
+.checklist { list-style: none; padding: 0; margin: 0; }
+.checklist li { display: flex; gap: 16px; align-items: flex-start; font-size: 1.05rem; color: var(--slate); margin-bottom: 20px; line-height: 1.6; }
+.checklist li i { color: #10b981; font-size: 1.2rem; margin-top: 3px; }
+.checklist li strong { color: var(--ink); display: block; margin-bottom: 2px; }
+
+/* Grid for Scenarios */
+.scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+.scenario-card { background: var(--paper); border: 1px solid var(--line); padding: 24px; border-radius: 16px; }
+.scenario-card h3 { margin: 0 0 12px; font-size: 1.2rem; color: var(--ink); }
+.scenario-card ul { margin: 0; padding-left: 20px; color: var(--slate); font-size: 0.95rem; line-height: 1.6; }
+.scenario-card li { margin-bottom: 8px; }
+
+/* Final CTA */
+.final{background:linear-gradient(135deg,var(--ink),var(--ink-soft));color:#fff;border-radius:28px;padding:48px 24px;text-align:center;display:grid;gap:18px;box-shadow:0 18px 60px rgba(15,23,42,.16); max-width:860px; margin: 0 auto;}
+.final h2{font-weight:600; margin:0; font-size:clamp(1.9rem,4vw,2.8rem)}
+.final p{color:#cbd5e1;margin:0 auto; max-width:560px;}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;border-radius:14px;text-decoration:none;font-weight:700;font-size:.98rem;transition:all .15s ease}
 .btn-primary{background:var(--ink);color:#fff}
 .btn-primary:hover{background:var(--ink-soft); transform: translateY(-2px);}
 
-/* Docs Block */
-.docs-box { max-width: 900px; margin: 48px auto 0; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 32px; box-shadow: 0 4px 12px rgba(15,23,42,.03); }
-.docs-box h3 { margin: 0 0 24px; font-size: 1.4rem; color: var(--ink); display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 16px;}
-.docs-grid { display: grid; gap: 24px; }
-.doc-item { display: flex; gap: 16px; align-items: flex-start; }
-.doc-item i { color: var(--blue); font-size: 1.6rem; margin-top: 4px;}
-.doc-item h4 { margin: 0 0 4px; font-size: 1.1rem; color: var(--ink); }
-.doc-item p { margin: 0; color: var(--slate); font-size: 0.95rem; }
-
-/* Final CTA */
-.final{background:linear-gradient(135deg,var(--ink),var(--ink-soft));color:#fff;border-radius:28px;padding:48px 24px;text-align:center;display:grid;gap:18px;box-shadow:0 18px 60px rgba(15,23,42,.16); max-width:860px; margin: 64px auto 0;}
-.final h2{font-weight:600; margin:0; font-size:clamp(1.9rem,4vw,2.8rem)}
-.final p{color:#cbd5e1;margin:0 auto; max-width:500px;}
-.final-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:auto}
-
-/* Footer (Master Template) */
+/* Footer */
 footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 .footer-grid{display:grid;gap:40px}
 .footer-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
@@ -107,17 +116,19 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 .footer-col a:hover{color:#fff}
 .footer-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:12px;color:#94a3b8;font-size:.85rem;line-height:1.6;}
 
-@media(min-width:800px){ 
-  .service-detail-grid { grid-template-columns: 1fr 1fr; }
-  .docs-grid { grid-template-columns: 1fr 1fr; }
-}
 @media(min-width:980px){
   .desktop-nav{display:flex}
   .menu{display:none}
   .mobile-nav{display:none !important}
+  /* Force alerts to sit side-by-side on desktop */
+  .alerts-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid{grid-template-columns:1fr 1.5fr}
 }
-@media(max-width:767px){ .footer-cols{grid-template-columns:1fr 1fr;} }
+@media(max-width:767px){ 
+  .scenario-grid { grid-template-columns: 1fr; }
+  .proxy-check { flex-direction: column; text-align: center; gap: 12px; }
+  .footer-cols{grid-template-columns:1fr 1fr;} 
+}
 @media(max-width:480px){ .footer-cols{grid-template-columns:1fr;} }
 </style>
 </head>
@@ -129,12 +140,12 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
       <div class="logo">DH</div><span>Docu-Hub Operations</span>
     </a>
     
-    <!-- DESKTOP NAVIGATION WITH SERVICES DROPDOWN -->
+    <!-- DESKTOP NAVIGATION -->
     <nav class="desktop-nav">
       <div class="dropdown">
         <button class="dropbtn">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i></button>
         <div class="dropdown-content">
-          <a href="passport.html">PICA Passports</a>
+          <a href="passport.html" style="font-weight:700; color:var(--ink);">PICA Passports</a>
           <a href="vital.html">RGD Vital Records</a>
           <a href="nis.html">NIS Pensions</a>
           <a href="taj-renewal.html">TAJ Motor Vehicles</a>
@@ -151,10 +162,9 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
     </button>
   </div>
   
-  <!-- MOBILE NAVIGATION DROPDOWN -->
   <nav class="mobile-nav" id="mobileNav" hidden>
     <a href="index.html#services" style="font-weight: 700; color: var(--ink);">Services</a>
-    <a href="passport.html" class="mobile-sub">↳ PICA Passports</a>
+    <a href="passport.html" class="mobile-sub" style="font-weight:700; color:var(--blue-deep);">↳ PICA Passports</a>
     <a href="vital.html" class="mobile-sub">↳ RGD Vital Records</a>
     <a href="nis.html" class="mobile-sub">↳ NIS Pensions</a>
     <a href="taj-renewal.html" class="mobile-sub">↳ TAJ Motor Vehicles</a>
@@ -166,315 +176,170 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 </header>
 
 <main>
-<section class="hero">
+<section class="article-hero">
   <div class="container">
     <span class="eyebrow">PICA Agency Proxy</span>
     <h1>Jamaican Passport Services</h1>
-    <p class="lead">Different passport scenarios require completely different workflows. Review the exact required documents below to see if you are ready to proceed with an online renewal or a physical proxy walk-in.</p>
+    <p class="article-meta">Before booking a consultation, please review the strict eligibility rules and document checklists below to ensure your application will be accepted by PICA without delays.</p>
   </div>
 </section>
 
-<section class="path-section">
-  <div class="container">
-    <div class="accordion-wrapper">
-      
-      <!-- PATH 1 -->
-      <details class="path-accordion">
-          <summary>
-              <div class="summary-content"><i class="fa-solid fa-laptop"></i> Standard Online Renewal (Adults)</div>
-          </summary>
-          <div class="accordion-body">
-              <p>Streamlined processing for adult passport renewals where there are no legal name changes, and you currently possess your undamaged, expiring or expired passport book.</p>
-              
-              <div class="service-detail-grid">
-                  <div class="detail-block">
-                      <h4>Requirements &amp; References</h4>
-                      <ul class="check-list">
-                          <li><i class="fa-solid fa-user-check"></i> Applicant must be 18 years or older</li>
-                          <li><i class="fa-solid fa-book"></i> Physical passport book in hand (undamaged)</li>
-                          <li><i class="fa-solid fa-camera"></i> Compliant digital photo meeting PICA specs</li>
-                          <li><i class="fa-solid fa-id-card-clip"></i> Official Reference details (JP, Minister, etc.)</li>
-                      </ul>
-                  </div>
-                  <div class="detail-block">
-                      <h4>Processing &amp; Delivery Speeds</h4>
-                      <ul class="step-list">
-                          <li>We audit your digital photo and credentials.</li>
-                          <li>Application submitted directly into the PICA portal.</li>
-                          <li>Standard Processing (14 days) or Express local turnaround.</li>
-                          <li>Dispatched via international courier (DHL) or local pickup.</li>
-                      </ul>
-                  </div>
-              </div>
-              
-              <div class="accordion-cta-bar">
-                  <div style="display: flex; gap: 12px; align-items: flex-start;">
-                      <i class="fa-solid fa-circle-info" style="color: var(--blue); font-size: 1.2rem; margin-top: 2px;"></i>
-                      <p style="margin: 0; color: var(--slate); font-size: 0.95rem; line-height: 1.5;"><strong>Pricing Note:</strong> Because every document situation is unique, we do not use one-size-fits-all fees. We will provide a custom, flat-fee quote after a quick review of your specific case during consultation.</p>
-                  </div>
-                  <div style="margin-top: 8px;">
-                      <a href="booking.html" class="btn btn-primary"><i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book a Consultation</a>
-                  </div>
-              </div>
-          </div>
-      </details>
+<div class="container">
+  <div class="content-grid">
 
-      <!-- PATH 2 -->
-      <details class="path-accordion">
-          <summary>
-              <div class="summary-content"><i class="fa-solid fa-user-plus"></i> First-Time Adult (Transitioning at 18+)</div>
-          </summary>
-          <div class="accordion-body">
-              <p>When a minor reaches age 18, their application is legally treated as a brand-new adult passport. It cannot be renewed through the portal and requires a physical walk-in proxy submission.</p>
-              
-              <div class="service-detail-grid">
-                  <div class="detail-block">
-                      <h4>Required Documents</h4>
-                      <ul class="check-list">
-                          <li><i class="fa-solid fa-certificate"></i> Original Jamaican Birth Certificate</li>
-                          <li><i class="fa-solid fa-id-card"></i> Valid Government Photo ID (e.g. State ID)</li>
-                          <li><i class="fa-solid fa-image"></i> Two printed PICA-compliant passport photos</li>
-                          <li><i class="fa-solid fa-file-pen"></i> Official PICA Form signed by applicant in person</li>
-                      </ul>
-                  </div>
-                  <div class="detail-block">
-                      <h4>The Walk-In Proxy Workflow</h4>
-                      <ul class="step-list">
-                          <li>The 18+ applicant completes and signs the forms.</li>
-                          <li>Courier the wet-signed forms and photos to our Jamaica office.</li>
-                          <li>Our proxy agents queue in person at PICA to lodge the application.</li>
-                          <li>Your new 10-year passport is retrieved and shipped globally.</li>
-                      </ul>
-                  </div>
-              </div>
-              
-              <div class="accordion-cta-bar">
-                  <div style="display: flex; gap: 12px; align-items: flex-start;">
-                      <i class="fa-solid fa-circle-info" style="color: var(--blue); font-size: 1.2rem; margin-top: 2px;"></i>
-                      <p style="margin: 0; color: var(--slate); font-size: 0.95rem; line-height: 1.5;"><strong>Pricing Note:</strong> Because every document situation is unique, we do not use one-size-fits-all fees. We will provide a custom, flat-fee quote after a quick review of your specific case during consultation.</p>
-                  </div>
-                  <div style="margin-top: 8px;">
-                      <a href="booking.html" class="btn btn-primary"><i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book a Consultation</a>
-                  </div>
-              </div>
-          </div>
-      </details>
-
-      <!-- PATH 3 -->
-      <details class="path-accordion">
-          <summary>
-              <div class="summary-content"><i class="fa-solid fa-child"></i> Minor Applications (Under 18)</div>
-          </summary>
-          <div class="accordion-body">
-              <p>Applications for children under age 18 must be initiated by a parent or legal guardian. Strict legal safeguards require parent authorization and specific identification proof.</p>
-              
-              <div class="service-detail-grid">
-                  <div class="detail-block">
-                      <h4>Guardian Requirements</h4>
-                      <ul class="check-list">
-                          <li><i class="fa-solid fa-user-shield"></i> Applying Parent's valid Government Photo ID</li>
-                          <li><i class="fa-solid fa-baby"></i> Minor's Original Jamaican Birth Certificate</li>
-                          <li><i class="fa-solid fa-gavel"></i> Official Court Guardianship Orders (if applicable)</li>
-                          <li><i class="fa-solid fa-file-signature"></i> Sections C &amp; E signed by parent</li>
-                      </ul>
-                  </div>
-                  <div class="detail-block">
-                      <h4>Consent Rules</h4>
-                      <ul class="step-list">
-                          <li>If parent is overseas, a notarized Consent Letter is required.</li>
-                          <li>We audit all minor forms to prevent PICA consent rejections.</li>
-                          <li>Our proxies present the documentation at the PICA desk.</li>
-                          <li>The child's 5-year passport is retrieved and dispatched.</li>
-                      </ul>
-                  </div>
-              </div>
-              
-              <div class="accordion-cta-bar">
-                  <div style="display: flex; gap: 12px; align-items: flex-start;">
-                      <i class="fa-solid fa-circle-info" style="color: var(--blue); font-size: 1.2rem; margin-top: 2px;"></i>
-                      <p style="margin: 0; color: var(--slate); font-size: 0.95rem; line-height: 1.5;"><strong>Pricing Note:</strong> Because every document situation is unique, we do not use one-size-fits-all fees. We will provide a custom, flat-fee quote after a quick review of your specific case during consultation.</p>
-                  </div>
-                  <div style="margin-top: 8px;">
-                      <a href="booking.html" class="btn btn-primary"><i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book a Consultation</a>
-                  </div>
-              </div>
-          </div>
-      </details>
-
-      <!-- PATH 4 -->
-      <details class="path-accordion">
-          <summary>
-              <div class="summary-content"><i class="fa-solid fa-signature"></i> Legal Name Changes</div>
-          </summary>
-          <div class="accordion-body">
-              <p>Updating your passport name following Marriage, Divorce, or an official Deed Poll requires physical surrender of supporting legal documents and an in-person proxy submission.</p>
-              
-              <div class="service-detail-grid">
-                  <div class="detail-block">
-                      <h4>Document Proof Required</h4>
-                      <ul class="check-list">
-                          <li><i class="fa-solid fa-ring"></i> Original Certified Marriage Certificate</li>
-                          <li><i class="fa-solid fa-file-contract"></i> Original Absolute Divorce Decree</li>
-                          <li><i class="fa-solid fa-scroll"></i> Registered RGD Deed Poll (if applicable)</li>
-                          <li><i class="fa-solid fa-book"></i> Current Passport Book to be replaced</li>
-                      </ul>
-                  </div>
-                  <div class="detail-block">
-                      <h4>The Walk-In Workflow</h4>
-                      <ul class="step-list">
-                          <li>We review your legal document chain for PICA compliance.</li>
-                          <li>Courier your wet-signed application and original certificates.</li>
-                          <li>Our proxy agent presents the legal proof to a PICA officer.</li>
-                          <li>Your updated passport is issued and delivered back to you.</li>
-                      </ul>
-                  </div>
-              </div>
-              
-              <div class="accordion-cta-bar">
-                  <div style="display: flex; gap: 12px; align-items: flex-start;">
-                      <i class="fa-solid fa-circle-info" style="color: var(--blue); font-size: 1.2rem; margin-top: 2px;"></i>
-                      <p style="margin: 0; color: var(--slate); font-size: 0.95rem; line-height: 1.5;"><strong>Pricing Note:</strong> Because every document situation is unique, we do not use one-size-fits-all fees. We will provide a custom, flat-fee quote after a quick review of your specific case during consultation.</p>
-                  </div>
-                  <div style="margin-top: 8px;">
-                      <a href="booking.html" class="btn btn-primary"><i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book a Consultation</a>
-                  </div>
-              </div>
-          </div>
-      </details>
-
-      <!-- PATH 5 -->
-      <details class="path-accordion">
-          <summary>
-              <div class="summary-content"><i class="fa-solid fa-book-skull"></i> Damaged Passports</div>
-          </summary>
-          <div class="accordion-body">
-              <p>If your passport was washed, torn, defaced, or has an unreadable biometric data page, it is legally invalid. Damaged books cannot be renewed online and must be surrendered in person.</p>
-              
-              <div class="service-detail-grid">
-                  <div class="detail-block">
-                      <h4>Mandatory Requirements</h4>
-                      <ul class="check-list">
-                          <li><i class="fa-solid fa-hand-holding"></i> Physical surrender of the damaged passport</li>
-                          <li><i class="fa-solid fa-file-pen"></i> Sworn, Notarized Affidavit explaining damage</li>
-                          <li><i class="fa-solid fa-certificate"></i> Original Jamaican Birth Certificate</li>
-                          <li><i class="fa-solid fa-id-card"></i> Valid alternative Government Photo ID</li>
-                      </ul>
-                  </div>
-                  <div class="detail-block">
-                      <h4>The Evaluation Workflow</h4>
-                      <ul class="step-list">
-                          <li>We draft the formal damage explanation affidavit.</li>
-                          <li>You courier the physical damaged book and notarized packet.</li>
-                          <li>Our proxy delivers the book for official evaluation at PICA.</li>
-                          <li>Your replacement passport is processed and dispatched.</li>
-                      </ul>
-                  </div>
-              </div>
-              
-              <div class="accordion-cta-bar">
-                  <div style="display: flex; gap: 12px; align-items: flex-start;">
-                      <i class="fa-solid fa-circle-info" style="color: var(--blue); font-size: 1.2rem; margin-top: 2px;"></i>
-                      <p style="margin: 0; color: var(--slate); font-size: 0.95rem; line-height: 1.5;"><strong>Pricing Note:</strong> Because every document situation is unique, we do not use one-size-fits-all fees. We will provide a custom, flat-fee quote after a quick review of your specific case during consultation.</p>
-                  </div>
-                  <div style="margin-top: 8px;">
-                      <a href="booking.html" class="btn btn-primary"><i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book a Consultation</a>
-                  </div>
-              </div>
-          </div>
-      </details>
-
-      <!-- PATH 6 -->
-      <details class="path-accordion">
-          <summary>
-              <div class="summary-content"><i class="fa-solid fa-shield-halved"></i> Lost or Stolen Passports</div>
-          </summary>
-          <div class="accordion-body">
-              <p>Replacing a lost or stolen passport from overseas involves strict identity security measures to prevent fraud, including mandatory police reports and official agency investigations.</p>
-              
-              <div class="service-detail-grid">
-                  <div class="detail-block">
-                      <h4>Mandatory Documentation</h4>
-                      <ul class="check-list">
-                          <li><i class="fa-solid fa-building-shield"></i> Official Police Report of loss</li>
-                          <li><i class="fa-solid fa-certificate"></i> Original Jamaican Birth Certificate</li>
-                          <li><i class="fa-solid fa-id-card"></i> Alternative valid Government Photo ID</li>
-                          <li><i class="fa-solid fa-file-lines"></i> Specialized PICA Lost Passport Form</li>
-                      </ul>
-                  </div>
-                  <div class="detail-block">
-                      <h4>The Security Workflow</h4>
-                      <ul class="step-list">
-                          <li>We review your police report and identity documents.</li>
-                          <li>You courier original signed forms and police report.</li>
-                          <li>Our proxy submits the packet directly to PICA investigators.</li>
-                          <li>Once cleared, your replacement passport is issued.</li>
-                      </ul>
-                  </div>
-              </div>
-              
-              <div class="accordion-cta-bar">
-                  <div style="display: flex; gap: 12px; align-items: flex-start;">
-                      <i class="fa-solid fa-circle-info" style="color: var(--blue); font-size: 1.2rem; margin-top: 2px;"></i>
-                      <p style="margin: 0; color: var(--slate); font-size: 0.95rem; line-height: 1.5;"><strong>Pricing Note:</strong> Because every document situation is unique, we do not use one-size-fits-all fees. We will provide a custom, flat-fee quote after a quick review of your specific case during consultation.</p>
-                  </div>
-                  <div style="margin-top: 8px;">
-                      <a href="booking.html" class="btn btn-primary"><i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book a Consultation</a>
-                  </div>
-              </div>
-          </div>
-      </details>
-
-    </div>
-
-    <!-- MANDATORY DOCS -->
-    <div class="docs-box">
-      <h3><i class="fa-solid fa-folder-open"></i> Universal Core Requirements for Proxy</h3>
-      <div class="docs-grid">
-        <div class="doc-item">
-          <i class="fa-solid fa-file-signature"></i>
-          <div>
-            <h4>Proof of Jamaican Citizenship</h4>
-            <p>An Original Jamaican Birth Certificate or Citizenship Certificate is strictly required for all physical proxy walk-ins.</p>
-          </div>
+    <!-- ======== SIDE-BY-SIDE ALERTS ======== -->
+    <div class="alerts-grid">
+      <!-- THE GOLDEN RULE (Toned Down) -->
+      <div class="golden-rule">
+        <i class="fa-solid fa-book-open"></i>
+        <div>
+          <h3>Physical Passport Required</h3>
+          <p>A digital picture of your bio-page is <strong>NOT</strong> sufficient. Unless filing for a "Lost Passport", you must have your physical passport book in hand (even if it is damaged).</p>
         </div>
-        <div class="doc-item">
-          <i class="fa-solid fa-camera"></i>
-          <div>
-            <h4>Two Compliant Passport Photos</h4>
-            <p>Photos must adhere strictly to PICA specs: crisp white background, taken within 6 months, and certified on the reverse by a JP where required.</p>
-          </div>
+      </div>
+
+      <!-- PROXY REALITY CHECK -->
+      <div class="proxy-check">
+        <i class="fa-solid fa-pen-nib"></i>
+        <div>
+          <h3>The Proxy Reality Check</h3>
+          <p>While we take digital copies initially to pre-audit your file, acting as your official proxy in Jamaica means we will eventually need the <strong>original physical documents and wet signatures</strong>.</p>
         </div>
       </div>
     </div>
+    <!-- ===================================== -->
 
-    <!-- FINAL CTA -->
+    <!-- MODULE 1: THE MUST-HAVES (Often Forgotten) -->
+    <div class="info-module">
+      <h2><i class="fa-solid fa-list-check"></i> The "Often Forgotten" Checklist</h2>
+      <p>Most clients assume they only need their old passport to renew. Before contacting us, ensure you have the following critical items ready:</p>
+      
+      <ul class="checklist">
+        <li>
+          <i class="fa-solid fa-certificate"></i>
+          <div>
+            <strong>Your Original Birth Certificate</strong>
+            Even for a standard renewal, PICA frequently requires verification of your original RGD birth certificate. Do not assume your old passport is enough.
+          </div>
+        </li>
+        <li>
+          <i class="fa-solid fa-camera"></i>
+          <div>
+            <strong>PICA-Standard Passport Photos</strong>
+            For online renewals, a professional <strong>digital/electronic file</strong> is required (taking a picture of a printed photo will fail the checker). For all other physical applications, you must provide <strong>two (2) printed passport-sized photos</strong>. All photos must meet strict PICA lighting and dimension rules.
+          </div>
+        </li>
+        <li>
+          <i class="fa-solid fa-users"></i>
+          <div>
+            <strong>Two (2) Contact References</strong>
+            You do not need signed character forms. However, you <strong>must</strong> provide the full names, physical addresses, phone numbers, and email addresses of two people who do not live with you. This is a mandatory requirement for every application type.
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- MODULE 2: SCENARIOS & ELIGIBILITY -->
+    <div class="info-module">
+      <h2><i class="fa-solid fa-scale-balanced"></i> Choose Your Scenario</h2>
+      <p>Locate your specific situation below to see exactly what documents you need to gather before we begin processing your file.</p>
+
+      <div class="scenario-grid">
+        
+        <!-- Standard Renewal -->
+        <div class="scenario-card">
+          <h3>1. Standard Adult Renewal (Online)</h3>
+          <ul>
+            <li>Must be 18 years or older.</li>
+            <li>Original RGD Birth Certificate.</li>
+            <li>Current passport must be issued <strong>after 2001</strong>.</li>
+            <li>Passport must be physically in hand and <strong>undamaged</strong>.</li>
+            <li><strong>PICA-Standard Digital Photo (electronic file).</strong></li>
+            <li>Direct renewals only (no name changes).</li>
+            <li>Details for two (2) contact references (not living with you).</li>
+          </ul>
+        </div>
+
+        <!-- First-Time Adult -->
+        <div class="scenario-card">
+          <h3>2. First-Time Adult (18+)</h3>
+          <ul>
+            <li>Original RGD Birth Certificate.</li>
+            <li><strong>Valid Government ID:</strong> Voter's ID or Driver's License strictly required (school IDs are not accepted).</li>
+            <li><strong>Two (2) printed passport-sized photos.</strong></li>
+            <li>Details for two (2) contact references (not living with you).</li>
+            <li>Requires physical submission via proxy.</li>
+          </ul>
+        </div>
+
+        <!-- Name Change -->
+        <div class="scenario-card">
+          <h3>3. Name Change (Marriage/Divorce)</h3>
+          <ul>
+            <li>Current physical passport (no additional ID required).</li>
+            <li>Original RGD Birth Certificate.</li>
+            <li>Certified copy of the Marriage Certificate OR Decree Absolute (divorce papers).</li>
+            <li><strong>Two (2) printed passport-sized photos.</strong></li>
+            <li>Details for two (2) contact references (not living with you).</li>
+            <li>Requires physical submission via proxy (cannot be done online).</li>
+          </ul>
+        </div>
+
+        <!-- Damaged Passport -->
+        <div class="scenario-card" style="border-color: var(--brass-deep); background: var(--brass-tint);">
+          <h3 style="color: var(--brass-deep);">4. Damaged Passport Protocol</h3>
+          <ul>
+            <li><strong>The Damaged Passport:</strong> You must physically present the damaged book (do not throw it away).</li>
+            <li><strong>Notarized Report:</strong> A written statement explaining how the damage occurred. <em>(Note: We provide a strict PICA-approved template for this, ensuring the wording, signature, and Notary/JP stamps are formatted perfectly to avoid rejection.)</em></li>
+            <li>Original RGD Birth Certificate.</li>
+            <li><strong>Two (2) printed passport-sized photos.</strong></li>
+            <li>Details for two (2) contact references (not living with you).</li>
+            <li>Requires physical submission via proxy.</li>
+          </ul>
+        </div>
+
+        <!-- Lost Passport -->
+        <div class="scenario-card" style="border-color: var(--blue); background: var(--paper-deep);">
+          <h3 style="color: var(--blue-deep);">5. Lost Passport Protocol</h3>
+          <ul>
+            <li><strong>Original Police Report:</strong> Must be signed and stamped.</li>
+            <li>Valid government-issued photo ID.</li>
+            <li>Original RGD Birth Certificate.</li>
+            <li><strong>Two (2) printed passport-sized photos.</strong></li>
+            <li>Details for two (2) contact references (not living with you).</li>
+            <li><em>Note: Do not panic about the police station. It is a routine administrative step. Make the report, get the physical copy, and we will handle the rest.</em></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container" style="margin-bottom: 80px;">
     <div class="final">
-      <span class="eyebrow" style="margin:auto;background:rgba(176,138,78,.18);color:#f3d9a4;border-color:rgba(176,138,78,.35)">Ready to Begin?</span>
-      <h2>Do you have the required documents?</h2>
-      <p>If you meet the requirements in your specific checklist above, book a consultation to initiate your secure intake process.</p>
-      <div class="final-actions">
-        <a class="btn" href="booking.html" style="background:#fff; color:var(--ink); min-height: 56px; padding: 0 32px; font-size: 1.1rem; border: none;">
-          <i class="fa-regular fa-calendar-days" style="margin-right: 10px; font-size: 1.4rem;"></i> Book a Consultation
+      <span class="eyebrow" style="margin:auto;background:rgba(176,138,78,.18);color:#f3d9a4;border-color:rgba(176,138,78,.35)">Connect Instantly</span>
+      <h2>Do you meet the requirements?</h2>
+      <p>If you have your physical passport (or police report/damaged book) and your birth certificate ready, book a consultation so our proxy team can pre-audit your file.</p>
+      <div style="margin-top: 12px;">
+        <a class="btn" href="booking.html" style="background:#fff; color:var(--ink); min-height: 56px; border: none;">
+          <i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book a Consultation
         </a>
       </div>
     </div>
-  </div>
-</section>
+</div>
 </main>
 
-<!-- UNIFIED 3-COLUMN FOOTER WITH PINTEREST -->
+<!-- UNIFIED 3-COLUMN FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-grid">
-      <!-- Brand Summary -->
       <div>
         <h3 style="margin:0 0 10px;color:#fff;font-family:'Fraunces',serif;font-weight:600">Docu-Hub Operations</h3>
         <p style="margin:0;color:#94a3b8">Independent administrative proxy and secure online application assistance for the Jamaican diaspora.</p>
       </div>
-      
-      <!-- 3-Column Sitemap -->
       <div class="footer-cols">
-        
         <div class="footer-col">
           <h4>Our Services</h4>
           <a href="passport.html">PICA Passports</a>
@@ -482,14 +347,12 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
           <a href="nis.html">NIS Pensions</a>
           <a href="taj-renewal.html">TAJ Motor Vehicles</a>
         </div>
-        
         <div class="footer-col">
           <h4>Company</h4>
           <a href="about.html">About Docu-Hub</a>
           <a href="insights.html">Guides &amp; Insights</a>
           <a href="faq.html">FAQ</a>
         </div>
-        
         <div class="footer-col">
           <h4>Legal &amp; Connect</h4>
           <a href="privacy.html">Privacy Policy</a>
@@ -504,11 +367,8 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
             <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn
           </a>
         </div>
-
       </div>
     </div>
-    
-    <!-- Bottom Legal Disclaimer & Registration Badges -->
     <div class="footer-bottom">
       <div>Disclaimer: Docu-Hub Operations Services is a private, registered administrative proxy service. We are not a government agency and are not affiliated with PICA, RGD, or MLSS/NIS.</div>
       <div><i class="fa-solid fa-building-shield" style="margin-right: 6px; color: var(--brass);"></i> Registered with the Companies Office of Jamaica (COJ): #15602/2025 | OIC Data Controller Verified.</div>
@@ -516,20 +376,15 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
     </div>
   </div>
 </footer>
+
 <script>
-  // Mobile Navigation Toggle
-  var btn = document.getElementById('menuBtn');
-  var nav = document.getElementById('mobileNav');
-  btn.addEventListener('click', function(){
-    var isHidden = nav.hasAttribute('hidden');
-    if(isHidden){ 
-      nav.removeAttribute('hidden'); 
-      btn.setAttribute('aria-expanded','true'); 
-    } else { 
-      nav.setAttribute('hidden',''); 
-      btn.setAttribute('aria-expanded','false'); 
-    }
-  });
+var btn = document.getElementById('menuBtn');
+var nav = document.getElementById('mobileNav');
+btn.addEventListener('click', function(){
+var isHidden = nav.hasAttribute('hidden');
+if(isHidden){ nav.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); }
+else { nav.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); }
+});
 </script>
 
 </body>
