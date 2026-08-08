@@ -1,160 +1,237 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-JM">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Migrated Abroad Without a Pension Plan? &mdash; Docu-Hub Operations</title>
-    <meta name="description" content="Discover why your past work history in Jamaica could qualify you for a lifelong NIS pension or retirement grant, even if you migrated decades ago.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-    :root {
-        --bg-light:   #EAECE9;
-        --ivory:      #FDFBF7;
-        --brand-drk:  #1E2B1D; 
-        --brand-mid:  #3A4F38;
-        --gold:       #C19A5B; 
-        --gold-lt:    #DAB87F;
-        --text-dark:  #111410; 
-        --text-mid:   #3f463e; 
-        --sans:       'Jost', Arial, sans-serif; 
-        --serif:      'Playfair Display', Georgia, serif;
-        --nav-h:      7.5rem;
-        --border-glass: rgba(255, 255, 255, 0.1);
-        --shadow-md:    0 0.8rem 2.4rem rgba(0, 0, 0, 0.05);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study: Migrated Abroad Without a Pension Plan? | Docu-Hub Operations</title>
+<meta name="description" content="Discover how a local proxy helps the diaspora qualify for a lifelong NIS pension or retirement grant, even if they migrated decades ago.">
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 62.5%; }
-    body { font-family: var(--sans); font-size: 1.7rem; font-weight: 400; background: #fff; color: var(--text-dark); line-height: 1.8; -webkit-font-smoothing: antialiased; }
-    a { text-decoration: none; color: inherit; transition: 0.3s ease; }
+<!-- ===== Security Headers ===== -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://images.unsplash.com data:; connect-src 'self';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
 
-    /* NAVIGATION */
-    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.98); border-bottom: 0.1rem solid var(--border-glass); }
-    .nav-inner { max-width: 115.0rem; margin: 0 auto; padding: 0 2.4rem; height: 100%; display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo-name { font-family: var(--sans); font-size: 2.2rem; font-weight: 700; color: #fff; letter-spacing: 0.02em; }
-    .nav-logo-name em { color: var(--gold-lt); font-style: italic; font-weight: 500; }
-    .nav-links { display: none; list-style: none; align-items: center; gap: 2.4rem; }
-    .nav-links a { font-size: 1.3rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 0.8rem 1.6rem; border-radius: 0.4rem; }
-    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
-    
-    @media (min-width: 900px) { .nav-links { display: flex; } }
+<!-- ===== Fonts & Icons ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    /* EDITORIAL HERO */
-    .article-hero { position: relative; height: 65vh; min-height: 45.0rem; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; margin-top: var(--nav-h); }
-    .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(30, 43, 29, 0.85), rgba(30, 43, 29, 0.95)), url('assets/nis-pension-hero.webp') center/cover no-repeat; z-index: 1; }
-    .hero-content { position: relative; z-index: 2; max-width: 90.0rem; padding: 0 2.4rem; }
-    .article-tag { font-family: var(--sans); font-size: 1.3rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold-lt); font-weight: 700; display: block; margin-bottom: 2.4rem; }
-    .article-hero h1 { font-family: var(--serif); font-size: clamp(3.2rem, 5vw, 5.2rem); font-weight: 600; line-height: 1.15; margin-bottom: 2.4rem; text-wrap: balance; }
-    
-    /* ARTICLE BODY */
-    .article-container { max-width: 75.0rem; margin: -6.0rem auto 8.0rem; padding: 6.4rem 4.8rem; background: #fff; position: relative; z-index: 3; border-radius: 0.8rem; box-shadow: 0 1.2rem 4.0rem rgba(0,0,0,0.08); border-top: 0.6rem solid var(--gold); }
-    
-    @media (max-width: 600px) { .article-container { margin: 0; padding: 4.8rem 2.4rem; border-radius: 0; box-shadow: none; border-top: none; } }
+<style>
+:root{
+  --ink:#0f172a; --ink-soft:#1e293b; --slate:#475467; --line:#e2e8f0;
+  --paper:#f5f7fb; --paper-deep:#e9eff8; --blue:#2563eb; --blue-deep:#1d4ed8;
+  --brass:#b08a4e; --brass-deep:#8a6a37; --brass-tint:#faf3e6;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;}
+h1,h2,h3,.brand span,.step-badge,.eyebrow{font-family:"Fraunces",Georgia,serif}
+.container{width:min(1120px,calc(100% - 32px));margin:auto}
+a{-webkit-tap-highlight-color:transparent}
 
-    .article-container p { margin-bottom: 2.4rem; color: var(--text-mid); }
-    
-    /* Drop Cap for first paragraph */
-    .drop-cap::first-letter { float: left; font-family: var(--serif); font-size: 6.4rem; line-height: 0.8; padding-top: 0.4rem; padding-right: 0.8rem; padding-left: 0.2rem; color: var(--gold); font-weight: 700; }
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;align-items:center;min-height:72px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700;text-decoration:none;color:inherit}
+.brand span{font-size:1.02rem;font-weight:600;letter-spacing:-0.01em}
+.logo{width:38px;height:38px;border-radius:11px;background:var(--ink);color:var(--brass-tint);display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:600;font-size:.92rem;flex:none}
+.desktop-nav{display:none;gap:24px;align-items:center;}
+.desktop-nav a{text-decoration:none;color:var(--slate);font-weight:500;font-size:.96rem;transition:color 0.2s;}
+.desktop-nav a:hover, .desktop-nav a.active{color:var(--ink)}
+.menu{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);border:none;}
+.mobile-nav{display:grid;gap:2px;border-bottom:1px solid var(--line);background:#fff}
+.mobile-nav a{padding:14px 16px;text-decoration:none;color:var(--ink-soft);font-weight:500;border-top:1px solid var(--line)}
+.mobile-nav[hidden]{display:none}
 
-    .article-container h2 { font-family: var(--serif); font-size: 2.8rem; font-weight: 600; color: var(--brand-drk); margin: 4.8rem 0 2.4rem; padding-bottom: 1.2rem; border-bottom: 0.1rem solid rgba(0,0,0,0.08); }
-    
-    .article-container h3 { font-family: var(--sans); font-size: 1.8rem; font-weight: 700; color: var(--brand-drk); margin: 3.2rem 0 1.2rem; }
+.article-hero { padding: 48px 0 32px; text-align: center; }
+.back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--slate); text-decoration: none; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 32px; transition: color 0.2s; }
+.back-link:hover { color: var(--ink); }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: auto; padding: 8px 14px; border-radius: 999px; background: var(--brass-tint); color: var(--brass-deep); font-size: .82rem; font-weight: 600; border: 1px solid #ecdcb8; margin-bottom: 24px; }
+h1 { margin: 0 0 16px; font-family: "Fraunces", serif; font-weight: 600; font-size: clamp(2.1rem, 4vw, 3.2rem); line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); max-width: 900px; margin-left: auto; margin-right: auto; }
+.article-meta { font-size: 0.95rem; color: var(--slate); font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 24px;}
+.article-meta i { color: var(--brass-deep); }
 
-    /* Custom Highlight Box */
-    .highlight-box { background: rgba(193, 154, 91, 0.1); border-left: 0.4rem solid var(--gold); padding: 3.2rem; margin: 4.0rem 0; border-radius: 0 0.8rem 0.8rem 0; }
-    .highlight-box p { margin-bottom: 0; font-family: var(--serif); font-size: 2.0rem; font-style: italic; color: var(--brand-drk); line-height: 1.6; }
+.article-wrapper { max-width: 800px; margin: 0 auto 64px; background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 48px; box-shadow: 0 10px 30px rgba(15,23,42,.04); position: relative; z-index: 10; }
+.article-wrapper p { font-size: 1.05rem; color: var(--slate); line-height: 1.8; margin-bottom: 24px; }
+.article-wrapper h2 { font-family: "Fraunces", serif; font-size: 1.8rem; color: var(--ink); margin: 48px 0 24px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+.article-wrapper ul { margin-bottom: 24px; padding-left: 24px; }
+.article-wrapper li { font-size: 1.05rem; color: var(--slate); margin-bottom: 12px; line-height: 1.7; }
+.drop-cap::first-letter { float: left; font-family: "Fraunces", serif; font-size: 4.5rem; line-height: 0.8; padding-top: 8px; padding-right: 12px; color: var(--ink); font-weight: 700; }
 
-    /* CTA Bottom */
-    .article-cta { margin-top: 6.4rem; padding: 4.8rem; background: var(--bg-light); text-align: center; border-radius: 0.8rem; border: 0.1rem solid rgba(0,0,0,0.05); }
-    .article-cta h4 { font-family: var(--serif); font-size: 2.4rem; color: var(--brand-drk); margin-bottom: 1.6rem; }
-    .btn-solid { display: inline-flex; align-items: center; justify-content: center; gap: 1.2rem; padding: 1.6rem 3.2rem; background: var(--brand-drk); color: #fff; border-radius: 0.4rem; font-size: 1.3rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; margin-top: 1.6rem; }
-    .btn-solid:hover { background: var(--gold); }
-    </style>
+.case-file { background: #f8fafc; border: 1px solid var(--line); padding: 32px; border-radius: 12px; margin-bottom: 40px; }
+.case-file h3 { font-family: "Inter", sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--slate); margin: 0 0 16px; display: flex; align-items: center; gap: 8px; }
+.case-file p { font-family: "Fraunces", serif; font-size: 1.4rem; color: var(--ink); line-height: 1.5; margin: 0; }
+
+.callout-box { background: var(--paper-deep); border-left: 4px solid var(--blue); padding: 24px; border-radius: 0 12px 12px 0; margin: 32px 0; }
+.callout-box h4 { margin: 0 0 12px; color: var(--blue-deep); font-size: 1.1rem; display: flex; align-items: center; gap: 8px; font-family: Inter, sans-serif;}
+.callout-box p { margin: 0; color: var(--slate); font-size: 1rem; }
+.callout-box-gold { background: rgba(176,138,78,.1); border-left-color: var(--brass); }
+.callout-box-gold h4 { color: var(--brass-deep); }
+
+.final{background:linear-gradient(135deg,var(--ink),var(--ink-soft));color:#fff;border-radius:28px;padding:48px 24px;text-align:center;display:grid;gap:18px;box-shadow:0 18px 60px rgba(15,23,42,.16); max-width:860px; margin: 0 auto;}
+.final h2{font-weight:600; margin:0; font-size:clamp(1.9rem,4vw,2.8rem)}
+.final p{color:#cbd5e1;margin:0 auto; max-width:560px;}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;border-radius:14px;text-decoration:none;font-weight:700;font-size:.98rem;transition:all .15s ease}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:var(--ink-soft); transform: translateY(-2px);}
+
+footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
+.footer-grid{display:grid;gap:40px}
+.footer-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+.footer-col h4{margin:0 0 14px;color:#fff;font-family:'Inter',sans-serif;font-size:1.05rem;}
+.footer-col a{display:block;color:#94a3b8;text-decoration:none;margin-bottom:12px;font-size:0.95rem;transition:color 0.2s;}
+.footer-col a:hover{color:#fff}
+.footer-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:12px;color:#94a3b8;font-size:.85rem;line-height:1.6;}
+
+@media(min-width:980px){
+  .desktop-nav{display:flex}
+  .menu{display:none}
+  .mobile-nav{display:none !important}
+  .footer-grid{grid-template-columns:1fr 1.5fr}
+}
+@media(max-width:767px){ .article-wrapper{padding: 32px 24px;} .footer-cols{grid-template-columns:1fr 1fr;} }
+@media(max-width:480px){ .footer-cols{grid-template-columns:1fr;} }
+</style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
-<nav class="site-nav">
-    <div class="nav-inner">
-        <a href="index.html" class="nav-logo-name">Docu-Hub <em>Operations</em></a>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="passport.html">Passports</a></li>
-            <li><a href="vital.html">Vital Records</a></li>
-            <li><a href="nis.html">NIS Services</a></li>
-        </ul>
-    </div>
-</nav>
-
-<!-- HERO -->
-<header class="article-hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-        <span class="article-tag">Financial Security Advisory</span>
-        <h1>Migrated Abroad Without a Pension Plan?</h1>
-        <p style="font-size: 1.8rem; color: rgba(255,255,255,0.85); font-weight: 400;">Why Your Past Jamaican Work History Could Be Your Financial Lifeline.</p>
-    </div>
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <div class="logo">DH</div><span>Docu-Hub Operations</span>
+    </a>
+    <nav class="desktop-nav">
+      <a href="passport.html">Passports</a>
+      <a href="vital.html">Vital Records</a>
+      <a href="nis.html" class="active">NIS Pensions</a>
+      <a href="insights.html" class="active">Insights</a>
+      <a href="about.html">About Us</a>
+      <a href="faq.html">FAQ</a>
+      <a href="booking.html" class="btn btn-primary" style="min-height: 40px; padding: 0 16px; font-size: 0.85rem;">Book Consultation</a>
+    </nav>
+    <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+      <i class="fa-solid fa-bars" style="font-size: 1.4rem;"></i>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" hidden>
+    <a href="passport.html">Passports</a>
+    <a href="vital.html">Vital Records</a>
+    <a href="nis.html">NIS Pensions</a>
+    <a href="insights.html" class="active">Insights</a>
+    <a href="about.html">About Us</a>
+    <a href="faq.html">FAQ</a>
+    <a href="booking.html" style="font-weight: 700; color: var(--blue-deep);">Book Consultation</a>
+  </nav>
 </header>
 
-<!-- ARTICLE CONTENT -->
-<article class="article-container">
-    
-    <p class="drop-cap">Millions of Jamaicans leave home every decade in search of better opportunities. We take on new jobs, build new lives, and work incredibly hard to support ourselves and our families. But there is a silent, heartbreaking reality many in the diaspora face as they get older: they spent decades working overseas in contract roles, gig jobs, or informal employment that never offered a secure pension or retirement safety net.</p>
+<main>
+<section class="article-hero">
+  <div class="container">
+    <div style="text-align: left; max-width: 900px; margin: 0 auto;">
+        <a href="insights.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Insights</a>
+    </div>
+    <span class="eyebrow">Client Case Study</span>
+    <h1>The Hidden Lifeline: Claiming Your NIS Pension from Abroad</h1>
+    <div class="article-meta">
+        <span><i class="fa-regular fa-folder-open"></i> Financial Logistics</span> &bull; 
+        <span><i class="fa-regular fa-clock"></i> 4 Min Read</span>
+    </div>
+  </div>
+</section>
 
-    <p>When retirement age suddenly approaches, the harsh truth hits—there is no overseas pension waiting to support them when they need it the most.</p>
-
-    <p>If this sounds like your reality, or the reality of a parent or loved one, there is hope. Those early years you spent working back home in Jamaica in your twenties or thirties might actually be sitting there right now, waiting to become your financial lifeline.</p>
-
-    <p>Here is an informative guide on how the Jamaican National Insurance Scheme (NIS) works, why your past work history matters, and how you can access the benefits you earned before you left.</p>
-
-    <h2>The Reality Check: Unlocking Your Hidden Safety Net</h2>
-    <p>The Jamaican pension through the NIS is not a charity handout; it is an earned benefit. If you worked legally in Jamaica before migrating, your employer was legally required to deduct NIS contributions from your paycheck.</p>
-    <p>Those contributions did not disappear when you boarded your flight. They have been recorded and attached to your permanent NIS number. For many in the diaspora who have no other retirement funds, claiming this Jamaican benefit—or taking the steps to qualify for it now—is a critical financial rescue plan.</p>
-
-    <h2>The 520-Week Rule: Monthly Pension vs. Lump Sum</h2>
-    <p>When it comes to the NIS, the payout you receive at retirement age depends entirely on the math of your work history. Here is exactly how the government calculates whether you receive an ongoing monthly pension or a single payment:</p>
-
-    <h3>The Monthly Pension (520 Weeks)</h3>
-    <p>The exact entry point to qualify for a continuous, lifetime monthly retirement pension is 520 weeks of total contributions (which equates to exactly 10 full years of payments). You must also have maintained an average of at least 10 weeks of contributions for every year of your insurable working life.</p>
-
-    <h3>The One-Off Lump Sum Payment</h3>
-    <p>What happens if you moved abroad before you could hit that 520-week minimum? You do not lose your money, but you will not receive a monthly pension check. Instead, if you fall short of the required weeks, the NIS provides a one-off lump sum payment (officially called a Retirement Grant) to settle your account.</p>
-
-    <h3>The Age Requirement</h3>
-    <p>You become eligible to claim these retirement benefits—whether it is the monthly pension or the one-off payment—starting at age 65.</p>
-
-    <div class="highlight-box">
-        <p>"Checking your records early allows you to verify compliance, identify missing gaps, and potentially trigger the voluntary lifeline before it's too late."</p>
+<article class="article-wrapper">
+    <div class="case-file">
+        <h3><i class="fa-solid fa-briefcase"></i> The Situation</h3>
+        <p>Beverley worked as a nurse in Kingston for over a decade before migrating to Florida in 1998. At 65, she assumed she had nothing to retire on except a small US Social Security check. She completely forgot that during her years working in Jamaica, her employer was legally deducting National Insurance Scheme (NIS) contributions from every paycheck.</p>
     </div>
 
-    <h2>Why You Must Audit Your Work History First</h2>
-    <p>Because everything relies on that 520-week threshold, it is highly recommended to audit your NIS work history long before you reach your 65th birthday. Checking your records early allows you to:</p>
-    
+    <p class="drop-cap">Millions of Jamaicans leave home every decade. We take on new jobs, build new lives, and work incredibly hard to support our families. But there is a silent reality many in the diaspora face as they get older: they spent decades working overseas in roles that never offered a secure pension.</p>
+
+    <p>The Jamaican pension through the NIS is not a charity handout; it is an earned benefit. Those early years you spent working back home might actually be sitting there right now, recorded and attached to your permanent NIS number, waiting to become your financial lifeline.</p>
+
+    <h2>The Bureaucratic Wall</h2>
+    <p>Beverley wanted to check if she qualified, but she hit the classic MLSS (Ministry of Labour and Social Security) wall. Dropped international calls, confusing forms, and the inability to fly back to Jamaica just to check a ledger made her want to give up.</p>
+
+    <div class="callout-box callout-box-gold">
+        <h4><i class="fa-solid fa-calculator"></i> The 520-Week Rule</h4>
+        <p>The exact entry point to qualify for a continuous, lifetime monthly retirement pension is 520 weeks of total contributions (exactly 10 full years). If you fall short, you do not lose your money; the NIS provides a one-off lump sum payment (Retirement Grant) instead.</p>
+    </div>
+
+    <p>Without a formal Contribution History Statement, Beverley had no idea if she hit the 520-week mark, or if her old hospital even remitted her deductions.</p>
+
+    <h2>The Proxy Solution</h2>
+    <p>Beverley engaged an administrative proxy in Jamaica to take over the entire tracking and claims process on the ground:</p>
+
     <ul>
-        <li style="margin-bottom: 1.2rem;"><strong>Verify Employer Compliance:</strong> Ensure that the companies you worked for actually remitted your payroll deductions to the government.</li>
-        <li style="margin-bottom: 1.2rem;"><strong>Identify Missing Gaps:</strong> Catching discrepancies early gives you a wider window to track down old pay slips, C7 forms, or past employer records to prove you worked those weeks.</li>
-        <li style="margin-bottom: 1.2rem;"><strong>Assess the "Voluntary" Lifeline:</strong> If your audit reveals you are close to the 520-week mark, you can actually register as a Voluntary Contributor and continue making NIS payments from overseas to push yourself over the threshold into the monthly pension tier.</li>
+        <li><strong>Archival Ledger Pull:</strong> After executing a Proxy Delegation form, authorized agents physically queued at the NIS office to pull archival records and generate an official Contribution Statement. They discovered she had exactly 604 weeks of contributions—qualifying her for a full lifetime pension.</li>
+        <li><strong>Secure Document Prep:</strong> Proxies professionally prepare complex pension claim forms to ensure exact MLSS compliance before sending them overseas for a notarized wet-ink signature.</li>
+        <li><strong>Physical Handover:</strong> Once Beverley couriered the physical originals back to Jamaica, local agents hand-delivered the wet-signature claim directly to the NIS processing desk.</li>
     </ul>
 
-    <h2>How to Request Your NIS Contribution Statement</h2>
-    <p>To determine exactly where you stand, you need an official contribution statement from the Ministry of Labour and Social Security (MLSS).</p>
-    <p><strong>Locate Your NIS Number:</strong> This unique identifier remains valid for your entire life. You will also need your Tax Registration Number (TRN) and a valid Jamaican government-issued ID.</p>
-    <p><strong>Appoint a Proxy (The Diaspora Strategy):</strong> Because privacy laws protect your financial data, retrieving a detailed contribution statement often requires you to submit a formalized Letter of Authorization or a Proxy Delegation form so a representative on the ground in Jamaica can legally pull the records on your behalf.</p>
-    <p><strong>Audit the Findings:</strong> Once you receive the statement, carefully cross-reference the recorded weeks of contributions against your known employment timeline to see how close you are to the 520-week target.</p>
-
-    <div class="article-cta">
-        <h4>Navigating the Process from Abroad</h4>
-        <p>Managing international calls, timezone differences, and government bureaucracy can be overwhelming when you do not live in Jamaica. You do not have to let the miles stop you from securing the financial lifeline you worked for.</p>
-        <p>If you need local assistance verifying your past contributions, tracking down missing records, or submitting proxy requests to the MLSS, our concierge desk is ready to help.</p>
-        <a href="nis.html" class="btn-solid">Explore NIS Proxy Services <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-
+    <p>Today, Beverley receives a monthly Jamaican pension deposited directly to her account. Without a proxy audit, those funds would have remained permanently dormant.</p>
 </article>
+
+<div class="container" style="margin-bottom: 80px;">
+    <div class="final">
+      <span class="eyebrow" style="margin:auto;background:rgba(176,138,78,.18);color:#f3d9a4;border-color:rgba(176,138,78,.35)">Connect Instantly</span>
+      <h2>Let us audit your history.</h2>
+      <p>You do not have to let the miles stop you from securing the financial lifeline you worked for. Book a consultation and let our proxy agents audit your statement today.</p>
+      <div style="margin-top: 12px;">
+        <a class="btn" href="booking.html" style="background:#fff; color:var(--ink); min-height: 56px; border: none;">
+          <i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book a Consultation
+        </a>
+      </div>
+    </div>
+</div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3 style="margin:0 0 10px;color:#fff;font-family:'Fraunces',serif;font-weight:600">Docu-Hub Operations</h3>
+        <p style="margin:0;color:#94a3b8">Independent administrative proxy and secure online application assistance for the Jamaican diaspora.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Our Services</h4>
+          <a href="passport.html">PICA Passports</a>
+          <a href="vital.html">RGD Vital Records</a>
+          <a href="nis.html">NIS Pensions</a>
+        </div>
+       <div class="footer-col">
+          <h4>Legal &amp; Connect</h4>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="booking.html" style="display:flex; align-items:center; gap:8px;">
+            <i class="fa-regular fa-calendar-days"></i> Book Consultation
+          </a>
+          <a href="https://pin.it/12UYV8I0P" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; color: #e60023;">
+            <i class="fa-brands fa-pinterest"></i> Follow on Pinterest
+          </a>
+          <a href="https://www.linkedin.com/in/docuhubservices" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; color: #0a66c2;">
+            <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>Disclaimer: Docu-Hub Operations Services is a private, registered administrative proxy service. We are not a government agency and are not affiliated with PICA, RGD, or MLSS/NIS.</div>
+      <div><i class="fa-solid fa-building-shield" style="margin-right: 6px; color: var(--brass);"></i> Registered with the Companies Office of Jamaica (COJ): #15602/2025 | OIC Data Controller Verified.</div>
+      <div>&copy; 2026 Docu-Hub Operations Services. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+var btn = document.getElementById('menuBtn');
+var nav = document.getElementById('mobileNav');
+btn.addEventListener('click', function(){
+var isHidden = nav.hasAttribute('hidden');
+if(isHidden){ nav.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); }
+else { nav.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); }
+});
+</script>
 
 </body>
 </html>
