@@ -11,8 +11,8 @@
 
 <!-- ===== Primary SEO ===== -->
 <title>Docu-Hub Operations Services | Administrative Proxy in Jamaica</title>
-<meta name="description" content="Independent administrative proxy and online application assistance for the Jamaican diaspora. We handle PICA passports, RGD vital records, and NIS pension claims.">
-<meta name="keywords" content="Docu-Hub Operations Services, Jamaica proxy service, passport renewal Jamaica, PICA online, birth certificate RGD, NIS pension Jamaica, document assistance Jamaica">
+<meta name="description" content="Independent administrative proxy and online application assistance for the Jamaican diaspora. We handle PICA passports, RGD vital records, NIS pensions, and TAJ vehicle renewals.">
+<meta name="keywords" content="Docu-Hub Operations Services, Jamaica proxy service, passport renewal Jamaica, PICA online, birth certificate RGD, NIS pension Jamaica, TAJ motor vehicle renewal Jamaica">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Docu-Hub Operations Services">
 <link rel="canonical" href="https://dhubservices.com/">
@@ -26,14 +26,14 @@
 <meta property="og:image" content="https://dhubservices.com/assets/og-cover.jpg">
 <meta property="og:locale" content="en_JM">
 
-<!-- ===== Structured Data for Google (Includes Pinterest) ===== -->
+<!-- ===== Structured Data for Google (Includes Pinterest & LinkedIn) ===== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "Docu-Hub Operations Services",
   "url": "https://dhubservices.com/",
-  "description": "Independent proxy and application assistance for Jamaican government portals including PICA, RGD, and MLSS/NIS.",
+  "description": "Independent proxy and application assistance for Jamaican government portals including PICA, RGD, MLSS/NIS, and TAJ.",
   "areaServed": {
     "@type": "Country",
     "name": "Jamaica"
@@ -44,7 +44,8 @@
   },
   "sameAs": [
     "https://wa.me/18765612614",
-    "https://pin.it/12UYV8I0P"
+    "https://pin.it/12UYV8I0P",
+    "https://www.linkedin.com/in/docuhubservices"
   ]
 }
 </script>
@@ -77,17 +78,69 @@ a{-webkit-tap-highlight-color:transparent}
 :focus-visible{outline:2px solid var(--blue-deep);outline-offset:2px}
 
 /* Header & Nav */
-header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav{display:flex;justify-content:space-between;align-items:center;min-height:72px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:700;text-decoration:none;color:inherit}
 .brand span{font-size:1.02rem;font-weight:600;letter-spacing:-0.01em}
 .logo{width:38px;height:38px;border-radius:11px;background:var(--ink);color:var(--brass-tint);display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:600;font-size:.92rem;flex:none}
+
+/* Desktop Dropdown Navigation */
 .desktop-nav{display:none;gap:24px;align-items:center;}
 .desktop-nav a{text-decoration:none;color:var(--slate);font-weight:500;font-size:.96rem;transition:color 0.2s;}
 .desktop-nav a:hover{color:var(--ink)}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropbtn {
+  background: none;
+  border: none;
+  color: var(--slate);
+  font-weight: 500;
+  font-size: 0.96rem;
+  font-family: Inter, sans-serif;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+.dropbtn:hover { color: var(--ink); }
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -16px;
+  background-color: #fff;
+  min-width: 220px;
+  box-shadow: 0 12px 30px rgba(15,23,42,0.1);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 8px 0;
+  z-index: 40;
+}
+.dropdown-content a {
+  color: var(--slate);
+  padding: 10px 18px;
+  text-decoration: none;
+  display: block;
+  font-size: 0.92rem;
+  transition: background 0.15s, color 0.15s;
+}
+.dropdown-content a:hover {
+  background-color: var(--paper);
+  color: var(--ink);
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 .menu{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);border:none;}
 .mobile-nav{display:grid;gap:2px;border-bottom:1px solid var(--line);background:#fff}
 .mobile-nav a{padding:14px 16px;text-decoration:none;color:var(--ink-soft);font-weight:500;border-top:1px solid var(--line)}
+.mobile-nav .mobile-sub{padding-left:28px; font-size:0.9rem; color:var(--slate);}
 .mobile-nav[hidden]{display:none}
 
 /* Hero Section */
@@ -136,19 +189,17 @@ section{padding:48px 0}
 .section-head p{margin:0;color:var(--slate);font-size:1.05rem;}
 .section-head .kicker{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brass-deep)}
 
-/* ====== Updated Services Grid (Forced 2 Columns with Larger Images) ====== */
+/* Services Grid (Strictly 2x2 Layout with Larger Images) */
 .service-list {
   display: grid;
-  grid-template-columns: 1fr; /* Default mobile stack */
-  gap: 28px; /* Generous spacing between cards */
-  max-width: 960px; /* Controls how wide the grid stretches */
+  grid-template-columns: 1fr;
+  gap: 28px;
+  max-width: 960px;
   margin: 0 auto;
 }
 
-/* Base Service Item Style */
 .service-item {
   display: grid;
-  /* UPDATED: Increased mobile grid column to match larger image */
   grid-template-columns: 120px 1fr; 
   gap: 24px;
   align-items: center;
@@ -167,7 +218,6 @@ section{padding:48px 0}
   transform: translateY(-4px);
 }
 .service-item img {
-  /* UPDATED: Increased mobile image size */
   width: 120px;
   height: 120px;
   object-fit: cover;
@@ -184,7 +234,6 @@ section{padding:48px 0}
   background: var(--brass-tint);
   color: var(--brass-deep);
 }
-/* ======================================================== */
 
 /* About Section */
 .card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:32px;box-shadow:0 10px 30px rgba(15,23,42,.04)}
@@ -246,21 +295,18 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:64px 0 32px}
   .lead{margin:0 0 32px 0;}
   .hero-actions{justify-content:flex-start;}
   
-  /* Strictly forces a 2x2 layout with wide cards */
   .service-list {
     grid-template-columns: repeat(2, minmax(0, 1fr)); 
   }
   
   .service-item {
-    /* UPDATED: Increased desktop grid column to match larger image */
     grid-template-columns: 140px 1fr; 
-    padding: 40px 36px; /* Makes the cards feel substantial and wide */
+    padding: 40px 36px;
     text-align: left;
     align-items: center;
   }
   
   .service-item img {
-    /* UPDATED: Increased desktop image size */
     width: 140px;
     height: 140px;
   }
@@ -285,10 +331,17 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:64px 0 32px}
       <div class="logo">DH</div><span>Docu-Hub Operations</span>
     </a>
     
+    <!-- DESKTOP NAVIGATION WITH SERVICES DROPDOWN -->
     <nav class="desktop-nav">
-      <a href="passport.html">Passports</a>
-      <a href="vital.html">Vital Records</a>
-      <a href="nis.html">NIS Pensions</a>
+      <div class="dropdown">
+        <button class="dropbtn">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i></button>
+        <div class="dropdown-content">
+          <a href="passport.html">PICA Passports</a>
+          <a href="vital.html">RGD Vital Records</a>
+          <a href="nis.html">NIS Pensions</a>
+          <a href="taj-renewal.html">TAJ Motor Vehicles</a>
+        </div>
+      </div>
       <a href="insights.html">Insights</a>
       <a href="about.html">About Us</a>
       <a href="faq.html">FAQ</a>
@@ -300,10 +353,13 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:64px 0 32px}
     </button>
   </div>
   
+  <!-- MOBILE NAVIGATION DROPDOWN -->
   <nav class="mobile-nav" id="mobileNav" hidden>
-    <a href="passport.html">Passports</a>
-    <a href="vital.html">Vital Records</a>
-    <a href="nis.html">NIS Pensions</a>
+    <a href="#services" style="font-weight: 700; color: var(--ink);">Services</a>
+    <a href="passport.html" class="mobile-sub">↳ PICA Passports</a>
+    <a href="vital.html" class="mobile-sub">↳ RGD Vital Records</a>
+    <a href="nis.html" class="mobile-sub">↳ NIS Pensions</a>
+    <a href="taj-renewal.html" class="mobile-sub">↳ TAJ Motor Vehicles</a>
     <a href="insights.html">Insights</a>
     <a href="about.html">About Us</a>
     <a href="faq.html">FAQ</a>
@@ -347,7 +403,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:64px 0 32px}
   </div>
 </div>
 
-<!-- CORE SERVICES GRID -->
+<!-- CORE SERVICES GRID (2x2 Layout) -->
 <section id="services" class="section-bg">
   <div class="container">
     <div class="section-head" style="text-align: center; margin-bottom: 40px;">
@@ -401,6 +457,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:64px 0 32px}
     </div>
   </div>
 </section>
+
 <!-- HOW IT WORKS -->
 <section id="how">
   <div class="container">
@@ -449,7 +506,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:64px 0 32px}
         <a class="btn btn-secondary" href="about.html" style="display:inline-flex;max-width:220px;">Read our story &rarr;</a>
       </div>
       <div class="about-stats">
-        <div class="stat-card"><strong>3</strong><span>Core Agency Specialties (PICA, RGD, NIS)</span></div>
+        <div class="stat-card"><strong>4</strong><span>Core Agency Specialties (PICA, RGD, NIS, TAJ)</span></div>
         <div class="stat-card"><strong>100%</strong><span>Independent — no government affiliation</span></div>
         <div class="stat-card"><strong>1-on-1</strong><span>Dedicated consultation &amp; proxy intake</span></div>
       </div>
@@ -490,12 +547,12 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:64px 0 32px}
       </a>
       
       <!-- Article 3 -->
-      <a class="card post" href="nis-pension-article.html">
-        <img src="assets/nis-suite.png" alt="Older adult reviewing pension paperwork">
+      <a class="card post" href="taj-renewal-article.html">
+        <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80" alt="Person using laptop">
         <div class="post-body">
-          <span class="tag">NIS Pensions</span>
-          <strong>Migrated abroad without a retirement plan?</strong>
-          <p>Why your past work history in Jamaica could qualify you for a lifelong pension.</p>
+          <span class="tag">TAJ Operations</span>
+          <strong>The Digital Traffic Jam: Navigating TAJ Vehicle Renewals</strong>
+          <p>Learn how to avoid alphanumeric lockouts and hidden traffic tickets.</p>
           <span class="read-more">Read the advisory &rarr;</span>
         </div>
       </a>
@@ -525,7 +582,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:64px 0 32px}
 
 </main>
 
-<!-- UNIFIED 3-COLUMN FOOTER WITH PINTEREST -->
+<!-- UNIFIED 3-COLUMN FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -543,6 +600,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:64px 0 32px}
           <a href="passport.html">PICA Passports</a>
           <a href="vital.html">RGD Vital Records</a>
           <a href="nis.html">NIS Pensions</a>
+          <a href="taj-renewal.html">TAJ Motor Vehicles</a>
         </div>
         
         <div class="footer-col">
@@ -552,7 +610,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:64px 0 32px}
           <a href="faq.html">FAQ</a>
         </div>
         
-      <div class="footer-col">
+        <div class="footer-col">
           <h4>Legal &amp; Connect</h4>
           <a href="privacy.html">Privacy Policy</a>
           <a href="terms.html">Terms of Service</a>
