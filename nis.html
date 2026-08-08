@@ -128,11 +128,21 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
   .footer-grid{grid-template-columns:1fr 1.5fr}
 }
 @media(max-width:767px){ 
-  .scenario-grid { grid-template-columns: 1fr; }
-  .golden-rule, .proxy-check { flex-direction: column; text-align: center; gap: 12px; align-items: center;}
+  /* Stacks grid items vertically on mobile */
+  .scenario-grid, .alerts-grid, .content-grid { grid-template-columns: 1fr; gap: 16px; }
+  
+  /* Stacks alert boxes nicely */
+  .golden-rule, .proxy-check { flex-direction: column; text-align: center; align-items: center; padding: 20px; }
+  
+  /* Stacks service item cards perfectly */
+  .service-item { grid-template-columns: 1fr; text-align: center; justify-items: center; padding: 24px; }
+  .service-item img { width: 80px; height: 80px; margin-bottom: 8px; }
+  .badge { margin: 12px auto 0; display: inline-block; }
+  
+  /* Shrinks the pricing tables to fit mobile screens */
+  .pricing-table th, .pricing-table td { padding: 12px 8px; font-size: 0.9rem; }
   .footer-cols{grid-template-columns:1fr 1fr;} 
 }
-@media(max-width:480px){ .footer-cols{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
