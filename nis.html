@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-JM">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -68,11 +68,7 @@ details[open] summary::after { content: '−'; }
 .step-list li { font-size: 0.95rem; color: var(--slate); display: flex; gap: 16px; align-items: flex-start; }
 .step-list li::before { counter-increment: custom-counter; content: counter(custom-counter); background: var(--paper-deep); color: var(--blue-deep); font-weight: 700; font-size: 0.85rem; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%; flex-shrink: 0; }
 
-.accordion-cta-bar { background: var(--paper); border-radius: 12px; padding: 24px; border: 1px solid var(--line); display: grid; gap: 24px; }
-.cost-breakdown-row { display: flex; flex-wrap: wrap; gap: 24px 48px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
-.cost-item span { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: var(--slate); margin-bottom: 4px; }
-.cost-item strong { font-family: "Fraunces", serif; font-size: 1.6rem; color: var(--ink); }
-.cta-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.accordion-cta-bar { background: var(--paper); border-radius: 12px; padding: 24px; border: 1px solid var(--line); display: flex; flex-direction: column; gap: 16px; }
 
 /* Buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:12px;text-decoration:none;font-weight:600;font-size:.95rem;transition:transform .15s ease}
@@ -94,7 +90,7 @@ details[open] summary::after { content: '−'; }
 /* Footer */
 footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:56px 0 28px}
 .footer-grid{display:grid;gap:32px}
-.footer-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.footer-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
 .footer-col a{display:block;color:#94a3b8;text-decoration:none;margin-bottom:10px}
 .footer-col a:hover{color:#fff}
 .footer-bottom{margin-top:28px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:14px;color:#94a3b8;font-size:.9rem}
@@ -106,6 +102,8 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:56px 0 28px}
   .mobile-nav{display:none !important}
   .footer-grid{grid-template-columns:1.2fr 1fr}
 }
+@media(max-width:767px){ .footer-cols{grid-template-columns:1fr 1fr;} }
+@media(max-width:480px){ .footer-cols{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
@@ -117,7 +115,9 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:56px 0 28px}
       <a href="passport.html">Passports</a>
       <a href="vital.html">Vital Records</a>
       <a href="nis.html" class="active">NIS Pensions</a>
-      <a href="about.html">About</a>
+      <a href="insights.html">Insights</a>
+      <a href="about.html">About Us</a>
+      <a href="faq.html">FAQ</a>
     </nav>
     <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
       <i class="fa-solid fa-bars" style="font-size: 1.2rem; color: var(--ink);"></i>
@@ -127,7 +127,9 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:56px 0 28px}
     <a href="passport.html">Passports</a>
     <a href="vital.html">Vital Records</a>
     <a href="nis.html">NIS Pensions</a>
-    <a href="about.html">About</a>
+    <a href="insights.html">Insights</a>
+    <a href="about.html">About Us</a>
+    <a href="faq.html">FAQ</a>
   </nav>
 </header>
 
@@ -174,13 +176,12 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:56px 0 28px}
               </div>
               
               <div class="accordion-cta-bar">
-                  <div class="cost-breakdown-row">
-                      <div class="cost-item"><span>Docu-Hub Proxy Fee</span><strong>$165 USD</strong></div>
-                      <div class="cost-item"><span>MLSS Gov Fee</span><strong>$0 USD</strong></div>
+                  <div style="display: flex; gap: 12px; align-items: flex-start;">
+                      <i class="fa-solid fa-circle-info" style="color: var(--blue); font-size: 1.2rem; margin-top: 2px;"></i>
+                      <p style="margin: 0; color: var(--slate); font-size: 0.95rem; line-height: 1.5;"><strong>Pricing Note:</strong> Because every document situation is unique, we do not use one-size-fits-all fees. We will provide a custom, flat-fee quote after a quick review of your specific case.</p>
                   </div>
-                  <div class="cta-row">
-                      <span style="font-size: 0.85rem; color: var(--slate); font-style: italic;">* Statements are typically delivered digitally.</span>
-                      <a href="https://wa.me/18765612614" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i> Start on WhatsApp</a>
+                  <div style="margin-top: 8px;">
+                      <a href="https://wa.me/18765612614" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i> Request a Custom Quote</a>
                   </div>
               </div>
           </div>
@@ -215,13 +216,12 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:56px 0 28px}
               </div>
               
               <div class="accordion-cta-bar">
-                  <div class="cost-breakdown-row">
-                      <div class="cost-item"><span>Docu-Hub Setup Fee</span><strong>$185 USD</strong></div>
-                      <div class="cost-item"><span>MLSS Setup Fee</span><strong>$0 USD</strong></div>
+                  <div style="display: flex; gap: 12px; align-items: flex-start;">
+                      <i class="fa-solid fa-circle-info" style="color: var(--blue); font-size: 1.2rem; margin-top: 2px;"></i>
+                      <p style="margin: 0; color: var(--slate); font-size: 0.95rem; line-height: 1.5;"><strong>Pricing Note:</strong> Because every document situation is unique, we do not use one-size-fits-all fees. We will provide a custom, flat-fee quote after a quick review of your specific case.</p>
                   </div>
-                  <div class="cta-row">
-                      <span style="font-size: 0.85rem; color: var(--slate); font-style: italic;">* You are responsible for making your ongoing contribution payments.</span>
-                      <a href="https://wa.me/18765612614" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i> Start on WhatsApp</a>
+                  <div style="margin-top: 8px;">
+                      <a href="https://wa.me/18765612614" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i> Request a Custom Quote</a>
                   </div>
               </div>
           </div>
@@ -257,13 +257,12 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:56px 0 28px}
               </div>
               
               <div class="accordion-cta-bar">
-                  <div class="cost-breakdown-row">
-                      <div class="cost-item"><span>Docu-Hub Proxy Fee</span><strong>$215 USD</strong></div>
-                      <div class="cost-item"><span>MLSS Claim Fee</span><strong>$0 USD</strong></div>
+                  <div style="display: flex; gap: 12px; align-items: flex-start;">
+                      <i class="fa-solid fa-circle-info" style="color: var(--blue); font-size: 1.2rem; margin-top: 2px;"></i>
+                      <p style="margin: 0; color: var(--slate); font-size: 0.95rem; line-height: 1.5;"><strong>Pricing Note:</strong> Because every document situation is unique, we do not use one-size-fits-all fees. We will provide a custom, flat-fee quote after a quick review of your specific case.</p>
                   </div>
-                  <div class="cta-row">
-                      <span style="font-size: 0.85rem; color: var(--slate); font-style: italic;">* Overseas Notary fees are your responsibility.</span>
-                      <a href="https://wa.me/18765612614" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i> Start on WhatsApp</a>
+                  <div style="margin-top: 8px;">
+                      <a href="https://wa.me/18765612614" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i> Request a Custom Quote</a>
                   </div>
               </div>
           </div>
@@ -273,7 +272,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:56px 0 28px}
 
     <!-- WARNING BOX -->
     <div class="warning-box">
-      <h3><i class="fa-solid fa-pen-nib"></i> Important: The Wet Signature Workflow</h3>
+      <h3><i class="fa-solid fa-pen-nib"></i> Important: The Wet Signature Requirement</h3>
       <p>The Ministry of Labour and Social Security requires official, witnessed original documents to process claims. We do not simply email you a blank form to figure out on your own. We professionally type your complex NIS forms to ensure exact MLSS compliance, email them to you for a notarized wet-ink signature, and then hand-deliver your couriered physical packet directly to the NIS office.</p>
     </div>
 
