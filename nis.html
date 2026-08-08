@@ -1,561 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>NIS Record & Claims Services &mdash; Docu-Hub Operations</title>
-    <meta name="description" content="Expert proxy assistance for Jamaican National Insurance Scheme (NIS) contribution tracking, voluntary setup, and benefit claims for the diaspora.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-    :root {
-        --bg-light:   #EAECE9;
-        --ivory:      #FDFBF7;
-        --brand-drk:  #1E2B1D; 
-        --brand-mid:  #3A4F38;
-        --gold:       #C19A5B; 
-        --gold-lt:    #DAB87F;
-        --text-dark:  #111410; 
-        --text-mid:   #3f463e; 
-        --sans:       'Jost', Arial, sans-serif; 
-        --nav-h:      7.5rem;
-        --section-pad: clamp(8.0rem, 10vh, 12.0rem) 0;
-        --border-light: rgba(0, 0, 0, 0.08);
-        --border-glass: rgba(255, 255, 255, 0.1);
-        --shadow-soft:  0 0.4rem 2.0rem rgba(0, 0, 0, 0.03);
-        --shadow-md:    0 0.8rem 2.4rem rgba(0, 0, 0, 0.06);
-        --shadow-nav:   0 0.4rem 2.0rem rgba(0, 0, 0, 0.20);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NIS Record & Claims Services | Docu-Hub Operations</title>
+<meta name="description" content="Expert proxy assistance for Jamaican National Insurance Scheme (NIS) contribution tracking, voluntary setup, and benefit claims for the diaspora.">
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 62.5%; }
-    body { font-family: var(--sans); font-size: 1.6rem; font-weight: 500; background: var(--bg-light); color: var(--text-dark); line-height: 1.65; overflow-x: hidden; }
-    a { text-decoration: none; color: inherit; transition: 0.3s ease; }
-    img { display: block; width: 100%; height: 100%; object-fit: cover; }
-    .wrap { max-width: 105.0rem; margin: 0 auto; padding: 0 2.4rem; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    /* GLOBAL NAVIGATION */
-    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.98); backdrop-filter: blur(1.2rem); border-bottom: 0.1rem solid var(--border-glass); transition: 0.3s; }
-    .nav-inner { max-width: 115.0rem; margin: 0 auto; padding: 0 2.4rem; height: 100%; display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo-name { font-family: var(--sans); font-size: clamp(1.8rem, 2.2vw, 2.4rem); font-weight: 700; color: #fff; letter-spacing: 0.02em; }
-    .nav-logo-name em { color: var(--gold-lt); font-style: italic; font-weight: 500; }
+<style>
+:root{
+  --ink:#0f172a; --ink-soft:#1e293b; --slate:#475467; --line:#e2e8f0;
+  --paper:#f5f7fb; --paper-deep:#e9eff8; --blue:#2563eb; --blue-deep:#1d4ed8;
+  --brass:#b08a4e; --brass-deep:#8a6a37; --brass-tint:#faf3e6;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+h1,h2,h3,h4,.brand span,.eyebrow{font-family:"Fraunces",Georgia,serif}
+.container{width:min(1120px,calc(100% - 32px));margin:auto}
+a{-webkit-tap-highlight-color:transparent}
 
-    .nav-links { display: none; list-style: none; align-items: center; gap: 2.4rem; }
-    .nav-links > li > a { font-size: 1.3rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 0.8rem 1.6rem; border-radius: 0.4rem; display: flex; align-items: center; gap: 0.8rem; }
-    .nav-links > li > a:hover, .nav-links > li > a.active { color: #fff; background: rgba(255,255,255,0.1); }
+/* Header & Nav */
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;align-items:center;min-height:72px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700;text-decoration:none;color:inherit}
+.brand span{font-size:1.02rem;font-weight:600;letter-spacing:-0.01em}
+.logo{width:38px;height:38px;border-radius:11px;background:var(--ink);color:var(--brass-tint);display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:600;font-size:.92rem;flex:none}
+.desktop-nav{display:none;gap:28px}
+.desktop-nav a{text-decoration:none;color:var(--slate);font-weight:500;font-size:.96rem}
+.desktop-nav a:hover, .desktop-nav a.active{color:var(--ink)}
+.menu{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;border:none;}
+.mobile-nav{display:grid;gap:2px;border-bottom:1px solid var(--line);background:#fff}
+.mobile-nav a{padding:14px 16px;text-decoration:none;color:var(--ink-soft);font-weight:500;border-top:1px solid var(--line)}
+.mobile-nav[hidden]{display:none}
 
-    .has-dropdown { position: relative; }
-    .dropdown-menu { position: absolute; top: 100%; left: 0; background: var(--brand-drk); min-width: 26.0rem; padding: 1.6rem 0; border-radius: 0 0 0.8rem 0.8rem; box-shadow: var(--shadow-nav); border: 0.1rem solid var(--border-glass); border-top: none; opacity: 0; visibility: hidden; transform: translateY(1.0rem); transition: all 0.3s ease; list-style: none; }
-    .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-    .dropdown-menu li a { display: block; padding: 1.2rem 2.4rem; font-size: 1.4rem; color: rgba(255,255,255,0.85); text-transform: none; letter-spacing: 0.05em; font-weight: 500; transition: 0.3s; }
-    .dropdown-menu li a:hover { color: var(--gold-lt); background: rgba(255,255,255,0.05); padding-left: 2.8rem; }
+/* Hero */
+.hero{padding:64px 0 48px; text-align:center;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;margin:auto;padding:8px 14px;border-radius:999px;background:var(--brass-tint);color:var(--brass-deep);font-size:.82rem;font-weight:600;border:1px solid #ecdcb8; margin-bottom:24px;}
+h1{margin:0 0 16px;font-weight:600;font-size:clamp(2.1rem,5vw,3.8rem);line-height:1.1;letter-spacing:-0.02em}
+.lead{margin:0 auto 32px;max-width:720px;color:var(--slate);font-size:1.1rem;line-height:1.7;}
 
-    .hamburger { display: flex; flex-direction: column; gap: 0.6rem; background: none; border: none; padding: 0.5rem; cursor: pointer; z-index: 950; }
-    .hamburger span { width: 2.4rem; height: 0.2rem; background: #fff; transition: 0.3s; }
+/* Accordion Checklists */
+.path-section { padding: 32px 0 64px; }
+.accordion-wrapper { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+details.path-accordion { background: #fff; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: 0 4px 12px rgba(15,23,42,.03); transition: box-shadow 0.2s ease;}
+details.path-accordion:hover { box-shadow: 0 10px 24px rgba(15,23,42,.06); border-color: #cbd5e1; }
+summary { font-family: "Fraunces", serif; font-weight: 600; font-size: 1.35rem; padding: 24px 32px; cursor: pointer; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; margin: 0; }
+summary::-webkit-details-marker { display: none; }
+.summary-content { display: flex; align-items: center; gap: 16px; }
+.summary-content i { color: var(--blue); font-size: 1.6rem; width: 32px; text-align: center; }
+summary::after { content: '+'; color: var(--blue); font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 400; }
+details[open] summary { border-bottom: 1px solid var(--line); background: var(--paper); }
+details[open] summary::after { content: '−'; }
 
-    @media (max-width: 899px) {
-        .nav-links { display: none; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: var(--brand-drk); padding: 3.2rem 2.4rem; gap: 1.6rem; box-shadow: var(--shadow-nav); border-bottom: 0.1rem solid var(--border-glass); }
-        .site-nav.open .nav-links { display: flex; }
-        .nav-links > li { width: 100%; }
-        .nav-links > li > a { width: 100%; justify-content: space-between; padding: 1.4rem 1.6rem; font-size: 1.4rem; }
-        .dropdown-menu { position: static; box-shadow: none; border: none; background: rgba(255,255,255,0.03); border-radius: 0.4rem; margin-top: 0.8rem; padding: 0.8rem 0; display: none; opacity: 1; visibility: visible; transform: none; }
-        .has-dropdown.mobile-open .dropdown-menu { display: block; }
-        .has-dropdown.mobile-open .dropdown-toggle i { transform: rotate(180deg); color: var(--gold-lt); }
-        .dropdown-toggle i { transition: transform 0.3s ease; }
-        .dropdown-menu li a { padding: 1.2rem 1.6rem 1.2rem 3.2rem; font-size: 1.5rem; }
-        .site-nav.open .hamburger span:nth-child(1) { transform: translateY(0.8rem) rotate(45deg); }
-        .site-nav.open .hamburger span:nth-child(2) { opacity: 0; }
-        .site-nav.open .hamburger span:nth-child(3) { transform: translateY(-0.8rem) rotate(-45deg); }
-    }
-    @media (min-width: 900px) { .hamburger { display: none !important; } .nav-links { display: flex !important; } }
+.accordion-body { padding: 32px; }
+.accordion-body > p { margin: 0 0 24px; color: var(--slate); font-size: 1.05rem; }
 
-    /* DEDICATED HERO */
-    .service-hero { padding-top: calc(var(--nav-h) + 6.4rem); padding-bottom: 6.4rem; background: var(--brand-drk); color: #fff; text-align: center; border-bottom: 0.4rem solid var(--gold); }
-    .service-tag { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold-lt); font-weight: 700; display: block; margin-bottom: 1.6rem; }
-    .service-hero h1 { font-size: clamp(3.2rem, 5vw, 4.8rem); font-weight: 700; margin-bottom: 1.6rem; letter-spacing: -0.01em; }
-    .service-hero p { font-size: clamp(1.6rem, 2vw, 1.8rem); color: rgba(255,255,255,0.85); max-width: 70.0rem; margin: 0 auto; line-height: 1.7; }
+.service-detail-grid { display: grid; gap: 32px; margin-bottom: 32px; }
+.detail-block h4 { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); margin: 0 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.check-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.check-list li { font-size: 0.95rem; color: var(--slate); display: flex; gap: 12px; align-items: flex-start; }
+.check-list li i { color: var(--brass-deep); margin-top: 4px; font-size: 0.9rem; }
+.step-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; counter-reset: custom-counter; }
+.step-list li { font-size: 0.95rem; color: var(--slate); display: flex; gap: 16px; align-items: flex-start; }
+.step-list li::before { counter-increment: custom-counter; content: counter(custom-counter); background: var(--paper-deep); color: var(--blue-deep); font-weight: 700; font-size: 0.85rem; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%; flex-shrink: 0; }
 
-    /* PATHWAYS SECTION (ACCORDIONS) */
-    .path-section { padding: 8.0rem 0; background: var(--ivory); }
-    .path-header { text-align: center; margin-bottom: 4.8rem; max-width: 75.0rem; margin-left: auto; margin-right: auto; }
-    .path-header h2 { font-size: clamp(2.8rem, 4vw, 3.6rem); color: var(--brand-drk); font-weight: 700; letter-spacing: -0.01em; margin-bottom: 1.6rem; }
-    
-    .accordion-container { max-width: 90.0rem; margin: 0 auto; }
-    .path-accordion { background: #fff; border: 0.1rem solid var(--border-light); border-radius: 0.8rem; margin-bottom: 2.0rem; box-shadow: var(--shadow-soft); overflow: hidden; transition: 0.3s; }
-    .path-accordion summary { padding: 2.4rem 3.2rem; font-size: 1.9rem; font-weight: 700; color: var(--brand-drk); cursor: pointer; display: flex; align-items: center; justify-content: space-between; list-style: none; user-select: none; }
-    .path-accordion summary::-webkit-details-marker { display: none; }
-    .summary-content { display: flex; align-items: center; gap: 1.6rem; }
-    .summary-content i { font-size: 2.4rem; color: var(--brand-mid); width: 3.2rem; text-align: center; }
-    .path-accordion summary::after { content: '\002B'; font-size: 2.4rem; color: var(--gold); transition: transform 0.3s ease; }
-    .path-accordion[open] summary::after { content: '\2212'; transform: rotate(180deg); color: var(--brand-drk); }
-    .path-accordion[open] summary { background: var(--bg-light); border-bottom: 0.1rem solid var(--border-light); }
-    
-    .accordion-body { padding: 4.0rem 3.2rem; border-top: 0.4rem solid var(--gold); }
-    .path-accordion:nth-child(even) .accordion-body { border-top-color: var(--brand-mid); }
-    .accordion-body > p { font-size: 1.7rem; color: var(--text-mid); margin-bottom: 3.2rem; line-height: 1.7; }
-    
-    .service-detail-grid { display: grid; grid-template-columns: 1fr; gap: 3.2rem; margin-bottom: 3.2rem; }
-    .detail-block h4 { font-size: 1.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brand-drk); margin-bottom: 1.6rem; border-bottom: 0.1rem solid var(--border-light); padding-bottom: 0.8rem; }
-    
-    .check-list { list-style: none; display: grid; gap: 1.2rem; }
-    .check-list li { font-size: 1.5rem; color: var(--text-mid); line-height: 1.6; display: flex; gap: 1.2rem; align-items: flex-start; }
-    .check-list li i { color: var(--brand-mid); font-size: 1.4rem; margin-top: 0.5rem; }
+.accordion-cta-bar { background: var(--paper); border-radius: 12px; padding: 24px; border: 1px solid var(--line); display: grid; gap: 24px; }
+.cost-breakdown-row { display: flex; flex-wrap: wrap; gap: 24px 48px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+.cost-item span { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: var(--slate); margin-bottom: 4px; }
+.cost-item strong { font-family: "Fraunces", serif; font-size: 1.6rem; color: var(--ink); }
+.cta-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
 
-    .step-list { list-style: none; display: grid; gap: 1.6rem; counter-reset: custom-counter; }
-    .step-list li { font-size: 1.5rem; color: var(--text-mid); line-height: 1.6; display: flex; gap: 1.6rem; align-items: flex-start; position: relative; }
-    .step-list li::before { counter-increment: custom-counter; content: counter(custom-counter); background: var(--bg-light); color: var(--brand-drk); font-weight: 700; font-size: 1.3rem; width: 2.8rem; height: 2.8rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; flex-shrink: 0; border: 0.1rem solid var(--border-light); }
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:12px;text-decoration:none;font-weight:600;font-size:.95rem;transition:transform .15s ease}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:var(--ink-soft); transform: translateY(-2px);}
+.btn-whatsapp{background:#25D366;color:#fff}
+.btn-whatsapp:hover{background:#1eb954; transform: translateY(-2px);}
 
-    /* COST BREAKDOWN ACTION BAR */
-    .accordion-cta-bar { margin-top: 4.0rem; background: var(--bg-light); border-radius: 0.6rem; padding: 2.4rem; border: 0.1rem solid var(--border-light); display: flex; flex-direction: column; gap: 2.4rem; }
-    .cost-breakdown-row { display: flex; flex-wrap: wrap; gap: 2.4rem 4.8rem; padding-bottom: 2.4rem; border-bottom: 0.1rem solid var(--border-light); }
-    .cost-item { display: flex; flex-direction: column; }
-    .cost-item span { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: var(--brand-mid); margin-bottom: 0.4rem; }
-    .cost-item strong { font-size: 2.2rem; color: var(--brand-drk); line-height: 1; }
-    .cta-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.6rem; }
-    .date-stamp { font-size: 1.3rem; color: var(--text-mid); font-style: italic; }
-    
-    .btn-accordion { display: inline-flex; align-items: center; justify-content: center; gap: 1.2rem; padding: 1.6rem 3.6rem; background: var(--brand-drk); color: #fff; border-radius: 0.4rem; font-size: 1.3rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; }
-    .btn-accordion:hover { background: var(--gold); color: var(--brand-drk); }
+/* Warning Box */
+.warning-box { max-width: 900px; margin: 48px auto 0; background: rgba(176,138,78,.1); border-left: 4px solid var(--brass); border-radius: 12px; padding: 32px; }
+.warning-box h3 { margin: 0 0 16px; font-size: 1.4rem; color: var(--brass-deep); display: flex; align-items: center; gap: 10px; }
+.warning-box p { margin: 0; color: var(--ink-soft); font-size: 1.05rem; }
 
-    /* IMPORTANT PROTOCOL BOX (Specific to NIS) */
-    .protocol-box { max-width: 90.0rem; margin: 4.8rem auto 0; background: rgba(193, 154, 91, 0.1); border: 0.1rem solid var(--gold); border-left: 0.6rem solid var(--gold); border-radius: 0.8rem; padding: 4.0rem 3.6rem; }
-    .protocol-box .box-title { border-bottom: none; padding-bottom: 0; margin-bottom: 1.6rem; color: var(--brand-drk); font-size: 2.2rem; font-weight: 700; display: flex; align-items: center; gap: 1.2rem; }
-    .protocol-box .box-title i { color: var(--gold); font-size: 2.4rem; }
-    .protocol-text { font-size: 1.6rem; color: var(--brand-drk); margin-bottom: 2.4rem; line-height: 1.7; }
-    
-    .workflow-steps { display: grid; grid-template-columns: 1fr; gap: 1.6rem; }
-    .workflow-step { background: #fff; padding: 2.0rem; border-radius: 0.4rem; display: flex; gap: 1.6rem; align-items: center; box-shadow: 0 0.2rem 1.0rem rgba(0,0,0,0.04); }
-    .workflow-step .step-num { font-size: 1.8rem; font-weight: 700; color: var(--gold); background: var(--brand-drk); width: 3.6rem; height: 3.6rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; flex-shrink: 0; }
-    .workflow-step p { margin: 0; font-size: 1.5rem; color: var(--text-mid); line-height: 1.5; }
+/* Final CTA */
+.final{background:linear-gradient(135deg,var(--ink),var(--ink-soft));color:#fff;border-radius:28px;padding:48px 24px;text-align:center;display:grid;gap:18px;box-shadow:0 18px 60px rgba(15,23,42,.16); max-width:860px; margin: 64px auto 0;}
+.final h2{font-weight:600; margin:0; font-size:clamp(1.9rem,4vw,2.8rem)}
+.final p{color:#cbd5e1;margin:0 auto; max-width:500px;}
 
-    /* EDUCATIONAL ADVISORY SECTION */
-    .education-section { padding: 8.0rem 0; background: var(--bg-light); border-top: 0.1rem solid var(--border-light); margin-top: 4.8rem; }
-    .edu-header { text-align: center; margin-bottom: 4.8rem; }
-    .edu-header h2 { font-size: clamp(2.8rem, 4vw, 3.6rem); color: var(--brand-drk); font-weight: 700; letter-spacing: -0.01em; }
-    .edu-container { max-width: 80.0rem; margin: 0 auto; background: #fff; padding: clamp(3.2rem, 5vw, 6.4rem); border-radius: 0.8rem; box-shadow: var(--shadow-md); border-left: 0.4rem solid var(--gold); }
-    .edu-container h3 { font-size: 2.2rem; color: var(--brand-drk); margin-bottom: 1.6rem; }
-    .edu-container p { font-size: 1.7rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 2.4rem; }
-    .article-highlight { background: rgba(193, 154, 91, 0.1); border-left: 0.4rem solid var(--gold); padding: 2.4rem; margin: 3.2rem 0; border-radius: 0 0.8rem 0.8rem 0; }
-    .article-highlight p { margin-bottom: 0; font-size: 1.6rem; font-style: italic; color: var(--brand-drk); }
+/* Footer */
+footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:56px 0 28px}
+.footer-grid{display:grid;gap:32px}
+.footer-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.footer-col a{display:block;color:#94a3b8;text-decoration:none;margin-bottom:10px}
+.footer-col a:hover{color:#fff}
+.footer-bottom{margin-top:28px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:14px;color:#94a3b8;font-size:.9rem}
 
-    /* SLIM BLOG / INSIGHTS BANNER */
-    .slim-insights-banner { background: var(--brand-drk); color: #fff; padding: 4.8rem 2.4rem; border-top: 0.4rem solid var(--gold); border-bottom: 0.1rem solid var(--border-glass); }
-    .banner-inner { max-width: 105.0rem; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; gap: 2.4rem; }
-    .banner-text h3 { font-size: clamp(2.2rem, 3vw, 2.8rem); font-weight: 700; margin-bottom: 0.8rem; color: #fff; }
-    .banner-text p { font-size: 1.6rem; color: rgba(255,255,255,0.8); max-width: 65.0rem; line-height: 1.6; }
-    .btn-gold-banner { display: inline-flex; align-items: center; justify-content: center; gap: 1.0rem; padding: 1.6rem 3.2rem; background: var(--gold); color: var(--brand-drk); border-radius: 0.4rem; font-size: 1.3rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; flex-shrink: 0; }
-    .btn-gold-banner:hover { background: var(--gold-lt); transform: translateY(-0.2rem); }
-
-    @media (min-width: 800px) { 
-        .service-detail-grid { grid-template-columns: 1fr 1fr; } 
-        .workflow-steps { grid-template-columns: 1fr 1fr; }
-        .banner-inner { flex-direction: row; text-align: left; }
-    }
-    </style>
+@media(min-width:800px){ .service-detail-grid { grid-template-columns: 1fr 1fr; } }
+@media(min-width:980px){
+  .desktop-nav{display:flex}
+  .menu{display:none}
+  .mobile-nav{display:none !important}
+  .footer-grid{grid-template-columns:1.2fr 1fr}
+}
+</style>
 </head>
 <body>
 
-<!-- GLOBAL NAVIGATION -->
-<nav class="site-nav" id="sitenav">
-    <div class="nav-inner">
-        <a href="index.html" class="nav-logo-name">Docu-Hub <em>Operations</em></a>
-        
-        <ul class="nav-links" id="nav-links">
-            <li><a href="index.html">Home</a></li>
-            
-            <li class="has-dropdown">
-                <a href="#" class="dropdown-toggle active" id="services-toggle" aria-haspopup="true" aria-expanded="false">
-                    Services <i class="fa-solid fa-chevron-down"></i>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="passport.html">PICA Passport Services</a></li>
-                    <li><a href="vital.html">RGD Vital Records</a></li>
-                    <li><a href="nis.html" class="active">NIS Tracking &amp; Claims</a></li>
-                </ul>
-            </li>
-            
-            <li><a href="insights.html">Insights</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        
-        <button class="hamburger" id="hbg" aria-label="Toggle Navigation Menu">
-            <span></span><span></span><span></span>
-        </button>
-    </div>
-</nav>
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html"><div class="logo">DH</div><span>Docu-Hub Operations</span></a>
+    <nav class="desktop-nav">
+      <a href="passport.html">Passports</a>
+      <a href="vital.html">Vital Records</a>
+      <a href="nis.html" class="active">NIS Pensions</a>
+      <a href="about.html">About</a>
+    </nav>
+    <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+      <i class="fa-solid fa-bars" style="font-size: 1.2rem; color: var(--ink);"></i>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" hidden>
+    <a href="passport.html">Passports</a>
+    <a href="vital.html">Vital Records</a>
+    <a href="nis.html">NIS Pensions</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
 
-<!-- DEDICATED HERO -->
-<section class="service-hero">
-    <div class="wrap">
-        <span class="service-tag">MLSS / NIS Proxy Services</span>
-        <h1>National Insurance Scheme (NIS)</h1>
-        <p>Expert administrative proxy for contribution tracking, voluntary setup, and strategic preparation for retirement and funeral claims.</p>
-    </div>
+<main>
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">MLSS / NIS Proxy Services</span>
+    <h1>National Insurance Scheme (NIS)</h1>
+    <p class="lead">Navigating the MLSS from overseas requires exact documentation. Review the strict checklists below to see if you qualify for contribution tracking, voluntary setup, or pension claims before contacting us.</p>
+  </div>
 </section>
 
-<!-- 1. DETAILED SERVICE PATHWAYS -->
 <section class="path-section">
-    <div class="wrap">
-        
-        <div class="path-header">
-            <span style="color: var(--brand-mid); font-size: 1.2rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;">Determine Your Pathway</span>
-            <h2>Select your required NIS service</h2>
-        </div>
+  <div class="container">
+    <div class="accordion-wrapper">
+      
+      <!-- PATH 1 -->
+      <details class="path-accordion">
+          <summary>
+              <div class="summary-content"><i class="fa-solid fa-file-waveform"></i> Contribution History Statement</div>
+          </summary>
+          <div class="accordion-body">
+              <p>Before applying for any benefits or making voluntary payments, you must know your current standing. We act as your proxy to formally request and retrieve your official, up-to-date Contribution History Statement from the MLSS.</p>
+              
+              <div class="service-detail-grid">
+                  <div class="detail-block">
+                      <h4>Required Documents</h4>
+                      <ul class="check-list">
+                          <li><i class="fa-solid fa-address-card"></i> Your official NIS Number &amp; TRN</li>
+                          <li><i class="fa-solid fa-id-card"></i> Copy of valid Government Photo ID</li>
+                          <li><i class="fa-solid fa-pen-clip"></i> Signed Docu-Hub Proxy Authorization Form</li>
+                          <li><i class="fa-solid fa-building"></i> Names/Dates of past Jamaican employers</li>
+                      </ul>
+                  </div>
+                  <div class="detail-block">
+                      <h4>The Workflow</h4>
+                      <ul class="step-list">
+                          <li>Submit your identifiers via our secure digital intake.</li>
+                          <li>Sign the Proxy Delegation Form sent to your email.</li>
+                          <li>Our agents physically queue and request your ledger at the NIS office.</li>
+                          <li>A certified digital scan of your statement is securely transmitted to you.</li>
+                      </ul>
+                  </div>
+              </div>
+              
+              <div class="accordion-cta-bar">
+                  <div class="cost-breakdown-row">
+                      <div class="cost-item"><span>Docu-Hub Proxy Fee</span><strong>$165 USD</strong></div>
+                      <div class="cost-item"><span>MLSS Gov Fee</span><strong>$0 USD</strong></div>
+                  </div>
+                  <div class="cta-row">
+                      <span style="font-size: 0.85rem; color: var(--slate); font-style: italic;">* Statements are typically delivered digitally.</span>
+                      <a href="https://wa.me/18765612614" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i> Start on WhatsApp</a>
+                  </div>
+              </div>
+          </div>
+      </details>
 
-        <div class="accordion-container">
-            
-            <!-- PATH 1: CONTRIBUTION HISTORY STATEMENT -->
-            <details class="path-accordion">
-                <summary>
-                    <div class="summary-content">
-                        <i class="fa-solid fa-file-waveform"></i> Contribution History Statement
-                    </div>
-                </summary>
-                <div class="accordion-body">
-                    <p>Before applying for any benefits or making voluntary payments, you must know your current standing. We act as your proxy to formally request and retrieve your official, up-to-date Contribution History Statement from the MLSS.</p>
-                    
-                    <div class="service-detail-grid">
-                        <div class="detail-block">
-                            <h4>Required Documents</h4>
-                            <ul class="check-list">
-                                <li><i class="fa-solid fa-address-card"></i> Your official NIS Number &amp; TRN</li>
-                                <li><i class="fa-solid fa-id-card"></i> Copy of valid Government Photo ID</li>
-                                <li><i class="fa-solid fa-pen-clip"></i> Signed Docu-Hub Proxy Authorization Form</li>
-                                <li><i class="fa-solid fa-building"></i> Names/Dates of past Jamaican employers</li>
-                            </ul>
-                        </div>
-                        <div class="detail-block">
-                            <h4>The Workflow</h4>
-                            <ul class="step-list">
-                                <li>Submit your identifiers via our secure digital intake.</li>
-                                <li>Sign the Proxy Delegation Form sent to your email.</li>
-                                <li>Our agents physically queue and request your ledger at the NIS office in Jamaica.</li>
-                                <li>A certified digital scan of your statement is securely transmitted to you.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-cta-bar">
-                        <div class="cost-breakdown-row">
-                            <div class="cost-item">
-                                <span>Docu-Hub Proxy Fee</span>
-                                <strong>$165 USD</strong>
-                            </div>
-                            <div class="cost-item">
-                                <span>MLSS Gov Fee</span>
-                                <strong>$0 USD</strong>
-                            </div>
-                            <div class="cost-item">
-                                <span>DHL Courier (If needed)</span>
-                                <strong>$45 - $65 USD</strong>
-                            </div>
-                        </div>
-                        <div class="cta-row">
-                            <span class="date-stamp">* Statements are typically delivered digitally. DHL required only for physical originals.</span>
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeZdgthrriuwiMPUiNhu5eQnAWjxEtM-Ti6sMXqvZ_U6NHkw/viewform" target="_blank" class="btn-accordion">Request Statement <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </details>
+      <!-- PATH 2 -->
+      <details class="path-accordion">
+          <summary>
+              <div class="summary-content"><i class="fa-solid fa-money-bill-trend-up"></i> Voluntary Contributor Setup</div>
+          </summary>
+          <div class="accordion-body">
+              <p>If you have migrated but want to reach the 520-week threshold to qualify for a full pension, you can apply to make ongoing voluntary contributions from overseas. We handle the strict setup process.</p>
+              
+              <div class="service-detail-grid">
+                  <div class="detail-block">
+                      <h4>Required Documents</h4>
+                      <ul class="check-list">
+                          <li><i class="fa-solid fa-file-waveform"></i> Recent NIS Contribution Statement</li>
+                          <li><i class="fa-solid fa-address-card"></i> NIS Number, TRN, &amp; Valid ID</li>
+                          <li><i class="fa-solid fa-file-signature"></i> Completed Voluntary Application Form (Original Wet Signature)</li>
+                      </ul>
+                  </div>
+                  <div class="detail-block">
+                      <h4>The Workflow</h4>
+                      <ul class="step-list">
+                          <li>We audit your current statement to ensure you are eligible.</li>
+                          <li>We type and prepare your MLSS application forms.</li>
+                          <li>You print, sign, and courier the original forms to our office in Jamaica.</li>
+                          <li>We lodge the application and establish your approved payment schedule.</li>
+                      </ul>
+                  </div>
+              </div>
+              
+              <div class="accordion-cta-bar">
+                  <div class="cost-breakdown-row">
+                      <div class="cost-item"><span>Docu-Hub Setup Fee</span><strong>$185 USD</strong></div>
+                      <div class="cost-item"><span>MLSS Setup Fee</span><strong>$0 USD</strong></div>
+                  </div>
+                  <div class="cta-row">
+                      <span style="font-size: 0.85rem; color: var(--slate); font-style: italic;">* You are responsible for making your ongoing contribution payments.</span>
+                      <a href="https://wa.me/18765612614" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i> Start on WhatsApp</a>
+                  </div>
+              </div>
+          </div>
+      </details>
 
-            <!-- PATH 2: VOLUNTARY CONTRIBUTOR SETUP -->
-            <details class="path-accordion">
-                <summary>
-                    <div class="summary-content">
-                        <i class="fa-solid fa-money-bill-trend-up"></i> Voluntary Contributor Application
-                    </div>
-                </summary>
-                <div class="accordion-body">
-                    <p>If you have migrated but want to reach the 520-week threshold to qualify for a full pension, you can apply to make ongoing voluntary contributions from overseas. We handle the strict setup process.</p>
-                    
-                    <div class="service-detail-grid">
-                        <div class="detail-block">
-                            <h4>Required Documents</h4>
-                            <ul class="check-list">
-                                <li><i class="fa-solid fa-file-waveform"></i> Recent NIS Contribution Statement</li>
-                                <li><i class="fa-solid fa-address-card"></i> NIS Number, TRN, &amp; Valid ID</li>
-                                <li><i class="fa-solid fa-file-signature"></i> Completed Voluntary Contributor Application Form (Original Wet Signature)</li>
-                            </ul>
-                        </div>
-                        <div class="detail-block">
-                            <h4>The Workflow</h4>
-                            <ul class="step-list">
-                                <li>We audit your current statement to ensure you are eligible.</li>
-                                <li>We type and prepare your MLSS application forms.</li>
-                                <li>You print, sign, and courier the original forms to our office in Jamaica.</li>
-                                <li>We lodge the application and establish your approved payment schedule.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-cta-bar">
-                        <div class="cost-breakdown-row">
-                            <div class="cost-item">
-                                <span>Docu-Hub Setup Fee</span>
-                                <strong>$185 USD</strong>
-                            </div>
-                            <div class="cost-item">
-                                <span>MLSS Setup Fee</span>
-                                <strong>$0 USD</strong>
-                            </div>
-                            <div class="cost-item">
-                                <span>DHL Courier (Estimated)</span>
-                                <strong>$45 - $65 USD</strong>
-                            </div>
-                        </div>
-                        <div class="cta-row">
-                            <span class="date-stamp">* You are responsible for making your own ongoing contribution payments directly to the MLSS.</span>
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeZdgthrriuwiMPUiNhu5eQnAWjxEtM-Ti6sMXqvZ_U6NHkw/viewform" target="_blank" class="btn-accordion">Start Application <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </details>
-
-            <!-- PATH 3: RETIREMENT PENSION CLAIM -->
-            <details class="path-accordion">
-                <summary>
-                    <div class="summary-content">
-                        <i class="fa-solid fa-hand-holding-dollar"></i> Retirement Pension Claim
-                    </div>
-                </summary>
-                <div class="accordion-body">
-                    <p>For individuals reaching the age of 65. Whether you qualify for the ongoing monthly pension or the one-time Retirement Grant, claim forms must be flawlessly prepared, witnessed by a Notary, and physically submitted.</p>
-                    
-                    <div class="service-detail-grid">
-                        <div class="detail-block">
-                            <h4>Required Documents</h4>
-                            <ul class="check-list">
-                                <li><i class="fa-solid fa-file-signature"></i> Original Birth Certificate</li>
-                                <li><i class="fa-solid fa-id-card"></i> Original NIS Card &amp; Valid Passport</li>
-                                <li><i class="fa-solid fa-building-columns"></i> Jamaican Bank Account Details (or approved remittance method)</li>
-                                <li><i class="fa-solid fa-pen-nib"></i> Notarized MLSS Claim Forms</li>
-                            </ul>
-                        </div>
-                        <div class="detail-block">
-                            <h4>The Workflow (Wet Signature)</h4>
-                            <ul class="step-list">
-                                <li>We digitally prepare your exact MLSS pension claim forms.</li>
-                                <li>You print and sign the forms in the presence of a Notary Public overseas.</li>
-                                <li>You courier the physical originals to our secure facility via DHL.</li>
-                                <li>Our agents hand-deliver the claim to the NIS processing desk.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-cta-bar">
-                        <div class="cost-breakdown-row">
-                            <div class="cost-item">
-                                <span>Docu-Hub Proxy Fee</span>
-                                <strong>$215 USD</strong>
-                            </div>
-                            <div class="cost-item">
-                                <span>MLSS Claim Fee</span>
-                                <strong>$0 USD</strong>
-                            </div>
-                            <div class="cost-item">
-                                <span>DHL Courier (Estimated)</span>
-                                <strong>$45 - $65 USD</strong>
-                            </div>
-                        </div>
-                        <div class="cta-row">
-                            <span class="date-stamp">* The MLSS does not charge a fee to process a pension claim. Overseas Notary fees are your responsibility.</span>
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeZdgthrriuwiMPUiNhu5eQnAWjxEtM-Ti6sMXqvZ_U6NHkw/viewform" target="_blank" class="btn-accordion">Start Pension Claim <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </details>
-
-            <!-- PATH 4: FUNERAL GRANT -->
-            <details class="path-accordion">
-                <summary>
-                    <div class="summary-content">
-                        <i class="fa-solid fa-dove"></i> Funeral Grant Claim
-                    </div>
-                </summary>
-                <div class="accordion-body">
-                    <p>If an active NIS contributor passes away, the family can claim a death benefit/funeral grant to assist with expenses. Strict original documentation proving relationship and expenses is required.</p>
-                    
-                    <div class="service-detail-grid">
-                        <div class="detail-block">
-                            <h4>Required Documents</h4>
-                            <ul class="check-list">
-                                <li><i class="fa-solid fa-file-prescription"></i> Official Death Certificate</li>
-                                <li><i class="fa-solid fa-receipt"></i> Original Funeral Home Receipt (must be in applicant's name)</li>
-                                <li><i class="fa-solid fa-link"></i> Proof of Relationship (Marriage/Birth Cert)</li>
-                                <li><i class="fa-solid fa-id-card"></i> Deceased's NIS Card &amp; Applicant's ID</li>
-                            </ul>
-                        </div>
-                        <div class="detail-block">
-                            <h4>The Workflow (Wet Signature)</h4>
-                            <ul class="step-list">
-                                <li>We review your supporting documents for compliance.</li>
-                                <li>We prepare the grant application form.</li>
-                                <li>You sign the documents with a Notary and courier the physical packet to Jamaica.</li>
-                                <li>We lodge the documents with the NIS and track the payout status.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-cta-bar">
-                        <div class="cost-breakdown-row">
-                            <div class="cost-item">
-                                <span>Docu-Hub Proxy Fee</span>
-                                <strong>$185 USD</strong>
-                            </div>
-                            <div class="cost-item">
-                                <span>MLSS Gov Fee</span>
-                                <strong>$0 USD</strong>
-                            </div>
-                            <div class="cost-item">
-                                <span>DHL Courier (Estimated)</span>
-                                <strong>$45 - $65 USD</strong>
-                            </div>
-                        </div>
-                        <div class="cta-row">
-                            <span class="date-stamp">* The MLSS does not charge a fee to process a grant claim. Courier rates are approximate.</span>
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeZdgthrriuwiMPUiNhu5eQnAWjxEtM-Ti6sMXqvZ_U6NHkw/viewform" target="_blank" class="btn-accordion">Start Grant Claim <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </details>
-
-        </div>
-
-        <!-- THE WET SIGNATURE PROTOCOL WARNING -->
-        <div class="protocol-box">
-            <h3 class="box-title"><i class="fa-solid fa-pen-nib"></i> Important: The Wet Signature Workflow</h3>
-            <p class="protocol-text">The Ministry of Labour and Social Security requires official, witnessed original documents to process claims. We do not simply email you a blank form to figure out on your own. To ensure your claim is not rejected by the agency, we follow a strict preparation protocol:</p>
-            
-            <div class="workflow-steps">
-                <div class="workflow-step">
-                    <span class="step-num">1</span>
-                    <p><strong>Digital Preparation:</strong> We collect your details online and professionally type your complex NIS forms to ensure exact MLSS compliance.</p>
-                </div>
-                <div class="workflow-step">
-                    <span class="step-num">2</span>
-                    <p><strong>Print &amp; Witness:</strong> We email you the completed PDF. You must print it and sign it (wet signature) in the presence of a Notary Public.</p>
-                </div>
-                <div class="workflow-step">
-                    <span class="step-num">3</span>
-                    <p><strong>Physical Dispatch:</strong> You must place the signed original forms in a courier envelope (e.g., DHL) and mail them to our Jamaica office.</p>
-                </div>
-                <div class="workflow-step">
-                    <span class="step-num">4</span>
-                    <p><strong>In-Person Proxy:</strong> We receive your physical documents and submit them by hand directly to the NIS office on your behalf.</p>
-                </div>
-            </div>
-        </div>
-
+      <!-- PATH 3 -->
+      <details class="path-accordion">
+          <summary>
+              <div class="summary-content"><i class="fa-solid fa-hand-holding-dollar"></i> Retirement Pension Claim</div>
+          </summary>
+          <div class="accordion-body">
+              <p>For individuals reaching the age of 65. Whether you qualify for the ongoing monthly pension or the one-time Retirement Grant, claim forms must be flawlessly prepared, witnessed by a Notary, and physically submitted.</p>
+              
+              <div class="service-detail-grid">
+                  <div class="detail-block">
+                      <h4>Required Documents</h4>
+                      <ul class="check-list">
+                          <li><i class="fa-solid fa-file-signature"></i> Original Birth Certificate</li>
+                          <li><i class="fa-solid fa-id-card"></i> Original NIS Card &amp; Valid Passport</li>
+                          <li><i class="fa-solid fa-building-columns"></i> Jamaican Bank Account Details</li>
+                          <li><i class="fa-solid fa-pen-nib"></i> Notarized MLSS Claim Forms</li>
+                      </ul>
+                  </div>
+                  <div class="detail-block">
+                      <h4>The Workflow (Wet Signature)</h4>
+                      <ul class="step-list">
+                          <li>We digitally prepare your exact MLSS pension claim forms.</li>
+                          <li>You print and sign the forms in the presence of a Notary Public overseas.</li>
+                          <li>You courier the physical originals to our secure facility.</li>
+                          <li>Our agents hand-deliver the claim to the NIS processing desk.</li>
+                      </ul>
+                  </div>
+              </div>
+              
+              <div class="accordion-cta-bar">
+                  <div class="cost-breakdown-row">
+                      <div class="cost-item"><span>Docu-Hub Proxy Fee</span><strong>$215 USD</strong></div>
+                      <div class="cost-item"><span>MLSS Claim Fee</span><strong>$0 USD</strong></div>
+                  </div>
+                  <div class="cta-row">
+                      <span style="font-size: 0.85rem; color: var(--slate); font-style: italic;">* Overseas Notary fees are your responsibility.</span>
+                      <a href="https://wa.me/18765612614" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i> Start on WhatsApp</a>
+                  </div>
+              </div>
+          </div>
+      </details>
+      
     </div>
+
+    <!-- WARNING BOX -->
+    <div class="warning-box">
+      <h3><i class="fa-solid fa-pen-nib"></i> Important: The Wet Signature Workflow</h3>
+      <p>The Ministry of Labour and Social Security requires official, witnessed original documents to process claims. We do not simply email you a blank form to figure out on your own. We professionally type your complex NIS forms to ensure exact MLSS compliance, email them to you for a notarized wet-ink signature, and then hand-deliver your couriered physical packet directly to the NIS office.</p>
+    </div>
+
+    <div class="final">
+      <span class="eyebrow" style="margin:auto;background:rgba(176,138,78,.18);color:#f3d9a4;border-color:rgba(176,138,78,.35)">Ready to Begin?</span>
+      <h2>Do you have the required documents?</h2>
+      <p>If you meet the requirements in the checklists above, message us directly on WhatsApp to initiate your secure intake process.</p>
+      <div style="margin-top: 12px;">
+        <a class="btn btn-whatsapp" href="https://wa.me/18765612614" target="_blank" style="min-height: 56px; padding: 0 32px; font-size: 1.1rem;">
+          <i class="fa-brands fa-whatsapp" style="margin-right: 10px; font-size: 1.4rem;"></i> Start on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
+</main>
 
-<!-- 2. EDUCATIONAL ADVISORY SECTION -->
-<section class="education-section">
-    <div class="wrap">
-        <div class="edu-header">
-            <span style="color: var(--brand-mid); font-size: 1.2rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;">Service Advisory</span>
-            <h2>Why proxy lodgment is critical for the diaspora</h2>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3 style="margin:0 0 10px;color:#fff;font-family:'Fraunces',serif;font-weight:600">Docu-Hub Operations</h3>
+        <p style="margin:0;color:#94a3b8">Independent online application assistance and proxy services for Jamaican portals.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4 style="margin:0 0 14px;color:#fff">Navigation</h4>
+          <a href="about.html">About Us</a>
+          <a href="insights.html">Insights</a>
+          <a href="faq.html">FAQ</a>
         </div>
-        
-        <div class="edu-container">
-            <p>Thousands of Jamaicans currently living in the United States, United Kingdom, and Canada spent the first 10 to 15 years of their careers working in Jamaica. During that time, National Insurance Scheme (NIS) contributions were deducted from their paychecks.</p>
-            
-            <p>Decades later, when it comes time to retire or track down a record, many people are frustrated to find that NIS processes are heavily reliant on physical paperwork, wet signatures, and manual ledger searches.</p>
-            
-            <div class="article-highlight">
-                <p>"Calling the NIS offices from overseas to track down decades-old employment records is incredibly difficult. Most older records require a manual, in-person request."</p>
-            </div>
-            
-            <p><strong>The Solution:</strong> You do not need to fly back to Jamaica to trace your history or file a claim. Docu-Hub Operations serves as your secure, on-the-ground administrative desk. We conduct the local inquiries, verify your eligibility, and meticulously prepare your claim forms so that when they are submitted by hand, they are processed correctly.</p>
+        <div class="footer-col">
+          <h4 style="margin:0 0 14px;color:#fff">Legal</h4>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
         </div>
+      </div>
     </div>
-</section>
-
-<!-- 3. SLIM INSIGHTS BANNER -->
-<section class="slim-insights-banner">
-    <div class="banner-inner">
-        <div class="banner-text">
-            <h3>Want to Learn More About Pension Entitlements?</h3>
-            <p>Discover the 520-week threshold rule, how to calculate your contributions, and what happens to your pension if you migrated years ago.</p>
-        </div>
-        <a href="insights.html" class="btn-gold-banner">Visit Insights Desk <i class="fa-solid fa-arrow-right"></i></a>
+    <div class="footer-bottom">
+      <div>Disclaimer: We are a private administrative proxy service, not affiliated with PICA, RGD, or MLSS/NIS.</div>
+      <div>© 2026 Docu-Hub Operations Services. Registered COJ #15602/2025. All rights reserved.</div>
     </div>
-</section>
-
-<!-- CLEAN, UNIFIED FOOTER SECTION -->
-<footer class="site-footer" id="contact" style="background: #111811; color: #fff; padding: clamp(8.0rem, 10vh, 12.0rem) 0 4.0rem; border-top: 0.1rem solid rgba(255,255,255,0.08);">
-    <div class="wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(25.0rem, 1fr)); gap: 6.4rem; margin-bottom: 6.4rem;">
-        <div>
-            <span style="font-family: var(--sans); font-size: 2.6rem; font-weight: 700; letter-spacing: 0.02em; display: block; margin-bottom: 1.6rem;">Docu-Hub <em style="color: var(--gold); font-style: italic; font-weight: 500;">Operations</em></span>
-            <p style="font-family: var(--sans); font-size: 1.5rem; color: rgba(255,255,255,0.7); line-height: 1.6; max-width: 35.0rem;">Providing highly secure, on-the-ground document processing, records retrieval, and administrative assistance for the Jamaican diaspora.</p>
-        </div>
-        
-        <div>
-            <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: 2.4rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase;">Quick Links</h4>
-            <ul style="list-style: none; display: grid; gap: 1.6rem; padding: 0;">
-                <li><a href="passport.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">PICA Passport Services</a></li>
-                <li><a href="vital.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">RGD Vital Records</a></li>
-                <li><a href="nis.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">NIS Tracking &amp; Claims</a></li>
-                <li><a href="about.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">About The Agency</a></li>
-            </ul>
-        </div>
-        
-        <div>
-            <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: 2.4rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase;">Direct Contact</h4>
-            <ul style="list-style: none; display: grid; gap: 1.6rem; padding: 0; margin-bottom: 2.4rem;">
-                <li>
-                    <a href="mailto:admin@dochubservices.com" style="display: inline-flex; align-items: center; gap: 1.0rem; color: #fff; font-size: 1.5rem; text-decoration: none; transition: color 0.3s;">
-                        <i class="fa-solid fa-envelope" style="color: var(--gold-lt);"></i> admin@dochubservices.com
-                    </a>
-                </li>
-                <li>
-                    <a href="https://wa.me/18765612614" target="_blank" style="display: inline-flex; align-items: center; gap: 1.0rem; color: #25D366; font-size: 1.5rem; font-weight: 600; text-decoration: none; transition: opacity 0.3s;">
-                        <i class="fa-brands fa-whatsapp" style="font-size: 2.0rem;"></i> Chat on WhatsApp
-                    </a>
-                </li>
-            </ul>
-            <p style="color: rgba(255,255,255,0.8); font-size: 1.5rem;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 0.8rem;"></i> Linstead, St. Catherine, Jamaica</p>
-        </div>
-    </div>
-
-    <div class="wrap" style="display: flex; flex-direction: column; gap: 1.6rem; align-items: center; border-top: 0.1rem solid var(--border-glass); padding-top: 3.2rem; text-align: center;">
-        <div style="font-family: var(--sans); font-size: 1.3rem; color: rgba(255,255,255,0.5);">
-            <p style="margin-bottom: 0.6rem;">Registered with the Companies Office of Jamaica (COJ): #15602/2025 | OIC Data Controller Verified</p>
-            <p style="color: rgba(255,255,255,0.3); margin-bottom: 1.6rem;">&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
-            
-            <div style="display: flex; gap: 2.4rem; justify-content: center; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                <a href="privacy.html" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Privacy Policy</a>
-                <a href="terms.html" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Terms of Service</a>
-            </div>
-        </div>
-    </div>
+  </div>
 </footer>
 
 <script>
-// Mobile Hamburger Toggle
-const hbg = document.getElementById('hbg');
-const navBar = document.getElementById('sitenav');
-
-if (hbg && navBar) {
-    hbg.addEventListener('click', () => { 
-        navBar.classList.toggle('open'); 
-    });
-}
-
-// Mobile Dropdown Toggle Logic
-const servicesToggle = document.getElementById('services-toggle');
-if (servicesToggle && window.innerWidth < 900) {
-    servicesToggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        const parentLi = servicesToggle.closest('.has-dropdown');
-        parentLi.classList.toggle('mobile-open');
-    });
-}
+  var btn = document.getElementById('menuBtn');
+  var nav = document.getElementById('mobileNav');
+  btn.addEventListener('click', function(){
+    var isHidden = nav.hasAttribute('hidden');
+    if(isHidden){ nav.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); }
+    else { nav.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); }
+  });
 </script>
+
 </body>
 </html>
