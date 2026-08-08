@@ -2,7 +2,8 @@
 <html lang="en-JM">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Step 1: Viewport Fix -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>PICA Passport Services | Docu-Hub Operations</title>
 <meta name="description" content="Strict readiness checklists and eligibility rules for Jamaican passport renewals, lost passports, damaged passports, name changes, and first-time adult applications.">
 
@@ -24,11 +25,14 @@
   --brass:#b08a4e; --brass-deep:#8a6a37; --brass-tint:#faf3e6;
   --danger-bg: #fef2f2; --danger-border: #ef4444; --danger-text: #991b1b;
 }
+
+/* Step 2: The "Bulletproof Container" Fix */
 *{box-sizing:border-box}
-body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;}
+body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;width:100%;-webkit-text-size-adjust:100%;}
 h1,h2,h3,.brand span,.step-badge,.eyebrow{font-family:"Fraunces",Georgia,serif}
-.container{width:min(1120px,calc(100% - 32px));margin:auto}
+.container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px;}
 a{-webkit-tap-highlight-color:transparent}
+img{max-width:100%;height:auto;}
 
 /* Header & Nav */
 header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
@@ -98,7 +102,7 @@ h1 { margin: 0 0 16px; font-family: "Fraunces", serif; font-weight: 600; font-si
 .scenario-card ul { margin: 0; padding-left: 20px; color: var(--slate); font-size: 0.95rem; line-height: 1.6; }
 .scenario-card li { margin-bottom: 8px; }
 
-/* ======== NEW PRICING STYLES ======== */
+/* Pricing Styles */
 .pricing-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
 .pricing-table th { background: var(--paper-deep); color: var(--ink); font-weight: 600; text-align: left; padding: 16px; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid var(--line); }
 .pricing-table td { padding: 16px; border-bottom: 1px solid var(--line); color: var(--slate); font-size: 1.05rem; }
@@ -108,7 +112,6 @@ h1 { margin: 0 0 16px; font-family: "Fraunces", serif; font-weight: 600; font-si
 .callout-box { background: var(--paper-deep); border-left: 4px solid var(--blue); padding: 24px; border-radius: 0 16px 16px 0; }
 .callout-box h4 { margin: 0 0 12px; color: var(--ink); font-size: 1.15rem; display: flex; align-items: center; gap: 8px; }
 .callout-box p { margin: 0; color: var(--slate); font-size: 0.95rem; line-height: 1.6; }
-/* ==================================== */
 
 /* Final CTA */
 .final{background:linear-gradient(135deg,var(--ink),var(--ink-soft));color:#fff;border-radius:28px;padding:48px 24px;text-align:center;display:grid;gap:18px;box-shadow:0 18px 60px rgba(15,23,42,.16); max-width:860px; margin: 0 auto;}
@@ -132,15 +135,28 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
   .desktop-nav{display:flex}
   .menu{display:none}
   .mobile-nav{display:none !important}
-  /* Force alerts to sit side-by-side on desktop */
   .alerts-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid{grid-template-columns:1fr 1.5fr}
 }
+
+/* Step 3: The Mobile Stacking Fix */
 @media(max-width:767px){ 
-  .scenario-grid { grid-template-columns: 1fr; }
-  .proxy-check { flex-direction: column; text-align: center; gap: 12px; }
+  /* Stacks grid items vertically on mobile */
+  .scenario-grid, .alerts-grid, .content-grid { grid-template-columns: 1fr; gap: 16px; }
+  
+  /* Stacks alert boxes nicely */
+  .golden-rule, .proxy-check { flex-direction: column; text-align: center; align-items: center; padding: 20px; }
+  
+  /* Stacks service item cards perfectly */
+  .service-item { grid-template-columns: 1fr; text-align: center; justify-items: center; padding: 24px; }
+  .service-item img { width: 80px; height: 80px; margin-bottom: 8px; }
+  .badge { margin: 12px auto 0; display: inline-block; }
+  
+  /* Shrinks the pricing tables to fit mobile screens */
+  .pricing-table th, .pricing-table td { padding: 12px 8px; font-size: 0.9rem; }
   .footer-cols{grid-template-columns:1fr 1fr;} 
 }
+
 @media(max-width:480px){ .footer-cols{grid-template-columns:1fr;} }
 </style>
 </head>
@@ -152,7 +168,6 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
       <div class="logo">DH</div><span>Docu-Hub Operations</span>
     </a>
     
-    <!-- DESKTOP NAVIGATION -->
     <nav class="desktop-nav">
       <div class="dropdown">
         <button class="dropbtn">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i></button>
