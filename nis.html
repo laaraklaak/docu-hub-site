@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Case Study: Lost Your Jamaican Passport Overseas? | Docu-Hub Operations</title>
-<meta name="description" content="Discover the operational protocol for filing police reports abroad and avoiding the emergency travel trap when replacing a lost Jamaican passport.">
+
+<title>NIS Record & Claims Services | Docu-Hub Operations</title>
+<meta name="description" content="Expert proxy assistance for Jamaican National Insurance Scheme (NIS) contribution tracking, voluntary setup, and benefit claims for the diaspora.">
 
 <!-- ===== Security Headers ===== -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://images.unsplash.com data:; connect-src 'self';">
@@ -24,11 +25,13 @@
   --brass:#b08a4e; --brass-deep:#8a6a37; --brass-tint:#faf3e6;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;}
-h1,h2,h3,.brand span,.step-badge,.eyebrow{font-family:"Fraunces",Georgia,serif}
+body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+h1,h2,h3,h4,.brand span,.eyebrow{font-family:"Fraunces",Georgia,serif}
 .container{width:min(1120px,calc(100% - 32px));margin:auto}
 a{-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:2px solid var(--blue-deep);outline-offset:2px}
 
+/* Header & Nav (Master Template) */
 header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav{display:flex;justify-content:space-between;align-items:center;min-height:72px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:700;text-decoration:none;color:inherit}
@@ -42,39 +45,56 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdro
 .mobile-nav a{padding:14px 16px;text-decoration:none;color:var(--ink-soft);font-weight:500;border-top:1px solid var(--line)}
 .mobile-nav[hidden]{display:none}
 
-.article-hero { padding: 48px 0 32px; text-align: center; }
-.back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--slate); text-decoration: none; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 32px; transition: color 0.2s; }
-.back-link:hover { color: var(--ink); }
-.eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: auto; padding: 8px 14px; border-radius: 999px; background: var(--brass-tint); color: var(--brass-deep); font-size: .82rem; font-weight: 600; border: 1px solid #ecdcb8; margin-bottom: 24px; }
-h1 { margin: 0 0 16px; font-family: "Fraunces", serif; font-weight: 600; font-size: clamp(2.1rem, 4vw, 3.2rem); line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); max-width: 900px; margin-left: auto; margin-right: auto; }
-.article-meta { font-size: 0.95rem; color: var(--slate); font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 24px;}
-.article-meta i { color: var(--brass-deep); }
+/* Hero */
+.hero{padding:64px 0 48px; text-align:center;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;margin:auto;padding:8px 14px;border-radius:999px;background:var(--brass-tint);color:var(--brass-deep);font-size:.82rem;font-weight:600;border:1px solid #ecdcb8; margin-bottom:24px;}
+h1{margin:0 0 16px;font-weight:600;font-size:clamp(2.1rem,5vw,3.8rem);line-height:1.1;letter-spacing:-0.02em}
+.lead{margin:0 auto 32px;max-width:720px;color:var(--slate);font-size:1.1rem;line-height:1.7;}
 
-.article-wrapper { max-width: 800px; margin: 0 auto 64px; background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 48px; box-shadow: 0 10px 30px rgba(15,23,42,.04); position: relative; z-index: 10; }
-.article-wrapper p { font-size: 1.05rem; color: var(--slate); line-height: 1.8; margin-bottom: 24px; }
-.article-wrapper h2 { font-family: "Fraunces", serif; font-size: 1.8rem; color: var(--ink); margin: 48px 0 24px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
-.article-wrapper ul { margin-bottom: 24px; padding-left: 24px; }
-.article-wrapper li { font-size: 1.05rem; color: var(--slate); margin-bottom: 12px; line-height: 1.7; }
-.drop-cap::first-letter { float: left; font-family: "Fraunces", serif; font-size: 4.5rem; line-height: 0.8; padding-top: 8px; padding-right: 12px; color: var(--ink); font-weight: 700; }
+/* Accordion Checklists */
+.path-section { padding: 32px 0 64px; }
+.accordion-wrapper { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+details.path-accordion { background: #fff; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: 0 4px 12px rgba(15,23,42,.03); transition: box-shadow 0.2s ease;}
+details.path-accordion:hover { box-shadow: 0 10px 24px rgba(15,23,42,.06); border-color: #cbd5e1; }
+summary { font-family: "Fraunces", serif; font-weight: 600; font-size: 1.35rem; padding: 24px 32px; cursor: pointer; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; margin: 0; }
+summary::-webkit-details-marker { display: none; }
+.summary-content { display: flex; align-items: center; gap: 16px; }
+.summary-content i { color: var(--blue); font-size: 1.6rem; width: 32px; text-align: center; }
+summary::after { content: '+'; color: var(--blue); font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 400; }
+details[open] summary { border-bottom: 1px solid var(--line); background: var(--paper); }
+details[open] summary::after { content: '−'; }
 
-.case-file { background: #f8fafc; border: 1px solid var(--line); padding: 32px; border-radius: 12px; margin-bottom: 40px; }
-.case-file h3 { font-family: "Inter", sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--slate); margin: 0 0 16px; display: flex; align-items: center; gap: 8px; }
-.case-file p { font-family: "Fraunces", serif; font-size: 1.4rem; color: var(--ink); line-height: 1.5; margin: 0; }
+.accordion-body { padding: 32px; }
+.accordion-body > p { margin: 0 0 24px; color: var(--slate); font-size: 1.05rem; }
 
-.callout-box { background: var(--paper-deep); border-left: 4px solid var(--blue); padding: 24px; border-radius: 0 12px 12px 0; margin: 32px 0; }
-.callout-box h4 { margin: 0 0 12px; color: var(--blue-deep); font-size: 1.1rem; display: flex; align-items: center; gap: 8px; font-family: Inter, sans-serif;}
-.callout-box p { margin: 0; color: var(--slate); font-size: 1rem; }
-.callout-box-gold { background: rgba(176,138,78,.1); border-left-color: var(--brass); }
-.callout-box-gold h4 { color: var(--brass-deep); }
+.service-detail-grid { display: grid; gap: 32px; margin-bottom: 32px; }
+.detail-block h4 { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); margin: 0 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.check-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.check-list li { font-size: 0.95rem; color: var(--slate); display: flex; gap: 12px; align-items: flex-start; }
+.check-list li i { color: var(--brass-deep); margin-top: 4px; font-size: 0.9rem; }
+.step-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; counter-reset: custom-counter; }
+.step-list li { font-size: 0.95rem; color: var(--slate); display: flex; gap: 16px; align-items: flex-start; }
+.step-list li::before { counter-increment: custom-counter; content: counter(custom-counter); background: var(--paper-deep); color: var(--blue-deep); font-weight: 700; font-size: 0.85rem; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%; flex-shrink: 0; }
 
-.final{background:linear-gradient(135deg,var(--ink),var(--ink-soft));color:#fff;border-radius:28px;padding:48px 24px;text-align:center;display:grid;gap:18px;box-shadow:0 18px 60px rgba(15,23,42,.16); max-width:860px; margin: 0 auto;}
-.final h2{font-weight:600; margin:0; font-size:clamp(1.9rem,4vw,2.8rem)}
-.final p{color:#cbd5e1;margin:0 auto; max-width:560px;}
+.accordion-cta-bar { background: var(--paper); border-radius: 12px; padding: 24px; border: 1px solid var(--line); display: flex; flex-direction: column; gap: 16px; margin-top: 24px;}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;border-radius:14px;text-decoration:none;font-weight:700;font-size:.98rem;transition:all .15s ease}
+/* Warning Box */
+.warning-box { max-width: 900px; margin: 48px auto 0; background: rgba(176,138,78,.1); border-left: 4px solid var(--brass); border-radius: 12px; padding: 32px; }
+.warning-box h3 { margin: 0 0 16px; font-size: 1.4rem; color: var(--brass-deep); display: flex; align-items: center; gap: 10px; }
+.warning-box p { margin: 0; color: var(--ink-soft); font-size: 1.05rem; }
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:12px;text-decoration:none;font-weight:600;font-size:.95rem;transition:transform .15s ease}
 .btn-primary{background:var(--ink);color:#fff}
 .btn-primary:hover{background:var(--ink-soft); transform: translateY(-2px);}
 
+/* Final CTA */
+.final{background:linear-gradient(135deg,var(--ink),var(--ink-soft));color:#fff;border-radius:28px;padding:48px 24px;text-align:center;display:grid;gap:18px;box-shadow:0 18px 60px rgba(15,23,42,.16); max-width:860px; margin: 64px auto 0;}
+.final h2{font-weight:600; margin:0; font-size:clamp(1.9rem,4vw,2.8rem)}
+.final p{color:#cbd5e1;margin:0 auto; max-width:500px;}
+.final-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:auto}
+
+/* Footer (Master Template) */
 footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 .footer-grid{display:grid;gap:40px}
 .footer-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
@@ -83,13 +103,16 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 .footer-col a:hover{color:#fff}
 .footer-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:12px;color:#94a3b8;font-size:.85rem;line-height:1.6;}
 
+@media(min-width:800px){ 
+  .service-detail-grid { grid-template-columns: 1fr 1fr; }
+}
 @media(min-width:980px){
   .desktop-nav{display:flex}
   .menu{display:none}
   .mobile-nav{display:none !important}
   .footer-grid{grid-template-columns:1fr 1.5fr}
 }
-@media(max-width:767px){ .article-wrapper{padding: 32px 24px;} .footer-cols{grid-template-columns:1fr 1fr;} }
+@media(max-width:767px){ .footer-cols{grid-template-columns:1fr 1fr;} }
 @media(max-width:480px){ .footer-cols{grid-template-columns:1fr;} }
 </style>
 </head>
@@ -100,24 +123,27 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
     <a class="brand" href="index.html">
       <div class="logo">DH</div><span>Docu-Hub Operations</span>
     </a>
+    
     <nav class="desktop-nav">
       <a href="passport.html">Passports</a>
       <a href="vital.html">Vital Records</a>
-      <a href="nis.html">NIS Pensions</a>
-      <a href="insights.html" class="active">Insights</a>
+      <a href="nis.html" class="active">NIS Pensions</a>
+      <a href="insights.html">Insights</a>
       <a href="about.html">About Us</a>
       <a href="faq.html">FAQ</a>
       <a href="booking.html" class="btn btn-primary" style="min-height: 40px; padding: 0 16px; font-size: 0.85rem;">Book Consultation</a>
     </nav>
+    
     <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
       <i class="fa-solid fa-bars" style="font-size: 1.4rem;"></i>
     </button>
   </div>
+  
   <nav class="mobile-nav" id="mobileNav" hidden>
     <a href="passport.html">Passports</a>
     <a href="vital.html">Vital Records</a>
-    <a href="nis.html">NIS Pensions</a>
-    <a href="insights.html" class="active">Insights</a>
+    <a href="nis.html" class="active">NIS Pensions</a>
+    <a href="insights.html">Insights</a>
     <a href="about.html">About Us</a>
     <a href="faq.html">FAQ</a>
     <a href="booking.html" style="font-weight: 700; color: var(--blue-deep);">Book Consultation</a>
@@ -125,96 +151,190 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 </header>
 
 <main>
-<section class="article-hero">
+<section class="hero">
   <div class="container">
-    <div style="text-align: left; max-width: 900px; margin: 0 auto;">
-        <a href="insights.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Insights</a>
-    </div>
-    <span class="eyebrow">Client Case Study</span>
-    <h1>The Emergency Travel Trap: Replacing a Lost Passport from Overseas</h1>
-    <div class="article-meta">
-        <span><i class="fa-regular fa-folder-open"></i> Passport Logistics</span> &bull; 
-        <span><i class="fa-regular fa-clock"></i> 5 Min Read</span>
-    </div>
+    <span class="eyebrow">MLSS / NIS Proxy Services</span>
+    <h1>National Insurance Scheme (NIS)</h1>
+    <p class="lead">Navigating the MLSS from overseas requires exact documentation. Review the strict checklists below to see if you qualify for contribution tracking, voluntary setup, or pension claims before contacting us.</p>
   </div>
 </section>
 
-<article class="article-wrapper">
-    <div class="case-file">
-        <h3><i class="fa-solid fa-briefcase"></i> The Situation</h3>
-        <p>Mark’s bag was stolen in Toronto, taking his Jamaican passport with it. Panicked, he went to the Jamaican Consulate and was issued a one-way Emergency Certificate to fly back to Jamaica to sort it out. He thought the hard part was over. Instead, his trip became a bureaucratic gamble. He spent his vacation frantically scrambling to locate his original RGD birth certificate, navigating walk-in queues, and hoping he had the exact paperwork needed to avoid being rejected at the counter.</p>
+<section class="path-section">
+  <div class="container">
+    <div class="accordion-wrapper">
+      
+      <!-- PATH 1 -->
+      <details class="path-accordion">
+          <summary>
+              <div class="summary-content"><i class="fa-solid fa-file-waveform"></i> Contribution History Statement</div>
+          </summary>
+          <div class="accordion-body">
+              <p>Before applying for any benefits or making voluntary payments, you must know your current standing. We act as your proxy to formally request and retrieve your official, up-to-date Contribution History Statement from the MLSS.</p>
+              
+              <div class="service-detail-grid">
+                  <div class="detail-block">
+                      <h4>Required Documents</h4>
+                      <ul class="check-list">
+                          <li><i class="fa-solid fa-address-card"></i> Your official NIS Number &amp; TRN</li>
+                          <li><i class="fa-solid fa-id-card"></i> Copy of valid Government Photo ID</li>
+                          <li><i class="fa-solid fa-pen-clip"></i> Signed Docu-Hub Proxy Authorization Form</li>
+                          <li><i class="fa-solid fa-building"></i> Names/Dates of past Jamaican employers</li>
+                      </ul>
+                  </div>
+                  <div class="detail-block">
+                      <h4>The Workflow</h4>
+                      <ul class="step-list">
+                          <li>Submit your identifiers via our secure digital intake.</li>
+                          <li>Sign the Proxy Delegation Form sent to your email.</li>
+                          <li>Our agents physically queue and request your ledger at the NIS office.</li>
+                          <li>A certified digital scan of your statement is securely transmitted to you.</li>
+                      </ul>
+                  </div>
+              </div>
+              
+              <div class="accordion-cta-bar">
+                  <div style="display: flex; gap: 12px; align-items: flex-start;">
+                      <i class="fa-solid fa-circle-info" style="color: var(--blue); font-size: 1.2rem; margin-top: 2px;"></i>
+                      <p style="margin: 0; color: var(--slate); font-size: 0.95rem; line-height: 1.5;"><strong>Pricing Note:</strong> Because every document situation is unique, we do not use one-size-fits-all fees. We will provide a custom, flat-fee quote after a quick review of your specific case during consultation.</p>
+                  </div>
+                  <div style="margin-top: 8px;">
+                      <a href="booking.html" class="btn btn-primary"><i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book a Consultation</a>
+                  </div>
+              </div>
+          </div>
+      </details>
+
+      <!-- PATH 2 -->
+      <details class="path-accordion">
+          <summary>
+              <div class="summary-content"><i class="fa-solid fa-money-bill-trend-up"></i> Voluntary Contributor Setup</div>
+          </summary>
+          <div class="accordion-body">
+              <p>If you have migrated but want to reach the 520-week threshold to qualify for a full pension, you can apply to make ongoing voluntary contributions from overseas. We handle the strict setup process.</p>
+              
+              <div class="service-detail-grid">
+                  <div class="detail-block">
+                      <h4>Required Documents</h4>
+                      <ul class="check-list">
+                          <li><i class="fa-solid fa-file-waveform"></i> Recent NIS Contribution Statement</li>
+                          <li><i class="fa-solid fa-address-card"></i> NIS Number, TRN, &amp; Valid ID</li>
+                          <li><i class="fa-solid fa-file-signature"></i> Completed Voluntary Application Form (Original Wet Signature)</li>
+                      </ul>
+                  </div>
+                  <div class="detail-block">
+                      <h4>The Workflow</h4>
+                      <ul class="step-list">
+                          <li>We audit your current statement to ensure you are eligible.</li>
+                          <li>We type and prepare your MLSS application forms.</li>
+                          <li>You print, sign, and courier the original forms to our office in Jamaica.</li>
+                          <li>We lodge the application and establish your approved payment schedule.</li>
+                      </ul>
+                  </div>
+              </div>
+              
+              <div class="accordion-cta-bar">
+                  <div style="display: flex; gap: 12px; align-items: flex-start;">
+                      <i class="fa-solid fa-circle-info" style="color: var(--blue); font-size: 1.2rem; margin-top: 2px;"></i>
+                      <p style="margin: 0; color: var(--slate); font-size: 0.95rem; line-height: 1.5;"><strong>Pricing Note:</strong> Because every document situation is unique, we do not use one-size-fits-all fees. We will provide a custom, flat-fee quote after a quick review of your specific case during consultation.</p>
+                  </div>
+                  <div style="margin-top: 8px;">
+                      <a href="booking.html" class="btn btn-primary"><i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book a Consultation</a>
+                  </div>
+              </div>
+          </div>
+      </details>
+
+      <!-- PATH 3 -->
+      <details class="path-accordion">
+          <summary>
+              <div class="summary-content"><i class="fa-solid fa-hand-holding-dollar"></i> Retirement Pension Claim</div>
+          </summary>
+          <div class="accordion-body">
+              <p>For individuals reaching the age of 65. Whether you qualify for the ongoing monthly pension or the one-time Retirement Grant, claim forms must be flawlessly prepared, witnessed by a Notary, and physically submitted.</p>
+              
+              <div class="service-detail-grid">
+                  <div class="detail-block">
+                      <h4>Required Documents</h4>
+                      <ul class="check-list">
+                          <li><i class="fa-solid fa-file-signature"></i> Original Birth Certificate</li>
+                          <li><i class="fa-solid fa-id-card"></i> Original NIS Card &amp; Valid Passport</li>
+                          <li><i class="fa-solid fa-building-columns"></i> Jamaican Bank Account Details</li>
+                          <li><i class="fa-solid fa-pen-nib"></i> Notarized MLSS Claim Forms</li>
+                      </ul>
+                  </div>
+                  <div class="detail-block">
+                      <h4>The Workflow (Wet Signature)</h4>
+                      <ul class="step-list">
+                          <li>We digitally prepare your exact MLSS pension claim forms.</li>
+                          <li>You print and sign the forms in the presence of a Notary Public overseas.</li>
+                          <li>You courier the physical originals to our secure facility.</li>
+                          <li>Our agents hand-deliver the claim to the NIS processing desk.</li>
+                      </ul>
+                  </div>
+              </div>
+              
+              <div class="accordion-cta-bar">
+                  <div style="display: flex; gap: 12px; align-items: flex-start;">
+                      <i class="fa-solid fa-circle-info" style="color: var(--blue); font-size: 1.2rem; margin-top: 2px;"></i>
+                      <p style="margin: 0; color: var(--slate); font-size: 0.95rem; line-height: 1.5;"><strong>Pricing Note:</strong> Because every document situation is unique, we do not use one-size-fits-all fees. We will provide a custom, flat-fee quote after a quick review of your specific case during consultation.</p>
+                  </div>
+                  <div style="margin-top: 8px;">
+                      <a href="booking.html" class="btn btn-primary"><i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book a Consultation</a>
+                  </div>
+              </div>
+          </div>
+      </details>
+      
     </div>
 
-    <p class="drop-cap">Losing a passport while living or traveling overseas is an incredibly stressful experience. The Passport, Immigration and Citizenship Agency (PICA) treats a lost or stolen passport as a high-level security matter. You cannot simply submit a standard renewal online; you must fulfill a strict legal protocol to ensure the missing document is flagged globally.</p>
-
-    <h2>The Immediate Consequences: Global Flagging</h2>
-    <p>A lost passport is not just a travel inconvenience; it is a severe security breach and a massive identity theft risk. Because you do not know whose hands your document has fallen into, taking action quickly is critical. Before you even begin the replacement process, PICA mandates an official Police Report from your local precinct to verify the theft or loss immediately.</p>
-    
-    <p>Once reported, PICA permanently deactivates the embedded biometric chip and flags the document number directly with INTERPOL. This locks down your identity and prevents unauthorized border traversal.</p>
-
-    <div class="callout-box callout-box-gold">
-        <h4><i class="fa-solid fa-triangle-exclamation"></i> The Digital Lockout</h4>
-        <p>Because this security lockdown is permanent, the moment you report the passport as lost, it is officially dead. Even if you find it under your couch a week later, it cannot be reactivated. Furthermore, because your identity must be re-verified without the original booklet present, PICA strictly prohibits using the online renewal portal for lost passports. Your application must be physically submitted by hand.</p>
+    <!-- WARNING BOX -->
+    <div class="warning-box">
+      <h3><i class="fa-solid fa-pen-nib"></i> Important: The Wet Signature Requirement</h3>
+      <p>The Ministry of Labour and Social Security requires official, witnessed original documents to process claims. We do not simply email you a blank form to figure out on your own. We professionally type your complex NIS forms to ensure exact MLSS compliance, email them to you for a notarized wet-ink signature, and then hand-deliver your couriered physical packet directly to the NIS office.</p>
     </div>
 
-    <h2>The "Emergency Travel" Trap</h2>
-    <p>Faced with a digital lockout, many in the diaspora assume the best option is to obtain an Emergency Certificate (a temporary, one-way travel document) or use a foreign passport to fly back to Jamaica and fix the issue themselves.</p>
-    
-    <p>This is often a logistical mistake. When you fly back to handle a lost passport, you subject yourself to immense, unnecessary hardship—and a major administrative gamble:</p>
-    
-    <ul>
-        <li><strong>The Processing Gamble:</strong> The main PICA headquarters in Kingston does not accept appointments for renewals or replacements; it is strictly a walk-in system where you wait for hours depending on the crowd. While you can book appointments at selected regional branches, those branches have significantly longer processing times, which could easily cause you to miss your return flight.</li>
-        <li><strong>The Discrepancy Trap:</strong> The real nightmare isn't just the waiting; it is the uncertainty. If you wait in line for half the day only to be turned away because of a minor discrepancy—a missing signature, an invalid photo, or an incorrectly formatted police report—you must start all over again.</li>
-        <li><strong>The One-Way Lock-In:</strong> Because an Emergency Certificate is only valid for a one-way entry, you are effectively trapped in Jamaica until the new book is printed.</li>
-    </ul>
-
-    <h2>The True Value of a Proxy</h2>
-    <p>If you have the option, do not book an emergency flight to Jamaica. The safest, most stress-free solution is to replace your passport while remaining overseas using a registered administrative proxy.</p>
-    
-    <p>A professional proxy is not just someone who stands in a line for you; they are an administrative expert who knows the procedures inside and out to ensure total accuracy.</p>
-
-    <ul>
-        <li><strong>Pre-Submission Audit:</strong> A proxy audits your local police report, birth certificate, and specialized PICA Lost Passport Form <em>before</em> anyone approaches a desk, ensuring you have the exact requirements to get processed on the first try without being turned away for discrepancies.</li>
-        <li><strong>Physical Execution:</strong> Local agents execute a secure handover at PICA headquarters, completely bypassing the digital portal restrictions and taking on the physical wait time on your behalf.</li>
-        <li><strong>Expedited Delivery:</strong> Once printed, the new book is retrieved and dispatched via overnight international courier directly to your door, leaving you free to travel without restriction.</li>
-    </ul>
-</article>
-
-<div class="container" style="margin-bottom: 80px;">
     <div class="final">
-      <span class="eyebrow" style="margin:auto;background:rgba(176,138,78,.18);color:#f3d9a4;border-color:rgba(176,138,78,.35)">Connect Instantly</span>
-      <h2>Lost Your Passport?</h2>
-      <p>Don't fall into the emergency travel trap. Book an intake consultation and let our proxy experts safely execute your replacement directly at PICA Headquarters.</p>
-      <div style="margin-top: 12px;">
-        <a class="btn" href="booking.html" style="background:#fff; color:var(--ink); min-height: 56px; border: none;">
-          <i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book a Consultation
+      <span class="eyebrow" style="margin:auto;background:rgba(176,138,78,.18);color:#f3d9a4;border-color:rgba(176,138,78,.35)">Ready to Begin?</span>
+      <h2>Do you have the required documents?</h2>
+      <p>If you meet the requirements in the checklists above, book a consultation to initiate your secure intake process.</p>
+      <div class="final-actions">
+        <a class="btn" href="booking.html" style="background:#fff; color:var(--ink); min-height: 56px; padding: 0 32px; font-size: 1.1rem; border: none;">
+          <i class="fa-regular fa-calendar-days" style="margin-right: 10px; font-size: 1.4rem;"></i> Book a Consultation
         </a>
       </div>
     </div>
-</div>
+  </div>
+</section>
 </main>
 
+<!-- UNIFIED 3-COLUMN FOOTER WITH PINTEREST -->
 <footer>
   <div class="container">
     <div class="footer-grid">
+      <!-- Brand Summary -->
       <div>
         <h3 style="margin:0 0 10px;color:#fff;font-family:'Fraunces',serif;font-weight:600">Docu-Hub Operations</h3>
         <p style="margin:0;color:#94a3b8">Independent administrative proxy and secure online application assistance for the Jamaican diaspora.</p>
       </div>
+      
+      <!-- 3-Column Sitemap -->
       <div class="footer-cols">
+        
         <div class="footer-col">
           <h4>Our Services</h4>
           <a href="passport.html">PICA Passports</a>
           <a href="vital.html">RGD Vital Records</a>
           <a href="nis.html">NIS Pensions</a>
         </div>
+        
         <div class="footer-col">
           <h4>Company</h4>
           <a href="about.html">About Docu-Hub</a>
           <a href="insights.html">Guides &amp; Insights</a>
           <a href="faq.html">FAQ</a>
         </div>
-        <div class="footer-col">
+        
+     <div class="footer-col">
           <h4>Legal &amp; Connect</h4>
           <a href="privacy.html">Privacy Policy</a>
           <a href="terms.html">Terms of Service</a>
@@ -228,8 +348,11 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
             <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn
           </a>
         </div>
+
       </div>
     </div>
+    
+    <!-- Bottom Legal Disclaimer & Registration Badges -->
     <div class="footer-bottom">
       <div>Disclaimer: Docu-Hub Operations Services is a private, registered administrative proxy service. We are not a government agency and are not affiliated with PICA, RGD, or MLSS/NIS.</div>
       <div><i class="fa-solid fa-building-shield" style="margin-right: 6px; color: var(--brass);"></i> Registered with the Companies Office of Jamaica (COJ): #15602/2025 | OIC Data Controller Verified.</div>
@@ -239,13 +362,19 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 </footer>
 
 <script>
-var btn = document.getElementById('menuBtn');
-var nav = document.getElementById('mobileNav');
-btn.addEventListener('click', function(){
-var isHidden = nav.hasAttribute('hidden');
-if(isHidden){ nav.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); }
-else { nav.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); }
-});
+  // Mobile Navigation Toggle
+  var btn = document.getElementById('menuBtn');
+  var nav = document.getElementById('mobileNav');
+  btn.addEventListener('click', function(){
+    var isHidden = nav.hasAttribute('hidden');
+    if(isHidden){ 
+      nav.removeAttribute('hidden'); 
+      btn.setAttribute('aria-expanded','true'); 
+    } else { 
+      nav.setAttribute('hidden',''); 
+      btn.setAttribute('aria-expanded','false'); 
+    }
+  });
 </script>
 
 </body>
