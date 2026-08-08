@@ -2,7 +2,7 @@
 <html lang="en-JM">
 <head>
 <meta charset="UTF-8">
-<!-- MOBILE FIX STEP 1: Added maximum-scale=1.0 -->
+<!-- Step 1: Viewport Fix -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>RGD Vital Records | Docu-Hub Operations</title>
 <meta name="description" content="Strict readiness checklists and eligibility rules for Jamaican Birth, Marriage, and Death certificates, including archival searches and legal corrections.">
@@ -25,9 +25,9 @@
   --brass:#b08a4e; --brass-deep:#8a6a37; --brass-tint:#faf3e6;
   --danger-bg: #fef2f2; --danger-border: #ef4444; --danger-text: #991b1b;
 }
-*{box-sizing:border-box}
 
-/* MOBILE FIX STEP 2: Bulletproof body and container rules */
+/* Step 2: The "Bulletproof Container" Fix */
+*{box-sizing:border-box}
 body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;width:100%;-webkit-text-size-adjust:100%;}
 h1,h2,h3,.brand span,.step-badge,.eyebrow{font-family:"Fraunces",Georgia,serif}
 .container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px;}
@@ -71,14 +71,14 @@ h1 { margin: 0 0 16px; font-family: "Fraunces", serif; font-weight: 600; font-si
 .alerts-grid { display: grid; gap: 24px; }
 
 /* The Golden Rule Alert */
-.golden-rule { background: var(--paper-deep); border: 1px solid var(--blue); border-radius: 16px; padding: 24px 28px; display: flex; gap: 20px; align-items: flex-start; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.05); }
+.golden-rule { background: var(--paper-deep); border: 1px solid var(--blue); border-radius: 16px; padding: 24px 28px; display: flex; gap: 20px; align-items: flex-start; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.05); height: 100%; }
 .golden-rule i { font-size: 1.8rem; color: var(--blue-deep); margin-top: 2px; }
 .golden-rule h3 { color: var(--blue-deep); margin: 0 0 8px; font-size: 1.25rem; }
 .golden-rule p { color: var(--ink); font-size: 0.95rem; margin: 0; line-height: 1.6; }
 .golden-rule strong { font-weight: 700; color: var(--blue-deep); }
 
 /* Privacy Check */
-.proxy-check { background: var(--ink); color: #fff; border-radius: 16px; padding: 24px 28px; display: flex; gap: 20px; align-items: flex-start; box-shadow: 0 4px 12px rgba(15,23,42,0.08); }
+.proxy-check { background: var(--ink); color: #fff; border-radius: 16px; padding: 24px 28px; display: flex; gap: 20px; align-items: flex-start; box-shadow: 0 4px 12px rgba(15,23,42,0.08); height: 100%; }
 .proxy-check i { font-size: 1.8rem; color: var(--brass); margin-top: 2px; }
 .proxy-check h3 { margin: 0 0 8px; font-size: 1.25rem; color: #fff; }
 .proxy-check p { margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; }
@@ -115,13 +115,14 @@ h1 { margin: 0 0 16px; font-family: "Fraunces", serif; font-weight: 600; font-si
 .pricing-table strong { color: var(--ink); }
 .fee-note { font-size: 0.85rem; color: var(--slate); margin-top: 16px; text-align: right; font-style: italic; }
 
-/* Final CTA */
-.final{background:linear-gradient(135deg,var(--ink),var(--ink-soft));color:#fff;border-radius:28px;padding:48px 24px;text-align:center;display:grid;gap:18px;box-shadow:0 18px 60px rgba(15,23,42,.16); max-width:860px; margin: 0 auto;}
-.final h2{font-weight:600; margin:0; font-size:clamp(1.9rem,4vw,2.8rem)}
-.final p{color:#cbd5e1;margin:0 auto; max-width:560px;}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;border-radius:14px;text-decoration:none;font-weight:700;font-size:.98rem;transition:all .15s ease}
-.btn-primary{background:var(--ink);color:#fff}
-.btn-primary:hover{background:var(--ink-soft); transform: translateY(-2px);}
+/* Final CTA (Upgraded to Flexbox for perfect centering) */
+.final { background: linear-gradient(135deg, var(--ink), var(--ink-soft)); color: #fff; border-radius: 28px; padding: 48px 24px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; box-shadow: 0 18px 60px rgba(15,23,42,.16); max-width: 860px; margin: 0 auto; }
+.final h2 { font-weight: 600; margin: 0; font-size: clamp(1.9rem, 4vw, 2.8rem); }
+.final p { color: #cbd5e1; margin: 0 auto; max-width: 560px; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 24px; border-radius: 14px; text-decoration: none; font-weight: 700; font-size: .98rem; transition: all .15s ease; }
+.btn-primary { background: var(--ink); color: #fff; }
+.btn-primary:hover { background: var(--ink-soft); transform: translateY(-2px); }
 
 /* Footer */
 footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
@@ -133,25 +134,31 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 .footer-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:12px;color:#94a3b8;font-size:.85rem;line-height:1.6;}
 
 @media(min-width:980px){
-  .desktop-nav{display:flex}
-  .menu{display:none}
-  .mobile-nav{display:none !important}
+  .desktop-nav{display:flex;}
+  .menu{display:none;}
+  .mobile-nav{display:none !important;}
   .alerts-grid { grid-template-columns: 1fr 1fr; }
-  .footer-grid{grid-template-columns:1fr 1.5fr}
+  .footer-grid{grid-template-columns:1fr 1.5fr;}
 }
+
+/* Step 3: The Mobile Stacking Fix */
 @media(max-width:767px){ 
-  /* MOBILE FIX STEP 3: Stacks elements cleanly on phones */
+  /* Stacks grid items vertically on mobile */
   .scenario-grid, .alerts-grid, .content-grid { grid-template-columns: 1fr; gap: 16px; }
   
+  /* Stacks alert boxes nicely */
   .golden-rule, .proxy-check { flex-direction: column; text-align: center; align-items: center; padding: 20px; }
   
+  /* Stacks service item cards perfectly */
   .service-item { grid-template-columns: 1fr; text-align: center; justify-items: center; padding: 24px; }
   .service-item img { width: 80px; height: 80px; margin-bottom: 8px; }
   .badge { margin: 12px auto 0; display: inline-block; }
   
+  /* Shrinks the pricing tables to fit mobile screens */
   .pricing-table th, .pricing-table td { padding: 12px 8px; font-size: 0.9rem; }
   .footer-cols{grid-template-columns:1fr 1fr;} 
 }
+
 @media(max-width:480px){ .footer-cols{grid-template-columns:1fr;} }
 </style>
 </head>
@@ -336,7 +343,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
       <span class="eyebrow" style="margin:auto;background:rgba(176,138,78,.18);color:#f3d9a4;border-color:rgba(176,138,78,.35)">Connect Instantly</span>
       <h2>Ready to search or apply?</h2>
       <p>Whether you have your Entry Number ready or need us to conduct a deep archival search, book a consultation to begin your document retrieval process securely.</p>
-      <div style="margin-top: 12px;">
+      <div style="margin-top: 12px; width: 100%; display: flex; justify-content: center;">
         <a class="btn" href="booking.html" style="background:#fff; color:var(--ink); min-height: 56px; border: none;">
           <i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book a Consultation
         </a>
