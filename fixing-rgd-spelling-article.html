@@ -1,163 +1,230 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-JM">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>How to Correct Name &amp; Spelling Errors on Jamaican RGD Certificates from Abroad &mdash; Docu-Hub Operations</title>
-    <meta name="description" content="Step-by-step guide to correcting misspelled names, wrong birth dates, and missing middle names on Jamaican birth, marriage, or death certificates at RGD.">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link rel="apple-touch-icon" href="assets/heros.png">
-    <link rel="canonical" href="https://dhubservices.com/fixing-rgd-spelling-errors-from-abroad.html">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study: Fixing RGD Spelling Errors from Abroad | Docu-Hub Operations</title>
+<meta name="description" content="A real-world look at how an administrative proxy corrects misspelled names and wrong birth dates on Jamaican RGD certificates for the diaspora.">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-    :root {
-        --bg-light:   #F4F5F3;
-        --ivory:      #FAFAFA;
-        --card-bg:    #FFFFFF;
-        --brand-drk:  #1E2B1D; 
-        --brand-mid:  #3A4F38;
-        --gold:       #C19A5B; 
-        --gold-lt:    #DAB87F;
-        --text-dark:  #232A22; 
-        --text-mid:   #4A5249; 
-        --sans:       'Jost', Arial, sans-serif; 
-        --serif:      'Playfair Display', Georgia, serif;
-        --nav-h:      7.5rem; 
-        --article-w:  72.0rem;
-    }
+<!-- ===== Security Headers ===== -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://images.unsplash.com data:; connect-src 'self';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 62.5%; }
-    body { font-family: var(--sans); font-size: 1.8rem; font-weight: 400; background: var(--bg-light); color: var(--text-dark); line-height: 1.8; overflow-x: hidden; }
-    a { text-decoration: none; color: inherit; transition: 0.3s ease; }
-    
-    /* GLOBAL NAVIGATION */
-    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.98); backdrop-filter: blur(1.2rem); border-bottom: 0.1rem solid rgba(255,255,255,0.1); }
-    .nav-inner { max-width: 110.0rem; margin: 0 auto; padding: 0 2.4rem; height: 100%; display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo-name { font-size: 2.2rem; font-weight: 700; color: #fff; letter-spacing: 0.02em; }
-    .nav-logo-name em { color: var(--gold-lt); font-style: italic; font-weight: 500; }
-    .back-btn { color: rgba(255,255,255,0.9); font-size: 1.4rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; display: inline-flex; align-items: center; gap: 0.8rem; }
-    .back-btn:hover { color: var(--gold-lt); }
+<!-- ===== Fonts & Icons ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    /* ARTICLE HERO HEADER */
-    .article-hero { padding: calc(var(--nav-h) + 7.2rem) 2.4rem 6.4rem; background: var(--brand-drk); color: #fff; text-align: center; border-bottom: 0.4rem solid var(--gold); }
-    .hero-wrap { max-width: 82.0rem; margin: 0 auto; }
-    .article-tag { font-size: 1.3rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-lt); background: rgba(193, 154, 91, 0.15); border: 0.1rem solid var(--gold); padding: 0.6rem 1.8rem; border-radius: 3.0rem; display: inline-block; margin-bottom: 2.4rem; font-weight: 700; }
-    .article-hero h1 { font-family: var(--serif); font-size: clamp(3.2rem, 4.5vw, 4.8rem); line-height: 1.25; margin-bottom: 2.4rem; font-weight: 600; color: #ffffff; }
-    .article-meta { font-size: 1.5rem; color: rgba(255,255,255,0.8); display: flex; align-items: center; justify-content: center; gap: 1.6rem; flex-wrap: wrap; }
-    .article-meta i { color: var(--gold); }
+<style>
+:root{
+  --ink:#0f172a; --ink-soft:#1e293b; --slate:#475467; --line:#e2e8f0;
+  --paper:#f5f7fb; --paper-deep:#e9eff8; --blue:#2563eb; --blue-deep:#1d4ed8;
+  --brass:#b08a4e; --brass-deep:#8a6a37; --brass-tint:#faf3e6;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;}
+h1,h2,h3,.brand span,.step-badge,.eyebrow{font-family:"Fraunces",Georgia,serif}
+.container{width:min(1120px,calc(100% - 32px));margin:auto}
+a{-webkit-tap-highlight-color:transparent}
 
-    /* ARTICLE CONTENT AREA */
-    .article-container { padding: 6.4rem 2.4rem 9.6rem; }
-    .article-body { max-width: var(--article-w); margin: 0 auto; background: var(--card-bg); padding: 5.6rem 4.8rem; border-radius: 1.2rem; box-shadow: 0 0.8rem 3.2rem rgba(0,0,0,0.04); border: 0.1rem solid rgba(0,0,0,0.05); }
-    
-    .lead-paragraph { font-size: 2.0rem; line-height: 1.8; color: var(--brand-drk); font-weight: 500; margin-bottom: 3.2rem; }
-    .article-body p { font-size: 1.8rem; color: var(--text-mid); margin-bottom: 2.8rem; }
-    
-    .article-body h2 { font-family: var(--serif); font-size: 2.8rem; color: var(--brand-drk); margin: 5.2rem 0 2.0rem; border-bottom: 0.2rem solid var(--gold); padding-bottom: 1.0rem; font-weight: 600; }
-    
-    .custom-list { list-style: none; margin: 0 0 3.2rem 0; padding: 0; }
-    .custom-list li { position: relative; padding-left: 3.2rem; margin-bottom: 1.6rem; font-size: 1.7rem; color: var(--text-mid); }
-    .custom-list li::before { content: "\f058"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; left: 0; top: 0.2rem; color: var(--brand-mid); font-size: 1.8rem; }
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;align-items:center;min-height:72px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700;text-decoration:none;color:inherit}
+.brand span{font-size:1.02rem;font-weight:600;letter-spacing:-0.01em}
+.logo{width:38px;height:38px;border-radius:11px;background:var(--ink);color:var(--brass-tint);display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:600;font-size:.92rem;flex:none}
+.desktop-nav{display:none;gap:24px;align-items:center;}
+.desktop-nav a{text-decoration:none;color:var(--slate);font-weight:500;font-size:.96rem;transition:color 0.2s;}
+.desktop-nav a:hover, .desktop-nav a.active{color:var(--ink)}
+.menu{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);border:none;}
+.mobile-nav{display:grid;gap:2px;border-bottom:1px solid var(--line);background:#fff}
+.mobile-nav a{padding:14px 16px;text-decoration:none;color:var(--ink-soft);font-weight:500;border-top:1px solid var(--line)}
+.mobile-nav[hidden]{display:none}
 
-    /* CALLOUT BOXES */
-    .callout-box { background: rgba(193, 154, 91, 0.08); border-left: 0.4rem solid var(--gold); padding: 3.2rem; border-radius: 0 0.8rem 0.8rem 0; margin: 4.0rem 0; }
-    .callout-box h3 { font-family: var(--sans); font-size: 2.0rem; color: var(--brand-drk); margin-bottom: 1.2rem; font-weight: 700; display: flex; align-items: center; gap: 1.0rem; }
-    .callout-box p { font-size: 1.7rem; color: var(--text-dark); margin-bottom: 0; line-height: 1.7; }
+.article-hero { padding: 48px 0 32px; text-align: center; }
+.back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--slate); text-decoration: none; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 32px; transition: color 0.2s; }
+.back-link:hover { color: var(--ink); }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: auto; padding: 8px 14px; border-radius: 999px; background: var(--brass-tint); color: var(--brass-deep); font-size: .82rem; font-weight: 600; border: 1px solid #ecdcb8; margin-bottom: 24px; }
+h1 { margin: 0 0 16px; font-family: "Fraunces", serif; font-weight: 600; font-size: clamp(2.1rem, 4vw, 3.2rem); line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); max-width: 900px; margin-left: auto; margin-right: auto; }
+.article-meta { font-size: 0.95rem; color: var(--slate); font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 24px;}
+.article-meta i { color: var(--brass-deep); }
 
-    /* CTA SECTION */
-    .cta-card { background: var(--brand-drk); color: #fff; padding: 4.8rem 3.6rem; border-radius: 1.2rem; text-align: center; margin-top: 6.4rem; border-top: 0.4rem solid var(--gold); box-shadow: 0 1.2rem 3.2rem rgba(0,0,0,0.12); }
-    .cta-card h3 { font-family: var(--serif); font-size: 2.8rem; margin-bottom: 1.6rem; color: #fff; font-weight: 600; }
-    .cta-card p { font-size: 1.7rem; color: rgba(255,255,255,0.85); margin-bottom: 3.2rem; max-width: 54.0rem; margin-left: auto; margin-right: auto; }
-    .btn-whatsapp { display: inline-flex; align-items: center; justify-content: center; gap: 1.2rem; padding: 1.6rem 3.6rem; background: #25D366; color: #fff; border-radius: 0.6rem; font-size: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; transition: 0.3s ease; }
-    .btn-whatsapp:hover { background: #20bd5a; transform: translateY(-0.2rem); box-shadow: 0 0.8rem 2.0rem rgba(37, 211, 102, 0.25); }
+.article-wrapper { max-width: 800px; margin: 0 auto 64px; background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 48px; box-shadow: 0 10px 30px rgba(15,23,42,.04); position: relative; z-index: 10; }
+.article-wrapper p { font-size: 1.05rem; color: var(--slate); line-height: 1.8; margin-bottom: 24px; }
+.article-wrapper h2 { font-family: "Fraunces", serif; font-size: 1.8rem; color: var(--ink); margin: 48px 0 24px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+.article-wrapper ul { margin-bottom: 24px; padding-left: 24px; }
+.article-wrapper li { font-size: 1.05rem; color: var(--slate); margin-bottom: 12px; line-height: 1.7; }
+.drop-cap::first-letter { float: left; font-family: "Fraunces", serif; font-size: 4.5rem; line-height: 0.8; padding-top: 8px; padding-right: 12px; color: var(--ink); font-weight: 700; }
 
-    .site-footer { background: #111811; color: rgba(255,255,255,0.7); padding: 4.8rem 2.4rem; text-align: center; font-size: 1.4rem; border-top: 0.1rem solid rgba(255,255,255,0.08); }
+.case-file { background: #f8fafc; border: 1px solid var(--line); padding: 32px; border-radius: 12px; margin-bottom: 40px; }
+.case-file h3 { font-family: "Inter", sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--slate); margin: 0 0 16px; display: flex; align-items: center; gap: 8px; }
+.case-file p { font-family: "Fraunces", serif; font-size: 1.4rem; color: var(--ink); line-height: 1.5; margin: 0; }
 
-    @media (max-width: 768px) {
-        .article-body { padding: 3.2rem 2.4rem; }
-        .article-hero { padding-top: calc(var(--nav-h) + 4.8rem); }
-    }
-    </style>
+.callout-box { background: var(--paper-deep); border-left: 4px solid var(--blue); padding: 24px; border-radius: 0 12px 12px 0; margin: 32px 0; }
+.callout-box h4 { margin: 0 0 12px; color: var(--blue-deep); font-size: 1.1rem; display: flex; align-items: center; gap: 8px; font-family: Inter, sans-serif;}
+.callout-box p { margin: 0; color: var(--slate); font-size: 1rem; }
+.callout-box-gold { background: rgba(176,138,78,.1); border-left-color: var(--brass); }
+.callout-box-gold h4 { color: var(--brass-deep); }
+
+.final{background:linear-gradient(135deg,var(--ink),var(--ink-soft));color:#fff;border-radius:28px;padding:48px 24px;text-align:center;display:grid;gap:18px;box-shadow:0 18px 60px rgba(15,23,42,.16); max-width:860px; margin: 0 auto;}
+.final h2{font-weight:600; margin:0; font-size:clamp(1.9rem,4vw,2.8rem)}
+.final p{color:#cbd5e1;margin:0 auto; max-width:560px;}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;border-radius:14px;text-decoration:none;font-weight:700;font-size:.98rem;transition:all .15s ease}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:var(--ink-soft); transform: translateY(-2px);}
+
+footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
+.footer-grid{display:grid;gap:40px}
+.footer-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+.footer-col h4{margin:0 0 14px;color:#fff;font-family:'Inter',sans-serif;font-size:1.05rem;}
+.footer-col a{display:block;color:#94a3b8;text-decoration:none;margin-bottom:12px;font-size:0.95rem;transition:color 0.2s;}
+.footer-col a:hover{color:#fff}
+.footer-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:12px;color:#94a3b8;font-size:.85rem;line-height:1.6;}
+
+@media(min-width:980px){
+  .desktop-nav{display:flex}
+  .menu{display:none}
+  .mobile-nav{display:none !important}
+  .footer-grid{grid-template-columns:1fr 1.5fr}
+}
+@media(max-width:767px){ .article-wrapper{padding: 32px 24px;} .footer-cols{grid-template-columns:1fr 1fr;} }
+@media(max-width:480px){ .footer-cols{grid-template-columns:1fr;} }
+</style>
 </head>
 <body>
 
-<nav class="site-nav">
-    <div class="nav-inner">
-        <a href="index.html" class="nav-logo-name">Docu-Hub <em>Operations</em></a>
-        <a href="insights.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Insights</a>
-    </div>
-</nav>
-
-<header class="article-hero">
-    <div class="hero-wrap">
-        <span class="article-tag">RGD Vital Records Guide</span>
-        <h1>Fixing RGD Certificate Spelling Errors &amp; Discrepancies from Abroad</h1>
-        <div class="article-meta">
-            <span><i class="fa-regular fa-user"></i> Docu-Hub Operations Team</span> &bull; 
-            <span><i class="fa-regular fa-clock"></i> 4 Min Read</span>
-        </div>
-    </div>
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <div class="logo">DH</div><span>Docu-Hub Operations</span>
+    </a>
+    <nav class="desktop-nav">
+      <a href="passport.html">Passports</a>
+      <a href="vital.html">Vital Records</a>
+      <a href="nis.html">NIS Pensions</a>
+      <a href="insights.html" class="active">Insights</a>
+      <a href="about.html">About Us</a>
+      <a href="faq.html">FAQ</a>
+      <a href="booking.html" class="btn btn-primary" style="min-height: 40px; padding: 0 16px; font-size: 0.85rem;">Book Consultation</a>
+    </nav>
+    <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+      <i class="fa-solid fa-bars" style="font-size: 1.4rem;"></i>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" hidden>
+    <a href="passport.html">Passports</a>
+    <a href="vital.html">Vital Records</a>
+    <a href="nis.html">NIS Pensions</a>
+    <a href="insights.html" class="active">Insights</a>
+    <a href="about.html">About Us</a>
+    <a href="faq.html">FAQ</a>
+    <a href="booking.html" style="font-weight: 700; color: var(--blue-deep);">Book Consultation</a>
+  </nav>
 </header>
 
-<main class="article-container">
-    <article class="article-body">
-        <p class="lead-paragraph">A single misspelled letter or incorrect birth date on a Registrar General’s Department (RGD) vital record can halt an entire overseas immigration application, naturalization filing, or pension claim.</p>
+<main>
+<section class="article-hero">
+  <div class="container">
+    <div style="text-align: left; max-width: 900px; margin: 0 auto;">
+        <a href="insights.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Insights</a>
+    </div>
+    <span class="eyebrow">Client Case Study</span>
+    <h1>The Cost of a Single Letter: Fixing RGD Spelling Errors from Abroad</h1>
+    <div class="article-meta">
+        <span><i class="fa-regular fa-folder-open"></i> RGD Corrections</span> &bull; 
+        <span><i class="fa-regular fa-clock"></i> 4 Min Read</span>
+    </div>
+  </div>
+</section>
 
-        <p>Because handwritten hospital and parish ledgers in Jamaica were manually transcribed into national registers over past decades, typographical errors are remarkably common. If your legal name on your US/UK driver's license or foreign passport does not match your official Jamaican birth certificate character-for-character, government agencies will reject your submission until the record is officially corrected by RGD.</p>
+<article class="article-wrapper">
+    <div class="case-file">
+        <h3><i class="fa-solid fa-briefcase"></i> The Situation</h3>
+        <p>Marcus, a resident of London, was in the final stages of sponsoring his mother’s UK Settlement Visa. The entire package was ready—until the Home Office rejected it. The issue? His Jamaican RGD birth certificate listed his name as "Mrcus." A single omitted letter broke the chain of evidence, threatening to derail a year of legal work.</p>
+    </div>
 
-        <h2>1. Common Types of RGD Errors</h2>
-        <ul class="custom-list">
-            <li><strong>Phonetic Name Misspellings:</strong> Common phonetic substitutions (e.g., "Smyth" recorded as "Smith", or "Barrett" missing a final 't').</li>
-            <li><strong>Missing Middle Names:</strong> Omission of secondary given names present on school, baptismal, or immunization records.</li>
-            <li><strong>Inverted Dates of Birth:</strong> Transposition of month and day digits during manual ledger transcription.</li>
-            <li><strong>Parent Name Discrepancies:</strong> Mother’s maiden name misspelled or incorrectly recorded as her married name.</li>
-        </ul>
+    <p class="drop-cap">A single mismatched character on a Registrar General’s Department (RGD) vital record is not just a minor typo; in the eyes of foreign immigration authorities, it is a complete systemic failure of identity.</p>
 
-        <h2>2. Correction Pathways: Form vs. Deed Poll</h2>
-        <p>The method required to update your document depends on the fundamental nature of the discrepancy:</p>
+    <p>Because handwritten hospital and parish ledgers in Jamaica were manually transcribed into national registers over past decades, clerical errors are remarkably common. Common phonetic substitutions (like "Smyth" instead of "Smith") or inverted birth dates happen daily. Unfortunately, government agencies will ruthlessly reject your submissions until the record is officially corrected at the source.</p>
 
-        <div class="callout-box">
-            <h3><i class="fa-solid fa-file-signature" style="color: var(--gold);"></i> Correction of Error Application (Form 16)</h3>
-            <p>Used when correcting a clear typographical or clerical mistake made by the registrar at the time of birth or marriage. This pathway requires statutory declarations and secondary documentary proof (such as an old baptismal certificate, primary school register, or immunization card) confirming the correct name was used consistently since childhood.</p>
-        </div>
+    <h2>The Bureaucratic Wall</h2>
+    <p>Marcus panicked. He assumed he had to book an emergency flight to Kingston to argue with a clerk over a typo. He tried calling the RGD from the UK, but could not get a definitive answer on how to process a "Form 16" (Correction of Error) from overseas. </p>
 
-        <p>If you are attempting to make a fundamental change to a name rather than rectifying a clerical mistake, the RGD will require a formal <strong>Deed Poll</strong> or <strong>Re-Registration</strong> process instead.</p>
+    <div class="callout-box callout-box-gold">
+        <h4><i class="fa-solid fa-file-signature"></i> The Form 16 Requirement</h4>
+        <p>A Correction of Error application requires precise statutory declarations and secondary documentary proof (like an old baptismal certificate or primary school register) confirming the correct name was used consistently since childhood. These affidavits must be notarized perfectly.</p>
+    </div>
 
-        <h2>3. The Overseas Challenge: Statutory Declarations</h2>
-        <p>Submitting an RGD Correction of Error application from abroad presents specific administrative hurdles:</p>
-        <ul class="custom-list">
-            <li><strong>Notary &amp; Declarant Verification:</strong> Declarations signed outside Jamaica must be executed before a Notary Public or Jamaican Consular Officer using precise statutory legal wording.</li>
-            <li><strong>Original Physical Proof:</strong> The RGD strictly requires original or certified secondary historical evidence confirming the correct spelling.</li>
-            <li><strong>Tracking File Progress:</strong> Mail-in application files can linger in RGD archival review queues for months without status updates.</li>
-        </ul>
+    <p>Submitting this from abroad presents massive operational hurdles. Declarations signed outside Jamaica must be executed before a Notary Public using exact statutory wording. Furthermore, mailing an application file blindly to the RGD often results in the file lingering in archival review queues for months without status updates.</p>
 
-        <h2>4. How Docu-Hub Operations Resolves Your RGD Correction</h2>
-        <p>Rather than letting your correction file sit unmonitored at the RGD Head Office, Docu-Hub Operations manages the entire correction lifecycle directly on the ground:</p>
+    <h2>The Proxy Solution</h2>
+    <p>Instead of flying to Jamaica, Marcus engaged a registered administrative proxy. Rather than letting a mailed correction file sit unmonitored at the RGD Head Office, a local proxy takes over the operational logistics on the ground:</p>
 
-        <ul class="custom-list">
-            <li><strong>Pre-Submission Audit:</strong> We vet your overseas affidavits and historical proof to confirm they meet RGD legal evidentiary standards before lodgment.</li>
-            <li><strong>In-Person Archival Search:</strong> Our team physically lodges the Correction of Error package at Twickenham Park, St. Catherine, ensuring it enters the correct examiner queue.</li>
-            <li><strong>On-Site Tracking:</strong> We conduct on-the-ground check-ins with RGD officers to verify that the register ledger entry is updated smoothly.</li>
-            <li><strong>New Certificate Issue &amp; Delivery:</strong> Once corrected, we collect your fresh, official unabridged certificates and dispatch them directly to your home abroad via signature courier.</li>
-        </ul>
+    <ul>
+        <li><strong>Pre-Submission Audit:</strong> A proxy provides the exact affidavit templates. Once notarized overseas, the proxy audits the scans to ensure they meet RGD evidentiary standards before the client spends money on international shipping.</li>
+        <li><strong>In-Person Archival Lodgment:</strong> Upon receiving the physical packet, local agents manually lodge the Correction of Error at Twickenham Park, ensuring it bypasses the general mail room and enters the correct examiner queue.</li>
+        <li><strong>On-Site Tracking:</strong> Proxies conduct weekly on-the-ground check-ins with RGD officers to verify the ledger entry is successfully updated.</li>
+    </ul>
 
-        <div class="cta-card">
-            <h3>Have a Name Discrepancy on Your RGD Certificate?</h3>
-            <p>Don't let a minor spelling mistake stop your visa or passport application. Let our proxies handle your RGD correction directly in Jamaica.</p>
-            <a href="https://wa.me/18765612614" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp" style="font-size: 2.0rem;"></i> Start RGD Correction Review</a>
-        </div>
-    </article>
+    <p>Within weeks, the RGD ledger was corrected. The proxy retrieved Marcus's fresh, unabridged certificates and dispatched them via DHL directly to his flat in London. His mother's visa was successfully approved.</p>
+</article>
+
+<div class="container" style="margin-bottom: 80px;">
+    <div class="final">
+      <span class="eyebrow" style="margin:auto;background:rgba(176,138,78,.18);color:#f3d9a4;border-color:rgba(176,138,78,.35)">Connect Instantly</span>
+      <h2>Have a Name Discrepancy?</h2>
+      <p>Don't let a minor spelling mistake stop your visa application. Book an intake consultation and let our proxies handle the operational logistics directly in Jamaica.</p>
+      <div style="margin-top: 12px;">
+        <a class="btn" href="booking.html" style="background:#fff; color:var(--ink); min-height: 56px; border: none;">
+          <i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book a Consultation
+        </a>
+      </div>
+    </div>
+</div>
 </main>
 
-<footer class="site-footer">
-    <p>&copy; 2026 Docu-Hub Operations Services. Registered COJ #15602/2025. All Rights Reserved.</p>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3 style="margin:0 0 10px;color:#fff;font-family:'Fraunces',serif;font-weight:600">Docu-Hub Operations</h3>
+        <p style="margin:0;color:#94a3b8">Independent administrative proxy and secure online application assistance for the Jamaican diaspora.</p>
+      </div>
+      <div class="footer-col">
+          <h4>Legal &amp; Connect</h4>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="booking.html" style="display:flex; align-items:center; gap:8px;">
+            <i class="fa-regular fa-calendar-days"></i> Book Consultation
+          </a>
+          <a href="https://pin.it/12UYV8I0P" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; color: #e60023;">
+            <i class="fa-brands fa-pinterest"></i> Follow on Pinterest
+          </a>
+          <a href="https://www.linkedin.com/in/docuhubservices" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; color: #0a66c2;">
+            <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>Disclaimer: Docu-Hub Operations Services is a private, registered administrative proxy service. We are not a government agency and are not affiliated with PICA, RGD, or MLSS/NIS.</div>
+      <div><i class="fa-solid fa-building-shield" style="margin-right: 6px; color: var(--brass);"></i> Registered with the Companies Office of Jamaica (COJ): #15602/2025 | OIC Data Controller Verified.</div>
+      <div>&copy; 2026 Docu-Hub Operations Services. All rights reserved.</div>
+    </div>
+  </div>
 </footer>
+
+<script>
+var btn = document.getElementById('menuBtn');
+var nav = document.getElementById('mobileNav');
+btn.addEventListener('click', function(){
+var isHidden = nav.hasAttribute('hidden');
+if(isHidden){ nav.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); }
+else { nav.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); }
+});
+</script>
 
 </body>
 </html>
