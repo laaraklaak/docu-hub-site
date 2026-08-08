@@ -51,10 +51,10 @@
 }
 </script>
 
-<!-- ===== Fonts & Icons ===== -->
+<!-- ===== Fonts & Icons (FIXED AMPERSAND) ===== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
@@ -86,9 +86,22 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdro
 .desktop-nav{display:none;gap:28px}
 .desktop-nav a{text-decoration:none;color:var(--slate);font-weight:500;font-size:.96rem;transition:color 0.2s;}
 .desktop-nav a:hover, .desktop-nav a.active{color:var(--ink)}
+
+/* ===== NEW: Dropdown Menu CSS ===== */
+.dropdown { position: relative; display: inline-block; }
+.dropbtn { background: transparent; border: none; color: var(--slate); font-family: 'Inter', sans-serif; font-size: .96rem; font-weight: 500; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+.dropdown:hover .dropbtn { color: var(--ink); }
+.dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: #fff; min-width: 200px; box-shadow: 0 10px 30px rgba(15,23,42,.1); border-radius: 12px; border: 1px solid var(--line); z-index: 100; overflow: hidden; margin-top: 10px; }
+.dropdown-content a { color: var(--slate); padding: 12px 16px; text-decoration: none; display: block; font-size: .9rem; border-bottom: 1px solid var(--line); transition: background 0.2s, color 0.2s; }
+.dropdown-content a:last-child { border-bottom: none; }
+.dropdown-content a:hover { background-color: var(--paper-deep); color: var(--ink); }
+.dropdown:hover .dropdown-content { display: block; }
+/* ================================== */
+
 .menu{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);border:none;}
 .mobile-nav{display:grid;gap:2px;border-bottom:1px solid var(--line);background:#fff}
 .mobile-nav a{padding:14px 16px;text-decoration:none;color:var(--ink-soft);font-weight:500;border-top:1px solid var(--line)}
+.mobile-nav .mobile-sub{padding-left:32px; font-size:0.9rem; color:var(--slate);}
 .mobile-nav[hidden]{display:none}
 
 /* Hero Section */
@@ -129,7 +142,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 .footer-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:12px;color:#94a3b8;font-size:.85rem;line-height:1.6;}
 
 @media(min-width:980px){
-  .desktop-nav{display:flex}
+  .desktop-nav{display:flex; align-items:center;}
   .menu{display:none}
   .mobile-nav{display:none !important}
   .footer-grid{grid-template-columns:1fr 1.5fr}
@@ -164,8 +177,8 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
       </div>
       <a href="insights.html">Insights</a>
       <a href="about.html">About Us</a>
-      <a href="faq.html">FAQ</a>
-      <a href="booking.html" class="btn btn-primary" style="min-height: 40px; padding: 0 16px; font-size: 0.85rem;">Book Consultation</a>
+      <a href="faq.html" class="active">FAQ</a>
+      <a href="booking.html" class="btn btn-primary" style="min-height: 40px; padding: 0 16px; font-size: 0.85rem; color: #fff;">Book Consultation</a>
     </nav>
     
     <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
