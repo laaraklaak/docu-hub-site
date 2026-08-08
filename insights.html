@@ -7,6 +7,11 @@
 <title>Advisory & Insights Desk | Docu-Hub Operations</title>
 <meta name="description" content="Expert guides, travel warnings, and administrative strategies to help the Jamaican diaspora navigate government processes from overseas.">
 
+<!-- ===== Security Headers ===== -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://images.unsplash.com data:; connect-src 'self';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+
 <!-- ===== Fonts & Icons ===== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,14 +37,15 @@ body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--i
 h1,h2,h3,.brand span,.step-badge,.eyebrow{font-family:"Fraunces",Georgia,serif}
 .container{width:min(1120px,calc(100% - 32px));margin:auto}
 a{-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:2px solid var(--blue-deep);outline-offset:2px}
 
-/* Header & Nav */
+/* Header & Nav (Master Template) */
 header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav{display:flex;justify-content:space-between;align-items:center;min-height:72px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:700;text-decoration:none;color:inherit}
 .brand span{font-size:1.02rem;font-weight:600;letter-spacing:-0.01em}
 .logo{width:38px;height:38px;border-radius:11px;background:var(--ink);color:var(--brass-tint);display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:600;font-size:.92rem;flex:none}
-.desktop-nav{display:none;gap:28px}
+.desktop-nav{display:none;gap:24px;align-items:center;}
 .desktop-nav a{text-decoration:none;color:var(--slate);font-weight:500;font-size:.96rem;transition:color 0.2s;}
 .desktop-nav a:hover, .desktop-nav a.active{color:var(--ink)}
 .menu{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);border:none;}
@@ -82,10 +88,7 @@ h1{margin:0 0 16px;font-weight:600;font-size:clamp(2.1rem,5vw,3.6rem);line-heigh
 .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 32px; }
 .blog-card { background: #fff; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 4px 12px rgba(15,23,42,.03); display: flex; flex-direction: column; transition: all 0.3s ease; text-decoration: none; color: inherit; }
 .blog-card:hover { transform: translateY(-4px); border-color: #cbd5e1; box-shadow: 0 10px 24px rgba(15,23,42,.06); }
-
-/* Updated Image Panel */
 .blog-img { width: 100%; height: 220px; object-fit: cover; border-bottom: 1px solid var(--line); display: block; }
-
 .blog-body { padding: 32px 24px; display: flex; flex-direction: column; flex-grow: 1; }
 .blog-meta { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; display: flex; justify-content: space-between; color: var(--slate); }
 .blog-meta .cat { color: var(--blue); }
@@ -100,17 +103,16 @@ h1{margin:0 0 16px;font-weight:600;font-size:clamp(2.1rem,5vw,3.6rem);line-heigh
 .final{background:linear-gradient(135deg,var(--ink),var(--ink-soft));color:#fff;border-radius:28px;padding:48px 24px;text-align:center;display:grid;gap:18px;box-shadow:0 18px 60px rgba(15,23,42,.16); max-width:860px; margin: 0 auto;}
 .final h2{font-weight:600; margin:0; font-size:clamp(1.9rem,4vw,2.8rem)}
 .final p{color:#cbd5e1;margin:0 auto; max-width:560px;}
+.final-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:auto}
 
 /* Buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;border-radius:14px;text-decoration:none;font-weight:700;font-size:.98rem;transition:all .15s ease}
 .btn-primary{background:var(--blue);color:#fff}
 .btn-primary:hover{background:var(--blue-deep); transform: translateY(-2px);}
-.btn-whatsapp{background:#25D366;color:#fff}
-.btn-whatsapp:hover{background:#1eb954; transform: translateY(-2px);}
 .btn-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.4);}
 .btn-outline:hover{background:rgba(255,255,255,0.1); border-color:#fff; transform: translateY(-2px);}
 
-/* Footer */
+/* Footer (Master Template) */
 footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 .footer-grid{display:grid;gap:40px}
 .footer-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
@@ -149,6 +151,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
       <a href="insights.html" class="active">Insights</a>
       <a href="about.html">About Us</a>
       <a href="faq.html">FAQ</a>
+      <a href="booking.html" class="btn btn-primary" style="background:var(--ink); min-height: 40px; padding: 0 16px; font-size: 0.85rem;">Book Consultation</a>
     </nav>
     
     <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
@@ -160,9 +163,10 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
     <a href="passport.html">Passports</a>
     <a href="vital.html">Vital Records</a>
     <a href="nis.html">NIS Pensions</a>
-    <a href="insights.html">Insights</a>
+    <a href="insights.html" class="active">Insights</a>
     <a href="about.html">About Us</a>
     <a href="faq.html">FAQ</a>
+    <a href="booking.html" style="font-weight: 700; color: var(--blue-deep);">Book Consultation</a>
   </nav>
 </header>
 
@@ -208,7 +212,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
             
             <!-- Card 1: PICA Heat Damage -->
             <a href="heat-damage-article.html" class="blog-card filter-item" data-category="pica">
-                <img src="assets/heat-damaged.png" alt="Passport microchip scanner" class="blog-img">
+                <img src="https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=600&q=80" alt="Passport microchip scanner" class="blog-img">
                 <div class="blog-body">
                     <div class="blog-meta">
                         <span class="cat">Passports (PICA)</span>
@@ -222,7 +226,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 
             <!-- Card 2: PICA Washed/Torn -->
             <a href="washed-article.html" class="blog-card filter-item" data-category="pica">
-                <img src="assets/water-damaged.png" alt="Water damaged paper document" class="blog-img">
+                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=600&q=80" alt="Water damaged paper document" class="blog-img">
                 <div class="blog-body">
                     <div class="blog-meta">
                         <span class="cat">Passports (PICA)</span>
@@ -236,7 +240,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 
             <!-- Card 3: PICA Lost Overseas -->
             <a href="passport-lost-article.html" class="blog-card filter-item" data-category="pica">
-                <img src="assets/lost-stolen.png" alt="Traveler looking at departure board" class="blog-img">
+                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80" alt="Traveler looking at departure board" class="blog-img">
                 <div class="blog-body">
                     <div class="blog-meta">
                         <span class="cat">Passports (PICA)</span>
@@ -250,7 +254,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 
             <!-- Card 4: RGD Missing Father -->
             <a href="missing-father-name-article.html" class="blog-card filter-item" data-category="rgd">
-                <img src="assets/featured.webp" alt="Pen resting on official paperwork" class="blog-img">
+                <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=600&q=80" alt="Pen resting on official paperwork" class="blog-img">
                 <div class="blog-body">
                     <div class="blog-meta">
                         <span class="cat">Vital Records (RGD)</span>
@@ -264,7 +268,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 
             <!-- Card 5: RGD Late Registration -->
             <a href="fixing-rgd-spelling-article.html" class="blog-card filter-item" data-category="rgd">
-                <img src="assets/records.png" alt="Filling out a detailed form" class="blog-img">
+                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80" alt="Filling out a detailed form" class="blog-img">
                 <div class="blog-body">
                     <div class="blog-meta">
                         <span class="cat">Vital Records (RGD)</span>
@@ -288,17 +292,17 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
       <span class="eyebrow" style="margin:auto;background:rgba(176,138,78,.18);color:#f3d9a4;border-color:rgba(176,138,78,.35)">Connect Instantly</span>
       <h2>Need an On-The-Ground Representative?</h2>
       <p>Skip the international hold times and the bureaucratic red tape. We handle the government agency lines and manual archival lookups so you don't have to fly home.</p>
-      <div style="margin-top: 12px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;">
+      <div class="final-actions">
         <a class="btn btn-outline" href="index.html#services" style="min-height: 56px;">Explore Proxy Services</a>
-        <a class="btn btn-whatsapp" href="https://wa.me/18765612614" target="_blank" style="min-height: 56px;">
-          <i class="fa-brands fa-whatsapp" style="margin-right: 8px; font-size: 1.2rem;"></i> Chat on WhatsApp
+        <a class="btn" href="booking.html" style="background:#fff; color:var(--ink); min-height: 56px; border: none;">
+          <i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book Consultation
         </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- UNIFIED 3-COLUMN FOOTER -->
+<!-- UNIFIED 3-COLUMN FOOTER WITH PINTEREST -->
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -326,11 +330,14 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
         </div>
         
         <div class="footer-col">
-          <h4>Legal &amp; Contact</h4>
+          <h4>Legal &amp; Connect</h4>
           <a href="privacy.html">Privacy Policy</a>
           <a href="terms.html">Terms of Service</a>
-          <a href="mailto:admin@dochubservices.com" style="display:flex; align-items:center; gap:8px;">
-            <i class="fa-regular fa-envelope"></i> Email Us
+          <a href="booking.html" style="display:flex; align-items:center; gap:8px;">
+            <i class="fa-regular fa-calendar-days"></i> Book Consultation
+          </a>
+          <a href="https://pin.it/12UYV8I0P" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; color: #e60023;">
+            <i class="fa-brands fa-pinterest"></i> Follow on Pinterest
           </a>
         </div>
 
