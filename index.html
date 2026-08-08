@@ -136,13 +136,55 @@ section{padding:48px 0}
 .section-head p{margin:0;color:var(--slate);font-size:1.05rem;}
 .section-head .kicker{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brass-deep)}
 
-/* Services Grid */
-.service-list{display:grid;gap:20px}
-.service-item{display:grid;grid-template-columns:80px 1fr;gap:20px;align-items:center;padding:24px;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:0 4px 12px rgba(15,23,42,.03);transition:all 0.3s ease;text-decoration:none;color:inherit;}
-.service-item:hover{border-color:#cbd5e1;box-shadow:0 10px 30px rgba(15,23,42,.08); transform:translateY(-4px);}
-.service-item img{width:80px;height:80px;object-fit:cover;border-radius:16px}
-.badge{padding:6px 10px;border-radius:999px;font-size:.76rem;font-weight:700;white-space:nowrap}
-.badge-gold{background:var(--brass-tint);color:var(--brass-deep);}
+/* ====== Updated Services Grid (Forced 2 Columns with Larger Images) ====== */
+.service-list {
+  display: grid;
+  grid-template-columns: 1fr; /* Default mobile stack */
+  gap: 28px; /* Generous spacing between cards */
+  max-width: 960px; /* Controls how wide the grid stretches */
+  margin: 0 auto;
+}
+
+/* Base Service Item Style */
+.service-item {
+  display: grid;
+  /* UPDATED: Increased mobile grid column to match larger image */
+  grid-template-columns: 120px 1fr; 
+  gap: 24px;
+  align-items: center;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(15,23,42,.03);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+}
+.service-item:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 12px 36px rgba(15,23,42,.08); 
+  transform: translateY(-4px);
+}
+.service-item img {
+  /* UPDATED: Increased mobile image size */
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 18px;
+}
+.badge {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.badge-gold {
+  background: var(--brass-tint);
+  color: var(--brass-deep);
+}
+/* ======================================================== */
 
 /* About Section */
 .card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:32px;box-shadow:0 10px 30px rgba(15,23,42,.04)}
@@ -203,10 +245,26 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:64px 0 32px}
   .eyebrow{margin:0 0 24px 0;}
   .lead{margin:0 0 32px 0;}
   .hero-actions{justify-content:flex-start;}
-  .service-list{grid-template-columns:repeat(3, 1fr)}
-  .service-item{grid-template-columns:1fr;text-align:center;justify-items:center;padding:32px 24px;}
-  .service-item img{width:100px;height:100px;margin-bottom:8px;}
-  .service-item .badge{margin:12px auto 0;display:inline-block;}
+  
+  /* Strictly forces a 2x2 layout with wide cards */
+  .service-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+  }
+  
+  .service-item {
+    /* UPDATED: Increased desktop grid column to match larger image */
+    grid-template-columns: 140px 1fr; 
+    padding: 40px 36px; /* Makes the cards feel substantial and wide */
+    text-align: left;
+    align-items: center;
+  }
+  
+  .service-item img {
+    /* UPDATED: Increased desktop image size */
+    width: 140px;
+    height: 140px;
+  }
+
   .about-grid{grid-template-columns:1.4fr 1fr}
   .about-stats{align-content:start}
   .footer-grid{grid-template-columns:1fr 1.5fr}
@@ -300,40 +358,49 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:64px 0 32px}
     
     <div class="service-list">
       
-      <!-- Link to passport.html -->
+      <!-- 1. PICA Passports -->
       <a href="passport.html" class="service-item">
         <img src="assets/pica.webp" alt="Passport Document">
         <div>
-          <strong style="font-size: 1.2rem; display:block;">PICA Passports</strong>
-          <p style="margin:6px 0 12px;color:var(--slate)">Renewals, minor applications, name changes, and lost passports.</p>
+          <strong style="font-size: 1.25rem; display:block; color:var(--ink);">PICA Passports</strong>
+          <p style="margin:6px 0 12px; color:var(--slate)">Renewals, minor applications, name changes, and lost passports.</p>
           <span class="badge badge-gold">View Checklists &rarr;</span>
         </div>
       </a>
 
-      <!-- Link to vital.html -->
+      <!-- 2. RGD Vital Records -->
       <a href="vital.html" class="service-item">
         <img src="assets/rgd.webp" alt="Birth Certificate Paperwork">
         <div>
-          <strong style="font-size: 1.2rem; display:block;">RGD Vital Records</strong>
-          <p style="margin:6px 0 12px;color:var(--slate)">Archival searches and legal corrections for birth and marriage records.</p>
+          <strong style="font-size: 1.25rem; display:block; color:var(--ink);">RGD Vital Records</strong>
+          <p style="margin:6px 0 12px; color:var(--slate)">Archival searches and legal corrections for birth and marriage records.</p>
           <span class="badge badge-gold">View Checklists &rarr;</span>
         </div>
       </a>
 
-      <!-- Link to nis.html -->
+      <!-- 3. NIS Pensions -->
       <a href="nis.html" class="service-item">
         <img src="assets/nis-suite.png" alt="NIS Pension Statement">
         <div>
-          <strong style="font-size: 1.2rem; display:block;">NIS Pensions &amp; Claims</strong>
-          <p style="margin:6px 0 12px;color:var(--slate)">Contribution tracking, voluntary setups, and retirement/funeral claims.</p>
+          <strong style="font-size: 1.25rem; display:block; color:var(--ink);">NIS Pensions &amp; Claims</strong>
+          <p style="margin:6px 0 12px; color:var(--slate)">Contribution tracking, voluntary setups, and retirement/funeral claims.</p>
           <span class="badge badge-gold">View Checklists &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 4. TAJ Motor Vehicle -->
+      <a href="taj-renewal.html" class="service-item">
+        <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=600&q=80" alt="Car Steering Wheel">
+        <div>
+          <strong style="font-size: 1.25rem; display:block; color:var(--ink);">TAJ Motor Vehicle</strong>
+          <p style="margin:6px 0 12px; color:var(--slate)">Digital road tax renewals, fitness audits, and TTMS ticket checks.</p>
+          <span class="badge badge-gold">View Guide &rarr;</span>
         </div>
       </a>
 
     </div>
   </div>
 </section>
-
 <!-- HOW IT WORKS -->
 <section id="how">
   <div class="container">
