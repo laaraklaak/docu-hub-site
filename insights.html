@@ -1,197 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-JM">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Advisory & Insights Desk &mdash; Docu-Hub Operations</title>
-    <meta name="description" content="Expert guides, travel warnings, and administrative strategies to help the Jamaican diaspora navigate government processes from overseas.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-    :root {
-        --bg-light:   #EAECE9;
-        --ivory:      #FDFBF7;
-        --brand-drk:  #1E2B1D; 
-        --brand-mid:  #3A4F38;
-        --gold:       #C19A5B; 
-        --gold-lt:    #DAB87F;
-        --text-dark:  #111410; 
-        --text-mid:   #3f463e; 
-        --sans:       'Jost', Arial, sans-serif; 
-        --serif:      'Playfair Display', Georgia, serif;
-        --nav-h:      7.5rem;
-        --border-light: rgba(0, 0, 0, 0.08);
-        --border-glass: rgba(255, 255, 255, 0.1);
-        --shadow-soft:  0 0.4rem 2.0rem rgba(0, 0, 0, 0.03);
-        --shadow-md:    0 0.8rem 2.4rem rgba(0, 0, 0, 0.06);
-        --shadow-nav:   0 0.4rem 2.0rem rgba(0, 0, 0, 0.20);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 62.5%; }
-    body { font-family: var(--sans); font-size: 1.6rem; font-weight: 500; background: var(--bg-light); color: var(--text-dark); line-height: 1.65; overflow-x: hidden; }
-    a { text-decoration: none; color: inherit; transition: 0.3s ease; }
-    img { display: block; width: 100%; height: 100%; object-fit: cover; }
-    .wrap { max-width: 110.0rem; margin: 0 auto; padding: 0 2.4rem; }
+<title>Advisory & Insights Desk | Docu-Hub Operations</title>
+<meta name="description" content="Expert guides, travel warnings, and administrative strategies to help the Jamaican diaspora navigate government processes from overseas.">
 
-    /* GLOBAL NAVIGATION */
-    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: rgba(30, 43, 29, 0.98); backdrop-filter: blur(1.2rem); border-bottom: 0.1rem solid var(--border-glass); transition: 0.3s; }
-    .nav-inner { max-width: 115.0rem; margin: 0 auto; padding: 0 2.4rem; height: 100%; display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo-name { font-family: var(--sans); font-size: clamp(1.8rem, 2.2vw, 2.4rem); font-weight: 700; color: #fff; letter-spacing: 0.02em; }
-    .nav-logo-name em { color: var(--gold-lt); font-style: italic; font-weight: 500; }
+<!-- ===== Fonts & Icons ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    .nav-links { display: none; list-style: none; align-items: center; gap: 2.4rem; }
-    .nav-links > li > a { font-size: 1.3rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 0.8rem 1.6rem; border-radius: 0.4rem; display: flex; align-items: center; gap: 0.8rem; }
-    .nav-links > li > a:hover, .nav-links > li > a.active { color: #fff; background: rgba(255,255,255,0.1); }
+<style>
+:root{
+  --ink:#0f172a;
+  --ink-soft:#1e293b;
+  --slate:#475467;
+  --line:#e2e8f0;
+  --paper:#f5f7fb;
+  --paper-deep:#e9eff8;
+  --blue:#2563eb;
+  --blue-deep:#1d4ed8;
+  --brass:#b08a4e;
+  --brass-deep:#8a6a37;
+  --brass-tint:#faf3e6;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;}
+h1,h2,h3,.brand span,.step-badge,.eyebrow{font-family:"Fraunces",Georgia,serif}
+.container{width:min(1120px,calc(100% - 32px));margin:auto}
+a{-webkit-tap-highlight-color:transparent}
 
-    .has-dropdown { position: relative; }
-    .dropdown-menu { position: absolute; top: 100%; left: 0; background: var(--brand-drk); min-width: 26.0rem; padding: 1.6rem 0; border-radius: 0 0 0.8rem 0.8rem; box-shadow: var(--shadow-nav); border: 0.1rem solid var(--border-glass); border-top: none; opacity: 0; visibility: hidden; transform: translateY(1.0rem); transition: all 0.3s ease; list-style: none; }
-    .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-    .dropdown-menu li a { display: block; padding: 1.2rem 2.4rem; font-size: 1.4rem; color: rgba(255,255,255,0.85); text-transform: none; letter-spacing: 0.05em; font-weight: 500; transition: 0.3s; }
-    .dropdown-menu li a:hover { color: var(--gold-lt); background: rgba(255,255,255,0.05); padding-left: 2.8rem; }
+/* Header & Nav */
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;align-items:center;min-height:72px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700;text-decoration:none;color:inherit}
+.brand span{font-size:1.02rem;font-weight:600;letter-spacing:-0.01em}
+.logo{width:38px;height:38px;border-radius:11px;background:var(--ink);color:var(--brass-tint);display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:600;font-size:.92rem;flex:none}
+.desktop-nav{display:none;gap:28px}
+.desktop-nav a{text-decoration:none;color:var(--slate);font-weight:500;font-size:.96rem;transition:color 0.2s;}
+.desktop-nav a:hover, .desktop-nav a.active{color:var(--ink)}
+.menu{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);border:none;}
+.mobile-nav{display:grid;gap:2px;border-bottom:1px solid var(--line);background:#fff}
+.mobile-nav a{padding:14px 16px;text-decoration:none;color:var(--ink-soft);font-weight:500;border-top:1px solid var(--line)}
+.mobile-nav[hidden]{display:none}
 
-    .hamburger { display: flex; flex-direction: column; gap: 0.6rem; background: none; border: none; padding: 0.5rem; cursor: pointer; z-index: 950; }
-    .hamburger span { width: 2.4rem; height: 0.2rem; background: #fff; transition: 0.3s; }
+/* Hero Section */
+.hero{padding:64px 0 48px; text-align:center;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;margin:auto;padding:8px 14px;border-radius:999px;background:var(--brass-tint);color:var(--brass-deep);font-size:.82rem;font-weight:600;border:1px solid #ecdcb8; margin-bottom:24px;}
+h1{margin:0 0 16px;font-weight:600;font-size:clamp(2.1rem,5vw,3.6rem);line-height:1.1;letter-spacing:-0.02em; color:var(--ink);}
+.lead{margin:0 auto 32px;max-width:720px;color:var(--slate);font-size:1.05rem;line-height:1.7;}
 
-    @media (max-width: 899px) {
-        .nav-links { display: none; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: var(--brand-drk); padding: 3.2rem 2.4rem; gap: 1.6rem; box-shadow: var(--shadow-nav); border-bottom: 0.1rem solid var(--border-glass); }
-        .site-nav.open .nav-links { display: flex; }
-        .nav-links > li { width: 100%; }
-        .nav-links > li > a { width: 100%; justify-content: space-between; padding: 1.4rem 1.6rem; font-size: 1.4rem; }
-        .dropdown-menu { position: static; box-shadow: none; border: none; background: rgba(255,255,255,0.03); border-radius: 0.4rem; margin-top: 0.8rem; padding: 0.8rem 0; display: none; opacity: 1; visibility: visible; transform: none; }
-        .has-dropdown.mobile-open .dropdown-menu { display: block; }
-        .has-dropdown.mobile-open .dropdown-toggle i { transform: rotate(180deg); color: var(--gold-lt); }
-        .dropdown-toggle i { transition: transform 0.3s ease; }
-        .dropdown-menu li a { padding: 1.2rem 1.6rem 1.2rem 3.2rem; font-size: 1.5rem; }
-        .site-nav.open .hamburger span:nth-child(1) { transform: translateY(0.8rem) rotate(45deg); }
-        .site-nav.open .hamburger span:nth-child(2) { opacity: 0; }
-        .site-nav.open .hamburger span:nth-child(3) { transform: translateY(-0.8rem) rotate(-45deg); }
-    }
-    @media (min-width: 900px) { .hamburger { display: none !important; } .nav-links { display: flex !important; } }
+/* Directory Filters */
+.directory-section { padding: 32px 0 80px; }
+.filter-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 48px; }
+.filter-btn { background: #fff; border: 1px solid var(--line); color: var(--slate); padding: 10px 24px; border-radius: 999px; font-family: Inter, sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(15,23,42,.02); }
+.filter-btn:hover { border-color: var(--slate); color: var(--ink); }
+.filter-btn.active { background: var(--ink); color: #fff; border-color: var(--ink); box-shadow: 0 4px 12px rgba(15,23,42,.1); }
 
-    /* DIRECTORY HERO */
-    .directory-hero { padding-top: calc(var(--nav-h) + 8.0rem); padding-bottom: 6.4rem; background: var(--brand-drk); color: #fff; text-align: center; border-bottom: 0.4rem solid var(--gold); }
-    .directory-tag { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold-lt); font-weight: 700; display: block; margin-bottom: 1.6rem; }
-    .directory-hero h1 { font-family: var(--serif); font-size: clamp(3.6rem, 5vw, 5.2rem); font-weight: 600; margin-bottom: 1.6rem; letter-spacing: -0.01em; }
-    .directory-hero p { font-size: clamp(1.6rem, 2vw, 1.8rem); color: rgba(255,255,255,0.85); max-width: 75.0rem; margin: 0 auto; line-height: 1.7; font-weight: 400; }
+/* Featured Article Spotlight */
+.featured-article { display: flex; flex-direction: column; background: #fff; border-radius: 22px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 10px 30px rgba(15,23,42,.04); margin-bottom: 64px; text-decoration: none; color: inherit; transition: transform 0.3s ease; }
+.featured-article:hover { transform: translateY(-4px); border-color: #cbd5e1; box-shadow: 0 16px 40px rgba(15,23,42,.08); }
+.featured-img-box { width: 100%; height: 280px; background: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1622675363311-3e1904dc1885?auto=format&fit=crop&w=1200&q=80') center/cover; position: relative; }
+.featured-badge { position: absolute; top: 24px; left: 24px; background: var(--brass-tint); color: var(--brass-deep); padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+.featured-body { padding: 40px 32px; display: flex; flex-direction: column; justify-content: center; }
+.featured-meta { font-size: 0.9rem; color: var(--slate); font-weight: 600; margin-bottom: 16px; display: flex; gap: 16px; }
+.featured-meta .cat { color: var(--blue); }
+.featured-body h2 { font-family: "Fraunces", serif; font-size: clamp(2rem, 3vw, 2.6rem); margin: 0 0 16px; color: var(--ink); line-height: 1.2; }
+.featured-body p { font-size: 1.05rem; color: var(--slate); margin: 0 0 24px; line-height: 1.7; }
+.btn-featured { display: inline-flex; align-items: center; gap: 8px; font-size: 0.95rem; font-weight: 700; color: var(--blue-deep); transition: 0.3s; }
 
-    /* DIRECTORY CONTAINER & FILTERS */
-    .directory-section { padding: 6.4rem 0 10.0rem; background: var(--ivory); }
-    
-    .filter-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin-bottom: 4.8rem; }
-    .filter-btn { background: #fff; border: 0.1rem solid var(--border-light); color: var(--brand-drk); padding: 1.0rem 2.4rem; border-radius: 3.0rem; font-family: var(--sans); font-size: 1.3rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: 0.3s; box-shadow: var(--shadow-soft); }
-    .filter-btn:hover { border-color: var(--brand-mid); color: var(--brand-mid); transform: translateY(-0.2rem); }
-    .filter-btn.active { background: var(--brand-drk); color: #fff; border-color: var(--brand-drk); box-shadow: var(--shadow-md); }
+@media (min-width: 850px) {
+    .featured-article { flex-direction: row; height: 400px; }
+    .featured-img-box { width: 55%; height: 100%; }
+    .featured-body { width: 45%; padding: 48px; }
+}
 
-    /* FEATURED ARTICLE SPOTLIGHT */
-    .featured-article { display: flex; flex-direction: column; background: #fff; border-radius: 0.8rem; overflow: hidden; border: 0.1rem solid var(--border-light); box-shadow: var(--shadow-md); margin-bottom: 6.4rem; transition: 0.3s; }
-    .featured-article:hover { border-color: var(--gold); transform: translateY(-0.4rem); box-shadow: 0 1.2rem 3.2rem rgba(0,0,0,0.08); }
-    .featured-img-box { width: 100%; height: 25.0rem; background: linear-gradient(rgba(30, 43, 29, 0.5), rgba(30, 43, 29, 0.8)), url('assets/nis-pension-hero.webp') center/cover; position: relative; }
-    .featured-badge { position: absolute; top: 2.4rem; left: 2.4rem; background: var(--gold); color: var(--brand-drk); padding: 0.6rem 1.6rem; border-radius: 0.4rem; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
-    .featured-body { padding: 4.0rem 3.2rem; display: flex; flex-direction: column; justify-content: center; }
-    .featured-meta { font-size: 1.3rem; color: var(--text-mid); font-weight: 600; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 0.05em; display: flex; gap: 1.6rem; }
-    .featured-meta span.cat { color: var(--brand-mid); }
-    .featured-body h2 { font-family: var(--serif); font-size: clamp(2.4rem, 3vw, 3.2rem); color: var(--brand-drk); margin-bottom: 1.6rem; line-height: 1.3; }
-    .featured-body p { font-size: 1.6rem; color: var(--text-mid); margin-bottom: 2.4rem; line-height: 1.7; }
-    .btn-featured { display: inline-flex; align-items: center; gap: 0.8rem; font-size: 1.4rem; font-weight: 700; color: var(--brand-drk); text-transform: uppercase; letter-spacing: 0.1em; transition: 0.3s; padding-bottom: 0.4rem; border-bottom: 0.2rem solid var(--gold); align-self: flex-start; }
-    .btn-featured:hover { color: var(--brand-mid); border-color: var(--brand-mid); gap: 1.2rem; }
+/* Archive Grid with Images */
+.blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 32px; }
+.blog-card { background: #fff; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 4px 12px rgba(15,23,42,.03); display: flex; flex-direction: column; transition: all 0.3s ease; text-decoration: none; color: inherit; }
+.blog-card:hover { transform: translateY(-4px); border-color: #cbd5e1; box-shadow: 0 10px 24px rgba(15,23,42,.06); }
 
-    @media (min-width: 850px) {
-        .featured-article { flex-direction: row; height: 38.0rem; }
-        .featured-img-box { width: 55%; height: 100%; border-right: 0.4rem solid var(--gold); }
-        .featured-body { width: 45%; padding: 4.8rem; }
-    }
+/* Updated Image Panel */
+.blog-img { width: 100%; height: 220px; object-fit: cover; border-bottom: 1px solid var(--line); display: block; }
 
-    /* ARCHIVE GRID */
-    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(32.0rem, 1fr)); gap: 3.2rem; }
-    
-    .blog-card { background: #fff; border-radius: 0.8rem; overflow: hidden; border: 0.1rem solid var(--border-light); box-shadow: var(--shadow-soft); display: flex; flex-direction: column; transition: 0.3s; }
-    .blog-card:hover { transform: translateY(-0.5rem); box-shadow: var(--shadow-md); border-color: var(--brand-mid); }
-    
-    .blog-img-placeholder { height: 22.0rem; background: var(--bg-light); display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 0.4rem solid var(--gold-lt); }
-    .blog-img-placeholder i { font-size: 4.8rem; color: rgba(30, 43, 29, 0.15); }
-    
-    .blog-body { padding: 3.2rem 2.4rem; display: flex; flex-direction: column; flex-grow: 1; }
-    .blog-meta { font-size: 1.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.2rem; display: flex; justify-content: space-between; color: var(--text-mid); }
-    .blog-meta .cat { color: var(--brand-mid); }
-    .blog-body h3 { font-family: var(--serif); font-size: 2.2rem; font-weight: 600; color: var(--brand-drk); margin-bottom: 1.2rem; line-height: 1.3; }
-    .blog-body p { font-size: 1.5rem; color: var(--text-mid); margin-bottom: 2.4rem; flex-grow: 1; }
-    .read-more { font-size: 1.3rem; font-weight: 700; color: var(--brand-drk); text-transform: uppercase; letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 0.8rem; transition: 0.3s; }
-    .blog-card:hover .read-more { color: var(--gold); gap: 1.2rem; }
+.blog-body { padding: 32px 24px; display: flex; flex-direction: column; flex-grow: 1; }
+.blog-meta { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; display: flex; justify-content: space-between; color: var(--slate); }
+.blog-meta .cat { color: var(--blue); }
+.blog-body h3 { font-family: "Fraunces", serif; font-size: 1.6rem; color: var(--ink); margin: 0 0 12px; line-height: 1.3; }
+.blog-body p { font-size: 0.95rem; color: var(--slate); margin: 0 0 24px; flex-grow: 1; line-height: 1.6; }
+.read-more { font-size: 0.9rem; font-weight: 700; color: var(--blue-deep); display: inline-flex; align-items: center; gap: 8px; }
 
-    /* UTILITY CLASS FOR FILTERING */
-    .hidden { display: none !important; }
+/* Utility class for filtering */
+.hidden { display: none !important; }
 
-    /* CONVERSION CALLOUT BANNER */
-    .conversion-banner { background: var(--brand-drk); color: #fff; padding: 6.4rem 2.4rem; border-top: 0.4rem solid var(--gold); border-bottom: 0.1rem solid var(--border-glass); text-align: center; }
-    .conversion-inner { max-width: 70.0rem; margin: 0 auto; }
-    .conversion-banner h3 { font-family: var(--serif); font-size: clamp(2.8rem, 4vw, 3.6rem); font-weight: 600; margin-bottom: 1.6rem; color: #fff; }
-    .conversion-banner p { font-size: 1.7rem; color: rgba(255,255,255,0.8); margin-bottom: 3.2rem; line-height: 1.6; }
-    .btn-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.6rem; }
-    
-    .btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 1.0rem; padding: 1.6rem 3.2rem; background: var(--gold); color: var(--brand-drk); border-radius: 0.4rem; font-size: 1.3rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; box-shadow: 0 0.8rem 1.6rem rgba(0,0,0,0.2); }
-    .btn-primary:hover { background: var(--gold-lt); transform: translateY(-0.2rem); }
-    
-    .btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 1.0rem; padding: 1.6rem 3.2rem; background: transparent; color: #fff; border: 0.1rem solid rgba(255,255,255,0.3); border-radius: 0.4rem; font-size: 1.3rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; }
-    .btn-outline:hover { border-color: #25D366; color: #25D366; background: rgba(37, 211, 102, 0.05); }
+/* Final CTA */
+.final{background:linear-gradient(135deg,var(--ink),var(--ink-soft));color:#fff;border-radius:28px;padding:48px 24px;text-align:center;display:grid;gap:18px;box-shadow:0 18px 60px rgba(15,23,42,.16); max-width:860px; margin: 0 auto;}
+.final h2{font-weight:600; margin:0; font-size:clamp(1.9rem,4vw,2.8rem)}
+.final p{color:#cbd5e1;margin:0 auto; max-width:560px;}
 
-    </style>
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;border-radius:14px;text-decoration:none;font-weight:700;font-size:.98rem;transition:all .15s ease}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:var(--blue-deep); transform: translateY(-2px);}
+.btn-whatsapp{background:#25D366;color:#fff}
+.btn-whatsapp:hover{background:#1eb954; transform: translateY(-2px);}
+.btn-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.4);}
+.btn-outline:hover{background:rgba(255,255,255,0.1); border-color:#fff; transform: translateY(-2px);}
+
+/* Footer */
+footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
+.footer-grid{display:grid;gap:40px}
+.footer-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+.footer-col h4{margin:0 0 14px;color:#fff;font-family:'Inter',sans-serif;font-size:1.05rem;}
+.footer-col a{display:block;color:#94a3b8;text-decoration:none;margin-bottom:12px;font-size:0.95rem;transition:color 0.2s;}
+.footer-col a:hover{color:#fff}
+.footer-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:12px;color:#94a3b8;font-size:.85rem;line-height:1.6;}
+
+@media(min-width:980px){
+  .desktop-nav{display:flex}
+  .menu{display:none}
+  .mobile-nav{display:none !important}
+  .footer-grid{grid-template-columns:1fr 1.5fr}
+}
+@media(max-width:767px){
+  .footer-cols{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+  .footer-cols{grid-template-columns:1fr;}
+}
+</style>
 </head>
 <body>
 
 <!-- GLOBAL NAVIGATION -->
-<nav class="site-nav" id="sitenav">
-    <div class="nav-inner">
-        <a href="index.html" class="nav-logo-name">Docu-Hub <em>Operations</em></a>
-        
-        <ul class="nav-links" id="nav-links">
-            <li><a href="index.html">Home</a></li>
-            
-            <li class="has-dropdown">
-                <a href="#" class="dropdown-toggle" id="services-toggle" aria-haspopup="true" aria-expanded="false">
-                    Services <i class="fa-solid fa-chevron-down"></i>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="passport.html">PICA Passport Services</a></li>
-                    <li><a href="vital.html">RGD Vital Records</a></li>
-                    <li><a href="nis.html">NIS Tracking &amp; Claims</a></li>
-                </ul>
-            </li>
-            
-            <li><a href="insights.html" class="active">Insights</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        
-        <button class="hamburger" id="hbg" aria-label="Toggle Navigation Menu">
-            <span></span><span></span><span></span>
-        </button>
-    </div>
-</nav>
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <div class="logo">DH</div><span>Docu-Hub Operations</span>
+    </a>
+    
+    <nav class="desktop-nav">
+      <a href="passport.html">Passports</a>
+      <a href="vital.html">Vital Records</a>
+      <a href="nis.html">NIS Pensions</a>
+      <a href="insights.html" class="active">Insights</a>
+      <a href="about.html">About Us</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    
+    <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+      <i class="fa-solid fa-bars" style="font-size: 1.4rem;"></i>
+    </button>
+  </div>
+  
+  <nav class="mobile-nav" id="mobileNav" hidden>
+    <a href="passport.html">Passports</a>
+    <a href="vital.html">Vital Records</a>
+    <a href="nis.html">NIS Pensions</a>
+    <a href="insights.html">Insights</a>
+    <a href="about.html">About Us</a>
+    <a href="faq.html">FAQ</a>
+  </nav>
+</header>
 
 <!-- DIRECTORY HERO -->
-<section class="directory-hero">
-    <div class="wrap">
-        <span class="directory-tag">Docu-Hub Advisory Desk</span>
-        <h1>Travel &amp; Document Security Insights</h1>
-        <p>Expert guides, travel warnings, and administrative strategies to help you navigate Jamaican government processes securely from overseas.</p>
-    </div>
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">Docu-Hub Advisory Desk</span>
+    <h1>Travel &amp; Document Security Insights</h1>
+    <p class="lead">Expert guides, travel warnings, and administrative strategies to help you navigate Jamaican government processes securely from overseas.</p>
+  </div>
 </section>
 
 <!-- DIRECTORY & FILTERS -->
 <section class="directory-section">
-    <div class="wrap">
+    <div class="container">
         
         <!-- Category Filters -->
         <div class="filter-tabs" id="filter-container">
             <button class="filter-btn active" data-filter="all">All Advisories</button>
             <button class="filter-btn" data-filter="pica">Passports (PICA)</button>
             <button class="filter-btn" data-filter="rgd">Vital Records (RGD)</button>
-            <button class="filter-btn" data-filter="nis">NIS &amp; Pensions</button>
+            <button class="filter-btn" data-filter="nis">NIS Pensions</button>
         </div>
 
         <!-- Featured Spotlight (NIS) -->
@@ -201,12 +194,12 @@
             </div>
             <div class="featured-body">
                 <div class="featured-meta">
-                    <span class="cat"><i class="fa-solid fa-building-columns"></i> NIS &amp; Pensions</span>
+                    <span class="cat"><i class="fa-solid fa-building-columns"></i> NIS Pensions</span>
                     <span><i class="fa-regular fa-clock"></i> 5 Min Read</span>
                 </div>
                 <h2>Migrated Abroad Without a Pension Plan?</h2>
                 <p>Discover why your past work history in Jamaica could qualify you for a lifelong NIS pension or retirement grant, and the exact steps to claim it from overseas.</p>
-                <span class="btn-featured">Read Full Strategy <i class="fa-solid fa-arrow-right"></i></span>
+                <span class="btn-featured">Read Full Strategy &rarr;</span>
             </div>
         </a>
 
@@ -215,25 +208,21 @@
             
             <!-- Card 1: PICA Heat Damage -->
             <a href="heat-damage-article.html" class="blog-card filter-item" data-category="pica">
-                <div class="blog-img-placeholder">
-                    <i class="fa-solid fa-temperature-arrow-up"></i>
-                </div>
+                <img src="https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=600&q=80" alt="Passport microchip scanner" class="blog-img">
                 <div class="blog-body">
                     <div class="blog-meta">
                         <span class="cat">Passports (PICA)</span>
                         <span>3 Min Read</span>
                     </div>
                     <h3>The Plastic Bag Trap: Is Heat Destroying Your Passport?</h3>
-                    <p>Wrapping your e-passport in a plastic bag to prevent water damage might actually be melting the biometric chip inside. Learn how to test it at home.</p>
-                    <span class="read-more">Read Advisory <i class="fa-solid fa-arrow-right"></i></span>
+                    <p>Wrapping your e-passport in a plastic bag to prevent water damage might actually be melting the biometric chip inside. Learn how to test it.</p>
+                    <span class="read-more">Read Advisory &rarr;</span>
                 </div>
             </a>
 
             <!-- Card 2: PICA Washed/Torn -->
             <a href="washed-article.html" class="blog-card filter-item" data-category="pica">
-                <div class="blog-img-placeholder">
-                    <i class="fa-solid fa-droplet-slash"></i>
-                </div>
+                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=600&q=80" alt="Water damaged paper document" class="blog-img">
                 <div class="blog-body">
                     <div class="blog-meta">
                         <span class="cat">Passports (PICA)</span>
@@ -241,15 +230,13 @@
                     </div>
                     <h3>What If My Passport Gets Washed or Torn?</h3>
                     <p>Accidents happen. If your passport went through the washing machine or got defaced, here is exactly what you need to do before your next flight.</p>
-                    <span class="read-more">Read Advisory <i class="fa-solid fa-arrow-right"></i></span>
+                    <span class="read-more">Read Advisory &rarr;</span>
                 </div>
             </a>
 
             <!-- Card 3: PICA Lost Overseas -->
-            <a href="lost-article.html" class="blog-card filter-item" data-category="pica">
-                <div class="blog-img-placeholder">
-                    <i class="fa-solid fa-plane-circle-exclamation"></i>
-                </div>
+            <a href="passport-lost-article.html" class="blog-card filter-item" data-category="pica">
+                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80" alt="Traveler looking at departure board" class="blog-img">
                 <div class="blog-body">
                     <div class="blog-meta">
                         <span class="cat">Passports (PICA)</span>
@@ -257,126 +244,122 @@
                     </div>
                     <h3>Lost Your Jamaican Passport Overseas?</h3>
                     <p>Don't panic. Discover the step-by-step protocol for filing police reports abroad and securing a proxy replacement without having to fly home.</p>
-                    <span class="read-more">Read Advisory <i class="fa-solid fa-arrow-right"></i></span>
+                    <span class="read-more">Read Advisory &rarr;</span>
                 </div>
             </a>
 
             <!-- Card 4: RGD Missing Father -->
             <a href="missing-father-name-article.html" class="blog-card filter-item" data-category="rgd">
-                <div class="blog-img-placeholder">
-                    <i class="fa-solid fa-users-slash"></i>
-                </div>
+                <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=600&q=80" alt="Pen resting on official paperwork" class="blog-img">
                 <div class="blog-body">
                     <div class="blog-meta">
                         <span class="cat">Vital Records (RGD)</span>
                         <span>5 Min Read</span>
                     </div>
                     <h3>Why a Missing Father's Name Matters for Immigration</h3>
-                    <p>Filing for spousal sponsorship or estate claims overseas? Learn why an incomplete RGD birth certificate can halt your application and how to legally amend it.</p>
-                    <span class="read-more">Read Advisory <i class="fa-solid fa-arrow-right"></i></span>
+                    <p>Filing for spousal sponsorship or estate claims overseas? Learn why an incomplete RGD birth certificate can halt your application entirely.</p>
+                    <span class="read-more">Read Advisory &rarr;</span>
                 </div>
             </a>
 
             <!-- Card 5: RGD Late Registration -->
             <a href="fixing-rgd-spelling-article.html" class="blog-card filter-item" data-category="rgd">
-                <div class="blog-img-placeholder">
-                    <i class="fa-solid fa-calendar-xmark"></i>
-                </div>
+                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80" alt="Filling out a detailed form" class="blog-img">
                 <div class="blog-body">
                     <div class="blog-meta">
                         <span class="cat">Vital Records (RGD)</span>
                         <span>4 Min Read</span>
                     </div>
                     <h3>Fixing RGD Spelling Errors from Abroad</h3>
-                    <p>A single misspelled letter on your RGD marriage or birth certificate can derail international paperwork. Here is the sworn declaration protocol to fix it.</p>
-                    <span class="read-more">Read Advisory <i class="fa-solid fa-arrow-right"></i></span>
+                    <p>A single misspelled letter on your RGD marriage or birth certificate can derail international paperwork. Here is the legal protocol to fix it.</p>
+                    <span class="read-more">Read Advisory &rarr;</span>
                 </div>
             </a>
 
         </div>
 
     </div>
-<!-- CONVERSION BANNER (BRIDGE TO SERVICES) -->
-<section class="conversion-banner">
-    <div class="conversion-inner">
-        <h3>Need an On-The-Ground Representative in Jamaica?</h3>
-        <p>Skip the international hold times and the bureaucratic red tape. We handle the government agency lines, manual archival lookups, and physical submissions so you don't have to fly home.</p>
-        <div class="btn-group">
-            <!-- Updated Link: Now points to the Services Grid on the Homepage -->
-            <a href="index.html#services" class="btn-primary">Explore Proxy Services</a>
-            <a href="https://wa.me/18765612614" target="_blank" class="btn-outline"><i class="fa-brands fa-whatsapp" style="font-size: 1.6rem;"></i> Chat on WhatsApp</a>
-        </div>
-    </div>
 </section>
 
-<!-- CLEAN, UNIFIED FOOTER SECTION -->
-<footer class="site-footer" id="contact" style="background: #111811; color: #fff; padding: clamp(8.0rem, 10vh, 12.0rem) 0 4.0rem;">
-    <div class="wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(25.0rem, 1fr)); gap: 6.4rem; margin-bottom: 6.4rem;">
-        <div>
-            <span style="font-family: var(--sans); font-size: 2.6rem; font-weight: 700; letter-spacing: 0.02em; display: block; margin-bottom: 1.6rem;">Docu-Hub <em style="color: var(--gold); font-style: italic; font-weight: 500;">Operations</em></span>
-            <p style="font-family: var(--sans); font-size: 1.5rem; color: rgba(255,255,255,0.7); line-height: 1.6; max-width: 35.0rem;">Providing highly secure, on-the-ground document processing, records retrieval, and administrative assistance for the Jamaican diaspora.</p>
-        </div>
-        
-        <div>
-            <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: 2.4rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase;">Quick Links</h4>
-            <ul style="list-style: none; display: grid; gap: 1.6rem; padding: 0;">
-                <li><a href="passport.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">PICA Passport Services</a></li>
-                <li><a href="vital.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">RGD Vital Records</a></li>
-                <li><a href="nis.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">NIS Tracking &amp; Claims</a></li>
-                <li><a href="about.html" style="color: rgba(255,255,255,0.8); font-size: 1.5rem; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">About The Agency</a></li>
-            </ul>
-        </div>
-        
-        <div>
-            <h4 style="font-family: var(--sans); font-size: 1.3rem; margin-bottom: 2.4rem; color: var(--gold-lt); letter-spacing: 0.1em; text-transform: uppercase;">Direct Contact</h4>
-            <ul style="list-style: none; display: grid; gap: 1.6rem; padding: 0; margin-bottom: 2.4rem;">
-                <li>
-                    <a href="mailto:admin@dochubservices.com" style="display: inline-flex; align-items: center; gap: 1.0rem; color: #fff; font-size: 1.5rem; text-decoration: none; transition: color 0.3s;">
-                        <i class="fa-solid fa-envelope" style="color: var(--gold-lt);"></i> admin@dochubservices.com
-                    </a>
-                </li>
-                <li>
-                    <a href="https://wa.me/18765612614" target="_blank" style="display: inline-flex; align-items: center; gap: 1.0rem; color: #25D366; font-size: 1.5rem; font-weight: 600; text-decoration: none; transition: opacity 0.3s;">
-                        <i class="fa-brands fa-whatsapp" style="font-size: 2.0rem;"></i> Chat on WhatsApp
-                    </a>
-                </li>
-            </ul>
-            <p style="color: rgba(255,255,255,0.8); font-size: 1.5rem;"><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 0.8rem;"></i> Linstead, St. Catherine, Jamaica</p>
-        </div>
+<!-- CONVERSION BANNER -->
+<section>
+  <div class="container">
+    <div class="final">
+      <span class="eyebrow" style="margin:auto;background:rgba(176,138,78,.18);color:#f3d9a4;border-color:rgba(176,138,78,.35)">Connect Instantly</span>
+      <h2>Need an On-The-Ground Representative?</h2>
+      <p>Skip the international hold times and the bureaucratic red tape. We handle the government agency lines and manual archival lookups so you don't have to fly home.</p>
+      <div style="margin-top: 12px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;">
+        <a class="btn btn-outline" href="index.html#services" style="min-height: 56px;">Explore Proxy Services</a>
+        <a class="btn btn-whatsapp" href="https://wa.me/18765612614" target="_blank" style="min-height: 56px;">
+          <i class="fa-brands fa-whatsapp" style="margin-right: 8px; font-size: 1.2rem;"></i> Chat on WhatsApp
+        </a>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="wrap" style="display: flex; flex-direction: column; gap: 1.6rem; align-items: center; border-top: 0.1rem solid var(--border-glass); padding-top: 3.2rem; text-align: center;">
-        <div style="font-family: var(--sans); font-size: 1.3rem; color: rgba(255,255,255,0.5);">
-            <p style="margin-bottom: 0.6rem;">Registered with the Companies Office of Jamaica (COJ): #15602/2025 | OIC Data Controller Verified</p>
-            <p style="color: rgba(255,255,255,0.3); margin-bottom: 1.6rem;">&copy; 2026 Docu-Hub Operations Services. All Rights Reserved.</p>
-            
-            <div style="display: flex; gap: 2.4rem; justify-content: center; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                <a href="privacy.html" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Privacy Policy</a>
-                <a href="terms.html" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Terms of Service</a>
-            </div>
+<!-- UNIFIED 3-COLUMN FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand Summary -->
+      <div>
+        <h3 style="margin:0 0 10px;color:#fff;font-family:'Fraunces',serif;font-weight:600">Docu-Hub Operations</h3>
+        <p style="margin:0;color:#94a3b8">Independent administrative proxy and secure online application assistance for the Jamaican diaspora.</p>
+      </div>
+      
+      <!-- 3-Column Sitemap -->
+      <div class="footer-cols">
+        
+        <div class="footer-col">
+          <h4>Our Services</h4>
+          <a href="passport.html">PICA Passports</a>
+          <a href="vital.html">RGD Vital Records</a>
+          <a href="nis.html">NIS Pensions</a>
         </div>
+        
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About Docu-Hub</a>
+          <a href="insights.html">Guides &amp; Insights</a>
+          <a href="faq.html">FAQ</a>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Legal &amp; Contact</h4>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="mailto:admin@dochubservices.com" style="display:flex; align-items:center; gap:8px;">
+            <i class="fa-regular fa-envelope"></i> Email Us
+          </a>
+        </div>
+
+      </div>
     </div>
+    
+    <!-- Bottom Legal Disclaimer & Registration Badges -->
+    <div class="footer-bottom">
+      <div>Disclaimer: Docu-Hub Operations Services is a private, registered administrative proxy service. We are not a government agency and are not affiliated with PICA, RGD, or MLSS/NIS.</div>
+      <div><i class="fa-solid fa-building-shield" style="margin-right: 6px; color: var(--brass);"></i> Registered with the Companies Office of Jamaica (COJ): #15602/2025 | OIC Data Controller Verified.</div>
+      <div>&copy; 2026 Docu-Hub Operations Services. All rights reserved.</div>
+    </div>
+  </div>
 </footer>
 
 <script>
-// Global Nav Scripts
-const hbg = document.getElementById('hbg');
-const navBar = document.getElementById('sitenav');
-
-if (hbg && navBar) {
-    hbg.addEventListener('click', () => { 
-        navBar.classList.toggle('open'); 
-    });
+// Mobile Navigation Toggle
+var btn = document.getElementById('menuBtn');
+var nav = document.getElementById('mobileNav');
+btn.addEventListener('click', function(){
+var isHidden = nav.hasAttribute('hidden');
+if(isHidden){ 
+  nav.removeAttribute('hidden'); 
+  btn.setAttribute('aria-expanded','true'); 
+} else { 
+  nav.setAttribute('hidden',''); 
+  btn.setAttribute('aria-expanded','false'); 
 }
-
-const servicesToggle = document.getElementById('services-toggle');
-if (servicesToggle && window.innerWidth < 900) {
-    servicesToggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        const parentLi = servicesToggle.closest('.has-dropdown');
-        parentLi.classList.toggle('mobile-open');
-    });
-}
+});
 
 // Custom JS for Category Filtering Logic
 const filterButtons = document.querySelectorAll('.filter-btn');
@@ -404,5 +387,6 @@ filterButtons.forEach(button => {
     });
 });
 </script>
+
 </body>
 </html>
