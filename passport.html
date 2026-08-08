@@ -2,6 +2,7 @@
 <html lang="en-JM">
 <head>
 <meta charset="UTF-8">
+<!-- Step 1: Viewport Fix -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>PICA Passport Services | Docu-Hub Operations</title>
 <meta name="description" content="Strict readiness checklists and eligibility rules for Jamaican passport renewals, lost passports, damaged passports, name changes, and first-time adult applications.">
@@ -25,7 +26,7 @@
   --danger-bg: #fef2f2; --danger-border: #ef4444; --danger-text: #991b1b;
 }
 
-/* Bulletproof Container */
+/* Step 2: The "Bulletproof Container" Fix */
 *{box-sizing:border-box}
 body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;width:100%;-webkit-text-size-adjust:100%;}
 h1,h2,h3,.brand span,.step-badge,.eyebrow{font-family:"Fraunces",Georgia,serif}
@@ -101,22 +102,23 @@ h1 { margin: 0 0 16px; font-family: "Fraunces", serif; font-weight: 600; font-si
 .scenario-card ul { margin: 0; padding-left: 20px; color: var(--slate); font-size: 0.95rem; line-height: 1.6; }
 .scenario-card li { margin-bottom: 8px; }
 
-/* Pricing Styles */
+/* Warning Box */
+.callout-box { background: var(--warn-bg, #fff1f2); border-left: 4px solid var(--warn-border, #e11d48); padding: 24px; border-radius: 0 12px 12px 0; margin-top: 24px; }
+.callout-box h4 { margin: 0 0 8px; color: #9f1239; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; font-family: Inter, sans-serif;}
+.callout-box p { margin: 0; color: #881337; font-size: 0.95rem; line-height: 1.6; }
+
+/* Pricing Table */
 .pricing-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
 .pricing-table th { background: var(--paper-deep); color: var(--ink); font-weight: 600; text-align: left; padding: 16px; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid var(--line); }
 .pricing-table td { padding: 16px; border-bottom: 1px solid var(--line); color: var(--slate); font-size: 1.05rem; }
 .pricing-table tr:last-child td { border-bottom: none; }
 .pricing-table strong { color: var(--ink); }
 .fee-note { font-size: 0.85rem; color: var(--slate); margin-top: 16px; text-align: right; font-style: italic; }
-.callout-box { background: var(--paper-deep); border-left: 4px solid var(--blue); padding: 24px; border-radius: 0 16px 16px 0; }
-.callout-box h4 { margin: 0 0 12px; color: var(--ink); font-size: 1.15rem; display: flex; align-items: center; gap: 8px; }
-.callout-box p { margin: 0; color: var(--slate); font-size: 0.95rem; line-height: 1.6; }
 
 /* Final CTA */
 .final{background:linear-gradient(135deg,var(--ink),var(--ink-soft));color:#fff;border-radius:28px;padding:48px 24px;text-align:center;display:grid;gap:18px;box-shadow:0 18px 60px rgba(15,23,42,.16); max-width:860px; margin: 0 auto;}
 .final h2{font-weight:600; margin:0; font-size:clamp(1.9rem,4vw,2.8rem)}
 .final p{color:#cbd5e1;margin:0 auto; max-width:560px;}
-
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;border-radius:14px;text-decoration:none;font-weight:700;font-size:.98rem;transition:all .15s ease; border:none; cursor:pointer;}
 .btn-primary{background:var(--ink);color:#fff}
 .btn-primary:hover{background:var(--ink-soft); transform: translateY(-2px);}
@@ -132,9 +134,9 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 
 /* CLEANED DESKTOP QUERY */
 @media(min-width:980px){
-  .desktop-nav{display:flex}
-  .menu{display:none}
-  .mobile-nav{display:none !important}
+  .desktop-nav{display:flex;}
+  .menu{display:none;}
+  .mobile-nav{display:none !important;}
   .alerts-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr 1.5fr; }
 }
