@@ -2,7 +2,7 @@
 <html lang="en-JM">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
 <!-- ===== Client-Side Security Headers (Browser Protection) ===== -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://images.unsplash.com data:; connect-src 'self';">
@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://dhubservices.com/assets/og-cover.jpg">
 <meta property="og:locale" content="en_JM">
 
-<!-- ===== Structured Data for Google (Includes Pinterest & LinkedIn) ===== -->
+<!-- ===== Structured Data for Google (Includes YouTube & LinkedIn) ===== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -44,7 +44,7 @@
   },
   "sameAs": [
     "https://wa.me/18765612614",
-    "https://pin.it/12UYV8I0P",
+    "https://www.youtube.com/@LauraClarke_dhub",
     "https://www.linkedin.com/in/docuhubservices"
   ]
 }
@@ -71,10 +71,11 @@
   --brass-tint:#faf3e6;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;}
+body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;width:100%;-webkit-text-size-adjust:100%;}
 h1,h2,.brand span,.step-badge,.eyebrow{font-family:"Fraunces",Georgia,serif}
-.container{width:min(1120px,calc(100% - 32px));margin:auto}
+.container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px;}
 a{-webkit-tap-highlight-color:transparent}
+img{max-width:100%;height:auto;}
 :focus-visible{outline:2px solid var(--blue-deep);outline-offset:2px}
 
 /* Header & Nav */
@@ -265,7 +266,7 @@ section{padding:48px 0}
 .post-body strong{font-size:1.1rem;line-height:1.4}
 .post-body p{color:var(--slate);margin:0;font-size:.95rem}
 .post-body .read-more{margin-top:4px;font-size:.9rem;font-weight:700;color:var(--blue-deep)}
-.insights-cta{margin-top:32px;text-align:center}
+.insights-cta{margin-top:32px;text-align:center; display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;}
 
 /* Final CTA */
 .final{background:linear-gradient(135deg,var(--ink),var(--ink-soft));color:#fff;border-radius:28px;padding:48px 24px;text-align:center;display:grid;gap:18px;box-shadow:0 18px 60px rgba(15,23,42,.16)}
@@ -317,6 +318,10 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:64px 0 32px}
 }
 @media(max-width:767px){
   .footer-cols{grid-template-columns:1fr 1fr;}
+  .service-list { grid-template-columns: 1fr; gap: 16px; }
+  .service-item { grid-template-columns: 1fr; text-align: center; justify-items: center; padding: 24px; }
+  .service-item img { width: 80px; height: 80px; margin-bottom: 8px; }
+  .badge { margin: 12px auto 0; display: inline-block; }
 }
 @media(max-width:480px){
   .footer-cols{grid-template-columns:1fr;}
@@ -331,7 +336,6 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:64px 0 32px}
       <div class="logo">DH</div><span>Docu-Hub Operations</span>
     </a>
     
-    <!-- DESKTOP NAVIGATION WITH SERVICES DROPDOWN -->
     <nav class="desktop-nav">
       <div class="dropdown">
         <button class="dropbtn">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i></button>
@@ -353,7 +357,6 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:64px 0 32px}
     </button>
   </div>
   
-  <!-- MOBILE NAVIGATION DROPDOWN -->
   <nav class="mobile-nav" id="mobileNav" hidden>
     <a href="#services" style="font-weight: 700; color: var(--ink);">Services</a>
     <a href="passport.html" class="mobile-sub">↳ PICA Passports</a>
@@ -558,8 +561,12 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:64px 0 32px}
       </a>
     </div>
     
+    <!-- YOUTUBE & INSIGHTS CTA -->
     <div class="insights-cta">
       <a class="btn btn-secondary" href="insights.html">View All Guides</a>
+      <a class="btn btn-secondary" href="https://www.youtube.com/@LauraClarke_dhub" target="_blank" rel="noopener" style="color: #ea3323; border-color: #ea3323;">
+        <i class="fa-brands fa-youtube" style="margin-right: 8px; font-size: 1.2rem;"></i> Watch on YouTube
+      </a>
     </div>
   </div>
 </section>
@@ -617,8 +624,9 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:64px 0 32px}
           <a href="booking.html" style="display:flex; align-items:center; gap:8px;">
             <i class="fa-regular fa-calendar-days"></i> Book Consultation
           </a>
-          <a href="https://pin.it/12UYV8I0P" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; color: #e60023;">
-            <i class="fa-brands fa-pinterest"></i> Follow on Pinterest
+          <!-- YOUTUBE FOOTER LINK -->
+          <a href="https://www.youtube.com/@LauraClarke_dhub" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; color: #ea3323;">
+            <i class="fa-brands fa-youtube"></i> Watch on YouTube
           </a>
           <a href="https://www.linkedin.com/in/docuhubservices" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; color: #0a66c2;">
             <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn
