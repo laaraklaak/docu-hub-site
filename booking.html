@@ -8,7 +8,7 @@
 <meta name="description" content="Schedule a 1-on-1 diagnostic consultation to review your Jamaican document requirements for PICA passports, RGD vital records, or NIS pensions.">
 
 <!-- ===== Security Headers ===== -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://images.unsplash.com data:; connect-src 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://images.unsplash.com data:; connect-src 'self'; frame-src https://calendar.google.com;">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 
@@ -45,9 +45,20 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdro
 .brand{display:flex;align-items:center;gap:12px;font-weight:700;text-decoration:none;color:inherit}
 .brand span{font-size:1.02rem;font-weight:600;letter-spacing:-0.01em}
 .logo{width:38px;height:38px;border-radius:11px;background:var(--ink);color:var(--brass-tint);display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:600;font-size:.92rem;flex:none}
-.desktop-nav{display:none;gap:24px;align-items:center;}
-.desktop-nav a{text-decoration:none;color:var(--slate);font-weight:500;font-size:.96rem;transition:color 0.2s;}
-.desktop-nav a:hover, .desktop-nav a.active{color:var(--ink)}
+.desktop-nav{display:none;gap:28px;align-items:center;}
+.desktop-nav > a{text-decoration:none;color:var(--slate);font-weight:500;font-size:.96rem;transition:color 0.2s;}
+.desktop-nav > a:hover, .desktop-nav > a.active{color:var(--ink)}
+
+/* Services Dropdown */
+.dropdown{position:relative;height:72px;display:flex;align-items:center}
+.dropbtn{font-family:inherit;background:none;border:none;color:var(--slate);font-weight:500;font-size:.96rem;display:flex;align-items:center;gap:6px;cursor:pointer;padding:8px 0;transition:color .2s}
+.dropdown:hover .dropbtn,.dropdown:focus-within .dropbtn{color:var(--ink)}
+.dropbtn i{font-size:.7rem !important;transition:transform .2s}
+.dropdown:hover .dropbtn i,.dropdown:focus-within .dropbtn i{transform:rotate(180deg)}
+.dropdown-content{opacity:0;visibility:hidden;transform:translateY(4px);transition:opacity .15s ease,transform .15s ease;position:absolute;top:100%;left:-14px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 16px 36px rgba(15,23,42,.10);padding:8px;min-width:210px;z-index:30}
+.dropdown:hover .dropdown-content,.dropdown:focus-within .dropdown-content{opacity:1;visibility:visible;transform:translateY(0)}
+.dropdown-content a{display:block;padding:10px 14px;border-radius:9px;color:var(--ink-soft);text-decoration:none;font-size:.92rem;font-weight:500;transition:background .15s}
+.dropdown-content a:hover{background:var(--paper);color:var(--ink)}
 .menu{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);border:none;}
 .mobile-nav{display:grid;gap:2px;border-bottom:1px solid var(--line);background:#fff}
 .mobile-nav a{padding:14px 16px;text-decoration:none;color:var(--ink-soft);font-weight:500;border-top:1px solid var(--line)}
@@ -97,6 +108,30 @@ h1{margin:0 0 16px;font-weight:600;font-size:clamp(2.1rem,5vw,3.6rem);line-heigh
   overflow: hidden;
 }
 
+/* Steps */
+.steps-section{padding:8px 0 48px}
+.steps-grid{display:grid;gap:16px;margin-top:8px}
+.step-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;position:relative}
+.step-badge{width:34px;height:34px;border-radius:10px;background:var(--ink);color:var(--brass-tint);display:grid;place-items:center;font-weight:600;font-size:.95rem;margin-bottom:14px}
+.step-card h3{margin:0 0 6px;font-size:1.05rem;font-weight:600;color:var(--ink)}
+.step-card p{margin:0;color:var(--slate);font-size:.9rem;line-height:1.6}
+
+/* Prep checklist */
+.prep-box{max-width:860px;margin:0 auto 40px;background:var(--paper-deep);border-radius:18px;padding:28px 28px 20px}
+.prep-box h2{margin:0 0 4px;font-size:1.15rem;font-weight:600;color:var(--ink)}
+.prep-box>p{margin:0 0 18px;color:var(--slate);font-size:.92rem}
+.prep-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.prep-list li{display:flex;gap:10px;align-items:flex-start;font-size:.92rem;color:var(--ink-soft);background:#fff;border-radius:10px;padding:12px 14px;border:1px solid #dbe4f2}
+.prep-list i{color:var(--blue);margin-top:2px;flex:none}
+
+/* Calendar fallback */
+.calendar-fallback{display:flex;align-items:center;gap:12px;justify-content:center;text-align:center;flex-wrap:wrap;margin-top:16px;padding:16px;border-radius:12px;background:var(--paper);font-size:.88rem;color:var(--slate)}
+.calendar-fallback a{color:var(--ink);font-weight:700;text-decoration:underline}
+
+.section-heading{text-align:center;max-width:640px;margin:0 auto 28px}
+.section-heading h2{margin:0 0 10px;font-size:clamp(1.5rem,3vw,2rem);font-weight:600;color:var(--ink)}
+.section-heading p{margin:0;color:var(--slate);font-size:.98rem}
+
 /* Buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:12px;text-decoration:none;font-weight:700;font-size:.92rem;transition:all .15s ease}
 .btn-primary{background:var(--ink);color:#fff}
@@ -116,6 +151,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
   .menu{display:none}
   .mobile-nav{display:none !important}
   .footer-grid{grid-template-columns:1fr 1.5fr}
+  .steps-grid{grid-template-columns:repeat(3,1fr)}
 }
 @media(max-width:767px){
   .footer-cols{grid-template-columns:1fr 1fr;}
@@ -175,8 +211,74 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 <section class="hero">
   <div class="container">
     <span class="eyebrow">1-on-1 Client Intake</span>
-    <h1>Schedule Your Diagnostic Consultation</h1>
+    <h1>Book Your Consultation</h1>
     <p class="lead">Select a convenient appointment time below to discuss your administrative case, review your document preparedness, and receive a customized flat-fee proxy quote.</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="steps-section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>How the consultation works</h2>
+      <p>Three short steps, start to finish. No payment or documents are needed until step 3.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-badge">1</div>
+        <h3>Pick a time</h3>
+        <p>Choose any open slot on the calendar below. You'll get an instant confirmation and calendar invite by email.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-badge">2</div>
+        <h3>We call or video chat</h3>
+        <p>A 20-minute session to walk through your case — PICA, RGD, NIS, or TAJ — and confirm exactly what's required.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-badge">3</div>
+        <h3>Get your flat-fee quote</h3>
+        <p>We give you a fixed price and next steps. Nothing is charged and no documents are collected on this website.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT TO HAVE READY -->
+<section>
+  <div class="container">
+    <div class="prep-box">
+      <h2>What to have ready for your call</h2>
+      <p>Nothing needs to be uploaded here — just have these on hand so the consultation is quick and productive.</p>
+      <ul class="prep-list">
+        <li><i class="fa-solid fa-circle-check"></i> A general idea of which service you need: passport, birth/death/marriage record, pension, or motor vehicle renewal.</li>
+        <li><i class="fa-solid fa-circle-check"></i> Roughly how urgent your case is (e.g. travel date, deadline).</li>
+        <li><i class="fa-solid fa-circle-check"></i> Your current location — many steps differ for clients in Jamaica vs. the diaspora.</li>
+        <li><i class="fa-solid fa-circle-check"></i> Any reference numbers you already have (application ID, case number), if applicable — not required to book.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- GOOGLE CALENDAR CONTAINER -->
+<section>
+  <div class="container">
+    <div class="section-heading">
+      <h2>Choose your appointment time</h2>
+      <p>Pick any available slot below — all times shown are adjusted to your local time zone automatically.</p>
+    </div>
+    <div class="booking-container">
+      <div class="calendar-wrapper">
+        
+        <!-- Google Calendar Appointment Scheduling begin -->
+        <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ24v8vZefGbJfwB2cgwYn78G9vc4JRiKSj6ZKIOx327k-wxtCTaxo0t2x7Dngbw90pjytAjbpWA?gv=true" style="border: 0" width="100%" height="600" frameborder="0" title="Book a consultation appointment"></iframe>
+        <!-- end Google Calendar Appointment Scheduling -->
+        
+      </div>
+      <div class="calendar-fallback">
+        <i class="fa-brands fa-whatsapp" style="color:#25D366;"></i>
+        <span>Calendar not loading? Message us directly on WhatsApp at <a href="https://wa.me/18765612614" target="_blank">+1 876-561-2614</a> and we'll book your slot by hand.</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -190,21 +292,6 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
     </div>
   </div>
 </div>
-
-<!-- GOOGLE CALENDAR CONTAINER -->
-<section>
-  <div class="container">
-    <div class="booking-container">
-      <div class="calendar-wrapper">
-        
-        <!-- Google Calendar Appointment Scheduling begin -->
-        <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ24v8vZefGbJfwB2cgwYn78G9vc4JRiKSj6ZKIOx327k-wxtCTaxo0t2x7Dngbw90pjytAjbpWA?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
-        <!-- end Google Calendar Appointment Scheduling -->
-        
-      </div>
-    </div>
-  </div>
-</section>
 </main>
 
 <!-- UNIFIED 3-COLUMN FOOTER -->
