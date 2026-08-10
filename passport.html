@@ -2,7 +2,6 @@
 <html lang="en-JM">
 <head>
 <meta charset="UTF-8">
-<!-- Step 1: Viewport Fix -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>PICA Passport Services | Docu-Hub Operations</title>
 <meta name="description" content="Strict readiness checklists and eligibility rules for Jamaican passport renewals, lost passports, damaged passports, name changes, and first-time adult applications.">
@@ -15,27 +14,29 @@
 <!-- ===== Fonts & Icons ===== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 :root{
-  --ink:#0f172a; --ink-soft:#1e293b; --slate:#475467; --line:#e2e8f0;
-  --paper:#f5f7fb; --paper-deep:#e9eff8; --blue:#2563eb; --blue-deep:#1d4ed8;
-  --brass:#b08a4e; --brass-deep:#8a6a37; --brass-tint:#faf3e6;
-  --danger-bg: #fef2f2; --danger-border: #ef4444; --danger-text: #991b1b;
+  --ink:#12182b; --ink-soft:#2a3350; --slate:#5b6478; --line:#e6ddc6;
+  --paper:#f7f3ea; --paper-deep:#efe6d0;
+  --brass:#b3874f; --brass-deep:#8c6534; --brass-tint:#f4e9d5;
+  --stamp:#0e6f63; --stamp-tint:#e6f2ef; --stamp-deep:#0a5b51;
+  --alert:#a8392b; --alert-bg:#faece9; --alert-border:#e2a89e;
+  --mono: "Space Mono", ui-monospace, monospace;
 }
 
-/* Step 2: The "Bulletproof Container" Fix */
 *{box-sizing:border-box}
 body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;width:100%;-webkit-text-size-adjust:100%;}
-h1,h2,h3,.brand span,.step-badge,.eyebrow{font-family:"Fraunces",Georgia,serif}
+h1,h2,h3,.brand span,.step-badge{font-family:"Fraunces",Georgia,serif}
 .container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px;}
 a{-webkit-tap-highlight-color:transparent}
 img{max-width:100%;height:auto;}
+:focus-visible{outline:2.5px solid var(--stamp);outline-offset:3px;border-radius:4px;}
 
-/* Header & Nav */
-header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+/* ===== Header & Nav ===== */
+header{position:sticky;top:0;z-index:30;background:rgba(247,243,234,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav{display:flex;justify-content:space-between;align-items:center;min-height:72px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:700;text-decoration:none;color:inherit}
 .brand span{font-size:1.02rem;font-weight:600;letter-spacing:-0.01em}
@@ -45,85 +46,82 @@ header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdro
 .desktop-nav a{text-decoration:none;color:var(--slate);font-weight:500;font-size:.96rem;transition:color 0.2s;}
 .desktop-nav a:hover{color:var(--ink)}
 
-.dropdown { position: relative; display: inline-block; }
-.dropbtn { background: none; border: none; color: var(--ink); font-weight: 700; font-size: 0.96rem; font-family: Inter, sans-serif; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
-.dropdown-content { display: none; position: absolute; top: 100%; left: -16px; background-color: #fff; min-width: 220px; box-shadow: 0 12px 30px rgba(15,23,42,0.1); border: 1px solid var(--line); border-radius: 14px; padding: 8px 0; z-index: 40; }
-.dropdown-content a { color: var(--slate); padding: 10px 18px; text-decoration: none; display: block; font-size: 0.92rem; transition: background 0.15s, color 0.15s; font-weight: 500;}
-.dropdown-content a:hover { background-color: var(--paper); color: var(--ink); }
-.dropdown:hover .dropdown-content { display: block; }
+.dropdown{position:relative;display:inline-block;}
+.dropbtn{background:none;border:none;color:var(--ink);font-weight:700;font-size:0.96rem;font-family:Inter,sans-serif;cursor:pointer;padding:0;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
+.dropdown-content{display:none;position:absolute;top:100%;left:-16px;background-color:#fff;min-width:220px;box-shadow:0 12px 30px rgba(15,23,42,0.1);border:1px solid var(--line);border-radius:14px;padding:8px 0;z-index:40;}
+.dropdown-content a{color:var(--slate);padding:10px 18px;text-decoration:none;display:block;font-size:0.92rem;transition:background 0.15s,color 0.15s;font-weight:500;}
+.dropdown-content a:hover{background-color:var(--paper);color:var(--ink);}
+.dropdown:hover .dropdown-content{display:block;}
 
 .menu{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);border:none;}
 .mobile-nav{display:grid;gap:2px;border-bottom:1px solid var(--line);background:#fff}
 .mobile-nav a{padding:14px 16px;text-decoration:none;color:var(--ink-soft);font-weight:500;border-top:1px solid var(--line)}
-.mobile-nav .mobile-sub{padding-left:28px; font-size:0.9rem; color:var(--slate);}
+.mobile-nav .mobile-sub{padding-left:28px;font-size:0.9rem;color:var(--slate);}
 .mobile-nav[hidden]{display:none}
 
-/* Hero Section */
-.article-hero { padding: 48px 0 32px; text-align: center; }
-.eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: auto; padding: 8px 14px; border-radius: 999px; background: var(--brass-tint); color: var(--brass-deep); font-size: .82rem; font-weight: 600; border: 1px solid #ecdcb8; margin-bottom: 24px; }
-h1 { margin: 0 0 16px; font-family: "Fraunces", serif; font-weight: 600; font-size: clamp(2.1rem, 4vw, 3.2rem); line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); max-width: 900px; margin-left: auto; margin-right: auto; }
-.article-meta { font-size: 1.05rem; color: var(--slate); margin-bottom: 32px; max-width: 700px; margin-left: auto; margin-right: auto;}
+/* ===== Hero ===== */
+.article-hero{padding:48px 0 32px;text-align:center;}
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: auto; padding: 8px 14px; border-radius: 999px; background: var(--brass-tint); color: var(--brass-deep); font-size: .82rem; font-weight: 600; border: 1px solid #ecdcb8; margin-bottom: 20px; }
+h1{margin:0 0 16px;font-family:"Fraunces",serif;font-weight:600;font-size:clamp(2.1rem,4.4vw,3.3rem);line-height:1.13;letter-spacing:-0.02em;color:var(--ink);max-width:820px;margin-left:auto;margin-right:auto;}
+.article-meta{font-size:1.08rem;color:var(--slate);margin-bottom:28px;max-width:640px;margin-left:auto;margin-right:auto;}
 
-/* Layout Structure */
-.content-grid { display: grid; gap: 32px; max-width: 1000px; margin: 0 auto 64px; }
+.jump-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
+.jump-pills a{font-size:.86rem;font-weight:600;color:var(--ink-soft);background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 16px;text-decoration:none;transition:border-color .15s, transform .15s;}
+.jump-pills a:hover{border-color:var(--brass);transform:translateY(-1px);}
 
-/* ======== SIDE-BY-SIDE ALERTS ======== */
-.alerts-grid { display: grid; gap: 24px; }
+.content-grid{display:grid;gap:28px;max-width:1000px;margin:36px auto 64px;}
+section.block{scroll-margin-top:96px;}
 
-/* The Golden Rule Alert */
-.golden-rule { background: var(--danger-bg); border: 1px solid var(--danger-border); border-radius: 16px; padding: 24px 28px; display: flex; gap: 20px; align-items: flex-start; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.05); }
-.golden-rule i { font-size: 1.8rem; color: var(--danger-border); margin-top: 2px; }
-.golden-rule h3 { color: var(--danger-text); margin: 0 0 8px; font-size: 1.25rem; }
-.golden-rule p { color: #7f1d1d; font-size: 0.95rem; margin: 0; line-height: 1.6; }
-.golden-rule strong { font-weight: 700; background: #fee2e2; padding: 2px 6px; border-radius: 4px;}
+/* ===== Section headers ===== */
+.section-head{max-width:680px;margin:0 auto 20px;text-align:center;}
+.section-head .eyebrow-mini{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp-deep);font-weight:700;}
+.section-head h2{font-size:clamp(1.4rem,3vw,1.8rem);margin:6px 0 8px;}
+.section-head p{color:var(--slate);margin:0;font-size:.98rem;}
 
-/* Proxy Reality Check */
-.proxy-check { background: var(--ink); color: #fff; border-radius: 16px; padding: 24px 28px; display: flex; gap: 20px; align-items: flex-start; box-shadow: 0 4px 12px rgba(15,23,42,0.08); }
-.proxy-check i { font-size: 1.8rem; color: var(--brass); margin-top: 2px; }
-.proxy-check h3 { margin: 0 0 8px; font-size: 1.25rem; color: #fff; }
-.proxy-check p { margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; }
-/* ========================================= */
+/* ===== Accordions (Dropdowns for Rules) ===== */
+.accordion-wrap { display: grid; gap: 10px; }
+.accordion-item { background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; transition: border-color 0.2s; }
+.accordion-item[open] { border-color: var(--brass); box-shadow: 0 4px 20px rgba(18,24,43,0.04); }
+.accordion-header { padding: 16px 20px; font-weight: 700; font-size: 0.98rem; color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: space-between; user-select: none; list-style: none; }
+.accordion-header::-webkit-details-marker { display: none; }
+.accordion-header i { color: var(--slate); transition: transform 0.2s; font-size: 0.85rem; }
+.accordion-item[open] .accordion-header i { transform: rotate(180deg); color: var(--brass-deep); }
+.accordion-content { padding: 0 20px 18px; color: var(--slate); font-size: 0.94rem; line-height: 1.6; border-top: 1px solid var(--paper); margin-top: 8px; padding-top: 14px; }
+.rule-tag { font-family: var(--mono); font-size: 0.68rem; font-weight: 700; padding: 3px 8px; border-radius: 6px; text-transform: uppercase; margin-left: 8px; display: inline-block; vertical-align: middle; }
+.tag-all { background: var(--stamp-tint); color: var(--stamp-deep); }
+.tag-proxy { background: var(--brass-tint); color: var(--brass-deep); }
 
-/* Checklist Modules */
-.info-module { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 40px; box-shadow: 0 10px 30px rgba(15,23,42,.04); }
-.info-module h2 { font-family: "Fraunces", serif; font-size: 1.6rem; color: var(--ink); margin: 0 0 16px; display: flex; align-items: center; gap: 12px; }
-.info-module h2 i { color: var(--brass-deep); }
-.info-module > p { color: var(--slate); margin-top: 0; margin-bottom: 24px; font-size: 1.05rem; line-height: 1.6;}
+/* ===== Scenario Selector (signature element) ===== */
+.selector{background:#fff;border:1px solid var(--line);border-radius:24px;padding:12px;box-shadow:0 14px 40px rgba(18,24,43,.06);}
+.tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:8px;}
+.tab{position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;background:transparent;border:1.5px dashed transparent;border-radius:16px;padding:14px 6px 12px;cursor:pointer;font-family:Inter,sans-serif;color:var(--slate);transition:border-color .15s, background .15s, transform .1s;}
+.tab:hover{background:var(--paper);}
+.tab .stamp{width:44px;height:44px;border-radius:50%;border:2px solid currentColor;display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:.95rem;transition:transform .18s cubic-bezier(.34,1.56,.64,1);}
+.tab .tlabel{font-size:.78rem;font-weight:700;text-align:center;line-height:1.25;color:var(--ink-soft);}
+.tab[aria-selected="true"]{border-color:var(--stamp);background:var(--stamp-tint);}
+.tab[aria-selected="true"] .stamp{color:var(--stamp);transform:rotate(-8deg) scale(1.08);}
+.tab[aria-selected="false"] .stamp{color:#c7cbd6;}
+.tab:focus-visible{outline-offset:2px;}
 
-.checklist { list-style: none; padding: 0; margin: 0; }
-.checklist li { display: flex; gap: 16px; align-items: flex-start; font-size: 1.05rem; color: var(--slate); margin-bottom: 20px; line-height: 1.6; }
-.checklist li i { color: #10b981; font-size: 1.2rem; margin-top: 3px; }
-.checklist li strong { color: var(--ink); display: block; margin-bottom: 2px; }
+.panels{border-top:1px solid var(--line);margin-top:4px;padding:30px 26px 26px;}
+.panel[hidden]{display:none;}
+.panel-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
+.panel-head h3{margin:0;font-size:1.3rem;}
+.panel-tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--stamp-deep);background:var(--stamp-tint);border-radius:6px;padding:3px 8px;}
+.panel-sub{color:var(--slate);font-size:.92rem;margin:0 0 18px;}
+.req-list{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:11px;}
+.req-list li{display:flex;gap:12px;align-items:flex-start;font-size:.98rem;color:var(--ink-soft);line-height:1.55;}
+.req-list li i{color:var(--stamp);font-size:1rem;margin-top:4px;flex:none;}
+.panel-note{background:var(--brass-tint);border-left:3px solid var(--brass-deep);border-radius:0 10px 10px 0;padding:12px 16px;font-size:.88rem;color:#5c451f;margin:0 0 20px;line-height:1.55;}
 
-/* Grid for Scenarios */
-.scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
-.scenario-card { background: var(--paper); border: 1px solid var(--line); padding: 24px; border-radius: 16px; }
-.scenario-card h3 { margin: 0 0 12px; font-size: 1.2rem; color: var(--ink); }
-.scenario-card ul { margin: 0; padding-left: 20px; color: var(--slate); font-size: 0.95rem; line-height: 1.6; }
-.scenario-card li { margin-bottom: 8px; }
+/* ===== Button Styles (Side-by-Side Setup) ===== */
+.btn-group { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+.wa-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:52px;padding:0 22px;border-radius:13px;background:#25D366;color:#fff;font-weight:700;font-size:.96rem;text-decoration:none;transition:transform .15s, box-shadow .15s; flex: 1; min-width: 240px;}
+.wa-btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(37,211,102,.28);}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;border-radius:14px;text-decoration:none;font-weight:700;font-size:.98rem;transition:all .15s ease;border:none;cursor:pointer; flex: 1; min-width: 240px; text-align: center;}
+.btn:hover{transform:translateY(-2px);}
 
-/* Warning Box */
-.callout-box { background: var(--warn-bg, #fff1f2); border-left: 4px solid var(--warn-border, #e11d48); padding: 24px; border-radius: 0 12px 12px 0; margin-top: 24px; }
-.callout-box h4 { margin: 0 0 8px; color: #9f1239; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; font-family: Inter, sans-serif;}
-.callout-box p { margin: 0; color: #881337; font-size: 0.95rem; line-height: 1.6; }
-
-/* Pricing Table */
-.pricing-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
-.pricing-table th { background: var(--paper-deep); color: var(--ink); font-weight: 600; text-align: left; padding: 16px; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid var(--line); }
-.pricing-table td { padding: 16px; border-bottom: 1px solid var(--line); color: var(--slate); font-size: 1.05rem; }
-.pricing-table tr:last-child td { border-bottom: none; }
-.pricing-table strong { color: var(--ink); }
-.fee-note { font-size: 0.85rem; color: var(--slate); margin-top: 16px; text-align: right; font-style: italic; }
-
-/* Final CTA */
-.final{background:linear-gradient(135deg,var(--ink),var(--ink-soft));color:#fff;border-radius:28px;padding:48px 24px;text-align:center;display:grid;gap:18px;box-shadow:0 18px 60px rgba(15,23,42,.16); max-width:860px; margin: 0 auto;}
-.final h2{font-weight:600; margin:0; font-size:clamp(1.9rem,4vw,2.8rem)}
-.final p{color:#cbd5e1;margin:0 auto; max-width:560px;}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;border-radius:14px;text-decoration:none;font-weight:700;font-size:.98rem;transition:all .15s ease; border:none; cursor:pointer;}
-.btn-primary{background:var(--ink);color:#fff}
-.btn-primary:hover{background:var(--ink-soft); transform: translateY(-2px);}
-
-/* Footer */
+/* ===== Footer (RESTORED TO ORIGINAL HOMEPAGE STYLE) ===== */
 footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 .footer-grid{display:grid;gap:40px}
 .footer-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
@@ -132,63 +130,55 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 .footer-col a:hover{color:#fff}
 .footer-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:12px;color:#94a3b8;font-size:.85rem;line-height:1.6;}
 
-/* CLEANED DESKTOP QUERY */
+/* ===== Mobile Responsiveness Rules ===== */
 @media(min-width:980px){
   .desktop-nav{display:flex;}
   .menu{display:none;}
   .mobile-nav{display:none !important;}
-  .alerts-grid { grid-template-columns: 1fr 1fr; }
-  .footer-grid { grid-template-columns: 1fr 1.5fr; }
+  .footer-grid{grid-template-columns:1fr 1.5fr;}
 }
 
-/* CLEANED MOBILE STACKING FIX */
-@media(max-width:767px){ 
-  .container { padding: 0 14px; }
-  .scenario-grid, .alerts-grid, .content-grid { grid-template-columns: 1fr; gap: 16px; }
-  .content-grid { margin-bottom: 48px; }
-  .golden-rule, .proxy-check { flex-direction: column; text-align: center; align-items: center; padding: 20px; }
-  .info-module { padding: 24px 20px; border-radius: 16px; }
-  .info-module h2 { font-size: 1.3rem; }
-  .scenario-card { padding: 18px; }
-  .final { padding: 32px 20px; border-radius: 20px; }
-  .service-item { grid-template-columns: 1fr; text-align: center; justify-items: center; padding: 24px; }
-  .service-item img { width: 80px; height: 80px; margin-bottom: 8px; }
-  .badge { margin: 12px auto 0; display: inline-block; }
-  .pricing-table th, .pricing-table td { padding: 12px 8px; font-size: 0.9rem; }
-  .footer-cols { grid-template-columns: 1fr 1fr; } 
+@media(max-width:900px){
+  .tabs{grid-template-columns:repeat(3,1fr);}
 }
 
-/* STACKED FEE TABLE FOR PHONES */
-@media(max-width:600px){
-  .pricing-table thead { display: none; }
-  .pricing-table, .pricing-table tbody, .pricing-table tr, .pricing-table td { display: block; width: 100%; }
-  .pricing-table { border: none; }
-  .pricing-table tr { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-bottom: 14px; background: #fff; }
-  .pricing-table tr:last-child { margin-bottom: 0; }
-  .pricing-table td { border-bottom: 1px solid var(--line); padding: 12px 16px; font-size: 0.95rem; }
-  .pricing-table td:last-child { border-bottom: none; }
-  .pricing-table td:first-child { background: var(--paper-deep); }
-  .pricing-table td::before { content: attr(data-label); display: block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--slate); margin-bottom: 3px; }
+@media(max-width:767px){
+  .container{padding:0 14px;}
+  .content-grid{margin-bottom:48px; gap: 20px;}
+  .footer-cols{grid-template-columns:1fr 1fr;}
+  .tabs{grid-template-columns:repeat(2,1fr);}
+  .panels{padding:24px 18px 20px;}
 }
 
-@media(max-width:480px){ 
-  .footer-cols { grid-template-columns: 1fr; } 
+@media(max-width:480px){
+  .footer-cols{grid-template-columns:1fr;}
+  .tabs{grid-template-columns:1fr 1fr;}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{transition-duration:0.001ms !important; animation-duration:0.001ms !important;}
 }
 </style>
 </head>
 <body>
+
+<!-- ===== TOP DISCLAIMER BANNER ===== -->
+<div style="background-color: var(--ink); color: #c7ccdb; text-align: center; padding: 10px 16px; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.02em; border-bottom: 1px solid rgba(255,255,255,0.1);">
+  <i class="fa-solid fa-circle-info" style="color: var(--brass); margin-right: 6px;"></i>
+  <strong>Disclaimer:</strong> Docu-Hub Operations is an independent, private proxy service. We are not a government agency and are not affiliated with the Passport, Immigration and Citizenship Agency (PICA).
+</div>
 
 <header>
   <div class="container nav">
     <a class="brand" href="index.html">
       <div class="logo">DH</div><span>Docu-Hub Operations</span>
     </a>
-    
+
     <nav class="desktop-nav">
       <div class="dropdown">
-        <button class="dropbtn">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i></button>
+        <button class="dropbtn">Services <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i></button>
         <div class="dropdown-content">
-          <a href="passport.html" style="font-weight:700; color:var(--ink);">PICA Passports</a>
+          <a href="passport.html" style="font-weight:700;color:var(--ink);">PICA Passports</a>
           <a href="vital.html">RGD Vital Records</a>
           <a href="nis.html">NIS Pensions</a>
           <a href="taj-renewal.html">TAJ Motor Vehicles</a>
@@ -197,224 +187,292 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
       <a href="insights.html">Insights</a>
       <a href="about.html">About Us</a>
       <a href="faq.html">FAQ</a>
-      <a href="booking.html" class="btn btn-primary" style="min-height: 40px; padding: 0 16px; font-size: 0.85rem;">Book Consultation</a>
+      <a href="booking.html" class="btn" style="background:var(--ink);color:#fff;min-height:40px;padding:0 16px;font-size:0.85rem; min-width: auto;">Book Consultation</a>
     </nav>
-    
+
     <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
-      <i class="fa-solid fa-bars" style="font-size: 1.4rem;"></i>
+      <i class="fa-solid fa-bars" style="font-size:1.4rem;"></i>
     </button>
   </div>
-  
+
   <nav class="mobile-nav" id="mobileNav" hidden>
-    <a href="index.html#services" style="font-weight: 700; color: var(--ink);">Services</a>
-    <a href="passport.html" class="mobile-sub" style="font-weight:700; color:var(--blue-deep);">↳ PICA Passports</a>
+    <a href="index.html#services" style="font-weight:700;color:var(--ink);">Services</a>
+    <a href="passport.html" class="mobile-sub" style="font-weight:700;color:var(--stamp-deep);">↳ PICA Passports</a>
     <a href="vital.html" class="mobile-sub">↳ RGD Vital Records</a>
     <a href="nis.html" class="mobile-sub">↳ NIS Pensions</a>
     <a href="taj-renewal.html" class="mobile-sub">↳ TAJ Motor Vehicles</a>
     <a href="insights.html">Insights</a>
     <a href="about.html">About Us</a>
     <a href="faq.html">FAQ</a>
-    <a href="booking.html" style="font-weight: 700; color: var(--blue-deep);">Book Consultation</a>
+    <a href="booking.html" style="font-weight:700;color:var(--stamp-deep);">Book Consultation</a>
   </nav>
 </header>
 
 <main>
 <section class="article-hero">
   <div class="container">
-    <span class="eyebrow">PICA Agency Proxy</span>
-    <h1>Jamaican Passport Services</h1>
-    <p class="article-meta">Before booking a consultation, please review the strict eligibility rules and document checklists below to ensure your application will be accepted by PICA without delays.</p>
+    <span class="eyebrow">Independent Passport Proxy</span>
+    <h1>Know exactly what PICA needs, before you need it.</h1>
+    <p class="article-meta">Find your situation below, check your exact document checklist, and message our proxy team on WhatsApp to start your pre-audit — no government portal guesswork.</p>
+    <nav class="jump-pills" aria-label="Jump to section">
+      <a href="#rules">Important Guidelines</a>
+      <a href="#selector">Choose Your Case</a>
+    </nav>
   </div>
 </section>
 
 <div class="container">
   <div class="content-grid">
 
-    <!-- ======== SIDE-BY-SIDE ALERTS ======== -->
-    <div class="alerts-grid">
-      <!-- THE GOLDEN RULE -->
-      <div class="golden-rule">
-        <i class="fa-solid fa-book-open"></i>
-        <div>
-          <h3>Physical Passport Required</h3>
-          <p>A digital picture of your bio-page is <strong>NOT</strong> sufficient. Unless filing for a "Lost Passport", you must have your physical passport book in hand (even if it is damaged).</p>
-        </div>
+    <!-- ======== COLLAPSIBLE RULES / GUIDELINES ======== -->
+    <section class="block" id="rules">
+      <div class="section-head">
+        <span class="eyebrow-mini">Key Requirements</span>
+        <h2>Filing Guidelines &amp; Rules</h2>
+        <p>Tap a guideline below to see how it applies to your specific filing type.</p>
       </div>
 
-      <!-- PROXY REALITY CHECK -->
-      <div class="proxy-check">
-        <i class="fa-solid fa-pen-nib"></i>
-        <div>
-          <h3>The Proxy Reality Check</h3>
-          <p>While we take digital copies initially to pre-audit your file, acting as your official proxy in Jamaica means we will eventually need the <strong>original physical documents and wet signatures</strong>.</p>
-        </div>
-      </div>
-    </div>
-    <!-- ===================================== -->
-
-    <!-- MODULE 1: THE MUST-HAVES (Often Forgotten) -->
-    <div class="info-module">
-      <h2><i class="fa-solid fa-list-check"></i> The "Often Forgotten" Checklist</h2>
-      <p>Most clients assume they only need their old passport to renew. Before contacting us, ensure you have the following critical items ready:</p>
-      
-      <ul class="checklist">
-        <li>
-          <i class="fa-solid fa-certificate"></i>
-          <div>
-            <strong>Your Original Birth Certificate</strong>
-            Even for a standard renewal, PICA frequently requires verification of your original RGD birth certificate. Do not assume your old passport is enough.
-          </div>
-        </li>
-        <li>
-          <i class="fa-solid fa-camera"></i>
-          <div>
-            <strong>PICA-Standard Passport Photos</strong>
-            For online renewals, a professional <strong>digital/electronic file</strong> is required (taking a picture of a printed photo will fail the checker). For all other physical applications, you must provide <strong>two (2) printed passport-sized photos</strong>. All photos must meet strict PICA lighting and dimension rules.
-          </div>
-        </li>
-        <li>
-          <i class="fa-solid fa-users"></i>
-          <div>
-            <strong>Two (2) Contact References</strong>
-            You do not need signed character forms. However, you <strong>must</strong> provide the full names, physical addresses, phone numbers, and email addresses of two people who do not live with you. This is a mandatory requirement for every application type.
-          </div>
-        </li>
-      </ul>
-    </div>
-
-    <!-- MODULE 2: SCENARIOS & ELIGIBILITY -->
-    <div class="info-module">
-      <h2><i class="fa-solid fa-scale-balanced"></i> Choose Your Scenario</h2>
-      <p>Locate your specific situation below to see exactly what documents you need to gather before we begin processing your file.</p>
-
-      <div class="scenario-grid">
+      <div class="accordion-wrap">
         
-        <!-- Standard Renewal -->
-        <div class="scenario-card">
-          <h3>1. Standard Adult Renewal (Online)</h3>
-          <ul>
-            <li>Must be 18 years or older.</li>
-            <li>Original RGD Birth Certificate.</li>
-            <li>Current passport must be issued <strong>after 2001</strong>.</li>
-            <li>Passport must be physically in hand and <strong>undamaged</strong>.</li>
-            <li><strong>PICA-Standard Digital Photo (electronic file).</strong></li>
-            <li>Direct renewals only (no name changes).</li>
-            <li>Details for two (2) contact references (not living with you).</li>
-          </ul>
-        </div>
+        <!-- Dropdown 1: Physical Passport -->
+        <details class="accordion-item">
+          <summary class="accordion-header">
+            <span><i class="fa-solid fa-book-open" style="margin-right: 8px; color: var(--brass-deep);"></i> Physical Passport Required <span class="rule-tag tag-all">All Cases</span></span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="accordion-content">
+            A digital picture of your bio-page is <strong>NOT</strong> sufficient. Unless filing for an official "Lost Passport," you must have your physical passport book in hand (even if it is severely damaged).
+          </div>
+        </details>
 
-        <!-- First-Time Adult -->
-        <div class="scenario-card">
-          <h3>2. First-Time Adult (18+)</h3>
-          <ul>
-            <li>Original RGD Birth Certificate.</li>
-            <li><strong>Valid Government ID:</strong> Voter's ID or Driver's License strictly required (school IDs are not accepted).</li>
-            <li><strong>Two (2) printed passport-sized photos.</strong></li>
-            <li>Details for two (2) contact references (not living with you).</li>
-            <li>Requires physical submission via proxy.</li>
-          </ul>
-        </div>
+        <!-- Dropdown 2: Signature Box -->
+        <details class="accordion-item">
+          <summary class="accordion-header">
+            <span><i class="fa-solid fa-file-signature" style="margin-right: 8px; color: var(--brass-deep);"></i> The Signature Box Rule <span class="rule-tag tag-proxy">In-Person &amp; Proxy Only</span></span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="accordion-content">
+            For physical form submissions, your signature must sit completely inside the designated box. If the ink touches or crosses the border lines, or if signed in any color other than blue or black ink, PICA will reject the application outright. <em>(Does not apply to standard online renewals).</em>
+          </div>
+        </details>
 
-        <!-- Name Change -->
-        <div class="scenario-card">
-          <h3>3. Name Change (Marriage/Divorce)</h3>
-          <ul>
-            <li>Current physical passport (no additional ID required).</li>
-            <li>Original RGD Birth Certificate.</li>
-            <li>Certified copy of the Marriage Certificate OR Decree Absolute (divorce papers).</li>
-            <li><strong>Two (2) printed passport-sized photos.</strong></li>
-            <li>Details for two (2) contact references (not living with you).</li>
-            <li>Requires physical submission via proxy (cannot be done online).</li>
-          </ul>
-        </div>
+        <!-- Dropdown 3: Document Integrity -->
+        <details class="accordion-item">
+          <summary class="accordion-header">
+            <span><i class="fa-solid fa-ban" style="margin-right: 8px; color: var(--brass-deep);"></i> No Laminated or Altered Documents <span class="rule-tag tag-all">All Cases</span></span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="accordion-content">
+            PICA strictly rejects civil documents that have been laminated, taped, or altered. Your original RGD Birth Certificate and Marriage Certificates must be unadulterated physical originals.
+          </div>
+        </details>
 
-        <!-- Damaged Passport -->
-        <div class="scenario-card" style="border-color: var(--brass-deep); background: var(--brass-tint);">
-          <h3 style="color: var(--brass-deep);">4. Damaged Passport Protocol</h3>
-          <ul>
-            <li><strong>The Damaged Passport:</strong> You must physically present the damaged book (do not throw it away).</li>
-            <li><strong>Notarized Report:</strong> A written statement explaining how the damage occurred. <em>(Note: We provide a strict PICA-approved template for this, ensuring the wording, signature, and Notary/JP stamps are formatted perfectly to avoid rejection.)</em></li>
-            <li>Original RGD Birth Certificate.</li>
-            <li><strong>Two (2) printed passport-sized photos.</strong></li>
-            <li>Details for two (2) contact references (not living with you).</li>
-            <li>Requires physical submission via proxy.</li>
-          </ul>
-        </div>
-
-        <!-- Lost Passport -->
-        <div class="scenario-card" style="border-color: var(--blue); background: var(--paper-deep);">
-          <h3 style="color: var(--blue-deep);">5. Lost Passport Protocol</h3>
-          <ul>
-            <li><strong>Original Police Report:</strong> Must be signed and stamped.</li>
-            <li>Valid government-issued photo ID.</li>
-            <li>Original RGD Birth Certificate.</li>
-            <li><strong>Two (2) printed passport-sized photos.</strong></li>
-            <li>Details for two (2) contact references (not living with you).</li>
-            <li><em>Note: Do not panic about the police station. It is a routine administrative step. Make the report, get the physical copy, and we will handle the rest.</em></li>
-          </ul>
-        </div>
+        <!-- Dropdown 4: Proxy Setup -->
+        <details class="accordion-item">
+          <summary class="accordion-header">
+            <span><i class="fa-solid fa-file-shield" style="margin-right: 8px; color: var(--brass-deep);"></i> Proxy Authorization Protocol <span class="rule-tag tag-proxy">Proxy Filings Only</span></span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="accordion-content">
+            We pre-audit your file using digital scans. However, acting as your official administrative proxy in Jamaica means you will eventually need to provide us with an Authorization Letter and a copy of your valid ID—<strong>both certified by a Notary Public or Justice of the Peace (JP)</strong>.
+          </div>
+        </details>
 
       </div>
-    </div>
+    </section>
 
-    <!-- MODULE 3: PICA FEES, PROCESSING & DELIVERY -->
-    <div class="info-module">
-      <h2><i class="fa-solid fa-money-bill-wave"></i> Official PICA Fees & Expedited Options</h2>
-      <p>PICA offers standard and expedited processing times. Please note that replacing a lost or damaged passport carries a mandatory government penalty fee.</p>
-      
-      <div style="overflow-x: auto;">
-        <table class="pricing-table">
-          <thead>
-            <tr>
-              <th>Application Type</th>
-              <th>Standard (7-14 Days)</th>
-              <th>Expedited (3 Days)</th>
-              <th>Next Day (24 Hrs)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td data-label="Application Type"><strong>Renewal / First-Time Adult</strong></td>
-              <td data-label="Standard (7-14 Days)">$6,500 JMD</td>
-              <td data-label="Expedited (3 Days)">$9,500 JMD</td>
-              <td data-label="Next Day (24 Hrs)">$11,500 JMD</td>
-            </tr>
-            <tr>
-              <td data-label="Application Type"><strong>Lost / Damaged Replacement</strong></td>
-              <td data-label="Standard (7-14 Days)">$16,500 JMD</td>
-              <td data-label="Expedited (3 Days)">$19,500 JMD</td>
-              <td data-label="Next Day (24 Hrs)">$21,500 JMD</td>
-            </tr>
-          </tbody>
-        </table>
+    <!-- ======== SCENARIO SELECTOR (ALL-IN-ONE HUB) ======== -->
+    <section class="block" id="selector">
+      <div class="section-head">
+        <span class="eyebrow-mini">Step 1</span>
+        <h2>Choose your case</h2>
+        <p>Tap the situation that matches you to see your complete checklist, exact fees, and next steps.</p>
       </div>
-      <p class="fee-note">*Note: Docu-Hub Operations charges a separate flat-fee for our proxy and pre-audit services.</p>
 
-      <div class="callout-box" style="margin-top: 32px;">
-        <h4><i class="fa-solid fa-truck-fast"></i> Mandatory Direct Courier Delivery</h4>
-        <p>To ensure the absolute highest level of security for your travel documents, Docu-Hub Operations <strong>does not</strong> collect or hold finished physical passports on your behalf. Once your passport is printed, it must be dispatched directly from PICA to your doorstep via secure courier (such as Tara Couriers locally or DHL internationally). Courier fees are assessed separately based on your specific delivery destination.</p>
+      <div class="selector">
+        <div class="tabs" role="tablist" aria-label="Passport scenarios">
+          <button class="tab" role="tab" id="tab-standard" aria-controls="panel-standard" aria-selected="true">
+            <span class="stamp">01</span>
+            <span class="tlabel">Standard<br>Renewal</span>
+          </button>
+          <button class="tab" role="tab" id="tab-first-time" aria-controls="panel-first-time" aria-selected="false">
+            <span class="stamp">02</span>
+            <span class="tlabel">First-Time<br>Adult</span>
+          </button>
+          <button class="tab" role="tab" id="tab-name-change" aria-controls="panel-name-change" aria-selected="false">
+            <span class="stamp">03</span>
+            <span class="tlabel">Name<br>Change</span>
+          </button>
+          <button class="tab" role="tab" id="tab-damaged" aria-controls="panel-damaged" aria-selected="false">
+            <span class="stamp">04</span>
+            <span class="tlabel">Damaged<br>Passport</span>
+          </button>
+          <button class="tab" role="tab" id="tab-lost" aria-controls="panel-lost" aria-selected="false">
+            <span class="stamp">05</span>
+            <span class="tlabel">Lost<br>Passport</span>
+          </button>
+        </div>
+
+        <div class="panels">
+
+          <!-- 1. STANDARD RENEWAL -->
+          <div class="panel" id="panel-standard" role="tabpanel" aria-labelledby="tab-standard">
+            <div class="panel-head"><h3>Standard Adult Renewal</h3><span class="panel-tag">Online</span></div>
+            <p class="panel-sub">For direct renewals only (no name changes). Current passport must be physically in hand and undamaged.</p>
+            
+            <ul class="req-list">
+              <li><i class="fa-solid fa-check"></i><div>Must be 18 years or older</div></li>
+              <li><i class="fa-solid fa-check"></i><div><strong>Original RGD Birth Certificate</strong></div></li>
+              <li><i class="fa-solid fa-check"></i><div>Current passport issued <strong>after September 2001</strong></div></li>
+              <li><i class="fa-solid fa-check"></i><div><strong>PICA-Standard Digital Photo:</strong> Electronic digital file meeting strict lighting/sizing checkers <em>(not a photo of a printed photo)</em></div></li>
+              <li><i class="fa-solid fa-check"></i><div><strong>Two (2) Contact References:</strong> Full names, physical addresses, phone numbers, and emails of two people who do not live with you.</div></li>
+            </ul>
+
+            <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 18px; margin-bottom: 12px;">
+              <h4 style="margin: 0 0 8px; font-size: 1rem; color: var(--ink);"><i class="fa-solid fa-money-bill-wave" style="color: var(--stamp); margin-right: 6px;"></i> Government Fees</h4>
+              <p style="margin: 0; color: var(--ink-soft); font-size: 0.95rem;"><strong>$6,500 JMD</strong> (Standard 7-14 Days) | <strong>$9,500 JMD</strong> (Expedited 3 Days)</p>
+              <p style="margin: 8px 0 0; font-size: 0.85rem; color: var(--slate); font-style: italic;">*Note: Government fees are subject to agency updates. Docu-Hub Operations' proxy/service fee is completely separate and not included in this PICA cost.</p>
+            </div>
+
+            <!-- SIDE-BY-SIDE BUTTON GROUP -->
+            <div class="btn-group">
+              <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I%20have%20all%20my%20documents%20ready%20and%20want%20to%20start%20my%20Standard%20Adult%20Renewal%20pre-audit." target="_blank" rel="noopener" class="wa-btn">
+                <i class="fa-brands fa-whatsapp" style="font-size:1.15rem;"></i> I Have My Documents — Start Pre-Audit
+              </a>
+              <a href="booking.html?service=standard-renewal" class="btn" style="background: var(--ink); color: #fff;">
+                <i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Missing Documents? Book Consultation
+              </a>
+            </div>
+          </div>
+
+          <!-- 2. FIRST-TIME ADULT -->
+          <div class="panel" id="panel-first-time" role="tabpanel" aria-labelledby="tab-first-time" hidden>
+            <div class="panel-head"><h3>First-Time Adult (18+)</h3><span class="panel-tag">In Person / Proxy</span></div>
+            <p class="panel-sub">Requires physical submission via our proxy. This cannot be filed online.</p>
+            
+            <ul class="req-list">
+              <li><i class="fa-solid fa-check"></i><div><strong>Original RGD Birth Certificate</strong></div></li>
+              <li><i class="fa-solid fa-check"></i><div><strong>Valid Government ID:</strong> Voter's ID, Driver's License, or National ID <em>(School IDs are strictly rejected)</em></div></li>
+              <li><i class="fa-solid fa-check"></i><div><strong>Two (2) Printed Passport Photos:</strong> One photo must be officially certified on the back by an Authorized Official (JP, Minister, or Police Officer).</div></li>
+              <li><i class="fa-solid fa-check"></i><div><strong>Certified Application Form:</strong> Section G of the physical form must be signed and stamped by the same certifying official.</div></li>
+            </ul>
+
+            <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 18px; margin-bottom: 12px;">
+              <h4 style="margin: 0 0 8px; font-size: 1rem; color: var(--ink);"><i class="fa-solid fa-money-bill-wave" style="color: var(--stamp); margin-right: 6px;"></i> Government Fees</h4>
+              <p style="margin: 0; color: var(--ink-soft); font-size: 0.95rem;"><strong>$6,500 JMD</strong> (Standard 7-14 Days) | <strong>$9,500 JMD</strong> (Expedited 3 Days)</p>
+              <p style="margin: 8px 0 0; font-size: 0.85rem; color: var(--slate); font-style: italic;">*Note: Government fees are subject to agency updates. Docu-Hub Operations' proxy/service fee is completely separate and not included in this PICA cost.</p>
+            </div>
+
+            <!-- SIDE-BY-SIDE BUTTON GROUP -->
+            <div class="btn-group">
+              <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I%20have%20all%20my%20documents%20ready%20and%20want%20to%20start%20my%20First-Time%20Adult%20pre-audit." target="_blank" rel="noopener" class="wa-btn">
+                <i class="fa-brands fa-whatsapp" style="font-size:1.15rem;"></i> I Have My Documents — Start Pre-Audit
+              </a>
+              <a href="booking.html?service=first-time-adult" class="btn" style="background: var(--ink); color: #fff;">
+                <i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Missing Documents? Book Consultation
+              </a>
+            </div>
+          </div>
+
+          <!-- 3. NAME CHANGE -->
+          <div class="panel" id="panel-name-change" role="tabpanel" aria-labelledby="tab-name-change" hidden>
+            <div class="panel-head"><h3>Name Change</h3><span class="panel-tag">Marriage / Divorce</span></div>
+            <p class="panel-sub">Requires physical submission via our proxy. This cannot be filed online.</p>
+            
+            <ul class="req-list">
+              <li><i class="fa-solid fa-check"></i><div><strong>Current Physical Passport:</strong> Must be presented to PICA for official cancellation.</div></li>
+              <li><i class="fa-solid fa-check"></i><div><strong>Original RGD Birth Certificate</strong></div></li>
+              <li><i class="fa-solid fa-check"></i><div><strong>Legal Document Bridge:</strong> Certified Original Marriage Certificate OR Decree Absolute (divorce papers).</div></li>
+              <li><i class="fa-solid fa-check"></i><div><strong>Two (2) Printed Passport Photos:</strong> One photo must be officially certified on the back by an Authorized Official (JP, Minister, or Police Officer).</div></li>
+              <li><i class="fa-solid fa-check"></i><div><strong>Certified Application Form:</strong> Section G of the physical form must be signed and stamped by the same certifying official.</div></li>
+            </ul>
+
+            <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 18px; margin-bottom: 12px;">
+              <h4 style="margin: 0 0 8px; font-size: 1rem; color: var(--ink);"><i class="fa-solid fa-money-bill-wave" style="color: var(--stamp); margin-right: 6px;"></i> Government Fees</h4>
+              <p style="margin: 0; color: var(--ink-soft); font-size: 0.95rem;"><strong>$6,500 JMD</strong> (Standard 7-14 Days) | <strong>$9,500 JMD</strong> (Expedited 3 Days)</p>
+              <p style="margin: 8px 0 0; font-size: 0.85rem; color: var(--slate); font-style: italic;">*Note: Government fees are subject to agency updates. Docu-Hub Operations' proxy/service fee is completely separate and not included in this PICA cost.</p>
+            </div>
+
+            <!-- SIDE-BY-SIDE BUTTON GROUP -->
+            <div class="btn-group">
+              <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I%20have%20all%20my%20documents%20ready%20and%20want%20to%20start%20my%20Name%20Change%20pre-audit." target="_blank" rel="noopener" class="wa-btn">
+                <i class="fa-brands fa-whatsapp" style="font-size:1.15rem;"></i> I Have My Documents — Start Pre-Audit
+              </a>
+              <a href="booking.html?service=name-change" class="btn" style="background: var(--ink); color: #fff;">
+                <i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Missing Documents? Book Consultation
+              </a>
+            </div>
+          </div>
+
+          <!-- 4. DAMAGED PASSPORT -->
+          <div class="panel" id="panel-damaged" role="tabpanel" aria-labelledby="tab-damaged" hidden>
+            <div class="panel-head"><h3>Damaged Passport</h3><span class="panel-tag">Replacement</span></div>
+            <p class="panel-sub">Requires physical submission via our proxy. Do not discard the damaged book.</p>
+            
+            <ul class="req-list">
+              <li><i class="fa-solid fa-check"></i><div><strong>The Damaged Book:</strong> You must physically present the book (even if mutilated or torn).</div></li>
+              <li><i class="fa-solid fa-check"></i><div><strong>Notarized Damage Statement:</strong> Written declaration detailing how the damage occurred. <em>(We supply a strict PICA-approved template to prevent rejection).</em></div></li>
+              <li><i class="fa-solid fa-check"></i><div><strong>Original RGD Birth Certificate</strong></div></li>
+              <li><i class="fa-solid fa-check"></i><div><strong>Two (2) Printed Passport Photos:</strong> One photo certified by an Authorized Official (JP/Minister).</div></li>
+              <li><i class="fa-solid fa-check"></i><div><strong>Certified Form &amp; Valid ID:</strong> Form Section G certified by an Authorized Official, plus a valid photo ID.</div></li>
+            </ul>
+
+            <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 18px; margin-bottom: 12px;">
+              <h4 style="margin: 0 0 8px; font-size: 1rem; color: var(--ink);"><i class="fa-solid fa-money-bill-wave" style="color: var(--stamp); margin-right: 6px;"></i> Government Fees (Penalty Applies)</h4>
+              <p style="margin: 0; color: var(--ink-soft); font-size: 0.95rem;"><strong>$16,500 JMD</strong> (Standard 7-14 Days) | <strong>$19,500 JMD</strong> (Expedited 3 Days)</p>
+              <p style="margin: 8px 0 0; font-size: 0.85rem; color: var(--slate); font-style: italic;">*Note: Government fees are subject to agency updates. Docu-Hub Operations' proxy/service fee is completely separate and not included in this PICA cost.</p>
+            </div>
+
+            <!-- SIDE-BY-SIDE BUTTON GROUP -->
+            <div class="btn-group">
+              <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I%20have%20all%20my%20documents%20ready%20and%20need%20help%20with%20a%20Damaged%20Passport." target="_blank" rel="noopener" class="wa-btn">
+                <i class="fa-brands fa-whatsapp" style="font-size:1.15rem;"></i> I Have My Documents — Start Pre-Audit
+              </a>
+              <a href="booking.html?service=damaged-passport" class="btn" style="background: var(--ink); color: #fff;">
+                <i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Missing Documents? Book Consultation
+              </a>
+            </div>
+          </div>
+
+          <!-- 5. LOST PASSPORT -->
+          <div class="panel" id="panel-lost" role="tabpanel" aria-labelledby="tab-lost" hidden>
+            <div class="panel-head"><h3>Lost Passport</h3><span class="panel-tag">Replacement</span></div>
+            <p class="panel-sub">Requires physical submission via our proxy and a physical police report.</p>
+            
+            <ul class="req-list">
+              <li><i class="fa-solid fa-check"></i><div><strong>Original Police Report:</strong> Official physical report signed and stamped by the police station.</div></li>
+              <li><i class="fa-solid fa-check"></i><div><strong>Valid Government ID:</strong> Driver's License, Voter's ID, or Passport card.</div></li>
+              <li><i class="fa-solid fa-check"></i><div><strong>Original RGD Birth Certificate</strong></div></li>
+              <li><i class="fa-solid fa-check"></i><div><strong>Two (2) Printed Passport Photos:</strong> One photo certified on the back by an Authorized Official (JP/Minister).</div></li>
+              <li><i class="fa-solid fa-check"></i><div><strong>Certified Application Form:</strong> Section G signed and stamped by the certifying official.</div></li>
+            </ul>
+
+            <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 18px; margin-bottom: 12px;">
+              <h4 style="margin: 0 0 8px; font-size: 1rem; color: var(--ink);"><i class="fa-solid fa-money-bill-wave" style="color: var(--stamp); margin-right: 6px;"></i> Government Fees (Penalty Applies)</h4>
+              <p style="margin: 0; color: var(--ink-soft); font-size: 0.95rem;"><strong>$16,500 JMD</strong> (Standard 7-14 Days) | <strong>$19,500 JMD</strong> (Expedited 3 Days)</p>
+              <p style="margin: 8px 0 0; font-size: 0.85rem; color: var(--slate); font-style: italic;">*Note: Government fees are subject to agency updates. Docu-Hub Operations' proxy/service fee is completely separate and not included in this PICA cost.</p>
+            </div>
+
+            <!-- SIDE-BY-SIDE BUTTON GROUP -->
+            <div class="btn-group">
+              <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I%20have%20my%20documents%20ready%20and%20need%20help%20with%20a%20Lost%20Passport." target="_blank" rel="noopener" class="wa-btn">
+                <i class="fa-brands fa-whatsapp" style="font-size:1.15rem;"></i> I Have My Documents — Start Pre-Audit
+              </a>
+              <a href="booking.html?service=lost-passport" class="btn" style="background: var(--ink); color: #fff;">
+                <i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Missing Documents? Book Consultation
+              </a>
+            </div>
+          </div>
+
+        </div>
       </div>
-    </div>
+    </section>
 
   </div>
 </div>
-
-<!-- FINAL CTA (Aligned perfectly) -->
-<div class="container" style="margin-bottom: 80px;">
-    <div class="final">
-      <span class="eyebrow" style="margin:auto;background:rgba(176,138,78,.18);color:#f3d9a4;border-color:rgba(176,138,78,.35)">Connect Instantly</span>
-      <h2>Do you meet the requirements?</h2>
-      <p>If you have your physical passport (or police report/damaged book) and your birth certificate ready, book a consultation so our proxy team can pre-audit your file.</p>
-      <div style="margin-top: 12px; display: flex; justify-content: center;">
-        <a class="btn" href="booking.html" style="background:#fff; color:var(--ink); min-height: 56px; border: none;">
-          <i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book a Consultation
-        </a>
-      </div>
-    </div>
-</div>
 </main>
 
-<!-- UNIFIED 3-COLUMN FOOTER -->
+<!-- FOOTER (RESTORED TO ORIGINAL STYLES) -->
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -440,14 +498,13 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
           <h4>Legal &amp; Connect</h4>
           <a href="privacy.html">Privacy Policy</a>
           <a href="terms.html">Terms of Service</a>
-          <a href="booking.html" style="display:flex; align-items:center; gap:8px;">
+          <a href="booking.html" style="display:flex;align-items:center;gap:8px;">
             <i class="fa-regular fa-calendar-days"></i> Book Consultation
           </a>
-          <!-- YOUTUBE FOOTER LINK -->
-          <a href="https://www.youtube.com/@LauraClarke_dhub" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; color: #ea3323;">
+          <a href="https://www.youtube.com/@LauraClarke_dhub" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;color:#ea3323;">
             <i class="fa-brands fa-youtube"></i> Watch on YouTube
           </a>
-          <a href="https://www.linkedin.com/in/docuhubservices" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; color: #0a66c2;">
+          <a href="https://www.linkedin.com/in/docuhubservices" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;color:#0a66c2;">
             <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn
           </a>
         </div>
@@ -455,20 +512,44 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
     </div>
     <div class="footer-bottom">
       <div>Disclaimer: Docu-Hub Operations Services is a private, registered administrative proxy service. We are not a government agency and are not affiliated with PICA, RGD, or MLSS/NIS.</div>
-      <div><i class="fa-solid fa-building-shield" style="margin-right: 6px; color: var(--brass);"></i> Registered with the Companies Office of Jamaica (COJ): #15602/2025 | OIC Data Controller Verified.</div>
+      <div><i class="fa-solid fa-building-shield" style="margin-right:6px;color:var(--brass);"></i> Registered with the Companies Office of Jamaica (COJ): #15602/2025 | OIC Data Controller Verified.</div>
       <div>&copy; 2026 Docu-Hub Operations Services. All rights reserved.</div>
     </div>
   </div>
 </footer>
 
 <script>
+// Mobile nav toggle
 var btn = document.getElementById('menuBtn');
 var nav = document.getElementById('mobileNav');
 btn.addEventListener('click', function(){
-var isHidden = nav.hasAttribute('hidden');
-if(isHidden){ nav.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); }
-else { nav.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); }
+  var isHidden = nav.hasAttribute('hidden');
+  if(isHidden){ nav.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); }
+  else { nav.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); }
 });
+
+// Scenario selector (tabs)
+(function(){
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
+
+  function activate(tab){
+    tabs.forEach(function(t){ t.setAttribute('aria-selected', t === tab ? 'true' : 'false'); });
+    panels.forEach(function(p){
+      var shouldShow = p.id === tab.getAttribute('aria-controls');
+      if(shouldShow){ p.removeAttribute('hidden'); } else { p.setAttribute('hidden',''); }
+    });
+  }
+
+  tabs.forEach(function(tab, i){
+    tab.addEventListener('click', function(){ activate(tab); });
+    tab.addEventListener('keydown', function(e){
+      var idx = i;
+      if(e.key === 'ArrowRight'){ idx = (i + 1) % tabs.length; tabs[idx].focus(); activate(tabs[idx]); }
+      if(e.key === 'ArrowLeft'){ idx = (i - 1 + tabs.length) % tabs.length; tabs[idx].focus(); activate(tabs[idx]); }
+    });
+  });
+})();
 </script>
 
 </body>
