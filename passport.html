@@ -21,50 +21,71 @@
 :root{
   --ink:#12182b; --ink-soft:#2a3350; --slate:#5b6478; --line:#e6ddc6;
   --paper:#f7f3ea; --paper-deep:#efe6d0;
-  --brass:#b3874f; --brass-deep:#8c6534; --brass-tint:#f4e9d5;
+  --brass:#b3874f; --brass-deep:#6b4a22; --brass-tint:#f4e9d5;
   --stamp:#0e6f63; --stamp-tint:#e6f2ef; --stamp-deep:#0a5b51;
   --blue:#2563eb; --blue-deep:#1d4ed8; --blue-tint:#eff6ff;
-  --alert:#a8392b; --alert-bg:#faece9; --alert-border:#e2a89e;
   --mono: "Space Mono", ui-monospace, monospace;
+  --radius-lg:16px; --radius-md:12px; --radius-sm:8px;
 }
 
 *{box-sizing:border-box}
-body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;width:100%;-webkit-text-size-adjust:100%;}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;width:100%;}
 h1,h2,h3,.brand span,.step-badge{font-family:"Fraunces",Georgia,serif}
 .container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px;}
 a{-webkit-tap-highlight-color:transparent}
 img{max-width:100%;height:auto;}
 :focus-visible{outline:2.5px solid var(--stamp);outline-offset:3px;border-radius:4px;}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;}
+}
+
+/* ===== Shared button styles ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border-radius:var(--radius-sm);font-weight:700;font-size:0.9rem;text-decoration:none;color:#fff;width:100%;border:none;cursor:pointer;font-family:Inter,sans-serif;transition:transform 0.15s, box-shadow 0.15s;}
+.btn:hover{transform:translateY(-2px);}
+.btn-stamp{background:var(--stamp);}
+.btn-stamp:hover{box-shadow:0 8px 20px rgba(14,111,99,0.22);}
+.btn-blue{background:var(--blue);}
+.btn-blue:hover{box-shadow:0 8px 20px rgba(37,99,235,0.22);}
+.btn-compact{width:auto;min-height:40px;padding:0 16px;font-size:0.85rem;}
+
+/* ===== Top disclaimer ===== */
+.disclaimer-bar{background:var(--ink);color:#c7ccdb;text-align:center;padding:10px 16px;font-size:0.85rem;font-weight:500;letter-spacing:0.02em;border-bottom:1px solid rgba(255,255,255,0.1);}
+.disclaimer-bar i{color:var(--brass);margin-right:6px;}
 
 /* ===== Header & Nav ===== */
-header{position:sticky;top:0;z-index:30;background:rgba(247,243,234,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header{position:sticky;top:0;z-index:30;background:rgba(247,243,234,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav{display:flex;justify-content:space-between;align-items:center;min-height:72px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:700;text-decoration:none;color:inherit}
 .brand span{font-size:1.02rem;font-weight:600;letter-spacing:-0.01em}
 .logo{width:38px;height:38px;border-radius:11px;background:var(--ink);color:var(--brass-tint);display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:600;font-size:.92rem;flex:none}
 
 .desktop-nav{display:none;gap:24px;align-items:center;}
-.desktop-nav a{text-decoration:none;color:var(--slate);font-weight:500;font-size:.96rem;transition:color 0.2s;}
-.desktop-nav a:hover{color:var(--ink)}
+.desktop-nav > a{text-decoration:none;color:var(--slate);font-weight:500;font-size:.96rem;transition:color 0.2s;}
+.desktop-nav > a:hover{color:var(--ink)}
 
 .dropdown{position:relative;display:inline-block;}
 .dropbtn{background:none;border:none;color:var(--ink);font-weight:700;font-size:0.96rem;font-family:Inter,sans-serif;cursor:pointer;padding:0;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
 .dropdown-content{display:none;position:absolute;top:100%;left:-16px;background-color:#fff;min-width:220px;box-shadow:0 12px 30px rgba(15,23,42,0.1);border:1px solid var(--line);border-radius:14px;padding:8px 0;z-index:40;}
 .dropdown-content a{color:var(--slate);padding:10px 18px;text-decoration:none;display:block;font-size:0.92rem;transition:background 0.15s,color 0.15s;font-weight:500;}
+.dropdown-content a.featured{font-weight:700;color:var(--ink);}
 .dropdown-content a:hover{background-color:var(--paper);color:var(--ink);}
-.dropdown:hover .dropdown-content{display:block;}
+.dropdown:hover .dropdown-content, .dropdown:focus-within .dropdown-content{display:block;}
 
-.menu{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);border:none;}
-.mobile-nav{display:grid;gap:2px;border-bottom:1px solid var(--line);background:#fff}
-.mobile-nav a{padding:14px 16px;text-decoration:none;color:var(--ink-soft);font-weight:500;border-top:1px solid var(--line)}
-.mobile-nav .mobile-sub{padding-left:28px;font-size:0.9rem;color:var(--slate);}
+.menu{width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);}
+.mobile-nav{display:grid;border-bottom:1px solid var(--line);background:#fff;max-height:calc(100vh - 72px);overflow-y:auto;}
+.mobile-nav a{padding:15px 16px;text-decoration:none;color:var(--ink-soft);font-weight:500;border-top:1px solid var(--line);min-height:48px;display:flex;align-items:center;}
+.mobile-nav a.featured{font-weight:700;color:var(--ink);}
+.mobile-nav .mobile-sub{padding-left:30px;font-size:0.92rem;color:var(--slate);font-weight:500;}
+.mobile-nav .mobile-sub.featured{font-weight:700;color:var(--stamp-deep);}
+.mobile-nav .mobile-cta{font-weight:700;color:var(--stamp-deep);}
 .mobile-nav[hidden]{display:none}
 
 /* ===== Hero Section ===== */
-.article-hero{padding:48px 0 16px;text-align:center;}
-.eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: auto; padding: 8px 14px; border-radius: 999px; background: var(--brass-tint); color: var(--brass-deep); font-size: .82rem; font-weight: 600; border: 1px solid #ecdcb8; margin-bottom: 20px; }
-h1{margin:0 0 16px;font-family:"Fraunces",serif;font-weight:600;font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;letter-spacing:-0.02em;color:var(--ink);max-width:820px;margin-left:auto;margin-right:auto;}
-.article-meta{font-size:1.08rem;color:var(--slate);margin-bottom:32px;max-width:700px;margin-left:auto;margin-right:auto;}
+.article-hero{padding:40px 0 16px;text-align:center;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;margin:0 auto 20px;padding:8px 14px;border-radius:999px;background:var(--brass-tint);color:var(--brass-deep);font-size:.82rem;font-weight:700;border:1px solid #ecdcb8;}
+h1{margin:0 0 16px;font-family:"Fraunces",serif;font-weight:600;font-size:clamp(1.75rem,5vw,3.2rem);line-height:1.15;letter-spacing:-0.02em;color:var(--ink);max-width:820px;margin-left:auto;margin-right:auto;}
+.article-meta{font-size:1.05rem;color:var(--slate);margin-bottom:28px;max-width:700px;margin-left:auto;margin-right:auto;}
 
 .content-grid{display:grid;gap:28px;max-width:1000px;margin:24px auto 64px;}
 section.block{scroll-margin-top:96px;}
@@ -72,72 +93,76 @@ section.block{scroll-margin-top:96px;}
 /* ===== Section headers ===== */
 .section-head{max-width:680px;margin:0 auto 20px;text-align:center;}
 .section-head .eyebrow-mini{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp-deep);font-weight:700;}
-.section-head h2{font-size:clamp(1.4rem,3vw,1.8rem);margin:6px 0 8px;}
+.section-head h2{font-size:clamp(1.35rem,4vw,1.8rem);margin:6px 0 8px;}
 .section-head p{color:var(--slate);margin:0;font-size:.98rem;}
 
-/* ===== Accordions (Dropdowns for Rules) ===== */
-.accordion-wrap { display: grid; gap: 10px; }
-.accordion-item { background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; transition: border-color 0.2s; }
-.accordion-item[open] { border-color: var(--brass); box-shadow: 0 4px 20px rgba(18,24,43,0.04); }
-.accordion-header { padding: 16px 20px; font-weight: 700; font-size: 0.98rem; color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: space-between; user-select: none; list-style: none; }
-.accordion-header::-webkit-details-marker { display: none; }
-.accordion-header i { color: var(--slate); transition: transform 0.2s; font-size: 0.85rem; }
-.accordion-item[open] .accordion-header i { transform: rotate(180deg); color: var(--brass-deep); }
-.accordion-content { padding: 0 20px 18px; color: var(--slate); font-size: 0.94rem; line-height: 1.6; border-top: 1px solid var(--paper); margin-top: 8px; padding-top: 14px; }
-.rule-tag { font-family: var(--mono); font-size: 0.68rem; font-weight: 700; padding: 3px 8px; border-radius: 6px; text-transform: uppercase; margin-left: 8px; display: inline-block; vertical-align: middle; }
-.tag-all { background: var(--stamp-tint); color: var(--stamp-deep); }
-.tag-proxy { background: var(--brass-tint); color: var(--brass-deep); }
+/* ===== Accordions (Filing Rules) ===== */
+.accordion-wrap{display:grid;gap:10px;}
+.accordion-item{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;transition:border-color 0.2s;}
+.accordion-item[open]{border-color:var(--brass);box-shadow:0 4px 20px rgba(18,24,43,0.05);}
+.accordion-header{padding:16px 18px;font-weight:700;font-size:0.96rem;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;user-select:none;list-style:none;min-height:44px;}
+.accordion-header::-webkit-details-marker{display:none;}
+.accordion-title{display:flex;align-items:center;flex-wrap:wrap;gap:8px;row-gap:6px;}
+.accordion-title i.rule-icon{color:var(--brass-deep);width:1em;text-align:center;}
+.accordion-header .chevron{color:var(--slate);transition:transform 0.2s;font-size:0.85rem;flex:none;}
+.accordion-item[open] .chevron{transform:rotate(180deg);color:var(--brass-deep);}
+.accordion-content{padding:0 18px 18px;color:var(--slate);font-size:0.94rem;line-height:1.6;border-top:1px solid var(--paper);margin-top:8px;padding-top:14px;}
+.rule-tag{font-family:var(--mono);font-size:0.66rem;font-weight:700;padding:3px 8px;border-radius:6px;text-transform:uppercase;display:inline-block;}
+.tag-all{background:var(--stamp-tint);color:var(--stamp-deep);}
+.tag-proxy{background:var(--brass-tint);color:var(--brass-deep);}
 
 /* ===== Scenario Selector Tabs ===== */
-.selector{background:#fff;border:1px solid var(--line);border-radius:24px;padding:12px;box-shadow:0 14px 40px rgba(18,24,43,.06);}
-.tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:8px;}
-.tab{position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;background:transparent;border:1.5px dashed transparent;border-radius:16px;padding:14px 6px 12px;cursor:pointer;font-family:Inter,sans-serif;color:var(--slate);transition:border-color .15s, background .15s, transform .1s;}
+.selector{background:#fff;border:1px solid var(--line);border-radius:22px;padding:10px;box-shadow:0 14px 40px rgba(18,24,43,.06);}
+.tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:6px;}
+.tab{position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;background:transparent;border:1.5px dashed transparent;border-radius:14px;padding:12px 4px 10px;cursor:pointer;font-family:Inter,sans-serif;color:var(--slate);transition:border-color .15s, background .15s;min-height:44px;}
 .tab:hover{background:var(--paper);}
-.tab .stamp{width:44px;height:44px;border-radius:50%;border:2px solid currentColor;display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:.95rem;transition:transform .18s cubic-bezier(.34,1.56,.64,1);}
-.tab .tlabel{font-size:.78rem;font-weight:700;text-align:center;line-height:1.25;color:var(--ink-soft);}
+.tab .stamp{width:40px;height:40px;border-radius:50%;border:2px solid currentColor;display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:.9rem;transition:transform .18s cubic-bezier(.34,1.56,.64,1);}
+.tab .tlabel{font-size:.76rem;font-weight:700;text-align:center;line-height:1.25;color:var(--ink-soft);}
 .tab[aria-selected="true"]{border-color:var(--stamp);background:var(--stamp-tint);}
 .tab[aria-selected="true"] .stamp{color:var(--stamp);transform:rotate(-8deg) scale(1.08);}
 .tab[aria-selected="false"] .stamp{color:#c7cbd6;}
-.tab:focus-visible{outline-offset:2px;}
 
-.panels{border-top:1px solid var(--line);margin-top:4px;padding:30px 26px 26px;}
+.panels{border-top:1px solid var(--line);margin-top:4px;padding:28px 22px 24px;}
 .panel[hidden]{display:none;}
-.panel-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
-.panel-head h3{margin:0;font-size:1.3rem;}
+.panel-head{margin-bottom:6px;}
+.panel-head h3{margin:0;font-size:1.25rem;}
 .panel-sub{color:var(--slate);font-size:.92rem;margin:0 0 18px;}
 .req-list{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:11px;}
-.req-list li{display:flex;gap:12px;align-items:flex-start;font-size:.98rem;color:var(--ink-soft);line-height:1.55;}
+.req-list li{display:flex;gap:12px;align-items:flex-start;font-size:.96rem;color:var(--ink-soft);line-height:1.55;}
 .req-list li i{color:var(--stamp);font-size:1rem;margin-top:4px;flex:none;}
 
-/* Diaspora Eligibility Banner (Moved Below Checklist) */
-.diaspora-note { background: var(--blue-tint); border: 1px solid #bfdbfe; border-radius: 12px; padding: 14px 18px; display: flex; gap: 12px; margin-bottom: 24px; align-items: flex-start; }
-.diaspora-note i { color: var(--blue-deep); font-size: 1.2rem; margin-top: 2px; }
-.diaspora-note p { margin: 0; font-size: 0.9rem; color: var(--ink-soft); line-height: 1.5; }
-.diaspora-note strong { color: var(--blue-deep); display: block; margin-bottom: 4px;}
+/* Diaspora eligibility note */
+.diaspora-note{background:var(--blue-tint);border:1px solid #bfdbfe;border-radius:var(--radius-md);padding:14px 16px;display:flex;gap:12px;margin-bottom:24px;align-items:flex-start;}
+.diaspora-note i{color:var(--blue-deep);font-size:1.15rem;margin-top:2px;flex:none;}
+.diaspora-note p{margin:0;font-size:0.9rem;color:var(--ink-soft);line-height:1.5;}
+.diaspora-note strong{color:var(--blue-deep);display:block;margin-bottom:4px;}
 
-/* ===== Triage Box (Inside Panels) ===== */
-.triage-box { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 20px; margin-top: 10px; }
-.triage-box h4 { margin: 0 0 16px; text-align: center; font-size: 1.05rem; font-family: 'Fraunces', serif; color: var(--ink); }
-.triage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-.t-card { background: #fff; border: 1px solid var(--line); padding: 20px; border-radius: 12px; text-align: center; display: flex; flex-direction: column; }
-.t-card strong { display: block; margin-bottom: 8px; font-size: 1.05rem; }
-.t-card p { font-size: 0.85rem; color: var(--slate); margin: 0 0 16px; line-height: 1.5; flex: 1; }
-.wa-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: 10px; font-weight: 700; font-size: 0.9rem; text-decoration: none; color: #fff; transition: transform 0.15s, box-shadow 0.15s; width: 100%; }
-.wa-btn.local { background: var(--stamp); }
-.wa-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
-.book-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: 10px; font-weight: 700; font-size: 0.9rem; text-decoration: none; color: #fff; background: var(--blue); transition: transform 0.15s, box-shadow 0.15s; width: 100%; }
-.book-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,99,235,0.2); }
+/* ===== Triage box (choose location) ===== */
+.triage-box{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);padding:20px;margin-top:10px;}
+.triage-box h4{margin:0 0 16px;text-align:center;font-size:1.02rem;font-family:'Fraunces',serif;color:var(--ink);}
+.triage-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));gap:16px;}
+.t-card{background:#fff;border:1px solid var(--line);padding:20px;border-radius:var(--radius-md);text-align:center;display:flex;flex-direction:column;}
+.t-card strong{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:8px;font-size:1.02rem;}
+.t-card p{font-size:0.85rem;color:var(--slate);margin:0 0 16px;line-height:1.5;flex:1;}
+.t-card.local strong{color:var(--stamp-deep);}
+.t-card.overseas strong{color:var(--blue-deep);}
 
 /* ===== Footer ===== */
-footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
+footer{background:#0b1220;color:#cbd5e1;margin-top:72px;padding:56px 0 32px}
 .footer-grid{display:grid;gap:40px}
+.footer-intro h3{margin:0 0 10px;color:#fff;font-family:'Fraunces',serif;font-weight:600;}
+.footer-intro p{margin:0;color:#94a3b8;}
 .footer-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
-.footer-col h4{margin:0 0 14px;color:#fff;font-family:'Inter',sans-serif;font-size:1.05rem;}
-.footer-col a{display:block;color:#94a3b8;text-decoration:none;margin-bottom:12px;font-size:0.95rem;transition:color 0.2s;}
+.footer-col h4{margin:0 0 14px;color:#fff;font-family:'Inter',sans-serif;font-size:1.02rem;}
+.footer-col a{display:flex;align-items:center;gap:8px;color:#94a3b8;text-decoration:none;margin-bottom:12px;font-size:0.95rem;transition:color 0.2s;min-height:24px;}
 .footer-col a:hover{color:#fff}
-.footer-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:12px;color:#94a3b8;font-size:.85rem;line-height:1.6;}
+.footer-col a.social-youtube{color:#ea3323;}
+.footer-col a.social-linkedin{color:#3d9be0;}
+.footer-col a.social-youtube:hover, .footer-col a.social-linkedin:hover{filter:brightness(1.2);}
+.footer-bottom{margin-top:36px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:10px;color:#94a3b8;font-size:.83rem;line-height:1.6;}
+.footer-bottom i{margin-right:6px;color:var(--brass);}
 
-/* ===== Mobile Responsiveness ===== */
+/* ===== Responsiveness ===== */
 @media(min-width:980px){
   .desktop-nav{display:flex;}
   .menu{display:none;}
@@ -149,23 +174,26 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 }
 @media(max-width:767px){
   .container{padding:0 14px;}
-  .content-grid{margin-bottom:48px; gap: 20px;}
+  .content-grid{margin-bottom:44px; gap:20px;}
   .footer-cols{grid-template-columns:1fr 1fr;}
   .tabs{grid-template-columns:repeat(2,1fr);}
-  .panels{padding:24px 18px 20px;}
+  .panels{padding:22px 16px 18px;}
   .triage-grid{grid-template-columns:1fr;}
+  .accordion-header{font-size:0.92rem;}
 }
 @media(max-width:480px){
   .footer-cols{grid-template-columns:1fr;}
   .tabs{grid-template-columns:1fr 1fr;}
+  .nav{min-height:64px;}
+  h1{font-size:1.6rem;}
 }
 </style>
 </head>
 <body>
 
 <!-- ===== TOP DISCLAIMER BANNER ===== -->
-<div style="background-color: var(--ink); color: #c7ccdb; text-align: center; padding: 10px 16px; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.02em; border-bottom: 1px solid rgba(255,255,255,0.1);">
-  <i class="fa-solid fa-circle-info" style="color: var(--brass); margin-right: 6px;"></i>
+<div class="disclaimer-bar">
+  <i class="fa-solid fa-circle-info"></i>
   <strong>Disclaimer:</strong> Docu-Hub Operations is an independent, private proxy service. We are not a government agency and are not affiliated with the Passport, Immigration and Citizenship Agency (PICA).
 </div>
 
@@ -174,11 +202,11 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
     <a class="brand" href="index.html">
       <div class="logo">DH</div><span>Docu-Hub Operations</span>
     </a>
-    <nav class="desktop-nav">
+    <nav class="desktop-nav" aria-label="Primary">
       <div class="dropdown">
-        <button class="dropbtn">Services <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i></button>
+        <button class="dropbtn" aria-haspopup="true">Services <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i></button>
         <div class="dropdown-content">
-          <a href="passport.html" style="font-weight:700;color:var(--ink);">PICA Passports</a>
+          <a href="passport.html" class="featured">PICA Passports</a>
           <a href="vital.html">RGD Vital Records</a>
           <a href="nis.html">NIS Pensions</a>
           <a href="taj-renewal.html">TAJ Motor Vehicles</a>
@@ -187,22 +215,22 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
       <a href="insights.html">Insights</a>
       <a href="about.html">About Us</a>
       <a href="faq.html">FAQ</a>
-      <a href="booking.html" class="book-btn" style="min-height:40px;padding:0 16px;font-size:0.85rem; min-width: auto; padding: 0 16px; border-radius: 8px;">Book Consultation</a>
+      <a href="booking.html" class="btn btn-blue btn-compact">Book Consultation</a>
     </nav>
     <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
-      <i class="fa-solid fa-bars" style="font-size:1.4rem;"></i>
+      <i class="fa-solid fa-bars" style="font-size:1.3rem;"></i>
     </button>
   </div>
-  <nav class="mobile-nav" id="mobileNav" hidden>
-    <a href="index.html#services" style="font-weight:700;color:var(--ink);">Services</a>
-    <a href="passport.html" class="mobile-sub" style="font-weight:700;color:var(--stamp-deep);">↳ PICA Passports</a>
+  <nav class="mobile-nav" id="mobileNav" hidden aria-label="Mobile">
+    <a href="index.html#services" class="featured">Services</a>
+    <a href="passport.html" class="mobile-sub featured">↳ PICA Passports</a>
     <a href="vital.html" class="mobile-sub">↳ RGD Vital Records</a>
     <a href="nis.html" class="mobile-sub">↳ NIS Pensions</a>
     <a href="taj-renewal.html" class="mobile-sub">↳ TAJ Motor Vehicles</a>
     <a href="insights.html">Insights</a>
     <a href="about.html">About Us</a>
     <a href="faq.html">FAQ</a>
-    <a href="booking.html" style="font-weight:700;color:var(--stamp-deep);">Book Consultation</a>
+    <a href="booking.html" class="mobile-cta">Book Consultation</a>
   </nav>
 </header>
 
@@ -219,295 +247,22 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 <div class="container">
   <div class="content-grid">
 
-    <!-- ======== SCENARIO SELECTOR (TABS) ======== -->
-    <section class="block" id="selector" style="padding-top:0;">
-      <div class="selector">
-        <div class="tabs" role="tablist" aria-label="Passport scenarios">
-          <button class="tab" role="tab" id="tab-standard" aria-controls="panel-standard" aria-selected="true">
-            <span class="stamp">01</span>
-            <span class="tlabel">Standard<br>Renewal</span>
-          </button>
-          <button class="tab" role="tab" id="tab-first-time" aria-controls="panel-first-time" aria-selected="false">
-            <span class="stamp">02</span>
-            <span class="tlabel">First-Time<br>Adult</span>
-          </button>
-          <button class="tab" role="tab" id="tab-name-change" aria-controls="panel-name-change" aria-selected="false">
-            <span class="stamp">03</span>
-            <span class="tlabel">Name<br>Change</span>
-          </button>
-          <button class="tab" role="tab" id="tab-damaged" aria-controls="panel-damaged" aria-selected="false">
-            <span class="stamp">04</span>
-            <span class="tlabel">Damaged<br>Passport</span>
-          </button>
-          <button class="tab" role="tab" id="tab-lost" aria-controls="panel-lost" aria-selected="false">
-            <span class="stamp">05</span>
-            <span class="tlabel">Lost<br>Passport</span>
-          </button>
-        </div>
-
-        <div class="panels">
-
-          <!-- 1. STANDARD RENEWAL -->
-          <div class="panel" id="panel-standard" role="tabpanel" aria-labelledby="tab-standard">
-            <div class="panel-head"><h3>Standard Adult Renewal</h3></div>
-            <p class="panel-sub">For direct renewals only (no name changes). Current passport must be physically in hand and undamaged.</p>
-            
-            <ul class="req-list">
-              <li><i class="fa-solid fa-check"></i><div>Must be 18 years or older</div></li>
-              <li><i class="fa-solid fa-check"></i><div><strong>Original RGD Birth Certificate</strong></div></li>
-              <li><i class="fa-solid fa-check"></i><div>Current passport issued <strong>after September 2001</strong></div></li>
-              <li><i class="fa-solid fa-check"></i><div><strong>PICA-Standard Photo:</strong> Physical printed photos (if doing in-person proxy) OR professional digital file (if using online portal).</div></li>
-              <li><i class="fa-solid fa-check"></i><div><strong>Two (2) Contact References:</strong> Full names, physical addresses, phone numbers, and emails of two people who do not live with you.</div></li>
-            </ul>
-
-            <!-- MOVED OVERSEAS NOTE HERE -->
-            <div class="diaspora-note">
-              <i class="fa-solid fa-plane-departure"></i>
-              <div>
-                <strong>✈️ Attention Overseas Applicants:</strong>
-                <p>Because you are overseas, you cannot use our physical proxy service. However, we provide complete online guidance and a strict checklist to ensure zero rejections through the official online portal. <em>Note: You must obtain a professional digital passport photo; we do not format photos.</em></p>
-              </div>
-            </div>
-
-            <!-- TRIAGE BOX -->
-            <div class="triage-box">
-              <h4>Ready to apply? Choose your location:</h4>
-              <div class="triage-grid">
-                <div class="t-card">
-                  <strong style="color:var(--stamp-deep);"><i class="fa-solid fa-location-dot"></i> I am in Jamaica</strong>
-                  <p>Full physical proxy bearer service. We handle the lines and paperwork directly at PICA on your behalf.</p>
-                  <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I%20live%20in%20Jamaica%20and%20need%20a%20Local%20Proxy%20for%20a%20Standard%20Adult%20Renewal." target="_blank" rel="noopener" class="wa-btn local">
-                    <i class="fa-brands fa-whatsapp"></i> Book Local Proxy
-                  </a>
-                </div>
-                <div class="t-card">
-                  <strong style="color:var(--blue-deep);"><i class="fa-solid fa-globe"></i> I am Overseas</strong>
-                  <p>Digital portal guidance and readiness checklist. We ensure you have the exact documentation needed for a flawless digital submission.</p>
-                  <a href="booking.html?service=overseas-digital" class="book-btn">
-                    <i class="fa-regular fa-calendar-days"></i> Book Overseas Consult
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 2. FIRST-TIME ADULT -->
-          <div class="panel" id="panel-first-time" role="tabpanel" aria-labelledby="tab-first-time" hidden>
-            <div class="panel-head"><h3>First-Time Adult (18+)</h3></div>
-            <p class="panel-sub">This cannot be filed online. It requires physical submission via our local proxy or through an overseas Consulate.</p>
-            
-            <ul class="req-list">
-              <li><i class="fa-solid fa-check"></i><div><strong>Original RGD Birth Certificate</strong></div></li>
-              <li><i class="fa-solid fa-check"></i><div><strong>Valid Government ID:</strong> Voter's ID, Driver's License, or National ID <em>(School IDs are strictly rejected)</em></div></li>
-              <li><i class="fa-solid fa-check"></i><div><strong>Two (2) Printed Passport Photos:</strong> One photo must be officially certified on the back by an Authorized Official (JP, Minister, or Police Officer).</div></li>
-              <li><i class="fa-solid fa-check"></i><div><strong>Certified Application Form:</strong> Section G of the physical form must be signed and stamped by the same certifying official.</div></li>
-            </ul>
-
-            <!-- MOVED OVERSEAS NOTE HERE -->
-            <div class="diaspora-note">
-              <i class="fa-solid fa-plane-departure"></i>
-              <div>
-                <strong>✈️ Attention Overseas Applicants:</strong>
-                <p>You cannot use the online portal or a physical proxy. You must apply in-person at a Consulate. Book a consultation with us to receive your exact Consulate checklist and application guidance to avoid rejection.</p>
-              </div>
-            </div>
-
-            <!-- TRIAGE BOX -->
-            <div class="triage-box">
-              <h4>Ready to apply? Choose your location:</h4>
-              <div class="triage-grid">
-                <div class="t-card">
-                  <strong style="color:var(--stamp-deep);"><i class="fa-solid fa-location-dot"></i> I am in Jamaica</strong>
-                  <p>Full physical proxy bearer service. We handle the submission directly at PICA on your behalf.</p>
-                  <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I%20live%20in%20Jamaica%20and%20need%20a%20Local%20Proxy%20for%20a%20First-Time%20Adult%20Passport." target="_blank" rel="noopener" class="wa-btn local">
-                    <i class="fa-brands fa-whatsapp"></i> Book Local Proxy
-                  </a>
-                </div>
-                <div class="t-card">
-                  <strong style="color:var(--blue-deep);"><i class="fa-solid fa-globe"></i> I am Overseas</strong>
-                  <p>Consulate Guidance &amp; Checklist. We ensure you have every document perfectly prepared before your in-person Consulate visit.</p>
-                  <a href="booking.html?service=overseas-consulate" class="book-btn">
-                    <i class="fa-regular fa-calendar-days"></i> Book Consulate Consult
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3. NAME CHANGE -->
-          <div class="panel" id="panel-name-change" role="tabpanel" aria-labelledby="tab-name-change" hidden>
-            <div class="panel-head"><h3>Name Change (Marriage/Deed Poll)</h3></div>
-            <p class="panel-sub">This cannot be filed online. It requires physical submission via our local proxy or through an overseas Consulate.</p>
-            
-            <ul class="req-list">
-              <li><i class="fa-solid fa-check"></i><div><strong>Current Physical Passport:</strong> Must be presented for official cancellation.</div></li>
-              <li><i class="fa-solid fa-check"></i><div><strong>Original RGD Birth Certificate</strong></div></li>
-              <li><i class="fa-solid fa-check"></i><div><strong>Legal Document Bridge:</strong> Certified Original Marriage Certificate OR Decree Absolute (divorce papers) OR Deed Poll.</div></li>
-              <li><i class="fa-solid fa-check"></i><div><strong>Two (2) Printed Passport Photos:</strong> One photo must be officially certified on the back by an Authorized Official.</div></li>
-              <li><i class="fa-solid fa-check"></i><div><strong>Certified Application Form:</strong> Section G of the physical form must be signed and stamped by the same official.</div></li>
-            </ul>
-
-            <!-- MOVED OVERSEAS NOTE HERE -->
-            <div class="diaspora-note">
-              <i class="fa-solid fa-plane-departure"></i>
-              <div>
-                <strong>✈️ Attention Overseas Applicants:</strong>
-                <p>You cannot use the online portal or a physical proxy. You must apply in-person at a Consulate. Book a consultation with us to receive your exact Consulate checklist and application guidance to avoid rejection.</p>
-              </div>
-            </div>
-
-            <!-- TRIAGE BOX -->
-            <div class="triage-box">
-              <h4>Ready to apply? Choose your location:</h4>
-              <div class="triage-grid">
-                <div class="t-card">
-                  <strong style="color:var(--stamp-deep);"><i class="fa-solid fa-location-dot"></i> I am in Jamaica</strong>
-                  <p>Full physical proxy bearer service. We handle the submission directly at PICA on your behalf.</p>
-                  <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I%20live%20in%20Jamaica%20and%20need%20a%20Local%20Proxy%20for%20a%20Passport%20Name%20Change." target="_blank" rel="noopener" class="wa-btn local">
-                    <i class="fa-brands fa-whatsapp"></i> Book Local Proxy
-                  </a>
-                </div>
-                <div class="t-card">
-                  <strong style="color:var(--blue-deep);"><i class="fa-solid fa-globe"></i> I am Overseas</strong>
-                  <p>Consulate Guidance &amp; Checklist. We ensure you have every document perfectly prepared before your in-person Consulate visit.</p>
-                  <a href="booking.html?service=overseas-consulate" class="book-btn">
-                    <i class="fa-regular fa-calendar-days"></i> Book Consulate Consult
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 4. DAMAGED PASSPORT -->
-          <div class="panel" id="panel-damaged" role="tabpanel" aria-labelledby="tab-damaged" hidden>
-            <div class="panel-head"><h3>Damaged Passport</h3></div>
-            <p class="panel-sub">This cannot be filed online. It requires physical submission via our local proxy or through an overseas Consulate.</p>
-            
-            <ul class="req-list">
-              <li><i class="fa-solid fa-check"></i><div><strong>The Damaged Book:</strong> You must physically present the book (even if mutilated or torn).</div></li>
-              <li><i class="fa-solid fa-check"></i><div><strong>Notarized Damage Statement:</strong> Written declaration detailing how the damage occurred.</div></li>
-              <li><i class="fa-solid fa-check"></i><div><strong>Original RGD Birth Certificate</strong> &amp; <strong>Valid Photo ID</strong></div></li>
-              <li><i class="fa-solid fa-check"></i><div><strong>Two (2) Printed Passport Photos:</strong> One photo certified by an Authorized Official.</div></li>
-              <li><i class="fa-solid fa-check"></i><div><strong>Certified Application Form:</strong> Section G certified by an Authorized Official.</div></li>
-            </ul>
-
-            <!-- MOVED OVERSEAS NOTE HERE -->
-            <div class="diaspora-note">
-              <i class="fa-solid fa-plane-departure"></i>
-              <div>
-                <strong>✈️ Attention Overseas Applicants:</strong>
-                <p>You cannot use the online portal or a physical proxy. You must apply in-person at a Consulate. Book a consultation with us to receive your exact Consulate checklist and application guidance to avoid rejection.</p>
-              </div>
-            </div>
-
-            <!-- TRIAGE BOX -->
-            <div class="triage-box">
-              <h4>Ready to apply? Choose your location:</h4>
-              <div class="triage-grid">
-                <div class="t-card">
-                  <strong style="color:var(--stamp-deep);"><i class="fa-solid fa-location-dot"></i> I am in Jamaica</strong>
-                  <p>Full physical proxy bearer service. We handle the submission directly at PICA on your behalf.</p>
-                  <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I%20live%20in%20Jamaica%20and%20need%20a%20Local%20Proxy%20for%20a%20Damaged%20Passport." target="_blank" rel="noopener" class="wa-btn local">
-                    <i class="fa-brands fa-whatsapp"></i> Book Local Proxy
-                  </a>
-                </div>
-                <div class="t-card">
-                  <strong style="color:var(--blue-deep);"><i class="fa-solid fa-globe"></i> I am Overseas</strong>
-                  <p>Consulate Guidance &amp; Checklist. We ensure you have every document perfectly prepared before your in-person Consulate visit.</p>
-                  <a href="booking.html?service=overseas-consulate" class="book-btn">
-                    <i class="fa-regular fa-calendar-days"></i> Book Consulate Consult
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 5. LOST PASSPORT -->
-          <div class="panel" id="panel-lost" role="tabpanel" aria-labelledby="tab-lost" hidden>
-            <div class="panel-head"><h3>Lost Passport</h3></div>
-            <p class="panel-sub">This cannot be filed online. It requires physical submission via our local proxy or through an overseas Consulate.</p>
-            
-            <ul class="req-list">
-              <li><i class="fa-solid fa-check"></i><div><strong>Original Police Report:</strong> Official physical report signed and stamped by the police station.</div></li>
-              <li><i class="fa-solid fa-check"></i><div><strong>Valid Government ID:</strong> Driver's License, Voter's ID, or Passport card.</div></li>
-              <li><i class="fa-solid fa-check"></i><div><strong>Original RGD Birth Certificate</strong></div></li>
-              <li><i class="fa-solid fa-check"></i><div><strong>Two (2) Printed Passport Photos:</strong> One photo certified on the back by an Authorized Official.</div></li>
-              <li><i class="fa-solid fa-check"></i><div><strong>Certified Application Form:</strong> Section G signed and stamped by the certifying official.</div></li>
-            </ul>
-
-            <!-- MOVED OVERSEAS NOTE HERE -->
-            <div class="diaspora-note">
-              <i class="fa-solid fa-plane-departure"></i>
-              <div>
-                <strong>✈️ Attention Overseas Applicants:</strong>
-                <p>You cannot use the online portal or a physical proxy. You must apply in-person at a Consulate. Book a consultation with us to receive your exact Consulate checklist and application guidance to avoid rejection.</p>
-              </div>
-            </div>
-
-            <!-- TRIAGE BOX -->
-            <div class="triage-box">
-              <h4>Ready to apply? Choose your location:</h4>
-              <div class="triage-grid">
-                <div class="t-card">
-                  <strong style="color:var(--stamp-deep);"><i class="fa-solid fa-location-dot"></i> I am in Jamaica</strong>
-                  <p>Full physical proxy bearer service. We handle the submission directly at PICA on your behalf.</p>
-                  <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I%20live%20in%20Jamaica%20and%20need%20a%20Local%20Proxy%20for%20a%20Lost%20Passport." target="_blank" rel="noopener" class="wa-btn local">
-                    <i class="fa-brands fa-whatsapp"></i> Book Local Proxy
-                  </a>
-                </div>
-                <div class="t-card">
-                  <strong style="color:var(--blue-deep);"><i class="fa-solid fa-globe"></i> I am Overseas</strong>
-                  <p>Consulate Guidance &amp; Checklist. We ensure you have every document perfectly prepared before your in-person Consulate visit.</p>
-                  <a href="booking.html?service=overseas-consulate" class="book-btn">
-                    <i class="fa-regular fa-calendar-days"></i> Book Consulate Consult
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
+    <!-- ======== COLLAPSIBLE RULES / GUIDELINES ======== -->
+    <section class="block" id="rules" style="padding-top:0;">
+      <div class="section-head">
+        <span class="eyebrow-mini">Key Requirements</span>
+        <h2>Filing Guidelines &amp; Rules</h2>
+        <p>Tap a guideline below to see how it applies to your specific filing type.</p>
       </div>
+
+      <div class="accordion-wrap" id="rulesAccordion"></div>
     </section>
 
-    <!-- ======== COLLAPSIBLE RULES / GUIDELINES ======== -->
-    <section class="block" id="rules">
-      <div class="section-head">
-        <span class="eyebrow-mini">Mandatory Standards</span>
-        <h2>General Filing Rules</h2>
-        <p>Ensure your documents meet these strict PICA standards before booking.</p>
-      </div>
-
-      <div class="accordion-wrap">
-        <details class="accordion-item">
-          <summary class="accordion-header">
-            <span><i class="fa-solid fa-book-open" style="margin-right: 8px; color: var(--brass-deep);"></i> Physical Passport Required <span class="rule-tag tag-all">All Cases</span></span>
-            <i class="fa-solid fa-chevron-down"></i>
-          </summary>
-          <div class="accordion-content">
-            A digital picture of your bio-page is <strong>NOT</strong> sufficient. Unless filing for an official "Lost Passport," you must have your physical passport book in hand (even if it is severely damaged).
-          </div>
-        </details>
-
-        <details class="accordion-item">
-          <summary class="accordion-header">
-            <span><i class="fa-solid fa-file-signature" style="margin-right: 8px; color: var(--brass-deep);"></i> The Signature Box Rule <span class="rule-tag tag-all">In-Person &amp; Consulates</span></span>
-            <i class="fa-solid fa-chevron-down"></i>
-          </summary>
-          <div class="accordion-content">
-            For physical form submissions, your signature must sit completely inside the designated box. If the ink touches or crosses the border lines, or if signed in any color other than blue or black ink, PICA will reject the application outright. <em>(Does not apply to standard online renewals).</em>
-          </div>
-        </details>
-
-        <details class="accordion-item">
-          <summary class="accordion-header">
-            <span><i class="fa-solid fa-ban" style="margin-right: 8px; color: var(--brass-deep);"></i> No Laminated or Altered Documents <span class="rule-tag tag-all">All Cases</span></span>
-            <i class="fa-solid fa-chevron-down"></i>
-          </summary>
-          <div class="accordion-content">
-            PICA strictly rejects civil documents that have been laminated, taped, or altered. Your original RGD Birth Certificate and Marriage Certificates must be unadulterated physical originals.
-          </div>
-        </details>
+    <!-- ======== SCENARIO SELECTOR (TABS) ======== -->
+    <section class="block" id="selector">
+      <div class="selector">
+        <div class="tabs" role="tablist" aria-label="Passport scenarios" id="scenarioTabs"></div>
+        <div class="panels" id="scenarioPanels"></div>
       </div>
     </section>
 
@@ -519,9 +274,9 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 <footer>
   <div class="container">
     <div class="footer-grid">
-      <div>
-        <h3 style="margin:0 0 10px;color:#fff;font-family:'Fraunces',serif;font-weight:600">Docu-Hub Operations</h3>
-        <p style="margin:0;color:#94a3b8">Independent administrative proxy and secure online application assistance for the Jamaican diaspora.</p>
+      <div class="footer-intro">
+        <h3>Docu-Hub Operations</h3>
+        <p>Independent administrative proxy and secure online application assistance for the Jamaican diaspora.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
@@ -541,40 +296,229 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
           <h4>Legal &amp; Connect</h4>
           <a href="privacy.html">Privacy Policy</a>
           <a href="terms.html">Terms of Service</a>
-          <a href="booking.html" style="display:flex;align-items:center;gap:8px;">
-            <i class="fa-regular fa-calendar-days"></i> Book Consultation
-          </a>
-          <a href="https://www.youtube.com/@LauraClarke_dhub" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;color:#ea3323;">
-            <i class="fa-brands fa-youtube"></i> Watch on YouTube
-          </a>
-          <a href="https://www.linkedin.com/in/docuhubservices" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;color:#0a66c2;">
-            <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn
-          </a>
+          <a href="booking.html"><i class="fa-regular fa-calendar-days"></i> Book Consultation</a>
+          <a href="https://www.youtube.com/@LauraClarke_dhub" target="_blank" rel="noopener" class="social-youtube"><i class="fa-brands fa-youtube"></i> Watch on YouTube</a>
+          <a href="https://www.linkedin.com/in/docuhubservices" target="_blank" rel="noopener" class="social-linkedin"><i class="fa-brands fa-linkedin"></i> Connect on LinkedIn</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
       <div>Disclaimer: Docu-Hub Operations Services is a private, registered administrative proxy service. We are not a government agency and are not affiliated with PICA, RGD, or MLSS/NIS.</div>
-      <div><i class="fa-solid fa-building-shield" style="margin-right:6px;color:var(--brass);"></i> Registered with the Companies Office of Jamaica (COJ): #15602/2025 | OIC Data Controller Verified.</div>
+      <div><i class="fa-solid fa-building-shield"></i> Registered with the Companies Office of Jamaica (COJ): #15602/2025 | OIC Data Controller Verified.</div>
       <div>&copy; 2026 Docu-Hub Operations Services. All rights reserved.</div>
     </div>
   </div>
 </footer>
 
 <script>
-// Mobile nav toggle
-var btn = document.getElementById('menuBtn');
-var nav = document.getElementById('mobileNav');
-btn.addEventListener('click', function(){
-  var isHidden = nav.hasAttribute('hidden');
-  if(isHidden){ nav.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); }
-  else { nav.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); }
-});
-
-// Scenario selector (tabs)
+/* ============================================================
+   Mobile nav toggle — also closes when a link is tapped, so
+   users don't have to manually close the menu after navigating.
+   ============================================================ */
 (function(){
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
-  var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
+  var btn = document.getElementById('menuBtn');
+  var nav = document.getElementById('mobileNav');
+
+  function setOpen(open){
+    if(open){ nav.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); }
+    else { nav.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); }
+  }
+
+  btn.addEventListener('click', function(){
+    setOpen(nav.hasAttribute('hidden'));
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ setOpen(false); });
+  });
+})();
+
+/* ============================================================
+   FILING RULES — single source of truth for the accordion.
+   ============================================================ */
+var RULES = [
+  {
+    icon: 'fa-book-open', title: 'Physical Passport Required', tag: 'all', tagLabel: 'All Cases',
+    body: 'A digital picture of your bio-page is <strong>NOT</strong> sufficient. Unless filing for an official "Lost Passport," you must have your physical passport book in hand (even if it is severely damaged).'
+  },
+  {
+    icon: 'fa-file-signature', title: 'The Signature Box Rule', tag: 'all', tagLabel: 'In-Person &amp; Consulates',
+    body: 'For physical form submissions, your signature must sit completely inside the designated box. If the ink touches or crosses the border lines, or if signed in any color other than blue or black ink, PICA will reject the application outright. <em>(Does not apply to standard online renewals).</em>'
+  },
+  {
+    icon: 'fa-ban', title: 'No Laminated or Altered Documents', tag: 'all', tagLabel: 'All Cases',
+    body: 'PICA strictly rejects civil documents that have been laminated, taped, or altered. Your original RGD Birth Certificate and Marriage Certificates must be unadulterated physical originals.'
+  },
+  {
+    icon: 'fa-file-shield', title: 'Proxy Authorization Protocol', tag: 'proxy', tagLabel: 'Local Filings Only',
+    body: 'We pre-audit your file using digital scans. However, acting as your official administrative proxy in Jamaica means you must provide us with your <strong>Original Unexpired Government ID</strong> and an Authorization Letter certified by a Justice of the Peace (JP). We courier your ID safely back to you the same day.'
+  }
+];
+
+/* ============================================================
+   SCENARIOS — single source of truth for tabs + panels.
+   Shared local/overseas card copy lives once, in DEFAULTS,
+   instead of being repeated inside every scenario.
+   ============================================================ */
+var WA_BASE = 'https://wa.me/18765612614?text=';
+var DEFAULTS = {
+  local: {
+    label: 'I am in Jamaica',
+    text: 'Full physical proxy bearer service. We handle the submission directly at PICA on your behalf.',
+    ctaLabel: 'Book Local Proxy'
+  },
+  overseasConsulate: {
+    label: 'I am Overseas',
+    text: 'Consulate Guidance &amp; Checklist. We ensure you have every document perfectly prepared before your in-person Consulate visit.',
+    ctaHref: 'booking.html?service=overseas-consulate',
+    ctaLabel: 'Book Consulate Consult'
+  },
+  noteConsulate: 'You cannot use the online portal or a physical proxy. You must apply in-person at a Consulate. Book a consultation with us to receive your exact Consulate checklist and application guidance to avoid rejection.'
+};
+
+var SCENARIOS = [
+  {
+    id: 'standard', num: '01', label: 'Standard<br>Renewal',
+    title: 'Standard Adult Renewal',
+    subtitle: 'For direct renewals only (no name changes). Current passport must be physically in hand and undamaged.',
+    waSubject: 'a Standard Adult Renewal.',
+    requirements: [
+      'Must be 18 years or older',
+      '<strong>Original RGD Birth Certificate</strong>',
+      'Current passport issued <strong>after September 2001</strong>',
+      '<strong>PICA-Standard Photo:</strong> Physical printed photos (if doing in-person proxy) OR professional digital file (if using online portal).',
+      '<strong>Two (2) Contact References:</strong> Full names, physical addresses, phone numbers, and emails of two people who do not live with you.',
+      '<strong>For Proxy Submissions:</strong> Your <strong>Original Unexpired Government ID</strong> and a JP-Certified Authorization Letter are mandatory.'
+    ],
+    note: 'Because you are overseas, you cannot use our physical proxy service. However, we provide complete online guidance and a strict checklist to ensure zero rejections through the official online portal. <em>Note: You must obtain a professional digital passport photo; we do not format photos.</em>',
+    overseas: {
+      label: 'I am Overseas',
+      text: 'Digital portal guidance and readiness checklist. We ensure you have the exact documentation needed for a flawless digital submission.',
+      ctaHref: 'booking.html?service=overseas-digital',
+      ctaLabel: 'Book Overseas Consult'
+    }
+  },
+  {
+    id: 'first-time', num: '02', label: 'First-Time<br>Adult',
+    title: 'First-Time Adult (18+)',
+    subtitle: 'This cannot be filed online. It requires physical submission via our local proxy or through an overseas Consulate.',
+    waSubject: 'a First-Time Adult Passport.',
+    requirements: [
+      '<strong>Original RGD Birth Certificate</strong>',
+      '<strong>Original Valid Government ID:</strong> Voter\u2019s ID, Driver\u2019s License, or National ID <em>(School IDs are strictly rejected)</em>',
+      '<strong>Two (2) Printed Passport Photos:</strong> One photo must be officially certified on the back by an Authorized Official (JP, Minister, or Police Officer).',
+      '<strong>Certified Application Form:</strong> Section G of the physical form must be signed and stamped by the same certifying official.',
+      '<strong>For Proxy Submissions:</strong> Your <strong>Original Unexpired Government ID</strong> and a JP-Certified Authorization Letter are mandatory.'
+    ],
+    note: DEFAULTS.noteConsulate
+  },
+  {
+    id: 'name-change', num: '03', label: 'Name<br>Change',
+    title: 'Name Change (Marriage/Deed Poll)',
+    subtitle: 'This cannot be filed online. It requires physical submission via our local proxy or through an overseas Consulate.',
+    waSubject: 'a Passport Name Change.',
+    requirements: [
+      '<strong>Current Physical Passport:</strong> Must be presented for official cancellation.',
+      '<strong>Original RGD Birth Certificate</strong>',
+      '<strong>Legal Document Bridge:</strong> Certified Original Marriage Certificate OR Decree Absolute (divorce papers) OR Deed Poll.',
+      '<strong>Two (2) Printed Passport Photos:</strong> One photo must be officially certified on the back by an Authorized Official.',
+      '<strong>Certified Application Form:</strong> Section G of the physical form must be signed and stamped by the same official.',
+      '<strong>For Proxy Submissions:</strong> Your <strong>Original Unexpired Government ID</strong> and a JP-Certified Authorization Letter are mandatory.'
+    ],
+    note: DEFAULTS.noteConsulate
+  },
+  {
+    id: 'damaged', num: '04', label: 'Damaged<br>Passport',
+    title: 'Damaged Passport',
+    subtitle: 'This cannot be filed online. It requires physical submission via our local proxy or through an overseas Consulate.',
+    waSubject: 'a Damaged Passport.',
+    requirements: [
+      '<strong>The Damaged Book:</strong> You must physically present the book (even if mutilated or torn).',
+      '<strong>Notarized Damage Statement:</strong> Written declaration detailing how the damage occurred.',
+      '<strong>Original RGD Birth Certificate</strong>',
+      '<strong>Two (2) Printed Passport Photos:</strong> One photo certified by an Authorized Official.',
+      '<strong>Certified Application Form:</strong> Section G certified by an Authorized Official.',
+      '<strong>For Proxy Submissions:</strong> Your <strong>Original Unexpired Government ID</strong> and a JP-Certified Authorization Letter are mandatory.'
+    ],
+    note: DEFAULTS.noteConsulate
+  },
+  {
+    id: 'lost', num: '05', label: 'Lost<br>Passport',
+    title: 'Lost Passport',
+    subtitle: 'This cannot be filed online. It requires physical submission via our local proxy or through an overseas Consulate.',
+    waSubject: 'a Lost Passport.',
+    requirements: [
+      '<strong>Original Police Report:</strong> Official physical report signed and stamped by the police station.',
+      '<strong>Original RGD Birth Certificate</strong>',
+      '<strong>Two (2) Printed Passport Photos:</strong> One photo certified on the back by an Authorized Official.',
+      '<strong>Certified Application Form:</strong> Section G signed and stamped by the certifying official.',
+      '<strong>For Proxy Submissions:</strong> Your <strong>Original Unexpired Government ID</strong> and a JP-Certified Authorization Letter are mandatory.'
+    ],
+    note: DEFAULTS.noteConsulate
+  }
+];
+
+function renderRules(){
+  var wrap = document.getElementById('rulesAccordion');
+  wrap.innerHTML = RULES.map(function(r){
+    return '' +
+      '<details class="accordion-item">' +
+        '<summary class="accordion-header">' +
+          '<span class="accordion-title"><i class="fa-solid ' + r.icon + ' rule-icon"></i> ' + r.title +
+            ' <span class="rule-tag tag-' + r.tag + '">' + r.tagLabel + '</span></span>' +
+          '<i class="fa-solid fa-chevron-down chevron"></i>' +
+        '</summary>' +
+        '<div class="accordion-content">' + r.body + '</div>' +
+      '</details>';
+  }).join('');
+}
+
+function renderScenarios(){
+  var tabsWrap = document.getElementById('scenarioTabs');
+  var panelsWrap = document.getElementById('scenarioPanels');
+
+  tabsWrap.innerHTML = SCENARIOS.map(function(s, i){
+    return '' +
+      '<button class="tab" role="tab" id="tab-' + s.id + '" aria-controls="panel-' + s.id + '" aria-selected="' + (i === 0 ? 'true' : 'false') + '">' +
+        '<span class="stamp">' + s.num + '</span>' +
+        '<span class="tlabel">' + s.label + '</span>' +
+      '</button>';
+  }).join('');
+
+  panelsWrap.innerHTML = SCENARIOS.map(function(s, i){
+    var overseas = s.overseas || DEFAULTS.overseasConsulate;
+    var localWa = WA_BASE + encodeURIComponent('Hi Laura, I live in Jamaica and need a Local Proxy for ' + s.waSubject);
+
+    return '' +
+      '<div class="panel" id="panel-' + s.id + '" role="tabpanel" aria-labelledby="tab-' + s.id + '"' + (i === 0 ? '' : ' hidden') + '>' +
+        '<div class="panel-head"><h3>' + s.title + '</h3></div>' +
+        '<p class="panel-sub">' + s.subtitle + '</p>' +
+        '<ul class="req-list">' + s.requirements.map(function(r){
+          return '<li><i class="fa-solid fa-check"></i><div>' + r + '</div></li>';
+        }).join('') + '</ul>' +
+        '<div class="diaspora-note">' +
+          '<i class="fa-solid fa-plane-departure"></i>' +
+          '<div><strong>\u2708\uFE0F Attention Overseas Applicants:</strong><p>' + s.note + '</p></div>' +
+        '</div>' +
+        '<div class="triage-box">' +
+          '<h4>Ready to apply? Choose your location:</h4>' +
+          '<div class="triage-grid">' +
+            '<div class="t-card local">' +
+              '<strong><i class="fa-solid fa-location-dot"></i> ' + DEFAULTS.local.label + '</strong>' +
+              '<p>' + DEFAULTS.local.text + '</p>' +
+              '<a href="' + localWa + '" target="_blank" rel="noopener" class="btn btn-stamp"><i class="fa-brands fa-whatsapp"></i> ' + DEFAULTS.local.ctaLabel + '</a>' +
+            '</div>' +
+            '<div class="t-card overseas">' +
+              '<strong><i class="fa-solid fa-globe"></i> ' + overseas.label + '</strong>' +
+              '<p>' + overseas.text + '</p>' +
+              '<a href="' + (overseas.ctaHref || DEFAULTS.overseasConsulate.ctaHref) + '" class="btn btn-blue"><i class="fa-regular fa-calendar-days"></i> ' + overseas.ctaLabel + '</a>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+  }).join('');
+
+  var tabs = Array.prototype.slice.call(tabsWrap.querySelectorAll('.tab'));
+  var panels = Array.prototype.slice.call(panelsWrap.querySelectorAll('.panel'));
 
   function activate(tab){
     tabs.forEach(function(t){ t.setAttribute('aria-selected', t === tab ? 'true' : 'false'); });
@@ -592,7 +536,10 @@ btn.addEventListener('click', function(){
       if(e.key === 'ArrowLeft'){ idx = (i - 1 + tabs.length) % tabs.length; tabs[idx].focus(); activate(tabs[idx]); }
     });
   });
-})();
+}
+
+renderRules();
+renderScenarios();
 </script>
 
 </body>
