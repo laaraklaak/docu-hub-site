@@ -39,9 +39,20 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdro
 .desktop-nav{display:none;gap:24px;align-items:center;}
 .desktop-nav a{text-decoration:none;color:var(--slate);font-weight:500;font-size:.96rem;transition:color 0.2s;}
 .desktop-nav a:hover, .desktop-nav a.active{color:var(--ink)}
+
+/* Services Dropdown */
+.dropdown{position:relative;height:72px;display:flex;align-items:center}
+.dropbtn{font-family:inherit;background:none;border:none;color:var(--slate);font-weight:500;font-size:.96rem;display:flex;align-items:center;gap:6px;cursor:pointer;padding:8px 0;transition:color .2s}
+.dropdown:hover .dropbtn,.dropdown:focus-within .dropbtn{color:var(--ink)}
+.dropdown-content{opacity:0;visibility:hidden;transform:translateY(4px);transition:opacity .15s ease,transform .15s ease;position:absolute;top:100%;left:-14px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 16px 36px rgba(15,23,42,.10);padding:8px;min-width:240px;z-index:30}
+.dropdown:hover .dropdown-content,.dropdown:focus-within .dropdown-content{opacity:1;visibility:visible;transform:translateY(0)}
+.dropdown-content a{display:block;padding:10px 14px;border-radius:99px;color:var(--ink-soft);text-decoration:none;font-size:.92rem;font-weight:500;transition:background .15s}
+.dropdown-content a:hover{background:var(--paper);color:var(--ink)}
+
 .menu{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);border:none;}
 .mobile-nav{display:grid;gap:2px;border-bottom:1px solid var(--line);background:#fff}
 .mobile-nav a{padding:14px 16px;text-decoration:none;color:var(--ink-soft);font-weight:500;border-top:1px solid var(--line)}
+.mobile-nav .mobile-sub{padding-left:28px;font-size:0.9rem;color:var(--slate);}
 .mobile-nav[hidden]{display:none}
 
 /* Hero Section */
@@ -99,14 +110,14 @@ h1{margin:0 0 16px;font-weight:600;font-size:clamp(2.1rem,5vw,3.6rem);line-heigh
 .btn-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.4);}
 .btn-outline:hover{background:rgba(255,255,255,0.1); border-color:#fff; transform: translateY(-2px);}
 
-/* Footer */
-footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
-.footer-grid{display:grid;gap:40px}
-.footer-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
-.footer-col h4{margin:0 0 14px;color:#fff;font-family:'Inter',sans-serif;font-size:1.05rem;}
-.footer-col a{display:block;color:#94a3b8;text-decoration:none;margin-bottom:12px;font-size:0.95rem;transition:color 0.2s;}
+/* ===== Compact Footer ===== */
+footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:44px 0 24px}
+.footer-grid{display:grid;gap:28px}
+.footer-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.footer-col h4{margin:0 0 10px;color:#fff;font-family:'Inter',sans-serif;font-size:0.88rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;}
+.footer-col a{display:flex;align-items:center;gap:8px;color:#94a3b8;text-decoration:none;margin-bottom:8px;font-size:0.84rem;transition:color 0.2s;min-height:20px;}
 .footer-col a:hover{color:#fff}
-.footer-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:12px;color:#94a3b8;font-size:.85rem;line-height:1.6;}
+.footer-bottom{margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);display:grid;gap:8px;color:#94a3b8;font-size:0.78rem;line-height:1.5;}
 
 @media(min-width:980px){
   .desktop-nav{display:flex}
@@ -130,14 +141,14 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
     <nav class="desktop-nav">
       <div class="dropdown">
         <button class="dropbtn">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i></button>
-         <div class="dropdown-content">
+        <div class="dropdown-content">
           <a href="jamaican-passport-renewal.html">PICA Passport Renewals</a>
           <a href="rgd-vital-records.html">RGD Vital Records</a>
           <a href="motor-vehicle-renewal.html">TAJ Motor Vehicle Renewal</a>
           <a href="drivers-licence-renewal.html">TAJ Driver's Licence Renewal</a>
         </div>
       </div>
-      <a href="insights.html">Insights</a>
+      <a href="insights.html" class="active">Insights</a>
       <a href="about.html">About Us</a>
       <a href="faq.html">FAQ</a>
       <a href="booking.html" class="btn btn-primary" style="min-height: 40px; padding: 0 16px; font-size: 0.85rem;">Book Consultation</a>
@@ -151,10 +162,10 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
   <!-- MOBILE NAVIGATION DROPDOWN -->
   <nav class="mobile-nav" id="mobileNav" hidden>
     <a href="index.html#services" style="font-weight: 700; color: var(--ink);">Services</a>
-    <a href="passport.html" class="mobile-sub">↳ PICA Passports</a>
-    <a href="vital.html" class="mobile-sub">↳ RGD Vital Records</a>
-    <a href="nis.html" class="mobile-sub">↳ NIS Pensions</a>
-    <a href="taj-renewal.html" class="mobile-sub">↳ TAJ Motor Vehicles</a>
+    <a href="jamaican-passport-renewal.html" class="mobile-sub">↳ PICA Passport Renewals</a>
+    <a href="rgd-vital-records.html" class="mobile-sub">↳ RGD Vital Records</a>
+    <a href="motor-vehicle-renewal.html" class="mobile-sub">↳ TAJ Motor Vehicle Renewal</a>
+    <a href="drivers-licence-renewal.html" class="mobile-sub">↳ TAJ Driver's Licence Renewal</a>
     <a href="insights.html">Insights</a>
     <a href="about.html">About Us</a>
     <a href="faq.html">FAQ</a>
@@ -172,44 +183,29 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 <section class="directory-section">
     <div class="container">
         
-        <!-- NEW ADDITION: TAJ Operations button added to the filters -->
         <div class="filter-tabs" id="filter-container">
             <button class="filter-btn active" data-filter="all">All Advisories</button>
             <button class="filter-btn" data-filter="pica">Passports (PICA)</button>
             <button class="filter-btn" data-filter="rgd">Vital Records (RGD)</button>
-            <button class="filter-btn" data-filter="nis">NIS Pensions</button>
             <button class="filter-btn" data-filter="taj">TAJ Operations</button>
         </div>
 
-        <a href="nis-pension-article.html" class="featured-article filter-item" data-category="nis">
+        <a href="heat-damage-article.html" class="featured-article filter-item" data-category="pica">
             <div class="featured-img-box">
                 <span class="featured-badge">Featured Strategy</span>
             </div>
             <div class="featured-body">
                 <div class="featured-meta">
-                    <span class="cat"><i class="fa-solid fa-building-columns"></i> NIS Pensions</span>
-                    <span><i class="fa-regular fa-clock"></i> 5 Min Read</span>
+                    <span class="cat"><i class="fa-solid fa-passport"></i> Passports (PICA)</span>
+                    <span><i class="fa-regular fa-clock"></i> 4 Min Read</span>
                 </div>
-                <h2>Migrated Abroad Without a Pension Plan?</h2>
-                <p>Discover why your past work history in Jamaica could qualify you for a lifelong NIS pension or retirement grant, and the exact steps to claim it from overseas.</p>
-                <span class="btn-featured">Read Full Strategy &rarr;</span>
+                <h2>The Plastic Bag Trap: Is Heat Destroying Your Passport?</h2>
+                <p>Wrapping your e-passport in a plastic ziplock bag to prevent water damage might actually be melting the biometric chip inside. Learn how to protect your microchip before traveling.</p>
+                <span class="btn-featured">Read Full Advisory &rarr;</span>
             </div>
         </a>
 
         <div class="blog-grid" id="advisory-grid">
-            
-            <a href="heat-damage-article.html" class="blog-card filter-item" data-category="pica">
-                <img src="assets/heat-damaged.png" alt="Passport microchip scanner" class="blog-img">
-                <div class="blog-body">
-                    <div class="blog-meta">
-                        <span class="cat">Passports (PICA)</span>
-                        <span>3 Min Read</span>
-                    </div>
-                    <h3>The Plastic Bag Trap: Is Heat Destroying Your Passport?</h3>
-                    <p>Wrapping your e-passport in a plastic bag to prevent water damage might actually be melting the biometric chip inside. Learn how to test it.</p>
-                    <span class="read-more">Read Advisory &rarr;</span>
-                </div>
-            </a>
 
             <a href="washed-article.html" class="blog-card filter-item" data-category="pica">
                 <img src="assets/water-damaged.png" alt="Water damaged paper document" class="blog-img">
@@ -263,9 +259,8 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
                 </div>
             </a>
 
-            <!-- NEW ADDITION: TAJ Article Block -->
-            <a href="taj-renewals-article.html" class="blog-card filter-item" data-category="taj">
-                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=600&q=80" alt="Person frustrated with laptop" class="blog-img">
+            <a href="motor-vehicle-renewal.html" class="blog-card filter-item" data-category="taj">
+                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=600&q=80" alt="Person driving car" class="blog-img">
                 <div class="blog-body">
                     <div class="blog-meta">
                         <span class="cat">TAJ Operations</span>
@@ -273,7 +268,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
                     </div>
                     <h3>The Digital Traffic Jam: Navigating TAJ Vehicle Renewals</h3>
                     <p>Learn why the free online TAJ portal often traps users with alphanumeric errors and hidden TTMS tickets, and how an operational proxy solves it.</p>
-                    <span class="read-more">Read Advisory &rarr;</span>
+                    <span class="read-more">Read Guide &rarr;</span>
                 </div>
             </a>
 
@@ -301,13 +296,11 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 <footer>
   <div class="container">
     <div class="footer-grid">
-      <!-- Brand Summary -->
       <div>
         <h3 style="margin:0 0 10px;color:#fff;font-family:'Fraunces',serif;font-weight:600">Docu-Hub Operations</h3>
         <p style="margin:0;color:#94a3b8">Independent administrative proxy and secure online application assistance for the Jamaican diaspora.</p>
       </div>
       
-      <!-- 3-Column Sitemap -->
       <div class="footer-cols">
         
          <div class="footer-col">
@@ -332,7 +325,6 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
           <a href="booking.html" style="display:flex; align-items:center; gap:8px;">
             <i class="fa-regular fa-calendar-days"></i> Book Consultation
           </a>
-          <!-- YOUTUBE FOOTER LINK -->
           <a href="https://www.youtube.com/@LauraClarke_dhub" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; color: #ea3323;">
             <i class="fa-brands fa-youtube"></i> Watch on YouTube
           </a>
@@ -344,9 +336,8 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
       </div>
     </div>
     
-    <!-- Bottom Legal Disclaimer & Registration Badges -->
     <div class="footer-bottom">
-      <div>Disclaimer: Docu-Hub Operations Services is a private, registered administrative proxy service. We are not a government agency and are not affiliated with PICA, RGD, or MLSS/NIS.</div>
+      <div>Disclaimer: Docu-Hub Operations Services is a private, registered administrative proxy service. We are not a government agency and are not affiliated with PICA, RGD, or TAJ.</div>
       <div><i class="fa-solid fa-building-shield" style="margin-right: 6px; color: var(--brass);"></i> Registered with the Companies Office of Jamaica (COJ): #15602/2025 | OIC Data Controller Verified.</div>
       <div>&copy; 2026 Docu-Hub Operations Services. All rights reserved.</div>
     </div>
