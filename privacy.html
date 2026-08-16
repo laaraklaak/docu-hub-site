@@ -31,18 +31,33 @@ h1,h2,h3,.brand span,.step-badge,.eyebrow{font-family:"Fraunces",Georgia,serif}
 a{-webkit-tap-highlight-color:transparent}
 :focus-visible{outline:2px solid var(--blue-deep);outline-offset:2px}
 
-/* Header & Nav (Master Template) */
-header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+/* ===== Header & Nav ===== */
+header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav{display:flex;justify-content:space-between;align-items:center;min-height:72px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:700;text-decoration:none;color:inherit}
 .brand span{font-size:1.02rem;font-weight:600;letter-spacing:-0.01em}
 .logo{width:38px;height:38px;border-radius:11px;background:var(--ink);color:var(--brass-tint);display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:600;font-size:.92rem;flex:none}
+
 .desktop-nav{display:none;gap:24px;align-items:center;}
 .desktop-nav a{text-decoration:none;color:var(--slate);font-weight:500;font-size:.96rem;transition:color 0.2s;}
 .desktop-nav a:hover, .desktop-nav a.active{color:var(--ink)}
+
+/* Services Dropdown */
+.dropdown{position:relative;height:72px;display:flex;align-items:center}
+.dropbtn{font-family:inherit;background:none;border:none;color:var(--slate);font-weight:500;font-size:.96rem;display:flex;align-items:center;gap:6px;cursor:pointer;padding:8px 0;transition:color .2s}
+.dropdown:hover .dropbtn,.dropdown:focus-within .dropbtn{color:var(--ink)}
+.dropbtn i{font-size:.7rem !important;transition:transform .2s}
+.dropdown:hover .dropbtn i,.dropdown:focus-within .dropbtn i{transform:rotate(180deg)}
+.dropdown-content{opacity:0;visibility:hidden;transform:translateY(4px);transition:opacity .15s ease,transform .15s ease;position:absolute;top:100%;left:-14px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 16px 36px rgba(15,23,42,.10);padding:8px;min-width:240px;z-index:30}
+.dropdown:hover .dropdown-content,.dropdown:focus-within .dropdown-content{opacity:1;visibility:visible;transform:translateY(0)}
+.dropdown-content a{display:block;padding:10px 14px;border-radius:99px;color:var(--ink-soft);text-decoration:none;font-size:.92rem;font-weight:500;transition:background .15s}
+.dropdown-content a:hover{background:var(--paper);color:var(--ink)}
+
+/* Mobile Nav Overlay Fix */
 .menu{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);border:none;}
-.mobile-nav{display:grid;gap:2px;border-bottom:1px solid var(--line);background:#fff}
+.mobile-nav{display:grid;gap:2px;border-bottom:1px solid var(--line);background:#fff; position:absolute; top:100%; left:0; width:100%; box-shadow:0 10px 24px rgba(15,23,42,0.06);}
 .mobile-nav a{padding:14px 16px;text-decoration:none;color:var(--ink-soft);font-weight:500;border-top:1px solid var(--line)}
+.mobile-nav .mobile-sub{padding-left:28px;font-size:0.9rem;color:var(--slate);}
 .mobile-nav[hidden]{display:none}
 
 /* Hero Section */
@@ -62,17 +77,17 @@ section{padding:48px 0}
 
 /* Buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:12px;text-decoration:none;font-weight:700;font-size:.92rem;transition:all .15s ease}
-.btn-primary{background:var(--ink);color:#fff}
-.btn-primary:hover{background:var(--ink-soft); transform: translateY(-2px);}
+.book-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 0 16px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; text-decoration: none; color: #fff; background: var(--blue); transition: transform 0.15s, box-shadow 0.15s; }
+.book-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,99,235,0.2); }
 
 /* Footer (Master Template) */
-footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
-.footer-grid{display:grid;gap:40px}
-.footer-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
-.footer-col h4{margin:0 0 14px;color:#fff;font-family:'Inter',sans-serif;font-size:1.05rem;}
-.footer-col a{display:block;color:#94a3b8;text-decoration:none;margin-bottom:12px;font-size:0.95rem;transition:color 0.2s;}
+footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:44px 0 24px}
+.footer-grid{display:grid;gap:28px}
+.footer-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.footer-col h4{margin:0 0 10px;color:#fff;font-family:'Inter',sans-serif;font-size:0.88rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;}
+.footer-col a{display:flex;align-items:center;gap:8px;color:#94a3b8;text-decoration:none;margin-bottom:8px;font-size:0.84rem;transition:color 0.2s;min-height:20px;}
 .footer-col a:hover{color:#fff}
-.footer-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:12px;color:#94a3b8;font-size:.85rem;line-height:1.6;}
+.footer-bottom{margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);display:grid;gap:8px;color:#94a3b8;font-size:0.78rem;line-height:1.5;}
 
 @media(min-width:980px){
   .desktop-nav{display:flex}
@@ -92,14 +107,21 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
       <div class="logo">DH</div><span>Docu-Hub Operations</span>
     </a>
     
+    <!-- DESKTOP NAVIGATION WITH SERVICES DROPDOWN -->
     <nav class="desktop-nav">
-      <a href="passport.html">Passports</a>
-      <a href="vital.html">Vital Records</a>
-      <a href="nis.html">NIS Pensions</a>
+      <div class="dropdown">
+        <button class="dropbtn">Services <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="jamaican-passport-renewal.html">PICA Passport Renewals</a>
+          <a href="rgd-vital-records.html">RGD Vital Records</a>
+          <a href="motor-vehicle-renewal.html">TAJ Motor Vehicle Renewal</a>
+          <a href="drivers-licence-renewal.html">TAJ Driver's Licence Renewal</a>
+        </div>
+      </div>
       <a href="insights.html">Insights</a>
       <a href="about.html">About Us</a>
       <a href="faq.html">FAQ</a>
-      <a href="booking.html" class="btn btn-primary" style="min-height: 40px; padding: 0 16px; font-size: 0.85rem;">Book Consultation</a>
+      <a href="booking.html" class="book-btn">Book Consultation</a>
     </nav>
     
     <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
@@ -107,10 +129,13 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
     </button>
   </div>
   
+  <!-- MOBILE NAVIGATION DROPDOWN -->
   <nav class="mobile-nav" id="mobileNav" hidden>
-    <a href="passport.html">Passports</a>
-    <a href="vital.html">Vital Records</a>
-    <a href="nis.html">NIS Pensions</a>
+    <a href="index.html#services" style="font-weight: 700; color: var(--ink);">Services</a>
+    <a href="jamaican-passport-renewal.html" class="mobile-sub">↳ PICA Passport Renewals</a>
+    <a href="rgd-vital-records.html" class="mobile-sub">↳ RGD Vital Records</a>
+    <a href="motor-vehicle-renewal.html" class="mobile-sub">↳ TAJ Motor Vehicle Renewal</a>
+    <a href="drivers-licence-renewal.html" class="mobile-sub">↳ TAJ Driver's Licence Renewal</a>
     <a href="insights.html">Insights</a>
     <a href="about.html">About Us</a>
     <a href="faq.html">FAQ</a>
@@ -135,16 +160,16 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
         <h2>1. Information We Collect</h2>
         <p>To act as your proxy and process documents on your behalf, we may collect the following:</p>
         <ul>
-            <li><strong>Identity Information:</strong> Full legal name, date of birth, TRN, NIS number, and copies of government-issued IDs (passports, driver's licenses).</li>
+            <li><strong>Identity Information:</strong> Full legal name, date of birth, TRN, and copies of government-issued IDs (passports, driver's licenses).</li>
             <li><strong>Contact Information:</strong> Email addresses, phone numbers (including WhatsApp), and physical mailing addresses for international couriers.</li>
-            <li><strong>Documentary Evidence:</strong> Historical records, vital certificates, statutory declarations, or employment histories required by Jamaican agencies (PICA, RGD, NIS).</li>
+            <li><strong>Documentary Evidence:</strong> Historical records, vital certificates, statutory declarations, or vehicle registrations required by Jamaican agencies (PICA, RGD, TAJ).</li>
         </ul>
 
         <h2>2. How We Use Your Information</h2>
         <p>Your information is used strictly for the purpose of executing the administrative services you hire us for. We do not sell, rent, or trade your data to third-party marketers. We use your data to:</p>
         <ul>
             <li>Pre-audit forms and documents for accuracy before submission.</li>
-            <li>Lodge applications at government agencies (PICA, RGD, MLSS) on your behalf.</li>
+            <li>Lodge applications at government agencies (PICA, RGD, TAJ) on your behalf.</li>
             <li>Communicate case updates directly with you via WhatsApp or email.</li>
             <li>Facilitate secure courier delivery of your finalized documents.</li>
         </ul>
@@ -176,7 +201,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
 </section>
 </main>
 
-<!-- UNIFIED 3-COLUMN FOOTER WITH PINTEREST -->
+<!-- UNIFIED 3-COLUMN FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -184,34 +209,42 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 32px}
         <h3 style="margin:0 0 10px;color:#fff;font-family:'Fraunces',serif;font-weight:600">Docu-Hub Operations</h3>
         <p style="margin:0;color:#94a3b8">Independent administrative proxy and secure online application assistance for the Jamaican diaspora.</p>
       </div>
+      
       <div class="footer-cols">
         <div class="footer-col">
           <h4>Our Services</h4>
-          <a href="passport.html">PICA Passports</a>
-          <a href="vital.html">RGD Vital Records</a>
-          <a href="nis.html">NIS Pensions</a>
+          <a href="jamaican-passport-renewal.html">PICA Passport Renewals</a>
+          <a href="rgd-vital-records.html">RGD Vital Records</a>
+          <a href="motor-vehicle-renewal.html">TAJ Motor Vehicle Renewal</a>
+          <a href="drivers-licence-renewal.html">TAJ Driver's Licence Renewal</a>
         </div>
+        
         <div class="footer-col">
           <h4>Company</h4>
           <a href="about.html">About Docu-Hub</a>
           <a href="insights.html">Guides &amp; Insights</a>
           <a href="faq.html">FAQ</a>
         </div>
+        
         <div class="footer-col">
           <h4>Legal &amp; Connect</h4>
-          <a href="privacy.html" style="color: #fff;">Privacy Policy</a>
+          <a href="privacy.html" style="color:#fff;">Privacy Policy</a>
           <a href="terms.html">Terms of Service</a>
           <a href="booking.html" style="display:flex; align-items:center; gap:8px;">
             <i class="fa-regular fa-calendar-days"></i> Book Consultation
           </a>
-          <a href="https://pin.it/12UYV8I0P" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; color: #e60023;">
-            <i class="fa-brands fa-pinterest"></i> Follow on Pinterest
+          <a href="https://www.youtube.com/@LauraClarke_dhub" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; color: #ea3323;">
+            <i class="fa-brands fa-youtube"></i> Watch on YouTube
+          </a>
+          <a href="https://www.linkedin.com/in/docuhubservices" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; color: #0a66c2;">
+            <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn
           </a>
         </div>
       </div>
     </div>
+    
     <div class="footer-bottom">
-      <div>Disclaimer: Docu-Hub Operations Services is a private, registered administrative proxy service. We are not a government agency and are not affiliated with PICA, RGD, or MLSS/NIS.</div>
+      <div>Disclaimer: Docu-Hub Operations Services is a private, registered administrative proxy service. We are not a government agency and are not affiliated with PICA, RGD, or TAJ.</div>
       <div><i class="fa-solid fa-building-shield" style="margin-right: 6px; color: var(--brass);"></i> Registered with the Companies Office of Jamaica (COJ): #15602/2025 | OIC Data Controller Verified.</div>
       <div>&copy; 2026 Docu-Hub Operations Services. All rights reserved.</div>
     </div>
