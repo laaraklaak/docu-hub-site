@@ -112,6 +112,14 @@ h1{margin:0 0 16px;font-weight:600;font-size:clamp(2rem,4vw,3rem);line-height:1.
 
 .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
 
+/* Mini Accordion for Form Details */
+.mini-accordion { background: var(--paper-deep); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 24px; transition: all 0.2s; }
+.mini-accordion summary { padding: 16px 20px; font-weight: 600; color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: space-between; list-style: none; }
+.mini-accordion summary::-webkit-details-marker { display: none; }
+.mini-accordion[open] summary { border-bottom: 1px dashed var(--line); }
+.mini-acc-body { padding: 16px 20px; }
+.mini-acc-body .detail-list li i { color: var(--stamp); }
+
 .branch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 20px; }
 .branch-pill { background: var(--paper); border: 1px solid var(--line); padding: 12px 16px; border-radius: 10px; font-weight: 600; font-size: 0.92rem; color: var(--ink-soft); display: flex; align-items: center; gap: 10px; }
 .branch-pill i { color: var(--brass-deep); }
@@ -248,25 +256,37 @@ footer { background: #0b1220; color: #cbd5e1; padding: 44px 0 24px; }
 <!-- STEP 1: CLIENT SENDS DETAILS -->
 <div class="step-card">
   <h3 class="step-title"><span class="step-num">1</span> Send Me Your Details</h3>
-  <p><strong>There is no form filling for you.</strong> Simply send me the following details on WhatsApp so I can verify your record and professionally prepare your official Form F7:</p>
+  <p><strong>There is no form filling for you.</strong> Simply send me a clear photo of your licence (Front &amp; Back) on WhatsApp, and I will verify your record and professionally prepare your official TAJ Form F7.</p>
+  
   <ul class="detail-list grid-2" style="margin-top: 20px;">
     <li>
-      <i class="fa-solid fa-id-card"></i>
-      <div><strong>Current Licence:</strong> A clear photo of the Front & Back</div>
+      <i class="fa-solid fa-id-card" style="color: var(--stamp);"></i>
+      <div><strong>Current Licence:</strong> A clear photo of the Front &amp; Back</div>
     </li>
     <li>
-      <i class="fa-solid fa-hashtag"></i>
+      <i class="fa-solid fa-hashtag" style="color: var(--stamp);"></i>
       <div><strong>TRN:</strong> Your Tax Registration Number</div>
     </li>
-    <li>
-      <i class="fa-solid fa-location-dot"></i>
-      <div><strong>Place of Birth:</strong> The parish or country</div>
-    </li>
-    <li>
-      <i class="fa-solid fa-briefcase"></i>
-      <div><strong>Occupation:</strong> Your current job title</div>
-    </li>
   </ul>
+
+  <!-- NEW FORM F7 INFO DROPDOWN -->
+  <details class="mini-accordion">
+    <summary>
+      <span style="display: flex; align-items: center; gap: 10px;"><i class="fa-solid fa-list-check" style="color: var(--stamp);"></i> View additional details needed for Form F7</span>
+      <i class="fa-solid fa-chevron-down" style="font-size: 0.9rem; color: var(--slate);"></i>
+    </summary>
+    <div class="mini-acc-body">
+      <p style="margin: 0 0 16px; font-size: 0.95rem; color: var(--ink-soft);">To ensure your Form F7 is 100% accurate and accepted by TAJ, please also text me:</p>
+      <ul class="detail-list grid-2">
+        <li><i class="fa-solid fa-location-dot"></i><div><strong>Place of Birth:</strong> Parish or Country</div></li>
+        <li><i class="fa-solid fa-briefcase"></i><div><strong>Occupation:</strong> Current job title</div></li>
+        <li><i class="fa-solid fa-phone"></i><div><strong>Telephone Number:</strong> Active contact number</div></li>
+        <li><i class="fa-solid fa-envelope"></i><div><strong>Email Address:</strong> Active email</div></li>
+        <li><i class="fa-solid fa-earth-americas"></i><div><strong>Nationality:</strong> e.g., Jamaican</div></li>
+        <li><i class="fa-solid fa-house"></i><div><strong>Current Address:</strong> (Only if changed from your old licence)</div></li>
+      </ul>
+    </div>
+  </details>
 </div>
 
 <!-- STEP 2: LAURA PROCESSES & PAYS -->
