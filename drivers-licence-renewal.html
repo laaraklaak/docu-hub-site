@@ -24,16 +24,26 @@
   --brass:#b3874f; --brass-deep:#8c6534; --brass-tint:#f4e9d5;
   --stamp:#0e6f63; --stamp-tint:#e6f2ef; --stamp-deep:#0a5b51;
   --blue:#2563eb; --blue-deep:#1d4ed8; --blue-tint:#eff6ff;
+  --alert:#b91c1c; --alert-tint:#fee2e2;
   --mono: "Space Mono", ui-monospace, monospace;
+  --radius-lg:18px; --radius-md:14px; --radius-sm:10px;
 }
 *{box-sizing:border-box}
 body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;width:100%;-webkit-text-size-adjust:100%;}
-h1,h2,h3,.brand span,.step-badge,.eyebrow{font-family:"Fraunces",Georgia,serif}
-.container{width:100%;max-width:1000px;margin:0 auto;padding:0 20px;}
+h1,h2,h3,h4,.brand span,.step-badge,.eyebrow{font-family:"Fraunces",Georgia,serif}
+.container{width:100%;max-width:960px;margin:0 auto;padding:0 20px;}
 a{-webkit-tap-highlight-color:transparent}
 :focus-visible{outline:2.5px solid var(--stamp);outline-offset:3px;border-radius:4px;}
 
-/* ===== Header & Nav ===== */
+/* Shared button styles */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:var(--radius-sm);font-weight:700;font-size:0.95rem;text-decoration:none;color:#fff;width:100%;border:none;cursor:pointer;font-family:Inter,sans-serif;transition:transform 0.15s, box-shadow 0.15s;}
+.btn:hover{transform:translateY(-2px);}
+.wa-btn { background: #25D366; color: #fff; font-size: 1.05rem; border-radius: 12px; min-height: 52px; }
+.wa-btn:hover { background: #20bd5a; box-shadow: 0 8px 24px rgba(37,211,102,0.25); transform: translateY(-2px); }
+.book-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 42px; padding: 0 18px; border-radius: 10px; font-weight: 700; font-size: 0.88rem; text-decoration: none; color: #ffffff !important; background: var(--blue); transition: background-color 0.15s, transform 0.15s; }
+.book-btn:hover { background: var(--blue-deep); transform: translateY(-1px); }
+
+/* Header & Nav */
 header{position:sticky;top:0;z-index:30;background:rgba(247,243,234,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav{display:flex;justify-content:space-between;align-items:center;min-height:72px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:700;text-decoration:none;color:inherit}
@@ -57,49 +67,62 @@ header{position:sticky;top:0;z-index:30;background:rgba(247,243,234,.96);backdro
 .mobile-nav .mobile-sub{padding-left:28px;font-size:0.9rem;color:var(--slate);}
 .mobile-nav[hidden]{display:none}
 
-.book-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 42px; padding: 0 18px; border-radius: 10px; font-weight: 700; font-size: 0.88rem; text-decoration: none; color: #ffffff !important; background: var(--blue); transition: background-color 0.15s, transform 0.15s; }
-.book-btn:hover { background: var(--blue-deep); transform: translateY(-1px); }
+/* Hero Section */
+.hero{padding:48px 0 24px; text-align:center;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;margin:auto;padding:6px 16px;border-radius:999px;background:var(--brass-tint);color:var(--brass-deep);font-size:.84rem;font-weight:600;border:1px solid #ecdcb8; margin-bottom:16px;}
+h1{margin:0 0 16px;font-weight:600;font-size:clamp(2rem,4vw,3rem);line-height:1.18; color:var(--ink);}
 
-/* ===== Section Spacing Rules ===== */
-section.page-block { padding: 56px 0; border-bottom: 1px solid rgba(230, 221, 198, 0.4); }
-section.page-block:last-of-type { border-bottom: none; }
+/* Personal Welcome Profile Layout */
+.welcome-card { background: #fff; border: 2px solid var(--brass); border-radius: var(--radius-lg); padding: 28px; text-align: left; margin: 24px 0 32px; box-shadow: 0 10px 28px rgba(18,24,43,0.05); }
+.welcome-profile-wrap { display: flex; gap: 20px; align-items: center; }
+.welcome-avatar { width: 88px; height: 88px; border-radius: 50%; border: 3px solid var(--brass-tint); flex: none; overflow: hidden; background: var(--paper-deep); box-shadow: 0 4px 12px rgba(179,135,79,0.15); }
+.welcome-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.welcome-text h2 { margin: 0 0 8px; font-size: 1.35rem; color: var(--ink); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.welcome-text p { margin: 0; color: var(--slate); font-size: 0.98rem; line-height: 1.6; }
 
-/* ===== Hero Section ===== */
-.hero{padding:48px 0 32px; text-align:center;}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;margin:auto;padding:8px 16px;border-radius:999px;background:var(--brass-tint);color:var(--brass-deep);font-size:.84rem;font-weight:600;border:1px solid #ecdcb8; margin-bottom:20px;}
-h1{margin:0 0 16px;font-weight:600;font-size:clamp(2.1rem,4.5vw,3.4rem);line-height:1.15;letter-spacing:-0.02em; color:var(--ink);}
-.lead{margin:0 auto;max-width:720px;color:var(--slate);font-size:1.08rem;line-height:1.7;}
+/* Service Overview (At a Glance) */
+.overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 48px; }
+.overview-card { background: var(--paper-deep); border-radius: 16px; padding: 24px; border: 1px solid var(--line); display: flex; gap: 16px; align-items: flex-start; }
+.overview-card i { font-size: 1.6rem; color: var(--stamp); flex: none; margin-top: 2px; }
+.overview-card strong { display: block; font-size: 1.1rem; color: var(--ink); margin-bottom: 6px; font-family: 'Fraunces', serif; }
+.overview-card p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.5; }
 
-.summary-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 12px; }
-.step-box { background: #fff; border: 1px solid var(--line); border-top: 5px solid var(--stamp); border-radius: 18px; padding: 28px 22px; text-align: center; box-shadow: 0 8px 24px rgba(18,24,43,.04); }
-.step-box .badge-num { width: 42px; height: 42px; border-radius: 50%; background: var(--stamp-tint); color: var(--stamp-deep); font-family: var(--mono); font-weight: 700; font-size: 1.15rem; display: grid; place-items: center; margin: 0 auto 16px; }
-.step-box h3 { margin: 0 0 10px; font-size: 1.2rem; color: var(--ink); }
-.step-box p { margin: 0; color: var(--slate); font-size: 0.94rem; line-height: 1.6; }
+/* The 3-Step Flow (Standalone Cards for Whitespace) */
+.section-header { text-align: center; margin-bottom: 32px; }
+.section-header h2 { font-size: 2rem; color: var(--ink); margin: 0 0 10px; }
+.section-header p { color: var(--slate); font-size: 1.05rem; margin: 0; }
 
-.quick-info { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 32px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; box-shadow: 0 8px 24px rgba(18,24,43,.03); }
-.info-item { display: flex; gap: 16px; align-items: flex-start; }
-.info-item i { font-size: 1.7rem; color: var(--stamp); margin-top: 2px; flex: none; }
-.info-item div strong { display: block; color: var(--ink); font-size: 1.02rem; margin-bottom: 4px; }
-.info-item div p { margin: 0; color: var(--slate); font-size: 0.9rem; line-height: 1.5; }
+.step-card { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 36px; margin-bottom: 24px; box-shadow: 0 8px 24px rgba(18,24,43,.04); position: relative; overflow: hidden; }
+.step-card::before { content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: var(--stamp); }
+.step-card.blue-accent::before { background: var(--blue); }
+.step-card.brass-accent::before { background: var(--brass); }
 
-.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:36px;box-shadow:0 8px 24px rgba(15,23,42,.03);}
-.card h2{margin:0 0 20px;font-size:1.45rem;color:var(--ink);}
+.step-title { font-family: 'Fraunces', serif; font-size: 1.4rem; color: var(--ink); margin: 0 0 16px; display: flex; align-items: center; gap: 14px; }
+.step-num { background: var(--stamp-tint); color: var(--stamp-deep); width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; font-family: var(--mono); font-size: 1rem; font-weight: 700; flex: none; }
+.blue-accent .step-num { background: #dbeafe; color: var(--blue-deep); }
+.brass-accent .step-num { background: var(--brass-tint); color: var(--brass-deep); }
 
-.detail-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 20px; }
-.detail-list li { display: flex; gap: 14px; align-items: flex-start; font-size: 0.98rem; color: var(--ink-soft); line-height: 1.6; }
-.detail-list li i { color: var(--stamp); font-size: 1.2rem; margin-top: 3px; flex: none; }
+.step-card > p { margin: 0 0 20px; font-size: 1.02rem; color: var(--ink-soft); line-height: 1.6; }
+.step-card > p strong { color: var(--ink); }
 
-.branch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 16px; }
-.branch-pill { background: var(--paper); border: 1px solid var(--line); padding: 12px 16px; border-radius: 12px; font-weight: 600; font-size: 0.92rem; color: var(--ink-soft); text-align: center; }
+.detail-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+.detail-list li { display: flex; gap: 14px; align-items: flex-start; font-size: 0.98rem; color: var(--ink-soft); line-height: 1.55; }
+.detail-list li i { font-size: 1.25rem; margin-top: 2px; flex: none; color: var(--slate); }
+.detail-list li strong { color: var(--ink); display: block; margin-bottom: 2px; }
 
-.cta-banner { background: linear-gradient(135deg, var(--ink), var(--ink-soft)); color: #fff; border-radius: 24px; padding: 48px 28px; text-align: center; box-shadow: 0 16px 40px rgba(18,24,43,0.12); }
-.cta-banner h2 { font-size: 1.9rem; margin: 0 0 12px; color: #fff; }
-.cta-banner p { color: #cbd5e1; max-width: 620px; margin: 0 auto 28px; font-size: 1rem; line-height: 1.6; }
-.wa-action-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 32px; border-radius: 14px; background: #25D366; color: #fff; font-weight: 700; font-size: 1.02rem; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; }
-.wa-action-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(37,211,102,.32); }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
 
-/* ===== Compact Footer Styling ===== */
-footer { background: #0b1220; color: #cbd5e1; margin-top: 60px; padding: 44px 0 24px; }
+.branch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 20px; }
+.branch-pill { background: var(--paper); border: 1px solid var(--line); padding: 12px 16px; border-radius: 10px; font-weight: 600; font-size: 0.92rem; color: var(--ink-soft); display: flex; align-items: center; gap: 10px; }
+.branch-pill i { color: var(--brass-deep); }
+
+/* CTA Block */
+.section-cta { background: var(--ink); border-radius: var(--radius-lg); padding: 48px 32px; text-align: center; margin: 48px 0 60px; box-shadow: 0 12px 30px rgba(18,24,43,0.1); }
+.section-cta h4 { margin: 0 0 12px; color: #fff; font-size: 1.8rem; font-family: 'Fraunces', serif; }
+.section-cta p { margin: 0 auto 28px; color: #cbd5e1; font-size: 1.05rem; max-width: 600px; line-height: 1.6; }
+
+/* Compact Footer */
+footer { background: #0b1220; color: #cbd5e1; padding: 44px 0 24px; }
 .footer-grid { display: grid; gap: 28px; }
 .footer-intro h3 { margin: 0 0 6px; color: #fff; font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.1rem; }
 .footer-intro p { margin: 0; color: #94a3b8; font-size: 0.85rem; line-height: 1.5; }
@@ -116,12 +139,19 @@ footer { background: #0b1220; color: #cbd5e1; margin-top: 60px; padding: 44px 0 
   .footer-grid{grid-template-columns:1fr 1.5fr;}
 }
 @media(max-width:767px){
-  section.page-block { padding: 40px 0; }
-  .card { padding: 24px; }
-  .cta-banner { padding: 36px 20px; }
+  .step-card { padding: 28px 24px; }
+  .section-cta { padding: 40px 24px; margin: 36px 0 48px; }
   .footer-cols{grid-template-columns:1fr 1fr;}
 }
-@media(max-width:480px){ .footer-cols{grid-template-columns:1fr;} }
+@media(max-width:480px){ 
+  .footer-cols{grid-template-columns:1fr;} 
+  h1{font-size:1.9rem;}
+  .welcome-profile-wrap { gap: 14px; align-items: flex-start; }
+  .welcome-avatar { width: 72px; height: 72px; }
+  .welcome-text h2 { font-size: 1.25rem; }
+  .section-header h2 { font-size: 1.6rem; }
+  .overview-card { flex-direction: column; gap: 12px; }
+}
 </style>
 </head>
 <body>
@@ -129,7 +159,7 @@ footer { background: #0b1220; color: #cbd5e1; margin-top: 60px; padding: 44px 0 
 <!-- TOP DISCLAIMER BANNER -->
 <div style="background-color: var(--ink); color: #c7ccdb; text-align: center; padding: 10px 16px; font-size: 0.85rem; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.1);">
   <i class="fa-solid fa-circle-info" style="color: var(--brass); margin-right: 6px;"></i>
-  <strong>Disclaimer:</strong> Docu-Hub Operations is an independent, private administrative proxy service. We are not a government agency and are not affiliated with Tax Administration Jamaica (TAJ).
+  <strong>Disclaimer:</strong> Docu-Hub Operations is an independent administrative proxy service. We are not a government agency and are not affiliated with Tax Administration Jamaica (TAJ).
 </div>
 
 <header>
@@ -169,123 +199,123 @@ footer { background: #0b1220; color: #cbd5e1; margin-top: 60px; padding: 44px 0 
   </nav>
 </header>
 
-<main>
+<main class="container">
 
 <!-- HERO SECTION -->
 <section class="hero">
-  <div class="container">
-    <span class="eyebrow">TAJ Motor Vehicle Services</span>
-    <h1>Same-Day Driver's Licence Renewal</h1>
-    <p class="lead">Get your new licence renewed on the very same day. We process your online payment and prepare your official documents so you can drop them off and collect your card in 15 to 30 minutes.</p>
-  </div>
+  <span class="eyebrow"><i class="fa-solid fa-car"></i> TAJ Motor Vehicle Services</span>
+  <h1>Same-Day Driver's Licence Renewal</h1>
 </section>
 
-<!-- SECTION 1: THE 3-STEP PROCESS -->
-<section class="page-block">
-  <div class="container">
-    <div class="summary-steps">
-      <div class="step-box">
-        <div class="badge-num">1</div>
-        <h3>We Process &amp; Pay Online</h3>
-        <p>We handle the TAJ e-Services portal and pay your official government renewal fee.</p>
-      </div>
-      <div class="step-box">
-        <div class="badge-num">2</div>
-        <h3>We Send Your Package</h3>
-        <p>We type up your official Form F7 and send you your print-ready payment package.</p>
-      </div>
-      <div class="step-box">
-        <div class="badge-num">3</div>
-        <h3>Same-Day Collection</h3>
-        <p>Drop your package off at a main Tax Office, bypass the cashier line, and collect in 15–30 minutes!</p>
-      </div>
+<!-- WELCOME PROFILE CARD -->
+<div class="welcome-card">
+  <div class="welcome-profile-wrap">
+    <div class="welcome-avatar">
+      <!-- ADD YOUR IMAGE HERE: Change the src="" link below to your actual image file name (e.g. "assets/laura.jpg") -->
+      <img src="assets/ecard.webp" alt="Laura from Docu-Hub Operations">
+    </div>
+    <div class="welcome-text">
+      <h2><i class="fa-solid fa-hand-wave" style="color:var(--brass);"></i> Welcome! I'm Laura from Docu-Hub</h2>
+      <p>I handle the TAJ online payment and form preparation so you can collect your new driver's licence on the exact same day—without standing in the cashier line or struggling with the portal.</p>
     </div>
   </div>
-</section>
+</div>
 
-<!-- SECTION 2: OFFICIAL FEES & TURNAROUND -->
-<section class="page-block">
-  <div class="container">
-    <div class="quick-info">
-      <div class="info-item">
-        <i class="fa-solid fa-tag"></i>
-        <div>
-          <strong>Official TAJ Fees</strong>
-          <p>Private Licence: $5,400 JMD<br>General/Commercial: $7,200 JMD</p>
-        </div>
-      </div>
-      <div class="info-item">
-        <i class="fa-solid fa-clock"></i>
-        <div>
-          <strong>15–30 Min Turnaround</strong>
-          <p>Get through fast at main express depots.</p>
-        </div>
-      </div>
-      <div class="info-item">
-        <i class="fa-solid fa-file-invoice-dollar"></i>
-        <div>
-          <strong>60-Day Temporary Licence</strong>
-          <p>Your printed payment receipt acts as immediate legal proof to drive.</p>
-        </div>
-      </div>
+<!-- SERVICE OVERVIEW (AT A GLANCE) -->
+<div class="overview-grid">
+  <div class="overview-card">
+    <i class="fa-solid fa-tag"></i>
+    <div>
+      <strong>Official TAJ Fees</strong>
+      <p>Private Licence: $5,400 JMD<br>General/Commercial: $7,200 JMD</p>
     </div>
   </div>
-</section>
+  <div class="overview-card">
+    <i class="fa-solid fa-file-shield"></i>
+    <div>
+      <strong>60-Day Legal Clearance</strong>
+      <p>The official receipt I generate for you acts as immediate legal proof to drive while you wait to collect your physical card.</p>
+    </div>
+  </div>
+</div>
 
-<!-- SECTION 3: HOW TO GET IT DONE SAME-DAY -->
-<section class="page-block">
-  <div class="container">
-    <div class="card">
-      <h2>How To Get Your Licence Renewal Same-Day</h2>
-      <ul class="detail-list">
-        <li>
-          <i class="fa-solid fa-circle-check"></i>
-          <div><strong>No Form Filling For You:</strong> Send us a photo of the front and back of your current Driver's Licence, your TRN, Place of Birth, and Occupation on WhatsApp. We fill out your official Form F7 so it isn't rejected.</div>
-        </li>
-        <li>
-          <i class="fa-solid fa-circle-check"></i>
-          <div><strong>Instant Portal Payment:</strong> We pay your renewal fee directly into the TAJ portal and send you your official TAJ Payment Receipt along with your typed Form F7.</div>
-        </li>
-        <li>
-          <i class="fa-solid fa-circle-check"></i>
-          <div><strong>Immediate Legal Driving Clearance:</strong> Simply print your package and attach the receipt to your old licence. Under TAJ regulations, this serves as your official legal temporary licence for up to 60 days!</div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
+<!-- THE 3-STEP PROCESS -->
+<div class="section-header">
+  <h2>How It Works</h2>
+  <p>Three simple steps. No portals, no cashier lines.</p>
+</div>
 
-<!-- SECTION 4: RECOMMENDED COLLECTORATES -->
-<section class="page-block">
-  <div class="container">
-    <div class="card">
-      <h2>Main Collectorates For Same-Day Collection</h2>
-      <p style="color:var(--slate); margin-bottom:16px;">To get your licence renewed on the same day in just 15 to 30 minutes, drop off your completed package at the Renewal Counter at any of these main Tax Offices:</p>
-      
-      <div class="branch-grid">
-        <div class="branch-pill">📍 Constant Spring (Kingston)</div>
-        <div class="branch-pill">📍 Fairview (Montego Bay)</div>
-        <div class="branch-pill">📍 Mandeville</div>
-        <div class="branch-pill">📍 St. Ann's Bay</div>
-        <div class="branch-pill">📍 May Pen</div>
-        <div class="branch-pill">📍 Savanna-la-Mar</div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- STEP 1: CLIENT SENDS DETAILS -->
+<div class="step-card">
+  <h3 class="step-title"><span class="step-num">1</span> Send Me Your Details</h3>
+  <p><strong>There is no form filling for you.</strong> Simply send me the following details on WhatsApp so I can verify your record and professionally prepare your official Form F7:</p>
+  <ul class="detail-list grid-2" style="margin-top: 20px;">
+    <li>
+      <i class="fa-solid fa-id-card"></i>
+      <div><strong>Current Licence:</strong> A clear photo of the Front & Back</div>
+    </li>
+    <li>
+      <i class="fa-solid fa-hashtag"></i>
+      <div><strong>TRN:</strong> Your Tax Registration Number</div>
+    </li>
+    <li>
+      <i class="fa-solid fa-location-dot"></i>
+      <div><strong>Place of Birth:</strong> The parish or country</div>
+    </li>
+    <li>
+      <i class="fa-solid fa-briefcase"></i>
+      <div><strong>Occupation:</strong> Your current job title</div>
+    </li>
+  </ul>
+</div>
 
-<!-- SECTION 5: FINAL CTA BANNER -->
-<section class="page-block" style="padding-bottom: 0;">
-  <div class="container">
-    <div class="cta-banner">
-      <h2>Ready to get your same-day licence renewal?</h2>
-      <p>Message us on WhatsApp right now. Send your licence photo and details, and we'll handle the payment and paperwork for you!</p>
-      <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I%20would%20like%20to%20get%20my%20Driver's%20Licence%20renewed%20today." target="_blank" rel="noopener" class="wa-action-btn">
-        <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Start Same-Day Renewal on WhatsApp
-      </a>
+<!-- STEP 2: LAURA PROCESSES & PAYS -->
+<div class="step-card blue-accent">
+  <h3 class="step-title"><span class="step-num">2</span> I Process Payment & Paperwork</h3>
+  <p>Once I receive your details, I immediately log into the TAJ portal, process your renewal payment, and type up your physical F7 forms.</p>
+  
+  <div style="background: var(--blue-tint); padding: 16px 20px; border-radius: 12px; margin-top: 20px; display: flex; gap: 14px; align-items: flex-start; border: 1px solid #bfdbfe;">
+    <i class="fa-solid fa-box-open" style="color: var(--blue); font-size: 1.4rem; margin-top: 2px;"></i>
+    <div>
+      <strong style="display: block; color: var(--blue-deep); margin-bottom: 4px;">What you receive back from me:</strong>
+      <p style="margin: 0; color: var(--ink-soft); font-size: 0.95rem;">A print-ready PDF containing your officially typed Form F7 and your verified TAJ Payment Receipt. This receipt immediately legally clears you to drive.</p>
     </div>
   </div>
-</section>
+</div>
+
+<!-- STEP 3: SAME-DAY DROP OFF -->
+<div class="step-card brass-accent">
+  <h3 class="step-title"><span class="step-num">3</span> You Print, Drop-Off & Collect</h3>
+  <p>Print the PDF package I send you and attach the receipt to your old licence. Simply walk into the Tax Office and drop it off at the Renewal Counter—<strong>bypassing the cashier entirely.</strong></p>
+  
+  <p style="margin-top: 24px; font-weight: 600; color: var(--ink);">Main Hubs for Fast 15-30 Minute Turnaround:</p>
+  <div class="branch-grid">
+    <div class="branch-pill"><i class="fa-solid fa-building"></i> Constant Spring</div>
+    <div class="branch-pill"><i class="fa-solid fa-building"></i> Downtown Kingston (King St.)</div>
+    <div class="branch-pill"><i class="fa-solid fa-building"></i> Spanish Town</div>
+    <div class="branch-pill"><i class="fa-solid fa-building"></i> Portmore</div>
+    <div class="branch-pill"><i class="fa-solid fa-building"></i> Fairview (Mobay)</div>
+    <div class="branch-pill"><i class="fa-solid fa-building"></i> Mandeville</div>
+    <div class="branch-pill"><i class="fa-solid fa-building"></i> May Pen</div>
+    <div class="branch-pill"><i class="fa-solid fa-building"></i> St. Ann's Bay</div>
+    <div class="branch-pill"><i class="fa-solid fa-building"></i> Savanna-la-Mar</div>
+  </div>
+
+  <!-- NEW LOCAL OFFICE INFO BOX -->
+  <div style="background: var(--paper-deep); padding: 18px 24px; border-radius: 12px; margin-top: 24px; border: 1px solid var(--line);">
+    <strong style="display: block; color: var(--ink); margin-bottom: 8px; font-size: 1.05rem;"><i class="fa-solid fa-circle-info" style="color: var(--brass);"></i> What if you use a smaller, local Tax Office?</strong>
+    <p style="margin: 0; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.6;">You can drop your package at <em>any</em> TAJ branch across the island (like Linstead, Falmouth, or Morant Bay). Because these smaller offices don't print on-site, it usually takes <strong>2 to 4 weeks</strong> for your card to arrive. However, your official 60-day receipt means you are <strong>100% legally covered to drive</strong> while you wait!</p>
+  </div>
+</div>
+
+<!-- CTA BLOCK -->
+<div class="section-cta">
+  <h4>Ready for your Same-Day Renewal?</h4>
+  <p>Message me on WhatsApp right now. Send your licence photo and details, and I will start processing your payment and paperwork immediately.</p>
+  <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I%20would%20like%20to%20get%20my%20Driver's%20Licence%20renewed%20today." target="_blank" rel="noopener" class="btn wa-btn" style="max-width: 380px; margin: 0 auto;">
+    <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Start Same-Day Renewal
+  </a>
+</div>
 
 </main>
 
