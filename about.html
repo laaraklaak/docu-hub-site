@@ -32,7 +32,8 @@ a{-webkit-tap-highlight-color:transparent}
 :focus-visible{outline:2px solid var(--blue-deep);outline-offset:2px}
 
 /* ===== Header & Nav ===== */
-header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+/* FIXED: Only the main site header is sticky now */
+header.site-header {position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav{display:flex;justify-content:space-between;align-items:center;min-height:72px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:700;text-decoration:none;color:inherit}
 .brand span{font-size:1.02rem;font-weight:600;letter-spacing:-0.01em}
@@ -53,7 +54,7 @@ header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdro
 .dropdown-content a{display:block;padding:10px 14px;border-radius:99px;color:var(--ink-soft);text-decoration:none;font-size:.92rem;font-weight:500;transition:background .15s}
 .dropdown-content a:hover{background:var(--paper);color:var(--ink)}
 
-/* Mobile Nav Overlay Fix */
+/* Mobile Nav */
 .menu{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);border:none;}
 .mobile-nav{display:grid;gap:2px;border-bottom:1px solid var(--line);background:#fff; position:absolute; top:100%; left:0; width:100%; box-shadow:0 10px 24px rgba(15,23,42,0.06);}
 .mobile-nav a{padding:14px 16px;text-decoration:none;color:var(--ink-soft);font-weight:500;border-top:1px solid var(--line)}
@@ -62,18 +63,40 @@ header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdro
 
 /* ===== Buttons ===== */
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;border-radius:14px;text-decoration:none;font-weight:700;font-size:.98rem;transition:transform .15s ease, box-shadow .15s ease;}
+.btn-primary { background: var(--blue); color: #fff; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,99,235,0.2); background: var(--blue-deep); }
 .book-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 0 16px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; text-decoration: none; color: #fff; background: var(--blue); transition: transform 0.15s, box-shadow 0.15s; }
-.book-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,99,235,0.2); }
+.book-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,99,235,0.2); background: var(--blue-deep); }
 
-/* ===== Blog Layout Styles ===== */
-.article-card { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: clamp(32px, 6vw, 64px); box-shadow: 0 10px 30px rgba(15,23,42,.04); }
-.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:var(--brass-tint);color:var(--brass-deep);font-size:.82rem;font-weight:600;border:1px solid #ecdcb8; margin-bottom:24px;}
-.blog-content { font-size: 1.12rem; line-height: 1.8; color: var(--slate); }
+/* ===== Magazine Article Layout Styles ===== */
+.article-card { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: clamp(32px, 5vw, 56px); box-shadow: 0 10px 30px rgba(15,23,42,.04); max-width: 900px; margin: 0 auto; }
+.clearfix::after { content: ""; clear: both; display: table; }
+
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:var(--brass-tint);color:var(--brass-deep);font-size:.82rem;font-weight:600;border:1px solid #ecdcb8; margin-bottom:20px;}
+h1 { font-size: clamp(2.2rem, 4vw, 3.4rem); margin: 0 0 16px; color: var(--ink); line-height: 1.15; }
+
+/* Magazine Image Float */
+.magazine-img {
+  float: left;
+  width: 360px;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: 20px;
+  margin: 10px 40px 24px 0;
+  box-shadow: 0 16px 40px rgba(15,23,42,.1);
+  border: 1px solid var(--line);
+}
+
+.blog-content { font-size: 1.08rem; line-height: 1.8; color: var(--slate); }
 .blog-content p { margin-bottom: 24px; }
-.blog-content h2 { font-size: 1.8rem; color: var(--ink); margin: 48px 0 24px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
-.blog-content ul { margin: 0 0 32px 0; padding-left: 24px; display: grid; gap: 16px; }
-.blog-content li { padding-left: 8px; }
+.blog-content h2 { font-size: 1.7rem; color: var(--ink); margin: 40px 0 20px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
 .blog-content strong { color: var(--ink); }
+
+/* Client List Styling */
+.client-list { list-style: none; padding: 0; margin: 24px 0 32px; display: grid; gap: 20px; }
+.client-list li { background: var(--paper-deep); border-left: 4px solid var(--brass); border-radius: 12px; padding: 20px 24px; }
+.client-list li strong { display: block; color: var(--ink); font-size: 1.15rem; margin-bottom: 6px; font-family: 'Fraunces', serif; }
+.client-list li p { margin: 0; font-size: 0.98rem; }
 
 /* ===== Compact Footer ===== */
 footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:44px 0 24px}
@@ -90,8 +113,13 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:44px 0 24px}
   .mobile-nav{display:none !important}
   .footer-grid{grid-template-columns:1fr 1.5fr}
 }
-@media(max-width:767px){ .footer-cols{grid-template-columns:1fr 1fr;} }
-@media(max-width:480px){ .footer-cols{grid-template-columns:1fr;} }
+@media(max-width:767px){ 
+  .footer-cols{grid-template-columns:1fr 1fr;} 
+  .magazine-img { float: none; width: 100%; max-width: 400px; aspect-ratio: 1/1; margin: 0 auto 32px auto; display: block; }
+}
+@media(max-width:480px){ 
+  .footer-cols{grid-template-columns:1fr;} 
+}
 </style>
 </head>
 <body>
@@ -102,7 +130,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:44px 0 24px}
   <strong>Disclaimer:</strong> Docu-Hub Operations is an independent, private proxy service. We are not a government agency and are not affiliated with PICA, RGD, or TAJ.
 </div>
 
-<header>
+<header class="site-header">
   <div class="container nav">
     <a class="brand" href="index.html">
       <div class="logo">DH</div><span>Docu-Hub Operations</span>
@@ -113,10 +141,10 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:44px 0 24px}
       <div class="dropdown">
         <button class="dropbtn">Services <i class="fa-solid fa-chevron-down"></i></button>
         <div class="dropdown-content">
-          <a href="jamaican-passport-renewal.html">PICA Passport Renewals</a>
-          <a href="rgd-vital-records.html">RGD Vital Records</a>
           <a href="motor-vehicle-renewal.html">TAJ Motor Vehicle Renewal</a>
           <a href="drivers-licence-renewal.html">TAJ Driver's Licence Renewal</a>
+          <a href="jamaican-passport-renewal.html">PICA Passport Renewals</a>
+          <a href="rgd-vital-records.html">RGD Vital Records</a>
         </div>
       </div>
       <a href="insights.html">Insights</a>
@@ -133,38 +161,38 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:44px 0 24px}
   <!-- MOBILE NAVIGATION DROPDOWN -->
   <nav class="mobile-nav" id="mobileNav" hidden>
     <a href="index.html#services" style="font-weight: 700; color: var(--ink);">Services</a>
-    <a href="jamaican-passport-renewal.html" class="mobile-sub">↳ PICA Passport Renewals</a>
-    <a href="rgd-vital-records.html" class="mobile-sub">↳ RGD Vital Records</a>
     <a href="motor-vehicle-renewal.html" class="mobile-sub">↳ TAJ Motor Vehicle Renewal</a>
     <a href="drivers-licence-renewal.html" class="mobile-sub">↳ TAJ Driver's Licence Renewal</a>
+    <a href="jamaican-passport-renewal.html" class="mobile-sub">↳ PICA Passport Renewals</a>
+    <a href="rgd-vital-records.html" class="mobile-sub">↳ RGD Vital Records</a>
     <a href="insights.html">Insights</a>
-    <a href="about.html">About Us</a>
+    <a href="about.html" style="font-weight: 700; color: var(--ink);">About Us</a>
     <a href="faq.html">FAQ</a>
     <a href="booking.html" style="font-weight: 700; color: var(--blue-deep);">Book Consultation</a>
   </nav>
 </header>
 
 <main style="padding: 64px 0;">
-  <div class="container" style="max-width: 800px;">
+  <div class="container">
     
-    <!-- THE BLOG ARTICLE -->
-    <article class="article-card">
+    <!-- THE MAGAZINE ARTICLE -->
+    <article class="article-card clearfix">
       
-      <!-- Article Header -->
-      <header style="text-align: center; margin-bottom: 40px;">
+      <!-- FIXED: Changed from <header> to a regular <div> so it is no longer sticky! -->
+      <div style="margin-bottom: 40px; border-bottom: 1px solid var(--line); padding-bottom: 24px;">
         <span class="eyebrow">Our Origin Story</span>
-        <h1 style="font-size: clamp(2rem, 4vw, 3.2rem); margin: 0 0 16px; color: var(--ink); line-height: 1.1;">The Story Behind Docu-Hub Operations</h1>
+        <h1>Why I Built Docu-Hub Operations.</h1>
         <div style="color: var(--slate); font-size: 1rem;">
-          By <strong>Laura Clarke</strong> &nbsp;|&nbsp; Linstead, St. Catherine
+          By <strong>Laura Clarke</strong> &nbsp;|&nbsp; <i class="fa-solid fa-location-dot" style="color: var(--stamp);"></i> Based in Linstead, St. Catherine
         </div>
-      </header>
+      </div>
 
-      <!-- Featured Image -->
-   <!-- Featured Image -->
-      <img src="assets/ecard.webp" alt="Laura Clarke, Founder of Docu-Hub Operations" style="width: 280px; aspect-ratio: 1/1; object-fit: cover; object-position: top center; border-radius: 50%; display: block; margin: 0 auto 40px; box-shadow: 0 18px 40px rgba(15,23,42,.12); border: 4px solid #fff;">
-<!-- Article Body -->
+      <!-- Magazine Float Image -->
+      <img src="assets/ecard.webp" alt="Laura Clarke, Founder of Docu-Hub Operations" class="magazine-img">
+
+      <!-- Article Body -->
       <div class="blog-content">
-        <p>The sad truth is that moving a government service "online" rarely clears up the confusion. We've all been there: staring at a clunky portal, fighting with drop-down menus, or realizing halfway through a submission that we don't understand the jargon being used.</p>
+        <p style="font-size: 1.25rem; color: var(--ink-soft); font-weight: 500;">The sad truth is that moving a government service "online" rarely clears up the confusion. We've all been there: staring at a clunky portal, fighting with drop-down menus, or realizing halfway through a submission that we don't understand the jargon being used.</p>
 
         <p>When Jamaicans hit a wall online, they revert to what they know—giving up their entire day to stand in a physical line at PICA or RGD just to get a straight answer. You shouldn't have to sacrifice your vacation time just to understand your paperwork. That is exactly why Docu-Hub Operations was created.</p>
 
@@ -172,33 +200,42 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:44px 0 24px}
 
         <p>I built this agency out of a very simple observation: dealing with government portals shouldn't feel like a punishment. I watched friends, local professionals, and overseas family members pull their hair out trying to update basic records.</p>
 
-        <p>Even when services are moved online, people are still confused by the process. They don't know where to start, and they definitely don't want to stand in the sun waiting for a number to be called.</p>
+        <p>Even when services are officially moved online, people are still confused by the process. They don't know where to start, and they definitely don't want to stand in the sun waiting for a number to be called.</p>
 
         <p>Operating from Linstead, St. Catherine, I decided to become the translator and the proxy that Jamaicans desperately needed. My goal isn't just to file paperwork; it is to give you back your time and your peace of mind.</p>
 
-        <h2>How We Bridge the Gap</h2>
+        <h2 style="clear: both;">How We Bridge the Gap</h2>
 
         <p>Today, we serve three distinct types of clients who need our help navigating the system:</p>
 
-        <ul>
-          <li><strong>The Hand-Holder:</strong> For those who want to do it themselves but just need to understand the process. We translate the agency jargon into plain English and give you a step-by-step roadmap.</li>
-          <li><strong>The Time-Saver:</strong> For the busy professional who simply cannot afford to sacrifice a day's pay standing in queues at Twickenham Park or Ripon Road. We go to the counter so you can stay at your desk.</li>
-          <li><strong>The Ground Proxy:</strong> For family in the diaspora. When distance makes it physically impossible to handle local bureaucracy, we step in as your trusted boots on the ground in Jamaica.</li>
+        <ul class="client-list">
+          <li>
+            <strong>The Time-Saver</strong>
+            <p>For the busy local professional who simply cannot afford to sacrifice a day's pay standing in queues at Twickenham Park or Constant Spring. We bypass the lines or submit online so you can stay at your desk.</p>
+          </li>
+          <li>
+            <strong>The Ground Proxy</strong>
+            <p>For family in the diaspora. When distance makes it physically impossible to handle local bureaucracy, we step in as your trusted, secure boots on the ground in Jamaica.</p>
+          </li>
+          <li>
+            <strong>The Hand-Holder</strong>
+            <p>For those who want to do it themselves but just need to understand the process. We translate the agency jargon into plain English and give you a step-by-step roadmap to avoid rejection.</p>
+          </li>
         </ul>
 
-        <p style="font-size: 1.25rem; font-weight: 500; color: var(--ink); text-align: center; margin-top: 48px; border-top: 1px solid var(--line); padding-top: 40px;">
+        <p style="font-size: 1.2rem; font-weight: 500; color: var(--ink); text-align: center; margin-top: 48px; border-top: 1px solid var(--line); padding-top: 40px;">
           Whether you need guidance navigating a portal or want to hand off the physical legwork to us completely, we are here to help.
         </p>
 
+        <!-- Call to Action Button -->
+        <div style="text-align: center; margin-top: 32px;">
+          <a class="btn btn-primary" href="booking.html">
+            <i class="fa-regular fa-calendar-days" style="margin-right: 10px;"></i> Book a Consultation
+          </a>
+        </div>
+
       </div>
     </article>
-
-    <!-- Call to Action Button -->
-    <div style="text-align: center; margin-top: 48px;">
-      <a class="btn" style="background: var(--ink); color: #fff; min-height: 56px; padding: 0 32px; box-shadow: 0 10px 20px rgba(15,23,42,.15);" href="booking.html">
-        <i class="fa-regular fa-calendar-days" style="margin-right: 10px; font-size: 1.2rem;"></i> Book a Consultation
-      </a>
-    </div>
 
   </div>
 </main>
@@ -215,10 +252,10 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:44px 0 24px}
       <div class="footer-cols">
         <div class="footer-col">
           <h4>Our Services</h4>
-          <a href="jamaican-passport-renewal.html">PICA Passport Renewals</a>
-          <a href="rgd-vital-records.html">RGD Vital Records</a>
           <a href="motor-vehicle-renewal.html">TAJ Motor Vehicle Renewal</a>
           <a href="drivers-licence-renewal.html">TAJ Driver's Licence Renewal</a>
+          <a href="jamaican-passport-renewal.html">PICA Passport Renewals</a>
+          <a href="rgd-vital-records.html">RGD Vital Records</a>
         </div>
         
         <div class="footer-col">
