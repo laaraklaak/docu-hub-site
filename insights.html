@@ -68,10 +68,10 @@ h1{margin:0 0 16px;font-weight:600;font-size:clamp(2.1rem,5vw,3.6rem);line-heigh
 .filter-btn:hover { border-color: var(--slate); color: var(--ink); }
 .filter-btn.active { background: var(--ink); color: #fff; border-color: var(--ink); box-shadow: 0 4px 12px rgba(15,23,42,.1); }
 
-/* Featured Article Spotlight */
+/* Featured Article Spotlight (Updated to TAJ background image) */
 .featured-article { display: flex; flex-direction: column; background: #fff; border-radius: 22px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 10px 30px rgba(15,23,42,.04); margin-bottom: 64px; text-decoration: none; color: inherit; transition: transform 0.3s ease; }
 .featured-article:hover { transform: translateY(-4px); border-color: #cbd5e1; box-shadow: 0 16px 40px rgba(15,23,42,.08); }
-.featured-img-box { width: 100%; height: 280px; background: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1622675363311-3e1904dc1885?auto=format&fit=crop&w=1200&q=80') center/cover; position: relative; }
+.featured-img-box { width: 100%; height: 280px; background: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80') center/cover; position: relative; }
 .featured-badge { position: absolute; top: 24px; left: 24px; background: var(--brass-tint); color: var(--brass-deep); padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
 .featured-body { padding: 40px 32px; display: flex; flex-direction: column; justify-content: center; }
 .featured-meta { font-size: 0.9rem; color: var(--slate); font-weight: 600; margin-bottom: 16px; display: flex; gap: 16px; }
@@ -137,21 +137,21 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:44px 0 24px}
       <div class="logo">DH</div><span>Docu-Hub Operations</span>
     </a>
     
-    <!-- DESKTOP NAVIGATION WITH SERVICES DROPDOWN -->
+    <!-- DESKTOP NAVIGATION WITH REORDERED SERVICES DROPDOWN -->
     <nav class="desktop-nav">
       <div class="dropdown">
         <button class="dropbtn">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i></button>
         <div class="dropdown-content">
-          <a href="jamaican-passport-renewal.html">PICA Passport Renewals</a>
-          <a href="rgd-vital-records.html">RGD Vital Records</a>
           <a href="motor-vehicle-renewal.html">TAJ Motor Vehicle Renewal</a>
           <a href="drivers-licence-renewal.html">TAJ Driver's Licence Renewal</a>
+          <a href="jamaican-passport-renewal.html">PICA Passport Renewals</a>
+          <a href="rgd-vital-records.html">RGD Vital Records</a>
         </div>
       </div>
       <a href="insights.html" class="active">Insights</a>
       <a href="about.html">About Us</a>
       <a href="faq.html">FAQ</a>
-      <a href="booking.html" class="btn btn-primary" style="min-height: 40px; padding: 0 16px; font-size: 0.85rem;">Book Consultation</a>
+      <a href="booking.html" class="btn btn-primary" style="min-height: 40px; padding: 0 16px; font-size: 0.85rem; background: var(--blue); color: white;">Book Consultation</a>
     </nav>
     
     <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
@@ -159,19 +159,20 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:44px 0 24px}
     </button>
   </div>
   
-  <!-- MOBILE NAVIGATION DROPDOWN -->
+  <!-- MOBILE NAVIGATION DROPDOWN (Reordered) -->
   <nav class="mobile-nav" id="mobileNav" hidden>
     <a href="index.html#services" style="font-weight: 700; color: var(--ink);">Services</a>
-    <a href="jamaican-passport-renewal.html" class="mobile-sub">↳ PICA Passport Renewals</a>
-    <a href="rgd-vital-records.html" class="mobile-sub">↳ RGD Vital Records</a>
     <a href="motor-vehicle-renewal.html" class="mobile-sub">↳ TAJ Motor Vehicle Renewal</a>
     <a href="drivers-licence-renewal.html" class="mobile-sub">↳ TAJ Driver's Licence Renewal</a>
-    <a href="insights.html">Insights</a>
+    <a href="jamaican-passport-renewal.html" class="mobile-sub">↳ PICA Passport Renewals</a>
+    <a href="rgd-vital-records.html" class="mobile-sub">↳ RGD Vital Records</a>
+    <a href="insights.html" style="font-weight: 700; color: var(--ink);">Insights</a>
     <a href="about.html">About Us</a>
     <a href="faq.html">FAQ</a>
     <a href="booking.html" style="font-weight: 700; color: var(--blue-deep);">Book Consultation</a>
   </nav>
 </header>
+
 <section class="hero">
   <div class="container">
     <span class="eyebrow">Docu-Hub Advisory Desk</span>
@@ -185,50 +186,39 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:44px 0 24px}
         
         <div class="filter-tabs" id="filter-container">
             <button class="filter-btn active" data-filter="all">All Advisories</button>
+            <button class="filter-btn" data-filter="taj">TAJ Operations</button>
             <button class="filter-btn" data-filter="pica">Passports (PICA)</button>
             <button class="filter-btn" data-filter="rgd">Vital Records (RGD)</button>
-            <button class="filter-btn" data-filter="taj">TAJ Operations</button>
         </div>
 
-        <a href="heat-damage-article.html" class="featured-article filter-item" data-category="pica">
+        <!-- NEW TAJ FEATURED ARTICLE -->
+        <a href="motor-vehicle-renewal.html" class="featured-article filter-item" data-category="taj">
             <div class="featured-img-box">
                 <span class="featured-badge">Featured Strategy</span>
             </div>
             <div class="featured-body">
                 <div class="featured-meta">
-                    <span class="cat"><i class="fa-solid fa-passport"></i> Passports (PICA)</span>
-                    <span><i class="fa-regular fa-clock"></i> 4 Min Read</span>
+                    <span class="cat"><i class="fa-solid fa-car"></i> TAJ Operations</span>
+                    <span><i class="fa-regular fa-clock"></i> 3 Min Read</span>
                 </div>
-                <h2>The Plastic Bag Trap: Is Heat Destroying Your Passport?</h2>
-                <p>Wrapping your e-passport in a plastic ziplock bag to prevent water damage might actually be melting the biometric chip inside. Learn how to protect your microchip before traveling.</p>
-                <span class="btn-featured">Read Full Advisory &rarr;</span>
+                <h2>The Digital Traffic Jam: Navigating TAJ Vehicle Renewals</h2>
+                <p>Learn why the free online TAJ portal often traps users with alphanumeric errors and hidden TTMS tickets, and how an operational proxy solves it.</p>
+                <span class="btn-featured">Read Full Guide &rarr;</span>
             </div>
         </a>
 
         <div class="blog-grid" id="advisory-grid">
 
-            <a href="washed-article.html" class="blog-card filter-item" data-category="pica">
-                <img src="assets/water-damaged.png" alt="Water damaged paper document" class="blog-img">
+            <!-- MOVED PICA ARTICLE TO GRID -->
+            <a href="heat-damage-article.html" class="blog-card filter-item" data-category="pica">
+                <img src="assets/heat-damaged.png" alt="Passport with embedded microchip" class="blog-img">
                 <div class="blog-body">
                     <div class="blog-meta">
                         <span class="cat">Passports (PICA)</span>
                         <span>4 Min Read</span>
                     </div>
-                    <h3>What If My Passport Gets Washed or Torn?</h3>
-                    <p>Accidents happen. If your passport went through the washing machine or got defaced, here is exactly what you need to do before your next flight.</p>
-                    <span class="read-more">Read Advisory &rarr;</span>
-                </div>
-            </a>
-
-            <a href="passport-lost-article.html" class="blog-card filter-item" data-category="pica">
-                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80" alt="Traveler looking at departure board" class="blog-img">
-                <div class="blog-body">
-                    <div class="blog-meta">
-                        <span class="cat">Passports (PICA)</span>
-                        <span>4 Min Read</span>
-                    </div>
-                    <h3>Lost Your Jamaican Passport Overseas?</h3>
-                    <p>Don't panic. Discover the operational protocol for filing police reports abroad and avoiding the emergency travel trap.</p>
+                    <h3>The Plastic Bag Trap: Is Heat Destroying Your Passport?</h3>
+                    <p>Wrapping your e-passport in a plastic ziplock bag to prevent water damage might actually be melting the biometric chip inside.</p>
                     <span class="read-more">Read Advisory &rarr;</span>
                 </div>
             </a>
@@ -256,19 +246,6 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:44px 0 24px}
                     <h3>Fixing RGD Spelling Errors from Abroad</h3>
                     <p>A single misspelled letter on your RGD marriage or birth certificate can derail international paperwork. Here is the legal protocol to fix it.</p>
                     <span class="read-more">Read Advisory &rarr;</span>
-                </div>
-            </a>
-
-            <a href="motor-vehicle-renewal.html" class="blog-card filter-item" data-category="taj">
-                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=600&q=80" alt="Person driving car" class="blog-img">
-                <div class="blog-body">
-                    <div class="blog-meta">
-                        <span class="cat">TAJ Operations</span>
-                        <span>3 Min Read</span>
-                    </div>
-                    <h3>The Digital Traffic Jam: Navigating TAJ Vehicle Renewals</h3>
-                    <p>Learn why the free online TAJ portal often traps users with alphanumeric errors and hidden TTMS tickets, and how an operational proxy solves it.</p>
-                    <span class="read-more">Read Guide &rarr;</span>
                 </div>
             </a>
 
@@ -305,10 +282,11 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:44px 0 24px}
         
          <div class="footer-col">
           <h4>Our Services</h4>
-          <a href="jamaican-passport-renewal.html">PICA Passport Renewals</a>
-          <a href="rgd-vital-records.html">RGD Vital Records</a>
+          <!-- Reordered Footer Links -->
           <a href="motor-vehicle-renewal.html">TAJ Motor Vehicle Renewal</a>
           <a href="drivers-licence-renewal.html">TAJ Driver's Licence Renewal</a>
+          <a href="jamaican-passport-renewal.html">PICA Passport Renewals</a>
+          <a href="rgd-vital-records.html">RGD Vital Records</a>
         </div>
         
         <div class="footer-col">
