@@ -107,79 +107,111 @@ header{position:sticky;top:0;z-index:40;background:rgba(247,243,234,.96);backdro
 .mobile-nav .mobile-sub{padding-left:28px;font-size:0.9rem;color:var(--slate);}
 .mobile-nav[hidden]{display:none}
 
-/* Section Spacing Rules */
-section.block { padding: 64px 0; border-bottom: 1px solid rgba(230, 221, 198, 0.4); }
-section.block:last-of-type { border-bottom: none; }
+/* ===== Hero & Welcome Section ===== */
+.article-hero { padding: 56px 0 24px; text-align: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: 0 auto 16px; padding: 6px 16px; border-radius: 999px; background: var(--brass-tint); color: var(--brass-deep); font-size: .84rem; font-weight: 600; border: 1px solid #ecdcb8; }
+h1 { margin: 0 0 16px; font-weight: 600; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.18; color: var(--ink); }
 
-/* ===== Hero Section ===== */
-.article-hero { padding: 72px 0 48px; text-align: center; }
-.eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: 0 auto 28px; padding: 8px 18px; border-radius: 999px; background: var(--brass-tint); color: var(--brass-deep); font-size: .85rem; font-weight: 600; border: 1px solid #ecdcb8; }
-h1 { margin: 0 0 24px; font-weight: 600; font-size: clamp(2.2rem, 4.5vw, 3.5rem); line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); max-width: 860px; margin-left: auto; margin-right: auto; }
-.article-meta { font-size: 1.12rem; color: var(--slate); margin-bottom: 0; max-width: 760px; margin-left: auto; margin-right: auto; line-height: 1.75; }
+/* Personal Welcome Profile Layout */
+.welcome-card { background: #fff; border: 2px solid var(--brass); border-radius: var(--radius-lg); padding: 28px; text-align: left; margin: 24px auto 32px; max-width: 900px; box-shadow: 0 10px 28px rgba(18,24,43,0.05); }
+.welcome-profile-wrap { display: flex; gap: 20px; align-items: center; margin-bottom: 20px; }
+.welcome-avatar { width: 88px; height: 88px; border-radius: 50%; border: 3px solid var(--brass-tint); flex: none; overflow: hidden; background: var(--paper-deep); box-shadow: 0 4px 12px rgba(179,135,79,0.15); }
+.welcome-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.welcome-text h2 { margin: 0 0 8px; font-size: 1.35rem; color: var(--ink); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.welcome-text p { margin: 0; color: var(--slate); font-size: 0.98rem; line-height: 1.6; }
 
-/* ===== Sticky Jump Navigation ===== */
-.sticky-jump-nav { position: sticky; top: 72px; z-index: 35; background: rgba(247,243,234,.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); padding: 16px 0; box-shadow: 0 4px 12px rgba(18,24,43,0.03); }
-.jump-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-.jump-pills a { font-size: .88rem; font-weight: 600; color: var(--ink-soft); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 10px 22px; text-decoration: none; transition: all .15s; }
-.jump-pills a:hover { border-color: var(--stamp); background: var(--stamp-tint); color: var(--stamp-deep); transform: translateY(-1px); }
+.welcome-card > p { margin: 0 0 16px; color: var(--slate); font-size: 0.98rem; line-height: 1.6; }
+.welcome-card > p:last-child { margin-bottom: 0; }
+.layout-overview { background: var(--paper-deep); border-radius: 12px; padding: 16px 20px; margin-top: 16px; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.6; }
+.layout-overview strong { color: var(--ink); }
 
-/* ===== Long-Form Scenario Blocks ===== */
-.scenario-block { scroll-margin-top: 150px; margin-bottom: 80px; }
-.scenario-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: 0 12px 36px rgba(18,24,43,.04); overflow: hidden; }
+/* Service Overview (At a Glance) */
+.overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 48px; max-width: 900px; margin-left: auto; margin-right: auto; }
+.overview-card { background: var(--paper-deep); border-radius: 16px; padding: 24px; border: 1px solid var(--line); display: flex; gap: 16px; align-items: flex-start; }
+.overview-card i { font-size: 1.6rem; color: var(--stamp); flex: none; margin-top: 2px; }
+.overview-card strong { display: block; font-size: 1.1rem; color: var(--ink); margin-bottom: 6px; font-family: 'Fraunces', serif; }
+.overview-card p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.5; }
 
-/* Scenario Header & Intro */
-.sc-head { padding: 40px 40px 32px; border-bottom: 1px solid var(--line); background: #faf8f3; }
-.sc-head h2 { margin: 0 0 16px; font-size: 1.85rem; color: var(--ink); display: flex; align-items: center; gap: 12px; }
-.sc-head .badge { background: var(--stamp-tint); color: var(--stamp-deep); font-family: var(--mono); font-size: 0.9rem; padding: 4px 12px; border-radius: 8px; }
-.sc-intro { margin: 0; color: var(--slate); font-size: 1.05rem; line-height: 1.7; max-width: 820px; }
+/* ===== Accordion System with Color Themes ===== */
+.accordion-group { display: grid; gap: 24px; margin-bottom: 60px; max-width: 900px; margin-left: auto; margin-right: auto; }
+details.accordion-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; transition: all 0.2s ease; box-shadow: 0 4px 14px rgba(18,24,43,0.03); }
 
-/* 1-Column Step Process Layout */
-.step-box { padding: 40px; border-bottom: 1px solid var(--line); }
-.step-box:last-child { border-bottom: none; }
-.step-box.bg-tint { background: var(--blue-tint); border-bottom: 1px solid #bfdbfe; }
-.step-title { font-family: 'Fraunces', serif; font-size: 1.4rem; color: var(--ink); margin: 0 0 24px; display: flex; align-items: center; gap: 14px; }
-.step-title .step-num { background: var(--stamp-tint); color: var(--stamp-deep); width: 36px; height: 36px; border-radius: 8px; display: grid; place-items: center; font-family: var(--mono); font-size: 1rem; font-weight: 700; flex: none; }
-.step-title.blue-step .step-num { background: #dbeafe; color: var(--blue-deep); }
+summary.accordion-head { padding: 24px 28px; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; user-select: none; transition: background 0.2s, border-color 0.2s; border-bottom: 1px solid transparent; }
+summary.accordion-head::-webkit-details-marker { display: none; }
 
-/* Clean 1-Column Checklist Items */
-.detail-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; }
-.detail-list li { display: flex; gap: 16px; align-items: flex-start; font-size: 1rem; color: var(--ink-soft); line-height: 1.6; }
-.detail-list li i { font-size: 1.3rem; margin-top: 3px; flex: none; }
-.detail-list li i.fa-folder-open, 
-.detail-list li i.fa-file-circle-check, 
-.detail-list li i.fa-id-card, 
-.detail-list li i.fa-clock, 
-.detail-list li i.fa-truck-fast, 
-.detail-list li i.fa-calculator { color: var(--stamp); }
+/* THEME 1: Mint/Green (Birth) */
+.theme-stamp summary.accordion-head { background: #f2fcf9; border-bottom-color: #cbf4ea; }
+.theme-stamp[open] { border-color: var(--stamp); box-shadow: 0 10px 30px rgba(14,111,99,0.1); }
+.theme-stamp summary.accordion-head:hover { background: #e6f9f4; }
+.theme-stamp .acc-badge { background: var(--stamp-tint); color: var(--stamp-deep); }
+.theme-stamp[open] .chevron-icon { background: var(--stamp); color: #fff; border-color: var(--stamp); }
 
-.detail-list li i.fa-laptop, 
-.detail-list li i.fa-envelope, 
-.detail-list li i.fa-credit-card, 
-.detail-list li i.fa-circle-info { color: var(--blue); }
+/* THEME 2: Ice Blue (Death) */
+.theme-blue summary.accordion-head { background: #eff6ff; border-bottom-color: #bfdbfe; }
+.theme-blue[open] { border-color: var(--blue); box-shadow: 0 10px 30px rgba(37,99,235,0.1); }
+.theme-blue summary.accordion-head:hover { background: #dbeafe; }
+.theme-blue .acc-badge { background: #dbeafe; color: var(--blue-deep); }
+.theme-blue[open] .chevron-icon { background: var(--blue); color: #fff; border-color: var(--blue); }
 
+/* THEME 3: Warm Gold (Marriage) */
+.theme-brass summary.accordion-head { background: #fffbeb; border-bottom-color: #fde047; }
+.theme-brass[open] { border-color: var(--brass); box-shadow: 0 10px 30px rgba(179,135,79,0.1); }
+.theme-brass summary.accordion-head:hover { background: #fef3c7; }
+.theme-brass .acc-badge { background: var(--brass-tint); color: var(--brass-deep); }
+.theme-brass[open] .chevron-icon { background: var(--brass); color: #fff; border-color: var(--brass); }
+
+/* Accordion Head Layout */
+.acc-title-group { display: flex; align-items: center; gap: 16px; }
+.acc-title-group h2 { margin: 0; font-size: 1.35rem; color: var(--ink); font-weight: 600; }
+.acc-badge { font-family: var(--mono); font-size: 0.85rem; padding: 6px 12px; border-radius: 8px; font-weight: 700; flex: none; }
+.acc-sub { margin: 6px 0 0; font-size: 0.92rem; color: var(--slate); font-weight: 400; line-height: 1.4; }
+
+.acc-trigger { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 0.88rem; color: var(--ink-soft); flex: none; }
+.chevron-icon { width: 34px; height: 34px; border-radius: 50%; background: #fff; border: 1px solid var(--line); display: grid; place-items: center; color: var(--ink); transition: transform 0.25s ease, background 0.25s, color 0.25s; }
+details[open] .chevron-icon { transform: rotate(180deg); }
+details[open] .acc-trigger span { display: none; }
+
+/* Accordion Body Layout */
+.accordion-body { padding: 32px; }
+.sc-intro { margin: 0 0 24px; color: var(--slate); font-size: 1.05rem; line-height: 1.65; }
+
+.step-box { padding: 24px 0; border-bottom: 1px dashed var(--line); }
+.step-box:first-of-type { padding-top: 0; }
+.step-box:last-of-type { border-bottom: none; }
+
+.step-title { font-family: 'Fraunces', serif; font-size: 1.3rem; color: var(--ink); margin: 0 0 16px; display: flex; align-items: center; gap: 12px; }
+.step-num { background: var(--stamp-tint); color: var(--stamp-deep); width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center; font-family: var(--mono); font-size: 0.95rem; font-weight: 700; flex: none; }
+.blue-step .step-num { background: #dbeafe; color: var(--blue-deep); }
+
+.detail-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+.detail-list li { display: flex; gap: 14px; align-items: flex-start; font-size: 0.98rem; color: var(--ink-soft); line-height: 1.55; }
+.detail-list li i { font-size: 1.25rem; margin-top: 2px; flex: none; }
+.detail-list li i.fa-folder-open, .detail-list li i.fa-file-circle-check, .detail-list li i.fa-id-card { color: var(--stamp); }
+.detail-list li i.fa-clock, .detail-list li i.fa-calculator, .detail-list li i.fa-truck-fast, .detail-list li i.fa-credit-card { color: var(--blue); }
 .detail-list li strong { color: var(--ink); }
 
-/* Isolated Pro-Tip / Highlight Boxes */
-.pro-tip-box { background: var(--paper-deep); border-left: 4px solid var(--brass); border-radius: 12px; padding: 24px 28px; margin-top: 36px; display: flex; gap: 16px; align-items: flex-start; }
+.pro-tip-box { background: var(--paper-deep); border-left: 4px solid var(--brass); border-radius: 12px; padding: 20px 24px; margin-top: 20px; display: flex; gap: 16px; align-items: flex-start; }
 .pro-tip-box i { color: var(--brass-deep); font-size: 1.4rem; margin-top: 2px; flex: none; }
-.pro-tip-box p { margin: 0; color: var(--ink-soft); font-size: 0.98rem; line-height: 1.65; }
+.pro-tip-box p, .pro-tip-box div { margin: 0; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.6; }
 .pro-tip-box strong { color: var(--ink); display: block; margin-bottom: 4px; font-size: 1.02rem; }
 
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+
+/* Inline CTA Cards */
+.section-cta { background: var(--ink); border-radius: 14px; padding: 32px; text-align: center; margin-top: 28px; }
+.section-cta h4 { margin: 0 0 10px; color: #fff; font-size: 1.35rem; font-family: 'Fraunces', serif; }
+.section-cta p { margin: 0 auto 24px; color: #cbd5e1; font-size: 0.98rem; max-width: 600px; }
+.cta-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+.cta-actions a { flex: 1; min-width: 260px; max-width: 320px; }
+
 /* Standalone Good-to-Know Card */
-.standalone-notice { background: #fff; border: 1px solid var(--line); border-left: 6px solid var(--brass-deep); border-radius: var(--radius-lg); padding: 36px 32px; box-shadow: 0 10px 30px rgba(18,24,43,.03); margin-top: 48px; }
+.standalone-notice { background: #fff; border: 1px solid var(--line); border-left: 6px solid var(--brass-deep); border-radius: var(--radius-lg); padding: 36px 32px; box-shadow: 0 10px 30px rgba(18,24,43,.03); max-width: 900px; margin: 0 auto 80px; }
 .standalone-notice h3 { margin: 0 0 12px; font-size: 1.35rem; color: var(--ink); display: flex; align-items: center; gap: 10px; }
 .standalone-notice h3 i { color: var(--brass-deep); }
 .standalone-notice p { margin: 0 0 16px; color: var(--slate); font-size: 1rem; line-height: 1.65; }
 .standalone-notice ul { margin: 0; padding-left: 20px; color: var(--ink-soft); display: grid; gap: 10px; font-size: 0.98rem; }
 
-/* Action Box inside Scenario */
-.sc-footer { padding: 40px; background: var(--ink); text-align: center; }
-.sc-footer h4 { margin: 0 0 12px; color: #fff; font-size: 1.4rem; font-family: 'Fraunces', serif; }
-.sc-footer p { margin: 0 auto 28px; color: #cbd5e1; font-size: 1rem; max-width: 620px; line-height: 1.6; }
-.cta-actions{display:flex; gap:16px; flex-wrap:wrap; justify-content:center;}
-.cta-actions a{flex:1; min-width:260px; max-width: 320px;}
-
-/* ===== Compact Footer Styling ===== */
+/* ===== Footer (Strict Original Design) ===== */
 footer { background: #0b1220; color: #cbd5e1; margin-top: 60px; padding: 44px 0 24px; }
 .footer-grid { display: grid; gap: 28px; }
 .footer-intro h3 { margin: 0 0 6px; color: #fff; font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.1rem; }
@@ -197,23 +229,34 @@ footer { background: #0b1220; color: #cbd5e1; margin-top: 60px; padding: 44px 0 
   .footer-grid{grid-template-columns:1fr 1.5fr;}
 }
 @media(max-width:767px){
-  .article-hero { padding: 52px 0 32px; }
-  .sticky-jump-nav { top: 72px; padding: 12px 0; }
-  .footer-cols{grid-template-columns:1fr 1fr;}
-  .sc-head, .step-box, .sc-footer { padding: 28px 20px; }
-  .pro-tip-box { padding: 20px; flex-direction: column; gap: 10px; }
+  .article-hero { padding: 40px 0 20px; }
+  .overview-card { flex-direction: column; gap: 12px; }
+  summary.accordion-head { padding: 20px; }
+  .accordion-body { padding: 24px 20px; }
   .standalone-notice { padding: 28px 20px; }
+  .footer-cols{grid-template-columns:1fr 1fr;}
+  .grid-2 { grid-template-columns: 1fr; }
+  .pro-tip-box { padding: 20px; flex-direction: column; gap: 10px; }
 }
 @media(max-width:480px){
   .footer-cols{grid-template-columns:1fr;}
-  h1{font-size:1.95rem;}
-  .jump-pills a { flex: 1; text-align: center; }
+  h1{font-size:1.8rem;}
+  
+  /* Mobile optimized Welcome Card Profile */
+  .welcome-profile-wrap { gap: 14px; align-items: flex-start; }
+  .welcome-avatar { width: 72px; height: 72px; }
+  .welcome-text h2 { font-size: 1.25rem; }
+
+  /* Mobile optimized accordion headers */
+  .acc-title-group { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .acc-title-group h2 { font-size: 1.2rem; }
+  .acc-trigger span { display: none; }
 }
 </style>
 </head>
 <body>
 
-<!-- TOP DISCLAIMER BANNER -->
+<!-- DISCLAIMER BANNER -->
 <div class="disclaimer-bar">
   <i class="fa-solid fa-circle-info"></i>
   <strong>Disclaimer:</strong> Docu-Hub Operations is an independent, private administrative proxy service. We are not a government agency and are not affiliated with the Registrar General's Department (RGD).
@@ -228,10 +271,10 @@ footer { background: #0b1220; color: #cbd5e1; margin-top: 60px; padding: 44px 0 
       <div class="dropdown">
         <button class="dropbtn" aria-haspopup="true">Services <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i></button>
         <div class="dropdown-content">
-          <a href="jamaican-passport-renewal.html">PICA Passport Renewals</a>
-          <a href="rgd-vital-records.html" class="featured">RGD Vital Records</a>
           <a href="motor-vehicle-renewal.html">TAJ Motor Vehicle Renewal</a>
           <a href="drivers-licence-renewal.html">TAJ Driver's Licence Renewal</a>
+          <a href="jamaican-passport-renewal.html">PICA Passport Renewals</a>
+          <a href="rgd-vital-records.html" class="featured">RGD Vital Records</a>
         </div>
       </div>
       <a href="insights.html">Insights</a>
@@ -245,10 +288,10 @@ footer { background: #0b1220; color: #cbd5e1; margin-top: 60px; padding: 44px 0 
   </div>
   <nav class="mobile-nav" id="mobileNav" hidden aria-label="Mobile">
     <a href="index.html#services" class="featured">Services</a>
-    <a href="jamaican-passport-renewal.html" class="mobile-sub">↳ PICA Passport Renewals</a>
-    <a href="rgd-vital-records.html" class="mobile-sub featured">↳ RGD Vital Records</a>
     <a href="motor-vehicle-renewal.html" class="mobile-sub">↳ TAJ Motor Vehicle Renewal</a>
     <a href="drivers-licence-renewal.html" class="mobile-sub">↳ TAJ Driver's Licence Renewal</a>
+    <a href="jamaican-passport-renewal.html" class="mobile-sub">↳ PICA Passport Renewals</a>
+    <a href="rgd-vital-records.html" class="mobile-sub featured">↳ RGD Vital Records</a>
     <a href="insights.html">Insights</a>
     <a href="about.html">About Us</a>
     <a href="faq.html">FAQ</a>
@@ -259,204 +302,224 @@ footer { background: #0b1220; color: #cbd5e1; margin-top: 60px; padding: 44px 0 
 <main>
 
 <!-- HERO SECTION -->
-<section class="article-hero">
-  <div class="container">
-    <span class="eyebrow">RGD Vital Records Assistance</span>
-    <h1>Master the RGD Online Portal.</h1>
-    <p class="article-meta">You do not need to spend your day waiting in line at an RGD branch. Discover how to order official Birth, Death, and Marriage certificates online, select your processing timeline, and have them delivered directly to your door.</p>
-  </div>
+<section class="article-hero container">
+  <span class="eyebrow"><i class="fa-solid fa-folder-open"></i> RGD Vital Records Assistance</span>
+  <h1>Master the RGD Online Portal.</h1>
 </section>
 
-<!-- STICKY JUMP NAVIGATION -->
-<div class="sticky-jump-nav">
-  <div class="container">
-    <div class="jump-pills">
-      <a href="#birth">1. Birth Certificates</a>
-      <a href="#death">2. Death Certificates</a>
-      <a href="#marriage">3. Marriage Certificates</a>
-      <a href="#portal-rules">4. Timelines &amp; Delivery</a>
+<!-- WELCOME & EXPLANATION BOX -->
+<div class="container">
+  <div class="welcome-card">
+    
+    <div class="welcome-profile-wrap">
+      <div class="welcome-avatar">
+        <!-- ADD YOUR IMAGE HERE: Change the src="" link below to your actual image file name (e.g. "assets/laura.jpg") -->
+        <img src="assetss/ecard.webp" alt="Laura from Docu-Hub Operations">
+      </div>
+      <div class="welcome-text">
+        <h2><i class="fa-solid fa-hand-wave" style="color:var(--brass);"></i> Welcome! I'm Laura from Docu-Hub</h2>
+        <p>You do not need to spend your day waiting in line at an RGD branch. Whether you want to navigate the portal yourself or have me handle the entire document request for you, this guide breaks down exactly what you need to prepare.</p>
+      </div>
+    </div>
+    
+    <p><strong>How to use this guide:</strong> Click open the specific certificate you need below to see the exact details required to successfully process your registry application online.</p>
+    <div class="layout-overview">
+      <strong>📋 Every section includes:</strong>
+      <br>1️⃣ <strong>Required Details:</strong> Exactly what information you must have ready before applying.
+      <br>2️⃣ <strong>Pro-Tips:</strong> Insider knowledge to speed up your processing time.
+      <br>3️⃣ <strong>Service Options:</strong> How I can help verify your details and coordinate delivery.
     </div>
   </div>
 </div>
 
-<section class="block" style="background: var(--paper-deep); padding-top: 48px;">
-  <div class="container">
-
-    <!-- ========================================== -->
-    <!-- 01: BIRTH CERTIFICATES                     -->
-    <!-- ========================================== -->
-    <div class="scenario-block" id="birth">
-      <div class="scenario-card">
-        <div class="sc-head">
-          <h2><span class="badge">01</span> Jamaican Birth Certificate Online</h2>
-          <p class="sc-intro">Whether you are applying for yourself, your child, or a family member, using the RGD online portal solves the problem of long lines. Once you gather the required details below, you simply input the data into the portal, choose your processing speed, and pay online.</p>
-        </div>
-        
-        <div class="step-box">
-          <h3 class="step-title"><span class="step-num">1</span> Information You Must Gather First</h3>
-          <ul class="detail-list">
-            <li><i class="fa-solid fa-folder-open"></i><div><strong>Full Legal Name at Birth:</strong> First, middle, and last name exactly as recorded at birth.</div></li>
-            <li><i class="fa-solid fa-folder-open"></i><div><strong>Exact Date &amp; Place of Birth:</strong> Day, month, year, and the parish of birth.</div></li>
-            <li><i class="fa-solid fa-folder-open"></i><div><strong>Mother's Full Maiden Name:</strong> Essential for search verification in the RGD database.</div></li>
-            <li><i class="fa-solid fa-folder-open"></i><div><strong>Father's Full Name:</strong> Required only if his name was officially recorded on the original birth record.</div></li>
-            <li><i class="fa-solid fa-file-circle-check"></i><div><strong>RGD Birth Entry Number:</strong> Found on Line 3 of old certificates. Entering this number skips manual searches, speeding up your processing time!</div></li>
-            <li><i class="fa-solid fa-id-card"></i><div><strong>Applicant Info &amp; Relationship:</strong> Your contact info and legal relationship to the person on the certificate (e.g., Self, Mother, Child).</div></li>
-          </ul>
-
-          <div class="pro-tip-box">
-            <i class="fa-solid fa-lightbulb"></i>
-            <div>
-              <strong>Pro-Tip: Fathers Not on the Record</strong>
-              If a father's name was never officially added to the birth certificate, he can still order a copy online using the mother's maiden name. However, the printed certificate will still show a blank space for the father. Officially adding a father's name requires a separate legal process ("Addition of Father's Particulars") with forms signed before a JP.
-            </div>
-          </div>
-        </div>
-
-        <div class="sc-footer">
-          <h4>Need help navigating the RGD portal?</h4>
-          <p>If you don't have the entry number or the online system rejects your criteria, Docu-Hub can audit your data and process the online filing for you.</p>
-          <div class="cta-actions">
-            <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I%20need%20assistance%20ordering%20a%20Jamaican%20Birth%20Certificate%20online." target="_blank" rel="noopener" class="btn btn-stamp">
-              <i class="fa-brands fa-whatsapp"></i> Order Birth Certificate
-            </a>
-            <a href="booking.html?service=rgd-birth" class="btn btn-blue">
-              <i class="fa-regular fa-calendar-days"></i> Book Consultation
-            </a>
-          </div>
-        </div>
+<!-- SERVICE OVERVIEW (AT A GLANCE) -->
+<div class="container">
+  <div class="overview-grid">
+    <div class="overview-card">
+      <i class="fa-solid fa-clock"></i>
+      <div>
+        <strong>Processing Timelines</strong>
+        <p>You can choose <strong>Express Service</strong> (7 to 10 Working Days) for urgent needs, or <strong>Ordinary Service</strong> (approx. 6 Weeks) for a lower cost.</p>
       </div>
     </div>
-
-    <!-- ========================================== -->
-    <!-- 02: DEATH CERTIFICATES                     -->
-    <!-- ========================================== -->
-    <div class="scenario-block" id="death">
-      <div class="scenario-card">
-        <div class="sc-head">
-          <h2><span class="badge">02</span> Jamaican Death Certificate Online</h2>
-          <p class="sc-intro">Official death certificates are required for estate settlement, insurance claims, and property transfers. Applying online avoids long delays at government counters, provided you have exact date and location data ready for the portal search.</p>
-        </div>
-        
-        <div class="step-box">
-          <h3 class="step-title"><span class="step-num">1</span> Information You Must Gather First</h3>
-          <ul class="detail-list">
-            <li><i class="fa-solid fa-folder-open"></i><div><strong>Full Name of Deceased:</strong> First, middle, and last name.</div></li>
-            <li><i class="fa-solid fa-folder-open"></i><div><strong>Exact Date of Death:</strong> Day, month, and year of passing.</div></li>
-            <li><i class="fa-solid fa-folder-open"></i><div><strong>Place of Death:</strong> Hospital, residence address, or parish where the death occurred.</div></li>
-            <li><i class="fa-solid fa-folder-open"></i><div><strong>Age at Death &amp; Gender:</strong> Age of the deceased at passing.</div></li>
-            <li><i class="fa-solid fa-file-circle-check"></i><div><strong>RGD Death Entry Number:</strong> Located on burial orders or older copies. Entering this accelerates the search.</div></li>
-            <li><i class="fa-solid fa-id-card"></i><div><strong>Applicant Info:</strong> Your full name, contact info, and declared relationship to the deceased.</div></li>
-          </ul>
-        </div>
-
-        <div class="sc-footer">
-          <h4>Need help with a Death Certificate application?</h4>
-          <p>We assist families locally and in the diaspora to secure official death records without procedural delays.</p>
-          <div class="cta-actions">
-            <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I%20need%20assistance%20ordering%20a%20Jamaican%20Death%20Certificate%20online." target="_blank" rel="noopener" class="btn btn-stamp">
-              <i class="fa-brands fa-whatsapp"></i> Order Death Certificate
-            </a>
-            <a href="booking.html?service=rgd-death" class="btn btn-blue">
-              <i class="fa-regular fa-calendar-days"></i> Book Consultation
-            </a>
-          </div>
-        </div>
+    <div class="overview-card">
+      <i class="fa-solid fa-truck-fast"></i>
+      <div>
+        <strong>Delivery Options</strong>
+        <p>You can request to pick up your printed certificates at a local RGD branch, or have them couriered directly to your doorstep (islandwide or overseas).</p>
       </div>
     </div>
-
-    <!-- ========================================== -->
-    <!-- 03: MARRIAGE CERTIFICATES                  -->
-    <!-- ========================================== -->
-    <div class="scenario-block" id="marriage">
-      <div class="scenario-card">
-        <div class="sc-head">
-          <h2><span class="badge">03</span> Jamaican Marriage Certificate Online</h2>
-          <p class="sc-intro">Whether needed for passport name changes, spousal sponsorship, or legal documentation, applying online is the fastest route to receive official certified copies of a Jamaican marriage record.</p>
-        </div>
-        
-        <div class="step-box">
-          <h3 class="step-title"><span class="step-num">1</span> Information You Must Gather First</h3>
-          <ul class="detail-list">
-            <li><i class="fa-solid fa-folder-open"></i><div><strong>Groom's Details:</strong> Full legal name prior to marriage.</div></li>
-            <li><i class="fa-solid fa-folder-open"></i><div><strong>Bride's Details:</strong> Full maiden name used before marriage.</div></li>
-            <li><i class="fa-solid fa-folder-open"></i><div><strong>Exact Date of Marriage:</strong> Day, month, and year of the wedding.</div></li>
-            <li><i class="fa-solid fa-folder-open"></i><div><strong>Place of Marriage:</strong> Church, hotel/resort, or venue name and parish.</div></li>
-            <li><i class="fa-solid fa-folder-open"></i><div><strong>Officiant's Name:</strong> Name of Marriage Officer, Minister, or JP who conducted the ceremony.</div></li>
-            <li><i class="fa-solid fa-file-circle-check"></i><div><strong>RGD Marriage Entry Number:</strong> Found on previous copies or church registry receipts.</div></li>
-          </ul>
-        </div>
-
-        <div class="sc-footer">
-          <h4>Need help securing a Marriage Certificate?</h4>
-          <p>Avoid portal rejections by letting Docu-Hub verify your details and coordinate online filing and courier delivery.</p>
-          <div class="cta-actions">
-            <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I%20need%20assistance%20ordering%20a%20Jamaican%20Marriage%20Certificate%20online." target="_blank" rel="noopener" class="btn btn-stamp">
-              <i class="fa-brands fa-whatsapp"></i> Order Marriage Certificate
-            </a>
-            <a href="booking.html?service=rgd-marriage" class="btn btn-blue">
-              <i class="fa-regular fa-calendar-days"></i> Book Consultation
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ========================================== -->
-    <!-- 04: PORTAL RULES & TIMELINES               -->
-    <!-- ========================================== -->
-    <div class="scenario-block" id="portal-rules" style="margin-bottom:0;">
-      <div class="scenario-card">
-        <div class="sc-head">
-          <h2><span class="badge">04</span> Portal Workflow, Timelines &amp; Delivery</h2>
-          <p class="sc-intro">Once you input your certificate details into the online portal, you will reach the final selection screens where you customize your processing speeds, copy count, and fulfillment options.</p>
-        </div>
-        
-        <div class="step-box bg-tint">
-          <h3 class="step-title blue-step"><span class="step-num">1</span> Selecting Your Processing Timeline</h3>
-          <p style="margin: 0 0 20px; font-size: 0.98rem; color: var(--ink-soft);">The RGD portal allows you to select how quickly you need your certificate produced. Speed directly impacts total government fees:</p>
-          <ul class="detail-list">
-            <li><i class="fa-solid fa-clock"></i><div><strong>Express Service (7 to 10 Working Days):</strong> Premium tier for urgent legal or travel needs.</div></li>
-            <li><i class="fa-solid fa-clock"></i><div><strong>Ordinary Service (approx. 6 Weeks):</strong> Standard lower-cost timeline for non-urgent records.</div></li>
-          </ul>
-        </div>
-
-        <div class="step-box">
-          <h3 class="step-title"><span class="step-num">2</span> Copy Quantities, Cost &amp; Delivery Options</h3>
-          <ul class="detail-list">
-            <li><i class="fa-solid fa-calculator"></i><div><strong>Select Copy Count:</strong> You can request 1, 2, or multiple certified printed copies in a single portal transaction. Total cost dynamically calculates based on copy count and speed selected.</div></li>
-            <li><i class="fa-solid fa-truck-fast"></i><div><strong>Delivery Options:</strong> Choose between local branch pickup in Jamaica or courier delivery straight to your doorstep (local islandwide or overseas diaspora delivery).</div></li>
-            <li><i class="fa-solid fa-credit-card"></i><div><strong>Online Payment:</strong> Complete the portal checkout using a valid Visa or Mastercard.</div></li>
-          </ul>
-        </div>
-
-        <div class="sc-footer">
-          <h4>Prefer Docu-Hub to manage your RGD request?</h4>
-          <p>From online portal filing to international courier tracking, we handle the entire process end-to-end.</p>
-          <div class="cta-actions">
-            <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I%20would%20like%20Docu-Hub%20to%20manage%20my%20RGD%20vital%20record%20request." target="_blank" rel="noopener" class="btn btn-stamp">
-              <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
-            </a>
-            <a href="booking.html" class="btn btn-blue">
-              <i class="fa-regular fa-calendar-days"></i> Book Consultation
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- STANDALONE GOOD-TO-KNOW CARD -->
-    <div class="standalone-notice">
-      <h3><i class="fa-solid fa-building-user"></i> What if you MUST go to an RGD Branch in person?</h3>
-      <p>While the online portal is recommended, if you are forced to visit an RGD branch in person, keep these strict verification rules in mind:</p>
-      <ul>
-        <li><strong>Valid ID Required:</strong> You must present an unexpired Government Photo ID (Voter's ID, Driver's Licence, or Passport).</li>
-        <li><strong>No ID?</strong> You must present a passport-sized photograph of yourself officially certified by a Justice of the Peace (JP).</li>
-        <li><strong>Using a Proxy/Bearer?</strong> If sending someone else to apply or collect for you, they must bring their own Valid ID <em>plus</em> an Authorization Letter signed by you and certified by a JP.</li>
-      </ul>
-    </div>
-
   </div>
-</section>
+</div>
+
+<!-- ACCORDION GROUP -->
+<div class="container accordion-group">
+
+  <!-- ========================================== -->
+  <!-- 01: BIRTH CERTIFICATES (MINT GREEN THEME)  -->
+  <!-- ========================================== -->
+  <details class="accordion-card theme-stamp">
+    <summary class="accordion-head">
+      <div class="acc-title-group">
+        <span class="acc-badge">01</span>
+        <div>
+          <h2>Jamaican Birth Certificate Online</h2>
+          <p class="acc-sub">For yourself, your child, or a family member.</p>
+        </div>
+      </div>
+      <div class="acc-trigger">
+        <span>Click to Open</span>
+        <div class="chevron-icon"><i class="fa-solid fa-chevron-down"></i></div>
+      </div>
+    </summary>
+
+    <div class="accordion-body">
+      <p class="sc-intro">Using the RGD online portal solves the problem of long lines. Once you gather the required details below, you simply input the data into the portal, choose your processing speed, and pay online.</p>
+      
+      <div class="step-box">
+        <h3 class="step-title"><span class="step-num">1</span> Information You Must Gather First</h3>
+        <ul class="detail-list grid-2">
+          <li><i class="fa-solid fa-folder-open"></i><div><strong>Full Legal Name at Birth:</strong> First, middle, and last name exactly as recorded at birth.</div></li>
+          <li><i class="fa-solid fa-folder-open"></i><div><strong>Exact Date &amp; Place of Birth:</strong> Day, month, year, and the parish of birth.</div></li>
+          <li><i class="fa-solid fa-folder-open"></i><div><strong>Mother's Full Maiden Name:</strong> Essential for search verification in the database.</div></li>
+          <li><i class="fa-solid fa-folder-open"></i><div><strong>Father's Full Name:</strong> Required only if his name was officially recorded on the original record.</div></li>
+          <li><i class="fa-solid fa-file-circle-check"></i><div><strong>RGD Birth Entry Number:</strong> Found on Line 3 of old certificates. Entering this speeds up your processing time!</div></li>
+          <li><i class="fa-solid fa-id-card"></i><div><strong>Applicant Info:</strong> Your contact info and legal relationship to the person on the certificate.</div></li>
+        </ul>
+
+        <div class="pro-tip-box">
+          <i class="fa-solid fa-lightbulb"></i>
+          <div>
+            <strong>Pro-Tip: Fathers Not on the Record</strong>
+            <p>If a father's name was never officially added to the birth certificate, he can still order a copy online using the mother's maiden name. However, the printed certificate will still show a blank space for the father. Officially adding a father's name requires a separate legal process ("Addition of Father's Particulars") with forms signed before a JP.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-cta">
+        <h4>Need help navigating the RGD portal?</h4>
+        <p>If you don't have the entry number or the online system rejects your criteria, Docu-Hub can audit your data and process the online filing for you.</p>
+        <div class="cta-actions">
+          <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I%20need%20assistance%20ordering%20a%20Jamaican%20Birth%20Certificate%20online." target="_blank" rel="noopener" class="btn btn-stamp">
+            <i class="fa-brands fa-whatsapp"></i> Order Birth Certificate
+          </a>
+          <a href="booking.html?service=rgd-birth" class="btn btn-blue">
+            <i class="fa-regular fa-calendar-days"></i> Book Consultation
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </details>
+
+  <!-- ========================================== -->
+  <!-- 02: DEATH CERTIFICATES (ICE BLUE THEME)    -->
+  <!-- ========================================== -->
+  <details class="accordion-card theme-blue">
+    <summary class="accordion-head">
+      <div class="acc-title-group">
+        <span class="acc-badge">02</span>
+        <div>
+          <h2>Jamaican Death Certificate Online</h2>
+          <p class="acc-sub">Required for estate settlement, insurance, and property transfers.</p>
+        </div>
+      </div>
+      <div class="acc-trigger">
+        <span>Click to Open</span>
+        <div class="chevron-icon"><i class="fa-solid fa-chevron-down"></i></div>
+      </div>
+    </summary>
+
+    <div class="accordion-body">
+      <p class="sc-intro">Applying online avoids long delays at government counters, provided you have exact date and location data ready for the portal search.</p>
+      
+      <div class="step-box">
+        <h3 class="step-title blue-step"><span class="step-num">1</span> Information You Must Gather First</h3>
+        <ul class="detail-list grid-2">
+          <li><i class="fa-solid fa-folder-open"></i><div><strong>Full Name of Deceased:</strong> First, middle, and last name.</div></li>
+          <li><i class="fa-solid fa-folder-open"></i><div><strong>Exact Date of Death:</strong> Day, month, and year of passing.</div></li>
+          <li><i class="fa-solid fa-folder-open"></i><div><strong>Place of Death:</strong> Hospital, residence address, or parish where the death occurred.</div></li>
+          <li><i class="fa-solid fa-folder-open"></i><div><strong>Age at Death &amp; Gender:</strong> Age of the deceased at passing.</div></li>
+          <li><i class="fa-solid fa-file-circle-check"></i><div><strong>RGD Death Entry Number:</strong> Located on burial orders or older copies. Entering this accelerates the search.</div></li>
+          <li><i class="fa-solid fa-id-card"></i><div><strong>Applicant Info:</strong> Your full name, contact info, and declared relationship to the deceased.</div></li>
+        </ul>
+      </div>
+
+      <div class="section-cta">
+        <h4>Need help with a Death Certificate application?</h4>
+        <p>We assist families locally and in the diaspora to secure official death records without procedural delays.</p>
+        <div class="cta-actions">
+          <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I%20need%20assistance%20ordering%20a%20Jamaican%20Death%20Certificate%20online." target="_blank" rel="noopener" class="btn btn-stamp">
+            <i class="fa-brands fa-whatsapp"></i> Order Death Certificate
+          </a>
+          <a href="booking.html?service=rgd-death" class="btn btn-blue">
+            <i class="fa-regular fa-calendar-days"></i> Book Consultation
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </details>
+
+  <!-- ========================================== -->
+  <!-- 03: MARRIAGE CERTIFICATES (GOLD THEME)     -->
+  <!-- ========================================== -->
+  <details class="accordion-card theme-brass">
+    <summary class="accordion-head">
+      <div class="acc-title-group">
+        <span class="acc-badge">03</span>
+        <div>
+          <h2>Jamaican Marriage Certificate Online</h2>
+          <p class="acc-sub">For passport name changes, spousal sponsorship, or legal documentation.</p>
+        </div>
+      </div>
+      <div class="acc-trigger">
+        <span>Click to Open</span>
+        <div class="chevron-icon"><i class="fa-solid fa-chevron-down"></i></div>
+      </div>
+    </summary>
+
+    <div class="accordion-body">
+      <p class="sc-intro">Applying online is the fastest route to receive official certified copies of a Jamaican marriage record.</p>
+
+      <div class="step-box">
+        <h3 class="step-title"><span class="step-num">1</span> Information You Must Gather First</h3>
+        <ul class="detail-list grid-2">
+          <li><i class="fa-solid fa-folder-open"></i><div><strong>Groom's Details:</strong> Full legal name prior to marriage.</div></li>
+          <li><i class="fa-solid fa-folder-open"></i><div><strong>Bride's Details:</strong> Full maiden name used before marriage.</div></li>
+          <li><i class="fa-solid fa-folder-open"></i><div><strong>Exact Date of Marriage:</strong> Day, month, and year of the wedding.</div></li>
+          <li><i class="fa-solid fa-folder-open"></i><div><strong>Place of Marriage:</strong> Church, hotel/resort, or venue name and parish.</div></li>
+          <li><i class="fa-solid fa-folder-open"></i><div><strong>Officiant's Name:</strong> Name of Marriage Officer, Minister, or JP who conducted the ceremony.</div></li>
+          <li><i class="fa-solid fa-file-circle-check"></i><div><strong>RGD Marriage Entry Number:</strong> Found on previous copies or church registry receipts.</div></li>
+        </ul>
+      </div>
+
+      <div class="section-cta">
+        <h4>Need help securing a Marriage Certificate?</h4>
+        <p>Avoid portal rejections by letting Docu-Hub verify your details and coordinate online filing and courier delivery.</p>
+        <div class="cta-actions">
+          <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I%20need%20assistance%20ordering%20a%20Jamaican%20Marriage%20Certificate%20online." target="_blank" rel="noopener" class="btn btn-stamp"><i class="fa-brands fa-whatsapp"></i> Order Marriage Certificate</a>
+          <a href="booking.html?service=rgd-marriage" class="btn btn-blue"><i class="fa-regular fa-calendar-days"></i> Book Consultation</a>
+        </div>
+      </div>
+
+    </div>
+  </details>
+
+</div>
+
+<!-- STANDALONE GOOD-TO-KNOW CARD -->
+<div class="container">
+  <div class="standalone-notice">
+    <h3><i class="fa-solid fa-building-user"></i> What if you MUST go to an RGD Branch in person?</h3>
+    <p>While the online portal is recommended, if you are forced to visit an RGD branch in person, keep these strict verification rules in mind:</p>
+    <ul>
+      <li><strong>Valid ID Required:</strong> You must present an unexpired Government Photo ID (Voter's ID, Driver's Licence, or Passport).</li>
+      <li><strong>No ID?</strong> You must present a passport-sized photograph of yourself officially certified by a Justice of the Peace (JP).</li>
+      <li><strong>Using a Proxy/Bearer?</strong> If sending someone else to apply or collect for you, they must bring their own Valid ID <em>plus</em> an Authorization Letter signed by you and certified by a JP.</li>
+    </ul>
+  </div>
+</div>
 
 </main>
 
@@ -471,10 +534,10 @@ footer { background: #0b1220; color: #cbd5e1; margin-top: 60px; padding: 44px 0 
       <div class="footer-cols">
         <div class="footer-col">
           <h4>Our Services</h4>
-          <a href="jamaican-passport-renewal.html">PICA Passport Renewals</a>
-          <a href="rgd-vital-records.html">RGD Vital Records</a>
           <a href="motor-vehicle-renewal.html">TAJ Motor Vehicle Renewal</a>
           <a href="drivers-licence-renewal.html">TAJ Driver's Licence Renewal</a>
+          <a href="jamaican-passport-renewal.html">PICA Passport Renewals</a>
+          <a href="rgd-vital-records.html">RGD Vital Records</a>
         </div>
         <div class="footer-col">
           <h4>Company</h4>
