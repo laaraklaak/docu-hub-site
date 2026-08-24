@@ -32,7 +32,6 @@ a{-webkit-tap-highlight-color:transparent}
 :focus-visible{outline:2px solid var(--blue-deep);outline-offset:2px}
 
 /* ===== Header & Nav ===== */
-/* FIXED: Only the main site header is sticky now */
 header.site-header {position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav{display:flex;justify-content:space-between;align-items:center;min-height:72px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:700;text-decoration:none;color:inherit}
@@ -63,10 +62,11 @@ header.site-header {position:sticky;top:0;z-index:30;background:rgba(255,255,255
 
 /* ===== Buttons ===== */
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;border-radius:14px;text-decoration:none;font-weight:700;font-size:.98rem;transition:transform .15s ease, box-shadow .15s ease;}
-.btn-primary { background: var(--blue); color: #fff; }
+.btn-primary { background: var(--blue); color: #fff !important; }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,99,235,0.2); background: var(--blue-deep); }
-.book-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 0 16px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; text-decoration: none; color: #fff; background: var(--blue); transition: transform 0.15s, box-shadow 0.15s; }
-.book-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,99,235,0.2); background: var(--blue-deep); }
+/* FIXED: Added !important to the color rule to prevent the desktop-nav grey from taking over */
+.book-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 0 16px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; text-decoration: none; color: #fff !important; background: var(--blue); transition: transform 0.15s, box-shadow 0.15s; }
+.book-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,99,235,0.2); background: var(--blue-deep); color: #fff !important; }
 
 /* ===== Magazine Article Layout Styles ===== */
 .article-card { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: clamp(32px, 5vw, 56px); box-shadow: 0 10px 30px rgba(15,23,42,.04); max-width: 900px; margin: 0 auto; }
@@ -178,10 +178,10 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:44px 0 24px}
     <!-- THE MAGAZINE ARTICLE -->
     <article class="article-card clearfix">
       
-      <!-- FIXED: Changed from <header> to a regular <div> so it is no longer sticky! -->
       <div style="margin-bottom: 40px; border-bottom: 1px solid var(--line); padding-bottom: 24px;">
         <span class="eyebrow">Our Origin Story</span>
-        <h1>Why I Built Docu-Hub Operations.</h1>
+        <!-- Added stoplight green here -->
+        <h1><span style="color: #16a34a;">Online</span> Doesn't Mean Easy.</h1>
         <div style="color: var(--slate); font-size: 1rem;">
           By <strong>Laura Clarke</strong> &nbsp;|&nbsp; <i class="fa-solid fa-location-dot" style="color: var(--stamp);"></i> Based in Linstead, St. Catherine
         </div>
@@ -194,15 +194,13 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:44px 0 24px}
       <div class="blog-content">
         <p style="font-size: 1.25rem; color: var(--ink-soft); font-weight: 500;">The sad truth is that moving a government service "online" rarely clears up the confusion. We've all been there: staring at a clunky portal, fighting with drop-down menus, or realizing halfway through a submission that we don't understand the jargon being used.</p>
 
-        <p>When Jamaicans hit a wall online, they revert to what they know—giving up their entire day to stand in a physical line at PICA or RGD just to get a straight answer. You shouldn't have to sacrifice your vacation time just to understand your paperwork. That is exactly why Docu-Hub Operations was created.</p>
+        <p>When agencies digitize their services, they often assume they're making things simple. In reality, they've just shifted the heavy administrative lifting onto you. Between rigid security requirements, confusing data entry fields, and automated phone lines that give you the runaround with a robotic "that is not a valid request," citizens are left completely unprepared for the digital maze.</p>
 
-        <h2>A Simple Observation</h2>
+        <h2>The Digital Illusion</h2>
 
-        <p>I built this agency out of a very simple observation: dealing with government portals shouldn't feel like a punishment. I watched friends, local professionals, and overseas family members pull their hair out trying to update basic records.</p>
+        <p>I built Docu-Hub Operations out of a very simple realization born from real frustration. Even with a background in corporate banking, I've found myself fighting portals, trying to figure out why an alphanumeric number won't register, or digging up obscure information just to order a basic record online.</p>
 
-        <p>Even when services are officially moved online, people are still confused by the process. They don't know where to start, and they definitely don't want to stand in the sun waiting for a number to be called.</p>
-
-        <p>Operating from Linstead, St. Catherine, I decided to become the translator and the proxy that Jamaicans desperately needed. My goal isn't just to file paperwork; it is to give you back your time and your peace of mind.</p>
+        <p>When Jamaicans hit a wall online or get trapped in frustrating automated phone loops, they revert to what they know—giving up an entire day to stand in a physical line at PICA or TAJ just to get a straight answer. You shouldn't have to sacrifice your time, your sanity, or your vacation days just to understand your paperwork.</p>
 
         <h2 style="clear: both;">How We Bridge the Gap</h2>
 
@@ -211,11 +209,11 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:44px 0 24px}
         <ul class="client-list">
           <li>
             <strong>The Time-Saver</strong>
-            <p>For the busy local professional who simply cannot afford to sacrifice a day's pay standing in queues at Twickenham Park or Constant Spring. We bypass the lines or submit online so you can stay at your desk.</p>
+            <p>For the busy local professional who simply cannot afford to sacrifice a day's pay standing in queues or fighting with drop-down menus. We bypass the digital maze so you can stay at your desk.</p>
           </li>
           <li>
             <strong>The Ground Proxy</strong>
-            <p>For family in the diaspora. When distance makes it physically impossible to handle local bureaucracy, we step in as your trusted, secure boots on the ground in Jamaica.</p>
+            <p>For family in the diaspora. When distance and broken digital systems make it impossible to handle local bureaucracy, we step in as your trusted, secure boots on the ground in Jamaica.</p>
           </li>
           <li>
             <strong>The Hand-Holder</strong>
@@ -224,7 +222,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:44px 0 24px}
         </ul>
 
         <p style="font-size: 1.2rem; font-weight: 500; color: var(--ink); text-align: center; margin-top: 48px; border-top: 1px solid var(--line); padding-top: 40px;">
-          Whether you need guidance navigating a portal or want to hand off the physical legwork to us completely, we are here to help.
+          Whether you need guidance navigating a portal or want to hand off the technical legwork to us completely, we are here to help.
         </p>
 
         <!-- Call to Action Button -->
