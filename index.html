@@ -76,7 +76,6 @@
   --mint-line:#dcebe1;
   --cream:#fbf6ec;
   --cream-line:#efe2c6;
-  /* Deep band changed to a light tone to aid white space overall */
   --deep-band:#f1f5f9; 
   
   /* Spacing Tokens */
@@ -99,7 +98,7 @@ img{max-width:100%;height:auto;}
 .logo:focus-visible, .btn:focus-visible { border-radius: 14px;}
 .service-item:focus-visible { border-radius: 20px;}
 
-/* Top Disclaimer Bar - PRESERVED */
+/* Top Disclaimer Bar */
 .disclaimer-bar {
   background: var(--ink);
   color: #cbd5e1;
@@ -153,26 +152,50 @@ header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.95);backdro
 .mobile-nav .mobile-sub{padding-left:28px; font-size:0.9rem; color:var(--slate);}
 .mobile-nav[hidden]{display:none}
 
-/* Section Spacing: Applied globally to create breathing room */
+/* Section Spacing */
 section{padding: var(--section-spacing-mobile) 0}
 
-/* Hero Section: Discreet Image & Softened Language */
-.hero{padding:96px 0 80px} /* Custom hero spacing */
+/* HERO SECTION - REFINED FOR MOBILE */
+.hero{padding:64px 0 64px;} /* Reduced padding for mobile */
 .hero-inner{display:grid;gap:48px;align-items:center}
 .hero-copy{display:flex;flex-direction:column;text-align:center}
-.hero-portrait {
-  width: 140px; 
-  height: 140px; 
-  border-radius: 20px; 
-  overflow: hidden; 
-  margin: 0 auto 32px; 
-  border: 3px solid #fff; 
-  box-shadow: 0 10px 30px rgba(15,23,42,.15);
+
+/* Mobile Unified Eyebrow/Portrait Group */
+.hero-intro-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.hero-portrait-mobile {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 6px 18px rgba(15,23,42,.12);
+  flex: none;
   background: #fff;
 }
-.hero-portrait img { width: 100%; height: 100%; object-fit: cover; }
-.eyebrow{display:inline-flex;align-items:center;gap:8px;margin:0 auto 24px;padding:8px 14px;border-radius:999px;background:var(--brass-tint);color:var(--brass-deep);font-size:.82rem;font-weight:600;border:1px solid #ecdcb8}
-.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brass)}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:16px; /* Squarer on narrow screens for safe wrapping */
+  background:var(--brass-tint);
+  color:var(--brass-deep);
+  font-size:.82rem;
+  font-weight:600;
+  border:1px solid #ecdcb8
+}
+.hero-intro-group .eyebrow { margin: 0; text-align: left; line-height: 1.35; }
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brass); flex: none;}
+
+/* Desktop Portrait Hidden on Mobile */
+.hero-portrait-desktop { display: none; }
+
 h1{margin:0 0 24px;font-weight:600;font-size:clamp(2.6rem,5vw,3.8rem);line-height:1.1;letter-spacing:-0.03em;color:var(--ink);}
 .lead{margin:0 auto 32px;max-width:650px;color:var(--slate);font-size:1.1rem;line-height:1.75;}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
@@ -183,7 +206,7 @@ h1{margin:0 0 24px;font-weight:600;font-size:clamp(2.6rem,5vw,3.8rem);line-heigh
 .btn-secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
 .btn-secondary:hover{border-color:#cbd5e1; transform:translateY(-2px); background: #f8fafc;}
 
-/* Security Notice Box - PRESERVED */
+/* Security Notice Box */
 .security-banner {
   background: #fff;
   border: 1px solid var(--line);
@@ -209,16 +232,16 @@ h1{margin:0 0 24px;font-weight:600;font-size:clamp(2.6rem,5vw,3.8rem);line-heigh
 .section-deep{background:var(--deep-band);}
 
 /* Header/Titles */
-.section-head{display:grid;gap:12px;margin-bottom:56px} /* Increased margin below head */
+.section-head{display:grid;gap:12px;margin-bottom:56px}
 .section-head h2{margin:0;font-weight:600;font-size:clamp(1.9rem,4vw,2.6rem);letter-spacing:-0.02em;color:var(--ink);}
 .section-head p{margin:0;color:var(--slate);font-size:1.1rem;}
 .section-head .kicker{font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--brass-deep)}
 
-/* Services Grid: More space between cards */
+/* Services Grid */
 .service-list {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px; /* Increased from 32px */
+  gap: 40px;
   max-width: 960px;
   margin: 0 auto;
 }
@@ -252,7 +275,7 @@ h1{margin:0 0 24px;font-weight:600;font-size:clamp(2.6rem,5vw,3.8rem);line-heigh
 }
 
 .service-body {
-  padding: 32px 28px; /* Increased top/bottom padding */
+  padding: 32px 28px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -266,7 +289,7 @@ h1{margin:0 0 24px;font-weight:600;font-size:clamp(2.6rem,5vw,3.8rem);line-heigh
   letter-spacing: -0.01em;
 }
 .service-body p {
-  margin: 10px 0 20px; /* Increased vertical margins */
+  margin: 10px 0 20px;
   color: var(--slate); 
   font-size: 0.98rem; 
   flex-grow: 1;
@@ -286,7 +309,7 @@ h1{margin:0 0 24px;font-weight:600;font-size:clamp(2.6rem,5vw,3.8rem);line-heigh
   border-radius: 10px;
 }
 
-/* Refined Homepage About Section */
+/* About Section */
 .about-simple{
   max-width:760px;
   margin:0 auto;
@@ -320,9 +343,8 @@ h1{margin:0 0 24px;font-weight:600;font-size:clamp(2.6rem,5vw,3.8rem);line-heigh
   margin-top:6px;
 }
 
-/* About Section Card Spacing */
 .card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:48px;box-shadow:0 12px 40px rgba(15,23,42,.05)}
-.about-grid{display:grid;gap:40px} /* Increased gap */
+.about-grid{display:grid;gap:40px}
 .about-copy{display:grid;gap:20px}
 .about-copy h2{margin:0;font-weight:600;font-size:clamp(1.7rem,3.8vw,2.4rem);letter-spacing:-0.02em;line-height:1.2;}
 .about-copy p{margin:0;color:var(--slate)}
@@ -331,40 +353,40 @@ h1{margin:0 0 24px;font-weight:600;font-size:clamp(2.6rem,5vw,3.8rem);line-heigh
 .stat-card strong{font-family:"Fraunces",serif;font-weight:600;font-size:2.2rem;color:var(--ink); line-height: 1;}
 .stat-card span{color:var(--slate);font-size:.92rem; font-weight: 500;}
 
-/* Process Section (Workflow) - Optimized for maximum White Space */
+/* Process Section */
 .process{max-width:880px;margin:0 auto}
 .process h2{font-weight:600;margin:0 0 12px;font-size:1.9rem;letter-spacing:-0.01em;color:var(--ink);text-align:center}
 .process-sub{margin:0 0 48px;color:var(--slate);text-align:center;font-size:1rem;line-height:1.6}
 .process-steps{display:grid;gap:0}
-.process-step{display:grid;grid-template-columns:40px 1fr;gap:20px;padding:32px 0;border-top:1px solid var(--mint-line)} /* Increased vertical padding and gap */
+.process-step{display:grid;grid-template-columns:40px 1fr;gap:20px;padding:32px 0;border-top:1px solid var(--mint-line)}
 .process-step:first-child{border-top:none;padding-top:0}
 .step-badge{width:40px;height:40px;border-radius:11px;background:var(--brass);color:#22160a;display:grid;place-items:center;font-weight:600;font-size:1.05rem;margin-top:2px;}
-.process p{color:var(--slate);margin:8px 0 0;line-height:1.65;font-size:0.95rem} /* Increased margin top */
+.process p{color:var(--slate);margin:8px 0 0;line-height:1.65;font-size:0.95rem}
 .process strong{font-size:1.02rem;font-weight:700;color:var(--ink);display:block}
 
-/* Insights/Blog Section Spacing */
-.blog{display:grid;gap:32px} /* Increased gap */
+/* Insights/Blog Section */
+.blog{display:grid;gap:32px}
 .post{background: #fff; border: 1px solid var(--line); border-radius: 20px; overflow:hidden; text-decoration:none; color:inherit; display:block; transition: all 0.3s ease; box-shadow: 0 4px 16px rgba(15,23,42,.03);}
 .post:hover{transform:translateY(-4px); border-color: #cbd5e1; box-shadow: 0 12px 36px rgba(15,23,42,.08);}
 .post-img-wrap { width: 100%; aspect-ratio: 16/10; overflow: hidden; }
 .post img{width:100%; height: 100%; object-fit:cover;}
-.post-body{padding:28px 24px;display:grid;gap:14px} /* Increased internal padding */
+.post-body{padding:28px 24px;display:grid;gap:14px}
 .post-body .tag{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brass-deep); display: flex; align-items: center; gap: 6px;}
 .post-body strong{font-size:1.15rem;line-height:1.4; color: var(--ink); font-weight: 700;}
 .post-body p{color:var(--slate);margin:0;font-size:.98rem; line-height: 1.6;}
 .post-body .read-more{margin-top:4px;font-size:.92rem;font-weight:700;color:var(--blue-deep); display: flex; align-items: center; gap: 6px;}
 .insights-cta{margin-top:56px;text-align:center; display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;}
 
-/* Redesigned Final CTA Section - Lighter, centered, integrated */
-#contact {border-top: 1px solid var(--line);} /* Gentle separator */
+/* Contact Section */
+#contact {border-top: 1px solid var(--line);}
 .contact-block {text-align: center; max-width: 650px; margin: 0 auto; display: grid; gap: 24px; justify-items: center;}
 .contact-block h2{font-weight:600;margin:0;font-size:clamp(2rem,4.5vw,2.8rem); letter-spacing: -0.02em; color: var(--ink);}
 .contact-block p{color:var(--slate);margin:0; font-size: 1.1rem; line-height: 1.7;}
 .contact-block .btn {min-width: 220px;}
 
-/* Unified Footer: PRESERVED Structure */
+/* Footer */
 footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
-.footer-grid{display:grid;gap:48px} /* Increased gap */
+.footer-grid{display:grid;gap:48px}
 .footer-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px}
 .footer-col h4{margin:0 0 16px;color:#fff;font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;}
 .footer-col a{display:flex;align-items:center;gap:10px;color:#94a3b8;text-decoration:none;margin-bottom:12px;font-size:0.9rem;transition:color 0.2s;min-height:24px;}
@@ -373,13 +395,16 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
 .social-linkedin:hover{color:#0a66c2 !important}
 .footer-bottom{margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);display:grid;gap:12px;color:#94a3b8;font-size:0.8rem;line-height:1.6;}
 
-/* Pre-existing Mobile Menu JS - PRESERVED */
 
-/* RESPONSIVE BREAKPOINTS Restructure */
+@media(min-width: 480px) {
+  .hero-intro-group .eyebrow { border-radius: 999px; } /* Resume perfect pill shape on wider screens */
+}
+
 @media(min-width:768px){
   .blog{grid-template-columns:repeat(2,1fr)}
   .insights-cta .btn { min-width: 200px; }
 }
+
 @media(min-width:980px){
   /* Desktop Spacing */
   section{padding: var(--section-spacing) 0}
@@ -391,12 +416,30 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
   .menu{display:none}
   .mobile-nav{display:none !important}
   
-  /* Hero flow */
+  /* Hero flow (Restored Padding & Layout) */
+  .hero{padding:96px 0 80px}
   .hero-inner{grid-template-columns:2fr 1fr; align-items: stretch; gap: 64px; text-align: left; max-width: 1040px; margin: 0 auto;}
   .hero-copy{order: 1; align-items: flex-start; justify-content: center;}
-  .hero-portrait { order: 2; margin: 0; width: 100%; height: 100%; min-height: 320px; border-radius: 24px; }
   .lead{margin:0 0 32px 0;}
   .hero-actions{justify-content:flex-start;}
+  
+  /* Desktop Portrait Behavior */
+  .hero-portrait-mobile { display: none; }
+  .hero-intro-group { justify-content: flex-start; margin-bottom: 24px; }
+  .hero-portrait-desktop {
+    display: block; 
+    order: 2; 
+    margin: 0; 
+    width: 100%; 
+    height: 100%; 
+    min-height: 320px; 
+    border-radius: 24px; 
+    overflow: hidden; 
+    border: 3px solid #fff; 
+    box-shadow: 0 10px 30px rgba(15,23,42,.15); 
+    background: #fff;
+  }
+  .hero-portrait-desktop img { width: 100%; height: 100%; object-fit: cover; display: block; }
   
   /* Services flow */
   .service-list { gap: 48px; }
@@ -409,29 +452,18 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
   .about-stats{align-content:start}
   .card {padding: 64px;}
   
-  /* Workflow Grid breathes more */
+  /* Workflow Grid */
   .process{max-width:960px}
   .process-steps{grid-template-columns:1fr 1fr;column-gap:64px;row-gap:16px}
   .process-step{border-top:none;padding:24px 0}
   .process-step:nth-child(1),.process-step:nth-child(2){padding-top:0}
   .process-step:nth-child(3),.process-step:nth-child(4){border-top:1px solid var(--mint-line); padding-top: 24px;}
   
-.blog {
-  display: grid;
-  gap: 40px;
-  max-width: 920px;
-  margin: 0 auto;
-}
-
-@media(min-width:768px){
-  .blog {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+  .blog { gap: 40px; max-width: 920px; margin: 0 auto; }
   .footer-grid{grid-template-columns:1fr 1.6fr}
 }
 @media(max-width:979px){
-  .service-actions { flex-direction: column; } /* Stack buttons on mobile */
+  .service-actions { flex-direction: column; } 
   .service-actions .btn { width: 100%; }
 }
 @media(max-width:767px){
@@ -448,7 +480,6 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
 </head>
 <body>
 
-<!-- PRESERVED Top Disclaimer Bar -->
 <div class="disclaimer-bar">
   <i class="fa-solid fa-building-columns"></i>
   <strong>Disclaimer:</strong> Docu-Hub Operations Services is a private administrative proxy service and is not affiliated with any Jamaican government agency.
@@ -460,7 +491,6 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
       <div class="logo">DH</div><span>Docu-Hub Operations</span>
     </a>
 
-    <!-- Row 1, desktop -->
     <div class="nav-search-inline" id="searchBarDesktopWrap">
       <label class="search-label" for="siteSearchInputDesktop">
         <i class="fa-solid fa-magnifying-glass"></i>
@@ -480,7 +510,6 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
     </button>
   </div>
 
-  <!-- Row 2, desktop -->
   <nav class="subnav">
     <a href="motor-vehicle-renewal.html">Motor Vehicle</a>
     <a href="drivers-licence-renewal.html">Driver's Licence</a>
@@ -490,7 +519,6 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
     <a href="faq.html">FAQ</a>
   </nav>
 
-  <!-- Mobile-only search row -->
   <div class="search-row">
     <div class="container">
       <div class="search-bar" id="searchBarMobileWrap">
@@ -519,24 +547,19 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
 
 <main id="top">
 
-<!-- HERO SECTION - DISCRET PROFILE & VISUAL BALANCE -->
+<!-- HERO SECTION - REFINED MOBILE & PRESERVED DESKTOP -->
 <section class="hero">
   <div class="container">
     <div class="hero-inner">
       
-      <div class="hero-portrait">
-        <img 
-          src="assets/ecard.webp" 
-          alt="Laura Clarke, Founder of Docu-Hub Operations" 
-          width="180" 
-          height="180" 
-          fetchpriority="high" 
-          loading="eager"
-        >
-      </div>
-
       <div class="hero-copy">
-        <span class="eyebrow">Founded &amp; personally managed by Laura Clarke</span>
+        
+        <!-- Mobile Intro Group -->
+        <div class="hero-intro-group">
+          <img class="hero-portrait-mobile" src="assets/ecard.webp" alt="Laura Clarke, Founder of Docu-Hub Operations" width="76" height="76" fetchpriority="high" loading="eager">
+          <span class="eyebrow">Founded &amp; personally managed by Laura Clarke</span>
+        </div>
+
         <h1><span style="color: var(--green-accent);">Online</span> Doesn't Always Mean Easy.</h1>
         
         <p class="lead">
@@ -548,11 +571,17 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
           <a class="btn btn-secondary" href="about.html">About Docu-Hub</a>
         </div>
       </div>
+
+      <!-- Desktop Portrait Panel -->
+      <div class="hero-portrait-desktop">
+        <img src="assets/ecard.webp" alt="Laura Clarke, Founder of Docu-Hub Operations" fetchpriority="high" loading="eager">
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- SECURITY & ANTI-FRAUD BANNER - PRESERVED & REALIGNED -->
+<!-- SECURITY & ANTI-FRAUD BANNER -->
 <div class="container">
   <div class="security-banner" aria-label="Client trust and onboarding">
     <i class="fa-solid fa-shield-halved"></i>
@@ -563,7 +592,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
   </div>
 </div>
 
-<!-- CORE SERVICES GRID (2x2 Layout) - Revised Copy & Flow -->
+<!-- CORE SERVICES GRID -->
 <section id="services" class="section-bg">
   <div class="container">
     <div class="section-head" style="text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;">
@@ -574,7 +603,6 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
     
     <div class="service-list">
 
-      <!-- 1. Motor Vehicle Licence Renewal -->
       <div class="service-item">
         <div class="service-img-wrap">
           <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=600&q=80" alt="Car Steering Wheel and Dashboard">
@@ -588,7 +616,6 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
         </div>
       </div>
 
-      <!-- 2. Driver's Licence Renewal -->
       <div class="service-item">
         <div class="service-img-wrap">
           <img src="assets/dl-renewal.png" alt="Driver holding a new licence beside their car concept">
@@ -602,7 +629,6 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
         </div>
       </div>
       
-      <!-- 3. Passport Services -->
       <div class="service-item">
         <div class="service-img-wrap"><img src="assets/pica.webp" alt="Passport Document"></div>
         <div class="service-body">
@@ -614,7 +640,6 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
         </div>
       </div>
 
-      <!-- 4. Vital Record Services -->
       <div class="service-item">
         <div class="service-img-wrap"><img src="assets/rgd.webp" alt="Birth Certificate Paperwork"></div>
         <div class="service-body">
@@ -630,39 +655,21 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
   </div>
 </section>
 
-<!-- ABOUT / HOW IT WORKS - SIMPLIFIED -->
-
+<!-- ABOUT / HOW IT WORKS -->
 <section id="about" class="section-white">
   <div class="container">
     <div class="about-simple">
       <span class="kicker">How We Help</span>
-
-
-  <h2>Jamaican Paperwork, Made Simpler.</h2>
-
-  <p>
-    Docu-Hub Operations Services helps individuals in Jamaica and the diaspora
-    navigate document applications, renewals, forms, and government processes
-    with greater clarity and confidence.
-  </p>
-
-  <p>
-    We review your requirements, help you prepare what is needed, and handle
-    the submission process where a proxy service is available — so you spend
-    less time figuring out the paperwork and more time getting it done.
-  </p>
-
-  <a class="btn btn-secondary" href="about.html" style="margin-top: 8px;">
-    About Us
-  </a>
-</div>
-
-
+      <h2>Jamaican Paperwork, Made Simpler.</h2>
+      <p>Docu-Hub Operations Services helps individuals in Jamaica and the diaspora navigate document applications, renewals, forms, and government processes with greater clarity and confidence.</p>
+      <p>We review your requirements, help you prepare what is needed, and handle the submission process where a proxy service is available — so you spend less time figuring out the paperwork and more time getting it done.</p>
+      <a class="btn btn-secondary" href="about.html" style="margin-top: 8px;">About Us</a>
+    </div>
   </div>
 </section>
 
 
-<!-- INSIGHTS & BLOG - PRESERVED & flow corrected -->
+<!-- INSIGHTS & BLOG -->
 <section id="insights" class="section-cream">
   <div class="container">
     <div class="section-head" style="text-align:center;">
@@ -673,7 +680,6 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
     
     <div class="blog">
       
-      <!-- Video Tutorial -->
       <a class="post" href="https://www.youtube.com/watch?v=GQEi4l9KuVM" target="_blank" rel="noopener">
         <div class="post-img-wrap">
           <img src="https://img.youtube.com/vi/GQEi4l9KuVM/maxresdefault.jpg" alt="Motor Vehicle Renewal Tutorial" loading="lazy" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/GQEi4l9KuVM/hqdefault.jpg';">
@@ -686,7 +692,6 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
         </div>
       </a>
       
-      <!-- Heat Damage Advisory -->
       <a class="post" href="heat-damage-article.html">
         <div class="post-img-wrap">
           <img src="assets/heat-damaged.png" alt="Passport with embedded microchip">
@@ -699,7 +704,6 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
         </div>
       </a>
       
-      
     </div>
     
     <div class="insights-cta">
@@ -711,7 +715,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
   </div>
 </section>
 
-<!-- REDESIGNED FINAL CTA - Lighter, integrated, clear choice -->
+<!-- REDESIGNED FINAL CTA -->
 <section id="contact" class="section-deep">
   <div class="container">
     <div class="contact-block">
@@ -726,7 +730,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
 
 </main>
 
-<!-- UNIFIED FOOTER: PRESERVED Structure -->
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -773,7 +777,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
 </footer>
 
 <script>
-  // Mobile Menu JS - PRESERVED
+  // Mobile Menu JS
   var btn = document.getElementById('menuBtn');
   var nav = document.getElementById('mobileNav');
   btn.addEventListener('click', function(){
@@ -788,16 +792,12 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
   });
 
   // ===== Site Search =====
-  // A small hard-coded index works well at this site's size (under a dozen
-  // pages) and needs no backend. If more pages get added later, just add
-  // another entry below — every page that includes this same header/script
-  // will pick it up automatically.
   var SITE_INDEX = [
     { title: "Motor Vehicle Licence Renewal", desc: "Fitness audit, payment & eMVRC", url: "motor-vehicle-renewal.html", icon: "fa-car", keywords: "car tax office fitness emvrc registration road licence" },
     { title: "Driver's Licence Renewal", desc: "Full package, 15-minute pickup", url: "drivers-licence-renewal.html", icon: "fa-id-card", keywords: "driver license licence renew pickup" },
     { title: "Passport Services", desc: "Renewals, name changes, lost/damaged", url: "jamaican-passport-renewal.html", icon: "fa-passport", keywords: "pica passport renewal minor adult name change lost damaged" },
     { title: "Vital Record Services", desc: "Birth, marriage & death certificates", url: "rgd-vital-records.html", icon: "fa-stamp", keywords: "rgd birth certificate marriage death vital record diaspora" },
-    { title: "About Docu-Hub", desc: "Our story & mission", url: "about.html", icon: "fa-user", keywords: "laura clarke about founder mission" },
+    { title: "About Docu-Hub", desc: "Our story & mission", url: "about.html", icon: "fa-user", keywords: "laura clark about founder mission" },
     { title: "Guides & Insights", desc: "Plain-language tutorials", url: "insights.html", icon: "fa-book-open", keywords: "insights blog guide tutorial video heat damage" },
     { title: "FAQ", desc: "Common questions answered", url: "faq.html", icon: "fa-circle-question", keywords: "faq questions help" },
     { title: "Book a Consultation", desc: "Schedule your 1-on-1 appointment", url: "booking.html", icon: "fa-calendar-days", keywords: "book appointment consultation schedule quote" },
