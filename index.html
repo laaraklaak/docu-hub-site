@@ -4,29 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-<!-- ===== Client-Side Security Headers (Browser Protection) ===== -->
+<!-- ===== Client-Side Security Headers (Browser Protection) - PRESERVED ===== -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://images.unsplash.com https://img.youtube.com data:; connect-src 'self';">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 
-<!-- ===== Primary SEO ===== -->
+<!-- ===== Primary SEO - PRESERVED ===== -->
 <title>Docu-Hub Operations Services | Administrative Proxy in Jamaica</title>
-<meta name="description" content="Independent administrative proxy and online application assistance for the Jamaican diaspora. We handle PICA passports, RGD vital records, and TAJ vehicle & driver's licence renewals.">
-<meta name="keywords" content="Docu-Hub Operations Services, Jamaica proxy service, passport renewal Jamaica, PICA online, birth certificate RGD, driver's licence renewal Jamaica, TAJ motor vehicle renewal Jamaica">
+<meta name="description" content="Independent private administrative proxy and online application assistance. We help navigate PICA passports, RGD vital records, and TAJ vehicle & driver's licence renewals when online systems are difficult.">
+<meta name="keywords" content="Docu-Hub Operations Services, Jamaica proxy service, passport renewal Jamaica, PICA online assistance, birth certificate RGD assistance, driver's licence renewal Jamaica assistance, motor vehicle renewal Jamaica">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Docu-Hub Operations Services">
 <link rel="canonical" href="https://dhubservices.com/">
 
-<!-- ===== Open Graph / Social ===== -->
+<!-- ===== Open Graph / Social - PRESERVED ===== -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Docu-Hub Operations Services">
 <meta property="og:title" content="Docu-Hub Operations Services | Administrative Proxy in Jamaica">
-<meta property="og:description" content="Online or in-person, we make Jamaican paperwork simple. Expert document retrieval and proxy submissions.">
+<meta property="og:description" content="Online or in-person, we make Jamaican paperwork simple. Expert private concierge for document retrieval and submissions.">
 <meta property="og:url" content="https://dhubservices.com/">
 <meta property="og:image" content="https://dhubservices.com/assets/og-cover.jpg">
 <meta property="og:locale" content="en_JM">
 
-<!-- ===== Structured Data for Google ===== -->
+<!-- ===== Structured Data for Google - PRESERVED ===== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -50,7 +50,7 @@
 }
 </script>
 
-<!-- ===== Fonts & Icons ===== -->
+<!-- ===== Fonts & Icons - PRESERVED ===== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -69,132 +69,156 @@
   --brass:#b08a4e;
   --brass-deep:#8a6a37;
   --brass-tint:#faf3e6;
+  --green-accent:#16a34a;
+
+  --white:#ffffff;
+  --mint:#eef5f0;
+  --mint-line:#dcebe1;
+  --cream:#fbf6ec;
+  --cream-line:#efe2c6;
+  /* Deep band changed to a light tone to aid white space overall */
+  --deep-band:#f1f5f9; 
+  
+  /* Spacing Tokens */
+  --section-spacing: 112px;
+  --section-spacing-mobile: 80px;
 }
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+}
+html{scroll-behavior:smooth}
 *{box-sizing:border-box}
-body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;width:100%;-webkit-text-size-adjust:100%;}
-h1,h2,.brand span,.step-badge,.eyebrow{font-family:"Fraunces",Georgia,serif}
-.container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px;}
+body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;overflow-x:hidden;width:100%;-webkit-text-size-adjust:100%;}
+h1,h2,h3,h4,.brand span,.step-badge,.eyebrow{font-family:"Fraunces",Georgia,serif}
+.container{width:100%;max-width:1120px;margin:0 auto;padding:0 24px;}
 a{-webkit-tap-highlight-color:transparent}
 img{max-width:100%;height:auto;}
-:focus-visible{outline:2px solid var(--blue-deep);outline-offset:2px}
+
+/* Accessibility Focus States */
+:focus-visible{outline: none; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.35); border-radius: 8px;}
+.logo:focus-visible, .btn:focus-visible { border-radius: 14px;}
+.service-item:focus-visible { border-radius: 20px;}
+
+/* Top Disclaimer Bar - PRESERVED */
+.disclaimer-bar {
+  background: var(--ink);
+  color: #cbd5e1;
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.disclaimer-bar i { color: var(--brass); margin-right: 6px; }
 
 /* Header & Nav */
-header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav{display:flex;justify-content:space-between;align-items:center;min-height:72px}
-.brand{display:flex;align-items:center;gap:12px;font-weight:700;text-decoration:none;color:inherit}
+header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;align-items:center;min-height:72px;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700;text-decoration:none;color:inherit;flex:none}
 .brand span{font-size:1.02rem;font-weight:600;letter-spacing:-0.01em}
 .logo{width:38px;height:38px;border-radius:11px;background:var(--ink);color:var(--brass-tint);display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:600;font-size:.92rem;flex:none}
 
-/* Desktop Dropdown Navigation */
-.desktop-nav{display:none;gap:24px;align-items:center;}
-.desktop-nav a{text-decoration:none;color:var(--slate);font-weight:500;font-size:.96rem;transition:color 0.2s;}
-.desktop-nav a:hover{color:var(--ink)}
+.nav-search-inline{display:none;position:relative}
+.nav-primary{display:none;align-items:center;gap:20px;flex:none}
+.nav-primary a{text-decoration:none;color:var(--slate);font-weight:500;font-size:.93rem;transition:color 0.2s;white-space:nowrap}
+.nav-primary a:hover{color:var(--ink)}
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-.dropbtn {
-  background: none;
-  border: none;
-  color: var(--slate);
-  font-weight: 500;
-  font-size: 0.96rem;
-  font-family: Inter, sans-serif;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: color 0.2s;
-}
-.dropbtn:hover { color: var(--ink); }
-.dropdown-content {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: -16px;
-  background-color: #fff;
-  min-width: 250px;
-  box-shadow: 0 12px 30px rgba(15,23,42,0.1);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 8px 0;
-  z-index: 40;
-}
-.dropdown-content a {
-  color: var(--slate);
-  padding: 10px 18px;
-  text-decoration: none;
-  display: block;
-  font-size: 0.92rem;
-  transition: background 0.15s, color 0.15s;
-}
-.dropdown-content a:hover {
-  background-color: var(--paper);
-  color: var(--ink);
-}
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+.subnav{display:none}
+.subnav a{color:var(--slate);font-weight:600;font-size:.85rem;text-decoration:none;white-space:nowrap;transition:color 0.2s}
+.subnav a:hover{color:var(--ink)}
+
+.search-row{background:var(--paper);border-bottom:1px solid var(--line);padding:14px 0}
+.search-row .container{display:flex;justify-content:center}
+.search-bar{position:relative;width:100%;max-width:620px}
+.search-label{display:flex;align-items:center;gap:10px;border:1.5px solid var(--line);border-radius:14px;padding:12px 16px;background:#fff;transition:border-color .15s, box-shadow .15s;}
+.search-label:focus-within{border-color:var(--blue);box-shadow:0 0 0 4px rgba(37,99,235,.12)}
+.search-label i{color:var(--brass-deep);font-size:1rem;flex:none}
+.search-label strong{color:var(--ink);font-size:.92rem;font-weight:700;flex:none}
+.search-label input{border:none;background:transparent;outline:none;flex:1;font-family:Inter,sans-serif;font-size:.96rem;color:var(--ink);min-width:0}
+.search-label input::placeholder{color:var(--slate)}
+.search-results{position:absolute;top:calc(100% + 8px);left:0;right:0;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 16px 48px rgba(15,23,42,.14);padding:8px;display:none;max-height:360px;overflow-y:auto;z-index:45}
+.search-results.open{display:grid;gap:2px}
+.search-result{display:flex;align-items:flex-start;gap:12px;padding:10px;border-radius:12px;text-decoration:none;color:inherit;transition:background 0.15s}
+.search-result:hover, .search-result.active{background:var(--paper)}
+.search-result i{width:32px;height:32px;border-radius:9px;background:var(--paper-deep);color:var(--ink);display:grid;place-items:center;flex:none;font-size:0.85rem}
+.search-result strong{display:block;font-size:0.92rem;color:var(--ink)}
+.search-result span{display:block;font-size:0.8rem;color:var(--slate);margin-top:1px}
+.search-empty{padding:14px 10px;color:var(--slate);font-size:0.88rem;text-align:center}
+.search-hint{padding:10px 10px;color:var(--slate);font-size:0.85rem}
 
 .menu{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);border:none;}
 .mobile-nav{display:grid;gap:2px;border-bottom:1px solid var(--line);background:#fff}
-.mobile-nav a{padding:14px 16px;text-decoration:none;color:var(--ink-soft);font-weight:500;border-top:1px solid var(--line)}
+.mobile-nav a{padding:16px;text-decoration:none;color:var(--ink-soft);font-weight:500;border-top:1px solid var(--line)}
 .mobile-nav .mobile-sub{padding-left:28px; font-size:0.9rem; color:var(--slate);}
 .mobile-nav[hidden]{display:none}
 
-/* Hero Section */
-.hero{padding:64px 0 48px}
-.hero-inner{display:grid;gap:40px;align-items:center}
+/* Section Spacing: Applied globally to create breathing room */
+section{padding: var(--section-spacing-mobile) 0}
+
+/* Hero Section: Discreet Image & Softened Language */
+.hero{padding:96px 0 80px} /* Custom hero spacing */
+.hero-inner{display:grid;gap:48px;align-items:center}
 .hero-copy{display:flex;flex-direction:column;text-align:center}
+.hero-portrait {
+  width: 140px; 
+  height: 140px; 
+  border-radius: 20px; 
+  overflow: hidden; 
+  margin: 0 auto 32px; 
+  border: 3px solid #fff; 
+  box-shadow: 0 10px 30px rgba(15,23,42,.15);
+  background: #fff;
+}
+.hero-portrait img { width: 100%; height: 100%; object-fit: cover; }
 .eyebrow{display:inline-flex;align-items:center;gap:8px;margin:0 auto 24px;padding:8px 14px;border-radius:999px;background:var(--brass-tint);color:var(--brass-deep);font-size:.82rem;font-weight:600;border:1px solid #ecdcb8}
 .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brass)}
-h1{margin:0 0 20px;font-weight:600;font-size:clamp(2.4rem,4.5vw,3.6rem);line-height:1.15;letter-spacing:-0.02em;color:var(--ink);}
-.lead{margin:0 auto 32px;max-width:580px;color:var(--slate);font-size:1.05rem;line-height:1.75;}
+h1{margin:0 0 24px;font-weight:600;font-size:clamp(2.6rem,5vw,3.8rem);line-height:1.1;letter-spacing:-0.03em;color:var(--ink);}
+.lead{margin:0 auto 32px;max-width:650px;color:var(--slate);font-size:1.1rem;line-height:1.75;}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border-radius:14px;text-decoration:none;font-weight:700;font-size:.98rem;transition:transform .15s ease}
-.btn-primary{background:var(--ink);color:#fff}
-.btn-primary:hover{background:var(--ink-soft); transform:translateY(-2px);}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 28px;border-radius:14px;text-decoration:none;font-weight:700;font-size:.98rem;transition: all .2s ease-in-out; cursor: pointer; border: none; font-family: Inter, sans-serif;}
+.btn-primary{background:var(--ink);color:#fff; box-shadow: 0 4px 14px rgba(15,23,42,0.15);}
+.btn-primary:hover{background:var(--ink-soft); transform:translateY(-2px); box-shadow: 0 6px 20px rgba(15,23,42,0.2);}
 .btn-secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
-.btn-secondary:hover{border-color:#cbd5e1; transform:translateY(-2px);}
+.btn-secondary:hover{border-color:#cbd5e1; transform:translateY(-2px); background: #f8fafc;}
 
-.hero-media{background:#fff;border:1px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:0 18px 60px rgba(15,23,42,.16);position:relative}
-.hero-media img{width:100%;aspect-ratio:16/11;object-fit:cover;display:block}
-.hero-tag{position:absolute;left:16px;bottom:16px;background:rgba(15,23,42,.85);color:#fff;padding:10px 14px;border-radius:12px;font-size:.82rem;font-weight:600;display:flex;align-items:center;gap:8px}
-.hero-tag::before{content:"";width:8px;height:8px;border-radius:50%;background:#34d399}
-
-/* Security Notice Box */
+/* Security Notice Box - PRESERVED */
 .security-banner {
   background: #fff;
   border: 1px solid var(--line);
   border-left: 4px solid var(--blue);
   border-radius: 16px;
-  padding: 20px 24px;
+  padding: 18px 22px;
   margin: 0 auto 48px;
   display: flex;
   gap: 16px;
   align-items: flex-start;
-  box-shadow: 0 4px 12px rgba(15,23,42,.02);
+  box-shadow: 0 6px 18px rgba(15,23,42,.03);
+  max-width: 960px;
 }
 .security-banner i { color: var(--blue); font-size: 1.4rem; margin-top: 2px; }
-.security-banner p { margin: 0; font-size: 0.93rem; color: var(--slate); line-height: 1.6; }
+.security-banner p { margin: 0; font-size: 0.95rem; color: var(--slate); line-height: 1.6; }
 .security-banner strong { color: var(--ink); }
 
-/* Standard Sections */
-section{padding:48px 0}
+/* Standard Section Backgrounds */
 .section-bg{background:var(--paper-deep)}
-.section-head{display:grid;gap:10px;margin-bottom:28px}
-.section-head h2{margin:0;font-weight:600;font-size:clamp(1.7rem,4vw,2.4rem);letter-spacing:-0.01em}
-.section-head p{margin:0;color:var(--slate);font-size:1.05rem;}
-.section-head .kicker{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brass-deep)}
+.section-white{background:var(--white)}
+.section-mint{background:var(--mint); border-top:1px solid var(--mint-line); border-bottom:1px solid var(--mint-line);}
+.section-cream{background:var(--cream); border-top:1px solid var(--cream-line); border-bottom:1px solid var(--cream-line);}
+.section-deep{background:var(--deep-band);}
 
-/* Services Grid */
+/* Header/Titles */
+.section-head{display:grid;gap:12px;margin-bottom:56px} /* Increased margin below head */
+.section-head h2{margin:0;font-weight:600;font-size:clamp(1.9rem,4vw,2.6rem);letter-spacing:-0.02em;color:var(--ink);}
+.section-head p{margin:0;color:var(--slate);font-size:1.1rem;}
+.section-head .kicker{font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--brass-deep)}
+
+/* Services Grid: More space between cards */
 .service-list {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 40px; /* Increased from 32px */
   max-width: 960px;
   margin: 0 auto;
 }
@@ -205,21 +229,15 @@ section{padding:48px 0}
   border: 1px solid var(--line);
   border-radius: 20px;
   background: #fff;
-  box-shadow: 0 4px 16px rgba(15,23,42,.03);
-  transition: all 0.3s ease;
-  text-decoration: none;
-  color: inherit;
+  box-shadow: 0 4px 20px rgba(15,23,42,.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 }
-.service-item:hover {
-  border-color: #cbd5e1;
-  box-shadow: 0 12px 36px rgba(15,23,42,.08);
-  transform: translateY(-4px);
-}
+
 .service-img-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: var(--paper-deep);
   flex: none;
@@ -232,144 +250,266 @@ section{padding:48px 0}
   object-fit: cover;
   display: block;
 }
+
 .service-body {
-  padding: 24px;
-  display: grid;
-  gap: 6px;
+  padding: 32px 28px; /* Increased top/bottom padding */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
-.badge {
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: .78rem;
-  font-weight: 700;
-  white-space: nowrap;
-  justify-self: start;
-  margin-top: 6px;
+.service-body h3 {
+  margin: 0; 
+  font-size: 1.3rem; 
+  color: var(--ink); 
+  font-family: Inter, sans-serif; 
+  font-weight: 700; 
+  letter-spacing: -0.01em;
 }
-.badge-gold {
-  background: var(--brass-tint);
-  color: var(--brass-deep);
+.service-body p {
+  margin: 10px 0 20px; /* Increased vertical margins */
+  color: var(--slate); 
+  font-size: 0.98rem; 
+  flex-grow: 1;
+  line-height: 1.65;
 }
 
-/* About Section */
-.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:32px;box-shadow:0 10px 30px rgba(15,23,42,.04)}
-.about-grid{display:grid;gap:24px}
-.about-copy{display:grid;gap:16px}
-.about-copy h2{margin:0;font-weight:600;font-size:clamp(1.5rem,3.6vw,2.2rem);letter-spacing:-0.01em;line-height:1.2;}
+.service-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+.service-actions .btn {
+  font-size: 0.9rem;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 10px;
+}
+
+/* Refined Homepage About Section */
+.about-simple{
+  max-width:760px;
+  margin:0 auto;
+  text-align:center;
+  display:grid;
+  justify-items:center;
+  gap:18px;
+}
+.about-simple .kicker{
+  font-size:.82rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  color:var(--brass-deep);
+}
+.about-simple h2{
+  margin:0;
+  font-weight:600;
+  font-size:clamp(2rem,4vw,2.65rem);
+  letter-spacing:-.025em;
+  line-height:1.15;
+}
+.about-simple p{
+  margin:0;
+  max-width:700px;
+  color:var(--slate);
+  font-size:1.03rem;
+  line-height:1.75;
+}
+.about-simple .btn{
+  margin-top:6px;
+}
+
+/* About Section Card Spacing */
+.card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:48px;box-shadow:0 12px 40px rgba(15,23,42,.05)}
+.about-grid{display:grid;gap:40px} /* Increased gap */
+.about-copy{display:grid;gap:20px}
+.about-copy h2{margin:0;font-weight:600;font-size:clamp(1.7rem,3.8vw,2.4rem);letter-spacing:-0.02em;line-height:1.2;}
 .about-copy p{margin:0;color:var(--slate)}
-.about-stats{display:grid;gap:16px}
-.stat-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 10px 30px rgba(15,23,42,.04);display:grid;gap:6px}
-.stat-card strong{font-family:"Fraunces",serif;font-weight:600;font-size:1.8rem;color:var(--ink)}
-.stat-card span{color:var(--slate);font-size:.9rem}
+.about-stats{display:grid;gap:24px}
+.stat-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px 24px;box-shadow:0 6px 20px rgba(15,23,42,.03);display:grid;gap:8px}
+.stat-card strong{font-family:"Fraunces",serif;font-weight:600;font-size:2.2rem;color:var(--ink); line-height: 1;}
+.stat-card span{color:var(--slate);font-size:.92rem; font-weight: 500;}
 
-/* Process Section */
-.process{background:linear-gradient(135deg,var(--ink),var(--ink-soft));color:#fff;border-radius:28px;padding:40px;box-shadow:0 18px 60px rgba(15,23,42,.16)}
-.process h2{font-weight:600;margin-top:0;}
-.process-step{display:grid;grid-template-columns:42px 1fr;gap:16px;padding:20px 0;border-top:1px solid rgba(255,255,255,.12)}
+/* Process Section (Workflow) - Optimized for maximum White Space */
+.process{max-width:880px;margin:0 auto}
+.process h2{font-weight:600;margin:0 0 12px;font-size:1.9rem;letter-spacing:-0.01em;color:var(--ink);text-align:center}
+.process-sub{margin:0 0 48px;color:var(--slate);text-align:center;font-size:1rem;line-height:1.6}
+.process-steps{display:grid;gap:0}
+.process-step{display:grid;grid-template-columns:40px 1fr;gap:20px;padding:32px 0;border-top:1px solid var(--mint-line)} /* Increased vertical padding and gap */
 .process-step:first-child{border-top:none;padding-top:0}
-.step-badge{width:42px;height:42px;border-radius:12px;background:var(--brass);color:#22160a;display:grid;place-items:center;font-weight:600;font-size:1.1rem}
-.process p{color:#cbd5e1;margin:4px 0 0;}
-.process strong{font-size:1.1rem;}
+.step-badge{width:40px;height:40px;border-radius:11px;background:var(--brass);color:#22160a;display:grid;place-items:center;font-weight:600;font-size:1.05rem;margin-top:2px;}
+.process p{color:var(--slate);margin:8px 0 0;line-height:1.65;font-size:0.95rem} /* Increased margin top */
+.process strong{font-size:1.02rem;font-weight:700;color:var(--ink);display:block}
 
-/* Blog Section */
-.blog{display:grid;gap:24px}
-.post{padding:0;overflow:hidden;text-decoration:none;color:inherit;display:block;transition:transform 0.3s ease;}
-.post:hover{transform:translateY(-4px);border-color:#cbd5e1;}
-.post img{width:100%;aspect-ratio:16/10;object-fit:cover}
-.post-body{padding:24px;display:grid;gap:12px}
-.post-body .tag{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--brass-deep)}
-.post-body strong{font-size:1.1rem;line-height:1.4}
-.post-body p{color:var(--slate);margin:0;font-size:.95rem}
-.post-body .read-more{margin-top:4px;font-size:.9rem;font-weight:700;color:var(--blue-deep)}
-.insights-cta{margin-top:32px;text-align:center; display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;}
+/* Insights/Blog Section Spacing */
+.blog{display:grid;gap:32px} /* Increased gap */
+.post{background: #fff; border: 1px solid var(--line); border-radius: 20px; overflow:hidden; text-decoration:none; color:inherit; display:block; transition: all 0.3s ease; box-shadow: 0 4px 16px rgba(15,23,42,.03);}
+.post:hover{transform:translateY(-4px); border-color: #cbd5e1; box-shadow: 0 12px 36px rgba(15,23,42,.08);}
+.post-img-wrap { width: 100%; aspect-ratio: 16/10; overflow: hidden; }
+.post img{width:100%; height: 100%; object-fit:cover;}
+.post-body{padding:28px 24px;display:grid;gap:14px} /* Increased internal padding */
+.post-body .tag{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brass-deep); display: flex; align-items: center; gap: 6px;}
+.post-body strong{font-size:1.15rem;line-height:1.4; color: var(--ink); font-weight: 700;}
+.post-body p{color:var(--slate);margin:0;font-size:.98rem; line-height: 1.6;}
+.post-body .read-more{margin-top:4px;font-size:.92rem;font-weight:700;color:var(--blue-deep); display: flex; align-items: center; gap: 6px;}
+.insights-cta{margin-top:56px;text-align:center; display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;}
 
-/* Final CTA */
-.final{background:linear-gradient(135deg,var(--ink),var(--ink-soft));color:#fff;border-radius:28px;padding:48px 24px;text-align:center;display:grid;gap:18px;box-shadow:0 18px 60px rgba(15,23,42,.16)}
-.final h2{font-weight:600;margin:0;font-size:clamp(1.9rem,4vw,2.8rem)}
-.final p{color:#cbd5e1;margin:0 auto;max-width:500px;}
-.final-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:auto}
+/* Redesigned Final CTA Section - Lighter, centered, integrated */
+#contact {border-top: 1px solid var(--line);} /* Gentle separator */
+.contact-block {text-align: center; max-width: 650px; margin: 0 auto; display: grid; gap: 24px; justify-items: center;}
+.contact-block h2{font-weight:600;margin:0;font-size:clamp(2rem,4.5vw,2.8rem); letter-spacing: -0.02em; color: var(--ink);}
+.contact-block p{color:var(--slate);margin:0; font-size: 1.1rem; line-height: 1.7;}
+.contact-block .btn {min-width: 220px;}
 
-/* Unified 3-Column Footer */
-footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:44px 0 24px}
-.footer-grid{display:grid;gap:28px}
-.footer-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
-.footer-col h4{margin:0 0 10px;color:#fff;font-family:'Inter',sans-serif;font-size:0.88rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;}
-.footer-col a{display:flex;align-items:center;gap:8px;color:#94a3b8;text-decoration:none;margin-bottom:8px;font-size:0.84rem;transition:color 0.2s;min-height:20px;}
+/* Unified Footer: PRESERVED Structure */
+footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:64px 0 28px}
+.footer-grid{display:grid;gap:48px} /* Increased gap */
+.footer-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px}
+.footer-col h4{margin:0 0 16px;color:#fff;font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;}
+.footer-col a{display:flex;align-items:center;gap:10px;color:#94a3b8;text-decoration:none;margin-bottom:12px;font-size:0.9rem;transition:color 0.2s;min-height:24px;}
 .footer-col a:hover{color:#fff}
-.footer-bottom{margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);display:grid;gap:8px;color:#94a3b8;font-size:0.78rem;line-height:1.5;}
+.social-youtube:hover{color:#ea3323 !important}
+.social-linkedin:hover{color:#0a66c2 !important}
+.footer-bottom{margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);display:grid;gap:12px;color:#94a3b8;font-size:0.8rem;line-height:1.6;}
 
+/* Pre-existing Mobile Menu JS - PRESERVED */
+
+/* RESPONSIVE BREAKPOINTS Restructure */
 @media(min-width:768px){
-  .blog{grid-template-columns:repeat(3,1fr)}
+  .blog{grid-template-columns:repeat(2,1fr)}
+  .insights-cta .btn { min-width: 200px; }
 }
 @media(min-width:980px){
-  .desktop-nav{display:flex}
+  /* Desktop Spacing */
+  section{padding: var(--section-spacing) 0}
+
+  .nav-search-inline{display:flex;flex:1;justify-content:center;max-width:480px;margin:0 8px}
+  .nav-primary{display:flex}
+  .subnav{display:flex;justify-content:center;align-items:center;gap:28px;padding:12px 0;background:var(--paper);border-top:1px solid var(--line)}
+  .search-row{display:none}
   .menu{display:none}
   .mobile-nav{display:none !important}
-  .hero-inner{grid-template-columns:1fr 1fr}
-  .hero-copy{text-align:left; align-items: flex-start;}
-  .eyebrow{margin:0 0 24px 0;}
+  
+  /* Hero flow */
+  .hero-inner{grid-template-columns:2fr 1fr; align-items: stretch; gap: 64px; text-align: left; max-width: 1040px; margin: 0 auto;}
+  .hero-copy{order: 1; align-items: flex-start; justify-content: center;}
+  .hero-portrait { order: 2; margin: 0; width: 100%; height: 100%; min-height: 320px; border-radius: 24px; }
   .lead{margin:0 0 32px 0;}
   .hero-actions{justify-content:flex-start;}
   
-  .service-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px;
-  }
+  /* Services flow */
+  .service-list { gap: 48px; }
+  .service-item { flex-direction: row; align-items: stretch; }
+  .service-img-wrap { width: 40%; aspect-ratio: 4 / 3; }
+  .service-body { width: 60%; padding: 48px; }
+  .service-actions { gap: 16px; }
 
-  .service-body {
-    padding: 28px;
-  }
-
-  .about-grid{grid-template-columns:1.4fr 1fr}
+  .about-grid{grid-template-columns:1.5fr 1fr; gap: 56px;}
   .about-stats{align-content:start}
-  .footer-grid{grid-template-columns:1fr 1.5fr}
+  .card {padding: 64px;}
+  
+  /* Workflow Grid breathes more */
+  .process{max-width:960px}
+  .process-steps{grid-template-columns:1fr 1fr;column-gap:64px;row-gap:16px}
+  .process-step{border-top:none;padding:24px 0}
+  .process-step:nth-child(1),.process-step:nth-child(2){padding-top:0}
+  .process-step:nth-child(3),.process-step:nth-child(4){border-top:1px solid var(--mint-line); padding-top: 24px;}
+  
+.blog {
+  display: grid;
+  gap: 40px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+@media(min-width:768px){
+  .blog {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+  .footer-grid{grid-template-columns:1fr 1.6fr}
+}
+@media(max-width:979px){
+  .service-actions { flex-direction: column; } /* Stack buttons on mobile */
+  .service-actions .btn { width: 100%; }
 }
 @media(max-width:767px){
+  .about-simple { max-width: 680px; }
+  .security-banner { margin-top: 0; }
   .footer-cols{grid-template-columns:1fr 1fr;}
-  .service-list { grid-template-columns: 1fr; gap: 18px; }
 }
 @media(max-width:480px){
+  h1 { font-size: 2.2rem; }
+  .lead {font-size: 1.05rem;}
   .footer-cols{grid-template-columns:1fr;}
 }
 </style>
 </head>
 <body>
 
+<!-- PRESERVED Top Disclaimer Bar -->
+<div class="disclaimer-bar">
+  <i class="fa-solid fa-building-columns"></i>
+  <strong>Disclaimer:</strong> Docu-Hub Operations Services is a private administrative proxy service and is not affiliated with any Jamaican government agency.
+</div>
+
 <header>
   <div class="container nav">
     <a class="brand" href="index.html">
       <div class="logo">DH</div><span>Docu-Hub Operations</span>
     </a>
-    
-    <nav class="desktop-nav">
-      <div class="dropdown">
-        <button class="dropbtn">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i></button>
-        <div class="dropdown-content">
-          <!-- Reordered Navigation Dropdown -->
-          <a href="motor-vehicle-renewal.html">TAJ Motor Vehicle Renewal</a>
-          <a href="drivers-licence-renewal.html">TAJ Driver's Licence Renewal</a>
-          <a href="jamaican-passport-renewal.html">PICA Passport Renewals</a>
-          <a href="rgd-vital-records.html">RGD Vital Records</a>
-        </div>
-      </div>
-      <a href="insights.html">Insights</a>
+
+    <!-- Row 1, desktop -->
+    <div class="nav-search-inline" id="searchBarDesktopWrap">
+      <label class="search-label" for="siteSearchInputDesktop">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <strong>Search</strong>
+        <input type="text" id="siteSearchInputDesktop" placeholder="Try “passport”, “birth certificate”…" autocomplete="off">
+      </label>
+      <div class="search-results" id="searchResultsDesktop"></div>
+    </div>
+
+    <nav class="nav-primary">
       <a href="about.html">About Us</a>
-      <a href="faq.html">FAQ</a>
-      <a href="booking.html" class="btn btn-primary" style="min-height: 40px; padding: 0 16px; font-size: 0.85rem;">Book Consultation</a>
+      <a href="booking.html" class="btn btn-primary" style="min-height: 44px; padding: 0 18px; font-size: 0.88rem; border-radius: 12px;">Book Consultation</a>
     </nav>
     
     <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
       <i class="fa-solid fa-bars" style="font-size: 1.4rem;"></i>
     </button>
   </div>
+
+  <!-- Row 2, desktop -->
+  <nav class="subnav">
+    <a href="motor-vehicle-renewal.html">Motor Vehicle</a>
+    <a href="drivers-licence-renewal.html">Driver's Licence</a>
+    <a href="jamaican-passport-renewal.html">Passports</a>
+    <a href="rgd-vital-records.html">Vital Records</a>
+    <a href="insights.html">Insights</a>
+    <a href="faq.html">FAQ</a>
+  </nav>
+
+  <!-- Mobile-only search row -->
+  <div class="search-row">
+    <div class="container">
+      <div class="search-bar" id="searchBarMobileWrap">
+        <label class="search-label" for="siteSearchInputMobile">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <strong>Search</strong>
+          <input type="text" id="siteSearchInputMobile" placeholder="Try “passport”, “birth certificate”…" autocomplete="off">
+        </label>
+        <div class="search-results" id="searchResultsMobile"></div>
+      </div>
+    </div>
+  </div>
   
   <nav class="mobile-nav" id="mobileNav" hidden>
     <a href="#services" style="font-weight: 700; color: var(--ink);">Services</a>
-    <!-- Reordered Mobile Navigation -->
-    <a href="motor-vehicle-renewal.html" class="mobile-sub">↳ TAJ Motor Vehicle Renewal</a>
-    <a href="drivers-licence-renewal.html" class="mobile-sub">↳ TAJ Driver's Licence Renewal</a>
-    <a href="jamaican-passport-renewal.html" class="mobile-sub">↳ PICA Passport Renewals</a>
-    <a href="rgd-vital-records.html" class="mobile-sub">↳ RGD Vital Records</a>
+    <a href="motor-vehicle-renewal.html" class="mobile-sub">↳ Motor Vehicle Renewal</a>
+    <a href="drivers-licence-renewal.html" class="mobile-sub">↳ Driver's Licence Renewal</a>
+    <a href="jamaican-passport-renewal.html" class="mobile-sub">↳ Passport Services</a>
+    <a href="rgd-vital-records.html" class="mobile-sub">↳ Vital Record Services</a>
     <a href="insights.html">Insights</a>
     <a href="about.html">About Us</a>
     <a href="faq.html">FAQ</a>
@@ -379,157 +519,151 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:44px 0 24px}
 
 <main id="top">
 
-<!-- HERO SECTION -->
+<!-- HERO SECTION - DISCRET PROFILE & VISUAL BALANCE -->
 <section class="hero">
   <div class="container">
     <div class="hero-inner">
       
-      <!-- Left Side (Mobile First): Founder Image -->
-      <div class="hero-media">
-      <img 
+      <div class="hero-portrait">
+        <img 
           src="assets/ecard.webp" 
           alt="Laura Clarke, Founder of Docu-Hub Operations" 
-          width="1200" 
-          height="825" 
+          width="180" 
+          height="180" 
           fetchpriority="high" 
           loading="eager"
-          style="aspect-ratio: 1/1; object-position: 80% 15%;"
         >
-        <div class="hero-tag">Your Administrative Bypass</div>
       </div>
 
-      <!-- Right Side (Mobile Second): Founder Intro & Calls to Action -->
       <div class="hero-copy">
-        <span class="eyebrow">Docu-Hub Operations — Managed personally by Laura</span>
-        <h1><span style="color: #16a34a;">Online</span> Doesn't Mean Easy.</h1>
-        <p class="lead">
-          Government portals were supposed to make life simpler, but they just shifted the administrative heavy lifting onto you. I’m <strong>Laura</strong>. I navigate the digital mazes, fix the formatting errors, and bypass the automated phone loops so you don't have to lose your sanity or your vacation days.
-        </p>
+        <span class="eyebrow">Founded &amp; personally managed by Laura Clarke</span>
+        <h1><span style="color: var(--green-accent);">Online</span> Doesn't Always Mean Easy.</h1>
         
-        <div style="background: var(--paper-deep); padding: 12px 16px; border-left: 3px solid var(--brass); border-radius: 8px; margin-bottom: 24px; font-size: 0.9rem; color: var(--ink-soft);">
-          <strong>Who we are for:</strong> If you have a free day to stand in line at the Tax Office, we encourage you to go in person! But if you value your time and want a premium concierge to handle the bureaucracy, you are in the right place.
-        </div>
-
-        <!-- Connecting the buttons to your existing sections -->
+        <p class="lead">
+          Get professional help navigating Jamaican document applications, renewals, and government processes — without figuring everything out alone.
+        </p>
+          
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#services">View Our Services</a>
-          <a class="btn btn-secondary" href="about.html">Read The Full Story</a>
+          <a class="btn btn-primary" href="#services">Explore Services</a>
+          <a class="btn btn-secondary" href="about.html">About Docu-Hub</a>
         </div>
       </div>
-      
     </div>
   </div>
 </section>
-<!-- SECURITY & ANTI-FRAUD BANNER -->
+
+<!-- SECURITY & ANTI-FRAUD BANNER - PRESERVED & REALIGNED -->
 <div class="container">
-  <div class="security-banner">
+  <div class="security-banner" aria-label="Client trust and onboarding">
     <i class="fa-solid fa-shield-halved"></i>
     <div>
-      <strong>Official Onboarding Policy:</strong>
-      <p>Docu-Hub Operations Services does not store sensitive personal records or collect payments on this website. All client onboarding occurs directly during your scheduled 1-on-1 consultation or through our verified WhatsApp channel (<strong>+1 876-561-2614</strong>).</p>
+      <strong>Private Assistance &amp; Secure Onboarding</strong>
+      <p>Your onboarding is handled directly through a scheduled consultation or our verified WhatsApp channel. We do not collect payments or sensitive personal records through this website.</p>
     </div>
   </div>
 </div>
 
-<!-- CORE SERVICES GRID (2x2 Layout) -->
+<!-- CORE SERVICES GRID (2x2 Layout) - Revised Copy & Flow -->
 <section id="services" class="section-bg">
   <div class="container">
-    <div class="section-head" style="text-align: center; margin-bottom: 40px;">
-      <span class="kicker">Step 1: Choose Your Service</span>
-      <h2>Select your required service</h2>
-      <p>Click on a service below to view checklists, fees, and processing guidelines.</p>
+    <div class="section-head" style="text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;">
+      <span class="kicker">Our Services</span>
+      <h2>The help you need, without the guesswork.</h2>
+      <p>Clear guidance, careful preparation, and administrative assistance for common Jamaican document and renewal processes.</p>
     </div>
     
     <div class="service-list">
 
-      <!-- 1. TAJ Motor Vehicle Renewal -->
-      <a href="motor-vehicle-renewal.html" class="service-item">
+      <!-- 1. Motor Vehicle Licence Renewal -->
+      <div class="service-item">
         <div class="service-img-wrap">
           <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=600&q=80" alt="Car Steering Wheel and Dashboard">
         </div>
         <div class="service-body">
-          <strong style="font-size: 1.25rem; display:block; color:var(--ink);">TAJ Motor Vehicle Renewal</strong>
-          <p style="margin:6px 0 12px; color:var(--slate)">Digital road tax renewals, fitness audits, and vehicle registration.</p>
-          <span class="badge badge-gold">View Guide &rarr;</span>
+          <h3>Motor Vehicle Licence Renewal</h3>
+          <p>Get help preparing your renewal, checking fitness requirements, completing payment steps, and accessing your official eMVRC.</p>
+          <div class="service-actions">
+            <a href="motor-vehicle-renewal.html" class="btn btn-primary">View Service <span aria-hidden="true">&rarr;</span></a>
+          </div>
         </div>
-      </a>
+      </div>
 
-      <!-- 2. TAJ Driver's Licence Renewal -->
-      <a href="drivers-licence-renewal.html" class="service-item">
+      <!-- 2. Driver's Licence Renewal -->
+      <div class="service-item">
         <div class="service-img-wrap">
-          <img src="assets/dl-renewal.png" alt="Driver holding a new licence while standing beside their motor car concept">
+          <img src="assets/dl-renewal.png" alt="Driver holding a new licence beside their car concept">
         </div>
         <div class="service-body">
-          <strong style="font-size: 1.25rem; display:block; color:var(--ink);">TAJ Driver’s Licence Renewal</strong>
-          <p style="margin:6px 0 12px; color:var(--slate)">Same-day express renewal prep pack, online portal payment, and Form F7.</p>
-          <span class="badge badge-gold">View Same-Day Process &rarr;</span>
+          <h3>Driver’s Licence Renewal</h3>
+          <p>Get help preparing your renewal package and payment steps, with clear guidance on what to bring for your in-person licence pickup.</p>
+          <div class="service-actions">
+            <a href="drivers-licence-renewal.html" class="btn btn-primary">View Service <span aria-hidden="true">&rarr;</span></a>
+          </div>
         </div>
-      </a>
+      </div>
       
-      <!-- 3. PICA Passports -->
-      <a href="jamaican-passport-renewal.html" class="service-item">
+      <!-- 3. Passport Services -->
+      <div class="service-item">
         <div class="service-img-wrap"><img src="assets/pica.webp" alt="Passport Document"></div>
         <div class="service-body">
-          <strong style="font-size: 1.25rem; display:block; color:var(--ink);">PICA Passports</strong>
-          <p style="margin:6px 0 12px; color:var(--slate)">Adult renewals, first-time applications, name changes, and lost passports.</p>
-          <span class="badge badge-gold">View Checklists &rarr;</span>
+          <h3>Passport Services (All Types)</h3>
+          <p>Guidance for adult renewals, first-time adult applications, name changes, and the requirements for lost or damaged passports.</p>
+          <div class="service-actions">
+            <a href="jamaican-passport-renewal.html" class="btn btn-primary">View Service <span aria-hidden="true">&rarr;</span></a>
+          </div>
         </div>
-      </a>
+      </div>
 
-      <!-- 4. RGD Vital Records -->
-      <a href="rgd-vital-records.html" class="service-item">
+      <!-- 4. Vital Record Services -->
+      <div class="service-item">
         <div class="service-img-wrap"><img src="assets/rgd.webp" alt="Birth Certificate Paperwork"></div>
         <div class="service-body">
-          <strong style="font-size: 1.25rem; display:block; color:var(--ink);">RGD Vital Records</strong>
-          <p style="margin:6px 0 12px; color:var(--slate)">Archival searches and legal certificates for birth, marriage, and death.</p>
-          <span class="badge badge-gold">View Checklists &rarr;</span>
+          <h3>Vital Record Services</h3>
+          <p>Assistance with ordering official birth, death, and marriage certificates through the Registrar General's Department, locally or for clients abroad.</p>
+          <div class="service-actions">
+            <a href="rgd-vital-records.html" class="btn btn-primary">View Service <span aria-hidden="true">&rarr;</span></a>
+          </div>
         </div>
-      </a>
+      </div>
 
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section id="how">
+<!-- ABOUT / HOW IT WORKS - SIMPLIFIED -->
+
+<section id="about" class="section-white">
   <div class="container">
-    <div class="process">
-      <h2>The Consultation Workflow</h2>
-      <div class="process-step">
-        <div class="step-badge">1</div>
-        <div>
-          <strong>Check Eligibility</strong>
-          <p>Review the specific document checklists on our service pages to ensure you have the required paperwork.</p>
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="step-badge">2</div>
-        <div>
-          <strong>Book a Consultation</strong>
-          <p>Schedule a 1-on-1 appointment to discuss your case and receive a custom flat-fee proxy quote.</p>
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="step-badge">3</div>
-        <div>
-          <strong>Secure Intake &amp; Audit</strong>
-          <p>We review your digital scans or physical forms for completeness inside our encrypted private channels before submission.</p>
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="step-badge">4</div>
-        <div>
-          <strong>Proxy Execution</strong>
-          <p>We submit the application via the online portal or hand-deliver your physical paperwork directly to the agency desk.</p>
-        </div>
-      </div>
-    </div>
+    <div class="about-simple">
+      <span class="kicker">How We Help</span>
+
+
+  <h2>Jamaican Paperwork, Made Simpler.</h2>
+
+  <p>
+    Docu-Hub Operations Services helps individuals in Jamaica and the diaspora
+    navigate document applications, renewals, forms, and government processes
+    with greater clarity and confidence.
+  </p>
+
+  <p>
+    We review your requirements, help you prepare what is needed, and handle
+    the submission process where a proxy service is available — so you spend
+    less time figuring out the paperwork and more time getting it done.
+  </p>
+
+  <a class="btn btn-secondary" href="about.html" style="margin-top: 8px;">
+    About Us
+  </a>
+</div>
+
+
   </div>
 </section>
 
 
-<!-- INSIGHTS & BLOG -->
-<section id="insights">
+<!-- INSIGHTS & BLOG - PRESERVED & flow corrected -->
+<section id="insights" class="section-cream">
   <div class="container">
     <div class="section-head" style="text-align:center;">
       <span class="kicker">Docu-Hub Insights</span>
@@ -537,51 +671,54 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:44px 0 24px}
       <p>Practical, plain-language explainers to help you navigate Jamaican administrative portals.</p>
     </div>
     
-    <!-- 2-Column Featured Grid -->
-    <div class="blog" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); max-width: 900px; margin: 0 auto;">
+    <div class="blog">
       
-      <a class="card post" href="https://www.youtube.com/watch?v=GQEi4l9KuVM" target="_blank" rel="noopener">
-        <img src="https://img.youtube.com/vi/GQEi4l9KuVM/maxresdefault.jpg" alt="Motor Vehicle Renewal Tutorial" loading="lazy" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/GQEi4l9KuVM/hqdefault.jpg';">
+      <!-- Video Tutorial -->
+      <a class="post" href="https://www.youtube.com/watch?v=GQEi4l9KuVM" target="_blank" rel="noopener">
+        <div class="post-img-wrap">
+          <img src="https://img.youtube.com/vi/GQEi4l9KuVM/maxresdefault.jpg" alt="Motor Vehicle Renewal Tutorial" loading="lazy" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/GQEi4l9KuVM/hqdefault.jpg';">
+        </div>
         <div class="post-body">
-          <span class="tag" style="color: #ea3323;"><i class="fa-brands fa-youtube"></i> Video Tutorial (TAJ)</span>
-          <strong>Skip the Tax Office: The 100% Digital Way to Pay Your Jamaican Road Tax</strong>
-          <p>Watch our step-by-step guide to clearing tickets and printing your eMVRC from the couch.</p>
-          <span class="read-more" style="color: #ea3323;">Watch on YouTube &rarr;</span>
+          <span class="tag" style="color: #ea3323;"><i class="fa-brands fa-youtube"></i> Video Tutorial</span>
+          <strong>How to Renew Your Jamaican Motor Vehicle Licence Online</strong>
+          <p>Step-by-step guidance for paying road tax and accessing your eMVRC.</p>
+          <div class="read-more" style="color: #ea3323;">Watch on YouTube &rarr;</div>
         </div>
       </a>
       
-      <a class="card post" href="heat-damage-article.html">
-        <img src="assets/heat-damaged.png" alt="Passport with embedded microchip">
+      <!-- Heat Damage Advisory -->
+      <a class="post" href="heat-damage-article.html">
+        <div class="post-img-wrap">
+          <img src="assets/heat-damaged.png" alt="Passport with embedded microchip">
+        </div>
         <div class="post-body">
           <span class="tag">Passports (PICA)</span>
           <strong>The Plastic Bag Trap: Heat damage and microchips</strong>
           <p>Why wrapping your e-passport in plastic could destroy it and cost you a penalty fee.</p>
-          <span class="read-more">Read the advisory &rarr;</span>
+          <div class="read-more">Read the advisory &rarr;</div>
         </div>
       </a>
       
+      
     </div>
     
-    <div class="insights-cta" style="margin-top: 40px;">
+    <div class="insights-cta">
       <a class="btn btn-secondary" href="insights.html">View All Guides</a>
       <a class="btn btn-secondary" href="https://www.youtube.com/@LauraClarke_dhub" target="_blank" rel="noopener" style="color: #ea3323; border-color: #ea3323;">
-        <i class="fa-brands fa-youtube" style="margin-right: 8px; font-size: 1.2rem;"></i> View YouTube Channel
+        <i class="fa-brands fa-youtube" style="margin-right: 8px; font-size: 1.2rem;"></i> YouTube Channel
       </a>
     </div>
   </div>
 </section>
 
-<!-- FINAL CTA -->
-<section id="contact">
+<!-- REDESIGNED FINAL CTA - Lighter, integrated, clear choice -->
+<section id="contact" class="section-deep">
   <div class="container">
-    <div class="final">
-      <span class="eyebrow" style="margin:auto;background:rgba(176,138,78,.18);color:#f3d9a4;border-color:rgba(176,138,78,.35)">Connect Instantly</span>
-      <h2>Ready to start your application?</h2>
-      <p>Skip the confusing forms and the risk of rejection. Book a consultation today to review your exact requirements.</p>
-      <div class="final-actions">
-        <a class="btn btn-secondary" href="booking.html" style="min-height: 54px; padding: 0 32px; font-size: 1.05rem; border: none;">
-          <i class="fa-regular fa-calendar-days" style="margin-right: 10px; font-size: 1.3rem;"></i> Book a Consultation
-        </a>
+    <div class="contact-block">
+      <h2>Ready to make the process easier?</h2>
+      <p>Tell us what you need help with and we’ll guide you through the next step.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="booking.html">Book a Consultation</a>
       </div>
     </div>
   </div>
@@ -589,24 +726,23 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:44px 0 24px}
 
 </main>
 
-<!-- UNIFIED 3-COLUMN FOOTER -->
+<!-- UNIFIED FOOTER: PRESERVED Structure -->
 <footer>
   <div class="container">
     <div class="footer-grid">
       <div>
         <h3 style="margin:0 0 10px;color:#fff;font-family:'Fraunces',serif;font-weight:600">Docu-Hub Operations</h3>
-        <p style="margin:0;color:#94a3b8">Independent administrative proxy and secure online application assistance for the Jamaican diaspora.</p>
+        <p style="margin:0;color:#94a3b8">Independent private administrative proxy and application assistance for clients in Jamaica and abroad.</p>
       </div>
       
       <div class="footer-cols">
         
         <div class="footer-col">
           <h4>Our Services</h4>
-          <!-- Reordered Footer Links -->
-          <a href="motor-vehicle-renewal.html">TAJ Motor Vehicle Renewal</a>
-          <a href="drivers-licence-renewal.html">TAJ Driver's Licence Renewal</a>
-          <a href="jamaican-passport-renewal.html">PICA Passport Renewals</a>
-          <a href="rgd-vital-records.html">RGD Vital Records</a>
+          <a href="motor-vehicle-renewal.html">Motor Vehicle Renewal</a>
+          <a href="drivers-licence-renewal.html">Driver's Licence Renewal</a>
+          <a href="jamaican-passport-renewal.html">Passport Services</a>
+          <a href="rgd-vital-records.html">Vital Record Services</a>
         </div>
         
         <div class="footer-col">
@@ -620,7 +756,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:44px 0 24px}
           <h4>Legal &amp; Connect</h4>
           <a href="privacy.html">Privacy Policy</a>
           <a href="terms.html">Terms of Service</a>
-          <a href="booking.html"><i class="fa-regular fa-calendar-days"></i> Book Consultation</a>
+          <a href="booking.html"><i class="fa-calendar-days"></i> Book Consultation</a>
           <a href="https://www.youtube.com/@LauraClarke_dhub" target="_blank" rel="noopener" class="social-youtube"><i class="fa-brands fa-youtube"></i> Watch on YouTube</a>
           <a href="https://www.linkedin.com/in/docuhubservices" target="_blank" rel="noopener" class="social-linkedin"><i class="fa-brands fa-linkedin"></i> Connect on LinkedIn</a>
         </div>
@@ -637,6 +773,7 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:44px 0 24px}
 </footer>
 
 <script>
+  // Mobile Menu JS - PRESERVED
   var btn = document.getElementById('menuBtn');
   var nav = document.getElementById('mobileNav');
   btn.addEventListener('click', function(){
@@ -649,6 +786,70 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:64px;padding:44px 0 24px}
       btn.setAttribute('aria-expanded','false'); 
     }
   });
+
+  // ===== Site Search =====
+  // A small hard-coded index works well at this site's size (under a dozen
+  // pages) and needs no backend. If more pages get added later, just add
+  // another entry below — every page that includes this same header/script
+  // will pick it up automatically.
+  var SITE_INDEX = [
+    { title: "Motor Vehicle Licence Renewal", desc: "Fitness audit, payment & eMVRC", url: "motor-vehicle-renewal.html", icon: "fa-car", keywords: "car tax office fitness emvrc registration road licence" },
+    { title: "Driver's Licence Renewal", desc: "Full package, 15-minute pickup", url: "drivers-licence-renewal.html", icon: "fa-id-card", keywords: "driver license licence renew pickup" },
+    { title: "Passport Services", desc: "Renewals, name changes, lost/damaged", url: "jamaican-passport-renewal.html", icon: "fa-passport", keywords: "pica passport renewal minor adult name change lost damaged" },
+    { title: "Vital Record Services", desc: "Birth, marriage & death certificates", url: "rgd-vital-records.html", icon: "fa-stamp", keywords: "rgd birth certificate marriage death vital record diaspora" },
+    { title: "About Docu-Hub", desc: "Our story & mission", url: "about.html", icon: "fa-user", keywords: "laura clarke about founder mission" },
+    { title: "Guides & Insights", desc: "Plain-language tutorials", url: "insights.html", icon: "fa-book-open", keywords: "insights blog guide tutorial video heat damage" },
+    { title: "FAQ", desc: "Common questions answered", url: "faq.html", icon: "fa-circle-question", keywords: "faq questions help" },
+    { title: "Book a Consultation", desc: "Schedule your 1-on-1 appointment", url: "booking.html", icon: "fa-calendar-days", keywords: "book appointment consultation schedule quote" },
+    { title: "Contact", desc: "Reach us on WhatsApp", url: "index.html#contact", icon: "fa-comment-dots", keywords: "contact whatsapp reach call message" }
+  ];
+
+  function renderSearchResults(query, container){
+    var q = query.trim().toLowerCase();
+    if(q.length === 0){
+      container.innerHTML = '<div class="search-hint">Try “passport”, “birth certificate”, or “road tax”…</div>';
+      return;
+    }
+    var matches = SITE_INDEX.filter(function(item){
+      return (item.title + ' ' + item.desc + ' ' + item.keywords).toLowerCase().indexOf(q) !== -1;
+    });
+    if(matches.length === 0){
+      container.innerHTML = '<div class="search-empty">No matches. Try a different word, or <a href="faq.html">check the FAQ</a>.</div>';
+      return;
+    }
+    container.innerHTML = matches.map(function(item){
+      return '<a class="search-result" href="' + item.url + '">' +
+        '<i class="fa-solid ' + item.icon + '"></i>' +
+        '<span><strong>' + item.title + '</strong><span>' + item.desc + '</span></span>' +
+        '</a>';
+    }).join('');
+  }
+
+  function wireSearchInput(inputId, resultsId, wrapId){
+    var input = document.getElementById(inputId);
+    var results = document.getElementById(resultsId);
+    var wrap = document.getElementById(wrapId);
+    if(!input || !results) return;
+    renderSearchResults('', results);
+
+    function open(){ results.classList.add('open'); }
+    function close(){ results.classList.remove('open'); }
+
+    input.addEventListener('focus', open);
+    input.addEventListener('input', function(){ renderSearchResults(input.value, results); open(); });
+    input.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){
+        var first = results.querySelector('.search-result');
+        if(first){ window.location.href = first.getAttribute('href'); }
+      }
+      if(e.key === 'Escape'){ close(); input.blur(); }
+    });
+    document.addEventListener('click', function(e){
+      if(wrap && !wrap.contains(e.target)) close();
+    });
+  }
+  wireSearchInput('siteSearchInputDesktop', 'searchResultsDesktop', 'searchBarDesktopWrap');
+  wireSearchInput('siteSearchInputMobile', 'searchResultsMobile', 'searchBarMobileWrap');
 </script>
 
 </body>
