@@ -78,18 +78,17 @@
   --cream-line:#efe2c6;
   --deep-band:#f1f5f9; 
 
-  /* Hero v2 — grounded in the Jamaican passport & official document world */
-  --jm-green:#173d33;      /* deep passport-cover green */
+  /* Hero colors */
+  --jm-green:#173d33;
   --jm-green-soft:#255142;
-  --jm-gold:#b9902f;       /* foil-stamp gold */
+  --jm-gold:#b9902f;
   --jm-gold-tint:#f1e2bd;
-  --jm-coral:#c8536a;      /* wax-seal coral, used sparingly */
-  --jm-paper:#f7f0e2;      /* warm ledger paper, distinct from --cream */
+  --jm-coral:#c8536a;
+  --jm-paper:#f7f0e2;
   --jm-paper-line:#e9dcc0;
   
-  /* Generous Spacing Tokens */
-  --section-spacing: 112px;
-  --section-spacing-mobile: 80px;
+  --section-spacing: 120px;
+  --section-spacing-mobile: 80px; 
 }
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
@@ -102,10 +101,8 @@ h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif}
 a{-webkit-tap-highlight-color:transparent}
 img{max-width:100%;height:auto;}
 
-/* Accessibility Focus States */
 :focus-visible{outline: none; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.35); border-radius: 8px;}
 .logo:focus-visible, .btn:focus-visible { border-radius: 14px;}
-.service-item:focus-visible { border-radius: 20px;}
 
 /* Header & Nav */
 header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
@@ -124,40 +121,31 @@ header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.95);backdro
 .mobile-nav .mobile-sub{padding-left:28px; font-size:0.9rem; color:var(--slate);}
 .mobile-nav[hidden]{display:none}
 
-/* Standard Section Backgrounds & Spacing */
 section{padding: var(--section-spacing-mobile) 0}
 .section-bg{background:var(--paper-deep)}
 .section-white{background:var(--white)}
-.section-cream{background:var(--cream); border-top:1px solid var(--cream-line); border-bottom:1px solid var(--cream-line);}
-.section-deep{background:var(--deep-band);}
 
-/* HERO SECTION v2 — a person greeting you, not a portal */
+/* HERO SECTION */
 .hero{
-  padding: 72px 0 0;
-  background:
-    radial-gradient(1100px 480px at 82% -10%, var(--jm-gold-tint) 0%, transparent 60%),
-    var(--jm-paper);
+  padding: 56px 0 0;
+  background: radial-gradient(1100px 480px at 82% -10%, var(--jm-gold-tint) 0%, transparent 60%), var(--jm-paper);
   border-bottom: 1px solid var(--jm-paper-line);
   overflow: hidden;
 }
 .hero-grid{
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px;
+  gap: 24px;
   align-items: center;
   padding-bottom: 56px;
 }
-@media(min-width:860px){
-  .hero-grid{ grid-template-columns: minmax(260px, 360px) 1fr; gap: 64px; }
-}
 
-/* Photo — clean and straight, credentials do the trust-building, not decoration */
 .hero-photo-col{ position:relative; display:flex; flex-direction:column; align-items:center; }
 .hero-photo-frame{
   position: relative;
-  width: min(280px, 78%);
+  width: min(200px, 55%);
   background: #fff;
-  padding: 10px;
+  padding: 8px;
   border-radius: 16px;
   border: 1px solid var(--jm-paper-line);
   box-shadow: 0 16px 32px -14px rgba(23,61,51,0.22);
@@ -165,185 +153,123 @@ section{padding: var(--section-spacing-mobile) 0}
 .hero-photo-frame img{
   display:block; width:100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 10px;
 }
-.hero-credential{
-  margin-top:16px; text-align:center;
-}
-.hero-credential .name{
-  font-family:"Inter",sans-serif; font-weight:700; font-size:0.98rem; color: var(--jm-green);
-}
-.hero-credential .title{
-  font-family:"Inter",sans-serif; font-weight:500; font-size:0.84rem; color: var(--slate);
-  margin-top:2px;
-}
 
-.hero-copy{ text-align:left; }
+.hero-copy{ text-align:center; }
 .hero-v2-eyebrow{
   display:inline-flex; align-items:center; gap:8px;
-  font-family:"Inter",sans-serif; font-size:0.8rem; font-weight:700;
+  font-family:"Inter",sans-serif; font-size:0.75rem; font-weight:700;
   letter-spacing:0.09em; text-transform:uppercase; color: var(--jm-green-soft);
-  background:#fff; border:1px solid var(--jm-paper-line); padding:7px 14px 7px 10px;
-  border-radius:99px; margin-bottom:18px;
+  background:#fff; border:1px solid var(--jm-paper-line); padding:6px 14px 6px 10px;
+  border-radius:99px; margin:0 auto 16px;
 }
 .hero-v2-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--jm-coral);flex:none;}
 
 .hero h1{
   font-family:"Petrona", Georgia, serif;
-  margin:0 0 18px; font-weight:600; font-style:normal;
-  font-size:clamp(2.3rem,5.4vw,3.3rem); line-height:1.14; letter-spacing:-0.005em;
+  margin:0 0 16px; font-weight:600; font-style:normal;
+  font-size:clamp(2.3rem,6vw,3.3rem); line-height:1.14; letter-spacing:-0.005em;
   color: var(--jm-green);
 }
 .hero h1 em{ font-style:italic; color: var(--jm-coral); }
 
 .hero .lead{
-  margin:0 0 30px; max-width:520px; color:var(--slate);
-  font-size:1.14rem; line-height:1.72;
+  margin:0 auto 28px; max-width:520px; color:var(--slate);
+  font-size:1.1rem; line-height:1.65;
 }
 
-.hero-cta-row{ display:flex; align-items:center; gap:24px; flex-wrap:wrap; }
-.hero-v2-cta{ background: var(--jm-green); box-shadow: 0 6px 18px rgba(23,61,51,0.25); }
+.hero-cta-row{ display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap; }
+.hero-v2-cta{ background: var(--jm-green); box-shadow: 0 6px 18px rgba(23,61,51,0.25); min-width: 240px; }
 .hero-v2-cta:hover{ background: var(--jm-green-soft); }
-.hero-trust-line{
-  display:flex; align-items:center; gap:8px;
-  font-family:"Inter",sans-serif; font-weight:600; font-size:0.9rem;
-  color: var(--jm-green-soft);
-}
-.hero-trust-line i{ color: var(--jm-gold); }
 
-/* Quick links styled as folder tabs — the real filing-system this business replaces */
-.hero-tabs-wrap{ background: var(--jm-green); }
-.hero-tabs{
-  display:flex; flex-wrap:wrap; gap: 6px 6px;
-  padding-top: 14px;
-}
-.hero-tab{
-  display:inline-flex; align-items:center; gap:8px;
-  padding: 12px 20px 13px;
-  background:#fff; color: var(--jm-green);
-  text-decoration:none; font-weight:700; font-size:0.92rem;
-  border-radius: 10px 10px 0 0;
-  font-family:"Inter",sans-serif;
-  transition: all .2s ease;
-}
-.hero-tab i{ color: var(--jm-gold); font-size:1rem; }
-.hero-tab:hover{ color: var(--jm-coral); }
-.hero-tab:hover i{ color: var(--jm-coral); }
+/* HIDDEN ON MOBILE: Quick links styled as folder tabs */
+.hero-tabs-wrap{ display: none; }
 
-
-/* Buttons */
+/* Buttons & Links */
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 28px;border-radius:14px;text-decoration:none;font-weight:700;font-size:.98rem;transition: all .2s ease-in-out; cursor: pointer; border: none; font-family: Inter, sans-serif;}
 .btn-primary{background:var(--ink);color:#fff; box-shadow: 0 4px 14px rgba(15,23,42,0.15);}
 .btn-primary:hover{background:var(--ink-soft); transform:translateY(-2px); box-shadow: 0 6px 20px rgba(15,23,42,0.2);}
 .btn-secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
-.btn-secondary:hover{border-color:#cbd5e1; transform:translateY(-2px); background: #f8fafc;}
 
-/* Services Grid */
-.service-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 56px;
-  max-width: 960px;
-  margin: 0 auto;
+/* Sleek Text Link for Service Cards */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--blue-deep);
+  text-decoration: none;
+  transition: transform 0.2s ease;
 }
-.service-item {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: #fff;
-  box-shadow: 0 4px 20px rgba(15,23,42,.04);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-}
-.service-img-wrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background: var(--paper-deep);
-  flex: none;
-}
-.service-img-wrap img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.service-body {
-  padding: 32px 28px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-.service-body h3 {
-  margin: 0; 
-  font-size: 1.3rem; 
-  color: var(--ink); 
-  font-weight: 700; 
-  letter-spacing: -0.01em;
-}
-.service-body p {
-  margin: 12px 0 24px;
-  color: var(--slate); 
-  font-size: 1rem; 
-  flex-grow: 1;
-  line-height: 1.65;
+.link-arrow:hover { transform: translateX(4px); }
+
+/* Services Grid - Ultra Clean Mobile Layout */
+.service-list { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 960px; margin: 0 auto; }
+.service-item { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 16px; background: #fff; box-shadow: 0 4px 16px rgba(15,23,42,.03); overflow: hidden; }
+
+/* Hidden on Mobile */
+.service-img-wrap { display: none; }
+
+.service-body { padding: 24px; display: flex; flex-direction: column; flex-grow: 1; }
+.service-body h3 { margin: 0; font-size: 1.25rem; color: var(--ink); font-weight: 700; }
+.service-body p { margin: 8px 0 20px; color: var(--slate); font-size: 0.95rem; flex-grow: 1; line-height: 1.6; }
+
+/* Desktop Adjustments for Hero & Services */
+@media(min-width:860px){
+  .hero-grid{ grid-template-columns: minmax(260px, 320px) 1fr; gap: 64px; padding-bottom: 56px; }
+  .hero-photo-frame{ width: 100%; padding: 10px; }
+  .hero-copy { text-align: left; }
+  .hero-v2-eyebrow { margin: 0 0 16px 0; font-size: 0.8rem; }
+  .hero .lead { margin: 0 0 32px 0; }
+  .hero-cta-row { justify-content: flex-start; }
+  
+  /* Show Tabs on Desktop */
+  .hero-tabs-wrap{ display: block; background: var(--jm-green); }
+  .hero-tabs { display:flex; flex-wrap:wrap; justify-content: flex-start; gap: 6px; padding-top: 14px; }
+  .hero-tab { display:inline-flex; align-items:center; gap:8px; padding: 12px 20px; background:#fff; color: var(--jm-green); text-decoration:none; font-weight:700; font-size:0.92rem; border-radius: 10px 10px 0 0; transition: all .2s ease; }
+  .hero-tab i{ color: var(--jm-gold); font-size:0.9rem; }
+  .hero-tab:hover{ color: var(--jm-coral); }
+  .hero-tab:hover i{ color: var(--jm-coral); }
 }
 
-/* Trust & Transparency Block */
-.about-simple{
-  max-width: 680px;
-  margin: 0 auto;
-  text-align: center;
-}
-.about-simple img {
-  border-radius: 50%; 
-  border: 4px solid #fff; 
-  box-shadow: 0 6px 16px rgba(15,23,42,0.08); 
-  margin-bottom: 24px;
-}
-.about-simple h2{
-  margin: 0 0 32px;
-  font-weight: 600;
-  font-size: clamp(2rem,4vw,2.65rem);
-  letter-spacing: -.025em;
-  line-height: 1.2;
-}
-.about-simple p {
-  margin: 0 0 24px;
-  color: var(--slate);
-  font-size: 1.1rem;
-  line-height: 1.8;
+@media(min-width:980px){
+  section{padding: var(--section-spacing) 0}
+  .nav-primary{display:flex}
+  .menu{display:none}
+  .mobile-nav{display:none !important}
+  
+  .hero{padding: 96px 0 0;}
+  
+  /* Restore rich cards on desktop */
+  .service-list { gap: 64px; }
+  .service-item { flex-direction: row; align-items: stretch; border-radius: 20px; }
+  .service-img-wrap { display: block; position: relative; width: 40%; aspect-ratio: 4 / 3; background: var(--paper-deep); flex: none; }
+  .service-img-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .service-body { width: 60%; padding: 48px; justify-content: center; }
+  .service-body h3 { font-size: 1.6rem; }
+  .service-body p { font-size: 1.05rem; margin-bottom: 24px; }
+  
+  .footer-grid{grid-template-columns:1fr 2.5fr}
 }
 
-/* Security Notice Box */
-.security-banner {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-left: 4px solid var(--blue);
-  border-radius: 16px;
-  padding: 20px 24px;
-  margin: 40px auto 32px;
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  box-shadow: 0 6px 18px rgba(15,23,42,.03);
-  text-align: left;
-}
+/* Trust Section & Footer */
+.about-simple{ max-width: 680px; margin: 0 auto; text-align: center; }
+.about-simple h2{ margin: 0 0 20px; font-weight: 600; font-size: clamp(1.8rem,4vw,2.65rem); line-height: 1.2; }
+.about-simple p { margin: 0 0 24px; color: var(--slate); font-size: 1.05rem; line-height: 1.7; }
+.desktop-only-p { display: none; } /* Hidden on mobile */
+@media(min-width: 768px) { .desktop-only-p { display: block; } }
+
+.security-banner { background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--blue); border-radius: 16px; padding: 20px; margin: 32px auto 32px; display: flex; gap: 16px; align-items: flex-start; text-align: left; }
 .security-banner i { color: var(--blue); font-size: 1.4rem; margin-top: 2px; }
 .security-banner p { margin: 0; font-size: 0.95rem; color: var(--slate); line-height: 1.6; }
-.security-banner strong { color: var(--ink); font-size: 1.05rem; display: block; margin-bottom: 4px;}
+.security-banner strong { color: var(--ink); display: block; margin-bottom: 4px;}
 
-/* Contact Section */
-#contact {border-top: 1px solid var(--line);}
-.contact-block {text-align: center; max-width: 650px; margin: 0 auto; display: grid; gap: 24px; justify-items: center;}
-.contact-block h2{font-weight:600;margin:0;font-size:clamp(2rem,4.5vw,2.8rem); letter-spacing: -0.02em; color: var(--ink);}
-.contact-block p{color:var(--slate);margin:0; font-size: 1.1rem; line-height: 1.7;}
-.contact-block .btn {min-width: 220px;}
+#contact {border-top: 1px solid var(--line); background: var(--deep-band);}
+.contact-block {text-align: center; max-width: 650px; margin: 0 auto; display: grid; gap: 16px; justify-items: center;}
+.contact-block h2{font-weight:600;margin:0;font-size:clamp(1.8rem,4.5vw,2.5rem); color: var(--ink);}
+.contact-block p{color:var(--slate);margin:0; font-size: 1.05rem; line-height: 1.7;}
 
-/* Organized Footer */
-footer{background:#0b1220;color:#cbd5e1;padding:72px 0 32px}
+footer{background:#0b1220;color:#cbd5e1;padding:64px 0 32px}
 .footer-grid{display:grid;gap:48px}
 .footer-cols{display:grid;grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));gap:32px}
 .footer-col h4{margin:0 0 20px;color:#fff;font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;}
@@ -351,30 +277,7 @@ footer{background:#0b1220;color:#cbd5e1;padding:72px 0 32px}
 .footer-col a:hover{color:#fff}
 .footer-bottom{margin-top:56px;padding-top:28px;border-top:1px solid rgba(255,255,255,.08);display:grid;gap:12px;color:#64748b;font-size:0.85rem;line-height:1.6;}
 
-/* Desktop Adjustments */
-@media(min-width:980px){
-  section{padding: var(--section-spacing) 0}
-  .nav-primary{display:flex}
-  .menu{display:none}
-  .mobile-nav{display:none !important}
-  
-  .hero{padding: 96px 0 112px;}
-  
-  .service-list { gap: 64px; }
-  .service-item { flex-direction: row; align-items: stretch; }
-  .service-img-wrap { width: 40%; aspect-ratio: 4 / 3; }
-  .service-body { width: 60%; padding: 48px; justify-content: center; }
-  .service-body h3 { font-size: 1.6rem; }
-  .service-body p { font-size: 1.05rem; margin-bottom: 32px; }
-
-  .footer-grid{grid-template-columns:1fr 2.5fr}
-}
-@media(max-width:979px){
-  .service-body .btn { width: 100%; }
-}
-@media(max-width:480px){
-  .security-banner { flex-direction: column; gap: 12px; }
-}
+@media(max-width:480px){ .security-banner { flex-direction: column; gap: 12px; } }
 </style>
 </head>
 <body>
@@ -385,12 +288,10 @@ footer{background:#0b1220;color:#cbd5e1;padding:72px 0 32px}
       <div class="logo">DH</div><span>Docu-Hub Operations</span>
     </a>
 
-    <!-- Clean Desktop Navigation -->
     <nav class="nav-primary">
       <a href="about.html">About Us</a>
       <a href="insights.html">Guides</a>
       <a href="faq.html">FAQ</a>
-      <!-- Updated Link to contact.html -->
       <a href="contact.html" class="btn btn-primary" style="min-height: 44px; padding: 0 18px; font-size: 0.88rem; border-radius: 12px;">Book Consultation</a>
     </nav>
     
@@ -407,44 +308,38 @@ footer{background:#0b1220;color:#cbd5e1;padding:72px 0 32px}
     <a href="insights.html">Guides &amp; Insights</a>
     <a href="about.html">About Us</a>
     <a href="faq.html">FAQ</a>
-    <!-- Updated Link to contact.html -->
     <a href="contact.html" style="font-weight: 700; color: var(--blue-deep);">Book Consultation</a>
   </nav>
 </header>
 
 <main id="top">
 
-<!-- 1. ANCHORED WARM HERO (Background: Cream) -->
+<!-- 1. ANCHORED WARM HERO (Ultra Clean Mobile) -->
 <section class="hero">
   <div class="container">
     <div class="hero-grid">
 
       <div class="hero-photo-col">
         <div class="hero-photo-frame">
-          <img src="assets/ecard.webp" alt="Laura Clarke, Docu-Hub Operations" loading="eager">
-        </div>
-        <div class="hero-credential">
-          <div class="name">Laura Clarke</div>
-          <div class="title">Founder, Docu-Hub Operations</div>
+          <img src="assets/ecard.webp" alt="Laura Clarke" loading="eager">
         </div>
       </div>
 
       <div class="hero-copy">
-        <span class="hero-v2-eyebrow"><span class="dot"></span> Docu-Hub Operations, Jamaica</span>
+        <span class="hero-v2-eyebrow"><span class="dot"></span> Independent Proxy Service</span>
         <h1>Hi, I'm Laura.<br>Let's sort your <em>paperwork</em>.</h1>
         <p class="lead">
-          I help people across Jamaica &mdash; and the diaspora &mdash; cut through PICA, RGD, and TAJ red tape privately and without the frustration of doing it alone.
+          I help people across Jamaica and the diaspora cut through government red tape privately, securely, and without the frustration.
         </p>
         <div class="hero-cta-row">
-          <a href="booking.html" class="btn btn-primary hero-v2-cta">Book a Consultation</a>
-          <span class="hero-trust-line"><i class="fa-solid fa-lock"></i> Private &amp; confidential handling</span>
+          <a href="contact.html" class="btn btn-primary hero-v2-cta">Book a Consultation</a>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- Quick Routing, styled as folder tabs -->
+  <!-- Hidden on Mobile: Quick Routing folder tabs -->
   <div class="hero-tabs-wrap">
     <div class="container">
       <div class="hero-tabs">
@@ -457,10 +352,9 @@ footer{background:#0b1220;color:#cbd5e1;padding:72px 0 32px}
   </div>
 </section>
 
-<!-- 2. CORE SERVICES GRID (Background: Light Gray) -->
+<!-- 2. CORE SERVICES GRID (Text-Only Cards on Mobile) -->
 <section id="services" class="section-bg">
   <div class="container">
-    
     <div class="service-list">
 
       <div class="service-item">
@@ -471,7 +365,7 @@ footer{background:#0b1220;color:#cbd5e1;padding:72px 0 32px}
           <h3>Motor Vehicle Licence Renewal</h3>
           <p>Get help preparing your renewal, checking fitness requirements, completing payment steps, and accessing your official eMVRC.</p>
           <div>
-            <a href="motor-vehicle-renewal.html" class="btn btn-primary">View Details <span aria-hidden="true">&rarr;</span></a>
+            <a href="motor-vehicle-renewal.html" class="link-arrow">View Details &rarr;</a>
           </div>
         </div>
       </div>
@@ -484,7 +378,7 @@ footer{background:#0b1220;color:#cbd5e1;padding:72px 0 32px}
           <h3>Driver’s Licence Renewal</h3>
           <p>Get help preparing your renewal package and payment steps, with clear guidance on what to bring for your in-person licence pickup.</p>
           <div>
-            <a href="drivers-licence-renewal.html" class="btn btn-primary">View Details <span aria-hidden="true">&rarr;</span></a>
+            <a href="drivers-licence-renewal.html" class="link-arrow">View Details &rarr;</a>
           </div>
         </div>
       </div>
@@ -495,7 +389,7 @@ footer{background:#0b1220;color:#cbd5e1;padding:72px 0 32px}
           <h3>Passport Services (All Types)</h3>
           <p>Guidance for adult renewals, first-time adult applications, name changes, and the requirements for lost or damaged passports.</p>
           <div>
-            <a href="jamaican-passport-renewal.html" class="btn btn-primary">View Details <span aria-hidden="true">&rarr;</span></a>
+            <a href="jamaican-passport-renewal.html" class="link-arrow">View Details &rarr;</a>
           </div>
         </div>
       </div>
@@ -504,9 +398,9 @@ footer{background:#0b1220;color:#cbd5e1;padding:72px 0 32px}
         <div class="service-img-wrap"><img src="assets/rgd.webp" alt="Birth Certificate Paperwork" loading="lazy"></div>
         <div class="service-body">
           <h3>Vital Record Services</h3>
-          <p>Assistance with ordering official birth, death, and marriage certificates through the Registrar General's Department, locally or for clients abroad.</p>
+          <p>Assistance with ordering official birth, death, and marriage certificates through the Registrar General's Department.</p>
           <div>
-            <a href="rgd-vital-records.html" class="btn btn-primary">View Details <span aria-hidden="true">&rarr;</span></a>
+            <a href="rgd-vital-records.html" class="link-arrow">View Details &rarr;</a>
           </div>
         </div>
       </div>
@@ -515,8 +409,8 @@ footer{background:#0b1220;color:#cbd5e1;padding:72px 0 32px}
   </div>
 </section>
 
-<!-- 3. CONSOLIDATED TRUST & TRANSPARENCY (Background: White) -->
-<section id="about" class="section-white">
+<!-- 3. CONSOLIDATED TRUST & TRANSPARENCY (Trimmed for Mobile) -->
+<section id="about" class="section-white" style="border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
   <div class="container">
     <div class="about-simple">
       
@@ -526,7 +420,7 @@ footer{background:#0b1220;color:#cbd5e1;padding:72px 0 32px}
         I am Laura Clarke, founder of Docu-Hub Operations. We are an independent, private administrative proxy service—<strong>we are not affiliated with any Jamaican government agency</strong>.
       </p>
 
-      <p style="margin-bottom: 12px;">
+      <p class="desktop-only-p">
         Our process is simple: we review your requirements, prepare the exact paperwork needed, and handle the submission process where a proxy is available. We remove the guesswork so you can get it done faster.
       </p>
       
@@ -544,14 +438,13 @@ footer{background:#0b1220;color:#cbd5e1;padding:72px 0 32px}
   </div>
 </section>
 
-<!-- 4. FINAL CTA (Background: Deep Band) -->
+<!-- 4. FINAL CTA -->
 <section id="contact" class="section-deep">
   <div class="container">
     <div class="contact-block">
       <h2>Ready to make the process easier?</h2>
       <p>Tell us what you need help with and we’ll guide you through the next step.</p>
-      <div style="margin-top: 8px;">
-        <!-- Updated Link to contact.html -->
+      <div style="margin-top: 12px;">
         <a class="btn btn-primary" href="contact.html">Book a Consultation</a>
       </div>
     </div>
