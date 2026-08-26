@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-<!-- ===== Client-Side Security Headers (Browser Protection) - PRESERVED ===== -->
+<!-- ===== Client-Side Security Headers (Browser Protection) ===== -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://images.unsplash.com https://img.youtube.com data:; connect-src 'self';">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 
-<!-- ===== Primary SEO - PRESERVED ===== -->
+<!-- ===== Primary SEO ===== -->
 <title>Docu-Hub Operations Services | Administrative Proxy in Jamaica</title>
 <meta name="description" content="Independent private administrative proxy and online application assistance. We help navigate PICA passports, RGD vital records, and TAJ vehicle & driver's licence renewals when online systems are difficult.">
 <meta name="keywords" content="Docu-Hub Operations Services, Jamaica proxy service, passport renewal Jamaica, PICA online assistance, birth certificate RGD assistance, driver's licence renewal Jamaica assistance, motor vehicle renewal Jamaica">
@@ -17,7 +17,7 @@
 <meta name="author" content="Docu-Hub Operations Services">
 <link rel="canonical" href="https://dhubservices.com/">
 
-<!-- ===== Open Graph / Social - PRESERVED ===== -->
+<!-- ===== Open Graph / Social ===== -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Docu-Hub Operations Services">
 <meta property="og:title" content="Docu-Hub Operations Services | Administrative Proxy in Jamaica">
@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://dhubservices.com/assets/og-cover.jpg">
 <meta property="og:locale" content="en_JM">
 
-<!-- ===== Structured Data for Google - PRESERVED ===== -->
+<!-- ===== Structured Data for Google ===== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -50,10 +50,10 @@
 }
 </script>
 
-<!-- ===== Fonts & Icons - PRESERVED ===== -->
+<!-- ===== Fonts & Icons ===== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=Petrona:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
@@ -77,6 +77,15 @@
   --cream:#fbf6ec;
   --cream-line:#efe2c6;
   --deep-band:#f1f5f9; 
+
+  /* Hero v2 — grounded in the Jamaican passport & official document world */
+  --jm-green:#173d33;      /* deep passport-cover green */
+  --jm-green-soft:#255142;
+  --jm-gold:#b9902f;       /* foil-stamp gold */
+  --jm-gold-tint:#f1e2bd;
+  --jm-coral:#c8536a;      /* wax-seal coral, used sparingly */
+  --jm-paper:#f7f0e2;      /* warm ledger paper, distinct from --cream */
+  --jm-paper-line:#e9dcc0;
   
   /* Generous Spacing Tokens */
   --section-spacing: 112px;
@@ -122,41 +131,103 @@ section{padding: var(--section-spacing-mobile) 0}
 .section-cream{background:var(--cream); border-top:1px solid var(--cream-line); border-bottom:1px solid var(--cream-line);}
 .section-deep{background:var(--deep-band);}
 
-/* HERO SECTION - Lean & Focused */
-.hero{padding: 64px 0 80px;} 
-.hero h1{margin:0 0 16px;font-weight:600;font-size:clamp(2.4rem,6vw,3.6rem);line-height:1.1;letter-spacing:-0.03em;color:var(--ink);}
-.lead{margin:0 auto 40px;max-width:680px;color:var(--slate);font-size:1.15rem;line-height:1.75;}
-
-/* Quick Routing Pills */
-.hero-pills {
-  display: flex; 
-  flex-wrap: wrap; 
-  justify-content: center; 
-  gap: 12px;
+/* HERO SECTION v2 — a person greeting you, not a portal */
+.hero{
+  padding: 72px 0 0;
+  background:
+    radial-gradient(1100px 480px at 82% -10%, var(--jm-gold-tint) 0%, transparent 60%),
+    var(--jm-paper);
+  border-bottom: 1px solid var(--jm-paper-line);
+  overflow: hidden;
 }
-.pill {
-  display: inline-flex;
+.hero-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
   align-items: center;
-  gap: 8px;
-  padding: 12px 20px;
+  padding-bottom: 56px;
+}
+@media(min-width:860px){
+  .hero-grid{ grid-template-columns: minmax(260px, 360px) 1fr; gap: 64px; }
+}
+
+/* Photo — clean and straight, credentials do the trust-building, not decoration */
+.hero-photo-col{ position:relative; display:flex; flex-direction:column; align-items:center; }
+.hero-photo-frame{
+  position: relative;
+  width: min(280px, 78%);
   background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 99px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--ink-soft);
-  text-decoration: none;
-  box-shadow: 0 4px 12px rgba(15,23,42,0.04);
-  transition: all 0.2s ease;
-  font-family: Inter, sans-serif;
+  padding: 10px;
+  border-radius: 16px;
+  border: 1px solid var(--jm-paper-line);
+  box-shadow: 0 16px 32px -14px rgba(23,61,51,0.22);
 }
-.pill:hover {
-  border-color: var(--blue);
-  color: var(--blue-deep);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(15,23,42,0.08);
+.hero-photo-frame img{
+  display:block; width:100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 10px;
 }
-.pill i { color: var(--blue); font-size: 1.1rem; }
+.hero-credential{
+  margin-top:16px; text-align:center;
+}
+.hero-credential .name{
+  font-family:"Inter",sans-serif; font-weight:700; font-size:0.98rem; color: var(--jm-green);
+}
+.hero-credential .title{
+  font-family:"Inter",sans-serif; font-weight:500; font-size:0.84rem; color: var(--slate);
+  margin-top:2px;
+}
+
+.hero-copy{ text-align:left; }
+.hero-v2-eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:"Inter",sans-serif; font-size:0.8rem; font-weight:700;
+  letter-spacing:0.09em; text-transform:uppercase; color: var(--jm-green-soft);
+  background:#fff; border:1px solid var(--jm-paper-line); padding:7px 14px 7px 10px;
+  border-radius:99px; margin-bottom:18px;
+}
+.hero-v2-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--jm-coral);flex:none;}
+
+.hero h1{
+  font-family:"Petrona", Georgia, serif;
+  margin:0 0 18px; font-weight:600; font-style:normal;
+  font-size:clamp(2.3rem,5.4vw,3.3rem); line-height:1.14; letter-spacing:-0.005em;
+  color: var(--jm-green);
+}
+.hero h1 em{ font-style:italic; color: var(--jm-coral); }
+
+.hero .lead{
+  margin:0 0 30px; max-width:520px; color:var(--slate);
+  font-size:1.14rem; line-height:1.72;
+}
+
+.hero-cta-row{ display:flex; align-items:center; gap:24px; flex-wrap:wrap; }
+.hero-v2-cta{ background: var(--jm-green); box-shadow: 0 6px 18px rgba(23,61,51,0.25); }
+.hero-v2-cta:hover{ background: var(--jm-green-soft); }
+.hero-trust-line{
+  display:flex; align-items:center; gap:8px;
+  font-family:"Inter",sans-serif; font-weight:600; font-size:0.9rem;
+  color: var(--jm-green-soft);
+}
+.hero-trust-line i{ color: var(--jm-gold); }
+
+/* Quick links styled as folder tabs — the real filing-system this business replaces */
+.hero-tabs-wrap{ background: var(--jm-green); }
+.hero-tabs{
+  display:flex; flex-wrap:wrap; gap: 6px 6px;
+  padding-top: 14px;
+}
+.hero-tab{
+  display:inline-flex; align-items:center; gap:8px;
+  padding: 12px 20px 13px;
+  background:#fff; color: var(--jm-green);
+  text-decoration:none; font-weight:700; font-size:0.92rem;
+  border-radius: 10px 10px 0 0;
+  font-family:"Inter",sans-serif;
+  transition: all .2s ease;
+}
+.hero-tab i{ color: var(--jm-gold); font-size:1rem; }
+.hero-tab:hover{ color: var(--jm-coral); }
+.hero-tab:hover i{ color: var(--jm-coral); }
+
 
 /* Buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 28px;border-radius:14px;text-decoration:none;font-weight:700;font-size:.98rem;transition: all .2s ease-in-out; cursor: pointer; border: none; font-family: Inter, sans-serif;}
@@ -165,7 +236,7 @@ section{padding: var(--section-spacing-mobile) 0}
 .btn-secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
 .btn-secondary:hover{border-color:#cbd5e1; transform:translateY(-2px); background: #f8fafc;}
 
-/* Services Grid - Extra Spacing Applied */
+/* Services Grid */
 .service-list {
   display: grid;
   grid-template-columns: 1fr;
@@ -222,7 +293,7 @@ section{padding: var(--section-spacing-mobile) 0}
 
 /* Trust & Transparency Block */
 .about-simple{
-  max-width: 680px; /* Kept narrow for comfortable reading */
+  max-width: 680px;
   margin: 0 auto;
   text-align: center;
 }
@@ -239,7 +310,6 @@ section{padding: var(--section-spacing-mobile) 0}
   letter-spacing: -.025em;
   line-height: 1.2;
 }
-/* Micro-spacing: line-height 1.8 for readability */
 .about-simple p {
   margin: 0 0 24px;
   color: var(--slate);
@@ -247,7 +317,7 @@ section{padding: var(--section-spacing-mobile) 0}
   line-height: 1.8;
 }
 
-/* Security Notice Box integrated */
+/* Security Notice Box */
 .security-banner {
   background: #fff;
   border: 1px solid var(--line);
@@ -290,7 +360,6 @@ footer{background:#0b1220;color:#cbd5e1;padding:72px 0 32px}
   
   .hero{padding: 96px 0 112px;}
   
-  /* Services flow */
   .service-list { gap: 64px; }
   .service-item { flex-direction: row; align-items: stretch; }
   .service-img-wrap { width: 40%; aspect-ratio: 4 / 3; }
@@ -321,6 +390,7 @@ footer{background:#0b1220;color:#cbd5e1;padding:72px 0 32px}
       <a href="about.html">About Us</a>
       <a href="insights.html">Guides</a>
       <a href="faq.html">FAQ</a>
+      <!-- Updated Link to contact.html -->
       <a href="contact.html" class="btn btn-primary" style="min-height: 44px; padding: 0 18px; font-size: 0.88rem; border-radius: 12px;">Book Consultation</a>
     </nav>
     
@@ -337,30 +407,53 @@ footer{background:#0b1220;color:#cbd5e1;padding:72px 0 32px}
     <a href="insights.html">Guides &amp; Insights</a>
     <a href="about.html">About Us</a>
     <a href="faq.html">FAQ</a>
+    <!-- Updated Link to contact.html -->
     <a href="contact.html" style="font-weight: 700; color: var(--blue-deep);">Book Consultation</a>
   </nav>
 </header>
 
 <main id="top">
 
-<!-- 1. SEARCH-FIRST HERO (Background: White) -->
-<section class="hero section-white">
-  <div class="container" style="text-align: center;">
-    
-    <h1>What do you need help with today?</h1>
-    
-    <p class="lead">
-      If you need private, expert assistance navigating Jamaican document applications and renewals without the frustration, you are in the right place.
-    </p>
-    
-    <!-- Quick Routing Pills -->
-    <div class="hero-pills">
-      <a href="jamaican-passport-renewal.html" class="pill"><i class="fa-solid fa-passport"></i> Passports</a>
-      <a href="motor-vehicle-renewal.html" class="pill"><i class="fa-solid fa-car"></i> Motor Vehicle</a>
-      <a href="drivers-licence-renewal.html" class="pill"><i class="fa-solid fa-id-card"></i> Driver's Licence</a>
-      <a href="rgd-vital-records.html" class="pill"><i class="fa-solid fa-stamp"></i> Vital Records</a>
-    </div>
+<!-- 1. ANCHORED WARM HERO (Background: Cream) -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
 
+      <div class="hero-photo-col">
+        <div class="hero-photo-frame">
+          <img src="assets/ecard.webp" alt="Laura Clarke, Docu-Hub Operations" loading="eager">
+        </div>
+        <div class="hero-credential">
+          <div class="name">Laura Clarke</div>
+          <div class="title">Founder, Docu-Hub Operations</div>
+        </div>
+      </div>
+
+      <div class="hero-copy">
+        <span class="hero-v2-eyebrow"><span class="dot"></span> Docu-Hub Operations, Jamaica</span>
+        <h1>Hi, I'm Laura.<br>Let's sort your <em>paperwork</em>.</h1>
+        <p class="lead">
+          I help people across Jamaica &mdash; and the diaspora &mdash; cut through PICA, RGD, and TAJ red tape privately and without the frustration of doing it alone.
+        </p>
+        <div class="hero-cta-row">
+          <a href="booking.html" class="btn btn-primary hero-v2-cta">Book a Consultation</a>
+          <span class="hero-trust-line"><i class="fa-solid fa-lock"></i> Private &amp; confidential handling</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Quick Routing, styled as folder tabs -->
+  <div class="hero-tabs-wrap">
+    <div class="container">
+      <div class="hero-tabs">
+        <a href="jamaican-passport-renewal.html" class="hero-tab"><i class="fa-solid fa-passport"></i> Passports</a>
+        <a href="motor-vehicle-renewal.html" class="hero-tab"><i class="fa-solid fa-car"></i> Motor Vehicle</a>
+        <a href="drivers-licence-renewal.html" class="hero-tab"><i class="fa-solid fa-id-card"></i> Driver's Licence</a>
+        <a href="rgd-vital-records.html" class="hero-tab"><i class="fa-solid fa-stamp"></i> Vital Records</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -368,7 +461,6 @@ footer{background:#0b1220;color:#cbd5e1;padding:72px 0 32px}
 <section id="services" class="section-bg">
   <div class="container">
     
-    <!-- Spaced generously for visual clarity -->
     <div class="service-list">
 
       <div class="service-item">
@@ -423,16 +515,13 @@ footer{background:#0b1220;color:#cbd5e1;padding:72px 0 32px}
   </div>
 </section>
 
-<!-- 3. CONSOLIDATED TRUST & TRANSPARENCY (Background: Warm Cream) -->
-<section id="about" class="section-cream">
+<!-- 3. CONSOLIDATED TRUST & TRANSPARENCY (Background: White) -->
+<section id="about" class="section-white">
   <div class="container">
     <div class="about-simple">
       
-      <img src="assets/ecard.webp" alt="Laura Clarke, Founder" width="90" height="90" loading="lazy">
-      
       <h2>Who we are & how it works.</h2>
       
-      <!-- Breathable paragraphs with increased line-height -->
       <p>
         I am Laura Clarke, founder of Docu-Hub Operations. We are an independent, private administrative proxy service—<strong>we are not affiliated with any Jamaican government agency</strong>.
       </p>
@@ -441,7 +530,6 @@ footer{background:#0b1220;color:#cbd5e1;padding:72px 0 32px}
         Our process is simple: we review your requirements, prepare the exact paperwork needed, and handle the submission process where a proxy is available. We remove the guesswork so you can get it done faster.
       </p>
       
-      <!-- Security integrated naturally -->
       <div class="security-banner">
         <i class="fa-solid fa-shield-halved"></i>
         <div>
@@ -463,6 +551,7 @@ footer{background:#0b1220;color:#cbd5e1;padding:72px 0 32px}
       <h2>Ready to make the process easier?</h2>
       <p>Tell us what you need help with and we’ll guide you through the next step.</p>
       <div style="margin-top: 8px;">
+        <!-- Updated Link to contact.html -->
         <a class="btn btn-primary" href="contact.html">Book a Consultation</a>
       </div>
     </div>
@@ -511,14 +600,14 @@ footer{background:#0b1220;color:#cbd5e1;padding:72px 0 32px}
     
     <div class="footer-bottom">
       <div><strong>Disclaimer:</strong> Docu-Hub Operations Services is a private, registered administrative proxy service. We are not a government agency and are not affiliated with PICA, RGD, or TAJ.</div>
-      <div><i class="fa-solid fa-building-shield" style="margin-right: 6px; color: var(--brass);"></i> Registered with the Companies Office of Jamaica (COJ): #15602/2025 | OIC Data Controller Verified.</div>
+      <div><i class="fa-solid fa-building-shield" style="margin-right: 6px; color: var(--brass);"></i> Registered with the Companies Office of Jamaica (COJ): #15602/2025.</div>
       <div>&copy; 2026 Docu-Hub Operations Services. All rights reserved.</div>
     </div>
   </div>
 </footer>
 
 <script>
-  // Mobile Menu JS - Preserved and simplified
+  // Mobile Menu JS
   var btn = document.getElementById('menuBtn');
   var nav = document.getElementById('mobileNav');
   btn.addEventListener('click', function(){
