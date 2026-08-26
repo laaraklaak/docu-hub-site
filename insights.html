@@ -2,16 +2,13 @@
 <html lang="en-JM">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
 <title>Advisory & Insights Desk | Docu-Hub Operations</title>
-<meta name="description" content="Expert guides, travel warnings, and administrative strategies to help the Jamaican diaspora navigate government processes from overseas.">
+<meta name="description" content="Expert guides, travel warnings, and administrative strategies to help navigate Jamaican government processes.">
+<link rel="canonical" href="https://dhubservices.com/insights.html">
 
-<!-- ===== Security Headers ===== -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://images.unsplash.com data:; connect-src 'self';">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-
-<!-- ===== Fonts & Icons ===== -->
+<!-- Fonts & Icons -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -21,112 +18,227 @@
 :root{
   --ink:#0f172a; --ink-soft:#1e293b; --slate:#475467; --line:#e2e8f0;
   --paper:#f5f7fb; --paper-deep:#e9eff8; --blue:#2563eb; --blue-deep:#1d4ed8;
-  --brass:#b08a4e; --brass-deep:#8a6a37; --brass-tint:#faf3e6;
+  --brass:#b08a4e; --brass-tint:#faf3e6; --white:#ffffff; --cream:#fbf6ec;
+  --deep-band:#f1f5f9;
+  
+  --section-spacing: 96px;
+  --section-spacing-mobile: 64px;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;}
-h1,h2,h3,.brand span,.step-badge,.eyebrow{font-family:"Fraunces",Georgia,serif}
-.container{width:min(1120px,calc(100% - 32px));margin:auto}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;overflow-x:hidden;}
+h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif}
+.container{width:100%;max-width:1120px;margin:0 auto;padding:0 24px;}
 a{-webkit-tap-highlight-color:transparent}
-:focus-visible{outline:2px solid var(--blue-deep);outline-offset:2px}
 
 /* Header & Nav */
-header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav{display:flex;justify-content:space-between;align-items:center;min-height:72px}
+header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;align-items:center;min-height:72px;}
 .brand{display:flex;align-items:center;gap:12px;font-weight:700;text-decoration:none;color:inherit}
-.brand span{font-size:1.02rem;font-weight:600;letter-spacing:-0.01em}
-.logo{width:38px;height:38px;border-radius:11px;background:var(--ink);color:var(--brass-tint);display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:600;font-size:.92rem;flex:none}
-.desktop-nav{display:none;gap:24px;align-items:center;}
-.desktop-nav a{text-decoration:none;color:var(--slate);font-weight:500;font-size:.96rem;transition:color 0.2s;}
-.desktop-nav a:hover, .desktop-nav a.active{color:var(--ink)}
-
-/* Services Dropdown */
-.dropdown{position:relative;height:72px;display:flex;align-items:center}
-.dropbtn{font-family:inherit;background:none;border:none;color:var(--slate);font-weight:500;font-size:.96rem;display:flex;align-items:center;gap:6px;cursor:pointer;padding:8px 0;transition:color .2s}
-.dropdown:hover .dropbtn,.dropdown:focus-within .dropbtn{color:var(--ink)}
-.dropdown-content{opacity:0;visibility:hidden;transform:translateY(4px);transition:opacity .15s ease,transform .15s ease;position:absolute;top:100%;left:-14px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 16px 36px rgba(15,23,42,.10);padding:8px;min-width:240px;z-index:30}
-.dropdown:hover .dropdown-content,.dropdown:focus-within .dropdown-content{opacity:1;visibility:visible;transform:translateY(0)}
-.dropdown-content a{display:block;padding:10px 14px;border-radius:99px;color:var(--ink-soft);text-decoration:none;font-size:.92rem;font-weight:500;transition:background .15s}
-.dropdown-content a:hover{background:var(--paper);color:var(--ink)}
-
-.menu{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);border:none;}
+.logo{width:38px;height:38px;border-radius:11px;background:var(--ink);color:var(--brass-tint);display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:600;font-size:.92rem}
+.nav-primary{display:none;align-items:center;gap:24px}
+.nav-primary a{text-decoration:none;color:var(--slate);font-weight:500;font-size:.95rem}
+.nav-primary a.active{color:var(--ink);font-weight:700;}
+.menu{width:42px;height:42px;border-radius:12px;border:none;background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink)}
 .mobile-nav{display:grid;gap:2px;border-bottom:1px solid var(--line);background:#fff}
-.mobile-nav a{padding:14px 16px;text-decoration:none;color:var(--ink-soft);font-weight:500;border-top:1px solid var(--line)}
+.mobile-nav a{padding:16px;text-decoration:none;color:var(--ink-soft);font-weight:500;border-top:1px solid var(--line)}
 .mobile-nav .mobile-sub{padding-left:28px;font-size:0.9rem;color:var(--slate);}
 .mobile-nav[hidden]{display:none}
 
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:12px;text-decoration:none;font-weight:700;font-size:.98rem;transition: all .2s; border: none; cursor: pointer;}
+.btn-primary{background:var(--ink);color:#fff;}
+.btn-primary:hover{background:var(--ink-soft); transform:translateY(-2px);}
+
 /* Hero Section */
 .hero{padding:64px 0 48px; text-align:center;}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;margin:auto;padding:8px 14px;border-radius:999px;background:var(--brass-tint);color:var(--brass-deep);font-size:.82rem;font-weight:600;border:1px solid #ecdcb8; margin-bottom:24px;}
-h1{margin:0 0 16px;font-weight:600;font-size:clamp(2.1rem,5vw,3.6rem);line-height:1.1;letter-spacing:-0.02em; color:var(--ink);}
-.lead{margin:0 auto 32px;max-width:720px;color:var(--slate);font-size:1.05rem;line-height:1.7;}
+.eyebrow-tag { display: inline-block; font-size: 0.85rem; font-weight: 700; color: var(--brass); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+h1{margin:0 0 16px;font-weight:600;font-size:clamp(2.1rem,5vw,3.2rem);line-height:1.15;color:var(--ink);}
+.lead{margin:0 auto 32px;max-width:680px;color:var(--slate);font-size:1.15rem;line-height:1.7;}
 
-/* Directory Filters */
-.directory-section { padding: 32px 0 80px; }
-.filter-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 48px; }
-.filter-btn { background: #fff; border: 1px solid var(--line); color: var(--slate); padding: 10px 24px; border-radius: 999px; font-family: Inter, sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(15,23,42,.02); }
-.filter-btn:hover { border-color: var(--slate); color: var(--ink); }
-.filter-btn.active { background: var(--ink); color: #fff; border-color: var(--ink); box-shadow: 0 4px 12px rgba(15,23,42,.1); }
+/* CTA Banner */
+.cta-banner{
+  background: linear-gradient(135deg, var(--ink) 0%, var(--ink-soft) 100%);
+  border-radius: 20px;
+  padding: 36px 32px;
+  margin-bottom: 64px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.cta-banner-text h3{color:#fff;margin:0 0 6px;font-size:1.3rem;}
+.cta-banner-text p{color:#cbd5e1;margin:0;font-size:0.98rem;max-width:480px;line-height:1.6;}
+.cta-banner .btn-primary{background:var(--brass);color:#1a1305;white-space:nowrap;flex-shrink:0;}
+.cta-banner .btn-primary:hover{background:#c79a58;}
 
-/* Featured Article Spotlight (Updated to TAJ background image) */
-.featured-article { display: flex; flex-direction: column; background: #fff; border-radius: 22px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 10px 30px rgba(15,23,42,.04); margin-bottom: 64px; text-decoration: none; color: inherit; transition: transform 0.3s ease; }
-.featured-article:hover { transform: translateY(-4px); border-color: #cbd5e1; box-shadow: 0 16px 40px rgba(15,23,42,.08); }
-.featured-img-box { width: 100%; height: 280px; background: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80') center/cover; position: relative; }
-.featured-badge { position: absolute; top: 24px; left: 24px; background: var(--brass-tint); color: var(--brass-deep); padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
-.featured-body { padding: 40px 32px; display: flex; flex-direction: column; justify-content: center; }
-.featured-meta { font-size: 0.9rem; color: var(--slate); font-weight: 600; margin-bottom: 16px; display: flex; gap: 16px; }
-.featured-meta .cat { color: var(--blue); }
-.featured-body h2 { font-family: "Fraunces", serif; font-size: clamp(2rem, 3vw, 2.6rem); margin: 0 0 16px; color: var(--ink); line-height: 1.2; }
-.featured-body p { font-size: 1.05rem; color: var(--slate); margin: 0 0 24px; line-height: 1.7; }
-.btn-featured { display: inline-flex; align-items: center; gap: 8px; font-size: 0.95rem; font-weight: 700; color: var(--blue-deep); transition: 0.3s; }
+/* Category filter bar */
+.filter-bar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:40px;
+}
+.filter-btn{
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--slate);
+  font-weight:600;
+  font-size:0.88rem;
+  padding:9px 18px;
+  border-radius:999px;
+  cursor:pointer;
+  transition: all .15s;
+}
+.filter-btn:hover{border-color:var(--blue);color:var(--blue-deep);}
+.filter-btn.active{background:var(--ink);color:#fff;border-color:var(--ink);}
 
-@media (min-width: 850px) {
-    .featured-article { flex-direction: row; height: 400px; }
-    .featured-img-box { width: 55%; height: 100%; }
-    .featured-body { width: 45%; padding: 48px; }
+/* Featured card */
+.featured-card{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:0;
+  margin-bottom:40px;
+  background:#fff;
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow:0 8px 28px rgba(15,23,42,.06);
+  text-decoration:none;
+  color:inherit;
+}
+.featured-img{width:100%;height:260px;object-fit:cover;display:block;}
+.featured-body{padding:32px;}
+.featured-tag{display:inline-block;background:var(--brass-tint);color:var(--brass);font-size:0.78rem;font-weight:800;text-transform:uppercase;letter-spacing:0.07em;padding:5px 12px;border-radius:999px;margin-bottom:14px;}
+.featured-body h2{font-size:1.7rem;margin:0 0 12px;line-height:1.25;}
+.featured-body p{color:var(--slate);font-size:1.02rem;line-height:1.7;margin:0 0 20px;}
+@media(min-width:768px){
+  .featured-card{grid-template-columns: 1.1fr 1fr;align-items:stretch;}
+  .featured-img{height:100%;min-height:320px;}
 }
 
-/* Archive Grid */
-.blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 32px; }
-.blog-card { background: #fff; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 4px 12px rgba(15,23,42,.03); display: flex; flex-direction: column; transition: all 0.3s ease; text-decoration: none; color: inherit; }
-.blog-card:hover { transform: translateY(-4px); border-color: #cbd5e1; box-shadow: 0 10px 24px rgba(15,23,42,.06); }
-.blog-img { width: 100%; height: 220px; object-fit: cover; border-bottom: 1px solid var(--line); display: block; }
-.blog-body { padding: 32px 24px; display: flex; flex-direction: column; flex-grow: 1; }
-.blog-meta { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; display: flex; justify-content: space-between; color: var(--slate); }
-.blog-meta .cat { color: var(--blue); }
-.blog-body h3 { font-family: "Fraunces", serif; font-size: 1.6rem; color: var(--ink); margin: 0 0 12px; line-height: 1.3; }
-.blog-body p { font-size: 0.95rem; color: var(--slate); margin: 0 0 24px; flex-grow: 1; line-height: 1.6; }
-.read-more { font-size: 0.9rem; font-weight: 700; color: var(--blue-deep); display: inline-flex; align-items: center; gap: 8px; }
+/* Simple Clean Grid */
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  margin-bottom: 80px;
+}
+.insight-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 16px rgba(15,23,42,.03);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+}
+.insight-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--blue);
+}
+.insight-card[hidden]{display:none;}
+.insight-img-wrap{position:relative;}
+.insight-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--line);
+  display: block;
+}
+.insight-date{
+  position:absolute;
+  bottom:10px;
+  left:12px;
+  background:rgba(15,23,42,.78);
+  color:#fff;
+  font-size:0.74rem;
+  font-weight:700;
+  padding:4px 10px;
+  border-radius:999px;
+  letter-spacing:0.02em;
+}
+.insight-body {
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.insight-meta {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--blue);
+  margin-bottom: 12px;
+  text-decoration:none;
+}
+.insight-meta:hover{text-decoration:underline;}
+.insight-body h3 {
+  font-size: 1.35rem;
+  color: var(--ink);
+  margin: 0 0 12px;
+  line-height: 1.3;
+}
+.insight-body p {
+  font-size: 0.98rem;
+  color: var(--slate);
+  margin: 0 0 24px;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+.read-link {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--blue-deep);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
 
-.hidden { display: none !important; }
+/* YouTube section */
+.yt-section{
+  background: var(--deep-band);
+  border-radius: 20px;
+  padding: 44px 32px;
+  margin-bottom: 80px;
+}
+.yt-header{display:flex;align-items:center;gap:14px;margin-bottom:24px;flex-wrap:wrap;}
+.yt-header i{color:#ff0000;font-size:1.6rem;}
+.yt-header h2{margin:0;font-size:1.5rem;}
+.yt-header p{margin:4px 0 0;color:var(--slate);font-size:0.98rem;}
+.yt-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:#ff0000;
+  color:#fff;
+  font-weight:700;
+  padding:12px 22px;
+  border-radius:12px;
+  text-decoration:none;
+  font-size:0.95rem;
+  margin-top:8px;
+}
+.yt-cta:hover{background:#d90000;}
 
-/* Final CTA */
-.final{background:linear-gradient(135deg,var(--ink),var(--ink-soft));color:#fff;border-radius:28px;padding:48px 24px;text-align:center;display:grid;gap:18px;box-shadow:0 18px 60px rgba(15,23,42,.16); max-width:860px; margin: 0 auto;}
-.final h2{font-weight:600; margin:0; font-size:clamp(1.9rem,4vw,2.8rem)}
-.final p{color:#cbd5e1;margin:0 auto; max-width:560px;}
-.final-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:auto}
+/* Footer */
+footer{background:#0b1220;color:#cbd5e1;padding:64px 0 32px;}
+.footer-grid{display:grid;gap:48px}
+.footer-cols{display:grid;grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));gap:32px}
+.footer-col h4{margin:0 0 16px;color:#fff;font-size:0.88rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;}
+.footer-col a{display:block;color:#94a3b8;text-decoration:none;margin-bottom:12px;font-size:0.92rem;}
+.footer-bottom{margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);color:#64748b;font-size:0.85rem;line-height:1.6;}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;border-radius:14px;text-decoration:none;font-weight:700;font-size:.98rem;transition:all .15s ease}
-.btn-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.4);}
-.btn-outline:hover{background:rgba(255,255,255,0.1); border-color:#fff; transform: translateY(-2px);}
-
-/* ===== Compact Footer ===== */
-footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:44px 0 24px}
-.footer-grid{display:grid;gap:28px}
-.footer-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
-.footer-col h4{margin:0 0 10px;color:#fff;font-family:'Inter',sans-serif;font-size:0.88rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;}
-.footer-col a{display:flex;align-items:center;gap:8px;color:#94a3b8;text-decoration:none;margin-bottom:8px;font-size:0.84rem;transition:color 0.2s;min-height:20px;}
-.footer-col a:hover{color:#fff}
-.footer-bottom{margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);display:grid;gap:8px;color:#94a3b8;font-size:0.78rem;line-height:1.5;}
-
-@media(min-width:980px){
-  .desktop-nav{display:flex}
+@media(min-width:768px){
+  .nav-primary{display:flex}
   .menu{display:none}
-  .mobile-nav{display:none !important}
-  .footer-grid{grid-template-columns:1fr 1.5fr}
+  .footer-grid{grid-template-columns:1fr 2fr}
 }
-@media(max-width:767px){ .footer-cols{grid-template-columns:1fr 1fr;} }
-@media(max-width:480px){ .footer-cols{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
@@ -136,219 +248,206 @@ footer{background:#0b1220;color:#cbd5e1;margin-top:80px;padding:44px 0 24px}
     <a class="brand" href="index.html">
       <div class="logo">DH</div><span>Docu-Hub Operations</span>
     </a>
-    
-    <!-- DESKTOP NAVIGATION WITH REORDERED SERVICES DROPDOWN -->
-    <nav class="desktop-nav">
-      <div class="dropdown">
-        <button class="dropbtn">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i></button>
-        <div class="dropdown-content">
-          <a href="motor-vehicle-renewal.html">TAJ Motor Vehicle Renewal</a>
-          <a href="drivers-licence-renewal.html">TAJ Driver's Licence Renewal</a>
-          <a href="jamaican-passport-renewal.html">PICA Passport Renewals</a>
-          <a href="rgd-vital-records.html">RGD Vital Records</a>
-        </div>
-      </div>
-      <a href="insights.html" class="active">Insights</a>
+    <nav class="nav-primary">
       <a href="about.html">About Us</a>
+      <a href="insights.html" class="active">Guides</a>
       <a href="faq.html">FAQ</a>
-      <a href="booking.html" class="btn btn-primary" style="min-height: 40px; padding: 0 16px; font-size: 0.85rem; background: var(--blue); color: white;">Book Consultation</a>
+      <a href="booking.html" class="btn btn-primary" style="min-height: 40px; padding: 0 16px; font-size: 0.88rem;">Book Consultation</a>
     </nav>
-    
-    <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
-      <i class="fa-solid fa-bars" style="font-size: 1.4rem;"></i>
-    </button>
+    <button class="menu" id="menuBtn" aria-label="Open menu"><i class="fa-solid fa-bars" style="font-size: 1.4rem;"></i></button>
   </div>
-  
-  <!-- MOBILE NAVIGATION DROPDOWN (Reordered) -->
   <nav class="mobile-nav" id="mobileNav" hidden>
-    <a href="index.html#services" style="font-weight: 700; color: var(--ink);">Services</a>
-    <a href="motor-vehicle-renewal.html" class="mobile-sub">↳ TAJ Motor Vehicle Renewal</a>
-    <a href="drivers-licence-renewal.html" class="mobile-sub">↳ TAJ Driver's Licence Renewal</a>
-    <a href="jamaican-passport-renewal.html" class="mobile-sub">↳ PICA Passport Renewals</a>
-    <a href="rgd-vital-records.html" class="mobile-sub">↳ RGD Vital Records</a>
-    <a href="insights.html" style="font-weight: 700; color: var(--ink);">Insights</a>
+    <a href="index.html">Home</a>
+    <a href="motor-vehicle-renewal.html" class="mobile-sub">↳ Motor Vehicle Renewal</a>
+    <a href="drivers-licence-renewal.html" class="mobile-sub">↳ Driver's Licence Renewal</a>
+    <a href="jamaican-passport-renewal.html" class="mobile-sub">↳ Passport Services</a>
+    <a href="rgd-vital-records.html" class="mobile-sub">↳ Vital Record Services</a>
+    <a href="insights.html" style="font-weight: 700;">Guides &amp; Insights</a>
     <a href="about.html">About Us</a>
     <a href="faq.html">FAQ</a>
     <a href="booking.html" style="font-weight: 700; color: var(--blue-deep);">Book Consultation</a>
   </nav>
 </header>
 
+<main>
+
 <section class="hero">
   <div class="container">
-    <span class="eyebrow">Docu-Hub Advisory Desk</span>
-    <h1>Travel &amp; Document Security Insights</h1>
-    <p class="lead">Expert guides, travel warnings, and administrative strategies to help you navigate Jamaican government processes securely from overseas.</p>
+    <span class="eyebrow-tag">Docu-Hub Knowledge Base</span>
+    <h1>Guides &amp; Advisory Desk</h1>
+    <p class="lead">Practical advice, warnings, and strategies to help you navigate Jamaican document requirements with ease.</p>
   </div>
-</section>
-
-<section class="directory-section">
-    <div class="container">
-        
-        <div class="filter-tabs" id="filter-container">
-            <button class="filter-btn active" data-filter="all">All Advisories</button>
-            <button class="filter-btn" data-filter="taj">TAJ Operations</button>
-            <button class="filter-btn" data-filter="pica">Passports (PICA)</button>
-            <button class="filter-btn" data-filter="rgd">Vital Records (RGD)</button>
-        </div>
-
-        <!-- NEW TAJ FEATURED ARTICLE -->
-        <a href="motor-vehicle-renewal.html" class="featured-article filter-item" data-category="taj">
-            <div class="featured-img-box">
-                <span class="featured-badge">Featured Strategy</span>
-            </div>
-            <div class="featured-body">
-                <div class="featured-meta">
-                    <span class="cat"><i class="fa-solid fa-car"></i> TAJ Operations</span>
-                    <span><i class="fa-regular fa-clock"></i> 3 Min Read</span>
-                </div>
-                <h2>The Digital Traffic Jam: Navigating TAJ Vehicle Renewals</h2>
-                <p>Learn why the free online TAJ portal often traps users with alphanumeric errors and hidden TTMS tickets, and how an operational proxy solves it.</p>
-                <span class="btn-featured">Read Full Guide &rarr;</span>
-            </div>
-        </a>
-
-        <div class="blog-grid" id="advisory-grid">
-
-            <!-- MOVED PICA ARTICLE TO GRID -->
-            <a href="heat-damage-article.html" class="blog-card filter-item" data-category="pica">
-                <img src="assets/heat-damaged.png" alt="Passport with embedded microchip" class="blog-img">
-                <div class="blog-body">
-                    <div class="blog-meta">
-                        <span class="cat">Passports (PICA)</span>
-                        <span>4 Min Read</span>
-                    </div>
-                    <h3>The Plastic Bag Trap: Is Heat Destroying Your Passport?</h3>
-                    <p>Wrapping your e-passport in a plastic ziplock bag to prevent water damage might actually be melting the biometric chip inside.</p>
-                    <span class="read-more">Read Advisory &rarr;</span>
-                </div>
-            </a>
-
-            <a href="missing-father-name-article.html" class="blog-card filter-item" data-category="rgd">
-                <img src="assets/featured.webp" alt="Pen resting on official paperwork" class="blog-img">
-                <div class="blog-body">
-                    <div class="blog-meta">
-                        <span class="cat">Vital Records (RGD)</span>
-                        <span>5 Min Read</span>
-                    </div>
-                    <h3>Why a Missing Father's Name Matters for Immigration</h3>
-                    <p>Filing for spousal sponsorship or estate claims overseas? Learn why an incomplete RGD birth certificate can halt your application entirely.</p>
-                    <span class="read-more">Read Advisory &rarr;</span>
-                </div>
-            </a>
-
-            <a href="fixing-rgd-spelling-article.html" class="blog-card filter-item" data-category="rgd">
-                <img src="assets/rgd.webp" alt="Filling out a detailed form" class="blog-img">
-                <div class="blog-body">
-                    <div class="blog-meta">
-                        <span class="cat">Vital Records (RGD)</span>
-                        <span>4 Min Read</span>
-                    </div>
-                    <h3>Fixing RGD Spelling Errors from Abroad</h3>
-                    <p>A single misspelled letter on your RGD marriage or birth certificate can derail international paperwork. Here is the legal protocol to fix it.</p>
-                    <span class="read-more">Read Advisory &rarr;</span>
-                </div>
-            </a>
-
-        </div>
-
-    </div>
 </section>
 
 <section>
   <div class="container">
-    <div class="final">
-      <span class="eyebrow" style="margin:auto;background:rgba(176,138,78,.18);color:#f3d9a4;border-color:rgba(176,138,78,.35)">Connect Instantly</span>
-      <h2>Need an On-The-Ground Representative?</h2>
-      <p>Skip the international hold times and the bureaucratic red tape. We handle the government agency lines and manual archival lookups so you don't have to fly home.</p>
-      <div class="final-actions">
-        <a class="btn btn-outline" href="index.html#services" style="min-height: 56px;">Explore Proxy Services</a>
-        <a class="btn" href="booking.html" style="background:#fff; color:var(--ink); min-height: 56px; border: none;">
-          <i class="fa-regular fa-calendar-days" style="margin-right: 8px;"></i> Book Consultation
-        </a>
+
+    <!-- CTA Banner -->
+    <div class="cta-banner">
+      <div class="cta-banner-text">
+        <h3>Already stuck in the portal?</h3>
+        <p>Skip the back-and-forth with TAJ, PICA, or RGD. Book a consultation and we'll handle the paperwork for you.</p>
       </div>
+      <a href="booking.html" class="btn btn-primary">Book Consultation</a>
     </div>
+
+    <!-- Featured Guide -->
+    <a href="heat-damage-article.html" class="featured-card">
+      <img src="assets/heat-damaged.png" alt="Passport microchip" class="featured-img">
+      <div class="featured-body">
+        <span class="featured-tag">Most Read &middot; PICA Passports</span>
+        <h2>The Plastic Bag Trap: Heat &amp; Passports</h2>
+        <p>Wrapping your e-passport in plastic to protect it from moisture can accidentally damage the internal biometric chip &mdash; here's what actually happens, and how to protect your document the right way.</p>
+        <span class="read-link">Read Guide &rarr;</span>
+      </div>
+    </a>
+
+    <!-- Category Filter -->
+    <div class="filter-bar" id="filterBar">
+      <button class="filter-btn active" data-filter="all">All Guides</button>
+      <button class="filter-btn" data-filter="taj">TAJ</button>
+      <button class="filter-btn" data-filter="pica">PICA</button>
+      <button class="filter-btn" data-filter="rgd">RGD</button>
+    </div>
+
+    <!-- Uniform Simple Grid -->
+    <div class="insights-grid" id="insightsGrid">
+
+      <a href="motor-vehicle-renewal.html" class="insight-card" data-category="taj">
+        <div class="insight-img-wrap">
+          <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=600&q=80" alt="Motor Vehicle Renewal" class="insight-img">
+          <span class="insight-date">Updated Aug 2026</span>
+        </div>
+        <div class="insight-body">
+          <a href="motor-vehicle-renewal.html" class="insight-meta">TAJ Operations</a>
+          <h3>Navigating TAJ Motor Vehicle Renewals</h3>
+          <p>Learn why the online portal often flags alphanumeric errors or unpaid tickets, and how to get your eMVRC smoothly.</p>
+          <span class="read-link">Read Guide &rarr;</span>
+        </div>
+      </a>
+
+      <a href="heat-damage-article.html" class="insight-card" data-category="pica">
+        <div class="insight-img-wrap">
+          <img src="assets/heat-damaged.png" alt="Passport microchip" class="insight-img">
+          <span class="insight-date">Updated Aug 2026</span>
+        </div>
+        <div class="insight-body">
+          <a href="jamaican-passport-renewal.html" class="insight-meta">PICA Passports</a>
+          <h3>The Plastic Bag Trap: Heat &amp; Passports</h3>
+          <p>Wrapping your e-passport in plastic to protect it from moisture can accidentally damage the internal biometric chip.</p>
+          <span class="read-link">Read Guide &rarr;</span>
+        </div>
+      </a>
+
+      <a href="missing-father-name-article.html" class="insight-card" data-category="rgd">
+        <div class="insight-img-wrap">
+          <img src="assets/featured.webp" alt="Birth certificate paperwork" class="insight-img">
+          <span class="insight-date">Updated Jul 2026</span>
+        </div>
+        <div class="insight-body">
+          <a href="rgd-vital-records.html" class="insight-meta">RGD Vital Records</a>
+          <h3>Missing Father's Name on RGD Records</h3>
+          <p>Filing for spousal sponsorship or estate claims overseas? Here is how incomplete birth certificates affect your applications.</p>
+          <span class="read-link">Read Guide &rarr;</span>
+        </div>
+      </a>
+
+      <a href="fixing-rgd-spelling-article.html" class="insight-card" data-category="rgd">
+        <div class="insight-img-wrap">
+          <img src="assets/rgd.webp" alt="Form corrections" class="insight-img">
+          <span class="insight-date">Updated Jul 2026</span>
+        </div>
+        <div class="insight-body">
+          <a href="rgd-vital-records.html" class="insight-meta">RGD Vital Records</a>
+          <h3>Fixing RGD Spelling Errors from Abroad</h3>
+          <p>A single misspelled letter on your marriage or birth record can halt international paperwork. Here is the legal fix.</p>
+          <span class="read-link">Read Guide &rarr;</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- YouTube channel promo -->
+    <div class="yt-section">
+      <div class="yt-header">
+        <i class="fa-brands fa-youtube"></i>
+        <div>
+          <h2>Prefer to watch?</h2>
+          <p>Walkthroughs of these same processes, step by step, on our YouTube channel.</p>
+        </div>
+      </div>
+      <a href="https://www.youtube.com/@LauraClarke_dhub" target="_blank" rel="noopener" class="yt-cta">
+        <i class="fa-brands fa-youtube"></i> Watch on YouTube
+      </a>
+    </div>
+
   </div>
 </section>
 
+</main>
+
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-grid">
       <div>
-        <h3 style="margin:0 0 10px;color:#fff;font-family:'Fraunces',serif;font-weight:600">Docu-Hub Operations</h3>
-        <p style="margin:0;color:#94a3b8">Independent administrative proxy and secure online application assistance for the Jamaican diaspora.</p>
+        <h3 style="margin:0 0 12px;color:#fff;font-family:'Fraunces',serif;">Docu-Hub Operations</h3>
+        <p style="margin:0;color:#94a3b8;line-height:1.7;">Independent private administrative proxy and application assistance for clients in Jamaica and abroad.</p>
       </div>
-      
       <div class="footer-cols">
-        
-         <div class="footer-col">
-          <h4>Our Services</h4>
-          <!-- Reordered Footer Links -->
-          <a href="motor-vehicle-renewal.html">TAJ Motor Vehicle Renewal</a>
-          <a href="drivers-licence-renewal.html">TAJ Driver's Licence Renewal</a>
-          <a href="jamaican-passport-renewal.html">PICA Passport Renewals</a>
-          <a href="rgd-vital-records.html">RGD Vital Records</a>
-        </div>
-        
         <div class="footer-col">
-          <h4>Company</h4>
-          <a href="about.html">About Docu-Hub</a>
+          <h4>Our Services</h4>
+          <a href="motor-vehicle-renewal.html">Motor Vehicle Renewal</a>
+          <a href="drivers-licence-renewal.html">Driver's Licence Renewal</a>
+          <a href="jamaican-passport-renewal.html">Passport Services</a>
+          <a href="rgd-vital-records.html">Vital Record Services</a>
+        </div>
+        <div class="footer-col">
+          <h4>Free Resources</h4>
           <a href="insights.html">Guides &amp; Insights</a>
+          <a href="https://www.youtube.com/@LauraClarke_dhub" target="_blank" rel="noopener">Video Tutorials</a>
           <a href="faq.html">FAQ</a>
         </div>
-        
         <div class="footer-col">
-          <h4>Legal &amp; Connect</h4>
+          <h4>Company &amp; Legal</h4>
+          <a href="about.html">About Docu-Hub</a>
           <a href="privacy.html">Privacy Policy</a>
           <a href="terms.html">Terms of Service</a>
-          <a href="booking.html" style="display:flex; align-items:center; gap:8px;">
-            <i class="fa-regular fa-calendar-days"></i> Book Consultation
-          </a>
-          <a href="https://www.youtube.com/@LauraClarke_dhub" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; color: #ea3323;">
-            <i class="fa-brands fa-youtube"></i> Watch on YouTube
-          </a>
-          <a href="https://www.linkedin.com/in/docuhubservices" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; color: #0a66c2;">
-            <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn
-          </a>
+          <a href="https://www.linkedin.com/in/docuhubservices" target="_blank" rel="noopener">LinkedIn</a>
         </div>
-
       </div>
     </div>
-    
     <div class="footer-bottom">
-      <div>Disclaimer: Docu-Hub Operations Services is a private, registered administrative proxy service. We are not a government agency and are not affiliated with PICA, RGD, or TAJ.</div>
-      <div><i class="fa-solid fa-building-shield" style="margin-right: 6px; color: var(--brass);"></i> Registered with the Companies Office of Jamaica (COJ): #15602/2025 | OIC Data Controller Verified.</div>
+      <div><strong>Disclaimer:</strong> Docu-Hub Operations Services is a private administrative proxy service and is not affiliated with PICA, TAJ, or RGD.</div>
       <div>&copy; 2026 Docu-Hub Operations Services. All rights reserved.</div>
     </div>
   </div>
 </footer>
+
 <script>
 var btn = document.getElementById('menuBtn');
 var nav = document.getElementById('mobileNav');
 btn.addEventListener('click', function(){
-var isHidden = nav.hasAttribute('hidden');
-if(isHidden){ nav.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); }
-else { nav.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); }
+  if(nav.hasAttribute('hidden')){ nav.removeAttribute('hidden'); } 
+  else { nav.setAttribute('hidden',''); }
 });
 
-const filterButtons = document.querySelectorAll('.filter-btn');
-const filterItems = document.querySelectorAll('.filter-item');
-
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        
-        const filterValue = button.getAttribute('data-filter');
-        
-        filterItems.forEach(item => {
-            const itemCategory = item.getAttribute('data-category');
-            if (filterValue === 'all' || filterValue === itemCategory) {
-                item.classList.remove('hidden');
-            } else {
-                item.classList.add('hidden');
-            }
-        });
-    });
+// Category filter
+var filterBar = document.getElementById('filterBar');
+var cards = document.querySelectorAll('#insightsGrid .insight-card');
+filterBar.addEventListener('click', function(e){
+  var target = e.target.closest('.filter-btn');
+  if(!target) return;
+  filterBar.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+  target.classList.add('active');
+  var filter = target.getAttribute('data-filter');
+  cards.forEach(function(card){
+    if(filter === 'all' || card.getAttribute('data-category') === filter){
+      card.removeAttribute('hidden');
+    } else {
+      card.setAttribute('hidden','');
+    }
+  });
 });
 </script>
 
