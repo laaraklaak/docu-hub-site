@@ -17,7 +17,7 @@
   <meta property="og:locale" content="en_JM">
 
   <title>Jamaican Paperwork, Personally Handled. | Docu-Hub Operations</title>
-<meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow">
   
   <script type="application/ld+json">
   {
@@ -110,11 +110,24 @@
     }
     .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
     .brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;min-width:0}
-    .brand img{width:42px;height:42px;border-radius:12px;object-fit:cover}
+    
+    .brand img {
+      width: 100%;
+      max-width: 48px;
+      height: auto;
+      border-radius: 12px;
+      object-fit: contain;
+    }
+
     .brand-name{font-weight:700;letter-spacing:-.02em;white-space:nowrap}
     .desktop-nav{display:none;align-items:center;gap:28px}
     .desktop-nav a{text-decoration:none;color:#41504c;font-size:.92rem;font-weight:600}
     .desktop-nav a:hover{color:var(--green)}
+    
+    /* Fixes the button contrast override */
+    .desktop-nav a.nav-cta {color: var(--white) !important;}
+    .desktop-nav a.nav-cta:hover {color: var(--gold-soft) !important;}
+
     .nav-cta,.btn{
       display:inline-flex;align-items:center;justify-content:center;
       min-height:52px;padding:0 24px;border-radius:14px;text-decoration:none;
@@ -175,8 +188,6 @@
     .pullquote{border-left:3px solid var(--gold);padding:6px 0 6px 24px;color:var(--green);font-family:Fraunces,serif;font-size:clamp(1.35rem,2.5vw,1.8rem);line-height:1.3}
 
     /* Services */
-    .services-intro{display:flex;justify-content:space-between;gap:24px;align-items:end}
-    .services-intro .section-heading{margin-bottom:0}
     .service-list{display:grid;gap:20px}
     .service-card{
       display:grid;grid-template-columns:1fr;background:var(--white);
@@ -289,14 +300,29 @@
 
     @media(max-width:520px){
       .container{width:min(calc(100% - 32px),var(--max))}
-      .hero{padding-top:34px}
-      .hero h1{font-size:clamp(2.65rem,14vw,3.5rem)}
+      
+      /* 1. Increased Hero breathing room */
+      .hero{padding: 72px 0 48px}
+      .hero-grid{gap: 64px}
+      .hero h1{font-size:clamp(1.4rem, 8vw, 2rem); line-height: 1.2;}
       .hero-actions .btn{width:100%}
       .portrait-wrap{width:100%;padding:9px;border-radius:22px}
       .portrait-wrap img{aspect-ratio:5/6}
       .portrait-label{left:20px;bottom:20px}
-      .section{padding:78px 0}
-      .footer-cols{grid-template-columns:1fr}
+      
+      /* 2. Massive vertical space between all standard sections */
+      .section{padding: 120px 0}
+      .section-heading{margin-bottom: 56px}
+      
+      /* 3. Expanded gaps between stacked mobile cards */
+      .service-list{gap: 32px}
+      .about-grid{gap: 64px}
+      .guides-grid{gap: 32px}
+      
+      /* 4. Spacious footer layout */
+      footer{padding: 88px 0 48px}
+      .footer-cols{grid-template-columns:1fr; gap: 48px}
+      .footer-grid{gap: 56px}
     }
 
     @media(prefers-reduced-motion:reduce){
@@ -304,13 +330,6 @@
       *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
     }
 
-.brand img {
-  width: 100%;
-  max-width: 48px;
-  height: auto;
-  border-radius: 12px;
-  object-fit: contain;
-}
   </style>
 </head>
 
@@ -412,12 +431,10 @@
     <!-- SERVICES -->
     <section class="section section-soft" id="services">
       <div class="container">
-        <div class="services-intro">
-          <div class="section-heading">
-            <span class="eyebrow">Services</span>
-            <h2>Start with what you're trying to get done.</h2>
-            <p>You don't have to know the agency's process before you reach out. Start with the outcome you need.</p>
-          </div>
+        <div class="section-heading" style="margin-bottom: 56px;">
+          <span class="eyebrow">Featured Services</span>
+          <h2>Our most frequently requested proxy services.</h2>
+          <p>While we handle a wide spectrum of custom government filings and agency clearances, these are the core document processes we assist with daily.</p>
         </div>
 
         <div class="service-list">
@@ -514,63 +531,61 @@
       </div>
     </section>
 
-    <!-- HOW IT WORKS -->
-    <section class="section section-soft">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">How It Works</span>
-          <h2>A simple process. No guesswork.</h2>
-        </div>
-
-        <div class="how-grid">
-          <article class="how-step">
-            <span class="how-num">01</span>
-            <h3>Tell us what you need.</h3>
-            <p>Start with the outcome you're trying to achieve.</p>
-          </article>
-          <article class="how-step">
-            <span class="how-num">02</span>
-            <h3>We identify what's required.</h3>
-            <p>We'll help clarify the documents, information and steps involved.</p>
-          </article>
-          <article class="how-step">
-            <span class="how-num">03</span>
-            <h3>Prepare and review.</h3>
-            <p>We help you organize the paperwork and check the important details.</p>
-          </article>
-          <article class="how-step">
-            <span class="how-num">04</span>
-            <h3>Move forward confidently.</h3>
-            <p>You know what has been prepared and what your next step is.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT / TRUST -->
+   <!-- MEET THE CONCIERGE & HOW IT WORKS (MERGED) -->
     <section class="section section-white">
       <div class="container about-grid">
+        
         <div class="about-copy">
           <span class="eyebrow">Meet the Concierge</span>
           <h2>Professional help, with a human face.</h2>
           <p>I’m Laura Clarke, founder of Docu-Hub Operations. I created the service around a simple idea: people shouldn't have to become experts in administrative processes just to get important things done.</p>
-          <p>My role is to help you understand the process, prepare carefully and navigate the administrative side with greater confidence.</p>
+          <p>My role is to help you understand the process, prepare carefully, and navigate the administrative side with greater confidence.</p>
           <a href="about.html" class="btn btn-secondary" style="margin-top:24px">Meet Laura &amp; Learn More</a>
         </div>
 
-        <aside class="about-card" aria-label="Trust and transparency">
-          <h3>What you can expect</h3>
-          <ul class="trust-list">
-            <li><span>✓</span><div><strong>Clear requirements</strong><br>We explain what needs attention before you proceed.</div></li>
-            <li><span>✓</span><div><strong>Transparent costs</strong><br>Where applicable, our service fee is kept distinct from official agency fees.</div></li>
-            <li><span>✓</span><div><strong>Careful review</strong><br>We focus on the details that are easy to overlook.</div></li>
-            <li><span>✓</span><div><strong>Honest boundaries</strong><br>We assist with preparation and navigation; agencies make their own official decisions.</div></li>
-          </ul>
+        <aside class="about-card" aria-label="How it works and transparency">
+          <h3 style="margin-top:0;">How the process works</h3>
+          
+          <div style="display:grid; gap:20px; margin-top:24px;">
+            <!-- Step 1 -->
+            <div style="display:flex; gap:16px; align-items:flex-start;">
+              <span style="font-family:Fraunces,serif; color:var(--gold); font-size:1.4rem; font-weight:700; line-height:1;">01</span>
+              <div>
+                <h4 style="margin:0 0 4px; font-family:Inter,sans-serif; font-size:1rem; font-weight:700; color:var(--green);">Tell us what you need</h4>
+                <p style="margin:0; color:var(--muted); font-size:0.92rem;">Start with the outcome you're trying to achieve.</p>
+              </div>
+            </div>
+            <!-- Step 2 -->
+            <div style="display:flex; gap:16px; align-items:flex-start;">
+              <span style="font-family:Fraunces,serif; color:var(--gold); font-size:1.4rem; font-weight:700; line-height:1;">02</span>
+              <div>
+                <h4 style="margin:0 0 4px; font-family:Inter,sans-serif; font-size:1rem; font-weight:700; color:var(--green);">We identify requirements</h4>
+                <p style="margin:0; color:var(--muted); font-size:0.92rem;">We'll help clarify the documents, information, and steps involved.</p>
+              </div>
+            </div>
+            <!-- Step 3 -->
+            <div style="display:flex; gap:16px; align-items:flex-start;">
+              <span style="font-family:Fraunces,serif; color:var(--gold); font-size:1.4rem; font-weight:700; line-height:1;">03</span>
+              <div>
+                <h4 style="margin:0 0 4px; font-family:Inter,sans-serif; font-size:1rem; font-weight:700; color:var(--green);">Prepare and review</h4>
+                <p style="margin:0; color:var(--muted); font-size:0.92rem;">We help you organize the paperwork and check the important details.</p>
+              </div>
+            </div>
+            <!-- Step 4 -->
+            <div style="display:flex; gap:16px; align-items:flex-start;">
+              <span style="font-family:Fraunces,serif; color:var(--gold); font-size:1.4rem; font-weight:700; line-height:1;">04</span>
+              <div>
+                <h4 style="margin:0 0 4px; font-family:Inter,sans-serif; font-size:1rem; font-weight:700; color:var(--green);">Move forward confidently</h4>
+                <p style="margin:0; color:var(--muted); font-size:0.92rem;">You know what has been prepared and what your next step is.</p>
+              </div>
+            </div>
+          </div>
+          
           <div class="disclaimer">Docu-Hub Operations is an independent private administrative service. We are not a Jamaican government agency and are not affiliated with PICA, RGD or TAJ.</div>
         </aside>
+
       </div>
     </section>
-
     <!-- GUIDES -->
     <section class="section section-soft">
       <div class="container">
