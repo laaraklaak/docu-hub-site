@@ -124,14 +124,6 @@ header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.95);backdro
 section{padding: var(--section-spacing-mobile) 0}
 .section-bg{background:var(--paper-deep)}
 .section-white{background:var(--white)}
-  .brand-logo {
-  height: 38px;
-  width: 38px;
-  border-radius: 8px;
-  object-fit: cover;
-  display: block;
-  flex: none;
-}
 
 /* HERO SECTION */
 .hero{
@@ -286,6 +278,45 @@ footer{background:#0b1220;color:#cbd5e1;padding:64px 0 32px}
 .footer-bottom{margin-top:56px;padding-top:28px;border-top:1px solid rgba(255,255,255,.08);display:grid;gap:12px;color:#64748b;font-size:0.85rem;line-height:1.6;}
 
 @media(max-width:480px){ .security-banner { flex-direction: column; gap: 12px; } }
+
+/* CONCIERGE DIFFERENCE */
+.diff-header{ max-width:640px; margin:0 auto 48px; text-align:center; }
+.diff-header h2{ margin:0 0 16px; font-weight:600; font-size:clamp(1.8rem,4vw,2.5rem); line-height:1.2; color:var(--ink); }
+.diff-header p{ margin:0; color:var(--slate); font-size:1.08rem; line-height:1.7; }
+.diff-rail{ display:grid; gap:16px; max-width:920px; margin:0 auto; }
+.diff-step{ display:flex; gap:20px; align-items:flex-start; background:#fff; border:1px solid var(--line); border-radius:16px; padding:24px 28px; }
+.diff-step-mark{ flex:none; width:44px; height:44px; border-radius:50%; background:var(--jm-green); color:var(--jm-gold-tint); display:grid; place-items:center; font-family:"Fraunces",serif; font-weight:600; font-size:1.05rem; }
+.diff-step h3{ margin:0 0 4px; font-size:1.15rem; color:var(--ink); }
+.diff-step p{ margin:0; color:var(--slate); font-size:0.98rem; line-height:1.6; }
+.diff-step-connector{ width:2px; background:var(--jm-paper-line); margin:0 auto; height:16px; }
+@media(min-width:760px){
+  .diff-rail{ grid-template-columns: repeat(4, 1fr); gap:0; align-items:stretch; }
+  .diff-step{ flex-direction:column; text-align:left; border-radius:0; border:none; border-right:1px solid var(--line); padding:8px 28px; background:transparent; }
+  .diff-step:last-child{ border-right:none; }
+  .diff-step-mark{ margin-bottom:16px; }
+}
+
+/* HOW IT WORKS */
+.how-grid{ display:grid; gap:24px; max-width:960px; margin:0 auto; }
+.how-step{ position:relative; padding-left:56px; }
+.how-step-num{ position:absolute; left:0; top:0; font-family:"Fraunces",serif; font-weight:600; font-size:1.5rem; color:var(--jm-gold); line-height:1; }
+.how-step h3{ margin:0 0 6px; font-size:1.15rem; color:var(--ink); }
+.how-step p{ margin:0; color:var(--slate); font-size:0.98rem; line-height:1.6; }
+@media(min-width:760px){
+  .how-grid{ grid-template-columns:repeat(4,1fr); gap:32px; }
+}
+
+/* FEATURED GUIDES (home teaser) */
+.guides-teaser-grid{ display:grid; gap:24px; max-width:900px; margin:0 auto; }
+@media(min-width:700px){ .guides-teaser-grid{ grid-template-columns:1fr 1fr; } }
+.guide-teaser-card{ display:flex; flex-direction:column; background:#fff; border:1px solid var(--line); border-radius:16px; overflow:hidden; text-decoration:none; color:inherit; transition:transform .2s ease, box-shadow .2s ease; }
+.guide-teaser-card:hover{ transform:translateY(-4px); box-shadow:0 12px 24px rgba(15,23,42,.06); }
+.guide-teaser-card img{ width:100%; height:180px; object-fit:cover; display:block; }
+.guide-teaser-body{ padding:24px; }
+.guide-teaser-meta{ font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--blue-deep); display:block; margin-bottom:8px; }
+.guide-teaser-body h3{ margin:0 0 8px; font-size:1.1rem; color:var(--ink); line-height:1.35; }
+.guide-teaser-body p{ margin:0; color:var(--slate); font-size:0.92rem; line-height:1.55; }
+.guides-teaser-footer{ text-align:center; margin-top:32px; }
 </style>
 </head>
 <body>
@@ -416,6 +447,88 @@ footer{background:#0b1220;color:#cbd5e1;padding:64px 0 32px}
     </div>
   </div>
 </section>
+<!-- BOTTOM CATCH-ALL BANNER -->
+<div style="background: var(--paper-deep); border: 1px solid var(--line); border-radius: 16px; padding: 28px 32px; margin-top: 40px; text-align: center;">
+  <h3 style="margin: 0 0 8px; font-size: 1.25rem;">Looking for a different service or document clearance?</h3>
+  <p style="margin: 0 0 20px; color: var(--slate); font-size: 0.98rem;">
+    We also assist with Police Record pre-clearance, Driver Abstracts, NIS Pension inquiries, and custom agency follow-ups.
+  </p>
+  
+  <!-- WHATSAPP CALL TO ACTION BUTTON -->
+  <a href="https://wa.me/18765612614?text=Hi%20Laura,%20I'm%20inquiring%20about%20a%20custom%20document%20service." 
+     target="_blank" 
+     rel="noopener" 
+     class="btn btn-primary" 
+     style="min-height: 44px; padding: 0 24px; font-size: 0.9rem; background: #25D366; color: #fff; border: none;">
+    <i class="fa-brands fa-whatsapp" style="margin-right: 8px; font-size: 1.1rem;"></i>
+    Chat on WhatsApp About Custom Services
+  </a>
+</div>
+
+<!-- 2.5 THE CONCIERGE DIFFERENCE -->
+<section class="section-white">
+  <div class="container">
+    <div class="diff-header">
+      <span class="eyebrow-tag" style="color:var(--jm-gold);">The Concierge Difference</span>
+      <h2>You're not buying a filled-in form.</h2>
+      <p>You're buying the feeling that someone who actually knows this process is helping you get it right before you have to face it yourself.</p>
+    </div>
+    <div class="diff-rail">
+      <div class="diff-step">
+        <span class="diff-step-mark">1</span>
+        <h3>Understand</h3>
+        <p>We listen to your specific situation and work out exactly what the agency will require from you.</p>
+      </div>
+      <div class="diff-step">
+        <span class="diff-step-mark">2</span>
+        <h3>Prepare</h3>
+        <p>We help you gather and complete the right paperwork, in the right format, the first time.</p>
+      </div>
+      <div class="diff-step">
+        <span class="diff-step-mark">3</span>
+        <h3>Review</h3>
+        <p>We check every detail — photos, signatures, dates, supporting documents — against what's actually required.</p>
+      </div>
+      <div class="diff-step">
+        <span class="diff-step-mark">4</span>
+        <h3>Guide</h3>
+        <p>We walk with you through submission and let you know exactly what happens next.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2.6 HOW IT WORKS -->
+<section class="section-bg">
+  <div class="container">
+    <div class="diff-header">
+      <span class="eyebrow-tag" style="color:var(--jm-gold);">How It Works</span>
+      <h2>A simple, four-step process.</h2>
+    </div>
+    <div class="how-grid">
+      <div class="how-step">
+        <span class="how-step-num">01</span>
+        <h3>Tell us what you need.</h3>
+        <p>A quick conversation about what you're trying to accomplish.</p>
+      </div>
+      <div class="how-step">
+        <span class="how-step-num">02</span>
+        <h3>We identify what's required.</h3>
+        <p>Clear requirements, no guesswork, no surprises later.</p>
+      </div>
+      <div class="how-step">
+        <span class="how-step-num">03</span>
+        <h3>We prepare and review together.</h3>
+        <p>Every document checked before it ever reaches the agency.</p>
+      </div>
+      <div class="how-step">
+        <span class="how-step-num">04</span>
+        <h3>You move forward with confidence.</h3>
+        <p>You know exactly what's been submitted and what comes next.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- 3. CONSOLIDATED TRUST & TRANSPARENCY (Trimmed for Mobile) -->
 <section id="about" class="section-white" style="border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
@@ -442,6 +555,37 @@ footer{background:#0b1220;color:#cbd5e1;padding:64px 0 32px}
 
       <a class="btn btn-secondary" href="about.html">Read More About Us</a>
       
+    </div>
+  </div>
+</section>
+
+<!-- 3.5 FEATURED GUIDES TEASER -->
+<section class="section-bg">
+  <div class="container">
+    <div class="diff-header">
+      <span class="eyebrow-tag" style="color:var(--jm-gold);">Free Resources</span>
+      <h2>Two things worth knowing before you start.</h2>
+    </div>
+    <div class="guides-teaser-grid">
+      <a href="heat-damage-article.html" class="guide-teaser-card">
+        <img src="assets/heat-damaged.png" alt="Passport microchip" loading="lazy">
+        <div class="guide-teaser-body">
+          <span class="guide-teaser-meta">PICA Passports</span>
+          <h3>The Plastic Bag Trap: Heat &amp; Passports</h3>
+          <p>Wrapping your e-passport in plastic to protect it can accidentally damage the internal biometric chip.</p>
+        </div>
+      </a>
+      <a href="taj-motor-vehicle-guide.html" class="guide-teaser-card">
+        <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=600&q=80" alt="Motor vehicle renewal" loading="lazy">
+        <div class="guide-teaser-body">
+          <span class="guide-teaser-meta">TAJ Operations</span>
+          <h3>Navigating TAJ Motor Vehicle Renewals</h3>
+          <p>Why the online portal often flags alphanumeric errors or unpaid tickets — and how to get your eMVRC smoothly.</p>
+        </div>
+      </a>
+    </div>
+    <div class="guides-teaser-footer">
+      <a href="insights.html" class="link-arrow">See all guides &rarr;</a>
     </div>
   </div>
 </section>
